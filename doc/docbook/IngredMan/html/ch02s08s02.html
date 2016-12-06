@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.8.2. DESCRIPTION</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s08.html" title="2.8. GEImagery" /><link rel="prev" href="ch02s08s01.html" title="2.8.1. SYNOPSIS" /><link rel="next" href="ch02s08s03.html" title="2.8.3. RETURN" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.8.2. DESCRIPTION</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s08s01.html">Prev</a> </td><th width="60%" align="center">2.8. GEImagery</th><td width="20%" align="right"> <a accesskey="n" href="ch02s08s03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4211812"></a>2.8.2. DESCRIPTION</h3></div></div></div><p> 
+Issues commands to display imagery at a given valid time. There are four image planes into which 
+images can be displayed. There are string macros defined for these planes: UNDERLAY_DISPLAY_PLANE, SATELLITE_DISPLAY_PLANE,
+RADAR_DISPLAY_PLANE and OVERLAY_DISPLAY_PLANE. The stacking order of the planes are in the given order of the macros with
+the underlay on the bottom of the stack. The satellite and radar display planes can be blended and are affected by the
+blending command discussed elsewhere. Images are identified by an image tag. This is the tag provided by the image access
+library.</p><p>
+The <span xmlns="" class="replaceable">command</span> parameter consists of a string of key words. These are:
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>ACTIVE</code></strong> <span xmlns="" class="replaceable">tag time</span></span></dt><dd><p>
+Set the given image as identified by the given <span xmlns="" class="replaceable">tag</span> and <span xmlns="" class="replaceable">time</span> as the active image to which 
+actions (like sampling) will be applied.
+</p></dd><dt><span class="term"><strong class="userinput"><code>ANIMATE ON</code></strong> | <strong class="userinput"><code>OFF</code></strong> <span xmlns="" class="replaceable">speed</span></span></dt><dd><p>
+Turn animation on or off and set the animation speed with the on command. The speed is 
+given as a percentage of between 0 and 100 percent.
+</p></dd><dt><span class="term"><strong class="userinput"><code>BLEND ON</code></strong> | <strong class="userinput"><code>OFF</code></strong> <span xmlns="" class="replaceable">blend_percentage</span></span></dt><dd><p>
+Turn the blending of images on or off and set the percentage blend. The blending ratio has 
+a value of 0 to 100 and is the percentage of the RADAR_DISPLAY_PLANE to be blended with the SATELLITE_DISPLAY_PLANE.
+A value of 100 will result in the radar image completely covering the satellite image with no image blending.
+</p></dd><dt><span class="term"> <strong class="userinput"><code>DISPLAY</code></strong>  <span xmlns="" class="replaceable"> plane  tag  time</span></span></dt><dd><p>
+Display the image identified by <span xmlns="" class="replaceable">tag</span> at time <span xmlns="" class="replaceable">time</span> in the given
+<span xmlns="" class="replaceable">plane</span>. Note that <span xmlns="" class="replaceable">plane</span>  must be the string defined in one of
+the macros specified above.
+</p></dd><dt><span class="term"><strong class="userinput"><code>REMOVE</code></strong> <span xmlns="" class="replaceable">tag</span></span></dt><dd><p>Remove the image identified by <span xmlns="" class="replaceable">tag</span> from whatever image plane it is in.</p></dd><dt><span class="term"><strong class="userinput"><code>SETLUT</code></strong> <span xmlns="" class="replaceable">tag lut</span></span></dt><dd><p>
+Set the look up table for the image identified by <span xmlns="" class="replaceable">tag</span> to <span xmlns="" class="replaceable">lut</span>. 
+Note that <span xmlns="" class="replaceable">lut</span> of <strong class="userinput"><code>DEFAULT</code></strong>
+will use the first look up table in the list.
+</p></dd><dt><span class="term"><strong class="userinput"><code>SAMPLE</code></strong> <span xmlns="" class="replaceable">process type item font size colour</span></span></dt><dd><p>
+Sample the field as given by field identifier <span xmlns="" class="replaceable">field_id</span> at valid time <span xmlns="" class="replaceable">valid_time</span>. The remaining commands are:
+</p><div class="variablelist"><dl><dt><span class="term"><span xmlns="" class="replaceable">process</span></span></dt><dd><p>
+The sampling procedure. This must be one of:
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>NORMAL</code></strong></span></dt><dd><p>
+The sampling is done on a point by point basis through use of the 
+mouse by selecting the sample point on the map area.
+</p></dd><dt><span class="term"><strong class="userinput"><code>GRID</code></strong> <span xmlns="" class="replaceable">nx ny</span></span></dt><dd><p>The sampling is to be done on a grid with the number of points in the x and y axis specified by <span xmlns="" class="replaceable">nx</span> and <span xmlns="" class="replaceable">ny</span>.
+</p></dd><dt><span class="term"><strong class="userinput"><code>LIST</code></strong> <span xmlns="" class="replaceable">latitude longitude</span> | <strong class="userinput"><code>GO</code></strong></span></dt><dd><p>
+Sampling is to be done for a list of points.
+If <span xmlns="" class="replaceable">latitude</span> and <span xmlns="" class="replaceable">longitude</span> are given,
+Ingred will cache the points and will not do the sampling until a <strong class="userinput"><code>GO</code></strong> command is received.
+The <strong class="userinput"><code>GO</code></strong> command will cause Ingred to sample at the given points and then clear the internal cache.
+Note that none of the other parameters after <span xmlns="" class="replaceable">process</span> are required when the <strong class="userinput"><code>LIST</code></strong> <span xmlns="" class="replaceable">latitude longitude</span> command is issued.
+</p></dd></dl></div><p>
+</p></dd><dt><span class="term"><span xmlns="" class="replaceable">type</span></span></dt><dd><p>For now only <strong class="userinput"><code>Default</code></strong> is recognized.</p></dd><dt><span class="term"><span xmlns="" class="replaceable">item</span></span></dt><dd><p>For images which are associated with several different items 
+(for example URP data files where a given array element can be associated with ZR, rainfall rate or snowfall rate)
+this specifies which item to sample.
+For images with no defined <span xmlns="" class="replaceable">item</span>, <strong class="userinput"><code>Default</code></strong> must be used.
+</p></dd><dt><span class="term"><span xmlns="" class="replaceable">font</span></span></dt><dd><p>The font to use in displaying the sample.</p></dd><dt><span class="term"><span xmlns="" class="replaceable">size</span></span></dt><dd><p>The size of the font.
+If size is followed by a percent sign (<strong class="userinput"><code>%</code></strong>) the size is a percent of map size.
+If followed by a <strong class="userinput"><code>P</code></strong> the size is in points.
+</p></dd><dt><span class="term"><span xmlns="" class="replaceable">colour</span></span></dt><dd><p>Colour of the sample as a standard X colour name.</p></dd></dl></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>SHOW</code></strong></span></dt><dd><p>
+Any <strong class="userinput"><code>BLEND</code></strong>, <strong class="userinput"><code>DISPLAY</code></strong> or <strong class="userinput"><code>REMOVE</code></strong> commands will not be executed
+until a <strong class="userinput"><code>SHOW</code></strong> command is received.
+</p></dd><dt><span class="term"><strong class="userinput"><code>HIDE</code></strong></span></dt><dd><p>Hide all image planes.</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s08s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s08.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s08s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.8.1. SYNOPSIS </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.8.3. RETURN</td></tr></table></div></body></html>

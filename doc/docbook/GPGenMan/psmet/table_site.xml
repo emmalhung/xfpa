@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_table_site'> <title>@table_site</title> <titleabbrev>@table_site</titleabbrev>
+<para>
+Set parameters for locations in a table at which to sample data.
+</para><para>
+Note that the type of table is set in the <link linkend='ps_define_table'>@define_table</link> directive.
+A column type table arranges the table data by columns, and each call to the
+<link linkend='ps_table_site'>@table_site</link> directive will create another row of data in the table.
+A row type table arranges the table data by rows, and each call to the
+<link linkend='ps_table_site'>@table_site</link> directive will create another column of data in the table.
+</para><para>
+Note that data in the table is "anchored" to the table location set in the
+<link linkend='ps_define_table'>@define_table</link> directive according to the <userinput>x_off</userinput> or <userinput>y_off</userinput> keywords given
+below. In a column type table, data for each site forms another row in the table,
+offset vertically from the table location according to <userinput>y_off</userinput>. In a row type table,
+data for each site forms another column in the table, offset horizontally from the
+table location according to <userinput>x_off</userinput>.
+</para><para>
+Note that the data locations for sampling or display can be set directly as
+latitude-longitude or map grid locations, but can also be set indirectly as a
+location identifier, which is matched to a "location_look_up" table (set in the
+sampling or display directives) to determine the location.
+</para><para>
+Note that the presentation keywords are used for display of the <userinput>site_label</userinput>.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/table_name.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>site_label</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Site label for location.</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/text_size.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>rotation</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Text angle of rotation for site label (in counter-clockwise decimal degrees)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_label</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset of the site label wrt <userinput>x_off</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_label</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset of the site label wrt <userinput>y_off</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset of table data wrt table location (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset of table data wrt table location (in display units)</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For lat/lon samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lat.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lon.xml'/>
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For map samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_x.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_y.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_units.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For location samples ...</para></entry></row>
+<row valign='top'> 
+<entry colname='key'><para><userinput>location_ident</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para> Identifier for location in <userinput>location_look_up</userinput>
+</para><para>
+(Note that the keyword <userinput>location_look_up</userinput> in the <link linkend='ps_add'>@add</link> <link linkend='ps_box'>@box</link> <link linkend='ps_ellipse'>@ellipse</link> <link linkend='ps_sample_field'>@sample_field</link> <link linkend='ps_sample_wind'>@sample_wind</link> <link linkend='ps_text'>@text</link> directives identifies the location look up table to use)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline_first.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font_weight.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/italics.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/char_space.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/word_spacing.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@table_site
+{
+  table_name    = T1;
+  site_label    = Halifax;
+  lat           = 44:40N;
+  lon           = 63:35W;
+  x_label       = 0.15;
+  y_label       = 0.15;
+  x_off         = 0.0;
+  y_off         = -0.60;
+  justification = left;
+}
+</programlisting>
+Set a location for a site called "Halifax" at latitude 44 degrees and 40 minutes North and longitude 63 degrees and 35 minutes West in a table called "T1" 
+(from the <link linkend='ps_define_table'>@define_table</link> directive).
+Since the table is of type "column", all sampled data for this site will be displayed 0.60 "units" below the table location 
+(from the <link linkend='ps_define_table'>@define_table</link> directive). 
+The site label will be displayed 0.15 "units" above and 0.15 "units" to the right of the initial data location 
+(which is 0.60 "units" below the table location), and left justified.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

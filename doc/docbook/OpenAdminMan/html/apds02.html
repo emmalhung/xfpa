@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>D.2. FPA Metafile Copy</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apd.html" title="Appendix D. Product Definition File Formats" /><link rel="prev" href="apds01.html" title="D.1. Graphics Product Generator (GPGen)" /><link rel="next" href="ape.html" title="Appendix E. Adding New Allied Models" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">D.2. FPA Metafile Copy</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apds01.html">Prev</a> </td><th width="60%" align="center">Appendix D. Product Definition File Formats</th><td width="20%" align="right"> <a accesskey="n" href="ape.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2082609"></a>D.2. FPA Metafile Copy</h2></div></div></div><p>
+<a id="id2030288" class="indexterm"></a>
+This file defines the <span class="acronym">FPA</span> metafiles to be copied.
+The usual use of this facility is to send a set of <span class="acronym">FPA</span> metafiles to another location where they can be used as initial fields or as guidance.
+The parameters are:
+</p><div class="variablelist"><dl><dt><span class="term">source</span></dt><dd><p>
+The source of the metafiles.
+This is normally <strong class="userinput"><code>depict</code></strong> or <strong class="userinput"><code>interp</code></strong>.</p></dd><dt><span class="term">time</span></dt><dd><p>
+The time of the depictions.
+This is either <strong class="userinput"><code>ALL</code></strong> or the time of the depictions with respect to T0.
+This can be one of two formats: the time offset from T0 or the day relative to T0 and an absolute hour.
+For example, 0 6 12 24 would be taken as T0, T+6, T+12 and T+24.
+0/12 1/0 1/6 would be taken as 12Z on the same day as T0, and 00Z and 06Z on the day after T0.</p></dd><dt><span class="term">fields</span></dt><dd><p>
+One of <strong class="userinput"><code>ALL</code></strong> or a list of <strong class="userinput"><code>element  level</code></strong> pairs defining the required fields.
+For example: pressure msl temperature sfc ...</p></dd><dt><span class="term">send_link_data</span></dt><dd><p>
+<strong class="userinput"><code>True</code></strong> or <strong class="userinput"><code>False</code></strong>.
+Send the time link data.
+Default False.</p></dd><dt><span class="term">target_directory</span></dt><dd><p>
+The directory into which to copy the metafiles.
+If the directory does not exist it is created.
+If target_directory is not specified a temporary directory is created.
+This temporary directory and all of its contents is removed after the post process procedure is executed.</p></dd><dt><span class="term">post_process</span></dt><dd><p>
+Shell commands which will be executed once the metafiles are copied to the target directory.
+This can be used, for example, to ftp the files to another location.
+If a target directory was not specified above, then the temporary directory into which the requested depictions are placed is referenced by the macro '$METADIR' in the post process lines.
+Long commands can be broken up into multiple lines by terminating a line with a backslash '\'.</p></dd></dl></div><p>
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2035665"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example D.1. Graphics Metafile copy example</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+The following example would send all fields from four depictions to a remote site using the script ftp_script (your script):
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">source       = depict
+time         = 0/12 0/18/ 1/0 1/12
+fields       = ALL
+post_process = tar -cf /tmp/meta.tar $METADIR; compress /tmp/meta.tar; \
+                ftp_script office1 /tmp/meta.tar; rm /tmp/meta.tar
+</pre></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apds01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apd.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ape.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">D.1. Graphics Product Generator (GPGen) </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix E. Adding New Allied Models</td></tr></table></div></body></html>

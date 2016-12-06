@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>vertical_data_file_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>&FPA; units for data values
+</para><para>Note that all data values are automatically converted to MKS units. Either the <userinput>units</userinput> format type or the <userinput>vertical_data_file_units</userinput> keyword are required for values in the data file that are non-MKS.</para></entry></row>

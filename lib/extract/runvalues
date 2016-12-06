@@ -1,0 +1,34 @@
+ #
+#  Bourne script to run values as a stand alone test
+#
+echo "*** Now running values as a stand alone test ***"
+if [ $# -eq 1 ]
+then
+	outfile=${1}
+else
+	outfile=diagvalues
+fi
+if [ -f ${outfile} ]
+then
+	echo "*** File ${outfile} already exists ***"
+	echo "     Type:  go    to overwrite it"
+	echo "     Type:  stop  to stop now"
+	read ans
+	if [ "$ans" != go ]
+	then
+		echo "*** ...values aborted ***"
+		exit 1
+	fi
+	rm -f ${outfile}
+fi
+echo "*** Output to file ${outfile} ***"
+
+# Define the development environment
+if [ -r $FPA/bin/.fpaenvrc ]
+then
+  . $FPA/bin/.fpaenvrc
+fi
+
+# Run the test program
+time `platform`/values natwave >${outfile} 2>&1
+echo "*** ...values completed ***"

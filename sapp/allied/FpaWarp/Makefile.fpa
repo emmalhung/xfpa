@@ -1,0 +1,59 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpasup -lfpauser -lfpa -lfpauser \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	fpawarp
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "Fpawarp"
+
+
+# Rules for building fpawarp exec program:
+FPAWARP			= $(BINDIR)/$(PLATFORM)/fpawarp
+FPAWARP_OBJ		= fpawarp_exec.o
+fpawarp:	Pobjects $(FPAWARP)
+			@	echo "FPA $(PLATFORM) fpawarp ready"
+			@	echo ""
+$(FPAWARP):	$(FPAWARP_OBJ) $(LIBS)
+			@   echo "Loading FPA $(PLATFORM) fpawarp"
+			@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(FPAWARP_OBJ) $(LIBPATH)
+			@   if [ ! -x $(BINDIR)/fpawarp ]; \
+					then cd $(BINDIR); ln -s fpa.exec fpawarp; fi
+
+
+# Rules for building object modules:
+fpawarp_exec.o:	$(TYPES) $(MACROS) $(GETMEM) $(TOOLS) $(OBJECTS) $(ENVIRON)
+
+
+# Rules for keeping header files up to date:
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) Fpawarp module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

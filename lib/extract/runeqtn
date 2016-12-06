@@ -1,0 +1,34 @@
+#!/bin/bash
+#  Bourne script to run equation as a stand alone test
+#
+echo "*** Now running equation as a stand alone test ***"
+if [ $# -eq 1 ]
+then
+	outfile=${1}
+else
+	outfile=diageqtn
+fi
+if [ -f ${outfile} ]
+then
+	echo "*** File ${outfile} already exists ***"
+	echo "     Type:  go    to overwrite it"
+	echo "     Type:  stop  to stop now"
+	read ans
+	if [ "$ans" != go ]
+	then
+		echo "*** ...equation aborted ***"
+		exit 1
+	fi
+	rm -f ${outfile}
+fi
+echo "*** Output to file ${outfile} ***"
+
+# Define the development environment
+if [ -r $FPA/bin/.fpaenvrc ]
+then
+  . $FPA/bin/.fpaenvrc
+fi
+
+# Run the test program
+time `platform`/equation testequation 1>${outfile} 2>&1
+echo "*** ...equation completed ***"

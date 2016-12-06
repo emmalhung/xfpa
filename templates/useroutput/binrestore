@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Set up the FPA environment
+. .fpaenvrc
+
+# This is the default user executable directory
+bdir=$FPA/binlocal/$PLATFORM
+
+# Get the program names
+files=`findx -p *`
+if [ "$files" = "" ]
+then
+	echo "No program files to restore"
+	echo "Bye!"
+	exit 1
+fi
+
+# Check for the target directory
+if [ ! -d $bdir ]
+then
+	# Does not exist
+	echo
+	echo "Target directory \"$bdir\" does not exist."
+	exit 1
+fi
+
+# Restore each program file
+for file in $files
+do
+	# Restore the original if there
+	if [ -f $bdir/$file.old ]
+	then
+		echo
+		echo "Restoring original $bdir/$file - OK? (y/n): \c"
+		read ans
+		if [ "$ans" = "y" ]
+		then
+			echo "Restoring original $bdir/$file"
+			mv $bdir/$file.old $bdir/$file
+		else
+			echo " Cancelled"
+		fi
+	else
+		echo
+		echo "Removing $bdir/$file - OK? (y/n): \c"
+		read ans
+		if [ "$ans" = "y" ]
+		then
+			echo "Removing $bdir/$file"
+			rm $bdir/$file
+		else
+			echo " Cancelled"
+		fi
+	fi
+
+	ls -l $bdir/$file
+done
+
+echo
+echo "Done!"

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>vertical_look_up</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>File name for the vertical look up table, for converting values to locations on the cross section vertical axis
+</para><para>(Note: ".ztab" suffix is optional)
+</para><para>(Default is <userinput>vertical_look_up</userinput> from <link linkend='ps_define_cross_section'>@define_cross_section</link> directive)</para></entry></row>

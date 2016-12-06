@@ -1,0 +1,129 @@
+! Set version ... this line must be first!
+@version { svgmet7.0 }
+
+! Set verbose mode for diagnostic output ...
+@verbose { no }
+
+! Set the display units used in all following directives ...
+!  "type" can be  inches  cm  mm  picas  points
+@display_units { type = inches }
+
+! Set the page size ...
+@size { width = 11.00; height = 8.50 }
+
+! Open the output file ...
+@file_name
+	{
+	dir  = <default>;
+				! Options <default> <home>
+	name = <pdf>;
+				! Options <pdf> <year> <month> <day> <julian> <hour>
+	}
+
+! Define the map ....
+@include { bnd_map_setup }
+
+! Define a size and placement for the map ...
+@anchor { ref = absolute }
+@define_map_placement
+	{
+	size          = 8.00;
+	axis_to_scale = x_axis;
+	x_off         = 0.00;
+	y_off         = 0.00;
+	}
+
+! Display maximum temperature contours as areas ... for tomorrow!
+@set_source { source = interp; valid_time = 01/20 }
+@include { bnd_max_contours }
+
+! Display geographic features as outlines ... and filled oceans!
+@include { bnd_geography }
+
+! Display zero degree maximum temperature contour ... for tomorrow!
+@set_source { source = interp; valid_time = 01/20 }
+@include { bnd_max_zero }
+
+! Draw the background box ... unfilled!
+@background
+	{
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	line_width    = 0.05;
+	extra_x       = 0.02;
+	extra_y       = 0.02;
+	}
+
+! Display temperatures and weather at selected points ... for tomorrow!
+@set_source { source = interp; valid_time = 01/20 }
+@include { bnd_max_values }
+
+! Display legend along lower edge of chart ...
+@anchor { ref = lower_centre }
+@include { bnd_max_legend }
+
+! Write a label including the valid date in a box ...
+@presentation
+	{
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	text_size     = 0.25;
+	char_space    =   0;
+	word_space    = 100;
+	line_space    = 100;
+	}
+@anchor { ref = upper_centre }
+@box
+	{
+	width         =  4.00;
+	height        =  0.35;
+	x_off         =  0.00;
+	y_off         = -0.30;
+	line_width    =  0.03;
+	outline       = X11 Black;
+	interior_fill = X11 White
+	}
+@write_time
+	{
+	type          = valid;
+	time          = LMT;
+	format        = %A's Highs (in degrees Celsius)
+	x_off         =  0.000;
+	y_off         = -0.375;
+	justification = centre;
+	}
+@anchor { ref = lower_right }
+@presentation
+	{
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	text_size     = 0.10;
+	line_width    = 0.00;
+	char_space    =   0;
+	word_space    =  75;
+	line_space    = 100;
+	}
+@text
+	{
+	string        =  Forecast Production Assistant;
+	x_off         = -0.05;
+	y_off         =  0.05;
+	justification = right;
+	}
+
+! Close the file ...
+@file_close { }
+
+! Display the result using "display" or "evince" ...
+@process
+	{
+	cd <default>;
+	!display <pdf>.svg;
+	evince <pdf>.svg;
+	}

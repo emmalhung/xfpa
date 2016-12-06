@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>1.6. Input and Output File Locations and Setup File Parameters</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch01.html" title="Chapter 1. Introduction to the Graphics Product Generator" /><link rel="prev" href="ch01s05.html" title="1.5. Format of Valid Time Identifiers" /><link rel="next" href="ch01s07.html" title="1.7. Running Graphics Product Generator Applications Directly" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.6. Input and Output File Locations and Setup File Parameters</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s05.html">Prev</a> </td><th width="60%" align="center">Chapter 1. Introduction to the Graphics Product Generator</th><td width="20%" align="right"> <a accesskey="n" href="ch01s07.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id3414914"></a>1.6. Input and Output File Locations and Setup File Parameters</h2></div></div></div><p>
+The Graphics Product Generator applications assume default locations for
+all input and output files. However, these locations can be overridden by
+setting parameters in the <span class="acronym">FPA</span> setup file used by each application. The setup
+file also contains a list of <span class="application">PSMet</span>, <span class="application">SVGMet</span> and <span class="application">TexMet</span> products that can be
+generated from the <span class="acronym">FPA</span> graphical editor.
+</p><p>
+The <strong class="userinput"><code>directories</code></strong> block of the <span class="acronym">FPA</span> setup file may contain the following
+entries identifying the directory locations for the input and output files for
+the Graphics Product Generator applications (the default location is given in brackets):
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /><col /></colgroup><tbody><tr valign="top"><td valign="top">psmet</td><td valign="top"><span xmlns="" class="replaceable">pdf_directory</span></td><td valign="top">(<code class="filename"><code class="envar">$HOME</code>/setup/pdf/psmet</code>)</td></tr><tr valign="top"><td valign="top">psout</td><td valign="top"><span xmlns="" class="replaceable">output_directory</span></td><td valign="top">(<code class="filename">PSOut</code> in the Data directory)</td></tr><tr valign="top"><td valign="top">svgmet</td><td valign="top"><span xmlns="" class="replaceable">pdf_directory</span></td><td valign="top">(<code class="filename"><code class="envar">$HOME</code>/setup/pdf/svgmet</code>)</td></tr><tr valign="top"><td valign="top">svgout</td><td valign="top"><span xmlns="" class="replaceable">output_directory</span></td><td valign="top">(<code class="filename">SVGOut</code> in the Data directory)</td></tr><tr valign="top"><td valign="top">texmet</td><td valign="top"><span xmlns="" class="replaceable">pdf_directory</span></td><td valign="top">(<code class="filename"><code class="envar">$HOME</code>/setup/pdf/texmet</code>)</td></tr><tr valign="top"><td valign="top">texout</td><td valign="top"><span xmlns="" class="replaceable">output_directory</span></td><td valign="top">(<code class="filename">TexOut</code> in the Data directory)</td></tr></tbody></table></div><p>
+</p><p>
+The <span xmlns="" class="replaceable">pdf_directory</span> names are the base directories for the product
+definition files for generating the <span class="application">PSMet</span>, <span class="application">SVGMet</span> or <span class="application">TexMet</span> products, and
+are usually located relative to the local <span class="acronym">FPA</span> setup directory.
+</p><p>
+The <span xmlns="" class="replaceable">output_directory</span> names are the base directories for the output
+graphics file from the <span class="application">PSMet</span> or <span class="application">SVGMet</span> applications, or the output ASCII
+file for the <span class="application">TexMet</span> application. These are usually located relative to the
+<span class="acronym">FPA</span> Data directory, the database directory for the setup file being used.
+</p><p>
+The <strong class="userinput"><code>[product.graphic]</code></strong> section of the <strong class="userinput"><code>interface</code></strong> block of the <span class="acronym">FPA</span> setup file
+contains the entries which identify the <span class="application">PSMet</span>, <span class="application">SVGMet</span> and <span class="application">TexMet</span>
+products that can be produced from the <span class="acronym">FPA</span>. These products have the
+format:
+</p><pre class="programlisting">"<span xmlns="" class="replaceable">product_label</span>" psmet         <span xmlns="" class="replaceable">sub_directory</span>     <span xmlns="" class="replaceable">product_name</span>
+"<span xmlns="" class="replaceable">product_label</span>" svgmet        <span xmlns="" class="replaceable">sub_directory</span>     <span xmlns="" class="replaceable">product_name</span>
+"<span xmlns="" class="replaceable">product_label</span>" texmet        <span xmlns="" class="replaceable">sub_directory</span>     <span xmlns="" class="replaceable">product_name</span>
+</pre><p>
+where the <span xmlns="" class="replaceable">product_label</span> strings are the labels that appear in the
+<span class="guimenu">Products</span> → <span class="guimenuitem">Graphics</span> panel in the <span class="acronym">FPA</span> depiction editor, and the <span xmlns="" class="replaceable">sub_directory</span> and
+<span xmlns="" class="replaceable">product_name</span> names specify the location of the product definition files
+for generating the <span class="application">PSMet</span>, <span class="application">SVGMet</span> or <span class="application">TexMet</span> products, as in:
+</p><pre class="programlisting"><span xmlns="" class="replaceable">pdf_directory</span>/<span xmlns="" class="replaceable">sub_directory</span>/<span xmlns="" class="replaceable">product_name</span>.fpdf</pre><p>
+The sub-directory and product-names also specify the location of the output files for the <span class="application">PSMet</span>, <span class="application">SVGMet</span> or <span class="application">TexMet</span>
+products, as in:
+</p><table class="simplelist" border="0" summary="Simple list"><tr><td>
+<code class="filename"><span xmlns="" class="replaceable">output_directory</span>/<span xmlns="" class="replaceable">sub_directory</span>/<span xmlns="" class="replaceable">product_name.ps</span></code>
+(for <span class="application">PSMet</span>)
+</td></tr><tr><td>
+or <code class="filename"><span xmlns="" class="replaceable">output_directory</span>/<span xmlns="" class="replaceable">sub_directory</span>/<span xmlns="" class="replaceable">product_name.svg</span></code>
+(for <span class="application">SVGMet</span>)
+</td></tr><tr><td>
+or <code class="filename"><span xmlns="" class="replaceable">output_directory</span>/<span xmlns="" class="replaceable">sub_directory</span>/<span xmlns="" class="replaceable">product_name.txt</span></code>
+(for <span class="application">TexMet</span>)
+</td></tr></table><p>
+</p><p>
+When the Graphics Product Generator applications are run from within the <span class="acronym">FPA</span> depiction editor, 
+the setup file information as well as the <span xmlns="" class="replaceable">sub_directory</span>, <span xmlns="" class="replaceable">product_name</span>, 
+and the current <span><strong class="command">T0</strong></span> depiction time are all passed to the applications to be used as required.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.5. Format of Valid Time Identifiers </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.7. Running Graphics Product Generator Applications Directly</td></tr></table></div></body></html>

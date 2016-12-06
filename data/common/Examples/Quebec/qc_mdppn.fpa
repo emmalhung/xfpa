@@ -1,0 +1,959 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Rosalie"
+	FPA_user_label "Sainte-Rosalie"
+ spot 45.641N -72.901E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Black Lake"
+	FPA_user_label "Black Lake"
+ spot 46.039N -71.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "La Malbaie--Pointe-au-Pic"
+	FPA_user_label "La Malbaie--Pointe-au-Pic"
+ spot 47.654N -70.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Laterrière"
+	FPA_user_label "Laterrière"
+ spot 48.309N -71.109E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Malartic"
+	FPA_user_label "Malartic"
+ spot 48.137N -78.127E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Jovite"
+	FPA_user_label "Saint-Jovite"
+ spot 46.118N -74.601E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Coteau-du-Lac"
+	FPA_user_label "Coteau-du-Lac"
+ spot 45.296N -74.178E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grande-Île"
+	FPA_user_label "Grande-Île"
+ spot 45.27N -74.137E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pontiac"
+	FPA_user_label "Pontiac"
+ spot 45.542N -76.109E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rawdon"
+	FPA_user_label "Rawdon"
+ spot 46.046N -73.711E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Calixte"
+	FPA_user_label "Saint-Calixte"
+ spot 45.952N -73.849E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Verchères"
+	FPA_user_label "Verchères"
+ spot 45.774N -73.353E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chatham"
+	FPA_user_label "Chatham"
+ spot 45.665N -74.442E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stoneham-et-Tewkesbury"
+	FPA_user_label "Stoneham-et-Tewkesbury"
+ spot 47.121N -71.409E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Notre-Dame-du-Mont-Carmel"
+	FPA_user_label "Notre-Dame-du-Mont-Carmel"
+ spot 46.487N -72.655E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Étienne-des-Grès"
+	FPA_user_label "Saint-Étienne-des-Grès"
+ spot 46.442N -72.771E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Lambert-de-Lauzon"
+	FPA_user_label "Saint-Lambert-de-Lauzon"
+ spot 46.587N -71.212E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Roch-de-l'Achigan"
+	FPA_user_label "Saint-Roch-de-l'Achigan"
+ spot 45.855N -73.593E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Sauveur"
+	FPA_user_label "Saint-Sauveur"
+ spot 45.885N -74.18E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Boischatel"
+	FPA_user_label "Boischatel"
+ spot 46.897N -71.135E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chertsey"
+	FPA_user_label "Chertsey"
+ spot 46.074N -73.894E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Delisle"
+	FPA_user_label "Delisle"
+ spot 48.632N -71.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Évain"
+	FPA_user_label "Évain"
+ spot 48.239N -79.128E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "L'Ange-Gardien"
+	FPA_user_label "L'Ange-Gardien"
+ spot 45.625N -75.457E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Ambroise"
+	FPA_user_label "Saint-Ambroise"
+ spot 48.56N -71.324E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Apollinaire"
+	FPA_user_label "Saint-Apollinaire"
+ spot 46.614N -71.512E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Henri"
+	FPA_user_label "Saint-Henri"
+ spot 46.692N -71.067E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Honoré"
+	FPA_user_label "Saint-Honoré"
+ spot 48.534N -71.087E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Jean-de-Matha"
+	FPA_user_label "Saint-Jean-de-Matha"
+ spot 46.234N -73.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "New Richmond"
+	FPA_user_label "New Richmond"
+ spot 48.161N -65.857E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Boniface-de-Shawinigan"
+	FPA_user_label "Saint-Boniface-de-Shawinigan"
+ spot 46.5N -72.822E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Cyrille-de-Wendover"
+	FPA_user_label "Saint-Cyrille-de-Wendover"
+ spot 45.933N -72.424E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Catherine-de-la-Jacques-Cartier"
+	FPA_user_label "Sainte-Catherine-de-la-Jacques-Cartier"
+ spot 46.845N -71.616E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Félix-de-Valois"
+	FPA_user_label "Saint-Félix-de-Valois"
+ spot 46.168N -73.429E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Germain-de-Grantham"
+	FPA_user_label "Saint-Germain-de-Grantham"
+ spot 45.844N -72.565E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shannon"
+	FPA_user_label "Shannon"
+ spot 46.881N -71.515E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Georges"
+	FPA_user_label "Saint-Georges"
+ spot 46.625N -72.653E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Zotique"
+	FPA_user_label "Saint-Zotique"
+ spot 45.243N -74.246E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Prosper"
+	FPA_user_label "Saint-Prosper"
+ spot 46.213N -70.479E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Baie-Saint-Paul"
+	FPA_user_label "Baie-Saint-Paul"
+ spot 47.442N -70.506E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Beauceville"
+	FPA_user_label "Beauceville"
+ spot 46.209N -70.779E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bécancour"
+	FPA_user_label "Bécancour"
+ spot 46.348N -72.435E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bedford"
+	FPA_user_label "Bedford"
+ spot 45.121N -72.986E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Berthierville"
+	FPA_user_label "Berthierville"
+ spot 46.086N -73.176E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bonaventure"
+	FPA_user_label "Bonaventure"
+ spot 48.045N -65.493E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bromptonville"
+	FPA_user_label "Bromptonville"
+ spot 45.473N -71.945E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cabano"
+	FPA_user_label "Cabano"
+ spot 47.675N -68.88E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cap-Chat"
+	FPA_user_label "Cap-Chat"
+ spot 49.098N -66.681E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carleton"
+	FPA_user_label "Carleton"
+ spot 48.101N -66.114E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Causapscal"
+	FPA_user_label "Causapscal"
+ spot 48.354N -67.221E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chandler"
+	FPA_user_label "Chandler"
+ spot 48.349N -64.679E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Clermont"
+	FPA_user_label "Clermont"
+ spot 47.691N -70.219E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cookshire"
+	FPA_user_label "Cookshire"
+ spot 45.414N -71.625E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Danville"
+	FPA_user_label "Danville"
+ spot 45.785N -72.014E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dégelis"
+	FPA_user_label "Dégelis"
+ spot 47.544N -68.647E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Desbiens"
+	FPA_user_label "Desbiens"
+ spot 48.418N -71.951E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Disraeli"
+	FPA_user_label "Disraeli"
+ spot 45.905N -71.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dunham"
+	FPA_user_label "Dunham"
+ spot 45.135N -72.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "East Angus"
+	FPA_user_label "East Angus"
+ spot 45.488N -71.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Forestville"
+	FPA_user_label "Forestville"
+ spot 48.739N -69.088E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grande-Rivière"
+	FPA_user_label "Grande-Rivière"
+ spot 48.396N -64.492E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Huntingdon"
+	FPA_user_label "Huntingdon"
+ spot 45.087N -74.175E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lac-Etchemin"
+	FPA_user_label "Lac-Etchemin"
+ spot 46.399N -70.505E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "La Pocatière"
+	FPA_user_label "La Pocatière"
+ spot 47.365N -70.038E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lennoxville"
+	FPA_user_label "Lennoxville"
+ spot 45.368N -71.856E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "L'Épiphanie"
+	FPA_user_label "L'Épiphanie"
+ spot 45.847N -73.492E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "L'Islet"
+	FPA_user_label "L'Islet"
+ spot 47.103N -70.35E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Maniwaki"
+	FPA_user_label "Maniwaki"
+ spot 46.374N -75.982E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Métabetchouan"
+	FPA_user_label "Métabetchouan"
+ spot 48.428N -71.866E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Murdochville"
+	FPA_user_label "Murdochville"
+ spot 48.962N -65.492E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Nicolet"
+	FPA_user_label "Nicolet"
+ spot 46.226N -72.617E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Normandin"
+	FPA_user_label "Normandin"
+ spot 48.837N -72.528E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Notre-Dame-du-Lac"
+	FPA_user_label "Notre-Dame-du-Lac"
+ spot 47.611N -68.804E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Percé"
+	FPA_user_label "Percé"
+ spot 48.524N -64.215E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Plessisville"
+	FPA_user_label "Plessisville"
+ spot 46.219N -71.772E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pohénégamook"
+	FPA_user_label "Pohénégamook"
+ spot 47.461N -69.224E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pointe-au-Père"
+	FPA_user_label "Pointe-au-Père"
+ spot 48.511N -68.461E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Princeville"
+	FPA_user_label "Princeville"
+ spot 46.172N -71.876E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Richmond"
+	FPA_user_label "Richmond"
+ spot 45.666N -72.148E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Roberval"
+	FPA_user_label "Roberval"
+ spot 48.518N -72.222E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Gabriel"
+	FPA_user_label "Saint-Gabriel"
+ spot 46.294N -73.382E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Joseph-de-Beauce"
+	FPA_user_label "Saint-Joseph-de-Beauce"
+ spot 46.308N -70.88E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Joseph-de-Sorel"
+	FPA_user_label "Saint-Joseph-de-Sorel"
+ spot 46.042N -73.126E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Ours"
+	FPA_user_label "Saint-Ours"
+ spot 45.888N -73.151E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Pamphile"
+	FPA_user_label "Saint-Pamphile"
+ spot 46.961N -69.778E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Tite"
+	FPA_user_label "Saint-Tite"
+ spot 46.727N -72.565E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stanstead"
+	FPA_user_label "Stanstead"
+ spot 45.019N -72.092E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sutton"
+	FPA_user_label "Sutton"
+ spot 45.105N -72.615E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Thurso"
+	FPA_user_label "Thurso"
+ spot 45.597N -75.244E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Trois-Pistoles"
+	FPA_user_label "Trois-Pistoles"
+ spot 48.119N -69.165E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Valcourt"
+	FPA_user_label "Valcourt"
+ spot 45.488N -72.315E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Warwick"
+	FPA_user_label "Warwick"
+ spot 45.95N -71.997E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Windsor"
+	FPA_user_label "Windsor"
+ spot 45.568N -72.005E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Acton Vale"
+	FPA_user_label "Acton Vale"
+ spot 45.648N -72.565E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Témiscaming"
+	FPA_user_label "Témiscaming"
+ spot 46.718N -79.1E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ville-Marie"
+	FPA_user_label "Ville-Marie"
+ spot 47.332N -79.436E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pont-Rouge"
+	FPA_user_label "Pont-Rouge"
+ spot 46.756N -71.697E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Éphrem-de-Tring"
+	FPA_user_label "Saint-Éphrem-de-Tring"
+ spot 46.059N -70.954E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Étienne-de-Lauzon"
+	FPA_user_label "Saint-Étienne-de-Lauzon"
+ spot 46.652N -71.301E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alma"
+	FPA_user_label "Alma"
+ spot 48.55N -71.653E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Amos"
+	FPA_user_label "Amos"
+ spot 48.565N -78.114E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Amqui"
+	FPA_user_label "Amqui"
+ spot 48.465N -67.432E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Asbestos"
+	FPA_user_label "Asbestos"
+ spot 45.776N -71.939E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Aylmer"
+	FPA_user_label "Aylmer"
+ spot 45.395N -75.844E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Baie-Comeau"
+	FPA_user_label "Baie-Comeau"
+ spot 49.222N -68.148E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Beaupré"
+	FPA_user_label "Beaupré"
+ spot 47.049N -70.888E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bromont"
+	FPA_user_label "Bromont"
+ spot 45.319N -72.646E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Buckingham"
+	FPA_user_label "Buckingham"
+ spot 45.587N -75.416E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cap-Rouge"
+	FPA_user_label "Cap-Rouge"
+ spot 46.741N -71.354E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Charny"
+	FPA_user_label "Charny"
+ spot 46.715N -71.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Château-Richer"
+	FPA_user_label "Château-Richer"
+ spot 46.97N -71.018E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Coaticook"
+	FPA_user_label "Coaticook"
+ spot 45.134N -71.805E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Contrecoeur"
+	FPA_user_label "Contrecoeur"
+ spot 45.857N -73.239E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cowansville"
+	FPA_user_label "Cowansville"
+ spot 45.205N -72.741E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dolbeau-Mistassini"
+	FPA_user_label "Dolbeau-Mistassini"
+ spot 48.883N -72.233E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Donnacona"
+	FPA_user_label "Donnacona"
+ spot 46.673N -71.737E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Farnham"
+	FPA_user_label "Farnham"
+ spot 45.284N -72.977E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fleurimont"
+	FPA_user_label "Fleurimont"
+ spot 45.406N -71.849E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gaspé"
+	FPA_user_label "Gaspé"
+ spot 48.826N -64.477E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Granby"
+	FPA_user_label "Granby"
+ spot 45.399N -72.722E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grand-Mère"
+	FPA_user_label "Grand-Mère"
+ spot 46.616N -72.687E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Iberville"
+	FPA_user_label "Iberville"
+ spot 45.294N -73.237E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "La Baie"
+	FPA_user_label "La Baie"
+ spot 48.338N -70.883E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lac-Brome"
+	FPA_user_label "Lac-Brome"
+ spot 45.219N -72.508E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lachute"
+	FPA_user_label "Lachute"
+ spot 45.656N -74.339E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lac-Mégantic"
+	FPA_user_label "Lac-Mégantic"
+ spot 45.574N -70.883E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lac-Saint-Charles"
+	FPA_user_label "Lac-Saint-Charles"
+ spot 46.908N -71.376E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "L'Ancienne-Lorette"
+	FPA_user_label "L'Ancienne-Lorette"
+ spot 46.799N -71.362E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "La Sarre"
+	FPA_user_label "La Sarre"
+ spot 48.794N -79.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "La Tuque"
+	FPA_user_label "La Tuque"
+ spot 47.438N -72.781E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Laurentides"
+	FPA_user_label "Laurentides"
+ spot 45.852N -73.757E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Loretteville"
+	FPA_user_label "Loretteville"
+ spot 46.85N -71.359E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Louiseville"
+	FPA_user_label "Louiseville"
+ spot 46.256N -72.942E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Magog"
+	FPA_user_label "Magog"
+ spot 45.265N -72.147E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Marieville"
+	FPA_user_label "Marieville"
+ spot 45.433N -73.161E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Masson-Angers"
+	FPA_user_label "Masson-Angers"
+ spot 45.545N -75.414E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Matane"
+	FPA_user_label "Matane"
+ spot 48.843N -67.531E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mont-Joli"
+	FPA_user_label "Mont-Joli"
+ spot 48.585N -68.19E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mont-Laurier"
+	FPA_user_label "Mont-Laurier"
+ spot 46.553N -75.497E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Montmagny"
+	FPA_user_label "Montmagny"
+ spot 46.98N -70.557E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mont-Saint-Hilaire"
+	FPA_user_label "Mont-Saint-Hilaire"
+ spot 45.565N -73.191E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pincourt"
+	FPA_user_label "Pincourt"
+ spot 45.357N -73.982E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port-Cartier"
+	FPA_user_label "Port-Cartier"
+ spot 50.021N -66.876E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Richelieu"
+	FPA_user_label "Richelieu"
+ spot 45.443N -73.253E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rimouski"
+	FPA_user_label "Rimouski"
+ spot 48.449N -68.525E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rivière-du-Loup"
+	FPA_user_label "Rivière-du-Loup"
+ spot 47.836N -69.536E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rock Forest"
+	FPA_user_label "Rock Forest"
+ spot 45.381N -71.973E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rouyn-Noranda"
+	FPA_user_label "Rouyn-Noranda"
+ spot 48.24N -79.018E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Césaire"
+	FPA_user_label "Saint-Césaire"
+ spot 45.41N -73.002E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Adèle"
+	FPA_user_label "Sainte-Adèle"
+ spot 45.942N -74.122E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Agathe-des-Monts"
+	FPA_user_label "Sainte-Agathe-des-Monts"
+ spot 46.048N -74.284E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Anne-de-Beaupré"
+	FPA_user_label "Sainte-Anne-de-Beaupré"
+ spot 47.016N -70.947E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Anne-des-Monts"
+	FPA_user_label "Sainte-Anne-des-Monts"
+ spot 49.13N -66.487E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Anne-des-Plaines"
+	FPA_user_label "Sainte-Anne-des-Plaines"
+ spot 45.76N -73.815E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Marie"
+	FPA_user_label "Sainte-Marie"
+ spot 46.438N -71.021E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Marthe-du-Cap"
+	FPA_user_label "Sainte-Marthe-du-Cap"
+ spot 46.387N -72.477E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Émile"
+	FPA_user_label "Saint-Émile"
+ spot 46.873N -71.335E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Félicien"
+	FPA_user_label "Saint-Félicien"
+ spot 48.658N -72.451E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Georges"
+	FPA_user_label "Saint-Georges"
+ spot 46.123N -70.67E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Jean-Chrysostome"
+	FPA_user_label "Saint-Jean-Chrysostome"
+ spot 46.72N -71.194E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Jean-sur-Richelieu"
+	FPA_user_label "Saint-Jean-sur-Richelieu"
+ spot 45.306N -73.254E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Luc"
+	FPA_user_label "Saint-Luc"
+ spot 45.359N -73.301E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Nicolas"
+	FPA_user_label "Saint-Nicolas"
+ spot 46.678N -71.347E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Raymond"
+	FPA_user_label "Saint-Raymond"
+ spot 46.892N -71.833E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Rédempteur"
+	FPA_user_label "Saint-Rédempteur"
+ spot 46.701N -71.285E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Rémi"
+	FPA_user_label "Saint-Rémi"
+ spot 45.259N -73.614E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Romuald"
+	FPA_user_label "Saint-Romuald"
+ spot 46.758N -71.24E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Timothée"
+	FPA_user_label "Saint-Timothée"
+ spot 45.294N -74.037E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Salaberry-de-Valleyfield"
+	FPA_user_label "Salaberry-de-Valleyfield"
+ spot 45.255N -74.132E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sept-Îles"
+	FPA_user_label "Sept-Îles"
+ spot 50.21N -66.385E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shawinigan-Sud"
+	FPA_user_label "Shawinigan-Sud"
+ spot 46.517N -72.754E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sorel"
+	FPA_user_label "Sorel"
+ spot 46.043N -73.112E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Terrebonne"
+	FPA_user_label "Terrebonne"
+ spot 45.692N -73.634E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Thetford Mines"
+	FPA_user_label "Thetford Mines"
+ spot 46.089N -71.302E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tracy"
+	FPA_user_label "Tracy"
+ spot 46.016N -73.151E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Val-Bélair"
+	FPA_user_label "Val-Bélair"
+ spot 46.856N -71.416E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Val-d'Or"
+	FPA_user_label "Val-d'Or"
+ spot 48.103N -77.788E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Victoriaville"
+	FPA_user_label "Victoriaville"
+ spot 46.055N -71.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Waterloo"
+	FPA_user_label "Waterloo"
+ spot 45.345N -72.516E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "L'Île-Bizard"
+	FPA_user_label "L'Île-Bizard"
+ spot 45.487N -73.88E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "L'Île-Perrot"
+	FPA_user_label "L'Île-Perrot"
+ spot 45.393N -73.955E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Drummondville"
+	FPA_user_label "Drummondville"
+ spot 45.88N -72.484E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Joliette"
+	FPA_user_label "Joliette"
+ spot 46.024N -73.443E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lévis"
+	FPA_user_label "Lévis"
+ spot 46.803N -71.176E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sainte-Julie"
+	FPA_user_label "Sainte-Julie"
+ spot 45.588N -73.326E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Hyacinthe"
+	FPA_user_label "Saint-Hyacinthe"
+ spot 45.626N -72.947E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shawinigan"
+	FPA_user_label "Shawinigan"
+ spot 46.541N -72.745E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Paul"
+	FPA_user_label "Saint-Paul"
+ spot 45.984N -73.446E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Louis-de-France"
+	FPA_user_label "Saint-Louis-de-France"
+ spot 46.424N -72.595E location none
+
+* 
+* End
+

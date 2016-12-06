@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>grid_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Grid name (from <link linkend='tx_define_sample_grid'>@define_sample_grid</link>)
+</para><para>(Note: one point will be sampled for each location on the grid)</para></entry></row>

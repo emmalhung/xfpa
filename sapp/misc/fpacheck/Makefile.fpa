@@ -1,0 +1,59 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa -lfpauser \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	config_check
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "Config File Checker"
+
+
+# Rules for building programs:
+CONFIGCHK      = $(BINDIR)/$(PLATFORM)/config_check
+CONFIGCHK_OBJ  = config_check.o
+config_check:		Pobjects $(CONFIGCHK)
+				@	echo "FPA $(PLATFORM) config_check ready"
+				@	echo 
+$(CONFIGCHK):		$(CONFIGCHK_OBJ) $(LIBS)
+				@	echo "Loading FPA $(PLATFORM) config_check"
+				@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+						then mkdir $(BINDIR)/$(PLATFORM); fi
+				@   $${C_COMPLOAD} -o $@ \
+						$(C_OPTIONS) $(INCPATH) $(CONFIGCHK_OBJ) $(LIBPATH)
+				@	if [ ! -x $(BINDIR)/config_check ]; \
+						then cd $(BINDIR); ln -s fpa.exec config_check; fi
+
+
+# Rules for building object modules:
+config_check.o:	$(FPAHDR)
+
+
+# Rules for keeping header files up to date:
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) Config File Checker module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

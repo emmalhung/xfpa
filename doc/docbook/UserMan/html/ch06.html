@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 6. Guidance</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="prev" href="ch05s09.html" title="5.9. Viewing another depiction simultaneously" /><link rel="next" href="ch06s01.html" title="6.1. Checking guidance status&#9;" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 6. Guidance</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s09.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch06s01.html">Next</a></td></tr></table><hr /></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="guidance"></a>Chapter 6. Guidance</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch06s01.html">6.1. Checking guidance status	</a></span></dt><dt><span class="sect1"><a href="ch06s02.html">6.2. Checking available guidance fields</a></span></dt><dt><span class="sect1"><a href="ch06s03.html">6.3. Adding fields to guidance field lists</a></span></dt><dt><span class="sect1"><a href="ch06s04.html">6.4. Selecting guidance fields</a></span></dt><dt><span class="sect1"><a href="ch06s05.html">6.5. Using the displaying options for guidance fields</a></span></dt><dt><span class="sect1"><a href="ch06s06.html">6.6. Updating issue times for guidance</a></span></dt><dt><span class="sect1"><a href="ch06s07.html">6.7. Removing fields from guidance field lists</a></span></dt><dt><span class="sect1"><a href="ch06s08.html">6.8. Changing or restoring the appearance of a field</a></span></dt><dt><span class="sect1"><a href="ch06s09.html">6.9. Animating Guidance</a></span></dt><dt><span class="sect1"><a href="ch06s10.html">6.10. Sampling a field</a></span></dt><dt><span class="sect1"><a href="ch06s11.html">6.11. Showing or hiding the guidance fields</a></span></dt></dl></div><p>
+<a id="id1507461" class="indexterm"></a>
+This chapter describes how to use the <span class="acronym">FPA</span> <a href="go01.html#g_guidance"><em class="glossterm">Guidance</em></a> feature.
+</p><p>
+Guidance allows you to display fields to <span class="emphasis"><em>guide</em></span> your manipulation of other fields in the <span class="acronym">FPA</span>.
+You can view, overlay, animate and sample guidance fields, but you cannot edit them.
+</p><p>
+There could be hundreds, possibly thousands, of guidance fields that the user might wish to view.
+The fields are arranged in lists to minimize the time it would take to browse through all of the fields to find the one of interest.
+</p><p>
+Some lists are predetermined by the System Administrator; they are identified as "<span class="guilabel">Predefined</span>".
+The user cannot modify these lists. 
+Other lists can be modified by users as desired, that is, fields can be added or deleted from the lists. 
+These lists are identified as "<span class="guilabel">User Defined</span>".
+</p><p>
+To manage guidance fields, you arrange them in guidance field lists in the <span class="guilabel">Guidance Field List</span> dialog box (see <a href="ch06.html#guidance_field_list_display" title="Figure 6.1. Guidance Field List - Display">Figure 6.1</a>).
+Note that the choice of which fields to include in each list is arbitrary; the users decide which fields to include.
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="guidance_field_list_display"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 6.1. Guidance Field List - Display</b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/guidance_field_list_displayb.png" alt="Guidance Field List - Display" /></div></td></tr></table></div></div><p>
+</p><p>
+Note that whenever you open the Guidance Field List dialog, the Guidance Fields Display box is also displayed (see <a href="ch06.html#guidance_fields_displayed" title="Figure 6.2. Guidance Fields Displayed">Figure 6.2</a>). 
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="guidance_fields_displayed"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 6.2. Guidance Fields Displayed</b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/guidance_fields_displayed.png" alt="Guidance Fields Displayed" /></div></td></tr></table></div></div><p>
+This box lists all the guidance fields that are currently displayed.
+This box will remain displayed even if the Guidance Field List dialog is closed. 
+</p><p>
+Many guidance fields have an issue time associated with them, such as the run time for an NWP field.
+Two  "magic" issue times are <span class="guilabel">Current</span> and <span class="guilabel">Previous</span>, which refer to the most recent issue time and the next most recent issue time.
+When new data arrives during updates, the <span class="acronym">FPA</span> will check if the issue time has changed for displayed Guidance fields.
+If new data is available, the <span class="acronym">FPA</span> will search the Guidance display lists for an entry corresponding to the currently displayed field
+(with an issue time of <span class="guilabel">Previous</span> rather than <span class="guilabel">Current</span>, for example), and switch the displayed field to this entry. If no entry is available, the field is removed from display.
+A red flag icon 
+<span class="guiicon"><span class="inlinemediaobject"><img src="png/redflag.png" alt="Red Flag" /></span></span>
+appears in the top right corner of the depiction editor if this should happen.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s09.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch06s01.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.9. Viewing another depiction simultaneously </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.1. Checking guidance status	</td></tr></table></div></body></html>

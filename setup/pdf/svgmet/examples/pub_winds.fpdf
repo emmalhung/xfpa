@@ -1,0 +1,46 @@
+! Set barb presentation for winds ...
+@wind_barb_presentation
+	{
+	shaft_length       = 0.40;
+	barb_length        = 0.50;
+	barb_width         = 0.25;
+	barb_space         = 0.20;
+	barb_angle         =   60;
+	speed_round        =    5;
+	gust_above         =   20;
+	gust_round         =    5;
+	gust_size          = 0.20;
+	gust_distance      = 0.50;
+	gust_angle         =   90;
+	gust_justification = Centre;
+	gust_format        = G%.0f;
+	calm_max           =    5;
+	calm_symbol        = circle_mark;
+	calm_scale         =   50;
+	huge_min           =  100;
+	huge_symbol        = circle_mark;
+	huge_scale         =  100;
+	}
+
+! Set up a macro for wind sampling ... displayed as barbs
+@group
+	{
+	group_name    = wind2;
+	wind_crossref = Fpa_Wind;
+	units         = knots;
+	format        = wind_barb;
+	x_off         = 0.00;
+	y_off         = 0.00;
+	outline       = X11 Red;
+	fill          = X11 Red;
+	line_width    = 0.05;
+	}
+
+! Sample some winds ... at specified locations
+@anchor { ref = map }
+@sample_wind { <wind2;  lat = 44:40N;  lon = 63:35W }		!EDIT! (Halifax)
+@sample_wind { <wind2;  lat = 45:28N;  lon = 73:45W }		!EDIT! (Montreal)
+@sample_wind { <wind2;  lat = 46:48N;  lon = 71:24W }		!EDIT! (Quebec City)
+@sample_wind { <wind2;  lat = 50:13N;  lon = 66:15W }		!EDIT! (Sept-Iles)
+@sample_wind { <wind2;  lat = 47:37N;  lon = 52:45W }		!EDIT! (St John's)
+@sample_wind { <wind2;  lat = 42:22N;  lon = 71:02W }		!EDIT! (Boston)

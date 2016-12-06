@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>F.1. Area Sample Filter Lists</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apf.html" title="Appendix F.  Predefined GUI Selection Lists " /><link rel="prev" href="apf.html" title="Appendix F.  Predefined GUI Selection Lists " /><link rel="next" href="apfs02.html" title="F.2. Depiction Field Visibility" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">F.1. Area Sample Filter Lists</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apf.html">Prev</a> </td><th width="60%" align="center">Appendix F.  Predefined GUI Selection Lists </th><td width="20%" align="right"> <a accesskey="n" href="apfs02.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2012067"></a>F.1. Area Sample Filter Lists</h2></div></div></div><p>
+<a id="id2012073" class="indexterm"></a>
+The file must be named <code class="filename">area_sample_filters</code> When sampling areas the list of attributes associated with a particular area can be quite large.
+The purpose of this file is to:
+</p><div class="itemizedlist"><ul type="disc"><li><p>provide a mechanism to filter the attribute display to show only those attributes of interest.</p></li><li><p>set the display order of the attributes to something other than that in the configuration files.</p></li></ul></div><p>
+The order that the attributes will appear in the list is that of the filter list and not that of the attribute order in the configuration file.
+The lists are separated by list keys (element-level pairs) in square brackets as:
+</p><pre class="programlisting">[<span xmlns="" class="replaceable">element</span>.<span xmlns="" class="replaceable">level</span>] <span xmlns="" class="replaceable">filter_label</span>
+    <span xmlns="" class="replaceable">attribute</span>
+    <span xmlns="" class="replaceable">attribute</span>
+    ...
+[<span xmlns="" class="replaceable">element</span>.<span xmlns="" class="replaceable">level</span>] <span xmlns="" class="replaceable">filter_label</span>
+    <span xmlns="" class="replaceable">attribute</span>
+    ...
+</pre><p>
+The element-level pairs specify that the filter is for a specific field.
+The element and level names are those defined in the configuration files.
+If the filter is to be used in every field, then the element-level pair identifier is replaced with the keyword "ALL_FIELDS".
+Don't forget the period between the element and level!
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2016661"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example F.1. Resetting "ALL_FIELDS"</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+The filter label is whatever you want it to be.
+So to always show a list of certain attributes the file might, for example, contain:
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">[ALL_FIELDS] "Main Values"
+    cloud_base_1
+    cloud_base_2
+    visibility
+</pre></div><p>
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2016674"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example F.2. Sample Filter</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+To associate a particular filter list with just one field we would have something like the following:
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">[weather_synoptic.surface] "Weather Values"
+another list
+</pre></div><p>
+There is a special filter group which is always included in the display called "All Attributes" which will display all of the attributes.
+You may want to still limit which attributes are displayed with this filter and so you can override this by including the group "ALL_ATTRIBUTES" in this file.
+A label is not required for this group as the default name is used, but if you want to change the label you may.
+</p><p>
+This list is different in that it contains all attributes which are NOT to be displayed.
+For Example:
+</p><pre class="programlisting">[ALL_ATTRIBUTES] "Show Everything"
+    <span xmlns="" class="replaceable">attributes not to display</span>
+</pre><p>
+Will change the label from "All Attributes" to "Show Everything" and remove from display the given list of attributes.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apf.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apf.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apfs02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix F.  Predefined GUI Selection Lists  </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> F.2. Depiction Field Visibility</td></tr></table></div></body></html>

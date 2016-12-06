@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>C.2. Format Explanation</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apc.html" title="Appendix C. Presentation and Presentation.name" /><link rel="prev" href="apcs01.html" title="C.1. Presentation Format Summary" /><link rel="next" href="apcs03.html" title="C.3. Display Options" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">C.2. Format Explanation</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apcs01.html">Prev</a> </td><th width="60%" align="center">Appendix C. Presentation and Presentation.<span xmlns="" class="replaceable">name</span></th><td width="20%" align="right"> <a accesskey="n" href="apcs03.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2036943"></a>C.2. Format Explanation</h2></div></div></div><p>
+<a id="id2036949" class="indexterm"></a>
+Now that you have the basic idea of what a presentation file entry looks like let's take a closer look at each block.
+</p><p>
+</p><div class="variablelist"><dl><dt><span class="term"><code class="computeroutput">revision <span xmlns="" class="replaceable">revision_number</span></code></span></dt><dd><p>
+The revision line must be the first uncommented line in each presentation file.
+(The current revision is 8.0) </p></dd><dt><span class="term"><code class="computeroutput">field <span xmlns="" class="replaceable">element level source</span></code></span></dt><dd><p> 
+Introduces presentation information for the given field.
+All keywords which follow, up to the next field line, describe how this field is to be presented.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>element (may be ALL)</p></li><li><p>level (may be ALL)</p></li><li><p>source (may be ALL)</p></li></ul></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><code class="computeroutput">member {continuous | vector} <span xmlns="" class="replaceable">dname</span></code></span></dt><dd><p>
+Introduces presentation information for the given member of the current field.
+All keywords which follow, up to the next field or member line, describe how this member is to be presented.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>The field type of this member, for this example it is one of continuous or vector.</p></li><li><p>Arbitrary (descriptive) name for this member</p></li></ul></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><code class="computeroutput">units <span xmlns="" class="replaceable">uname</span></code></span></dt><dd><p>
+Continuous and Vector fields are usually represented by a numerical value.
+This keyword defines the conversion from <span class="acronym">MKS</span> to desired units for this particular field member.
+The parameter is:
+</p><div class="itemizedlist"><ul type="disc"><li><p>unit name (as defined in Config)</p></li></ul></div><p>
+</p></dd><dt><span class="term"><code class="computeroutput">contour range <span xmlns="" class="replaceable">min max standard increment</span></code></span></dt><dd><p>
+Defines a set of contours to be generated for the current field member and introduces presentation information for these contours.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>lowest contour value (* implies no minimum)</p></li><li><p>highest contour value (* implies no maximum)</p></li><li><p>standard contour value (increment counts from this value)</p></li><li><p>contour value increment </p></li></ul></div><p>
+Appropriate display options are: colour, scale, style and width
+</p></dd><dt><span class="term"><code class="computeroutput">contour list <span xmlns="" class="replaceable">val val ...</span></code></span></dt><dd><p>
+Defines a set of contours to be generated for the current field member and introduces presentation information for these contours.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>a list of specific contour values.</p></li></ul></div><p>
+Appropriate display options are: colour, scale, style and width.
+</p></dd><dt><span class="term"><code class="computeroutput">vector <span xmlns="" class="replaceable">multiplier</span> (vector only)</code></span></dt><dd><p>
+Defines a grid of barbs or arrows to display with a vector field.
+The parameter is:
+</p><div class="itemizedlist"><ul type="disc"><li><p> multiplier: This is an integer value.
+The usual value is 1, which will display a barb/arrow spaced according to the resolution of the <span class="acronym">FPA</span> base map.
+A value greater than 1 will display that number of barbs/arrows for each map grid.
+A value less than 1 will skip that number of map grids.
+</p></li></ul></div><p>
+Appropriate display options are:btype, bvaloff, bcolour, colour, font, length, scale and width.
+</p></dd><dt><span class="term"><code class="computeroutput">maxima <span xmlns="" class="replaceable">min max</span></code></span></dt><dd><p>
+Defines whether local maxima are to be displayed, and introduces presentation information for the maxima displayed.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>lowest value (* implies no minimum)</p></li><li><p>highest value (* implies no maximum)</p></li></ul></div><p>
+Appropriate display options are: angle, colour, font, hjust, vjust, marker, offset, scale, shadow, size and symbol
+</p></dd><dt><span class="term"><code class="computeroutput">minima <span xmlns="" class="replaceable">min max</span></code></span></dt><dd><p>
+Defines whether local minima are to be displayed, and introduces presentation information for the minima displayed.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>lowest value (* implies no minimum)</p></li><li><p>highest value (* implies no maximum)</p></li></ul></div><p>
+Appropriate display options are: angle, colour, font, hjust, vjust, marker, offset, scale, shadow, size and symbol
+</p></dd><dt><span class="term"><code class="computeroutput">saddle <span xmlns="" class="replaceable">min max</span></code></span></dt><dd><p>
+Defines whether local saddle (col) points are to be displayed, and introduces presentation information for the saddle points displayed.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>lowest value     (* implies no minimum)</p></li><li><p>highest value    (* implies no maximum)</p></li></ul></div><p>
+Appropriate display options are: angle, colour, font, hjust, vjust, marker, offset, scale, shadow, size and symbol
+</p></dd></dl></div><p>
+</p></dd><dt><span class="term"><code class="computeroutput">member {nodes | spot} <span xmlns="" class="replaceable">dname</span></code></span></dt><dd><p>
+Introduces presentation information for the given member of the current field.
+All keywords which follow, up to the next field or member line, describe how this member is to be presented.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>The field type of this member, for this example it is one of nodes or spot.</p></li><li><p>Arbitrary (descriptive) name for this member.</p></li></ul></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><code class="computeroutput"> class <span xmlns="" class="replaceable">cname</span></code></span></dt><dd><p>
+Introduces presentation information for the given class of spot objects from the current field member.
+Consider a "spot" object to be a complex label, made up of a group of simpler member objects, clustered around the evaluation point (similar to a "station plot").
+Spot objects of the same class have the same layout, as described by subsequent class_member keywords.
+The value of class corresponds to the value of type_class specified in the scattered types section of your config entry for this field member.
+The parameter is:
+</p><div class="itemizedlist"><ul type="disc"><li><p> class name</p></li></ul></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><code class="computeroutput">class_member {barb | button | label | mark} <span xmlns="" class="replaceable">mname</span> [<span class="optional"><span xmlns="" class="replaceable">attribute</span></span>]</code></span></dt><dd><p>
+Defines a new member object for the current class of spot objects, and introduces presentation information for that member.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>member type is one of:
+</p><div class="itemizedlist"><ul type="circle"><li><p>barb - displays subfield as a wind barb or arrow,</p></li><li><p>button - displays subfield as a button, </p></li><li><p>label - displays subfield as a text label,</p></li><li><p>mark - displays subfield as a marker or text symbol.</p></li></ul></div><p>
+</p></li><li><p>member name</p></li><li><p>attribute name (This is the attribute for the label display).</p></li></ul></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><code class="computeroutput">category <span xmlns="" class="replaceable">value</span></code></span></dt><dd><p>
+Introduces presentation information for objects in the current spot class member that match the given category.
+The parameter is:
+</p><div class="itemizedlist"><ul type="disc"><li><p>The category value corresponds to an FPA_category for this field.</p></li></ul></div><p>
+If you specified an attribute name for the class_memeber above the default label text will be the value of that attribute otherwise it will be the FPA_category value.
+</p><p>
+Appropriate display options are: angle, btype, bvaloff, bcolour, colour, font, hjust, vjust, length, marker, offset, scale, shadow, size and symbol.
+</p></dd><dt><span class="term"><code class="computeroutput">attribute <span xmlns="" class="replaceable">name value</span></code></span></dt><dd><p>
+Introduces presentation information for objects in the current spot class member that match the given value of the given attribute.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>attribute name </p></li><li><p>attribute value (This is the value to match with the value from attribute name.)</p></li></ul></div><p>
+If you specified an attribute name for the class_memeber above the default label text will be the value of that attribute otherwise it will be the value of the attribute you are grouping by.
+</p><p>
+Appropriate display options are: angle, btype, bvaloff, bcolour, colour, font, hjust, vjust, length, marker, offset, scale, shadow, size and symbol.
+</p></dd><dt><span class="term"><code class="computeroutput">default</code></span></dt><dd><p>
+Introduces presentation information for objects in the current spot class member that do not match any of the category or attribute selections introduced for the same field member.
+No parameters.
+You must specify an attribute name for the class_member if you want labels.
+The default label text will be the value of that attribute.
+</p><p>
+Appropriate display options are: angle, btype, bvaloff, bcolour, colour, font, hjust, vjust, length, marker, offset, scale, shadow, size and symbol.
+</p></dd></dl></div><p>
+</p></dd></dl></div><p>
+</p></dd></dl></div><p>
+</p></dd><dt><span class="term"><code class="computeroutput">member {area| barb| button| curve| discrete| label| lchain| mark} <span xmlns="" class="replaceable">dname</span></code></span></dt><dd><p>
+Introduces presentation information for the given member of the current field.
+All keywords which follow, up to the next field or member line, describe how this member is to be presented.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>The field type of this member, for this example it is one of area, barb, button, curve, discrete, label, lchain or mark.</p></li><li><p>Arbitrary (descriptive) name for this member.</p></li></ul></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><code class="computeroutput">category <span xmlns="" class="replaceable">value</span></code></span></dt><dd><p>
+Introduces presentation information for objects in the current field member that match the given category.
+The parameter is:
+</p><div class="itemizedlist"><ul type="disc"><li><p>The category name corresponds to a possible value of FPA_category for this field</p></li></ul></div><p>
+Appropriate display options are: angle, btype, bvaloff, bcolour, colour, fill, font, hatch, hjust, vjust, length, marker, offset, pattern, scale, shadow, size, style, symbol and width.
+</p></dd><dt><span class="term"><code class="computeroutput">attribute <span xmlns="" class="replaceable">name value</span></code></span></dt><dd><p>
+Introduces presentation information for objects in the current field member that match the given value of the given attribute.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>attribute name </p></li><li><p>attribute value (This is the value to match with the value from attribute name.)</p></li></ul></div><p>
+Appropriate display options are:  angle, btype, bvaloff, bcolour, colour, fill, font, hatch, hjust, vjust, length, marker, offset, pattern, scale, shadow, size, style, symbol and width.
+</p></dd><dt><span class="term"> <code class="computeroutput">default</code></span></dt><dd><p>
+Introduces presentation information for objects in the current field member that do not match any of the category or attribute selections introduced for the same field member.
+No parameters.
+</p><p>
+Appropriate display options are:  angle, btype, bvaloff, bcolour, colour, fill, font, hatch, hjust, vjust, length, marker, offset, pattern, scale, shadow, size, style, symbol and width.
+</p></dd></dl></div><p>
+</p></dd><dt><span class="term"><code class="computeroutput">member plot <span xmlns="" class="replaceable">dname</span></code></span></dt><dd><p>
+Introduces presentation information for the given member of the current field.
+All keywords which follow, up to the next field or member line, describe how this member is to be presented.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>The field type of this member, for this example it is plot.</p></li><li><p>Arbitrary (descriptive) name for this member.</p></li></ul></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><code class="computeroutput">subfield {barb | button | label | mark} <span xmlns="" class="replaceable">sname</span></code></span></dt><dd><p>
+Defines a new subfield for the current plot field member, and introduces presentation information for that subfield.
+The parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>subfield type is one of:
+</p><div class="itemizedlist"><ul type="circle"><li><p>barb - displays subfield as a wind barb or arrow,</p></li><li><p>button - displays subfield as a button, </p></li><li><p>label - displays subfield as a text label,</p></li><li><p>mark - displays subfield as a marker or text symbol.</p></li></ul></div></li><li><p>subfield name</p></li></ul></div><p>
+Appropriate display options are:  angle, btype, bvaloff, bcolour, colour, font, hjust, vjust, length, marker, offset, scale, shadow, size, symbol.
+</p></dd></dl></div><p>
+</p></dd></dl></div><p>
+</p></dd><dt><span class="term"><code class="computeroutput">include <span xmlns="" class="replaceable">include_file</span></code></span></dt><dd><p>
+The include lines allow several presentation files to be used at the same time.
+The presentation file reader adds the information from the "included" presentation files to the information in the current presentation file to determine the presentation of all fields encountered.
+Omitted attributes resort to default values established in the software which reads the presentation file.
+(for example: colour = Black, style = solid, font = simplex, etc).
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+Note: Unlike the configuration file reader the presentation file reader uses the first matching entry it encounters.
+That is, if a given member of a given field is already described in a Presentation Configuration File included at the end of the file, then the information in the file overrides the default appearance for that member only.
+The default appearance of other members is not affected.
+If the member is not already described, then this new information serves to add a new member to the given field, and defines its appearance.
+</p></div></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apcs01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apc.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apcs03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">C.1. Presentation Format Summary </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> C.3. Display Options</td></tr></table></div></body></html>

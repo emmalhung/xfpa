@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.7.2. DESCRIPTION</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s07.html" title="2.7. GEGuidance" /><link rel="prev" href="ch02s07s01.html" title="2.7.1. SYNOPSIS" /><link rel="next" href="ch02s07s03.html" title="2.7.3. RETURN" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.7.2. DESCRIPTION</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s07s01.html">Prev</a> </td><th width="60%" align="center">2.7. GEGuidance</th><td width="20%" align="right"> <a accesskey="n" href="ch02s07s03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4211116"></a>2.7.2. DESCRIPTION</h3></div></div></div><p> 
+This function controls the display of guidance fields.
+The <span xmlns="" class="replaceable">command</span> parameter consists of a string of key words. These are:
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>EDIT FIELD</code></strong> <span xmlns="" class="replaceable">field_id</span> [<span class="optional"><span xmlns="" class="replaceable">key</span> [<span class="optional"><span xmlns="" class="replaceable">value</span></span>]</span>] </span></dt><dd><p>
+  Modify the appearance of a guidance field with field identifier <span xmlns="" class="replaceable">field_id</span> to that given by <span xmlns="" class="replaceable">key</span>. 
+  The <span xmlns="" class="replaceable">key</span> values are: <strong class="userinput"><code>ERASE</code></strong>, <strong class="userinput"><code>RESTORE</code></strong>, <strong class="userinput"><code>COLOR</code></strong> and <strong class="userinput"><code>STYLE</code></strong>.
+  <strong class="userinput"><code>ERASE</code></strong> removes the field from the display.
+  <strong class="userinput"><code>RESTORE</code></strong> displays the field in the default display state.
+  <strong class="userinput"><code>COLOR</code></strong> changes the colour of the contours.
+  <strong class="userinput"><code>STYLE</code></strong> changes the line style and thickness of the contours (see Note 3 above for the format).
+  The colour, style and thickness values are given by <span xmlns="" class="replaceable">value</span>.
+  If the <strong class="userinput"><code>FIELD</code></strong> command is given without any specifiers, then the current valid date and time are displayed by Ingred.
+  </p></dd><dt><span class="term"><strong class="userinput"><code>LABEL</code></strong> <span xmlns="" class="replaceable">process field_id cmd</span></span></dt><dd><p>
+  Label the field identified by <span xmlns="" class="replaceable">field_id</span>.
+  Insertions are done with the left mouse button.
+  The commands are:
+  </p><div class="variablelist"><dl><dt><span class="term"><span xmlns="" class="replaceable">process</span></span></dt><dd><p>The labeling procedure. This must be one of:</p><p>
+    <strong class="userinput"><code>ADD</code></strong> - Add the label to the field at the location selected with the cursor. 
+    </p></dd><dt><span class="term"><span xmlns="" class="replaceable">field_id</span></span></dt><dd><p>The guidance field identifier (See GEGuidance).
+    </p></dd><dt><span class="term"><span xmlns="" class="replaceable">cmd</span></span></dt><dd><p>
+    One of <strong class="userinput"><code>VALUE</code></strong>, which labels the field with the field value, or <strong class="userinput"><code>WIND</code></strong> which labels 
+    the field with a wind barb appropriate to the field, as set in the Fields config file.
+    </p></dd></dl></div><p>
+  </p></dd><dt><span class="term"><strong class="userinput"><code>FIELD_REGISTER</code></strong> <span xmlns="" class="replaceable">field_id element level source sub-source</span>|- <span xmlns="" class="replaceable">run_time</span>|-</span></dt><dd><p>
+  Associate the field as defined by <span xmlns="" class="replaceable">element</span>, <span xmlns="" class="replaceable">level</span>, 
+  <span xmlns="" class="replaceable">source</span> (and <span xmlns="" class="replaceable">sub-source</span>) and <span xmlns="" class="replaceable">run_time</span> with 
+  the field identifier <span xmlns="" class="replaceable">field_id</span>.
+  Depending on the <span xmlns="" class="replaceable">source</span>, <span xmlns="" class="replaceable">sub-source</span> and <span xmlns="" class="replaceable">run_time</span> may not be applicable and are then replaced by a dash ("-").
+  The field identifier can be any arbitrary string.
+  If a field has already been associated with the given identifier when this command is issued, 
+  then all references to the existing field are eliminated from memory and replaced with the new association.
+  Note that the same field can be registered more than once (this would allow showing the same field at more than one valid time).
+  </p></dd><dt><span class="term"><strong class="userinput"><code>FIELD_DEREGISTER</code></strong> <span xmlns="" class="replaceable">field_id</span></span></dt><dd><p>
+  Disassociate the field associated with the given <span xmlns="" class="replaceable">field_id</span>.
+  All references to the field are eliminated from memory.
+  </p></dd><dt><span class="term"><strong class="userinput"><code>FIELD_VISIBILITY</code></strong> <span xmlns="" class="replaceable">field_id valid_time</span> <strong class="userinput"><code>ON</code></strong> | <strong class="userinput"><code>OFF</code></strong></span></dt><dd><p>
+  Set the field visibility, as identified by the given <span xmlns="" class="replaceable">field_id</span>, 
+  at the specified <span xmlns="" class="replaceable">valid_time</span> to be either <strong class="userinput"><code>ON</code></strong> (showing) or <strong class="userinput"><code>OFF</code></strong> (not showing).
+  The <strong class="userinput"><code>FIELD</code></strong> command above must have been issued previously in order to obtain the <span xmlns="" class="replaceable">field_id</span>.
+  Note that this command only sets the visibility state and a SHOW command is required.
+  </p></dd><dt><span class="term"><strong class="userinput"><code>SAMPLE</code></strong> <span xmlns="" class="replaceable">process field_id valid_time type name font size colour</span></span></dt><dd><p>
+  Sample the field as given by field identifier <span xmlns="" class="replaceable">field_id</span> at valid time <span xmlns="" class="replaceable">valid_time</span>.
+  The remaining commands are:
+  </p><div class="variablelist"><dl><dt><span class="term"><span xmlns="" class="replaceable">process</span></span></dt><dd><p>
+    The sampling procedure. This must be one of:
+    </p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>NORMAL</code></strong></span></dt><dd><p>
+      The sampling is done on a point by point basis through use of the mouse by selecting the sample point on the map area.
+      </p></dd><dt><span class="term"><strong class="userinput"><code>GRID</code></strong> <span xmlns="" class="replaceable">nx ny</span></span></dt><dd><p>
+      The sampling is to be done on a grid with the number of points in the x and y axis specified by 
+      <span xmlns="" class="replaceable">nx</span> and <span xmlns="" class="replaceable">ny</span>.
+      </p></dd><dt><span class="term"><strong class="userinput"><code>LIST</code></strong> <span xmlns="" class="replaceable">latitude longitude</span> | <strong class="userinput"><code>GO</code></strong></span></dt><dd><p>
+      Sampling is to be done for a list of points.
+      If <span xmlns="" class="replaceable">latitude</span> and <span xmlns="" class="replaceable">longitude</span> are given,
+      Ingred will cache the points and will not do the sampling until a <strong class="userinput"><code>GO</code></strong> command is received.
+      The <strong class="userinput"><code>GO</code></strong> command will cause Ingred to sample at the given points and then clear the internal cache.
+      Note that none of the other parameters after <span xmlns="" class="replaceable">process</span> are required when the <strong class="userinput"><code>LIST</code></strong> <span xmlns="" class="replaceable">latitude longitude</span> command is issued.
+      </p></dd><dt><span class="term"><strong class="userinput"><code>CANCEL</code></strong> </span></dt><dd><p>
+      Only the first four terms are needed for this command. This command needs to be sent to Ingred when
+      changing the sample type, closing the graphical display of attributes, or
+      leaving the sample state.
+      </p></dd></dl></div><p>
+    </p></dd><dt><span class="term"><span xmlns="" class="replaceable">type</span></span></dt><dd><p>
+One of <strong class="userinput"><code>AttribType</code></strong>, <strong class="userinput"><code>ValueType</code></strong>, <strong class="userinput"><code>FieldLabels</code></strong>, <strong class="userinput"><code>LinkNodes</code></strong>, <strong class="userinput"><code>WindType</code></strong> or
+	</p><p>
+    <strong class="userinput"><code>WindCrossRef</code></strong> followed by a valid <span xmlns="" class="replaceable">name</span>.
+    </p></dd><dt><span class="term"><span xmlns="" class="replaceable">name</span></span></dt><dd><p>
+    Each <span xmlns="" class="replaceable">type</span> has a list of valid item names which can be sampled (depending on the particular field).
+    </p><p>
+    For <strong class="userinput"><code>ValueType</code></strong> one of the Values in the Samples block in the Config files.
+    </p><p>
+    For <strong class="userinput"><code>FieldLabels</code></strong> use <strong class="userinput"><code>FPA_field_labels</code></strong>.
+    </p><p>
+    For <strong class="userinput"><code>LinkNodes</code></strong> use <strong class="userinput"><code>FPA_link_nodes</code></strong>.
+    </p><p>
+    For <strong class="userinput"><code>WindType</code></strong> one of the Winds in the Samples block in the Config files.
+    </p><p>
+    For <strong class="userinput"><code>WindCrossRef</code></strong> one of the Winds in the CrossRefs block in the Config files.
+    </p></dd><dt><span class="term"><span xmlns="" class="replaceable">font</span></span></dt><dd><p>The font to use in displaying the sample.</p></dd><dt><span class="term"><span xmlns="" class="replaceable">size</span></span></dt><dd><p>
+    The size of the font.
+    If size is followed by a percent sign (<strong class="userinput"><code>%</code></strong>) the size is a percent of map size.
+    If followed by a <strong class="userinput"><code>P</code></strong> the size is in points.
+    </p></dd><dt><span class="term"><span xmlns="" class="replaceable">colour</span></span></dt><dd><p>Colour of the sample as a standard X colour name.</p></dd></dl></div><p>
+  </p></dd><dt><span class="term"><strong class="userinput"><code>SHOW</code></strong></span></dt><dd><p>
+  Show all guidance fields for which the field visibility is set to <strong class="userinput"><code>ON</code></strong> and hide all those set to <strong class="userinput"><code>OFF</code></strong>.
+  </p></dd><dt><span class="term"><strong class="userinput"><code>HIDE</code></strong></span></dt><dd><p>
+  Hide all guidance fields irrespective of the state of their field visibility.
+  </p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s07s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s07s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.7.1. SYNOPSIS </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.7.3. RETURN</td></tr></table></div></body></html>

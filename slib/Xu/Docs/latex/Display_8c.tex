@@ -1,0 +1,85 @@
+\hypertarget{Display_8c}{
+\subsection{Display.c File Reference}
+\label{Display_8c}\index{Display.c@{Display.c}}
+}
+Display information functions. 
+
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$Xm/Xm.h$>$}\par
+{\tt \#include $<$Xm/Display.h$>$}\par
+{\tt \#include \char`\"{}Xu\-P.h\char`\"{}}\par
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{Display_8c_XuUpdateDisplay_28Widget_20w_29}{Xu\-Update\-Display} (Widget w)
+\begin{CompactList}\small\item\em Update of all displays. \item\end{CompactList}\item 
+Display $\ast$ \hyperlink{Display_8c_XuIsValidDisplayString_28String_20display_5Fstring_29}{Xu\-Is\-Valid\-Display\-String} (String display\_\-string)
+\begin{CompactList}\small\item\em Returns a display pointer if the given string is a valid display. \item\end{CompactList}\item 
+String \hyperlink{Display_8c_XuStandardDisplayString_28String_20display_5Fstring_29}{Xu\-Standard\-Display\-String} (String display\_\-string)
+\begin{CompactList}\small\item\em Put the given display string into a standard format. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Detailed Description}
+Display information functions. 
+
+\begin{Desc}
+\item[Author:]R.D.Paterson\end{Desc}
+\begin{Desc}
+\item[Date:]2001/04/15 Creation 2002/05/07 RDP: Xu\-Close\-Display() removed. 2005/12/20 RDP: Xu\-Is\-Valid\-Display\-String added and many code changes to include the visual setting.\end{Desc}
+========================================================================== 
+
+\subsubsection{Function Documentation}
+\hypertarget{Display_8c_XuIsValidDisplayString_28String_20display_5Fstring_29}{
+\index{Display.c@{Display.c}!XuIsValidDisplayString@{XuIsValidDisplayString}}
+\index{XuIsValidDisplayString@{XuIsValidDisplayString}!Display.c@{Display.c}}
+\paragraph[XuIsValidDisplayString]{\setlength{\rightskip}{0pt plus 5cm}Display$\ast$ Xu\-Is\-Valid\-Display\-String (String {\em display\_\-string})}\hfill}
+\label{Display_8c_XuIsValidDisplayString_28String_20display_5Fstring_29}
+
+
+Returns a display pointer if the given string is a valid display. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em display\_\-string}]A string representing a display (host:display.screen)\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The display pointer or NULL if not a valid display. \end{Desc}
+\hypertarget{Display_8c_XuStandardDisplayString_28String_20display_5Fstring_29}{
+\index{Display.c@{Display.c}!XuStandardDisplayString@{XuStandardDisplayString}}
+\index{XuStandardDisplayString@{XuStandardDisplayString}!Display.c@{Display.c}}
+\paragraph[XuStandardDisplayString]{\setlength{\rightskip}{0pt plus 5cm}String Xu\-Standard\-Display\-String (String {\em display\_\-string})}\hfill}
+\label{Display_8c_XuStandardDisplayString_28String_20display_5Fstring_29}
+
+
+Put the given display string into a standard format. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em display\_\-string}]A display string that may be a partial representation of the display such as \char`\"{}:0\char`\"{}\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A display string in the standard format\end{Desc}
+\begin{Desc}
+\item[Attention:]The returned string is allocated memory which must be freed by the calling application. \end{Desc}
+\hypertarget{Display_8c_XuUpdateDisplay_28Widget_20w_29}{
+\index{Display.c@{Display.c}!XuUpdateDisplay@{XuUpdateDisplay}}
+\index{XuUpdateDisplay@{XuUpdateDisplay}!Display.c@{Display.c}}
+\paragraph[XuUpdateDisplay]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Update\-Display (Widget {\em w})}\hfill}
+\label{Display_8c_XuUpdateDisplay_28Widget_20w_29}
+
+
+Update of all displays. 
+
+Update all displays opened by the Xu library
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em w}]Reference widget of a display\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]The widget is not actually used but is included for compatability with Xm\-Update\-Display, so the argument can be NULL. \end{Desc}

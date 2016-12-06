@@ -1,0 +1,52 @@
+! Comments for AVIATION 2 panel example ...
+
+! Set the version number ... this line must be first!
+@version { texmet7.0 }
+
+! Open the comments file for the first panel of the T12 product ...
+@file_name
+	{
+	dir  = $HOME/setup/pdf/texmet/examples;
+	name = Comments_AVIATION_2wx_12;
+	}
+
+! Define the map ...
+@include { av_map_setup2 }
+
+! Define the size of the output file ...
+@size
+	{
+	columns = 36;
+	rows    = 22;
+	}
+
+! Set default presentations ...
+@presentation
+	{
+	justification = left
+	}
+
+! Display header information ...
+@text
+	{
+	string = Heights ASL unless noted
+	}
+@text
+	{
+	string = Speeds in knots
+	y_off  = 1;
+	}
+
+! Open the comments file for the second panel of the T12 product ...
+@file_name
+	{
+	dir  = $HOME/setup/pdf/texmet/examples;
+	name = Comments_AVIATION_2ictb_12;
+	}
+
+! Display header information ...
+@text
+	{
+	string = Heights ASL unless noted
+	y_off  = 0;
+	}

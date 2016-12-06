@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>15.2.1. Linking forward</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 7" /><link rel="up" href="ch15s02.html" title="15.2. Using the Time Link function" /><link rel="prev" href="ch15s02.html" title="15.2. Using the Time Link function" /><link rel="next" href="ch15s02s02.html" title="15.2.2. Linking backward" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">15.2.1. Linking forward</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch15s02.html">Prev</a> </td><th width="60%" align="center">15.2. Using the Time Link function</th><td width="20%" align="right"> <a accesskey="n" href="ch15s02s02.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="linking_forward"></a>15.2.1. Linking forward</h3></div></div></div><p>
+<a id="id2801584" class="indexterm"></a>
+</p><div class="orderedlist"><p class="title"><b>To link forward:</b></p><ol type="1"><li><p>
+From the <span class="guilabel">Field</span> list, select the field you wish to link.
+</p><p>
+If you are linking a continuous field (such as pressure, temperature or wave height) the field displays white on the depiction to indicate that it is the active field.
+</p><p>
+If you are linking a discrete field (such as weather, wind or freezing spray) the discrete areas and any dividing lines turn yellow if they have not yet been linked or white if they have been linked.
+</p><p>
+If you are linking a line field (such as fronts or jet axes) the curves turn yellow if they have not yet been linked or white if they have been linked.
+</p><p>
+(see also <a href="ch15s02s04.html" title="15.2.4. Using one set of links to link another field">Using one set of links to link another field, (Section 15.2.4)</a>)
+</p></li><li><p>
+Select the <span class="emphasis"><em>Link Forward</em></span> tool.
+<span class="guiicon"><span class="inlinemediaobject"><img src="png/link_forward.png" alt="Link Forward" /></span></span>
+</p><p>
+A forward (right) arrow appears on the depiction bar indicating what depiction you are beginning on and the direction of the link.
+</p><p>
+Note: You can begin your linking procedure in the middle of the depiction bar by clicking the desired time box.You will maintain your previously established link direction.
+</p></li><li><p>
+Pick a point on the current depiction to link.
+(see also <a href="ch15s01s02.html" title="15.1.2. Examples of time linking">Examples of time linking, (Section 15.1.2)</a>)
+</p><p>
+A yellow box appears at the link node you picked.
+You are automatically moved to the next depiction.
+The arrow moves to show that the current depiction has been advanced.
+</p><p>
+For discrete or line fields: If you start the link chain at the first depiction, you are given the option of beginning the link at some time after the depiction in which the link chain starts. 
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="flink_start_after"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 15.6. Start a link chain after the current depiction</b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/flink_start_after.png" alt="Start a link chain after the current depiction" /><div xmlns="http://www.w3.org/1999/xhtml" class="caption"><p> The cyan square represents the current depiction.  The green squares represent times between the current depiction and the next depiction.  </p></div></div></td></tr></table></div></div><p>
+(see <a href="ch15s02s01.html#flink_start_after" title="Figure 15.6. Start a link chain after the current depiction">Figure 15.6</a>)
+</p><p>
+If you start the link chain after the first depiction you are given the option of beginning the link chain at some time before or after the depiction in which the link chain starts.
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="flink_start_before_after"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 15.7. Start a link chain before or after the current depiction</b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/flink_start_before_after.png" alt="Start a link chain before or after the current depiction" /><div xmlns="http://www.w3.org/1999/xhtml" class="caption"><p> The blue squares represent times between the previous depiction and the current depiction.  The cyan square represents the current depiction.  The green squares represent times between the current depiction and the next depiction.  </p></div></div></td></tr></table></div></div><p>
+(see <a href="ch15s02s01.html#flink_start_before_after" title="Figure 15.7. Start a link chain before or after the current depiction">Figure 15.7</a>)
+</p></li><li><p>
+Pick the next point of the link.
+</p></li><li><p>
+Repeat the previous step until you reach the end of your depictions 	
+</p><p>
+or 	
+</p><p>
+Click the <span class="mousebutton">right</span> mouse button and select <span class="guimenu">End chain</span> to end the link chain if the link does not extend across all depictions.
+</p><p>
+For discrete or line fields: If you end the link chain at the last depiction you are given the option of ending the link chain before the time of the depiction in which the link chain terminates. (see <a href="ch15s02s01.html#flink_end_before" title="Figure 15.8. End a link chain before the current depiction">Figure 15.8</a>)
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="flink_end_before"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 15.8. End a link chain before the current depiction</b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/flink_end_before.png" alt="End a link chain before the current depiction" /><div xmlns="http://www.w3.org/1999/xhtml" class="caption"><p> The green squares are times between the previous depiction and the current depiction.  The cyan square is the current depiction.  </p></div></div></td></tr></table></div></div><p>
+</p><p>
+If you end the link chain before the last depiction you are given the option of ending the link chain before or after the time of the depiction in which the link chain terminates. 
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="flink_end_before_after"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 15.9. End a link chain before or after the current depiction</b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/flink_end_before_after.png" alt="End a link chain before or after the current depiction" /><div xmlns="http://www.w3.org/1999/xhtml" class="caption"><p> The green squares are times between the previous depiction and the current depiction.  The cyan square is the current depiction.  The blue squares are times between the current depiction and the next depiction.  </p></div></div></td></tr></table></div></div><p>
+(see <a href="ch15s02s01.html#flink_end_before_after" title="Figure 15.9. End a link chain before or after the current depiction">Figure 15.9</a>)
+</p></li><li><p>
+The link chain turns light blue to indicate it is complete.
+You are automatically returned to the depiction you started to link from.
+</p><p>
+Note: If the <span class="guilabel">Show early/late start/end times</span> option in selected (<span class="guimenu">Options</span> → <span class="guimenuitem">Preferences...</span>, <span class="guilabel">General</span> tab) and the start (or end) time is not at one of the depiction times, the actual start (or end) time is shown to the left (or right) of the node.
+</p></li><li><p>
+Check the colour of the square beside the field name in the list.
+It should be yellow.
+If it is blue, you do not have enough links to interpolate the depictions.
+</p><p>
+or
+</p><p>
+Check the colour of the depiction boxes.
+They should all be green.
+If any are blue, you do not have enough links at the those times to interpolate the depictions.
+</p></li></ol></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch15s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch15s02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch15s02s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">15.2. Using the Time Link function </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 15.2.2. Linking backward</td></tr></table></div></body></html>

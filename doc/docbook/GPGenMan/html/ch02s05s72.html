@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.5.72. Format of Vector Look Up Tables</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s05.html" title="2.5. Complete Description of All PSMet/SVGMet Directives" /><link rel="prev" href="ch02s05s71.html" title="2.5.71. Format of Wind Look Up Tables" /><link rel="next" href="ch03.html" title="Chapter 3. TexMet" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5.72. Format of Vector Look Up Tables</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s05s71.html">Prev</a> </td><th width="60%" align="center">2.5. Complete Description of All PSMet/SVGMet Directives</th><td width="20%" align="right"> <a accesskey="n" href="ch03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ps_format_of_vector_look_up_tables"></a>2.5.72. Format of Vector Look Up Tables</h3></div></div></div><p>
+Vector look up tables control the format for displaying vector speed and
+direction as symbols or text. They are set by the <strong class="userinput"><code>vector_look_up</code></strong>
+keyword in the <a href="ch02s05s62.html" title="2.5.62. @vector_presentation">@vector_presentation</a> directive.
+Files containing vector look up tables have a ".vtab" suffix.
+</p><p>
+Vector look up tables contain three sections. One section must specify the
+"calm" condition, since this may override both the direction and speed
+displays. The other sections specify the "direction" or "speed" formats to
+use when displaying vector parameters.
+</p><p>
+Note that all parameters that follow the ! or # characters in a line are
+considered comments.
+</p><p>
+Note that examples are taken from vector look up tables in the directories
+<code class="filename"><code class="envar">$FPA</code>/setup/pdf/psmet/examples</code> or 
+<code class="filename"><code class="envar">$FPA</code>/setup/pdf/svgmet/examples</code>.
+
+</p><p>
+The "calm" section can include the following three formats:
+</p><pre class="programlisting">
+calm value
+    <span xmlns="" class="replaceable">min_spd max_spd round factor sdigits</span>
+    end
+calm text
+    <span xmlns="" class="replaceable">min_spd max_spd text</span>
+    end
+calm symbol
+    <span xmlns="" class="replaceable">min_spd max_spd symbol</span>
+    end
+</pre><p>
+where:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_spd</span></td><td valign="top"> is the minimum vector speed for "calm" conditions</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_spd</span></td><td valign="top"> is the maximum vector speed for "calm" conditions</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">round</span></td><td valign="top"> is the value to round the speed to the nearest multiple of</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">factor</span></td><td valign="top"> is the power of 10 to divide the vector speed by</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">sdigits</span></td><td valign="top"><p> is the signiﬁcant digits of the vector speed to display
+    </p><table class="simplelist" border="0" summary="Simple list"><tr><td>0 - for the nearest integer</td></tr><tr><td>&gt;0 - for the nearest integer this long (with leading zeroes)</td></tr><tr><td>&lt;0 - for a real number with digits after the decimal place</td></tr></table></td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">text</span></td><td valign="top"> is the text to display (in double quotes)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">symbol</span></td><td valign="top"> is the symbol ﬁle to use</td></tr></tbody></table></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3581777"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.122.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">calm value
+    0 5 1 0 0
+      end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector speeds from 0 to 5 are rounded to the nearest whole value, and all signiﬁcant digits are displayed.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3593354"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.123.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">calm text
+    0 5 "CALM"
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector speeds from 0 to 5 are displayed using the text string "CALM".
+</p></div><p>
+</p><p>
+The "direction" section can include the following four formats:
+</p><pre class="programlisting">
+direction value
+    <span xmlns="" class="replaceable">min_spd max_spd round factor sdigits</span>
+    end
+
+direction text
+    <span xmlns="" class="replaceable">mid_dir max_dir text</span>
+    <span xmlns="" class="replaceable">mid_dir max_dir text</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+
+direction symbol uniform
+    <span xmlns="" class="replaceable">mid_dir max_dir symbol rotate</span>
+    <span xmlns="" class="replaceable">mid_dir max_dir symbol rotate</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+
+direction symbol uniform
+    <span xmlns="" class="replaceable">mid_dir max_dir symbol min_scale max_scale</span>
+    <span xmlns="" class="replaceable">mid_dir max_dir symbol min_scale max_scale</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+</pre><p>
+where:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_spd</span></td><td valign="top"> is the minimum vector speed</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_spd</span></td><td valign="top"> is the maximum vector speed</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">round</span></td><td valign="top"> is the value to round the speed to the nearest multiple of</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">factor</span></td><td valign="top"> is the power of 10 to divide the vector direction by</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">sdigits</span></td><td valign="top"><p> is the signiﬁcant digits of the vector direction to display
+    </p><table class="simplelist" border="0" summary="Simple list"><tr><td>0 - for the nearest integer</td></tr><tr><td>&gt;0 - for the nearest integer this long (with leading zeroes)</td></tr><tr><td>&lt;0 - for a real number with digits after the decimal place</td></tr></table></td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">text</span></td><td valign="top"> is the text to display (in double quotes)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">symbol</span></td><td valign="top"> is the symbol ﬁle to use</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">rotate</span></td><td valign="top"> is the vector direction for displaying the "symbol". (Note: -1 will use the actual vector direction)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_scale</span></td><td valign="top"> is a scale factor wrt original symbol (in percent) for min_spd</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_scale</span></td><td valign="top"> is a scale factor wrt original symbol (in percent) for max_spd</td></tr></tbody></table></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3450628"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.124.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">direction value
+    5 999 10 0 3
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector directions for vector speeds from 5 to 999 are rounded to the nearest 10
+degrees, and displayed as the nearest integer 3 digits long. (That is, a vector
+direction of "53" degrees would be rounded to "50", and displayed as "050".)
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3450643"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.125.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">direction text
+    337.5 22.5 "N"
+    22.5  67.5 "NE"
+    67.5 112.5 "E"
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector directions from 337.5 to 22.5 degrees are displayed using the text
+string "N", vector directions from 22.5 to 67.5 degrees are displayed using the
+text string "NE", and vector directions from 67.5 to 112.5 degrees are
+displayed using the text string "E".
+</p><p xmlns="http://www.w3.org/1999/xhtml">
+Note that a vector direction of -22.5 is equivalent to a vector direction of
+337.5!
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3450660"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.126.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">direction symbol uniform
+    22.5 67.5  arrow_from 45
+    67.5 112.5 arrow_from 90
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector directions from 22.5 to 67.5 degrees are displayed using the symbol "arrow_from" rotated to 45 degrees, and vector directions from 67.5 to 112.5 degrees are displayed using the symbol "arrow_from" rotated to 90 degrees.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3531247"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.127.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">direction symbol uniform
+    0 360 arrow_from -1
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector directions from 0 to 360 degrees are displayed using the symbol "arrow_from" rotated to the actual vector direction.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3531260"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.128.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">direction symbol proportional
+     1  10 wave  20  200
+    10 100 waved 200 500
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector directions for vector speeds from 5 to 50 are displayed using the
+symbol "wave" rotated to the actual vector direction and scaled to between
+20% and 200% of the original size of the graphic (depending on the vector
+speed), and vector directions for vector speeds from 50 to 100 degrees are
+displayed using the symbol "wave" rotated to the actual vector direction and
+scaled to between 200% and 500% of the original size of the graphic
+(depending on the vector speed).
+</p></div><p>
+</p><p>
+The "speed" section can include the following three formats:
+</p><pre class="programlisting">
+speed value
+    <span xmlns="" class="replaceable">min_spd max_spd round factor sdigits</span>
+    end
+
+speed text
+    <span xmlns="" class="replaceable">min_spd max_spd text</span>
+    <span xmlns="" class="replaceable">min_spd max_spd text</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+
+speed symbol
+    <span xmlns="" class="replaceable">min_spd max_spd symbol</span>
+    <span xmlns="" class="replaceable">min_spd max_spd symbol</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+</pre><p>
+where:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_spd</span></td><td valign="top"> is the minimum vector speed</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_spd</span></td><td valign="top"> is the maximum vector speed</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">round</span></td><td valign="top"> is the value to round the speed to the nearest multiple of</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">factor</span></td><td valign="top"> is the power of 10 to divide the vector speed by</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">sdigits</span></td><td valign="top"><p> is the signiﬁcant digits of the vector speed to display
+    </p><table class="simplelist" border="0" summary="Simple list"><tr><td>0 - for the nearest integer</td></tr><tr><td>&gt;0 - for the nearest integer this long (with leading zeroes)</td></tr><tr><td>&lt;0 - for a real number with digits after the decimal place</td></tr></table></td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">text</span></td><td valign="top"> is the text to display (in double quotes)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">symbol</span></td><td valign="top"> is the symbol ﬁle to use</td></tr></tbody></table></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3553760"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.129.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">speed value
+    1 999 1 0 0
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector speeds from 1 to 999 are rounded to the nearest 1, and the nearest integer vector speed is displayed.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3652095"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.130.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">speed text
+     1      5    "LIGHT"
+     5     10    "MODERATE"
+    10    999    "HEAVY"
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector speeds from 1 to 5 are displayed using the text string "LIGHT", vector
+speeds from 5 to 10 are displayed using the text string "MODERATE", and
+vector speeds from 10 to 999 are displayed using the text string "HEAVY".
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3652110"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.131.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">speed symbol
+     1     5    wave
+     5    10    wave
+    10   999    wave
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Vector speeds from 1 to 999 are displayed using the symbol "wave".
+</p></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s05s71.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.5.71. Format of Wind Look Up Tables </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 3. TexMet</td></tr></table></div></body></html>

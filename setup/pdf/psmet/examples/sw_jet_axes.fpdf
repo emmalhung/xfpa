@@ -1,0 +1,66 @@
+! Display jet axes as lines with arrows ...
+@arrow_display
+	{
+	arrow_name     = arrowhead;
+	arrow_length   =  0.10;
+	arrow_angle    =    60;
+	return_angle   =    25;
+	length_offset  = -0.10;
+	width_offset   =  0.00;
+	head_length    =  0.15;
+	tail_length    =  0.15;
+	arrow_features = head;
+	}
+@arrow_display
+	{
+	arrow_name     = arrowtail;
+	arrow_length   =  0.10;
+	arrow_angle    =    90;
+	return_angle   =    90;
+	length_offset  =  0.00;
+	width_offset   =  0.00;
+	head_length    =  0.15;
+	tail_length    =  0.15;
+	arrow_features = tail;
+	}
+
+! Display jet axes first ...
+@lines
+	{
+	element            = jet_axis;
+	level              = surface;
+	category_attribute = FPA_category;
+	category           = jet_axis;
+	attribute          = FPA_category;
+	pattern            = simple;
+	line_width         = 0.02;
+	outline            = X11 Plum;
+	}
+
+! Then display arrowheads and arrowtails ...
+@lines
+	{
+	element            = jet_axis;
+	level              = surface;
+	category_attribute = FPA_category;
+	category           = jet_axis;
+	attribute          = FPA_category;
+	arrow_name         = arrowhead;
+	pattern            = simple;
+	line_width         = 0.02;
+	outline            = none;
+	fill               = X11 Plum;
+	}
+@lines
+	{
+	element            = jet_axis;
+	level              = surface;
+	category_attribute = FPA_category;
+	category           = jet_axis;
+	attribute          = FPA_category;
+	arrow_name         = arrowtail;
+	pattern            = simple;
+	line_width         = 0.02;
+	outline            = none;
+	fill               = X11 Plum;
+	}

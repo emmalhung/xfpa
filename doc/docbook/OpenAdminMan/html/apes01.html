@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.1. Development Directories and FPA Integration</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ape.html" title="Appendix E. Adding New Allied Models" /><link rel="prev" href="ape.html" title="Appendix E. Adding New Allied Models" /><link rel="next" href="apes02.html" title="E.2. The Local Setup File" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">E.1. Development Directories and <span class="acronym">FPA</span> Integration</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ape.html">Prev</a> </td><th width="60%" align="center">Appendix E. Adding New Allied Models</th><td width="20%" align="right"> <a accesskey="n" href="apes02.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2010435"></a>E.1. Development Directories and <span class="acronym">FPA</span> Integration</h2></div></div></div><p>
+<a id="id2010444" class="indexterm"></a>
+We recommend that the user create a series of development directories for implementation of any new Allied Model.
+The following directories are required:
+</p><div class="itemizedlist"><ul type="disc"><li><p>The user should create a Development Directory somewhere on the system, such as <code class="filename"><span xmlns="" class="replaceable">your_directory</span>/AModels.TEST</code>.
+The location of this Development Directory (identified by the keyword 'AModels.Test') must be added to the 'directories' block of the Local Setup file, as described below.
+Code and executables for the application itself, as well as constant input data files used by the application, will reside on specified subdirectories of <code class="filename"><span xmlns="" class="replaceable">your_directory</span>/AModels.TEST</code>.</p></li><li><p>Variable input data files and all output files used by the application, as well as all <span class="acronym">FPA</span> type data files from post-processing, will be located in the Data Directory <code class="filename">/home/data/AModels.DATA</code>, whose location is identified by the keyword 'AModels.Data' in the 'directories' block of the Local Setup file.
+These files will reside on specified subdirectories that the user may have to create, though the base Data Directory and all subdirectories are usually created automatically when the Allied Model is run.</p></li><li><p>The code for the specialized initialization, pre-processing, execution, and post-processing modules for new Allied Models can reside on a Processing Directory, such as <span xmlns="" class="replaceable">your_processing_directory</span>, which can be located anywhere on the system, as long as the path to the executable code is located in the users path.
+(The executables for Allied Models currently implemented in the <span class="acronym">FPA</span> are located in the directory <code class="filename"><code class="envar">$FPA</code>/bin</code>.)</p></li></ul></div><p>
+The directory structure used by a new Allied Model is outlined below.
+In this example, the new Allied Model is NewModel which can be run over two subareas (or subsources), Area1 or Area2.
+The Source Code and Executable Code refer to the actual Allied Model program or application.
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2012916"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example E.1. Development Directory</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">ls <span xmlns="" class="replaceable">your_directory</span>/AModels.TEST/NewModel/
+bin src Area1 Area2
+</pre><p xmlns="http://www.w3.org/1999/xhtml">
+where:
+</p><div xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist"><ul type="disc"><li><p><code class="filename">bin</code> contains executable code</p></li><li><p><code class="filename">src</code> contains source code</p></li><li><p><code class="filename">Area1</code> contains constant files</p></li><li><p><code class="filename">Area2</code> contains constant files</p></li></ul></div><p xmlns="http://www.w3.org/1999/xhtml">
+</p></div><p>
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2012983"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example E.2. Data Directory</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">ls /home/data/AModels.DATA/NewModel
+Area1 Area2
+</pre><p xmlns="http://www.w3.org/1999/xhtml">
+where:
+</p><div xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist"><ul type="disc"><li><p><code class="filename">Area1</code> contains variable files.</p></li><li><p><code class="filename">Area2</code> contains variable files.</p></li></ul></div><p xmlns="http://www.w3.org/1999/xhtml">
+</p></div><p>
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2051680"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example E.3. Processing Directory</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">ls <span xmlns="" class="replaceable">your_processing_directory</span>/NewModel
+Makefile <span xmlns="" class="replaceable">init.c</span> <span xmlns="" class="replaceable">preproc.c</span> <span xmlns="" class="replaceable">alliedm.c</span> <span xmlns="" class="replaceable">postproc.c</span>
+</pre><p xmlns="http://www.w3.org/1999/xhtml">
+where:
+</p><div xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist"><ul type="disc"><li><p><code class="filename">Makefile</code> is a makefile which accesses the <span class="acronym">FPA</span> Standard Library Routines</p></li><li><p><code class="filename">init.c</code> is your initialization code</p></li><li><p><code class="filename">preproc.c</code> is your pre-processing code</p></li><li><p><code class="filename">alliedm.c</code> is your allied model code</p></li><li><p><code class="filename">postproc.c</code> is your post-processing code</p></li></ul></div><p xmlns="http://www.w3.org/1999/xhtml">
+</p></div><p>
+</p><p>
+The user should create a database for testing the new Allied Model using the command <span class="application">mkfpadb</span>, and following the customization instructions.
+This procedure will also create the user's Local Setup file (<span xmlns="" class="replaceable">local_setup</span>).
+</p><p>
+The user will have to create all other directories required by the new Allied Model with the system <span class="application">mkdir</span> command.
+The user would create the Development Directory by commands such as:
+</p><pre class="programlisting">mkdir -p <span xmlns="" class="replaceable">your_directory</span>/AModels.TEST/NewModel/bin
+mkdir -p <span xmlns="" class="replaceable">your_directory</span>/AModels.TEST/NewModel/Area1
+</pre><p>
+The Data Directory can contain data from several successive runs of the new Allied Model.
+The 'run time' for the Allied Model will be written to the directory in a file called 'Dstamp', with the format 'Year:JulianDay:Hour' (for example, 1995:305:12).
+All files from the Allied Model run at any earlier time are automatically shuffled down to a Prev subdirectory, if one exists.
+(Note, however, that the Data Directory will be created automatically, if required, when the new Allied Model is run.
+The number of Prev subdirectories is determined by the 'directory_layers' line in the Local Configuration file described below.)
+</p><p>
+The user could create a Data Directory with the ability to save three successive runs of the new Allied Model with the command:
+</p><pre class="programlisting">mkdir -p home/data/AModels.DATA/NewModel/Area1/Prev/Prev</pre><p>
+The user will also have to modify the following files to integrate the new Allied Model into the <span class="acronym">FPA</span> environment:
+</p><div class="itemizedlist"><ul type="disc"><li><p>The Local Setup file (<span xmlns="" class="replaceable">local_setup</span>)</p></li><li><p>The Local Configuration file (<span xmlns="" class="replaceable">local_config</span>)</p></li></ul></div><p>
+The Local Setup file and Local Configuration file are created when the user creates a new database.
+The user will have already customized the Local Setup file when creating the database.
+Further additions to the Local Setup file and Local Configuration file are described below.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ape.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ape.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apes02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix E. Adding New Allied Models </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.2. The Local Setup File</td></tr></table></div></body></html>

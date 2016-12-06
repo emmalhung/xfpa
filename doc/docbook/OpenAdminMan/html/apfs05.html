@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>F.5. Field Update Office Default</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apf.html" title="Appendix F.  Predefined GUI Selection Lists " /><link rel="prev" href="apfs04.html" title="F.4. Point Lists" /><link rel="next" href="apg.html" title="Appendix G. Setup File Directory Override Options" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">F.5. Field Update Office Default</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apfs04.html">Prev</a> </td><th width="60%" align="center">Appendix F.  Predefined GUI Selection Lists </th><td width="20%" align="right"> <a accesskey="n" href="apg.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2054138"></a>F.5. Field Update Office Default</h2></div></div></div><p>
+<a id="id2054144" class="indexterm"></a>
+This file must be named <code class="filename">field_update_office_default</code>.
+Only one instance of this file is permitted.
+It lists the fields and times that an office loads by default from a particular source.
+This does not mean that these depictions will be updated automatically, it simply sets the default selection.
+The user still has the opportunity to fine tune the default selection.
+The lists are separated by source keys in square brackets as:
+</p><pre class="programlisting">[<span xmlns="" class="replaceable">source</span>]
+    <span xmlns="" class="replaceable">element level</span> (list of valid times relative to run time of the source)
+	...
+[<span xmlns="" class="replaceable">source</span>]
+    <span xmlns="" class="replaceable">element level</span> (list of valid times relative to run time of the source)
+	...
+</pre><p>
+and so on.
+The sources must be defined in a configuration file, as do the element and level identifiers.
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2086856"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example F.6. Field update office default</b></p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">[GEM_REG]
+    temperature  surface 00 06 12 18 24 36 48
+    rel_humidity surface 18 42
+[GEM_GLB]
+    pressure     msl     00 06 12 18 24 30 36 42 48 54 60 66 72
+    temperature  surface 54 60 66 72
+    rel_humidity surface 66
+</pre></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apfs04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apf.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apg.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">F.4. Point Lists </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix G. Setup File Directory Override Options</td></tr></table></div></body></html>

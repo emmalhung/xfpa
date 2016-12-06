@@ -1,0 +1,33 @@
+#!/bin/bash
+
+. .fpaenvrc
+cd $FPA
+
+opt=
+if [ "$1" = "-i" ]
+then
+	opt="$opt -i"
+	shift
+fi
+
+dirs="lib sapp slib templates"
+
+echo
+echo =======================================
+echo Searching $FPA Libraries
+echo =======================================
+
+for pattern in "$@"
+do
+	echo
+	echo Pattern: $pattern
+	for dir in $dirs
+	do
+		if [ -d $dir ]
+		then
+			echo
+			echo Directory: $dir
+			eval grep $opt \"$pattern\" $dir/*/*.[ch] $dir/*/*/*.[ch] \| more
+		fi
+	done
+done

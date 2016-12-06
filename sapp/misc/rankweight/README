@@ -1,0 +1,58 @@
+This directory contains the files to create the program rankweightDaemon.
+
+This program has two functions: 
+
+1. To monitor the directory where a storm tracking program is expected to
+   put statistics files (SCIT) and
+
+2. To monitor one or more directories for one or more files, and if all
+   monitored files and directories arrive with the same time stamp, launch
+   a program.
+
+For function 1:
+
+The program is a daemon that runs in background and calculates storm rank
+weights. Once this is done it creates forecasts of rank weights and inserts
+then into the SCIT files. A set of forecast files is created containing just
+storm rank weight. This process is done when the program first starts and then
+later when any SCIT files are modified or when they are moved into or created
+in the directory.
+
+To run the program the command is: rankweightDaemon start <setup_file>
+
+where <setup_file> is the setup file associated with the database for which
+processing is required. If the setup file is not specified then the default
+file is used.
+
+The setup file is expected to have an entry specifying where the configuration
+file and data directory is that is used by Aurora for displaying SCIT files.
+Both of these are also required by rankweightDaemon.
+
+To stop the daemon run: rankweightDaemon stop <setup_file>
+
+A log file named rankweightDaemon.log is created for the program. Where it is
+created depends on the run permissions. If run as superuser the log file will
+be in the directory /var/log otherwise it is created in the directory set by
+the $FPA directory. If this is unsuccessful $HOME is tried and then /tmp as
+a last resort.
+
+There is also a lock file created in the data directory obtained from the
+setup file named ".rankweightDaemon.lock" which contains the pid of the
+program. This is used by the stop function of the program to terminate the
+running version. If starting the program and the file exists the program
+checks to see if it is actually already running before starting. If a version
+of the program is running then it will not start up.
+
+To make it easy to change the equations:
+
+1. All of the equations used to produce the rank weights are found in one
+   function at the top of the calc_weights.c file.
+
+2. All extrapolation routines are found in one fuction at the top of the
+   fcst_weights.c file.
+
+For function 2:
+
+The program runs as a daemon as above and reads the monitoring information from
+the configuration file. See the configuration file radarSTAT or the fpa source
+file radarSTAT_dialog.c for details.

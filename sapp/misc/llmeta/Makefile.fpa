@@ -1,0 +1,59 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa -lfpauser \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	llmeta
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "meta translators"
+
+
+# Rules for building metafile translator programs:
+LLMETA      = $(BINDIR)/$(PLATFORM)/llmeta
+LLMETA_OBJ  = llmeta.o
+llmeta:		Pobjects $(LLMETA)
+			@	echo "FPA $(PLATFORM) llmeta ready"
+			@	echo 
+$(LLMETA):		$(LLMETA_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) llmeta"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(LLMETA_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/llmeta ]; \
+					then cd $(BINDIR); ln -s fpa.exec llmeta; fi
+
+
+# Rules for building object modules:
+llmeta.o:	$(FPAHDR)
+
+
+# Rules for keeping header files up to date:
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) meta translator module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_size'> <title>@size</title> <titleabbrev>@size</titleabbrev>
+<para>
+Set the size of the ASCII output file.
+</para><para>
+Note that <link linkend='tx_size'>@size</link> directive must be included in the product definition files BEFORE any directives which display data!
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>columns</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Number of columns (characters) in output file</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>rows</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Number of rows (lines) in output file</para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@size { width = 80; height = 120; }</programlisting>
+Set the size of the ASCII output file to 80 columns (characters) by 120 rows (lines).
+</para></example>
+</para></sect2>

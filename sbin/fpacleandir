@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# Script to remove all .o files in a directory
+#
+if [ $# -lt 1 ]
+then
+	echo "*** Cannot run fpacleandir without a directory name ***"
+	exit 1
+fi
+
+# Remove all .o files in the directory and subdirectories
+if [ -d $FPA/${1} ]
+then
+	rm $FPA/${1}/*.o
+	rm $FPA/${1}/*/*.o
+	rm $FPA/${1}/*/*/*.o
+	rm $FPA/${1}/*/*/*/*.o
+	rm $FPA/${1}/*.[ft][dsipq][cf]
+	rm $FPA/${1}/*/*.[ft][dsipq][cf]
+	rm $FPA/${1}/*/*/*.[ft][dsipq][cf]
+	rm $FPA/${1}/*/*/*/*.[ft][dsipq][cf]
+
+else
+	echo "============================="
+	echo "No directory:  $FPA/${1}"
+	echo "============================="
+fi

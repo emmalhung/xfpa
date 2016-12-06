@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.2.2. DESCRIPTION</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s02.html" title="2.2. GEAnimate" /><link rel="prev" href="ch02s02s01.html" title="2.2.1. SYNOPSIS" /><link rel="next" href="ch02s02s03.html" title="2.2.3. RETURN" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.2.2. DESCRIPTION</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s02s01.html">Prev</a> </td><th width="60%" align="center">2.2. GEAnimate</th><td width="20%" align="right"> <a accesskey="n" href="ch02s02s03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4206967"></a>2.2.2. DESCRIPTION</h3></div></div></div><p> 
+The <span xmlns="" class="replaceable">command</span> parameter consists of a string of key words. These are:
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>DELAY</code></strong> <span xmlns="" class="replaceable">ms</span></span></dt><dd><p>
+Set the delay interval in milliseconds between depictions in the animation.
+</p></dd><dt><span class="term"><strong class="userinput"><code>ENTER</code></strong></span></dt><dd><p>
+Enter animation mode. All of the other commands in this function are only recognized after 
+the ENTER command is issued. The initial visibility state of the fields will be that of those 
+in the depiction sequence.
+</p></dd><dt><span class="term"><strong class="userinput"><code>EXIT</code></strong></span></dt><dd><p>
+Exit animation mode.
+</p></dd><dt><span class="term"><strong class="userinput"><code>ZOOM</code></strong></span></dt><dd><p>
+Exit animation mode to perform a zoom or pan, and then re-enter animation mode preserving the current animation state.
+</p></dd><dt><span class="term"><strong class="userinput"><code>FIELD_VISIBILITY</code></strong> <span xmlns="" class="replaceable">element level</span> <strong class="userinput"><code>ON</code></strong> | <strong class="userinput"><code>OFF</code></strong></span></dt><dd><p>
+Turn the visibility of the given field in the animating sequence on or off. Any field which 
+is off will not be seen by the user.
+</p></dd><dt><span class="term"><strong class="userinput"><code>MODE DEPICT</code></strong> | <strong class="userinput"><code>INTERP</code></strong></span></dt><dd><p>
+Set the animation to be of either the depiction sequence currently being edited or of the sequence of interpolated depictions. 
+</p></dd><dt><span class="term"><strong class="userinput"><code>SHOW NEXT</code></strong> | <strong class="userinput"><code>PREV</code></strong> | <span xmlns="" class="replaceable">valid_time</span></span></dt><dd><p>
+Show the next (<strong class="userinput"><code>NEXT</code></strong>) or previous (<strong class="userinput"><code>PREV</code></strong>) depiction/interpolation in the sequence or the 
+depiction/interpolation valid at the specified time (<span xmlns="" class="replaceable">valid_time</span>).
+</p></dd><dt><span class="term"><strong class="userinput"><code>START</code></strong></span></dt><dd><p>
+Start the animation using the selected <strong class="userinput"><code>DELAY</code></strong> and <strong class="userinput"><code>MODE</code></strong> settings.
+</p></dd><dt><span class="term"><strong class="userinput"><code>STOP</code></strong></span></dt><dd><p>
+Stop the animation.
+</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s02s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s02s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.2.1. SYNOPSIS </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.2.3. RETURN</td></tr></table></div></body></html>

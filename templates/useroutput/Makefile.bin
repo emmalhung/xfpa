@@ -1,0 +1,48 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(ULIBDIR)/$${PLATFORM} \
+					-lfpa -lfpasup -lfpauser -lfpa -lfpauser $(EXTRA_LIBS)
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+# Note ... use this LIBPATH if including fortran modules ...
+#LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(ULIBDIR)/$${PLATFORM} \
+#					-lfpafort -lfpa -lfpasup -lfpauser -lfpa -lfpauser \
+#					$(EXTRA_FTN_LIBS) $(EXTRA_LIBS)
+
+
+# Make what?
+null:
+
+
+# Make the stand-alone programs:
+all:			example_extract
+			@	echo "FPA $${PLATFORM} output example programs ready"
+			@	echo 
+
+
+# Rules for building object modules:
+example_extract.o:	$(FPAHDR)
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling FPA $${PLATFORM} output example program $<"
+	@	$${C_COMPILER} -c $(C_OPTIONS) $(INCPATH) $<
+
+.f.o:
+	@	echo "Compiling FPA $${PLATFORM} output example program $<"
+	@	$${FTN_COMPILER} -c $(FTN_OPTIONS) $< 2>/dev/null
+
+
+# Rules for building stand-alone programs:
+
+# Building stand-alone program for example_extract:
+EX_EXTRACT			= ex_extract
+EX_EXTRACT_OBJ		= example_extract.c
+example_extract:	$(EX_EXTRACT)
+				@	echo "FPA $${PLATFORM} ex_extract ready"
+				@	echo 
+$(EX_EXTRACT):		$(EX_EXTRACT_OBJ) $(FPAHDR) $(FPALIB)
+				@	echo "Building program for example_extract"
+				@	$${C_COMPLOAD} -o $@ \
+						$(INCPATH) $(C_OPTIONS) \
+						$(EX_EXTRACT_OBJ) $(LIBPATH)

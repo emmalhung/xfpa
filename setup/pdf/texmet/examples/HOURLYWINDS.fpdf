@@ -1,0 +1,1125 @@
+! Set the version number ... this line must be first!
+@version { texmet7.0 }
+
+! Define the output filename ...
+@file_name
+	{
+	dir  = <default>;
+	name = <pdf>
+	}
+
+! Define a projection ...
+@projection
+	{
+	type = polar_stereographic;		!EDIT
+	ref1 =  north;					!EDIT
+	ref2 = 60						!EDIT
+	}
+
+! Define a map ...
+@mapdef
+	{ 
+	olat      = 26:45N;		!EDIT
+	olon      = 90:00W;		!EDIT
+	rlon      = 85:00W;		!EDIT
+	xmin      =    0;		!EDIT
+	ymin      =    0;		!EDIT
+	xmax      = 4000;		!EDIT
+	ymax      = 5000;		!EDIT
+	map_units = 1000;		!EDIT
+	}
+
+! Define a resolution ...
+@resolution
+	{ 
+	res       =  200;		!EDIT
+	map_units = 1000;		!EDIT
+	}
+
+! Define the size of the output file ...
+@size
+	{
+	columns = 80;
+	rows    = 60;
+	}
+
+! Set default presentations ...
+@presentation
+	{
+	justification = left
+	}
+@wind_presentation
+	{
+	wind_look_up            = hourly_wind;
+	calm_type               = text;
+	calm_justification      = centre;
+	x_calm                  = 2;
+	y_calm                  = 0;
+	direction_type          = value;
+	direction_justification = right;
+	x_dir                   = 1;
+	y_dir                   = 0;
+	speed_type              = value;
+	speed_justification     = left;
+	x_spd                   = 2;
+	y_spd                   = 0;
+	gust_type               = none;
+	}
+
+! Display a header message ...
+@text
+	{
+	string = Hourly temperatures (degrees C) and winds (10s of degrees / knots)
+	x_off  = 5;
+	y_off  = 0;
+	}
+@write_time
+	{ 
+	type   = issue;
+	time   = GMT;
+	format = Based on FPA forecasts from  %HZ  %d %B, %Y
+	x_off  = 5;
+	y_off  = 1;
+	}
+
+! Define a table ...
+@anchor
+	{
+	column = 0;
+	row    = 3;
+	}
+@define_table
+	{
+	table_name = T1;
+	type       = row;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = WHF;			!EDIT! (Halifax)
+	lat           = 44:40N;			!EDIT!
+	lon           = 63:35W;			!EDIT!
+	x_off         = 20;
+	y_off         =  1;
+	justification = centre;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = YYT;			!EDIT! (St John's Nfld)
+	lat           = 47:37N;			!EDIT!
+	lon           = 52:44W;			!EDIT!
+	x_off         = 35;
+	y_off         =  1;
+	justification = centre;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = YQB;			!EDIT! (Quebec City)
+	lat           = 46:48N;			!EDIT!
+	lon           = 71:24W;			!EDIT!
+	x_off         = 50;
+	y_off         =  1;
+	justification = centre;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = BOS;			!EDIT! (Boston)
+	lat           = 42:22N;			!EDIT!
+	lon           = 71:02W;			!EDIT!
+	x_off         = 65;
+	y_off         =  1;
+	justification = centre;
+	}
+
+! Display table header information ...
+@text
+	{
+	string = Halifax      Quebec City   St John's Nfld     Boston
+	x_off  = 17;
+	y_off  =  0;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  = 6;
+	y_off  = 2;
+	}
+
+! Set macros for sampling temperatures and winds ...
+@group
+	{
+	group_name    = sample_temps
+	table_name    = T1;
+	element       = temperature;
+	level         = surface;
+	units         = degreesC;
+	format        = direct %.0fC;
+	x_off         = -2;
+	justification = right;
+	}
+@group
+	{
+	group_name    = sample_winds
+	table_name    = T1;
+	format        = wind_text;
+	wind_crossref = Fpa_Wind;
+	units         = knots;
+	x_off         = 1;
+	}
+
+! Display sampled values at T0 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 00;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 3;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 3;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 3;
+	}
+
+! Display sampled values at T+01 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 01;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 4;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 4;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 4;
+	}
+
+! Display sampled values at T+02 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 02;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 5;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 5;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 5;
+	}
+
+! Display sampled values at T+03 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 03;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 6;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 6;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 6;
+	}
+
+! Display sampled values at T+04 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 04;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 7;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 7;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 7;
+	}
+
+! Display sampled values at T+05 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 05;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 8;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 8;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 8;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  = 6;
+	y_off  = 9;
+	}
+
+! Display sampled values at T+06 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 06;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 10;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 10;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 10;
+	}
+
+! Display sampled values at T+07 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 07;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 11;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 11;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 11;
+	}
+
+! Display sampled values at T+08 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 08;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 12;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 12;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 12;
+	}
+
+! Display sampled values at T+09 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 09;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 13;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 13;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 13;
+	}
+
+! Display sampled values at T+10 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 10;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 14;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 14;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 14;
+	}
+
+! Display sampled values at T+11 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 11;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 15;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 15;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 15;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  =  6;
+	y_off  = 16;
+	}
+
+! Display sampled values at T+12 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 12;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 17;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 17;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 17;
+	}
+
+! Display sampled values at T+13 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 13;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 18;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 18;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 18;
+	}
+
+! Display sampled values at T+14 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 14;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 19;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 19;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 19;
+	}
+
+! Display sampled values at T+15 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 15;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 20;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 20;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 20;
+	}
+
+! Display sampled values at T+16 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 16;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 21;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 21;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 21;
+	}
+
+! Display sampled values at T+17 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 17;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 22;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 22;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 22;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  =  6;
+	y_off  = 23;
+	}
+
+! Display sampled values at T+18 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 18;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 24;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 24;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 24;
+	}
+
+! Display sampled values at T+19 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 19;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 25;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 25;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 25;
+	}
+
+! Display sampled values at T+20 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 20;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 26;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 26;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 26;
+	}
+
+! Display sampled values at T+21 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 21;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 27;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 27;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 27;
+	}
+
+! Display sampled values at T+22 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 22;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 28;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 28;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 28;
+	}
+
+! Display sampled values at T+23 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 23;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 29;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 29;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 29;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  =  6;
+	y_off  = 30;
+	}
+
+! Display sampled values at T+24 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 24;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 31;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 31;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 31;
+	}
+
+! Display sampled values at T+25 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 25;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 32;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 32;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 32;
+	}
+
+! Display sampled values at T+26 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 26;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 33;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 33;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 33;
+	}
+
+! Display sampled values at T+27 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 27;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 34;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 34;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 34;
+	}
+
+! Display sampled values at T+28 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 28;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 35;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 35;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 35;
+	}
+
+! Display sampled values at T+29 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 29;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 36;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 36;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 36;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  =  6;
+	y_off  = 37;
+	}
+
+! Display sampled values at T+30 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 30;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 38;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 38;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 38;
+	}
+
+! Display sampled values at T+31 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 31;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 39;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 39;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 39;
+	}
+
+! Display sampled values at T+32 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 32;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 40;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 40;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 40;
+	}
+
+! Display sampled values at T+33 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 33;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 41;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 41;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 41;
+	}
+
+! Display sampled values at T+34 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 34;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 42;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 42;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 42;
+	}
+
+! Display sampled values at T+35 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 35;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 43;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 43;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 43;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  =  6;
+	y_off  = 44;
+	}
+
+! Display sampled values at T+36 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 36;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 45;
+	}
+@sample_field
+	{
+	<sample_temps;
+	y_off = 45;
+	}
+@sample_wind
+	{
+	<sample_winds;
+	y_off = 45;
+	}

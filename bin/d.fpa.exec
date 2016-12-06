@@ -1,0 +1,189 @@
+#! /bin/bash
+
+# fpa.exec
+
+# Script to choose the actual executable file for FPA applications.
+
+# This script is normally linked to the same name as the executable file,
+# except that the script lies in the bin directory, and the executable file
+# lies in a sub-directory identified by the platform script.
+
+# Check FPA variable
+if [ "${FPA:-}" = "" ]
+then
+	echo "FPA variable is not set!"
+	echo "It must be set in your profile and exported before executing"
+	echo "this application."
+	exit 1
+fi
+
+# Ignore certain signals
+trap "" 1 2 3 13
+
+# Construct the executable name (i.e. name by which this script was invoked):
+name=`basename $0`
+
+# Define the required environment (use .*winrc for X-based apps)
+case $name in
+	x*)		. .fpawinrc;;
+	aurora)	. .aurorawinrc;;
+	*)		. .fpaenvrc;;
+esac
+
+# Construct the directory for the executable and make sure it exists:
+dir=`dirname $0`/`platform`
+if [ $? != 0 ]
+then
+	echo "[$0] Cannot construct directory"
+	exit 1
+elif [ ! -d $dir ]
+then
+	echo "[$0] Directory $dir not found"
+	exit 1
+fi
+
+# See if the executable file exists:
+if [ -x $dir/$name ]
+then
+	# Found the executable file:
+	cmd=$dir/$name
+
+# Try PROLOG run-time:
+elif [ -x $dir/$name.rt ]
+then
+	# Found the run-time file:
+	cmd=$dir/$name.rt
+
+# If we asked for the debug version, but didn't find it, look for the regular
+# version:
+elif [ "$FPA_DEBUG" != "" ]
+then
+	# Construct the directory name and make sure it exists:
+	dir=`dirname $0`/`unset FPA_DEBUG; platform`
+	if [ ! -d $dir ]
+	then
+		echo "[$0] Directory $dir not found"
+		exit 1
+	fi
+
+	# See if the executable file exists:
+	if [ -x $dir/$name ]
+	then
+		# Found the executable file:
+		cmd=$dir/$name
+
+	# Try PROLOG run-time:
+	elif [ -x $dir/$name.rt ]
+	then
+		# Found the run-time file:
+		cmd=$dir/$name.rt
+	fi
+fi
+
+
+# Not found:
+if [ "$cmd" = "" ]
+then
+	echo "[$0] Executable file not found:"
+	echo "\t$dir/$name or"
+	echo "\t$dir/$name.rt"
+	exit 1
+fi
+
+# Add the arguments, preserving imbedded white-space:
+for arg in "$@"
+do
+	cmd="$cmd \"$arg\""
+done
+
+# Add debug output if debug mode is on:
+if [ "$FPA_DEBUG" != "" ]
+then
+	if [ "$name" = "xfpa" -o "$name" = "xfpaimage" -o "$name" = "aurora" ]
+	then
+		cmd="$cmd -debug"
+	fi
+fi
+
+# Add output re-direction to log file(s) if required:
+if [ "$FPA_DEBUG" != "" -o "$FPA_LOG_FILE" != "" ]
+then
+	if [ "$name" = "xfpa" -o "$name" = "xfpaimage" -o "$name" = "aurora" -o "$name" = "fpaenv" ]
+	then
+		echo "Running $0 $*"
+		cmd="$cmd 2>&1"
+
+		setup=
+		if [ "$FPA_SETUP_FILE" != "" ]
+		then
+			setup=`basename $FPA_SETUP_FILE`
+		fi
+
+		while [ "$1" != "" ]
+		do
+			if [ "$1" = "-s" -o "$1" = "-setup" ]
+			then
+				setup=`basename $2`
+			fi
+			shift
+		done
+
+		to_stdout=
+		plog=
+		for log in $FPA_LOG_FILE
+		do
+			if [ "$log" = "-" ]
+			then
+				to_stdout=T
+				if [ "$plog" != "" ]
+				then
+					echo "Output saved in $plog"
+					cmd="$cmd | tee $plog"
+					plog=
+				fi
+
+			else
+				if [ "$log" = "!FPA_AUTO_LOG" ]
+				then
+					log=$HOME/fpa.log.$setup
+				fi
+
+				if [ "$plog" != "" ]
+				then
+					echo "Output saved in $plog"
+					cmd="$cmd | tee $plog"
+				fi
+				plog=$log
+
+				if [ "$to_stdout" != "" ]
+				then
+					echo "Output saved in $plog"
+					cmd="$cmd | tee $plog"
+					plog=
+				fi
+			fi
+		done
+
+		if [ "$plog" != "" ]
+		then
+			echo "Output saved in $plog"
+			cmd="$cmd > $plog"
+		fi
+	fi
+fi
+
+# Run the real executable:
+if [ "$FPA_DEBUG" != "" ]
+then
+	if [ "$name" = "xfpa" -o "$name" = "xfpaimage" -o "$name" = "aurora" ]
+	then
+		echo "[$0] Executing command:"
+		echo "$cmd"
+		echo
+	fi
+fi
+case $PLATFORM in
+	sun*)	export LD_PRELOAD; LD_PRELOAD=$FPA/lib/$PLATFORM/libzero.so;;
+esac
+export PATH; PATH=$dir:$PATH
+eval "$cmd"

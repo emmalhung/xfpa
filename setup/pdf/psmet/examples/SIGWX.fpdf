@@ -1,0 +1,501 @@
+! Aviation significant weather example ...
+
+! Set version ... this line must be first!
+@version { psmet6.0 }
+
+! Set verbose mode for diagnostic output ...
+@verbose { no }
+
+! Set the display units used in all following directives ...
+!  "type" can be  inches  cm  mm  picas  points
+@display_units { type = inches }
+
+! Set the page size ...
+@size { width = 11.00; height = 8.50 }
+
+! Open the output file for the T12 sigwx product ...
+@file_name
+	{
+	dir  = <default>;
+				! Options <default> <home>
+	name = <pdf>_12;
+				! Options <pdf> <year> <month> <day> <julian> <hour>
+	}
+
+! Define the map ...
+@include { sw_map_setup }
+
+! Define a size and placement for the map ...
+@anchor { ref = absolute }
+@define_map_placement
+	{
+	map_scale     = 15000000;
+	axis_to_scale = x_axis;
+	x_off         =  1.40;
+	y_off         =  0.00;
+	}
+@anchor { ref = map }
+
+! Set the source and valid time ...
+@set_source { source = depict; valid_time = 12 }
+
+! Display some turbulence areas ...
+@include { sw_turbc_areas }
+
+! Display some weather areas ...
+@include { sw_wx_areas }
+
+! Display geographic features as outlines ...
+@include { sw_geo_outline }
+
+! Display selected aerodromes (from a location lookup file) ...
+@include { sw_aerodromes }
+
+! Display some fronts (and other line type features) ...
+@include { sw_fronts }
+
+! Display some jet axes ...
+@include { sw_jet_axes }
+
+! Display some turbulence labels ... MUST be labelled in FPA to appear
+@include { sw_turbc_labels }
+
+! Display some weather labels ... MUST be labelled in FPA to appear
+@include { sw_wx_labels }
+
+! Display some jet axes labels ... MUST be labelled in FPA to appear
+@include { sw_jet_axes_labels }
+
+! Draw a background box around the map ... unfilled!
+@background
+	{
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	line_width    = 0.05;
+	}
+
+! Set default presentation for all text to follow ...
+@presentation
+	{
+	line_width    = 0;
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	justification = right;
+	text_size     = 0.15;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Display a label including the valid time in a box ...
+@anchor { ref = upper_left; x = -1.40; y = -0.50 }
+@box
+	{
+	width         =  2.80;
+	height        =  1.00;
+	x_off         =  0.00;
+	y_off         =  0.00;
+	outline       = X11 Black;
+	interior_fill = X11 White;
+	line_width    = .050;
+	}
+@text
+	{
+	text_size     = 0.20;
+	string        = FPA Significant Weather
+	x_off         =  0.00;
+	y_off         =  0.25;
+	justification = centre;
+	}
+@text
+	{
+	text_size     = 0.20;
+	string        = Flight Level 100-450
+	x_off         =  0.00;
+	y_off         = -0.05;
+	justification = centre;
+	}
+@write_time
+	{
+	text_size     = 0.20;
+	type          = valid;
+	time          = GMT;
+	format        = Valid  %H%M UTC on %d %b
+	x_off         =  0.00;
+	y_off         = -0.30;
+	justification = centre;
+	}
+
+! Display comments in a box ...
+@anchor { ref = upper_left; x = -1.40; y = -2.00 }
+@box
+	{
+	width         =  2.80;
+	height        =  2.00;
+	x_off         =  0.00;
+	y_off         =  0.00;
+	outline       = X11 Black;
+	interior_fill = X11 White;
+	line_width    = .050;
+	}
+@text
+	{
+	text_size     = 0.18;
+	string        = CB implies Moderate or Severe
+	x_off         =  0.00;
+	y_off         =  0.70;
+	justification = centre;
+	}
+@text
+	{
+	text_size     = 0.18;
+	string        = Turbulence, Icing and Hail
+	x_off         =  0.00;
+	y_off         =  0.50;
+	justification = centre;
+	}
+@text
+	{
+	text_size     = 0.18;
+	string        = All Height Indications in
+	x_off         =  0.00;
+	y_off         =  0.15;
+	justification = centre;
+	}
+@text
+	{
+	text_size     = 0.18;
+	string        = Flight Levels
+	x_off         =  0.00;
+	y_off         = -0.05;
+	justification = centre;
+	}
+@text
+	{
+	text_size     = 0.18;
+	string        = All Speeds in Knots
+	x_off         =  0.00;
+	y_off         = -0.40;
+	justification = centre;
+	}
+@text
+	{
+	text_size     = 0.18;
+	string        = Check SIGMETS for Volcanic Ash
+	x_off         =  0.00;
+	y_off         = -0.75;
+	justification = centre;
+	}
+
+! Display CAT area labels in a box ...
+@anchor { ref = lower_left; x = -1.40; y = 3.55 }
+@box
+	{
+	width         =  2.80;
+	height        =  2.70;
+	x_off         =  0.00;
+	y_off         =  0.00;
+	outline       = X11 Black;
+	interior_fill = X11 White;
+	line_width    = .050;
+	}
+@text
+	{
+	text_size     = 0.20;
+	string        = CAT Areas
+	x_off         =  0.00;
+	y_off         =  1.05;
+	justification = centre;
+	}
+@label
+	{
+	element            = turbulence;
+	level              = surface;
+	category_attribute = turbulence_top;
+	category           = 110 120 130 140 150 160 170 180 190 200 \
+	                     210 220 230 240 250 260 270 280 290 300 \
+	                     310 320 330 340 350 360 370 380 390 400;
+	category_attribute = turbulence_intensity;
+	category           = LGT  MDT;
+	category_attribute = turbulence_type;
+	category           = CAT;
+	mark               = none;
+	mark_scale         = 100.0;
+	fit_to_map         = yes;
+	x_off              = -0.50;
+	y_off              =  0.70;
+	x_shift            =  0.00;
+	y_shift            = -0.30;
+
+	attribute               = turbulence_intensity;
+	attribute_anchor        = none;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+	attribute_format        = symbol;
+	attribute_look_up       = sig_turbc;
+	attribute_symbol_scale  = 25;
+	attribute_line_width    = 0.03;
+	attribute_outline       = CMYK 0 0 0 100;
+	attribute_fill          = none;
+
+	attribute               = turbulence_top;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_format        = direct;
+	attribute_x_off         =  0.05;
+	attribute_y_off         =  0.07;
+
+	attribute               = turbulence_base;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_format        = text;
+	attribute_look_up       = sig_turbc_base;
+	attribute_x_off         =  0.05;
+	attribute_y_off         = -0.07;
+	}
+@label
+	{
+	element            = turbulence;
+	level              = surface;
+	category_attribute = turbulence_top;
+	category           = 110 120 130 140 150 160 170 180 190 200 \
+	                     210 220 230 240 250 260 270 280 290 300 \
+	                     310 320 330 340 350 360 370 380 390 400;
+	category_attribute = turbulence_intensity;
+	category           = SVR;
+	category_attribute = turbulence_type;
+	category           = CAT;
+	mark               = none;
+	mark_scale         = 100.0;
+	fit_to_map         = yes;
+	x_off              =  0.80;
+	y_off              =  0.70;
+	x_shift            =  0.00;
+	y_shift            = -0.30;
+
+	attribute               = turbulence_intensity;
+	attribute_anchor        = none;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+	attribute_format        = symbol;
+	attribute_look_up       = sig_turbc;
+	attribute_symbol_scale  = 25;
+	attribute_line_width    = 0.03;
+	attribute_outline       = CMYK 0 0 0 100;
+	attribute_fill          = none;
+
+	attribute               = turbulence_top;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_format        = direct;
+	attribute_x_off         =  0.05;
+	attribute_y_off         =  0.07;
+
+	attribute               = turbulence_base;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_format        = text;
+	attribute_look_up       = sig_turbc_base;
+	attribute_x_off         =  0.05;
+	attribute_y_off         = -0.07;
+	}
+
+! Draw symbols and scale in a box ...
+@anchor { ref = lower_left; x = -1.40; y = 1.10 }
+@box
+	{
+	width         =  2.80
+	height        =  2.20;
+	x_off         =  0.00;
+	y_off         =  0.00;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = CMYK 0 0 0 0;
+	line_width    = .050;
+	}
+
+! Add icing and turbulence symbols in the comments box ...
+@presentation
+	{
+	line_width    = 0.025;
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	justification = centre;
+	}
+@add
+	{
+	symbol        = lgticg;
+	scale         = 12;
+	x_off         = -1.15;
+	y_off         =  0.65;
+	}
+@add
+	{
+	symbol        = mdticg;
+	scale         = 12;
+	rotation      = 0;
+	x_off         = -1.15;
+	y_off         =  0.40;
+	}
+@add
+	{
+	symbol        = svricg;
+	scale         = 15;
+	rotation      = 0;
+	x_off         = -1.15;
+	y_off         =  0.10;
+	}
+@add
+	{
+	symbol        = lgtturbc;
+	scale         = 20;
+	rotation      = 0;
+	x_off         =  0.05;
+	y_off         =  0.55;
+	}
+@add
+	{
+	symbol        = mdtturbc;
+	scale         = 20;
+	rotation      = 0;
+	x_off         =  0.05;
+	y_off         =  0.30;
+	}
+@add
+	{
+	symbol        = svrturbc;
+	scale         = 20;
+	rotation      = 0;
+	x_off         =  0.05;
+	y_off         =  0.05;
+	}
+
+! Add icing and turbulence text in the comments box ...
+@presentation
+	{
+	line_width    = 0;
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	justification = left;
+	text_size     = 0.12;
+	char_space    =  0;
+	word_space    = 75;
+	}
+@text
+	{
+	string        = Light Icing
+	x_off         = -1.00;
+	y_off         =  0.65;
+	}
+@text
+	{
+	string        = Moderate Icing
+	x_off         = -1.00;
+	y_off         =  0.40;
+	}
+@text
+	{
+	string        = Severe Icing
+	x_off         = -1.00;
+	y_off         =  0.10;
+	}
+@text
+	{
+	string        = Light Turbulence
+	x_off         =  0.25;
+	y_off         =  0.60;
+	}
+@text
+	{
+	string        = Moderate Turbulence
+	x_off         =  0.25;
+	y_off         =  0.35;
+	}
+@text
+	{
+	string        = Severe Turbulence
+	x_off         =  0.25;
+	y_off         =  0.10;
+	}
+
+! Add a distance scale in the comments box ...
+@text
+	{
+	string        = Polar Sterographic Projection
+	x_off         =  0.00;
+	y_off         = -0.35;
+	justification = centre;
+	}
+@text
+	{
+	string        = Scale 1:15,000,000 true at 60N
+	x_off         =  0.00;
+	y_off         = -0.55;
+	justification = centre;
+	}
+@draw_distance_scale
+	{
+	scale_name          = distance_scale1;
+	scale_length        = 750;
+	scale_units         = km;
+	scale_justification = centre;
+	scale_rotation      =  0.0;
+	x_off               =  0.00;
+	y_off               = -0.75;
+	outline             = X11 Black;
+	line_width          = 0.03;
+	}
+@distance_scale_ticks
+	{
+	scale_name          = distance_scale1;
+	tick_location		=   0;
+	tick_location		= 750;
+	tick_length         =  50;
+	tick_units          = km;
+	tick_justification  = centre;
+	tick_rotation       = 90.0;
+	outline             = X11 Black;
+	line_width          = 0.03;
+	}
+@distance_scale_ticks
+	{
+	scale_name          = distance_scale1;
+	tick_location		= 150;
+	tick_location		= 300;
+	tick_location		= 450;
+	tick_location		= 600;
+	tick_length         =  15;
+	tick_units          = km;
+	tick_justification  = left;
+	tick_rotation       = 90.0;
+	outline             = X11 Black;
+	line_width          = 0.03;
+	}
+@distance_scale_labels
+	{
+	scale_name          = distance_scale1;
+	label_location		= 375;
+	label_string        = 750 km;
+	label_units         = km;
+	label_justification = centre;
+	label_rotation      =   0.0;
+	text_size           =  0.15;
+	outline             = none;
+	fill                = X11 Black;
+	x_off               =  0.00;
+	y_off               = -0.20;
+	}
+
+! Close the file ...
+@file_close { }
+
+! Display the result using "display" or "evince" ...
+@process
+	{
+	cd <default>;
+	evince <file_name>;
+	}

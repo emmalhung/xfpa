@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>word_space</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Text word spacing
+</para><para>(as percent of average character width)</para></entry></row>

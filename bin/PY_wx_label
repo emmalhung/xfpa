@@ -1,0 +1,73 @@
+#!/usr/bin/python
+
+### DO NOT EDIT
+###-->
+import sys
+import FPALib
+
+fileName = sys.argv[1]
+dict     = FPALib.get_dict(fileName)
+###<--
+
+### INSERT YOUR CODE HERE
+###-->
+oldlab = dict[FPALib.FPA_auto_label]
+dict[FPALib.FPA_auto_label] = "No Label"
+
+if dict.has_key("FoG_string"):
+	dict[FPALib.FPA_auto_label] = dict["FoG_string"]
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+if not dict.has_key("weather"):
+	#print FPALib.NO_ATTRIBUTE % ('weather')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+if not dict.has_key("cloud_amount"):
+	#print FPALib.NO_ATTRIBUTE % ('cloud_amount')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+# Set default weather autolabel
+autolab = "Clear"
+
+# Set weather autolabel based on 'weather' attribute
+weather = dict["weather"]
+if   FPALib.match(weather, "TSRA"): autolab = "Thunderstorms"
+elif FPALib.match(weather, "TS"):   autolab = "Thunder"
+elif FPALib.match(weather, "FZRA"): autolab = "Freezing Rain"
+elif FPALib.match(weather, "FZDZ"): autolab = "Freezing Drizzle"
+elif FPALib.match(weather, "RASN"): autolab = "Rain and Snow"
+elif FPALib.match(weather, "SHSN"): autolab = "Flurries"
+elif FPALib.match(weather, "+SN"):  autolab = "Heavy Snow"
+elif FPALib.match(weather, "SN"):   autolab = "Snow"
+elif FPALib.match(weather, "SHRA"): autolab = "Showers"
+elif FPALib.match(weather, "+RA"):  autolab = "Heavy Rain"
+elif FPALib.match(weather, "RA"):   autolab = "Rain"
+elif FPALib.match(weather, "DZ"):   autolab = "Drizzle"
+elif FPALib.match(weather, "FG"):   autolab = "Fog"
+elif FPALib.match(weather, "BR"):   autolab = "Mist"
+elif FPALib.match(weather, "HZ"):   autolab = "Haze"
+elif FPALib.match(weather, "FU"):   autolab = "Smoke"
+else:
+	# Set weather autolabel based on 'cloud_amount'
+	clound_amount = dict["cloud_amount"]
+	if   FPALib.match(clound_amount, "CB"):  autolab = "CB"
+	elif FPALib.match(clound_amount, "TCU"): autolab = "Towering CU"
+	elif FPALib.match(clound_amount, "OVC"): autolab = "Cloudy"
+	elif FPALib.match(clound_amount, "BKN"): autolab = "Mostly Cloudy"
+	elif FPALib.match(clound_amount, "SCT"): autolab = "Partly Cloudy"
+	elif FPALib.match(clound_amount, "FEW"): autolab = "Few Clounds"
+
+dict[FPALib.FPA_auto_label] = autolab
+
+if dict.has_key(FPALib.FPA_user_label) and  dict[FPALib.FPA_user_label] == oldlab:
+	dict[FPALib.FPA_user_label] = dict[FPALib.FPA_auto_label]
+###<--
+
+### ALL DONE! 
+###-->
+FPALib.print_dict(fileName, dict)
+sys.exit()
+###<--

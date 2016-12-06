@@ -1,0 +1,57 @@
+! Reset presentations for geographic features ...
+@reset_geo_presentation { }
+
+! Define presentation for geographic features we may wish to see ...
+! These will be displayed as outlines ...
+@geo_presentation
+	{
+	geo_name      = coast_major;
+	line_width    = 0.005;
+	outline       = X11 Black;
+	interior_fill = none;
+	}
+@geo_presentation
+	{
+	geo_name      = border;
+	line_width    = 0.003;
+	outline       = X11 Black;
+	interior_fill = none;
+	}
+@geo_presentation
+	{
+	geo_name      = border_major;
+	line_width    = 0.003;
+	outline       = X11 Black;
+	interior_fill = none;
+	}
+@geo_presentation
+	{
+	geo_name      = lat_lon_10;
+	line_width    = 0.005;
+	outline       = X11 Gray80;
+	interior_fill = none;
+	}
+
+! Display some latitudes and longitudes ...
+! Note that these are in the $FPA/data/common/CommonMaps directory!
+@geography
+	{
+	geo_file           = 10_deg_lat_lon;
+	element            = boundaries;
+	level              = geography;
+	category_attribute = FPA_category;
+	category           = lat_lon_10
+	attribute          = FPA_category;
+	}
+
+! Display coastlines ... for DCW maps
+! Note that coastlines were saved as lines!
+@geography
+	{
+	geo_file           = coasts.fpa;		!EDIT!
+	element            = land_water;
+	level              = geography;
+	category_attribute = FPA_category;
+	category           = coast_major
+	attribute          = FPA_category;
+	}

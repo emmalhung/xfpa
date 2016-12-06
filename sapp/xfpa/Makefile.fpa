@@ -1,0 +1,288 @@
+#**********************************************************
+#
+#  File: makefile
+#
+#  Project: FPA interface
+#
+#**********************************************************
+
+GELIB = $(SLIBDIR)/$(PLATFORM)/ingred.a
+GRLIB = $(SLIBDIR)/$(PLATFORM)/graphics.a
+GLLIB = $(SLIBDIR)/$(PLATFORM)/libFpaXgl.a
+XULIB = $(SLIBDIR)/$(PLATFORM)/libXu.a
+VALIB = $(SLIBDIR)/$(PLATFORM)/libXmVa.a
+XBLIB = $(SLIBDIR)/$(PLATFORM)/libXbae.a
+
+LIBS  = $(GELIB) $(GRLIB) $(GLLIB) $(XULIB) $(VALIB) $(XBLIB)
+
+# For the xml parser library libxml2
+LIBXML		=`xml2-config --libs`
+LIBXMLINC	=`xml2-config --cflags`
+
+LIBPATH =	$(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-L$(SLIBDIR)/$(PLATFORM) \
+			$(LIBXML) \
+			$(GELIB) $(GRLIB) \
+			-lFpaXgl -lXu -lXmVa -lXbae -lXmp -lXpm -lXmu \
+			-lfpa \
+			-lfpasup \
+			$(X_LIBS) $(EXTRA_FTN_LIBS) $(EXTRA_LIBS) \
+			-lfpauser -lfpa -lfpauser -lfpa \
+			$(EXTRA_FTN_LIBS) $(EXTRA_LIBS)
+
+GEHDR    = $(SLIBDIR)/include/ingred.h
+GRHDR    = $(SLIBDIR)/include/graphics.h
+XUHDR    = $(SLIBDIR)/include/Xu.h
+XGLHDR   = $(SLIBDIR)/include/FpaXgl.h
+
+INCPATH  = $(INCLUDE_PATH) \
+		   -I$(SAPPDIR)/include \
+		   -I$(SLIBDIR)/include -I$(SLIBDIR) \
+		   -I$(LIBDIR)/include -I$(LIBDIR) \
+		   $(LIBXMLINC) \
+		   $(X_INCLUDE)
+
+FPA     = $(BINDIR)/$(PLATFORM)/xfpa
+FPA_OBJ = 	alliedModelInit.o \
+			alliedModelPermissionDialog.o \
+			alliedModelSelectDialog.o \
+			contextMenus.o \
+			dataEntryDialog_attributes.o \
+			dataEntryDialog_wind.o \
+			dataEntryDialog_windBkgnd.o \
+			depiction_control.o \
+			depiction_coview.o \
+			depiction_statusDialog.o \
+			depiction_print.o \
+			depiction_timeStepPulldown.o \
+			depiction_rangeDialog.o \
+			depiction_zoom.o \
+			field_attributeDisplayDialog.o \
+			field_autoImport.o \
+			field_createDialog.o \
+			field_continuous.o \
+			field_copyPaste.o \
+			field_deleteDialog.o \
+			field_discrete.o \
+			field_label.o \
+			field_line.o \
+			field_linkChain.o \
+			field_merge.o \
+			field_point.o \
+			field_sample.o \
+			field_smoothing.o \
+			field_stateDialog.o \
+			field_updateDialog.o \
+			field_vector.o \
+			field_wind.o \
+			guidance_animationTab.o \
+			guidance_availableDialog.o \
+			guidance_legendDialog.o \
+			guidance_fieldAddDialog.o \
+			guidance_fieldAppearDialog.o \
+			guidance_fieldRemoveDialog.o \
+			guidance_listAddItemDialog.o \
+			guidance_selectDialog.o \
+			guidance_selectSampleTab.o \
+			guidance_statusDialog.o \
+			guidance_utilities.o \
+			imagery_controlDialog.o \
+			imagery_legendDisplay.o \
+			ingredCommand.o \
+			load_fieldsDialog.o \
+			load_dailyFields.o \
+			load_hourlyFields.o \
+			load_staticFields.o \
+			main.o \
+			mapOverlayDialog.o \
+			metafileToPixmap.o \
+			observer.o \
+			onlineHelp.o \
+			panel_animation.o \
+			panel_connect.o \
+			panel_control.o \
+			panel_fieldEdit.o \
+			panel_interpolate.o \
+			panel_scratchpad.o \
+			panel_timelink.o \
+			pointFcstEditDialog.o \
+			pointFcstInit.o \
+			pointFcstSelectDialog.o \
+			pointFcstTableFcns.o \
+			preferences_alliedModels.o \
+			preferences_gui.o \
+			preferences_dialog.o \
+			preferences_dialogLocation.o \
+			preferences_general.o \
+			product_graphicSelectDialog.o \
+			product_graphicPreview.o \
+			product_status.o \
+			product_statusDialog.o \
+			profile_manageDialog.o \
+			profile_saveDialog.o \
+			radarSTAT_calcFcns.o \
+			radarSTAT_dialog.o \
+			radarSTAT_readConfig.o \
+			radarStormTrendDialog.o \
+			selector_color.o \
+			selector_displayFont.o \
+			selector_gridSample.o \
+			selector_predefinedList.o \
+			selector_targetTime.o \
+			selector_timeWindow.o \
+			selector_text.o \
+			source.o \
+			text_dialog.o \
+			text_setPriorityDialog.o \
+			text_setAreasDialog.o \
+			time_lists.o \
+			time_fcns.o \
+			userLicence.o \
+			userReportDialog.o \
+			utilities.o
+
+null:
+all:		xfpa
+
+# Build xfpa program
+xfpa:		Pobjects $(FPA)
+			@	sleep 1
+			@	echo "xfpa ready"
+			@	echo 
+$(FPA):		$(FPA_OBJ) $(LIBS)
+			@	echo "Loading xfpa"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@	$${PURIFY:+purify} $${QUANTIFY:+quantify} $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(FPA_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/xfpa ]; \
+					then cd $(BINDIR); ln -s fpa.exec xfpa; fi
+
+# Link object files from appropriate sub-directories
+Pobjects:
+			@	$(SBINDIR)/platform_get object "xfpa"
+
+$(FPA_OBJ):							global.h	$(GEHDR) $(XUHDR) $(XGLHDR)
+
+alliedModelInit.o:					alliedModel.h	productStatus.h	source.h
+alliedModelPermissionDialog.o:		alliedModel.h	editor.h	source.h	observer.h
+alliedModelSelectDialog.o:			alliedModel.h	editor.h	fpapm.h		productStatus.h\
+									help.h	resourceDefines.h	depiction.h	source.h	observer.h
+contextMenus.o:						contextMenu.h	editor.h	observer.h	resourceDefines.h	depiction.h
+dataEntryDialog_attributes.o:		editor.h	help.h
+dataEntryDialog_wind.o:				wind.h	help.h	resourceDefines.h	depiction.h	editor.h
+dataEntryDialog_windBkgnd.o:		wind.h	help.h	resourceDefines.h
+depiction_control.o:				editor.h	guidance.h	depiction.h	resourceDefines.h\
+									observer.h	timelink.h
+depiction_coview.o:
+depiction_print.o:					fpapm.h
+depiction_rangeDialog.o:
+depiction_statusDialog.o:			timelink.h	help.h	resourceDefines.h
+depiction_timeStepPulldown.o:		menu.h	resourceDefines.h
+depiction_zoom.o:					depiction.h	menu.h	observer.h	contextMenu.h	iconBar.h	editor.h
+field_attributeDisplayDialog.o:		editor.h	guidance.h
+field_autoImport.o:					editor.h observer.h source.h
+field_continuous.o:					editor.h	contextMenu.h	observer.h
+field_copyPaste.o:					editor.h	observer.h	contextMenu.h
+field_createDialog.o:				selector.h	help.h	observer.h	depiction.h	editor.h
+field_deleteDialog.o:				editor.h	help.h	resourceDefines.h	observer.h	guidance.h
+field_discrete.o:					editor.h	contextMenu.h	observer.h
+field_label.o:						editor.h	selector.h	observer.h	contextMenu.h
+field_line.o:						editor.h	metafileToPixmap.h	contextMenu.h	observer.h
+field_linkChain.o:					editor.h	contextMenu.h	observer.h
+field_merge.o:						editor.h	observer.h	contextMenu.h	depiction.h	source.h
+field_point.o:						editor.h	contextMenu.h	observer.h
+field_sample.o:						editor.h	selector.h	observer.h	depiction.h	resourceDefines.h
+field_stateDialog.o:				help.h		resourceDefines.h	depiction.h	menu.h	 editor.h\
+									observer.h	imagery.h	guidance.h
+field_updateDialog.o:				editor.h	help.h	depiction.h	resourceDefines.h observer.h	source.h
+field_vector.o:						editor.h	contextMenu.h	observer.h
+field_wind.o:						editor.h	wind.h	contextMenu.h	observer.h
+guidance_animationTab.o:			guidance.h	observer.h	resourceDefines.h	selector.h
+guidance_availableDialog.o:			guidance.h	help.h observer.h	source.h
+guidance_legendDialog.o:			guidance.h	observer.h	resourceDefines.h	source.h
+guidance_fieldAddDialog.o:			guidance.h	source.h	help.h
+guidance_fieldAppearDialog.o:		guidance.h	selector.h	help.h	resourceDefines.h
+guidance_fieldRemoveDialog.o:		guidance.h	help.h		resourceDefines.h	source.h
+guidance_listAddItemDialog.o:		guidance.h	help.h
+guidance_selectDialog.o:			guidance.h	help.h		resourceDefines.h	menu.h	observer.h\
+									depiction.h	source.h
+guidance_selectSampleTab.o:			guidance.h	selector.h	help.h	observer.h	resourceDefines.h\
+									depiction.h	editor.h	source.h
+guidance_statusDialog.o:			guidance.h	help.h	resourceDefines.h observer.h	source.h
+guidance_utilities.o:				guidance.h	resourceDefines.h
+imagery_controlDialog.o:			depiction.h	editor.h	observer.h	resourceDefines.h	timelists.h\
+									selector.h	source.h	imagery.h
+imagery_legendDisplay.o:			imagery.h	observer.h
+ingredCommand.o:					depiction.h
+load_dailyFields.o:					loadFields.h	selector.h	resourceDefines.h	observer.h	source.h
+load_fieldsDialog.o:				loadFields.h	help.h	depiction.h	resourceDefines.h	editor.h
+load_hourlyFields.o:				editor.h	guidance.h	loadFields.h	selector.h	depiction.h \
+									resourceDefines.h	observer.h	source.h
+load_staticFields.o:				loadFields.h	selector.h	resourceDefines.h	observer.h	depiction.h	source.h
+main.o:								*.h
+mapOverlayDialog.o:					observer.h
+metafileToPixmap.o:					metafileToPixmap.h
+onlineHelp.o:						help.h	resourceDefines.h
+panel_animation.o:					resourceDefines.h	observer.h	depiction.h	selector.h
+panel_connect.o:					editor.h	contextMenu.h	resourceDefines.h	observer.h	depiction.h
+panel_control.o:					editor.h	menu.h	observer.h	iconBar.h	depiction.h	timelink.h	imagery.h
+panel_fieldEdit.o:					editor.h	timelink.h	resourceDefines.h	observer.h	contextMenu.h
+panel_interpolate.o:				guidance.h	productStatus.h	timelink.h	resourceDefines.h\
+									observer.h
+panel_scratchpad.o:					editor.h	selector.h	observer.h
+panel_timelink.o:					editor.h	productStatus.h	timelink.h	resourceDefines.h\
+									observer.h	guidance.h
+pointFcstEditDialog.o:				pointFcst.h	productStatus.h	help.h
+pointFcstInit.o:					pointFcst.h	productStatus.h
+pointFcstSelectDialog.o:			fpapm.h		pointFcst.h	productStatus.h	help.h	resourceDefines.h
+pointFcstTableFcns.o:				pointFcst.h
+preferences_alliedModels.o:			preferences.h	alliedModel.h	source.h
+preferences_gui.o:					preferences.h	resourceDefines.h	main_cursor_im.h	main_cursor_ularrow.h
+preferences_dialog.o:				preferences.h	alliedModel.h	help.h
+preferences_dialogLocation.o:		observer.h	preferences.h	depiction.h	editor.h	graphic.h\
+									guidance.h	pointFcst.h	radarSTAT.h
+preferences_general.o:				preferences.h
+product_graphicPreview.o:			graphic.h
+product_graphicSelectDialog.o:		fpapm.h	graphic.h	productStatus.h	help.h	resourceDefines.h
+product_status.o:					productStatus.h	resourceDefines.h
+product_statusDialog.o:				productStatus.h	resourceDefines.h	help.h
+profile_manageDialog.o:				
+profile_saveDialog.o:				observer.h
+radarSTAT_calcFcns.o:				radarSTAT.h
+radarSTAT_dialog.o:					observer.h	menu.h	depiction.h	source.h radarSTAT.h
+radarSTAT_readConfig.o:				radarSTAT.h
+radarStormTrendDialog.o:			radarSTAT.h
+selector_color.o:					selector.h	resourceDefines.h
+selector_displayFont.o:				editor.h	selector.h	resourceDefines.h
+selector_gridSample.o:				editor.h	selector.h	guidance.h
+selector_predefinedList.o:			editor.h	selector.h	guidance.h
+selector_targetTime.o:				selector.h
+selector_text.o:					selector.h	resourceDefines.h
+selector_timeWindow.o:				selector.h
+source.o:							guidance.h	source.h	editor.h	resourceDefines.h observer.h radarSTAT.h
+text_dialog.o:						fcstText.h	fpapm.h	productStatus.h	help.h	resourceDefines.h
+text_setAreasDialog.o:				fcstText.h	help.h
+text_setPriorityDialog.o:			fcstText.h	help.h
+time_fcns.o:
+time_lists.o:						timelists.h
+userLicence.o:						fallback.h	resourceDefines.h	userReport.h
+userReportDialog.o:					userReport.h	help.h	resourceDefines.h
+utilities.o:						fcstText.h	fpapm.h	resourceDefines.h
+
+global.h:	$(FPAHDR)
+		@	echo Updating global.h
+		@	touch global.h
+
+.PRECIOUS:	$(LIBS)
+libs:		.DEFAULT
+			@	cd $(LIBDIR);  $(MAKE) libs
+			@	cd $(SLIBDIR); $(MAKE) libs
+
+.c.o:
+		@	echo Compiling $<
+		@	$${C_COMPILER} $(C_OPTIONS) -DFPA $(INCPATH) -c $< 
+		@	rm -f $(PLATFORM)/$@ 
+		@	ln $@ $(PLATFORM)

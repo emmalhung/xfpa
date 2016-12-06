@@ -1,0 +1,9 @@
+memory
+FPA_user_label = "No Ice"
+FPA_auto_label = NONE
+FPA_category   = none
+
+memory
+FPA_user_label = "Ice Covered"
+FPA_auto_label = ICE
+FPA_category   = ice

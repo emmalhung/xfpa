@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.1.2. Source Code</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch03s01.html" title="3.1. Preparing to Compile FPA Source Code" /><link rel="prev" href="ch03s01s01.html" title="3.1.1. Operating System" /><link rel="next" href="ch03s01s03.html" title="3.1.3. Dependencies" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.1.2. Source Code</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s01s01.html">Prev</a> </td><th width="60%" align="center">3.1. Preparing to Compile <span class="acronym">FPA</span> Source Code</th><td width="20%" align="right"> <a accesskey="n" href="ch03s01s03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2005177"></a>3.1.2. Source Code</h3></div></div></div><p>
+Copy the <span class="acronym">FPA</span> master directory (<code class="filename">fpav8</code>) to your preferred working directory. 
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>We suggest you create a dedicated user account for <span class="acronym">FPA</span> development (i.e. fpadev); create your master directory in the home directory of this user account (/home/fpadev/fpav8); and point your <span class="acronym">FPA</span> user accounts there. (See <a href="ch03s02.html#user_profile" title="Example 3.7. Sample (bourne shell) user profile file">Example 3.7</a>.)
+</p></div><p>
+The source code is available on <a href="http://github.com" target="_top">http://github.com</a>. To install the source code use the following commands:
+</p><pre class="screen">
+apt-get install git-core  (for Ubuntu or Debian)
+	or
+yum install git-all  (for Centos or RedHat or Fedora)
+
+git clone https://github.com/emmalhung/xfpa.git fpav8
+</pre><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Users who would like to contribute to the <span class="acronym">FPA</span> project are encouraged to get a github account and create a fork of the <span class="acronym">FPA</span> source code.
+</p></div><p>
+All <span class="acronym">FPA</span> software and scripts depend on the existence of the environment variable, <code class="envar">FPA</code> which contains the full path of the <span class="acronym">FPA</span> master directory. Edit the environment profile file that corresponds with the normal login shell for the current account, and add one exported environment variable called <code class="envar">FPA</code>, which has a value equal to the full path of the <span class="acronym">FPA</span> master directory. Then add <code class="filename"><code class="envar">$FPA</code>/bin</code> and <code class="filename"><code class="envar">$FPA</code>/sbin</code> to the <code class="envar">$PATH</code> variable.
+</p><p>
+The profile file name will depend on the flavour of Linux shell you are using.  Some examples are <code class="filename">.profile</code>, <code class="filename">.csh.login</code>, <code class="filename">.vueprofile</code>, <code class="filename">.bash_profile</code>.
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2038055"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 3.1. Sample (bourne shell) development profile file</b></p><pre xmlns="http://www.w3.org/1999/xhtml" class="screen">FPA="/home/fpadev/fpav8"
+PATH="$FPA/bin:$FPA/sbin:$PATH"
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+fi
+export FPA PATH</pre></div><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>You should log out and back in again in order for these changes to take effect.</p></div><p>
+</p><p>There are several scripts (ones that are expected to run outside of a user's shell) that set <code class="envar">FPA</code> to <code class="filename">/home/fpadev/fpav8</code> you should edit these files and set <code class="envar">FPA</code>  to your preferred master directory.</p><p>
+</p><div class="itemizedlist"><ul type="disc"><li><p>$FPA/etc/d.fpaingestrc </p></li><li><p>$FPA/etc/d.fpalaunch </p></li><li><p>$FPA/etc/d.fpaschedrc </p></li></ul></div><p>
+Other scripts hardcode the fonts directory:
+</p><div class="itemizedlist"><ul type="disc"><li><p>$FPA/etc/d.fparc </p></li><li><p>$FPA/bin/putfonts </p></li><li><p>$FPA/bin/truetypefonts_[on|off] </p></li></ul></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s01s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03s01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s01s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.1.1. Operating System </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.1.3. Dependencies</td></tr></table></div></body></html>

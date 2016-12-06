@@ -1,0 +1,118 @@
+
+The files in this directory are templates for programs that can be run
+to generate data for use by the FPA.
+
+
+The following changes or additions are required to run "example_plot"
+and "example_grid" ...
+
+ - addition of a sub-directory "EXAMPLES" to the "Guidance"
+    directory in the data directory of the local setup file
+
+ - addition of "Examples  <this_directory>" to the "directories"
+    block of the local setup file
+     OR
+   addition of "export FPA_EXAMPLES;  FPA_EXAMPLES=<this_directory>"
+    to the local ".fparc" file
+
+ - addition of "EXAMPLES" to the "[guidance.model]" section of the
+    "directories" block of the local setup file
+
+ - addition of the following section to the "Sources" block of the
+    local configuration file
+
+      EXAMPLES
+          {
+          label            = <*default*> "Example Data Ingest Fields"
+          short_label      = <*default*> "Example Fields"
+          source_type      = Guidance
+
+          directory_tag    = Guidance
+          directory_path   = EXAMPLES
+
+          subsources       = None
+          }
+
+ - addition of the following section to the "Elements" block of the
+    local configuration file
+
+      example_plot
+          {
+          label            = <*default*> "Example Plot Data"
+          short_label      = <*default*> "Example Plot"
+          element_group    = Miscellaneous
+          level_type       = Surface
+          field_group      = Miscellaneous
+          alias            = ex_plot
+
+          file_id          = ep
+          precision        = .01  none
+
+          time_dependence  = Normal
+
+          field_type       = Scattered
+          wind_class       = None
+
+          editor           = None
+
+          sample           = Default
+          }
+
+ - addition of the following section to the local presentation file
+
+      field  example_plot  ALL  ALL
+
+          member  plot
+              subfield    label    LABELS
+                  colour  Black
+                  font    bold
+                  size    20
+              subfield    barb     WINDS
+                  colour  Yellow
+                  btype   wind dirfrom noval
+                  length  40.0
+              subfield    value    FLOATS
+                  offset  0 -10
+                  colour  Black
+                  font    bold
+                  size    20
+
+
+
+EXAMPLE_PLOT
+
+  The routine "example_plot" is designed to be modified and
+  loaded with a command line of:
+
+    inputmake  example_plot
+
+  The routine "example_plot" has been set up to run with a command
+  line of:
+
+    ex_plot  <local_setup>  1999:156:12  plotdata_1999:156:12
+
+  where <local_setup> is the local setup file name.
+
+  The output file "epsfc_1999:156:12" will be produced in the
+  "Guidance/EXAMPLES" directory of the data directory of
+  the local setup file.
+
+
+
+EXAMPLE_GRID
+
+  The routine "example_grid" is designed to be modified and
+  loaded with a command line of:
+
+    inputmake  example_grid
+
+  The routine "example_grid" has been set up to run with a command
+  line of:
+
+    ex_grid  <local_setup>  1999:156:12  griddata_1999:156:15
+
+  where <local_setup> is the local setup file name.
+
+  The output file "pnmsl_1999:156:15" will be produced in the
+  "Guidance/EXAMPLES" directory of the data directory of the
+  the local setup file.

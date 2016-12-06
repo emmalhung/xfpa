@@ -1,0 +1,132 @@
+#!/bin/bash
+
+# Set the platform to look for the fuser command
+PLATFORM=`platform`
+case $PLATFORM in
+	hp*)		FUSER=/usr/sbin/fuser;;
+	sun*)		FUSER=/usr/sbin/fuser;;
+	pcLinux*)	FUSER=/sbin/fuser;;
+esac
+TFUSER=/tmp/fuser
+
+# See whether the fuser command exists
+if [ ! -f $FUSER ]
+then
+	echo
+	echo "The UNIX command \"fuser\" cannot be found."
+	echo "This script attempts to determine if the given files are in use"
+	echo "by FPA software modules.  This cannot be done without \"fuser\"."
+	echo
+	echo "Would you like to proceed anyway? y/n: \c"
+
+	read ans
+	if [ "$ans" = "y" ]
+	then
+		echo "Continuing..."
+		echo
+		exit 0
+	else
+		echo "Cancelled!"
+		exit 1
+	fi
+fi
+
+# The fuser command exists, but do we have execute permission?
+if [ ! -x $FUSER ]
+then
+	if [ ! -f $TFUSER ]
+	then
+		# echo "Copying fuser"
+		cp $FUSER $TFUSER
+	fi
+	if [ ! -x $TFUSER ]
+	then
+		# echo "Changing permissions"
+		chmod 755 $TFUSER 2>/dev/null
+		if [ "$?" -gt 0 ]
+		then
+			# echo "Forcing permissions"
+			rm -f $TFUSER
+			cp $FUSER $TFUSER
+			chmod 755 $TFUSER 2>/dev/null
+		fi
+	fi
+	FUSER=$TFUSER
+fi
+
+# Double check the file list
+files=
+for file in $*
+do
+	if [ -f "$file" ]
+	then
+		files="$files $file"
+	fi
+done
+
+# Stay in this loop as long as the given files are busy
+once=
+while true
+do
+	status=clear
+
+	# Check each file
+	for file in $files
+	do
+		flist=`$FUSER $file 2>&1`
+		procs=`echo $flist | cut -s -f2- -d' '`
+		if [ "$procs" != "" ]
+		then
+			# This one is busy
+			echo
+			if [ "$status" != "busy" ]
+			then
+				echo "======================================================="
+				echo "One or more targets are busy!"
+				echo
+			fi
+			echo "File $file is in use by the following processes:"
+			plist=
+			for proc in $procs
+			do
+				pid=`echo $proc | tr -d [a-z]`
+				plist="$plist -p$pid"
+			done
+			ps -f $plist
+			status=busy
+			once=yes
+		fi
+
+	done
+
+	if [ "$status" = "busy" ]
+	then
+		echo "======================================================="
+	fi
+
+	# Carry on if the files are not busy
+	if [ "$status" != "busy" ]
+	then
+		if [ "$once" = "yes" ]
+		then
+			echo "Continuing..."
+			echo
+		fi
+		exit 0
+	fi
+
+	# Some files are busy, continue or not?
+	echo
+	echo "- Shut down the above processes \c"
+	echo "then hit [RETURN] or [ENTER] to continue"
+	echo "- or type 'q' to cancel"
+	echo "> \c"
+
+	read ans
+	if [ "$ans" = "q" ]
+	then
+		echo "Cancelled!"
+		exit 1
+	fi
+
+done

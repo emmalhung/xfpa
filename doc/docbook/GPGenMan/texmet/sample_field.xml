@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_sample_field'> <title>@sample_field</title> <titleabbrev>@sample_field</titleabbrev>
+<para>
+Display values (or text) sampled from &FPA; fields in the ASCII output file.
+</para><para>
+Complex (multi-attribute) samples are described at the end of this section.
+</para><para>
+Note that the <userinput>category_attribute</userinput> and <userinput>category</userinput> keywords can be used to sample only selected values.
+</para><para>
+Note that the <userinput>case</userinput> and <userinput>case_look_up</userinput> keywords can only be used for simple (single-attribute) samples.
+</para><para>
+Note that every sample requires a <userinput>format</userinput> keyword.
+A <userinput>direct</userinput> style format will display the value sampled from &FPA;.
+A <userinput>text</userinput> style format also requires a <userinput>look_up</userinput> keyword to define a look
+up table, and the value sampled from &FPA; is cross-referenced in this look up table
+to identify the text string to display.
+A <userinput>wind_text</userinput> format displays winds using the presentation from the directive <link linkend='tx_wind_presentation'>@wind_presentation</link>.
+A <userinput>vector_text</userinput> format displays "vector" field values using the
+presentation from the directive <link linkend='tx_vector_presentation'>@vector_presentation</link>.
+</para><para>
+It is now possible to sample information from ASCII data files. Note that all data files must be arranged row by row, with each data parameter in a separate column.
+The keywords <userinput>data_file</userinput>, <userinput>data_file_format</userinput>, <userinput>data_file_units</userinput> and <userinput>data_file_wind_units</userinput>
+provide control for this action. Note that all parameters in the data file are accessed by magic attributes, as follows:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>
+<colspec colwidth='1*'/>
+<colspec colwidth='1.4*'/><tbody>
+<row valign='top'><entry><userinput>GPGEN_ident</userinput></entry><entry>Identifier string</entry></row>
+<row valign='top'><entry><userinput>GPGEN_lat</userinput> or <userinput>GPGEN_lat_ddmm</userinput></entry><entry>Latitude location</entry></row>
+<row valign='top'><entry><userinput>GPGEN_lon</userinput> or <userinput>GPGEN_lon_ddmm</userinput></entry><entry>Longitude location</entry></row>
+<row valign='top'><entry><userinput>GPGEN_label</userinput></entry><entry>Data string</entry></row>
+<row valign='top'><entry><userinput>GPGEN_value</userinput></entry><entry>Data value</entry></row>
+<row valign='top'><entry><userinput>GPGEN_wind</userinput></entry><entry>Data wind direction (degrees true)</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+The keywords <userinput>proximity</userinput> and <userinput>proximity_units</userinput> allow sampling attributes from discrete areas, line features, link chains or scattered points within the given proximity of the sample location. Use the magic attribute <userinput>GPGEN_proximity</userinput> to display the distance from the sample location to the feature in km.
+</para><para>
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/equation.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/field_type.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for "continuous" or "vector" field samples</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>geo_file</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; Metafile for sampling geography 
+</para><para>
+(Note: this must be the name of a file in the "Maps" directory or a full path name)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/proximity.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/proximity_units.xml'/>
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_magic.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/look_up.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>case</userinput> and <userinput>case_look_up</userinput> can be specified more than once in this directive!</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/case.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/case_look_up.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Format of attribute to display
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><tbody>
+<row><entry><userinput>direct &cform;</userinput></entry><entry>use value</entry></row>
+<row><entry><userinput>text &cform;</userinput></entry><entry>use look up</entry></row>
+<row><entry><userinput>wind_text</userinput></entry><entry>for wind values</entry></row>
+<row><entry><userinput>vector_text</userinput></entry><entry>for vector values</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>(Note: &cform; is an optional string which contains a <command>printf</command> conversion format for the attribute value. 
+This conversion format is applied to the value before accessing the <userinput>look_up</userinput> table or displaying the value. 
+See <xref linkend='magic_attributes'/> for conversion formats for each attribute.)
+</para><para>(Note: use \ before all control characters in the optional &cform; conversion format)</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/time_zone.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/language.xml'/>
+
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/data_file.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/data_file_format.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/data_file_units.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/data_file_wind_units.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fit_to_map.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/source.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/valid_time.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For point samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lat.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lon.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_x.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_y.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_units.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_ident.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/grid_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/list_name.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For point or table samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_look_up.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For table samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/table_name_obj.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@sample_field
+{
+  element = pressure;
+  level   = msl;
+  units   = mb;
+  lat     = 49N;
+  lon     = 65W;
+  format  = direct %.1f mb;
+  x_off   = 0;
+  y_off   = 0;
+}</programlisting>
+Sample the msl pressure field at latitude 49 degrees North and longitude 65 degrees West. The value
+will be displayed as a real number rounded to the nearest 0.1 mb and followed by " mb" (for example,
+		"1004.6 mb"). The value will be displayed at the current location in the ASCII output file.
+</para></example>
+<example><title> </title><para>
+<programlisting>@sample_field
+{
+  table_name    = T1;
+  element       = weather_system;
+  level         = surface;
+  attribute     = clds_and_wx;
+  format        = text;
+  look_up       = weather_day;
+  case          = night;
+  case_look_up  = weather_ngt;
+  source        = interp;
+  valid_time    = 12;
+  x_off         = 40;
+  y_off         = 0;
+  justification = centre;
+}
+</programlisting>
+Sample the surface weather_system field from the interp source 12 hours after the current time for
+each site (from the <link linkend='tx_table_site'>@table_site</link> directive) of a table called "T1" 
+(from the <link linkend='tx_define_table'>@define_table</link> directive).
+Display the sampled value for the clds_and_wx attribute as text by matching the
+attribute value to the values within the look up table <filename>weather_day.tab</filename> 
+(or by matching to the attribute value to the values within the look up table <filename>weather_ngt.tab</filename> at nighttime).
+The text will be displayed 40 columns (characters) to the right of the current "anchor position" in the table, and centre
+justified. (Note that "anchor position" is set by <link linkend='tx_anchor'>@anchor</link>.)
+</para></example>
+
+<example><title>Example data_file_format</title><para>
+The <userinput>data_file_format</userinput> string is a list of recognized format types separated by the same characters used to separate the values in the ASCII data file.
+</para><para>
+The following format would indicate that the identifier string is located in the second column of the ASCII data file, the time stamp in the fourth column,  data file string in the seventh column, and that the columns are separated by white space (blanks or tabs).
+<programlisting>data_file_format = - identifier - timestamp - - label</programlisting>
+The following format would indicate that the latitude and longitude are located  in the first and second columns of the ASCII data file, a data file value in the fifth column, the &FPA; units for the value in the fourth column, and that the columns are separated by commas.
+<programlisting>data_file_format = latitude,longitude,-,units,value</programlisting>
+See <xref linkend='sample_data_file'/>.
+</para></example>
+
+</para><beginpage/><para>
+Complex (multi-attribute) samples allow the display of several sampled
+parameters within the same directive. The entire complex sample is displayed
+with respect to the <userinput>x_off</userinput> and <userinput>y_off</userinput> keywords set above.
+</para><para>
+Attribute keywords apply only to the attribute that they follow.
+</para><para>
+The position of an attribute in a complex sample can be related to the position of
+other attributes through use of the keywords <userinput>attribute_anchor</userinput>, <userinput>attribute_ref</userinput>,
+<userinput>attribute_justification</userinput>, and <userinput>attribute_vertical_just</userinput>.
+The <userinput>attribute_ref</userinput> keyword defines the starting position of the attribute with respect
+to a location about the text identified by the <userinput>attribute_anchor</userinput>
+keyword. The <userinput>attribute_justification</userinput> and <userinput>attribute_vertical_just</userinput> keywords
+define the horizontal and vertical positioning of the attribute with respect to this starting position.
+</para><para>
+The display parameters of each attribute default to the values of the <userinput>look_up</userinput>,
+<userinput>justification</userinput>, <userinput>units</userinput>, and <userinput>format</userinput> keywords set above.
+These default values can be replaced by the appropriate attribute keyword listed below, to create multi-format complex labels.
+</para><para>
+Note that the <userinput>attribute_show</userinput> keyword can be used to "turn off" the display of
+attributes, while still maintaining positioning with respect to other attributes.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_magic.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_show.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_anchor.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_ref.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_vertical_just.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for "continuous" or "vector" field samples</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>attribute_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Format of attribute to display
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><tbody>
+<row><entry><userinput>direct &cform;</userinput></entry><entry>use value</entry></row>
+<row><entry><userinput>text &cform;</userinput></entry><entry>use look up</entry></row>
+<row><entry><userinput>wind_text</userinput></entry><entry>for wind values</entry></row>
+<row><entry><userinput>vector_text</userinput></entry><entry>for vector values</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+(Note: &cform; is an optional string which contains a <command>printf</command> conversion format for the attribute value. 
+This conversion format is applied to the value before accessing the <userinput>attribute_look_up</userinput> table or displaying the value. 
+See <xref linkend='magic_attributes'/> for conversion formats for each attribute.)
+</para><para>(Note: use \ before all control characters in the optional &cform; conversion format)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_y_off.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@sample_field
+{
+  element                 = weather_system;
+  level                   = surface;
+  format                  = direct;
+  lat                     = 41.5N;
+  lon                     = 67.5W;
+
+  attribute               = cloud_top;
+  attribute_anchor        = none;
+  attribute_justification = centre;
+
+  attribute               = cloud_base;
+  attribute_anchor        = cloud_top;
+  attribute_ref           = lower_centre;
+  attribute_justification = centre;
+  attribute_vertical_just = top;
+  ..... 
+}</programlisting>
+Sample the surface weather_system field at latitude 41.5 degrees North and longitude 67.5 degrees West. 
+The attribute cloud_top will be displayed at the sample location, and centre justified.
+The top edge of the attribute cloud_base will be displayed at the lower_centre of the cloud_top attribute
+(that is, on the line directly below and at the character at the centre of the cloud_top attribute),
+and centre justified.
+(Note that if the value of the cloud_base attribute is blank, then any positions using an
+		attribute_anchor of cloud_base will be positioned at the lower_centre of the cloud_top attribute!)
+(Note that the remaining keywords from this example have not been included.)
+</para></example>
+</para></sect2>

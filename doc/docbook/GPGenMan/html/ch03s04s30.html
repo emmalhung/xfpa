@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.4.30. Format of Look Up Tables</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch03s04.html" title="3.4. Complete Description of All TexMet Directives" /><link rel="prev" href="ch03s04s29.html" title="3.4.29. @write_time" /><link rel="next" href="ch03s04s31.html" title="3.4.31. Format of Location Look Up Tables" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.4.30. Format of Look Up Tables</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s04s29.html">Prev</a> </td><th width="60%" align="center">3.4. Complete Description of All TexMet Directives</th><td width="20%" align="right"> <a accesskey="n" href="ch03s04s31.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="tx_format_look_up_tables"></a>3.4.30. Format of Look Up Tables</h3></div></div></div><p>
+Look up tables allow conversion of <span class="acronym">FPA</span> style attribute values or sampled
+values into text for display. They are accessed
+by the <strong class="userinput"><code>look_up</code></strong>, <strong class="userinput"><code>case_look_up</code></strong>, or <strong class="userinput"><code>attribute_look_up</code></strong> <strong class="userinput"><code>keywords</code></strong> in the 
+<a href="ch03s04s09.html" title="3.4.9. @label">@label</a> and <a href="ch03s04s19.html" title="3.4.19. @sample_field">@sample_field</a>
+directives. Files containing look up tables have a ".tab" suffix.
+</p><p>
+Look up tables contain lines with the following format:
+</p><pre class="programlisting">
+    <span xmlns="" class="replaceable">key(s)</span> : <span xmlns="" class="replaceable">symbol</span> : <span xmlns="" class="replaceable">text</span> : <span xmlns="" class="replaceable">presentation</span>
+    <span xmlns="" class="replaceable">key(s)</span> : <span xmlns="" class="replaceable">symbol</span> : <span xmlns="" class="replaceable">text</span> : <span xmlns="" class="replaceable">presentation</span>
+    <span xmlns="" class="replaceable">...</span></pre><p>
+where:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">key(s)</span></td><td valign="top">are one or more "value" strings separated by "white space" (such as blanks or tabs)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">symbol</span></td><td valign="top">is a graphic symbol file (not used by <span class="application">TexMet</span>)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">text </span></td><td valign="top">is text to display (quotes not required)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">presentation</span></td><td valign="top">is a named presentation (not used by <span class="application">TexMet</span>)</td></tr></tbody></table></div><p>
+</p><p>
+Note that one of symbol, text, or presentation must be non-blank, but that the others can be left blank if not required.
+Note also that lines without the <strong class="userinput"><code>:</code></strong> separators are considered comments, as are all parameters that follow the <strong class="userinput"><code>!</code></strong> or <strong class="userinput"><code>#</code></strong> characters in a line.
+</p><p>
+When an <span class="acronym">FPA</span> field is sampled by one of the directives, each of the <span xmlns="" class="replaceable">key(s)</span>
+is tested against the resultant <span class="acronym">FPA</span> "value" string. Each time one <span xmlns="" class="replaceable">key</span> is found
+within the <span class="acronym">FPA</span> "value" string, one "hit" is registered, and the "best" match
+in the look up table is defined as the first line in the file where the maximum
+number of "hits" has been found. The text from that
+line would then used by the directive for displaying the sampled value.
+Two "special" <span xmlns="" class="replaceable">key(s)</span> are allowed.
+</p><table class="simplelist" border="0" summary="Simple list"><tr><td>The <span xmlns="" class="replaceable">key</span> <strong class="userinput"><code>*missing*</code></strong> will match against blank <span class="acronym">FPA</span> "value" strings.</td></tr><tr><td>The <span xmlns="" class="replaceable">key</span> <strong class="userinput"><code>*default*</code></strong> will match against <span class="acronym">FPA</span> "value" strings that register no "hits" in the look up table.</td></tr></table><p>
+</p><p>
+The type of display to use depends on each directive.
+</p><p>
+The <a href="ch03s04s09.html" title="3.4.9. @label">@label</a> <a href="ch03s04s19.html" title="3.4.19. @sample_field">@sample_field</a>
+directives display the values sampled at each location with a text string
+given by text (if the keyword <strong class="userinput"><code>format</code></strong> is set to text).
+</p><p>
+The order of the lines in the look up table is extremely important. Lines
+with the most complicated "value" strings should always be included before
+lines with simpler "value" strings, and all lines with a single <span xmlns="" class="replaceable">key</span> should be
+included before lines with two <span xmlns="" class="replaceable">key(s)</span>, and lines with two <span xmlns="" class="replaceable">key(s)</span> before lines
+with three <span xmlns="" class="replaceable">key(s)</span>, and so on.
+</p><p>
+When several lines register the same number of "hits", the line that appears
+first in the look up table will be used. For example, the <span xmlns="" class="replaceable">key(s)</span> for rain "R"
+and light rainshowers "RW-" will both register one "hit" against the <span class="acronym">FPA</span>
+"value" string for reduced visibility in light rainshowers "1-3RW-", since
+each <span xmlns="" class="replaceable">key</span> is found within the <span class="acronym">FPA</span> "value" string. However, if the line for rain
+appears in the look up table before the line for light rainshowers, then the
+line for rain will ALWAYS be chosen first, and any special presentation for
+light rainshowers will never be accessed. Therefore, complicated "value"
+strings should always be listed before simple "value" strings.
+</p><p>
+The number of <span xmlns="" class="replaceable">key(s)</span> in a line does not affect the choice of a "best" match.
+One "hit" on a line with one <span xmlns="" class="replaceable">key</span> is equivalent to one "hit" on a line with
+several <span xmlns="" class="replaceable">key(s)</span>. For example, a line containing the <span xmlns="" class="replaceable">key(s)</span> for rain and snow
+"R S" and a line containing the <span xmlns="" class="replaceable">key</span> for rain alone "R" will both register one
+"hit" against the <span class="acronym">FPA</span> "value" string for light rain "R-". However, if the line
+containing the <span xmlns="" class="replaceable">key(s)</span> for rain and snow appears in the look up table before
+the line containing the <span xmlns="" class="replaceable">key</span> for rain alone, then the line containing the <span xmlns="" class="replaceable">key(s)</span>
+for rain and snow will ALWAYS be chosen first, and the corresponding presentation for mixed rain and snow will be used. Therefore, lines containing fewer <span xmlns="" class="replaceable">key(s)</span> should always be listed first.
+</p><p>
+Care must also be taken to ensure that the combination of look up table
+<span xmlns="" class="replaceable">key(s)</span> and <span class="acronym">FPA</span> "value" strings does not register incorrect "hits". For
+example, a line containing the <span xmlns="" class="replaceable">key</span> for snow "S" will register a "hit" against
+the <span class="acronym">FPA</span> "value" string for risk of a thunderstorm "RISK TRW". In this case,
+the "hit" occurs because of the "S" in "RISK"! It may be necessary to
+constrain the use of some "value" strings within the <span class="acronym">FPA</span> to avoid generating
+unwanted matches in the <span class="application">TexMet</span> application.
+</p><p>
+The following example of a look up table and examples of matches with
+<span class="acronym">FPA</span> "value" strings is based on look up tables that are no longer used, but
+the basic principles are still applicable.
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3475947"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 3.40. Look up file format</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">
+TRW          : thunder : Thunderstorm   : trw1
+RW           : rain    : Showers        : shower1
+R            : rain    : Rain           : rain1
+S            : snow    : Snow           : snow1
+RSF          : rs_mix  : Rain and Snow  : mix1
+RISK TRW     : thunder : Risk Thunder   : trw2
+RW RISK TRW+ : rain    : Rain / Thunder : rain2
+RW RISK TRW  : rain    : Rain / Thunder : rain2
+</pre><p xmlns="http://www.w3.org/1999/xhtml">
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3399896"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 3.41. FPA "value" string to match "RW" </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+One "hit" will be registered by <span xmlns="" class="replaceable">key(s)</span> in lines 2,3,5,7,8. Therefore, line 2 will be used.
+</p><p xmlns="http://www.w3.org/1999/xhtml">If text is required, the text string "Showers" will be displayed.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3443320"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 3.42. FPA "value" string to match "RW-F"</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+One "hit" will be registered by <span xmlns="" class="replaceable">key(s)</span> in lines 2,3,7,8, and two hits by <span xmlns="" class="replaceable">key(s)</span> in line 5. Therefore, line 5 will be used.
+</p><p xmlns="http://www.w3.org/1999/xhtml">If text is required, the text string "Rain and Snow" will be displayed.
+</p><p xmlns="http://www.w3.org/1999/xhtml">(Note: an additional line with the <span xmlns="" class="replaceable">key(s)</span> "R F" or "RW F" may be necessary.)
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3390228"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 3.43. FPA "value" string to match "RISK TRW+"</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+One "hit" will be registered by <span xmlns="" class="replaceable">key(s)</span> in lines 1,2,3,4, and two hits by <span xmlns="" class="replaceable">key(s)</span> in lines 5,6,7,8. Therefore, line 5 will be used.
+</p><p xmlns="http://www.w3.org/1999/xhtml">If text is required, the text string "Rain and Snow" will be displayed.
+</p><p xmlns="http://www.w3.org/1999/xhtml">(Note: line 5 should be relocated at the end of the look up table to avoid this error!) 
+</p></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s04s29.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03s04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s04s31.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.4.29. @write_time </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.4.31. Format of Location Look Up Tables</td></tr></table></div></body></html>

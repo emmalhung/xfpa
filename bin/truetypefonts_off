@@ -1,0 +1,20 @@
+#!/bin/bash
+# Remove reference to fpasymbol.ttf on machines where 
+# TrueType fonts are not supported.
+FONTS_DIR="$FPA/fonts"
+
+## You must be root to do the following 
+cur_usr=`whoami`
+if [ "$cur_usr" != "root" ] 
+then
+	echo "*** You are running this script as: $cur_usr ***"
+	echo "*** You must be root to run this script  ***"
+	exit 1
+fi
+
+cd $FONTS_DIR
+cp fonts.alias.old fonts.alias
+cp fonts.dir.old fonts.dir
+rm fonts.scale
+chown bin:bin fonts.*
+exit 1

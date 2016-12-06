@@ -1,0 +1,55 @@
+! Set a filter ...
+@filter	{ .1 }
+
+! Display the pressure contours at regular intervals ...
+@contours
+	{
+	element    = pressure;
+	level      = msl;
+	units      = mb;
+	min        =  800;
+	max        = 1200;
+	base       = 1000;
+	interval   =    8;
+	pattern    = simple;
+	line_width = 0.015;
+	line_style = solid;
+	outline    = CMYK  0 0 0 100;
+	fill       = none;
+	}
+
+! Unset filter ...
+@filter	{ .001 }
+
+! Display the Labelled Lows and Highs ... using pre-defined symbols
+@label
+	{
+	element            = pressure;
+	level              = msl;
+	category_attribute = hilo_type;
+	category           = high low;
+	mark               = none;
+	mark_scale         = 100;
+	symbol_scale       = 60;
+	text_size          = 0.20;
+	outline            = none;
+	fill               = X11 black;
+	justification      = centre;
+
+	attribute          = hilo_type;
+	attribute_anchor   = none;
+	attribute_ref      = lower_centre;
+	attribute_format   = symbol;
+	attribute_look_up  = hilo;
+	attribute_x_off    = -0.04;
+	attribute_y_off    = -0.14;
+	attribute_fill     = X11 lightgray;
+
+	attribute          = hilo_type;
+	attribute_anchor   = none;
+	attribute_ref      = lower_centre;
+	attribute_format   = symbol;
+	attribute_look_up  = hilo;
+	attribute_x_off    =  0.00;
+	attribute_y_off    = -0.10;
+	}

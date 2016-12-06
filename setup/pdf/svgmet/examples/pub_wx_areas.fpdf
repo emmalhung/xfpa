@@ -1,0 +1,182 @@
+! Define some named presentations and symbol fill displays ...
+@presentation
+	{
+	name             = trw1;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	interior_fill    = CMYK 45 78 21 78;
+	symbol_fill_name = cross_fill;
+	pattern          = scallop;
+	pattern_width    = .050;
+	pattern_length   = .300;
+	}
+@symbol_fill_display
+	{
+	symbol_fill_name = cross_fill;
+	symbol           = cross;
+	symbol_scale     = 40;
+	symbol_rotation  =  0;
+	x_off            =  0.0;
+	y_off            =  0.0;
+	x_repeat         =  0.2;
+	y_repeat         =  0.2;
+	x_shift          =  0.1;
+	y_shift          =  0.0;
+	line_width       = 0.005;
+	outline          = CMYK 0 100 100 0;
+	fill             = none;
+	}
+@presentation
+	{
+	name             = frz_rain1;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	interior_fill    = CMYK 45 78 21 78;
+	symbol_fill_name = circle_fill;
+	pattern          = scallop;
+	pattern_width    = .050;
+	pattern_length   = .300;
+	}
+@presentation
+	{
+	name             = shower1;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	interior_fill    = CMYK 75 44 0 0;
+	symbol_fill_name = circle_fill;
+	pattern          = scallop;
+	pattern_width    = .050;
+	pattern_length   = .300;
+	}
+@presentation
+	{
+	name             = rain1;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	!interior_fill    = CMYK 75 44 0 0;
+	interior_fill    = CMYK 60 20 0 0;
+	symbol_fill_name = circle_fill;
+	pattern          = scallop;
+	pattern_width    = .050;
+	pattern_length   = .300;
+	}
+@symbol_fill_display
+	{
+	symbol_fill_name = circle_fill;
+	symbol           = circle;
+	symbol_scale     = 40;
+	symbol_rotation  =  0;
+	x_off            =  0.0;
+	y_off            =  0.0;
+	x_repeat         =  0.2;
+	y_repeat         =  0.2;
+	x_shift          =  0.1;
+	y_shift          =  0.0;
+	line_width       = 0.005;
+	outline          = CMYK 100 100 0 0;
+	fill             = none;
+	}
+@presentation
+	{
+	name             = mix1;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	interior_fill    = CMYK 74 22 14 74;
+	symbol_fill_name = star_fill;
+	pattern          = scallop;
+	pattern_width    = .050;
+	pattern_length   = .300;
+	}
+@presentation
+	{
+	name             = snow1;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	interior_fill    = CMYK 1 0 1 9;
+	symbol_fill_name = star_fill;
+	pattern          = scallop;
+	pattern_width    = .050;
+	pattern_length   = .300;
+	}
+@symbol_fill_display
+	{
+	symbol_fill_name = star_fill;
+	symbol           = star;
+	symbol_scale     = 50;
+	symbol_rotation  =  0;
+	x_off            =  0.1;
+	y_off            =  0.1;
+	x_repeat         =  0.2;
+	y_repeat         =  0.2;
+	x_shift          =  0.1;
+	y_shift          =  0.0;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	fill             = none;
+	}
+@presentation
+	{
+	name             = fog1;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	interior_fill    = CMYK 0 0 100 0;
+	symbol_fill_name = dash_fill;
+	pattern          = scallop;
+	pattern_width    = .050;
+	pattern_length   = .300;
+	}
+@presentation
+	{
+	name             = cloud1;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	interior_fill    = CMYK 26 26 0 26;
+	symbol_fill_name = dash_fill;
+	pattern          = scallop;
+	pattern_width    = .075;
+	pattern_length   = .500;
+	}
+@presentation
+	{
+	name             = cloud2;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	interior_fill    = CMYK 26 26 0 26;
+	symbol_fill_name = dash_fill;
+	pattern          = scallop;
+	pattern_width    = .075;
+	pattern_length   = .400;
+	}
+@symbol_fill_display
+	{
+	symbol_fill_name = dash_fill;
+	symbol           = dash;
+	symbol_scale     = 40;
+	symbol_rotation  =  0;
+	x_off            =  0.1;
+	y_off            =  0.1;
+	x_repeat         =  0.2;
+	y_repeat         =  0.2;
+	x_shift          =  0.1;
+	y_shift          =  0.0;
+	line_width       = 0.005;
+	outline          = CMYK 0 0 0 100;
+	fill             = none;
+	}
+@presentation
+	{
+	name             = clear1;
+	outline          = none;
+	interior_fill    = none;
+	symbol_fill_name = none;
+	}
+
+! Display areas ... using a look_up table for presentations
+@areas
+	{
+	element   = weather_system;
+	level     = surface;
+	category  = All;
+	attribute = clds_and_wx;
+	look_up   = weather_day;
+	}

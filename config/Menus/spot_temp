@@ -1,0 +1,39 @@
+# Entry menu description file for spot_temp
+
+menu_title           = Spot Temperatures and Dewpoints
+geometry             =  -650 -300 700 600
+label_display_height =  1
+value_display_height =  3
+
+panel "Spot Temps"
+	{
+	# Station ID
+	text
+		{
+		attribute_id  = stn
+		label         = "Stn ID"
+		position      = 20 20
+		ncolumns      = 25
+		nrows         = 1
+		}
+
+	# Temp
+	text
+		{
+		attribute_id  = temp
+		label         = "Temp"
+		position      = 20 50
+		ncolumns      = 25
+		nrows         = 1
+		}
+
+	# Dewpoint
+	text
+		{
+		attribute_id  = td
+		label         = "Td"
+		position      = 20 80
+		ncolumns      = 25
+		nrows         = 1
+		}
+	}

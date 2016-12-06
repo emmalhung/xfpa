@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'>
+<entry colname='key'><para><userinput>fit_to_map_ref</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Reference position to fit label to current map
+</para><para>One of: <userinput>none</userinput> <userinput>upper</userinput> <userinput>lower</userinput> <userinput>left</userinput> <userinput>right</userinput>
+</para><para>(default is <userinput>none</userinput>)
+</para><para>(Note: this parameter usually indicates the position of the label <userinput>mark</userinput> wrt the rest of the label)</para></entry></row>

@@ -1,0 +1,322 @@
+! Set version ... this line must be first!
+@version { psmet7.0 }
+
+! Set verbose mode for diagnostic output ...
+@verbose { no }
+
+! Set the display units used in all following directives ...
+!  "type" can be  inches  cm  mm  picas  points
+@display_units { type = inches }
+
+! Set the page size ...
+@size { width = 11.00; height = 8.50 }
+
+! Open the output file ...
+@file_name
+	{
+	dir  = <default>;
+				! Options <default> <home>
+	name = <pdf>;
+				! Options <pdf> <year> <month> <day> <julian> <hour>
+	}
+
+! Set anchor for the middle of the page ...
+@anchor { ref = absolute; x = 0.00; y = 0.00 }
+
+! Define a table ...
+@define_table
+	{
+	table_name = T1;
+	type       = column;
+	x_off      = 0.0;
+	y_off      = 0.0;
+	}
+
+! Draw filled table outlines ... NOT anchored to table
+@box
+	{
+	width         =  8.00;
+	height        =  6.00;
+	outline       = CMYK  0  0 0 100;
+	interior_fill = CMYK 55 75 0  15;
+	line_width    =  0.05;
+	}
+@box
+	{
+	width         =  7.40;
+	height        =  4.20;
+	x_off         =  0.00;
+	y_off         = -0.60;
+	outline       = CMYK 70 90  0 20;
+	interior_fill = CMYK  0 25 80  0;
+	line_width    =  0.03;
+	}
+
+! Set presentation for all text in headers ...
+@presentation
+	{
+	line_width    =  0.005;
+	outline       = CMYK 0  0  0 100;
+	fill          = CMYK 0 25 80   0;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	text_size     = 0.3;
+	justification = left;
+	char_space    =   0;
+	word_space    = 100;
+	line_space    = 100;
+	}
+
+! Display the forecast valid time ... NOT anchored to table
+@write_time
+	{
+	type          = issue;
+	time          = LMT;
+	format        = Forecast issued %A, %B %d
+	text_size     = 0.4;
+	justification = centre;
+	x_off         = 0.00;
+	y_off         = 2.40;
+	}
+
+! Display the column headers ... NOT anchored to table
+@text { string = Tonight;  y_off = 1.7; x_off = -0.1; justification = centre }
+@text { string = Tomorrow; y_off = 1.7; x_off =  2.3; justification = centre }
+
+! Set anchor for the top left corner of the table ...
+@anchor { ref = absolute; x = -3.70; y = 1.50 }
+
+! Set presentation for all text in table ...
+@presentation
+	{
+	outline       = CMYK 70 90 0 20;
+	fill          = CMYK 70 90 0 20;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	text_size     = 0.3;
+	justification = left;
+	char_space    =   0;
+	word_space    = 100;
+	line_space    = 100;
+	}
+
+! Define the table sites ... anchored to table
+@table_site
+	{
+	table_name    = T1;
+	site_label    = Halifax;			!EDIT!
+	lat           = 44:40N;				!EDIT!
+	lon           = 63:35W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -0.60;
+	justification = left;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = St John's, Nfld;	!EDIT!
+	lat           = 47:37N;				!EDIT!
+	lon           = 52:45W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -1.20;
+	justification = left;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = Montreal;			!EDIT!
+	lat           = 45:28N;				!EDIT!
+	lon           = 73:45W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -1.80;
+	justification = left;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = Quebec City;		!EDIT!
+	lat           = 46:48N;				!EDIT!
+	lon           = 71:24W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -2.40;
+	justification = left;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = Boston;				!EDIT!
+	lat           = 42:22N;				!EDIT!
+	lon           = 71:02W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -3.00;
+	justification = left;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = New York;			!EDIT!
+	lat           = 40:39N;				!EDIT!
+	lon           = 73:47W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -3.60;
+	justification = left;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = Atlanta;			!EDIT!
+	lat           = 33:39N;				!EDIT!
+	lon           = 84:25W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -4.20;
+	justification = left;
+	}
+
+! Define lines for table ...
+@define_line
+	{
+	line_name = horizontal_line
+	line      =  0.0  0.0  7.4  0.0
+	}
+@define_line
+	{
+	line_name = vertical_line
+	line      =  0.0  0.0  0.0  0.6
+	}
+
+! Draw vertical table lines ... anchored to table site y_off
+@draw_table_line
+	{
+	line_name  = vertical_line;
+	outline    = CMYK 70 90 0 20;
+	line_width = 0.03;
+	table_name = T1;
+	last_site  = yes;
+	x_off      = 2.40;
+	y_off      = 0.00;
+	pattern    = simple;
+	}
+@draw_table_line
+	{
+	line_name  = vertical_line;
+	outline    = CMYK 70 90 0 20;
+	line_width = 0.03;
+	table_name = T1;
+	last_site  = yes;
+	x_off      = 4.80;
+	y_off      = 0.00;
+	pattern    = simple;
+	}
+
+! Draw horizontal table lines ... anchored to table site y_off
+@draw_table_line
+	{
+	line_name  = horizontal_line;
+	table_name = T1;
+	last_site  = no;
+	outline    = CMYK 70 90 0 20;
+	line_width = 0.03;
+	x_off      = 0.00;
+	y_off      = 0.00;
+	pattern    = simple;
+	}
+
+! Fill the table with sampled weather for tonight
+!  ... anchored to table site y_off
+@sample_field
+	{
+	table_name    = T1;
+	element       = weather_system;
+	level         = surface;
+	attribute     = clds_and_wx;
+	format        = symbol;
+	look_up       = weather_day;
+	case          = night;
+	case_look_up  = weather_ngt;
+	symbol_scale  = 35;
+	source        = interp;
+	valid_time    = 01/04;
+	x_off         = 3.00;
+	y_off         = 0.30;
+	justification = centre;
+	}
+
+! Fill the table with sampled minimum temperature for tonight
+!  ... anchored to table site y_off
+@sample_field
+	{
+	table_name    = T1;
+	element       = min_temp;
+	level         = surface;
+	units         = degreesC;
+	format        = direct %.0f C;
+	source        = interp;
+	valid_time    = 01/10;
+	x_off         = 4.30;
+	y_off         = 0.15;
+	justification = right;
+	}
+
+! Fill the table with sampled weather for tomorrow
+!  ... anchored to table site y_off
+@sample_field
+	{
+	table_name    = T1;
+	element       = weather_system;
+	level         = surface;
+	attribute     = clds_and_wx;
+	format        = symbol;
+	look_up       = weather_day;
+	case          = night;
+	case_look_up  = weather_ngt;
+	symbol_scale  = 35;
+	source        = interp;
+	valid_time    = 01/20;
+	x_off         = 5.40;
+	y_off         = 0.30;
+	justification = centre;
+	}
+
+! Fill the table with sampled maximum temperature for tomorrow
+!  ... anchored to table site y_off
+@sample_field
+	{
+	table_name    = T1;
+	element       = max_temp;
+	level         = surface;
+	units         = degreesC;
+	format        = direct %.0f C;
+	source        = interp;
+	valid_time    = 01/19;
+	x_off         = 6.70;
+	y_off         = 0.15;
+	justification = right;
+	}
+
+! Close the file ...
+@file_close { }
+
+! Display the result using "display" or "evince" ...
+@process
+	{
+	cd <default>;
+	!display <pdf>.ps;
+	evince <pdf>.ps;
+	}

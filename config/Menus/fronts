@@ -1,0 +1,34 @@
+# Entry menu description file for fronts
+
+menu_title           = Fronts and Lines
+geometry             =  -650 -300 700 600
+label_display_height =  1
+value_display_height =  3
+
+panel "Fronts"
+{
+	# Front intensity
+	scrolled_list
+	{
+		attribute_id = front_intensity
+		label        = "Intensity"
+		position     = 20 20
+		default      = 50
+		limit_type   = string
+		ncolumns     = 25
+		none_sub     = ""
+		items        =	"weak" \
+						"moderate" \
+						"strong"
+	}
+
+	# Front speed
+	text
+	{
+		attribute_id  = front_speed
+		label         = "Speed"
+		position      = 20 50
+		ncolumns      = 25
+		nrows         = 1
+	}
+}

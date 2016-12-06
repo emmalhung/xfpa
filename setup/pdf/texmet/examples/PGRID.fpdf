@@ -1,0 +1,87 @@
+! Set version number ... must be the first line!
+@version { texmet7.0 }
+
+! Set verbose mode for diagnostic output
+@verbose { no }
+
+! Set output file name ...
+@file_name
+	{
+	dir  = <default>;							! Directory
+				! Options <default> <home>
+	name = <pdf>_<year>:<month>:<day>:<hour>;	! Filename
+				! Options <pdf> <year> <month> <day> <julian> <hour>
+	}
+
+! Set the size of the output file ...
+@size
+	{
+	columns = 80;
+	rows    = 30;
+	}
+
+! Set the source and valid time ...
+@set_source
+	{
+	source     = depict;
+	valid_time = 1/00
+	}
+
+! Write some header information ...
+@write_time
+	{
+	type          = issue;
+	time          = GMT;
+	format        = Pressure (in mb) forecast on %a, %b %d, %y;
+	x_off         = 0;
+	y_off         = 0;
+	justification = left;
+	}
+@write_time
+	{
+	type          = valid;
+	time          = GMT;
+	format        = Data Valid %A, %B %d, %Y  Time\=%H:00;
+	x_off         = 0;
+	y_off         = 1;
+	justification = left;
+	}
+
+! Define the map ....
+@include { pgrid_map_setup }
+
+! Set the default presentation ...
+@presentation
+	{
+	justification = left
+	}
+
+! Define a grid for sampling data ...
+@define_sample_grid
+	{
+	grid_name      = sample_grid;
+	map_x_begin    = 3500;
+	map_x_end      = 4750;
+	map_x_interval =  250;
+	map_y_begin    = 1000;
+	map_y_end      = 3000;
+	map_y_interval =  200;
+	map_units      = 1000;
+	x_shift        =    8;
+	y_shift        =    1;
+	}
+
+! Display a table with sampled grid point data ...
+@sample_field
+	{
+	element       = pressure;
+	level         = msl;
+	units         = mb;
+	format        = direct %6.1f,;
+	source        = depict;
+	valid_time    = 1/00;
+	justification = left;
+	grid_name     = sample_grid;
+	x_off         = 0;
+	y_off         = 5;
+	}

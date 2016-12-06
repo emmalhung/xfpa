@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.5.71. Format of Wind Look Up Tables</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s05.html" title="2.5. Complete Description of All PSMet/SVGMet Directives" /><link rel="prev" href="ch02s05s70.html" title="2.5.70. Format of Vertical Look Up Tables" /><link rel="next" href="ch02s05s72.html" title="2.5.72. Format of Vector Look Up Tables" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5.71. Format of Wind Look Up Tables</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s05s70.html">Prev</a> </td><th width="60%" align="center">2.5. Complete Description of All PSMet/SVGMet Directives</th><td width="20%" align="right"> <a accesskey="n" href="ch02s05s72.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ps_format_of_wind_look_up_tables"></a>2.5.71. Format of Wind Look Up Tables</h3></div></div></div><p>
+Wind look up tables control the format for displaying wind direction,
+speed, and gusts as symbols or text, rather than as wind barbs. They are
+accessed by the <strong class="userinput"><code>wind_look_up</code></strong> keyword in the 
+<a href="ch02s05s66.html" title="2.5.66. @wind_presentation">@wind_presentation</a>
+directive. Files containing wind look up tables have a ".wtab" suffix.
+</p><p>
+Wind look up tables contain four sections. One section must specify the
+"calm" condition, since this may override both the direction and speed
+displays. The other sections specify the "direction" or "speed" or "gust"
+formats to use when displaying winds. Note that all wind directions are in
+degrees true, and all wind speeds gusts are converted to the units given by
+the "units" keyword of the sampling or display directive.
+</p><p>
+Note that all parameters that follow the <strong class="userinput"><code>!</code></strong> or <strong class="userinput"><code>#</code></strong> characters in a line are considered comments.
+</p><p>
+Note that the examples are taken from wind look up tables in the directories
+<code class="filename"><code class="envar">$FPA</code>/setup/pdf/psmet/examples</code> or <code class="filename"><code class="envar">$FPA</code>/setup/pdf/svgmet/examples</code>.
+</p><p>
+The "calm" section can include the following three formats:
+</p><pre class="programlisting">
+calm    value
+	<span xmlns="" class="replaceable">min_spd max_spd round factor sdigits</span>
+	end
+
+calm    text
+	<span xmlns="" class="replaceable">min_spd max_spd text</span>
+	end
+
+calm    symbol
+	<span xmlns="" class="replaceable">min_spd max_spd symbol</span>
+	end
+</pre><p>
+where:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_spd</span></td><td valign="top">is the minimum wind speed for "calm" conditions</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_spd</span></td><td valign="top">is the maximum wind speed for "calm" conditions</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">round</span></td><td valign="top">is the value to round the wind speed to the nearest multiple of</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">factor</span></td><td valign="top">is the power of 10 to divide the wind speed by</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">sdigits</span></td><td valign="top"><p>is the significant digits of the wind speed to display
+</p><table class="simplelist" border="0" summary="Simple list"><tr><td>0 - for the nearest integer</td></tr><tr><td>&gt;0 - for the nearest integer this long (with leading zeroes)</td></tr><tr><td>&lt;0 - for a real number with digits after the decimal place</td></tr></table></td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">text</span></td><td valign="top">is the text to display (in double quotes)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">symbol</span></td><td valign="top">is the symbol file to use</td></tr></tbody></table></div><p>
+</p><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3545489"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.108.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">calm value
+    0 5 1 0 0
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind speeds from 0 to 5 are rounded to the nearest whole value, and all significant digits are displayed.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3545503"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.109.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">calm text
+    0 5 "CALM"
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind speeds from 0 to 5 are displayed using the text string "CALM".
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3545516"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.110.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">calm symbol
+    0 5 wnd_calm
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind speeds from 0 to 5 are displayed using the symbol "wnd_calm".
+</p></div><p>
+</p><p>
+The "direction" section can include the following four formats:
+</p><pre class="programlisting">
+direction value
+    <span xmlns="" class="replaceable">min_spd max_spd round factor sdigits</span>
+    end
+
+direction text
+    <span xmlns="" class="replaceable">min_dir max_dir text</span>
+    <span xmlns="" class="replaceable">min_dir max_dir text</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+
+direction symbol uniform
+    <span xmlns="" class="replaceable">min_dir max_dir symbol rotate</span>
+    <span xmlns="" class="replaceable">min_dir max_dir symbol rotate</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+
+direction symbol proportional
+    <span xmlns="" class="replaceable">min_spd max_spd symbol min_scale max_scale</span>
+    <span xmlns="" class="replaceable">min_spd max_spd symbol min_scale max_scale</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+</pre><p>
+where:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_spd</span></td><td valign="top">is the minimum wind speed</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_spd</span></td><td valign="top">is the maximum wind speed</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">round</span></td><td valign="top">is the value to round wind direction to the nearest multiple of</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">factor</span></td><td valign="top">is the power of 10 to divide the wind direction by</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">sdigits</span></td><td valign="top"><p>is the significant digits of the wind direction to display
+    </p><table class="simplelist" border="0" summary="Simple list"><tr><td>0 - for the nearest integer</td></tr><tr><td>&gt;0 - for the nearest integer this long (with leading zeroes)</td></tr><tr><td>&lt;0 - for a real number with digits after the decimal place</td></tr></table></td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_dir</span></td><td valign="top">is the minimum wind direction angle</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_dir</span></td><td valign="top">is the maximum wind direction angle</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">text</span></td><td valign="top">is the text to display (in double quotes)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">symbol</span></td><td valign="top">is the symbol file to use</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">rotate</span></td><td valign="top">is the wind direction for displaying the "symbol" (Note: -1 will use the actual wind direction)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_scale</span></td><td valign="top">is a scale factor wrt original symbol (in percent) for min_spd</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_scale</span></td><td valign="top">is a scale factor wrt original symbol (in percent) for max_spd</td></tr></tbody></table></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3471027"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.111.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">direction value
+    5 999 10 0 3
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind directions for wind speeds from 5 to 999 are rounded to the nearest 10
+degrees, and displayed as the nearest integer 3 digits long. (That is, a wind
+direction of "53" degrees would be rounded to "50", and displayed as "050".)
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3471042"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.112.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting"> direction text
+    337.5  22.5 "N"
+     22.5  67.5 "NE"
+     67.5 112.5 "E"
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind directions from 337.5 to 22.5 degrees are displayed using the text string
+"N", wind directions from 22.5 to 67.5 degrees are displayed using the text
+string "NE", and wind directions from 67.5 to 112.5 degrees are displayed
+using the text string "E".
+</p><p xmlns="http://www.w3.org/1999/xhtml">
+Note that a wind direction of -22.5 is equivalent to a wind direction of 337.5!
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3471059"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.113.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">direction symbol uniform
+    22.5  67.5 wnd_arrow 45
+    67.5 112.5 wnd_arrow 90
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind directions from 22.5 to 67.5 degrees are displayed using the symbol
+"wnd_arrow" rotated to 45 degrees, and wind directions from 67.5 to 112.5
+degrees are displayed using the symbol "wnd_arrow" rotated to 90 degrees.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3532698"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.114.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">direction symbol uniform
+    0 360 wnd_arrow -1
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind directions from 0 to 360 degrees are displayed using the symbol "wnd_arrow" rotated to the actual wind direction.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3532711"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.115.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">direction symbol proportional
+     5  50 wnd_arrow  20 200
+    50 100 wnd_arrow 200 500
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind directions for wind speeds from 5 to 50 are displayed using the symbol
+"wnd_arrow" rotated to the actual wind direction and scaled to between 20%
+and 200% of the original size of the graphic (depending on the wind speed),
+and wind directions for wind speeds from 50 to 100 degrees are displayed
+using the symbol "wnd_arrow" rotated to the actual wind direction and scaled
+to between 200% and 500% of the original size of the graphic (depending on
+the wind speed).
+</p></div><p>
+</p><p>
+The "speed" section can include the following three formats:
+</p><pre class="programlisting">
+speed value
+    <span xmlns="" class="replaceable">min_spd max_spd round factor sdigits</span>
+    end
+
+speed text
+    <span xmlns="" class="replaceable">min_spd max_spd text</span>
+    <span xmlns="" class="replaceable">min_spd max_spd text</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+
+speed symbol
+    <span xmlns="" class="replaceable">min_spd max_spd symbol</span>
+    <span xmlns="" class="replaceable">min_spd max_spd symbol</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+</pre><p>
+where:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_spd</span></td><td valign="top">is the minimum wind speed</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_spd</span></td><td valign="top">is the maximum wind speed</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">round</span></td><td valign="top">is the value to round the wind speed to the nearest multiple of</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">factor </span></td><td valign="top">is the power of 10 to divide the wind speed by</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">sdigits</span></td><td valign="top"><p>is the significant digits of the wind speed to display
+    </p><table class="simplelist" border="0" summary="Simple list"><tr><td>0 - for the nearest integer</td></tr><tr><td>&gt;0 - for the nearest integer this long (with leading zeroes)</td></tr><tr><td>&lt;0 - for a real number with digits after the decimal place</td></tr></table></td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">text</span></td><td valign="top">is the text to display (in double quotes)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">symbol</span></td><td valign="top">is the symbol file to use</td></tr></tbody></table></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3589959"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.116.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">speed value
+    5 999 5 0 0
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind speeds from 5 to 999 are rounded to the nearest 5, and the nearest integer wind speed is displayed.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3581609"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.117.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">speed text
+     5 15 "LIGHT"
+    15 30 "STRONG"
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind speeds from 5 to 15 are displayed using the text string "LIGHT", and
+wind speeds from 15 to 30 are displayed using the text string "STRONG".
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3581623"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.118.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">speed symbol
+     5 15 wnd_lgt
+    15 30 wnd_str
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind speeds from 5 to 15 are displayed using the symbol "wnd_lgt", and
+wind speeds from 15 to 30 are displayed using the symbol "wnd_str".
+</p></div><p>
+</p><p>
+The "gust" section can include the following three formats:
+</p><pre class="programlisting">
+gust value
+    <span xmlns="" class="replaceable">min_gst max_gst round factor sdigits</span>
+    end
+
+gust text
+    <span xmlns="" class="replaceable">min_gst max_gst text</span>
+    <span xmlns="" class="replaceable">min_gst max_gst text</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+
+gust symbol
+    <span xmlns="" class="replaceable">min_gst max_gst symbol</span>
+    <span xmlns="" class="replaceable">min_gst max_gst symbol</span>
+    <span xmlns="" class="replaceable">...</span>
+    end
+</pre><p>
+where:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">min_gst</span></td><td valign="top">is the minimum wind gust</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">max_gst</span></td><td valign="top">is the maximum wind gust</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">round</span></td><td valign="top">is the value to round the wind gust to the nearest multiple of</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">factor</span></td><td valign="top">is the power of 10 to divide the wind gust by</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">sdigits</span></td><td valign="top"><p>is the significant digits of the wind gust to display
+    </p><table class="simplelist" border="0" summary="Simple list"><tr><td>0 - for the nearest integer</td></tr><tr><td>&gt;0 - for the nearest integer this long (with leading zeroes)</td></tr><tr><td>&lt;0 - for a real number with digits after the decimal place</td></tr></table></td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">text</span></td><td valign="top">is the text to display (in double quotes)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">symbol</span></td><td valign="top">is the symbol file to use</td></tr></tbody></table></div><p>
+
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3586742"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.119.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">gust value
+    5 999 5 0 0
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind gusts from 5 to 999 are rounded to the nearest 5, and the nearest integer wind gust is displayed.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3586756"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.120.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">gust text
+    15  30 "STRONG GUSTS"
+    30 999 "VERY STRONG GUSTS"
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind gusts from 15 to 30 are displayed using the text string "STRONG GUSTS", and wind gusts from 30 to 999 are displayed using the text string "VERY STRONG GUSTS".
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3586770"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.121.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">gust symbol
+    15  30 wnd_str
+    30 999 wnd_gst
+    end</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Wind gusts from 15 to 30 are displayed using the symbol "wnd_str", and wind gusts from 30 to 999 are displayed using the symbol "wnd_gst".
+</p></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s05s70.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s05s72.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.5.70. Format of Vertical Look Up Tables </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.5.72. Format of Vector Look Up Tables</td></tr></table></div></body></html>

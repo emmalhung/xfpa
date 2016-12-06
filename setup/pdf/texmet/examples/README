@@ -1,0 +1,47 @@
+Example Tabular Products from TexMet
+
+This directory contains some examples of tabular products which can
+be generated from the TexMet version of the Graphics Product Generator.
+The controlling "pdf" files are given in upper-case letters.  A short
+description of each product is given below.
+
+These examples are meant to be run from the FPA demo database, but
+they can be modified to run from a local database if desired.  The
+user should make a copy of the required "pdf" files in the local
+"texmet" directory, and modify lines followed by the comment ...
+
+  ! EDIT
+
+The graphics products are ...
+
+HOURLYWINDS
+
+  Tabular list of hourly temperatures (in degrees C) and winds
+  (direction in 10s of degrees and speed in knots) for selected
+  locations.
+
+HOURLYWX
+
+  Tabular list of hourly weather for a selected location.  (This
+  might be used as guidance for an aviation site forecast.)
+
+PGRID and PGRID_TABLE
+
+  Mean sea level pressure (in mb) sampled over an evenly spaced grid
+  of locations.  PGRID_TABLE uses an older table format to do this.
+
+PLIST
+
+  Mean sea level pressure (in mb) and winds (direction in 10s of
+  degrees and speed in knots) sampled from a list of locations.
+  Note that latitude/longitude locations, map coordinates and
+  location lookup table sites are all allowed.
+
+COMMENTS_AVIATION_2
+
+  Text files used as templates for inclusion in the "Comments" section
+  of the PSMet or CorMet graphics product AVIATION_2.
+
+
+These examples may be used as templates for local tabular products.
+Good Luck.

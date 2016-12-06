@@ -1,0 +1,31 @@
+
+DIRS = Xmp Xu XmVa Xgl Xbae graphics ingred
+
+
+# Make what?
+null:
+
+
+all lib libs:	syslib
+
+# Make each library:
+syslib slib:
+		@	for dir in $(DIRS); do \
+				if [ -d $${dir} ]; then \
+					cd $${dir}; \
+					$(MAKE) all; \
+					cd ..; \
+				fi; \
+			done
+		@	echo FPA system libraries ready
+		@	echo
+
+
+header headers defs:
+		@	for dir in $(DIRS); do \
+				if [ -d $${dir} ]; then \
+					cd $${dir}; \
+					$(MAKE) header; \
+					cd ..; \
+				fi; \
+			done

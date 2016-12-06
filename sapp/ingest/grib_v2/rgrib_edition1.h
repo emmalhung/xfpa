@@ -1,0 +1,553 @@
+/***********************************************************************
+*                                                                      *
+*   r g r i b _ e d i t i o n 1 . h                                    *
+*                                                                      *
+*   GRIB structure definitions and default grid definitions for        *
+*   routines to decode GRIB Edition 1 format files (include file)      *
+*                                                                      *
+*     Version 4 (c) Copyright 1996 Environment Canada (AES)            *
+*     Version 6 (c) Copyright 2002 Environment Canada (MSC)            *
+*     Version 7 (c) Copyright 2006 Environment Canada                  *
+*     Version 8 (c) Copyright 2011 Environment Canada                  *
+*                                                                      *
+*   This file is part of the Forecast Production Assistant (FPA).      *
+*   The FPA is free software: you can redistribute it and/or modify it *
+*   under the terms of the GNU General Public License as published by  *
+*   the Free Software Foundation, either version 3 of the License, or  *
+*   any later version.                                                 *
+*                                                                      *
+*   The FPA is distributed in the hope that it will be useful, but     *
+*   WITHOUT ANY WARRANTY; without even the implied warranty of         *
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.               *
+*   See the GNU General Public License for more details.               *
+*                                                                      *
+*   You should have received a copy of the GNU General Public License  *
+*   along with the FPA.  If not, see <http://www.gnu.org/licenses/>.   *
+*                                                                      *
+***********************************************************************/
+
+/* See if already included */
+#ifndef RGRIBED1_DEFS
+#define RGRIBED1_DEFS
+
+
+/* We need FPA definitions */
+#include <fpa.h>
+#include "rgrib.h"
+
+/***********************************************************************
+*                                                                      *
+*  Define keywords and structures for GRIB data format                 *
+*                                                                      *
+***********************************************************************/
+
+#define GRIB_HEADER				"GRIB"
+#define GRIB_HEADER_LENGTH		4
+#define GRIB_TRAILER			"7777"
+#define GRIB_TRAILER_LENGTH		4
+
+/* Maximum latitude and longitude in GRIB data */
+#define	MaxLatitude    90000
+#define MaxLongitude   360000
+
+/* Conversion factors for GRIB data */
+#define GribToDegrees    1000.0
+#define GribToMeters     1000.0
+#define GribToPolePos    1000.0
+
+/* Default units for FPA map projections */
+#define MetersPerUnit    1000.0
+
+/* Set definitions for length of data blocks */
+/*  ... Product Definition Block (PDB_LENGTH bytes decoded) */
+#define PDB_LENGTH				28
+#define PDB_MAX_LENGTH			250
+
+/*  ... Grid Description Block (GDB_..._LENGTH bytes decoded) */
+#define GDB_LATLON_LENGTH			28
+#define GDB_GAUSS_LENGTH			28
+#define GDB_PSTEREO_LENGTH			28
+#define GDB_LAMBERTC_LENGTH			34
+#define GDB_ROTATED_LATLON_LENGTH	42
+#define GDB_MAX_LENGTH				250
+
+/*  ... Bit Map Block (BMB_LENGTH bytes decoded from header) */
+/*                    (Data length is variable)              */
+#define BMB_LENGTH		6
+
+/*  ... Binary Data Block (BDH_LENGTH bytes decoded from header) */
+/*                        (Data length is variable)              */
+#define BDH_LENGTH		11
+
+
+/* Set definitions for types of recognized GRIB grids */
+#define LATLON_GRID				0
+#define MERCATOR_GRID			1
+#define GNOMIC_GRID				2
+#define LAMBERTC_GRID			3
+#define GAUSS_GRID				4
+#define PSTEREO_GRID			5
+#define ROTATED_LATLON_GRID		10
+#define ROTATED_LAMBERTC_GRID	13
+#define ROTATED_GAUSS_GRID		14
+#define STRETCHED_LATLON_GRID	20
+#define STRETCHED_GAUSS_GRID	24
+
+
+/* Set list of recognized GRIB grid labels */
+typedef struct
+	{
+	int			ident;
+	STRING		label;
+	} GRIBGRID_LABELS;
+
+static const GRIBGRID_LABELS GRIBGridLabels[] =
+	{
+		{ LATLON_GRID,				"Latitude/Longitude Grid" },
+		{ MERCATOR_GRID,			"Mercator Projection" },
+		{ GNOMIC_GRID,				"Gnomic Projection" },
+		{ LAMBERTC_GRID,			"Lambert Conformal Projection" },
+		{ GAUSS_GRID,				"Gaussian Grid" },
+		{ PSTEREO_GRID,				"Polar Stereographic Projection" },
+		{ ROTATED_LATLON_GRID,		"Rotated Latitude/Longitude Grid" },
+		{ ROTATED_LAMBERTC_GRID,	"Rotated (Oblique) Lambert Conformal" },
+		{ ROTATED_GAUSS_GRID,		"Rotated Gaussian Grid" },
+		{ STRETCHED_LATLON_GRID,	"Stretched Latitude/Longitude Grid" },
+		{ STRETCHED_GAUSS_GRID,		"Stretched Gaussian Grid" },
+	};
+
+/* Set number of recognized GRIB grids */
+static const int NumGRIBGridLabels =
+	(int) (sizeof(GRIBGridLabels) / sizeof(GRIBGRID_LABELS));
+
+
+/* Define grib data structures */
+typedef unsigned char Octet;
+
+typedef struct
+	{
+	Octet octet1;
+	Octet octet2;
+	} Double_octet;
+
+typedef struct
+	{
+	Octet octet1;
+	Octet octet2;
+	Octet octet3;
+	} Triple_octet;
+
+typedef struct
+	{
+	Octet octet1;
+	Octet octet2;
+	Octet octet3;
+	Octet octet4;
+	} Quad_octet;
+
+
+
+/**** GRIB FILE FORMAT ****/
+
+/* GRID BLOCK INCLUSION AND BITMAP FLAG ... Bit locations */
+/** NB: THESE FLAGS CONCUR WITH WMO FM 92-VIII ***/
+#define E1_block_flag_grid_desc 7
+#define E1_block_flag_bit_map   6
+
+/* CENTRE OF PROJECTION FLAG ... Bit locations */
+#define E1_proj_flag_pole       7
+#define E1_proj_flag_bipolar    6
+
+/* SCANNING DIRECTION FLAG ... Bit locations */
+#define E1_scan_flag_west       7
+#define E1_scan_flag_north      6
+#define E1_scan_flag_hsweep     5
+
+/* BITMAP FLAG ... bit locations */
+#define E1_bitmap_flag_1        7
+#define E1_bitmap_flag_2        6
+#define E1_bitmap_flag_3        5
+#define E1_bitmap_flag_4        4
+#define E1_bitmap_flag_5        3
+#define E1_bitmap_flag_6        2
+#define E1_bitmap_flag_7        1
+#define E1_bitmap_flag_8        0
+
+/**** INDICATOR BLOCK ****/
+typedef struct
+	{
+	long int length;	/* 1-3: LENGTH OF BLOCK IN OCTETS */
+	short int edition;	/* 4: EDITION OF GRIB SPECIFICATION */
+
+	} E1_Indicator_block;
+
+
+/*** PRODUCT DEFINITION BLOCK ***/
+typedef struct
+	{
+	long int length;		/* 1-3: LENGTH OF BLOCK IN OCTETS */
+	short int edition;		/* 4: EDITION OF GRIB SPECIFICATION */
+	short int centre_id;	/* 5: WMO NUMBER OF ORIGIN OF FILE */
+	short int model_id;		/* 6: ORIGINATING CENTRE SPECIFIC ID */
+	short int grid_defn;	/* 7: GRID CATALOGUE NUMBER */
+
+	struct					/* 8: OPTIONAL BLOCKS FLAGS */
+		{
+		short int grid_description;	/* block 2 */
+		short int bit_map;			/* block 3 */
+		} block_flags;
+
+	short int parameter;	/* 9: NUMERIC ID CODE OF DATA TYPE */
+
+	struct				/* LAYER DESCRIPTOR: */
+		{
+		short int type;		/* 10: CODED TYPE	*/
+		short int top;		/* 11: TYPE DEPENDANT	*/
+		short int bottom;	/* 12: INFORMATION	*/
+		} layer;
+
+	struct				/* FORECAST DESCRIPTOR:	*/
+		{
+		struct			/* REFERENCE TIME OF DATA: */
+			{
+			short int year;		/* 13: YEAR OF CENTURY (2 DIGIT) */
+			short int month;	/* 14: NUMERIC MONTH OF YEAR */
+			short int day;		/* 15: DAY OF MONTH */
+			short int hour;		/* 16: HOUR OF 24 HOUR DAY */
+			short int minute;	/* 17: MINUTE OF HOUR */
+			} reference;
+
+		short int units;		/* 18: CODED TIME UNITS */
+		short int time1;		/* 19: FORECAST PERIOD, ANALYSIS IS 0 */
+		short int time2;		/* 20: INTERVAL */
+		short int range_type;	/* 21: CODED RANGE TYPE */
+		int nb_averaged;		/* 22-23: NUMBER AVERAGED */
+		short int nb_missing;	/* 24: UNUSED EVEN BYTE FILLER */
+		short int century;		/* 25: century of initial time */
+		short int reserved;		/* 26: reserved - set to 0 */
+		long int factor_d;		/* 27-28: decimal scale factor */
+
+		} forecast;
+
+	} E1_Product_definition_data;
+
+
+/* CENTRE OF PROJECTION FLAGS */
+typedef struct
+	{
+	short int pole;			/* 0: PROJECTION CENTRE IS NORTH POLE */
+							/* 1: PROJECTION CENTRE IS SOUTH POLE */
+	short int bipolar;		/* 0: ONE PROJECTION CENTRE */
+							/* 1: BI-POLAR PROJECTION   */
+	} proj_centre_ints;
+
+
+/* DATA ORDERING FLAGS */
+typedef struct
+	{
+	short int west;			/* 0: LEFTWARD (POSITIVE TO EAST)  */
+							/* 1: RIGHTWARD (POSITIVE TO WEST) */
+	short int north;		/* 0: DOWNWARD (POSITIVE TO SOUTH) */
+							/* 1: UPWARD (POSITIVE TO NORTH)   */
+	short int horz_sweep;	/* 0: LEFT-RIGHT (LONGITUDE) INCREMENTS FIRST */
+							/* 1: UP-DOWN (LATITUDE) INCREMENTS FIRST     */
+	} scan_mode_ints;
+
+
+/*** GRID DESCRIPTION BLOCK ***/
+typedef struct
+	{
+	long int length;		/* 1-3: LENGTH OF BLOCK IN OCTETS */
+	short int nv;			/* 4: UNUSED BITS AT END OF BLOCK */
+	short int pv_or_pl;		/* 5: QUASI-REGULAR GRID LOCATION */
+	short int dat_rep;		/* 6: CODED TYPE */
+
+	union		/** GRID DEFINITIONS **/
+		{
+
+		struct	/* REGULAR LATITUDE/LONGITUDE */
+			{
+			int Ni;				/* 7-8: POINTS ALONG LATITUDES (COLUMNS) */
+			int Nj;				/* 9-10: POINTS ALONG MERIDIANS (ROWS) */
+			long int La1;		/* 11-13: LATITUDE OF ORIGIN */
+			long int Lo1;		/* 14-16: LONGITUDE OF ORIGIN */
+			short int resltn;	/* 17: RESOLUTION AND COMPONENT FLAG */
+			long int La2;		/* 18-20: LATITUDE OF EXTREME */
+			long int Lo2;		/* 21-23: LONGITUDE OF EXTREME */
+			int Di;				/* 24-25: DIRECTION INCREMENT */
+			int Dj;				/* 26-27: DIRECTION INCREMENT */
+			scan_mode_ints scan_mode;	/* 28: DATA ORDERING FLAGS */
+			short int thin_mode;		/* THINNED ROW OR COLUMN     */
+										/*  INDICATOR (0,1,2)        */
+			short int *thin_pts;		/* NUMBER OF POINTS ON EACH  */
+										/*  OF Nj ROWS OR Ni COLUMNS */
+			short int pole_extra;		/* ADDITIONAL DATUM FOR POLE */
+										/*  INDICATOR (-1,0,1)       */
+			short int meridian_extra;	/* ADDITIONAL DATA FOR LAST  */
+										/*  MERIDIAN INDICATOR (0,1) */
+			} reg_ll;
+
+		struct	/* GAUSSIAN LATITUDE/LONGITUDE */
+			{
+			int Ni;				/* 7-8: POINTS ALONG LATITUDES (COLUMNS) */
+			int Nj;				/* 9-10: POINTS ALONG MERIDIANS (ROWS) */
+			long int La1;		/* 11-13: LATITUDE OF ORIGIN */
+			long int Lo1;		/* 14-16: LONGITUDE OF ORIGIN */
+			short int resltn;	/* 17: RESOLUTION AND COMPONENT FLAG */
+			long int La2;		/* 18-20: LATITUDE OF EXTREME */
+			long int Lo2;		/* 21-23: LONGITUDE OF EXTREME */
+			int Di;				/* 24-25: DIRECTION INCREMENT */
+			int N;				/* 26-27: PARALLELS - EQUATOR TO POLE */
+			scan_mode_ints scan_mode;	/* 28: DATA ORDERING FLAGS */
+			short int thin_mode;		/* THINNED ROW INDICATOR (0,1) */
+			short int *thin_pts;		/* NUMBER OF POINTS ON EACH OF */
+										/*  Nj ROWS                    */
+			} guas_ll;
+
+		struct	/* POLAR STEREOGRAPHIC */
+			{
+			int Nx;				/* 7-8: POINTS ALONG X-AXIS (COLUMNS) */
+			int Ny;				/* 9-10: POINTS ALONG Y-AXIS (ROWS) */
+			long int La1;		/* 11-13: LATITUDE OF ORIGIN */
+			long int Lo1;		/* 14-16: LONGITUDE OF ORIGIN */
+			short int compnt;	/* 17: COMPONENT FLAG */
+			long int LoV;		/* 18-20: ORIENTATION LONGITUDE */
+			long int Dx;		/* 21-23: X INCREMENT METERS @ 60N */
+			long int Dy;		/* 24-26: Y INCREMENT METERS @ 60N */
+			proj_centre_ints proj_centre;	/* 27: PROJECTION CENTRE FLAGS */
+			scan_mode_ints scan_mode;		/* 28: DATA ORDERING FLAGS */
+			long int pole_i;		/* GRID CO-ORDINATES OF */
+			long int pole_j;		/*  POLE OF PROJECTION */
+			} ps;
+
+		struct	/* LAMBERT CONFORMAL (tangent or secant) */
+			{
+			int Nx;				/* 7-8: POINTS ALONG X-AXIS (COLUMNS) */
+			int Ny;				/* 9-10: POINTS ALONG Y-AXIS (ROWS) */
+			long int La1;		/* 11-13: LATITUDE OF ORIGIN */
+			long int Lo1;		/* 14-16: LONGITUDE OF ORIGIN */
+			short int compnt;	/* 17: COMPONENT FLAG */
+			long int LoV;		/* 18-20: ORIENTATION LONGITUDE */
+			long int Dx;		/* 21-23: X INCREMENT METERS @ 60N */
+			long int Dy;		/* 24-26: Y INCREMENT METERS @ 60N */
+			proj_centre_ints proj_centre;	/* 27: PROJECTION CENTRE FLAGS */
+			scan_mode_ints scan_mode;		/* 28: DATA ORDERING FLAGS */
+			long int Latin1;	/* 29-31: LATITUDE OF SECANT (CLOSEST TO P) */
+			long int Latin2;	/* 32-34: LATITUDE OF SECANT (FURTHEST TO P) */
+			} lambert;
+
+		struct	/* ROTATED LATITUDE/LONGITUDE */
+			{
+			int Ni;				/* 7-8: POINTS ALONG LATITUDES (COLUMNS) */
+			int Nj;				/* 9-10: POINTS ALONG MERIDIANS (ROWS) */
+			long int La1;		/* 11-13: LATITUDE OF ORIGIN */
+			long int Lo1;		/* 14-16: LONGITUDE OF ORIGIN */
+			short int resltn;	/* 17: RESOLUTION AND COMPONENT FLAG */
+			long int La2;		/* 18-20: LATITUDE OF EXTREME */
+			long int Lo2;		/* 21-23: LONGITUDE OF EXTREME */
+			int Di;				/* 24-25: DIRECTION INCREMENT */
+			int Dj;				/* 26-27: DIRECTION INCREMENT */
+			scan_mode_ints scan_mode;	/* 28: DATA ORDERING FLAGS */
+			long int LaP;		/* 33-35: LATITUDE OF SOUTHERN POLE */
+			long int LoP;		/* 36-38: LONGITUDE OF SOUTHERN POLE */
+			double AngR;		/* 39-42: ANGLE OF ROTATION */
+			short int thin_mode;		/* THINNED ROW OR COLUMN     */
+										/*  INDICATOR (0,1,2)        */
+			short int *thin_pts;		/* NUMBER OF POINTS ON EACH  */
+										/*  OF Nj ROWS OR Ni COLUMNS */
+			short int pole_extra;		/* ADDITIONAL DATUM FOR POLE */
+										/*  INDICATOR (-1,0,1)       */
+			short int meridian_extra;	/* ADDITIONAL DATA FOR LAST  */
+										/*  MERIDIAN INDICATOR (0,1) */
+			} rotate_ll;
+
+		} defn;
+
+	} E1_Grid_description_data;
+
+
+/*** BITMAP BLOCK HEADER ***/
+typedef struct
+	{
+	long int length;	/* 1-3: LENGTH OF BLOCK IN OCTETS */
+	Octet    unused;	/* 4:   NUMBER OF UNUSED BITS AT END */
+	int      ntable;	/* 5-6: PRE-DEFINED BITMAP (if non 0) */
+	} E1_Bit_map_header;
+
+
+/*** BINARY DATA BLOCK HEADER ***/
+#define E1_shift_r4(a) ( (a)>>4 )
+#define E1_mask_l4(a)  ( (a)&15 )
+typedef struct
+	{
+	long int length;		/* 1-3: LENGTH OF BLOCK IN OCTETS */
+
+	Octet flags;			/* 4: BIT-MODE FLAGS                    */
+	Octet unused;			/*     AND NUMBER OF UNUSED BITS AT END */
+
+	int scale;				/* 5-6: SCALE FACTOR */
+	double reference;		/* 7-10: MIN DATA VALUE (IBM 360 CODED) */
+	short int bits_per_val;	/* 11: NUMBER OF BITS FOR EACH VALUE */
+
+} E1_Binary_data_header;
+
+
+/*** GRIB DATA ***/
+typedef struct
+	{
+	E1_Indicator_block			Isb;
+	E1_Product_definition_data	Pdd;
+	E1_Grid_description_data	Gdd;
+	unsigned int				NumGrid;
+	E1_Bit_map_header			Bmhd;
+	unsigned int				NumBit;
+	LOGICAL						*PBit;
+	LOGICAL						PoleBit;
+	E1_Binary_data_header		Bdhd;
+	unsigned int				NumRaw;
+	float						*PRaw;
+	float						PoleDatum;
+	int							Nii, Njj;
+	int							Dii, Djj;
+	float						*PData;
+
+	} GRIBFIELD;
+
+
+/***********************************************************************
+*                                                                      *
+*  Initialize defined constants for rgrib_edition1 routines            *
+*                                                                      *
+***********************************************************************/
+
+#ifdef RGRIBED1_MAIN
+
+
+/**** PREDEFINED LATITUDE/LONGITUDE GRIDS ****/
+
+
+/* Define default latitude-longitude grid definition structure */
+typedef struct
+	{
+	short int grid_defn;		/* GRID CATALOGUE NUMBER */
+
+	short int dat_rep;			/* 6: CODED TYPE */
+	int Ni;						/* 7-8: POINTS ALONG LATITUDES */
+	int Nj;						/* 9-10: POINTS ALONG MERIDIANS */
+	long int La1;				/* 11-13: LATITUDE OF ORIGIN */
+	long int Lo1;				/* 14-16: LONGITUDE OF ORIGIN */
+	short int resltn;			/* 17: RESOLUTION AND COMPONENT FLAG */
+	long int La2;				/* 18-20: LATITUDE OF EXTREME */
+	long int Lo2;				/* 21-23: LONGITUDE OF EXTREME */
+	int Di;						/* 24-25: LATITUDNAL DIRECTION INCREMENT */
+	int Dj;						/* 26-27: LONGITUDNAL DIRECTION INCREMENT */
+	scan_mode_ints scan_mode;	/* 28: DATA ORDERING FLAGS */
+								/* 29-32: RESERVED */
+	short int pole_extra;		/* FLAG INDICATING EXTRA DATUM FOR POLE */
+
+	} E1_ll_grid_predefinition;
+
+
+/* Define default latitude-longitude grid definitions */
+static const E1_ll_grid_predefinition E1_predef_ll_grids[] =
+	{
+		/*** INTERNATIONAL EXCHANGE ***/
+
+		/** 5 deg x 2.5 deg RESOLUTION 1/2 HEMISHERES **/
+
+		{21, 0, 37,36,  0,0, 128, 90000,180000, 5000,2500, {0,1,0},  1}, /*NE*/
+		{22, 0, 37,36,  0,180000, 128, 90000,0, 5000,2500, {0,1,0},  1}, /*NW*/
+		{23, 0, 37,36, -90000,0, 128, 0,180000, 5000,2500, {0,1,0}, -1}, /*SE*/
+		{24, 0, 37,36, -90000,180000, 128, 0,0, 5000,2500, {0,1,0}, -1}, /*SW*/
+
+		/** 5 deg x 5 deg RESOLUTION HEMISHERES **/
+
+		{25, 0, 72,18,  0,0, 128, 90000,355000, 5000,5000, {0,1,0},  1}, /*N*/
+		{26, 0, 72,18, -90000,0, 128, 0,355000, 5000,5000, {0,1,0}, -1}, /*S*/
+
+		/** 2 deg x 2 deg RESOLUTION 1/2 HEMISHERES **/
+
+		{61, 0, 91,45,  0,0, 128, 90000,180000, 2000,2000, {0,1,0},  1}, /*NE*/
+		{62, 0, 91,45,  0,180000, 128, 90000,0, 2000,2000, {0,1,0},  1}, /*NW*/
+		{63, 0, 91,45, -90000,0, 128, 0,180000, 2000,2000, {0,1,0}, -1}, /*SE*/
+		{64, 0, 91,45, -90000,180000, 128, 0,0, 2000,2000, {0,1,0}, -1}, /*SW*/
+
+		/*** NMC HEMISHERES - 2.5 deg RESOLUTION **/
+
+		{29, 0, 145,37,  0,0, 128, 90000,360000, 2500,2500, {0,1,0}, 0}, /*N*/
+		{30, 0, 145,37, -90000,0, 128, 0,360000, 2500,2500, {0,1,0}, 0}, /*S*/
+
+		/*** NMC HEMISHERES - 2 deg RESOLUTION **/
+
+		{33, 0, 181,46,  0,0, 128, 90000,360000, 2000,2000, {0,1,0}, 0}, /*N*/
+		{34, 0, 181,46, -90000,0, 128, 0,360000, 2000,2000, {0,1,0}, 0}, /*S*/
+	};
+
+
+/* Set number of default latitude-longitude grid definitions */
+static const int E1_nb_predef_ll_grids =
+	(int) (sizeof(E1_predef_ll_grids) / sizeof(E1_ll_grid_predefinition));
+
+
+
+/**** PREDEFINED POLAR STEREOGRAPHIC GRIDS ****/
+
+/* Define default polar stereographic grid definition structure */
+typedef struct
+	{
+	short int grid_defn;		/* GRID CATALOGUE NUMBER */
+
+	short int dat_rep;			/* 6: CODED TYPE */
+	int Nx;						/* 7-8: POINTS ALONG X-AXIS */
+	int Ny;						/* 9-10: POINTS ALONG Y-AXIS */
+	long int La1;				/* 11-13: LATITUDE OF ORIGIN */
+	long int Lo1;				/* 14-16: LONGITUDE OF ORIGIN */
+	short int compnt;			/* 17: COMPONENT FLAG */
+	long int LoV;				/* 18-20: ORIENTATION LONGITUDE */
+	long int Dx;				/* 21-23: X INCREMENT METERS @ 60N */
+	long int Dy;				/* 24-26: Y INCREMENT METERS @ 60N */
+	proj_centre_ints proj_centre;	/* 27: PROJECTION CENTRE FLAGS */
+	scan_mode_ints scan_mode;		/* 28: DATA ORDERING FLAGS */
+								/* 29-32: RESERVED */
+
+	long int pole_i;			/* GRID CO-ORDINATES OF POLE */
+	long int pole_j;			/*  OF PROJECTION            */
+
+	} E1_ps_grid_predefinition;
+
+
+/* Define default polar stereographic grid definitions   */
+/*  Note that grid co-ordinates of pole of projection    */
+/*  are one less than given in NMC documents ... since   */
+/*  C counts from [0][0] while FORTRAN counts from (1,1) */
+static const E1_ps_grid_predefinition E1_predef_ps_grids[] =
+	{
+		/*** NMC POLAR STEREOGRAPHIC ***/
+
+		{  5, 5,  53,57, -99999,-999999, 136, -105000, 190500,190500, {0},
+			{0,1,0}, 26000, 48000},
+		{  6, 5,  53,45, -99999,-999999, 136, -105000, 190500,190500, {0},
+			{0,1,0}, 26000, 48000},
+		{ 27, 5,  65,65, -99999,-999999, 136,  -80000, 381000,381000, {0},
+			{0,1,0}, 32000, 32000},
+		{ 28, 5,  65,65, -99999,-999999, 136,  100000, 381000,381000, {1},
+			{0,1,0}, 32000, 32000},
+		{100, 5,  83,83, -99999,-999999, 136, -105000,  91452, 91452, {0},
+			{0,1,0}, 39500, 87500},
+		{101, 5, 113,91, -99999,-999999, 136, -105000,  91452, 91452, {0},
+			{0,1,0}, 57500, 91500},
+		{103, 5,  65,56, -99999,-999999, 136, -105000,  91452, 91452, {0},
+			{0,1,0}, 24500, 83500},
+
+	};
+
+
+/* Set number of default polar stereographic grid definitions */
+static const int E1_nb_predef_ps_grids =
+	(int) (sizeof(E1_predef_ps_grids) / sizeof(E1_ps_grid_predefinition));
+
+
+#endif
+
+/* Now it has been included */
+#endif

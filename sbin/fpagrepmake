@@ -1,0 +1,24 @@
+#!/bin/bash
+
+. .fpaenvrc
+
+cd $FPA
+
+opt=
+if [ "$1" = "-i" ]
+then
+	opt="$opt -i"
+	shift
+fi
+
+echo
+echo =======================================
+echo Searching $FPA Makefiles
+echo =======================================
+
+for pattern in "$@"
+do
+	echo
+	echo Pattern: $pattern
+	eval grep $opt \"$pattern\" */Makefile.fpa */*/Makefile.fpa */*/*/Makefile.fpa \| more
+done

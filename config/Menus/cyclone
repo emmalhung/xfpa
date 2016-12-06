@@ -1,0 +1,81 @@
+# Entry menu description file for tropical cyclone labels
+
+menu_title             = Tropical Cyclone Identification
+geometry               =  -650 -300 700 290
+label_display_height   =  0
+value_display_height   =  0
+category_display_width =  0
+
+panel "Cyclone"
+{
+	# Cyclone type
+	scrolled_list
+	{
+		attribute_id = cyclone_type
+		position     = 20 20
+		limit_type   = string
+		default      = depression
+		ncolumns     = 12
+		nvisible     = 5
+		items        =	"depression" \
+						"storm" \
+						"hurricane" \
+						"typhoon" \
+						"cyclone"
+	}
+
+	# Cyclone name
+	text
+	{
+		attribute_id  = cyclone_name
+		position      = 20 50
+		default       = ""
+		ncolumns      = 25
+		nrows         = 1
+	}
+
+	# Optional Low Label
+	scrolled_list
+	{
+		attribute_id = hilo_name
+		label        = Optional Low Label
+		position     = 40 90
+		default      = none
+		ncolumns     = 2
+		none_sub     = ""
+		items        = none 1 2 3 4 5 6 7 8 9
+	}
+	clear_btn
+	{
+		label             = << Reset
+		position          = 280 90
+		attribute_id_list = hilo_name
+	}
+
+	# Cyclone central pressure
+	display_attribute
+	{
+		attribute_id  = EVAL_spval
+		label         = Pressure
+		position      = 20 120
+		ncolumns      = 5
+		nrows         = 1
+	}
+	spinbox
+	{
+		attribute_id         = cyclone_cpres
+		position             = 180 120
+		value_max            = 1050
+		value_min            =  950
+		increment            =    1
+		default_to_attribute = EVAL_spval
+		ncolumns             = 5
+		nrows                = 1
+	}
+	clear_btn
+	{
+		label             = << Reset
+		position          = 555 123
+		attribute_id_list = cyclone_cpres
+	}
+}

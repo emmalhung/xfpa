@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE glossary PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<glossary id='terminology'> <title>Terminology</title>
+
+<glossdiv><title>A</title>
+<glossentry id='g_active_depiction'><glossterm>Active Depiction</glossterm>
+<glossdef>
+<indexterm><primary>depiction</primary><secondary>active</secondary></indexterm>
+<para>
+The current depiction you are working on.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_allied_models'><glossterm>Allied Models</glossterm>
+<glossdef>
+<indexterm><primary>allied model</primary></indexterm>
+<para>
+Models which are run by the FPA, using data from the FPA, to generate other data (for example, ocean wave models).
+The models are usually developed elsewhere.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_attributes'><glossterm>Attributes</glossterm>
+<glossdef>
+<indexterm><primary>attribute</primary></indexterm>
+<para>
+Attributes are optional parameters which can be attached to any feature in an FPA field.
+For example, a minimum in the pressure field could be identified as a tropical storm, with a name and a radius of influence.
+Similarly, one could indicate the speed and intensity of a cold front.
+</para><para>
+The ability to assign attributes to areas is particularly useful in aviation forecasting.
+For example, forecasters can attach attributes to a cloud area such as cloud amount, cloud type, base of cloud, top of cloud, surface weather and visibility, icing or any other desired parameter.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>B</title>
+<glossentry id='g_backup'><glossterm>Backup</glossterm>
+<glossdef>
+<indexterm><primary>backup</primary></indexterm>
+<para>
+A backup is created every time you save a field.
+The number of days for which the field is retained is set in the setup file (contact System Administrator to change this).
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>C</title>
+<glossentry id='g_coview'><glossterm>CoView</glossterm>
+<glossdef>
+<indexterm><primary>coview</primary></indexterm>
+<para>
+This feature lets you view the workspace of another depiction.
+(You cannot edit the other depiction, however.) Use this to share your work with other FPA users.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>D</title>
+<glossentry id='g_daily_fields'><glossterm>Daily Fields</glossterm>
+<glossdef>
+<indexterm><primary>field</primary><secondary>daily</secondary></indexterm>
+<para>
+Daily fields are fields which are valid for a specific day (for example, maximum temperature).
+The time range of a daily field may span more than one depiction.
+See <xref linkend='the_fpa_model'/>.
+Daily fields are not interpolated, but can be edited.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_depiction'><glossterm>Depiction</glossterm>
+<glossdef>
+<indexterm><primary>depiction</primary></indexterm>
+<para>
+A depiction is your workspace; it is a graphic image of the geographic area overlaid with specific weather fields.
+Load fields into depictions and then modify a sequence of depictions to describe the forecast weather.
+Each depiction is valid for a specific date and time.
+See <xref linkend='the_fpa_model'/>.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_depiction_sequence'><glossterm>Depiction Sequence</glossterm>
+<glossdef>
+<indexterm><primary>depiction</primary><secondary>sequence</secondary></indexterm>
+<para>
+A depiction sequence is a time ordered set of depictions.
+A depiction can be thought of as a keyframe in a movie.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>E</title>
+<glossentry id='g_elements'><glossterm>Elements</glossterm>
+<glossdef>
+<indexterm><primary>elements</primary></indexterm>
+<para>
+Elements are atmospheric parameters such as pressure, temperature or u/v component wind.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>F</title>
+<glossentry id='g_features'><glossterm>Features</glossterm>
+<glossdef>
+<indexterm><primary>feature</primary></indexterm>
+<para>
+A feature is a recognizable shape or pattern in a data field.
+For example, the shape of contours that delineate a low pressure centre represent a "feature" of the pressure field.
+Similarly, the shape of an area of rain represents a feature of the precipitation field.
+Forecasters rely heavily on the remarkable ability of the human mind to recognize features in data.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_fields'><glossterm>Fields</glossterm>
+<glossdef>
+<indexterm><primary>field</primary></indexterm>
+<para>
+Fields are elements at a specific level, for example msl pressure.
+Any given instance of a normal field can only exist in one depiction (See <xref linkend='the_fpa_model'/>.) There are different types of fields:
+<itemizedlist>
+<listitem><para>
+Continuous fields (e.g., pressure surface heights, humidity, etc.) are modeled with splines on the FPA, instead of using the more common grid-point methods.
+</para></listitem>
+<listitem><para>
+Vector fields are component fields like winds or waves that have both magnitude and direction.
+</para></listitem>
+<listitem><para>
+Two-dimensional fields are areas or polygons.
+Areas of clouds and weather are represented as areas on the FPA.
+</para></listitem>
+<listitem><para>
+One-dimensional fields are lines like fronts, ridge lines, etc.
+</para></listitem>
+<listitem><para>
+Point fields or plot-objects, are used to display point values like surface observations.
+</para></listitem>
+</itemizedlist>
+Different graphical editors are used to manipulate one-dimensional, two-dimensional and continuous fields.
+</para>
+<glossseealso otherterm='g_daily_fields'>Daily Fields</glossseealso>
+<glossseealso otherterm='g_static_fields'>Static Fields</glossseealso>
+</glossdef> </glossentry>
+
+<glossentry id='g_field_group'><glossterm>Field Group</glossterm>
+<glossdef>
+<indexterm><primary>field group</primary></indexterm>
+<para>
+Fields are grouped to make them easier to work with. Groups are defined by your system administrator. Speak to your system administrator if you prefer to see them grouped differently.
+</para></glossdef> </glossentry>
+
+</glossdiv>
+
+<glossdiv><title>G</title>
+<glossentry id='g_grib'><glossterm>Gridded Binary files</glossterm>
+<acronym>GRIB</acronym>
+<glossdef>
+<indexterm><primary>GRIB</primary></indexterm>
+<para>
+Major <acronym>NWP</acronym> centres (CMC, <acronym>NCEP</acronym>, <acronym>ECMWF</acronym>, etc.) distribute their model output as GRIB files that you can load into the FPA.
+In Canada, CMC distributes GRIB message from the <acronym>GEM</acronym> model.
+Each Weather Centre receives the national distribution as well as a set of Regional GRIB messages that contain subsidiary data that the Region has specifically requested.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_groups'><glossterm>Groups</glossterm>
+<glossdef>
+<indexterm><primary>groups</primary></indexterm>
+<para>
+Groups are field classifications.
+The classification of fields into groups is a matter of office preference.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_guidance'><glossterm>Guidance</glossterm>
+<glossdef>
+<indexterm><primary>guidance</primary></indexterm>
+<para>
+Guidance comprises fields or data (e.g., <acronym>NWP</acronym> model output) that the FPA gets from remote system(s) or from allied models.
+You can display, overlay and even annotate (label or draw lines on) guidance, but you cannot edit it.
+Note that you can use depictions as guidance-that is, you can overlay one depiction over another to act as reference; this is useful for drawing areas of clouds and weather.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>I</title>
+<glossentry id='g_interpolation'><glossterm>Interpolation</glossterm>
+<glossdef>
+<indexterm><primary>interpolate</primary></indexterm>
+<para>
+The intermediate depictions obtained by interpolating between the depictions in the sequence to some constant time interval.
+Each interpolated depiction (interpolation) is a complete weather depiction itself.
+In this way, you can work on charts that are spaced arbitrarily in time (e.g., 9 hours, 12 hours, etc.) and produce hourly charts.
+See Sequence.
+<itemizedlist>
+<listitem><para> Interpolations can be imported back into the depiction sequence and re-linked if necessary.
+This allows you to accelerate or decelerate weather systems.
+</para></listitem>
+<listitem><para> Some functions (e.g., text generation) require interpolated depictions.
+</para></listitem>
+<listitem><para> Interpolations can be animated (see <xref linkend='animating_your_depictions'/>)
+</para></listitem>
+</itemizedlist>
+</para>
+<glossseealso otherterm='g_sequence'>Sequence</glossseealso>
+</glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>L</title>
+<glossentry id='g_levels'><glossterm>Levels</glossterm>
+<glossdef>
+<indexterm><primary>levels</primary></indexterm>
+<para>
+Levels are vertical parameters in the atmosphere such as msl, surface, 850mb or 500-1000mb.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_link'><glossterm>Link</glossterm>
+<glossdef>
+<indexterm><primary>time link</primary><secondary>link</secondary></indexterm>
+<para>
+A link is the segment joining two link nodes.
+</para>
+<glossseealso otherterm='g_time_link'>Time Link</glossseealso>
+</glossdef> </glossentry>
+
+<glossentry id='g_link_chain'><glossterm>Link Chain</glossterm>
+<glossdef>
+<indexterm><primary>time link</primary><secondary>link chain</secondary></indexterm>
+<para>
+A link chain is comprised of one or more links.
+</para>
+<glossseealso otherterm='g_time_link'>Time Link</glossseealso>
+</glossdef> </glossentry>
+
+<glossentry id='g_link_node'><glossterm>Link Node</glossterm>
+<glossdef>
+<indexterm><primary>time link</primary><secondary>link node</secondary></indexterm>
+<para>
+Link node is a point which indicates a significant feature on a depiction.
+</para>
+<glossseealso otherterm='g_time_link'>Time Link</glossseealso>
+</glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>M</title>
+<glossentry id='g_metafile'><glossterm>Metafile</glossterm>
+<glossdef>
+<indexterm><primary>metafile</primary></indexterm>
+<para>
+A metafile is a file containing "higher-order" information.
+In a computer graphics context, metafiles usually contain some kind of display independent data format.
+FPA metafiles are display independent, but also presentation independent.
+For example, an FPA metafile would store the outline of a rain area but not what colour should be used to draw the outline.
+Objects in an FPA metafile also have the geographical reference information needed to have spatial meaning on a map.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>N</title>
+<glossentry id='g_normal_fields'><glossterm>Normal Fields</glossterm>
+<glossdef>
+<indexterm><primary>field</primary><secondary>normal</secondary></indexterm>
+<para>
+</para><glossseealso otherterm='g_fields'>Fields</glossseealso>
+</glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>O</title>
+<glossentry id='g_object_database'><glossterm>Object Database</glossterm>
+<glossdef>
+<indexterm><primary>object database</primary></indexterm>
+<para>
+An object oriented paradigm organizes data such that characteristics of an entity are encapsulated and methods of access are defined.
+The objects stored in the FPA are the various meteorological fields.
+It is important to note that the FPA is first and foremost a database tool with a graphical user interface (<acronym>GUI</acronym>) attached.
+This fact separates the FPA from most drawing tools.
+</para><para>
+The FPA does not use relational database technology to store objects.
+When the FPA was first developed, there was virtually no commercial spatial database technology available.
+Instead a very robust system was built from the ground up for reading and writing proprietary graphics metafiles.
+Specifications for the FPA metafiles are available on request.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>P</title>
+<glossentry id='g_presentation'><glossterm>Presentation</glossterm>
+<glossdef>
+<indexterm><primary>presentation</primary></indexterm>
+<para>
+Presentation refers to the ways things look when displayed.
+For example, line style, colour, and contour intervals are all presentation parameters.
+The FPA design takes special care in making sure that users can set their own presentation parameters by means of configuration files.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_psmet'><glossterm>PSMet</glossterm>
+<glossdef>
+<indexterm><primary>PSMet</primary></indexterm>
+<para>
+A program to produce graphical products for end-users.
+Use this to design your own graphical products quickly; use any graphics package to do touch-ups.
+<cmdsynopsis>
+<command>psmet</command>
+<arg choice='req' rep='norepeat'><replaceable>setup_file</replaceable></arg>
+<arg choice='req' rep='norepeat'><replaceable>psmet_sub_directory</replaceable></arg>
+<arg choice='req' rep='norepeat'><replaceable>pdf_filename</replaceable></arg>
+<arg choice='req' rep='norepeat'><replaceable>run_time</replaceable></arg>
+</cmdsynopsis>
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_puck'><glossterm>Puck</glossterm>
+<glossdef>
+<indexterm><primary>editor</primary><secondary>puck</secondary></indexterm>
+<para>
+A rubber disc used in the game of ice hockey, an extremely popular sport in Canada.
+In the context of the FPA, a puck describes a circular sculpting tool.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>R</title>
+<glossentry id='g_radius_of_influence'><glossterm>Radius of influence</glossterm>
+<glossdef>
+<indexterm><primary>radius of influence</primary></indexterm>
+<para>
+The radius of influence controls the extent of smoothing which occurs when the <emphasis>move</emphasis> tool is used on a continuous or vector field.
+</para><para>
+The percentage indicates the affected area surrounding the point of edit.
+</para> <para>
+Note: Percentages range from 1 to 100 where 1 is the minimum radius of influence and 100 is approximately one quarter of the map area.
+Your System Administrator establishes the exact percentage increments.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>S</title>
+<glossentry id='g_sequence'><glossterm>Sequence</glossterm>
+<glossdef>
+<indexterm><primary>sequence</primary></indexterm>
+<para>
+A depiction sequence refers to the collection of depictions.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_sculpting'><glossterm>Sculpting</glossterm>
+<glossdef>
+<indexterm><primary>sculpting</primary></indexterm>
+<para>
+Modifying a line or outline using the puck tool.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_static_fields'><glossterm>Static Fields</glossterm>
+<glossdef>
+<indexterm><primary>field</primary><secondary>static</secondary></indexterm>
+<para>
+Static fields are elements which have values that are approximately constant until another static field is specified (for example, sea ice).
+Static fields usually span more than one depiction.
+They are not interpolated, but can be edited.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_svgmet'><glossterm>SVGMet</glossterm>
+<glossdef>
+<indexterm><primary>SVGMet</primary></indexterm>
+<para>
+A program to produce graphical products for end-users.
+Use this to design your own graphical products quickly; use any vector graphics package to do touch-ups.
+<cmdsynopsis>
+<command>svgmet</command>
+<arg choice='req' rep='norepeat'><replaceable>setup_file</replaceable></arg>
+<arg choice='req' rep='norepeat'><replaceable>svgmet_sub_directory</replaceable></arg>
+<arg choice='req' rep='norepeat'><replaceable>pdf_filename</replaceable></arg>
+<arg choice='req' rep='norepeat'><replaceable>run_time</replaceable></arg>
+</cmdsynopsis>
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>T</title>
+<glossentry id='g_target_depiction'><glossterm>Target Depiction</glossterm>
+<glossdef>
+<indexterm><primary>target depiction</primary></indexterm>
+<para>
+Target Depiction defines the date and time that you want the depiction to appear in the sequence.
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_texmet'><glossterm>TexMet</glossterm>
+<glossdef>
+<indexterm><primary>TexMet</primary></indexterm>
+<para>
+A program to produce tabular products for end-users.
+Use this to design your own tabular products quickly; use any text editor to do touch-ups.
+<cmdsynopsis>
+<command>texmet</command>
+<arg choice='req' rep='norepeat'><replaceable>setup_file</replaceable></arg>
+<arg choice='req' rep='norepeat'><replaceable>texmet_sub_directory</replaceable></arg>
+<arg choice='req' rep='norepeat'><replaceable>pdf_filename</replaceable></arg>
+<arg choice='req' rep='norepeat'><replaceable>run_time</replaceable></arg>
+</cmdsynopsis>
+</para> </glossdef> </glossentry>
+
+<glossentry id='g_time_link'><glossterm>Time Link</glossterm>
+<glossdef>
+<indexterm><primary>time link</primary></indexterm>
+<para>
+When you create a time link you are indicating that a significant feature on one depiction evolved from a significant feature on another depiction so that the FPA knows they are the same.
+The FPA uses these link chains to interpolate the depictions through time.
+See <xref linkend='the_fpa_model'/>.
+</para> </glossdef> </glossentry>
+</glossdiv>
+
+<glossdiv><title>Z</title>
+<glossentry id='g_zoom'><glossterm>Zoom</glossterm>
+<glossdef>
+<indexterm><primary>zoom</primary></indexterm>
+<para>
+Lets you magnify and expand the map area graphically and pan the magnified area.
+This makes it easier to work on depictions close up.
+</para> </glossdef> </glossentry>
+</glossdiv>
+</glossary>

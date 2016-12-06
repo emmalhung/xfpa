@@ -1,0 +1,228 @@
+! Set an anchor location below the map ...
+@anchor { ref = lower_centre; x = 0.00; y = 0.00 }
+
+! Draw filled table outlines ... NOT anchored to table
+@box
+	{
+	width         =  6.00;
+	height        =  2.30;
+	x_off         =  0.00;
+	y_off         = -1.35;
+	outline       = CMYK  0  0 0 100;
+	interior_fill = CMYK 55 75 0  15;
+	line_width    =  0.05;
+	}
+@box
+	{
+	width         =  5.50;
+	height        =  1.50;
+	x_off         =  0.00;
+	y_off         = -1.50;
+	outline       = CMYK 0  0  0 100;
+	interior_fill = CMYK 0 25 80   0;
+	line_width    =  0.03;
+	}
+
+! Set presentation for all text in headers ...
+@presentation
+	{
+	line_width    =  0.005;
+	outline       = CMYK 0  0  0 100;
+	fill          = CMYK 0 25 80   0;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	text_size     = 0.25;
+	justification = left;
+	char_space    =   0;
+	word_space    = 100;
+	line_space    = 100;
+	}
+
+! Display the column headers ... NOT anchored to table
+@text { string = Tonight;  y_off = -0.6; x_off =  0.0; justification = centre }
+@text { string = Tomorrow; y_off = -0.6; x_off =  1.8; justification = centre }
+
+! Define the table ...
+@define_table
+	{
+	table_name = T1;
+	type       = column;
+	x_off      = -2.75;
+	y_off      = -0.75;
+	}
+
+! Set presentation for all text in table ...
+@presentation
+	{
+	outline       = CMYK 70 90 0 20;
+	fill          = CMYK 70 90 0 20;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	text_size     = 0.25;
+	justification = left;
+	char_space    =   0;
+	word_space    = 100;
+	line_space    = 100;
+	}
+
+! Define the table sites ... anchored to table
+@table_site
+	{
+	table_name    = T1;
+	site_label    = Halifax;			!EDIT!
+	lat           = 44:40N;				!EDIT!
+	lon           = 63:35W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -0.50;
+	justification = left;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = Quebec City;		!EDIT!
+	lat           = 46:48N;				!EDIT!
+	lon           = 71:24W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -1.00;
+	justification = left;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = Boston;				!EDIT!
+	lat           = 42:22N;				!EDIT!
+	lon           = 71:02W;				!EDIT!
+	x_label       =  0.15;
+	y_label       =  0.15;
+	x_off         =  0.00;
+	y_off         = -1.50;
+	justification = left;
+	}
+
+! Define lines for table ...
+@define_line
+	{
+	line_name = horizontal_line
+	line      =  0.0  0.0  5.5  0.0
+	}
+@define_line
+	{
+	line_name = vertical_line
+	line      =  0.0  0.0  0.0  0.5
+	}
+
+! Draw vertical table lines ... anchored to table site y_off
+@draw_table_line
+	{
+	line_name  = vertical_line;
+	outline    = CMYK 0 0 0 100;
+	line_width = 0.03;
+	table_name = T1;
+	last_site  = yes;
+	x_off      = 1.90;
+	y_off      = 0.00;
+	pattern    = simple;
+	}
+@draw_table_line
+	{
+	line_name  = vertical_line;
+	outline    = CMYK 0 0 0 100;
+	line_width = 0.03;
+	table_name = T1;
+	last_site  = yes;
+	x_off      = 3.70;
+	y_off      = 0.00;
+	pattern    = simple;
+	}
+
+! Draw horizontal table lines ... anchored to table site y_off
+@draw_table_line
+	{
+	line_name  = horizontal_line;
+	table_name = T1;
+	last_site  = no;
+	outline    = CMYK 0 0 0 100;
+	line_width = 0.03;
+	x_off      = 0.00;
+	y_off      = 0.00;
+	pattern    = simple;
+	}
+
+! Fill the table with sampled weather for tonight
+!  ... anchored to table site y_off
+@sample_field
+	{
+	table_name    = T1;
+	element       = weather_system;
+	level         = surface;
+	attribute     = clds_and_wx;
+	format        = symbol;
+	look_up       = weather_day;
+	case          = night;
+	case_look_up  = weather_ngt;
+	symbol_scale  = 30;
+	source        = interp;
+	valid_time    = 01/04;
+	x_off         = 2.30;
+	y_off         = 0.25;
+	justification = centre;
+	}
+
+! Fill the table with sampled minimum temperature for tonight
+!  ... anchored to table site y_off
+@sample_field
+	{
+	table_name    = T1;
+	element       = min_temp;
+	level         = surface;
+	units         = degreesC;
+	format        = direct %.0f C;
+	source        = interp;
+	valid_time    = 01/10;
+	x_off         = 3.40;
+	y_off         = 0.15;
+	justification = right;
+	}
+
+! Fill the table with sampled weather for tomorrow
+!  ... anchored to table site y_off
+@sample_field
+	{
+	table_name    = T1;
+	element       = weather_system;
+	level         = surface;
+	attribute     = clds_and_wx;
+	format        = symbol;
+	look_up       = weather_day;
+	case          = night;
+	case_look_up  = weather_ngt;
+	symbol_scale  = 30;
+	source        = interp;
+	valid_time    = 01/20;
+	x_off         = 4.10;
+	y_off         = 0.25;
+	justification = centre;
+	}
+
+! Fill the table with sampled maximum temperature for tomorrow
+!  ... anchored to table site y_off
+@sample_field
+	{
+	table_name    = T1;
+	element       = max_temp;
+	level         = surface;
+	units         = degreesC;
+	format        = direct %.0f C;
+	source        = interp;
+	valid_time    = 01/19;
+	x_off         = 5.20;
+	y_off         = 0.15;
+	justification = right;
+	}

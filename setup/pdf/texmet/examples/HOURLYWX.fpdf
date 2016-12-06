@@ -1,0 +1,1085 @@
+! Set the version number ... this line must be first!
+@version { texmet7.0 }
+
+! Define the output filename ...
+@file_name
+	{
+	dir  = <default>;
+	name = <pdf>
+	}
+
+! Define a projection ...
+@projection
+	{
+	type = polar_stereographic;		!EDIT
+	ref1 =  north;					!EDIT
+	ref2 = 60						!EDIT
+	}
+
+! Define a map ...
+@mapdef
+	{ 
+	olat      = 26:45N;		!EDIT
+	olon      = 90:00W;		!EDIT
+	rlon      = 85:00W;		!EDIT
+	xmin      =    0;		!EDIT
+	ymin      =    0;		!EDIT
+	xmax      = 4000;		!EDIT
+	ymax      = 5000;		!EDIT
+	map_units = 1000;		!EDIT
+	}
+
+! Define a resolution ...
+@resolution
+	{ 
+	res       =  200;		!EDIT
+	map_units = 1000;		!EDIT
+	}
+
+! Define the size of the output file ...
+@size
+	{
+	columns = 80;
+	rows    = 60;
+	}
+
+! Set default presentations ...
+@presentation
+	{
+	justification = left
+	}
+
+! Display a header message ...
+@write_time
+	{ 
+	type   = issue;
+	time   = GMT;
+	format = Hourly weather from  %HZ %d %B, %Y  FPA forecast
+	x_off  = 5;
+	y_off  = 0;
+	}
+
+! Set parameters for sampling weather for a single location ...
+@anchor
+	{
+	column = 0;
+	row    = 1;
+	}
+@text
+	{
+	string = Weather for Halifax (WHF)	!EDIT!
+	x_off  = 17;
+	y_off  =  1;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  = 6;
+	y_off  = 2;
+	}
+@group
+	{
+	group_name = sample_wx
+	element    = weather_system;
+	level      = surface;
+	attribute  = full_weather;
+	format     = direct;
+	lat        = 44:40N;			!EDIT!
+	lon        = 63:35W;			!EDIT!
+	x_off      = 15;
+	}
+
+! Display sampled value at T0 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 00;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 3;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 3;
+	}
+
+! Display sampled value at T+01 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 01;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 4;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 4;
+	}
+
+! Display sampled value at T+02 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 02;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 5;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 5;
+	}
+
+! Display sampled value at T+03 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 03;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 6;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 6;
+	}
+
+! Display sampled value at T+04 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 04;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 7;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 7;
+	}
+
+! Display sampled value at T+05 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 05;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 8;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 8;
+	}
+
+! Display sampled value at T+06 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 06;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 9;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 9;
+	}
+
+! Display sampled value at T+07 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 07;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 10;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 10;
+	}
+
+! Display sampled value at T+08 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 08;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 11;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 11;
+	}
+
+! Display sampled value at T+09 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 09;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 12;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 12;
+	}
+
+! Display sampled value at T+10 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 10;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 13;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 13;
+	}
+
+! Display sampled value at T+11 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 11;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 14;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 14;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  =  6;
+	y_off  = 15;
+	}
+
+! Display sampled value at T+12 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 12;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 16;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 16;
+	}
+
+! Display sampled value at T+13 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 13;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 17;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 17;
+	}
+
+! Display sampled value at T+14 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 14;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 18;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 18;
+	}
+
+! Display sampled value at T+15 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 15;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 19;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 19;
+	}
+
+! Display sampled value at T+16 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 16;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 20;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 20;
+	}
+
+! Display sampled value at T+17 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 17;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 21;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 21;
+	}
+
+! Display sampled value at T+18 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 18;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 22;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 22;
+	}
+
+! Display sampled value at T+19 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 19;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 23;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 23;
+	}
+
+! Display sampled value at T+20 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 20;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 24;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 24;
+	}
+
+! Display sampled value at T+21 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 21;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 25;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 25;
+	}
+
+! Display sampled value at T+22 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 22;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 26;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 26;
+	}
+
+! Display sampled value at T+23 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 23;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 27;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 27;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  =  6;
+	y_off  = 28;
+	}
+
+! Display sampled value at T+24 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 24;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 29;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 29;
+	}
+
+! Display sampled value at T+25 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 25;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 30;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 30;
+	}
+
+! Display sampled value at T+26 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 26;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 31;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 31;
+	}
+
+! Display sampled value at T+27 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 27;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 32;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 32;
+	}
+
+! Display sampled value at T+28 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 28;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 33;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 33;
+	}
+
+! Display sampled value at T+29 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 29;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 34;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 34;
+	}
+
+! Display sampled value at T+30 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 30;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 35;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 35;
+	}
+
+! Display sampled value at T+31 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 31;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 36;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 36;
+	}
+
+! Display sampled value at T+32 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 32;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 37;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 37;
+	}
+
+! Display sampled value at T+33 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 33;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 38;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 38;
+	}
+
+! Display sampled value at T+34 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 34;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 39;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 39;
+	}
+
+! Display sampled value at T+35 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 35;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 40;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 40;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  =  6;
+	y_off  = 41;
+	}
+
+! Display sampled value at T+36 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 36;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 42;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 42;
+	}
+
+! Display sampled value at T+37 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 37;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 43;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 43;
+	}
+
+! Display sampled value at T+38 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 38;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 44;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 44;
+	}
+
+! Display sampled value at T+39 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 39;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 45;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 45;
+	}
+
+! Display sampled value at T+40 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 40;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 46;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 46;
+	}
+
+! Display sampled value at T+41 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 41;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 47;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 47;
+	}
+
+! Display sampled value at T+42 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 42;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 48;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 48;
+	}
+
+! Display sampled value at T+43 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 43;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 49;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 49;
+	}
+
+! Display sampled value at T+44 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 44;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 50;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 50;
+	}
+
+! Display sampled value at T+45 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 45;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 51;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 51;
+	}
+
+! Display sampled value at T+46 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 46;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 52;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 52;
+	}
+
+! Display sampled value at T+47 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 47;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %H00
+	x_off  = 7;
+	y_off  = 53;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 53;
+	}
+@text
+	{
+	string = -----------------------------------------------------------------
+	x_off  =  6;
+	y_off  = 54;
+	}
+
+! Display sampled value at T+48 ...
+@set_source
+	{
+	source     = interp;
+	valid_time = 48;
+	}
+@write_time
+	{ 
+	type   = valid;
+	time   = GMT;
+	format = %b %d %H00
+	y_off  = 55;
+	}
+@sample_field
+	{
+	<sample_wx;
+	y_off = 55;
+	}

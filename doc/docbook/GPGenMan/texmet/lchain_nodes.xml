@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_lchain_nodes'> <title>@lchain_nodes</title> <titleabbrev>@lchain_nodes</titleabbrev>
+<para>
+Display link chain node information.
+</para><para>
+Note that the <userinput>category_attribute</userinput> and <userinput>category</userinput> keywords can be used to display only selected nodes, and that the <userinput>track_category_attribute</userinput> and <userinput>track_category</userinput> keywords can be used to display only nodes from selected tracks.
+</para><para>
+Note that the <userinput>case</userinput> and <userinput>case_look_up</userinput> keywords can only be used for simple (single-attribute) labels.
+</para><para>
+Note that every node requires a <userinput>format</userinput> keyword.
+A <userinput>direct</userinput> style format will display the value of the label attribute from &FPA;.
+A <userinput>text</userinput> style format also requires a <userinput>look_up</userinput> keyword to define a look up table, and the value of the label attribute from &FPA; is cross-referenced in this look up table to identify the text string to display.
+A <userinput>wind_text</userinput> format displays winds using the presentation from the directive <link linkend='tx_wind_presentation'>@wind_presentation</link>. 
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>element</userinput> and <userinput>level</userinput> can be specified more than once in this directive.</para></entry></row>
+<row valign='top'><entry spanname='tblnote'><para>Note that if a single element name is matched with a list of level names, or vice versa, the single name must be given first. Multiple element and level name lists should have the same number.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element_list.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level_list.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>node_speed_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for motion of link chain at node.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>node_speed_round</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Precision of node speed.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>node_stationary_max</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Limit node labels based on node speed.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>node_stationary_label</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Label to use if node speed is less than <userinput>node_stationary_max</userinput>.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for node wind speeds or gusts (if required)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/start_time.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/end_time.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/times.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_nodes.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>track_category_attribute</userinput> and <userinput>track_category</userinput> can be specified more than once in this directive, and that <userinput>track_category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/track_category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/track_category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/track_category.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_magic.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/look_up.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>case</userinput> and <userinput>case_look_up</userinput> can be specified more than once in this directive!</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/case.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/case_look_up.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/time_zone.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/language.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/format.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fit_to_map.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_off</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Column (character) offset of node label wrt current anchor position</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_off</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Row (line) offset of node label wrt current anchor position</para></entry></row>
+
+<row valign='top'><entry spanname='tbltitle'>&extraline;<para>For display as a grid ...</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_shift</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Column (character) increment for display of nodes</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_shift</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Row (line) increment for display of nodes</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_wrap.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_wrap.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@lchain_nodes
+{
+  element          = tropical_tracks;
+  level            = surface;
+  times            = -12 -6 0 6 12 18 24;
+  x_shift          = 0;
+  y_shift          = 1;
+  justification    = right;
+  attribute        = GPGen_gmt_time;
+  attribute_format = direct %H:%MZ;
+  attribute_x_off  = 8;
+  attribute        = NWquadGales;
+  attribute_format = direct %skm;
+  attribute_x_off  = 16;
+  attribute        = NEquadGales;
+  attribute_format = direct %skm;
+  attribute_x_off  = 24;
+  attribute        = SEquadGales;
+  attribute_format = direct %skm;
+  attribute_x_off  = 32;
+  attribute        = SWquadGales;
+  attribute_format = direct %skm;
+  attribute_x_off  = 40;
+}
+</programlisting>
+Display gale quadrant radii from the surface tropical_tracks field for times every 6 hours from -12 to 24. 
+The wind radii will be displayed on successive lines, beginning with a formatted GMT time, and then wind radii distances (in km) for NW, NE, SE and SW quadrants.
+</para></example>
+
+Complex (multi-attribute) labels allow the display of several label parameters within the same directive.
+The entire complex label is displayed with respect to the <userinput>x_off</userinput>, <userinput>y_off</userinput> keywords set above.
+</para><para>
+Attribute keywords apply only to the attribute that they follow.
+</para><para>
+The position of an attribute in a complex label can be related to the position of other attributes through use of the keywords <userinput>attribute_anchor</userinput>, <userinput>attribute_ref</userinput>, <userinput>attribute_justification</userinput> and <userinput>attribute_vertical_just</userinput>. 
+The <userinput>attribute_ref</userinput> keyword defines the starting position of the attribute with respect to a location about the symbol or text identified by the <userinput>attribute_anchor</userinput> keyword.
+The <userinput>attribute_justification</userinput> and <userinput>attribute_vertical_just</userinput> keywords define the horizontal and vertical positioning of the attribute with respect to this starting position.
+</para><para>
+The display parameters of each attribute default to the values of the <userinput>format</userinput>, <userinput>justification</userinput>, <userinput>look_up</userinput>, <userinput>units</userinput> keywords set above. 
+These default values can be replaced by the appropriate attribute keyword listed below, to create multi-format complex labels.
+</para><para>
+Note that the <userinput>attribute_show</userinput> keyword can be used to "turn off" the display of
+attributes, while still maintain positioning with respect to other attributes.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_magic.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_show.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_anchor.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_ref.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_vertical_just.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for label wind speeds or gusts</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_format.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute_x_off</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Column (character) offset of node attribute wrt current anchor position</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute_y_off</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Row (line) offset of node attribute wrt current anchor position</para></entry></row>
+</tbody></tgroup></informaltable>
+</para></sect2>

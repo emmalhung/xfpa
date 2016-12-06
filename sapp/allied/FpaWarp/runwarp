@@ -1,0 +1,42 @@
+ #
+#  Bourne script to test FpaWarp allied model
+
+if [ $# -eq 1 ]
+then
+	outfile=${1}
+else
+	outfile=diagwarp
+fi
+if [ -f ${outfile} ]
+then
+	echo "*** File ${outfile} already exists ***"
+	echo "     Type:  go    to overwrite it"
+	echo "     Type:  stop  to stop now"
+	read ans
+	if [ "$ans" != go ]
+	then
+		echo "***   ...fpawarp aborted ***"
+		exit 1
+	fi
+	rm -f ${outfile}
+fi
+echo "*** Output to file ${outfile} ***"
+
+# Define the development environment
+if [ -r $FPA/bin/.fpaenvrc ]
+then
+  . $FPA/bin/.fpaenvrc
+fi
+
+# Export the debug environment variable (if required)
+export FPA_DEBUG_WARP=ON;
+
+# Run the FpaWarp program ... current testing
+# time fpawarp (setup_file) (source:subsource) "" (yyyy:jjj:hh) 50 1 YES \
+#		(guess_time  plot_time  output_time ...) >${outfile} 2>&1
+
+# time fpawarp av_atlantic MaxDailyTime "" 1997:326:12 50 1 NO \
+# 		0/19 0/14L 0/14L 1/19 1/14L 1/14L >${outfile} 2>&1
+# time fpawarp av_atlantic MaxDailyTemp "" 1997:326:12 50 1 NO \
+# 		0/19 0/14L 0/14L 1/19 1/14L 1/14L >${outfile} 2>&1
+echo "*** ...fpawarp completed ***"

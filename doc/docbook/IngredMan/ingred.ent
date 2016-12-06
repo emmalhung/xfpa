@@ -1,0 +1,3 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!ENTITY version '8'>
+<!ENTITY colwidth "<colspec colwidth='1*'/><colspec colwidth='4*'/>">

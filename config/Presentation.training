@@ -1,0 +1,211 @@
+################################################################################
+#
+#   "Presentation" Local (Office) Presentation Configuration File
+#
+#   This file defines the appearance of all fields that may be displayed in
+#   the graphics editor application.  This refers to both guidance fields and
+#   editable depiction fields.
+#
+#   The default field appearance is defined in the various "Presentation"
+#   Configuration Files that are included at the end of this file.
+#
+#   Information found in this file pertains to the appearance of individual
+#   members of a given field.
+#
+#   If a given member of a given field is already described in a Presentation
+#   Configuration File included below, then this information overrides the
+#   default appearance for that member only.  The default appearance of other
+#   members is not affected.
+#
+#   If the member is not already described, then this information serves to add
+#   a new member to the given field, and defines its appearance.
+#
+#   Omitted attributes resort to default values established in the software
+#   which reads this file (for example: colour=Black, style=solid, font=simplex,
+#   etc).
+#
+################################################################################
+
+revision 6.0
+
+################################################################################
+#
+#   Local presentation information.
+#
+#   Any presentation definitions given here will override the corresponding
+#   defintions in the files included at the end of this file.
+#
+################################################################################
+
+field	pressure	ALL	FPA
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Black
+					font	simplex
+		class	winds
+			class_member	barb	wind
+				units		knots
+				default
+					colour	Black
+					btype	wind dirfrom noval
+					width	medium
+					length	40.0
+		class	hilo
+			class_member	mark	symbol	hilo_type
+				attribute	hilo_type	low
+					offset	0 16
+					size	hilo
+					colour	Red
+					shadow	Pink IndianRed
+					symbol	L
+					font	bold_serif
+				attribute	hilo_type	high
+					offset	0 16
+					size	hilo
+					colour	CadetBlue
+					shadow	SkyBlue Navy
+					symbol	H
+					font	bold_serif
+			class_member	label	value	EVAL_spval
+				default
+					offset	0 -13
+					size	label
+					colour	Black
+					shadow	Grey50 Black
+					font	bold
+			class_member	label	name	hilo_name
+				attribute	hilo_type	low
+					offset	13 10
+					hjust	left
+					size	label
+					colour	Red
+					shadow	Pink IndianRed
+					font	bold
+				attribute	hilo_type	high
+					offset	13 10
+					hjust	left
+					size	label
+					colour	CadetBlue
+					shadow	SkyBlue Navy
+					font	bold
+			class_member	mark	marker
+				default
+					angle	45
+					size	5
+					colour	Black
+					shadow	Grey50 Black
+					marker	circle_plus
+
+
+field	turbulence		surface	ALL
+
+	member	discrete	turbulence
+		category	default
+			colour	Green
+			style	solid
+			width	3
+
+	member	label	labels
+		category	default
+			colour	Green
+			font	simplex
+			size	label
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				default
+					size	label
+					colour	Green
+					font	simplex
+
+
+field	freezing_level	surface ALL
+
+	member	curve	freezing_level
+		category	freezing_line
+			pattern	freezing_line
+			width	10
+			length	40
+				
+
+field	fronts	ALL	FPA
+
+	member	spot	labels
+		class	line
+			class_member	label	value
+				category	cold
+					size	label
+					colour	Blue
+					font	simplex
+				category	warm
+					size	label
+					colour	Red
+					font	simplex
+				default
+					size	label
+					colour	Black
+					font	simplex
+
+
+field	weather_system	ALL	FPA
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	frozen
+					size	label
+					colour	White
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	freezing
+					size	label
+					colour	White
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	precip
+					size	label
+					colour	Green
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	vis
+					size	label
+					colour	Yellow
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	cloud
+					size	label
+					colour	Goldenrod
+					shadow	Firebrick Firebrick
+					font	simplex
+				default
+					size	label
+					colour	Orange
+					font	simplex
+
+
+################################################################################
+#
+#   Include master presentation files, and those related to optional modules.
+#
+################################################################################
+
+##	Severe Weather Predictor fields (Available within Environment Canada):
+#	include $FPA/config/Presentation.kasspr
+
+##	Aviation:
+#	include $FPA/config/Presentation.aviation
+
+##	Master presentation files (Must include these):
+	include $FPA/config/Presentation.depict
+	include $FPA/config/Presentation.geog
+	include $FPA/config/Presentation.master

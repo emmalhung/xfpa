@@ -1,0 +1,732 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM 'gpgen.ent'>
+%gpgent;
+]>
+<chapter id='intro'><title>Introduction to the Graphics Product Generator</title><titleabbrev>Introduction to GPGen</titleabbrev>
+<para>
+The Graphics Product Generator offers users the ability to create tailored
+graphic or text products using data from the &FPA;. There are presently three
+applications available, &PSMet;, &SVGMet; and &TexMet;.
+</para> <para>
+The &PSMet; and &SVGMet; applications allow customized sampling and
+display of &FPA; data as a PostScript file (for &PSMet;) or as a Scalable Vector Graphic (SVG),
+an open XML specification created by the World Wide Web Consortium (W3C) for describing two-dimensional vector graphics, (for &SVGMet;). 
+The &PSMet; and &SVGMet; commands allow the user to re-display
+geographic features, contour fields, area fields, line fields, and point data
+from the &FPA; in various colours or styles. The commands also allow
+sampling of &FPA; fields or equations, and the results can be displayed as
+graphic symbols or text on a geographic background or in tabular form.
+Headers and graphic symbols can also be displayed.
+</para> <para>
+The &TexMet; application allows customized sampling of &FPA; fields or
+equations for display in an ASCII tabular form. The &TexMet; commands are
+similar to those in &PSMet; and &SVGMet;, but with fewer display options.
+This section introduces some of the common features of the Graphics
+Product Generator applications.
+</para>
+
+<sect1><title>Product Definition Files</title><para>
+The Graphics Product Generator applications control the display of &FPA; data through the use of &FPA; product definition files, usually referred to as "pdf" files, because they used to have the suffix ".pdf". 
+<note><para>
+When &FPA; "pdf" files were first introduced the ".pdf" extension did not have the association it does now. The extension ".pdf" has since become synonymous with Portable Document Format files, and as a result it has become difficult to share &FPA; "pdf" files, especially on Windows platforms. With the introduction of &FPA; Version 7, the extension of &FPA; product definition files has been changed to ".fpdf".
+</para></note>
+Each "pdf" file contains a series of directives, or commands, that allow for the sampling and formatted display of information from the &FPA; database.
+</para> <para>
+The syntax for most directives in the product definition files is:
+<programlisting>@directive { keyword = value(s); keyword = value(s); ..... }</programlisting>
+or:
+<programlisting>@directive
+  {
+  keyword = value(s);
+  keyword = value(s);
+  .....
+  }</programlisting>
+or any combination of the two syntaxes. The keywords for each
+directive set one or more values for parameters that are allowed within
+each command. Multiple values can be separated by spaces or tabs. There
+is no required order to the keywords, so long as the instructions within
+each directive are sufficient to fully describe the data to be sampled and
+the format of how the data will be displayed.
+</para> <para>
+The only limit on the directives is that each "keyword = value(s)"
+instruction has a maximum length of 255 characters.
+</para> <para>
+The value(s) for parameters may have one of the following formats:
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry>string</entry>
+<entry>an ASCII literal value</entry></row>
+<row valign='top'><entry>integer</entry>
+<entry>an integer number</entry></row>
+<row valign='top'><entry>real</entry>
+<entry>a real number</entry></row>
+<row valign='top'><entry>latlon</entry>
+<entry>(see <xref linkend='latlonfmt'/>)</entry></row>
+<row valign='top'><entry>range</entry>
+<entry>(see <xref linkend='rangefmt'/>)</entry></row>
+<row valign='top'><entry>vtime</entry>
+<entry>(see <xref linkend='timefmt'/>)</entry></row>
+</tbody></tgroup></informaltable>
+A few special directives have no keywords. These include the &PSMet;,
+&SVGMet; and &TexMet; directives <command>@file_close @include @loop_end @process @verbose</command> and <command>@version</command>, 
+the &PSMet; and &SVGMet; directives <command>@filter @reset_contour_presentation</command> and <command>@reset_geo_presentation</command>, and <command>@gpgen_group_end</command>.  The syntax for these directives is:
+<programlisting>@directive { value }</programlisting>
+or     
+<programlisting>@directive { }</programlisting>
+</para> <para>
+The <command>@include</command> directive allows the user to split up large product
+definition files into a number of smaller files, which will then be processed
+sequentially when the Graphics Product Generator application is run.
+</para> <para>
+There are a handful of special directives that allow output of language specific values. 
+These directives begin with <command>@gpgen_</command> such as <command>@gpgen_group_begin</command> and <command>@gpgen_insert</command>.
+The syntax for these directives is one of:
+<programlisting>@gpgen_directive { keyword = value(s); keyword = value(s); ... }</programlisting>
+<programlisting>@gpgen_directive { 
+	keyword = value(s); 
+	keyword = value(s);
+	...
+}</programlisting>
+<programlisting>@gpgen_directive { value(s) }</programlisting>
+or
+<programlisting>@gpgen_directive { }</programlisting>
+The keywords and values are assumed to be specific to the output format (SVG for example), and so are not checked against valid GPGEN keywords and values. Instead they are inserted as is into the output product.
+</para> <para>
+A description of all directives and their keywords for the &PSMet;, &SVGMet;
+and &TexMet; applications can be found in <xref linkend='psmet'/> and <xref linkend='texmet'/>.
+</para> </sect1>
+
+<sect1><title>Control Characters and Quotes</title><para>
+Certain characters found in the product definition files have special
+meaning. These include:
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry>!</entry><entry>Remainder of line is comment only</entry></row>
+<row valign='top'><entry>{</entry><entry>Start of keyword block for a directive</entry></row>
+<row valign='top'><entry>}</entry><entry>End of keyword block for a directive</entry></row>
+<row valign='top'><entry>=</entry><entry>Divider between a keyword and its value</entry></row>
+<row valign='top'><entry>\</entry><entry>Line continuation for values of a keyword</entry></row>
+<row valign='top'><entry>;</entry><entry>End of values for a keyword</entry></row>
+</tbody></tgroup></informaltable>
+Keywords that allow text strings therefore require the use of the escape
+character "\" before any of the control characters to allow literal usage of
+the characters, instead of translating them as part of the directive. For
+example, "Time \= 00 Local\! (not GMT)" in a keyword text string
+would be displayed as Time = 00 Local! (not GMT), rather than treating the
+"=" as a "keyword/value" divider, or the "!" as the beginning of a comment.
+</para>
+<note><para>
+A text string with embedded blanks can be enclosed by single or
+double quotes. Quotation marks at the beginning and end of a text string
+are automatically stripped off. If the quotation marks are required, then
+they can be embedded within an outer set of quotation marks. For example,
+a keyword text string of "'GMT'" would be displayed as 'GMT'.
+</para></note>
+</sect1>
+
+<beginpage/>
+<sect1 id='latlonfmt'><title>Format of Latitudes and Longitudes</title><para>
+Several keywords in the Graphics Product Generator applications accept
+the value of latitudes or longitudes in special formats that correspond to the
+formats allowed in the Graphics Metafile Standard. These are identified
+by a keyword type of latlon. These special formats include:
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='2'><tbody>
+<row valign='top'><entry>[ +/- ] <replaceable>DDD</replaceable> [ N/S/E/W ]</entry><entry>for whole degrees</entry></row>
+<row valign='top'><entry>[ +/- ] <replaceable>DDD</replaceable>.<replaceable>DDD</replaceable> [ N/S/E/W ]</entry><entry>for decimal degrees</entry></row>
+<row valign='top'><entry>[ +/- ] <replaceable>DDD</replaceable>:<replaceable>MM</replaceable> [ :SS ] [ N/S/E/W ]</entry><entry>for degrees, minutes, (seconds)</entry></row>
+</tbody></tgroup></informaltable>
+The default directions, with no signs present, are in degrees North for latitudes and in degrees East for longitudes.
+</para> <para>
+The following are examples of latitude formats:
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry>45</entry><entry>would be read as 45 degrees North</entry></row>
+<row valign='top'><entry>+45:30S</entry><entry>would be read as 45.5 degrees South</entry></row>
+</tbody></tgroup></informaltable>
+The following are examples of longitude formats:
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry>65.75</entry><entry>would be read as 65.75 degrees East</entry></row>
+<row valign='top'><entry>-65:45W</entry><entry>would be read as 65.75 degrees East</entry></row>
+</tbody></tgroup></informaltable>
+</para></sect1>
+<sect1 id='rangefmt'><title>Format of Values in a Range</title><para>
+Several keywords in the Graphics Product Generator applications accept
+minimum and maximum values in a special format that allows for
+inclusive or exclusive ranges. These are identified by a keyword type
+of range. This format is given by:
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry>[ <replaceable>min</replaceable> , <replaceable>max</replaceable> ]</entry>
+<entry>for a range <replaceable>min</replaceable> &le; value &le; <replaceable>max</replaceable></entry></row>
+<row valign='top'><entry>( <replaceable>min</replaceable> , <replaceable>max</replaceable> ] </entry>
+<entry>for a range <replaceable>min</replaceable> &lt; value &le; <replaceable>max</replaceable></entry></row>
+<row valign='top'><entry>[ <replaceable>min</replaceable> , <replaceable>max</replaceable> ) </entry>
+<entry>for a range <replaceable>min</replaceable> &le; value &lt; <replaceable>max</replaceable></entry></row>
+<row valign='top'><entry>( <replaceable>min</replaceable> , <replaceable>max</replaceable> ) </entry>
+<entry>for a range <replaceable>min</replaceable> &lt; value &lt; <replaceable>max</replaceable></entry></row>
+</tbody></tgroup></informaltable>
+</para> <para>
+A colon (:) may be used in place of the comma (,).
+</para> <para>
+An asterisk (*) may be used in place of a min or max value; it is interpreted as an unlimited end of a range.
+</para> <para>
+The following are examples of range formats:
+<example><title>defines a range 75 &lt; value &le; 105</title>
+<para>
+<programlisting>( 75 , 105 ]</programlisting>
+</para></example>
+<example><title>defines a range value &lt; 105</title>
+<para>
+<programlisting>[ * : 105 )</programlisting>
+</para></example>
+</para> </sect1>
+
+<sect1 id='timefmt'><title>Format of Valid Time Identifiers</title><para>
+Several keywords in the Graphics Product Generator applications use a
+special format to specify valid times. These are identified by a keyword
+type of vtime. These times are often calculated from <command>T0</command>, the zero hour
+time for the application, which usually corresponds to the zero hour in the
+&FPA; depiction sequence. The format of valid times is given by one of:
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='5'><tbody>
+<row valign='top'><entry><replaceable>xx</replaceable></entry><entry>or</entry><entry><replaceable>rr/hh</replaceable></entry><entry>or</entry><entry><replaceable>rr/hhL</replaceable></entry></row>
+<row valign='top'><entry></entry><entry></entry><entry><replaceable>yyyy/jjj/hh</replaceable></entry><entry>or</entry><entry><replaceable>yyyy/jjj/hhL</replaceable></entry></row>
+<row valign='top'><entry></entry><entry></entry><entry><replaceable>yyyy/mm/dd/hh</replaceable></entry><entry>or</entry><entry><replaceable>yyyy/mm/dd/hhL</replaceable></entry></row>
+</tbody></tgroup></informaltable>
+where:
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>xx</replaceable></entry>
+<entry>is the number of hours after <command>T0</command> (or before <command>T0</command> if negative)</entry></row>
+<row valign='top'><entry><replaceable>rr</replaceable></entry>
+<entry>is the day ( 0 for the <command>T0</command> day, 1 for the next day, ...)</entry></row>
+<row valign='top'><entry><replaceable>hh</replaceable></entry>
+<entry>is the GMT hour of day (0 to 23)</entry></row>
+<row valign='top'><entry><replaceable>hhL</replaceable></entry>
+<entry>is the local hour of day (0 to 23)</entry></row>
+<row valign='top'><entry><replaceable>yyyy</replaceable></entry>
+<entry>is the year (4 digits required)</entry></row>
+<row valign='top'><entry><replaceable>jjj</replaceable></entry>
+<entry>is the Julian day of year (1 to 366)</entry></row>
+<row valign='top'><entry><replaceable>mm</replaceable></entry>
+<entry>is the month (1 to 12)</entry></row>
+<row valign='top'><entry><replaceable>dd</replaceable></entry>
+<entry>is the day of month (1 to 31)</entry></row>
+</tbody></tgroup></informaltable>
+Minutes are also optionally allowed, by replacing the <replaceable>xx</replaceable> format with 
+<replaceable>xx</replaceable>:<replaceable>tt</replaceable>, or by replacing the 
+<replaceable>hh</replaceable> or <replaceable>hhL</replaceable> formats with 
+<replaceable>hh</replaceable>:<replaceable>tt</replaceable> or <replaceable>hh</replaceable>:<replaceable>ttL</replaceable>, 
+where <replaceable>tt</replaceable> is the number of minutes after the hour (0 to 59).
+</para> <para>
+The following are examples of valid time formats:
+<example><title>defines a valid time 18 hours from <command>T0</command></title><para>18</para></example>
+<example><title>defines a valid time at 10:30 local the day after <command>T0</command></title><para>1/10:30L</para></example>
+<example><title>defines a valid time at 18 GMT, May 10, 2008</title><para>2008/131/18</para></example>
+</para> </sect1>
+
+<beginpage/>
+<sect1><title>Input and Output File Locations and Setup File Parameters</title><para>
+The Graphics Product Generator applications assume default locations for
+all input and output files. However, these locations can be overridden by
+setting parameters in the &FPA; setup file used by each application. The setup
+file also contains a list of &PSMet;, &SVGMet; and &TexMet; products that can be
+generated from the &FPA; graphical editor.
+</para> <para>
+The <userinput>directories</userinput> block of the &FPA; setup file may contain the following
+entries identifying the directory locations for the input and output files for
+the Graphics Product Generator applications (the default location is given in brackets):
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='3'>
+<colspec colwidth='1*'/>
+<colspec colwidth='2*'/>
+<colspec colwidth='2*'/>
+<tbody>
+<row valign='top'><entry>psmet</entry><entry><replaceable>pdf_directory</replaceable></entry><entry>(<filename class='directory'><envar>$HOME</envar>/setup/pdf/psmet</filename>)</entry></row>
+<row valign='top'><entry>psout</entry><entry><replaceable>output_directory</replaceable></entry><entry>(<filename>PSOut</filename> in the Data directory)</entry></row>
+<row valign='top'><entry>svgmet</entry><entry><replaceable>pdf_directory</replaceable></entry><entry>(<filename class='directory'><envar>$HOME</envar>/setup/pdf/svgmet</filename>)</entry></row>
+<row valign='top'><entry>svgout</entry><entry><replaceable>output_directory</replaceable></entry><entry>(<filename>SVGOut</filename> in the Data directory)</entry></row>
+<row valign='top'><entry>texmet</entry><entry><replaceable>pdf_directory</replaceable></entry><entry>(<filename class='directory'><envar>$HOME</envar>/setup/pdf/texmet</filename>)</entry></row>
+<row valign='top'><entry>texout</entry><entry><replaceable>output_directory</replaceable></entry><entry>(<filename>TexOut</filename> in the Data directory)</entry></row>
+</tbody></tgroup></informaltable>
+</para> <para>
+The <replaceable>pdf_directory</replaceable> names are the base directories for the product
+definition files for generating the &PSMet;, &SVGMet; or &TexMet; products, and
+are usually located relative to the local &FPA; setup directory.
+</para> <para>
+The <replaceable>output_directory</replaceable> names are the base directories for the output
+graphics file from the &PSMet; or &SVGMet; applications, or the output ASCII
+file for the &TexMet; application. These are usually located relative to the
+&FPA; Data directory, the database directory for the setup file being used.
+</para> <para>
+The <userinput>[product.graphic]</userinput> section of the <userinput>interface</userinput> block of the &FPA; setup file
+contains the entries which identify the &PSMet;, &SVGMet; and &TexMet;
+products that can be produced from the &FPA;. These products have the
+format:
+<programlisting>"<replaceable>product_label</replaceable>" psmet         <replaceable>sub_directory</replaceable>     <replaceable>product_name</replaceable>
+"<replaceable>product_label</replaceable>" svgmet        <replaceable>sub_directory</replaceable>     <replaceable>product_name</replaceable>
+"<replaceable>product_label</replaceable>" texmet        <replaceable>sub_directory</replaceable>     <replaceable>product_name</replaceable>
+</programlisting>
+where the <replaceable>product_label</replaceable> strings are the labels that appear in the
+<menuchoice><guimenu>Products</guimenu> <guimenuitem>Graphics</guimenuitem></menuchoice> panel in the &FPA; depiction editor, and the <replaceable>sub_directory</replaceable> and
+<replaceable>product_name</replaceable> names specify the location of the product definition files
+for generating the &PSMet;, &SVGMet; or &TexMet; products, as in:
+<programlisting><replaceable>pdf_directory</replaceable>/<replaceable>sub_directory</replaceable>/<replaceable>product_name</replaceable>.fpdf</programlisting>
+The sub-directory and product-names also specify the location of the output files for the &PSMet;, &SVGMet; or &TexMet;
+products, as in:
+<simplelist>
+<member>
+<filename><replaceable>output_directory</replaceable>/<replaceable>sub_directory</replaceable>/<replaceable>product_name.ps</replaceable></filename>
+(for &PSMet;)
+</member>
+<member>
+or <filename><replaceable>output_directory</replaceable>/<replaceable>sub_directory</replaceable>/<replaceable>product_name.svg</replaceable></filename>
+(for &SVGMet;)
+</member>
+<member>
+or <filename><replaceable>output_directory</replaceable>/<replaceable>sub_directory</replaceable>/<replaceable>product_name.txt</replaceable></filename>
+(for &TexMet;)
+</member>
+</simplelist>
+</para> <para>
+When the Graphics Product Generator applications are run from within the &FPA; depiction editor, 
+the setup file information as well as the <replaceable>sub_directory</replaceable>, <replaceable>product_name</replaceable>, 
+and the current <command>T0</command> depiction time are all passed to the applications to be used as required.
+</para>
+</sect1>
+<sect1><title>Running Graphics Product Generator Applications Directly</title><para>
+Graphics Product Generator applications are usually run from the &FPA; depiction editor
+using the <menuchoice><guimenu>Products</guimenu><guimenuitem>Graphics</guimenuitem></menuchoice> panel. This launches the requested
+application, and maintains communication with the &FPA; as the application
+is running.
+</para> <para>
+However, all Graphics Product Generator applications can also be run
+directly, from outside the &FPA; depiction editor. The format of the run string is:
+<example><title>&PSMet;</title>
+<programlisting>psmet <replaceable>setup_file sub_directory product_name T0</replaceable></programlisting>
+</example>
+<example><title>&SVGMet;</title>
+<programlisting>svgmet  <replaceable>setup_file sub_directory product_name T0</replaceable></programlisting>
+</example>
+<example><title>&TexMet;</title>
+<programlisting>texmet <replaceable>setup_file sub_directory product_name T0</replaceable></programlisting>
+</example>
+where <replaceable>setup_file</replaceable> is the name of the local &FPA; setup file, <replaceable>sub_directory</replaceable> and <replaceable>product_name</replaceable> specify the location of the product definition files (as described in the section above), and <command>T0</command> is the zero hour time for the application.
+Note that the <command>T0</command> time can be given in one of the formats from the <xref linkend='timefmt'/>, shown previously, such as <replaceable>yyyy</replaceable>/<replaceable>jjj</replaceable>/<replaceable>hh</replaceable> or <replaceable>yyyy</replaceable>/<replaceable>jjj</replaceable>/<replaceable>hhL</replaceable> or <replaceable>yyyy</replaceable>/<replaceable>mm</replaceable>/<replaceable>dd</replaceable>/<replaceable>hh</replaceable> or <replaceable>yyyy</replaceable>/<replaceable>mm</replaceable>/<replaceable>dd</replaceable>/<replaceable>hhL</replaceable>.
+Note that minutes are also optionally allowed, by using <replaceable>hh</replaceable>:<replaceable>tt</replaceable> or <replaceable>hh</replaceable>:<replaceable>ttL</replaceable> in place of <replaceable>hh</replaceable> or <replaceable>hhL</replaceable>.
+(Note that the <command>T0</command> time usually corresponds to the current zero hour in the &FPA; depictions.)
+</para> </sect1>
+
+<sect1><title>Examples of Product Definition Files</title><para>
+Examples of product definition files for the &PSMet;, &SVGMet; and &TexMet;
+applications can be found in the directories:
+<simplelist>
+<member><filename class='directory'><envar>$FPA</envar>/setup/pdf/psmet/examples</filename></member>
+<member><filename class='directory'><envar>$FPA</envar>/setup/pdf/svgmet/examples</filename></member>
+<member><filename class='directory'><envar>$FPA</envar>/setup/pdf/texmet/examples</filename></member>
+</simplelist>
+</para> <para>
+Users may copy any portion of these files to their local directories to
+develop their own graphics products. 
+</para>
+<warning><para>The files in these directories may be overwritten by future revisions of &FPA;, so that any
+editing should be carried out on local copies of these files.
+</para></warning>
+</sect1>
+<sect1><title>Configuration File Parameters</title><para>
+Some of the keywords in the Graphics Product Generator applications
+refer to parameters in the &FPA; configuration files, described in Appendix A
+of the Administrator's Guide. These include:
+<variablelist>
+<varlistentry><term>element</term><term>element_list</term> 
+<listitem><para>an <replaceable>element_name</replaceable> (or list of names) from the Elements block</para></listitem></varlistentry>
+<varlistentry><term>attribute</term><term>category_attribute</term>
+<listitem><para>an <replaceable>attribute_name</replaceable> from the attributes section of the Elements block</para></listitem></varlistentry>
+<varlistentry><term>wind_crossref</term>
+<listitem><para>a <replaceable>crossref_name</replaceable> from the Winds section of the CrossRefs block</para></listitem></varlistentry>
+<varlistentry><term>level</term><term>level_list</term>
+<listitem><para>a <replaceable>level_name</replaceable> (or list of names) from the Levels block</para></listitem></varlistentry>
+<varlistentry><term>source</term>
+<listitem><para>a <replaceable>source_name</replaceable> from the Sources block (Note that <replaceable>source_name</replaceable>:<replaceable>subsource_name</replaceable> is also an allowed format)</para></listitem></varlistentry>
+<varlistentry><term>units</term>
+<listitem><para>a <replaceable>unit_name</replaceable> from the Units block</para></listitem></varlistentry>
+</variablelist>
+</para></sect1>
+<sect1 id='magic_attributes'><title>Magic Attributes</title><para>
+The <userinput>attribute</userinput> or <userinput>category_attribute</userinput>
+keywords (and related keywords
+containing the <userinput>attribute</userinput> string) usually refer to attribute names defined in
+the &FPA; configuration files. However, there are other special parameters
+that can also be accessed, such as information from a look up table or from
+a label or sampled value. The attribute names used to access these
+parameters are referred to as magic attributes, and the common ones are
+described below. Each magic attribute referred to in an attribute
+keyword may also be accompanied by a format keyword, and the
+appropriate conversion format for each magic attribute is also given. The
+common magic attributes are:
+<variablelist>
+<varlistentry><term>GPGEN_All</term>
+<listitem><para>used for matching ALL attribute values.</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_Missing</term>
+<listitem><para>used for matching when an attribute is NOT available.</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_DoNotMatch   <replaceable>xxx</replaceable></term>
+<listitem><para>used for matching when it is easier to use a list of attribute values to EXCLUDE rather than a list of attribute values to match, and  <replaceable>xxx</replaceable>  is one or more attribute values.</para></listitem></varlistentry>
+<varlistentry></varlistentry>
+<varlistentry></varlistentry>
+<varlistentry><term>GPGEN_default_attribute</term>
+<listitem><para>
+default sampling attribute, for each field type:
+	<variablelist>
+	<varlistentry><term>EVAL_spval</term>
+	<listitem><para> for continuous or vector fields (%f in <command>printf</command> format)</para></listitem></varlistentry>
+	<varlistentry><term>FPA_auto_label</term> 
+	<listitem><para> for discrete fields (%s in <command>printf</command> format)</para></listitem></varlistentry>
+	<varlistentry><term>FPA_category</term>
+	<listitem><para>for line or scattered or link chain fields (%s in <command>printf</command> format)</para></listitem></varlistentry>
+	</variablelist>
+</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_ident</term>
+<listitem><para>identifier from look up table or list (%s in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_label</term>
+<listitem><para>label from look up table (%s in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_lat</term>
+<listitem><para>latitude for location (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_lat_ddmm</term>
+<listitem><para>latitude as <replaceable>DDD</replaceable>:<replaceable>MM</replaceable>[N/S] where <replaceable>DDD</replaceable> is degrees and <replaceable>MM</replaceable> is minutes and N or S is appended (%s in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_lon</term>
+<listitem><para>longitude for location (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_lon_ddmm</term>
+<listitem><para>longitude as <replaceable>DDD</replaceable>:<replaceable>MM</replaceable>[E/W] where <replaceable>DDD</replaceable> is degrees and <replaceable>MM</replaceable> is minutes and E or W is appended (%s in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_prog_time</term>
+<listitem><para>difference in valid time from <command>T0</command> as hh:tt where hh is hours and tt is minutes (%s in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_prog_time_hours</term>
+<listitem><para>difference in valid time in hours from <command>T0</command> (%d in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_prog_time_minutes</term>
+<listitem><para>difference in valid time in minutes from <command>T0</command> (%d in <command>printf</command> format)</para></listitem></varlistentry>
+</variablelist>
+</para> <para>
+The following magic attributes use the <command>strftime</command> format to display time.  See <command>@write_time</command> directive for more details.
+<variablelist>
+<varlistentry><term>GPGEN_gmt_time</term>
+<listitem><para>valid time as GMT (use <command>strftime</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_local_time</term>
+<listitem><para>valid time as local standard (use <command>strftime</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_T0_time</term>
+<listitem><para><command>T0</command> time (use <command>strftime</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_creation_time</term>
+<listitem><para>product creation time (use <command>strftime</command> format)</para></listitem></varlistentry>
+</variablelist>
+</para> <para>
+The following magic attributes can only be used in <command>@label</command> and <command>@sample_field</command> directives.
+<variablelist>
+<varlistentry><term>GPGEN_bearing</term>
+<listitem><para>Bearing of a line at the sampled point (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_line_direction_from</term>
+<listitem><para>The direction from which a line feature is pointing at the label location (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_line_direction_to</term>
+<listitem><para>the direction to which the line feature is pointing at the label location (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_line_length</term>
+<listitem><para>Length of the sampled line in km (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_link_chain_direction</term>
+<listitem><para>Direction of movement calculated from current link node to the next node in the link chain  (%f in <command>printf</command> format).</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_link_chain_speed</term>
+<listitem><para>Speed calculated from current link node to the next node in the link chain  (%f in <command>printf</command> format).</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_link_chain_vector</term>
+<listitem><para>Direction and speed calculated from current link node to the next node in the link chain  (%f in <command>printf</command> format).</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_link_chain_length</term>
+<listitem><para>Length of link chain. (%f in <command>printf</command> format)</para></listitem></varlistentry>
+</variablelist>
+</para> <para>
+The following magic attributes can only be used in <command>@cross_section_axis_label</command> directives.
+<variablelist>
+<varlistentry><term>GPGEN_cross_section_direction</term>
+<listitem><para>For <userinput>space</userinput> or <userinput>space_route</userinput> or <userinput>time_route</userinput> cross sections, direction calculated from current label location to next label location on the cross section (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_cross_section_speed</term>
+<listitem><para>For <userinput>space_route</userinput> or <userinput>time_route</userinput> cross sections, speed calculated from current label location to next label location on the cross section (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_cross_section_vector</term>
+<listitem><para>For <userinput>space_route</userinput> or <userinput>time_route</userinput> cross sections, direction and speed calculated from current label location to next label location on the cross section (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_cross_section_length</term>
+<listitem><para>For <userinput>space</userinput> or <userinput>space_route</userinput> or <userinput>time_route</userinput> cross sections, length of the cross section axis (%f in <command>printf</command> format)</para></listitem></varlistentry>
+</variablelist>
+</para> <beginpage/> <para>
+The following magic attributes can only be used within an <command>@loop_begin</command>/<command>@loop_end</command> loop using features from <command>@label</command> and <command>@sample_field</command> directives. 
+<variablelist>
+<varlistentry><term>GPGEN_feature_attribute</term>
+<listitem><para>The value of attributes from the current  feature from set in <command>@loop_begin</command></para></listitem></varlistentry>
+</variablelist>
+</para> <para>
+The following magic attributes can only be used in <command>@cross_section_areas</command>, <command>@cross_section_curves</command> and <command>@sample_field</command> directives. 
+<variablelist>
+<varlistentry><term>GPGEN_proximity</term>
+<listitem><para>Proximity of the sample point to the nearest area, line, link chain or scattered point in the sampled field in km (%f in <command>printf</command> format)</para></listitem></varlistentry>
+<varlistentry><term>GPGEN_negative_proximity</term>
+<listitem><para>Proximity (in negative direction) of the sample point to the nearest area, line, link chain or scattered point in the sampled field in km (%f in <command>printf</command> format)</para></listitem></varlistentry>
+</variablelist>
+</para> <para>
+There are several magic attributes that can be used only with
+specific directives. These magic attributes also begin with the string
+<userinput>GPGEN_</userinput>, and are described with the corresponding directive.
+</para> </sect1>
+
+<sect1><title>Graphics Geography Files</title><para>
+The &PSMet; and &SVGMet; applications allow the user to specify geography to
+use in their output graphics products. The applications search for
+geography files from default directories, but the user can add another
+directory to search first, if desired.
+</para> <para>
+The <userinput>directories</userinput> block of the &FPA; setup file may contain the following
+entry identifying the directory location for geography files:
+<programlisting>directories
+  {
+  <replaceable>...</replaceable>
+  Maps            <replaceable>map_directory</replaceable>
+  <replaceable>...</replaceable>
+  }</programlisting>
+The &PSMet; and &SVGMet; applications will search for a named geography file
+from the following directories in the order given:
+<simplelist>
+<member><replaceable>map_directory</replaceable>   (if entered)</member>
+<member>Maps            (in the Data directory)</member>
+<member><filename class='directory'><envar>$FPA</envar>/data/common/CommonMaps</filename></member>
+</simplelist>
+</para> </sect1>
+
+<beginpage/>
+<sect1 id='graphics_symbol_files'><title>Graphics Symbol Files</title><para>
+The &FPA; directories contain a number of predefined symbols that can be
+displayed by the &PSMet; and &SVGMet; applications. The symbols are created
+as a set size, but can be scaled as desired. Each symbol is created as a set of
+drawing instructions, based on a centre location of (0,0). This centre
+location does not necessarily have to be at the physical centre of the symbol
+itself, but the symbol is always displayed relative to this centre location.
+The symbol location can, however, be modified by an absolute value , or
+relative to the size of the symbol. The following keywords can be used:
+<variablelist>
+<varlistentry><term>symbol</term><term>mark</term><listitem><para>the name of the symbol file</para></listitem></varlistentry>
+<varlistentry><term>symbol_scale</term><term>mark_scale</term><listitem><para>
+scale the symbol by a certain percentage</para></listitem></varlistentry>
+<varlistentry><term>x_off</term><term>attribute_x_off</term><listitem><para>
+shift symbol horizontally by a set amount</para></listitem></varlistentry>
+<varlistentry><term>y_off</term><term>attribute_y_off</term><listitem><para>
+shift symbol vertically by a set amount</para></listitem></varlistentry>
+<varlistentry><term>justification</term><term>attribute_justification</term><listitem><para>
+horizontal justification based on left or right edge of symbol</para></listitem></varlistentry>
+<varlistentry><term>attribute_vertical_just</term><listitem><para>
+vertical justification based on top or bottom edge of symbol</para></listitem></varlistentry>
+</variablelist>
+Examples of predefined symbols for the &PSMet; and &SVGMet; applications
+are shown in Appendix A. The default colour for these symbols is Blue,
+and the default size is also shown.
+</para> <para>
+The &PSMet; and &SVGMet; applications also allow the user to create and use
+their own symbols in the output graphics products. The applications search
+for symbol files from default directories, but the user can add another
+directory to search first, if desired.
+</para> <para>
+The <userinput>directories</userinput> block of the &FPA; setup file may contain the following
+entries identifying directory locations for symbol files:
+<programlisting>directories
+  {
+  <replaceable>...</replaceable>
+  psmet_symbols            <replaceable>symbol_directory</replaceable>
+  svgmet_symbols           <replaceable>symbol_directory</replaceable>
+  <replaceable>...</replaceable>
+  }</programlisting>
+</para> <para>
+The &PSMet; application will search for a named symbol file from the
+following directories in the order given:
+<simplelist>
+<member><replaceable>symbol_directory</replaceable> (if entered)</member>
+<member><filename class='directory'><envar>$HOME</envar>/setup/pdf/psmet/common/ps</filename></member>
+<member><filename class='directory'><envar>$FPA</envar>/setup/pdf/psmet/common/ps</filename></member>
+</simplelist>
+</para> <beginpage/> <para>
+The &SVGMet; application will search from the following directories in the order given:
+<simplelist>
+<member><replaceable>symbol_directory</replaceable> (if entered)</member>
+<member><filename class='directory'><envar>$HOME</envar>/setup/pdf/svgmet/common/svg</filename></member>
+<member><filename class='directory'><envar>$FPA</envar>/setup/pdf/svgmet/common/svg</filename></member>
+</simplelist>
+</para> <para>
+Predefined symbol files can be found in the directories:
+<simplelist>
+<member><filename class='directory'><envar>$FPA</envar>/setup/pdf/psmet/common/ps</filename></member>
+<member><filename class='directory'><envar>$FPA</envar>/setup/pdf/svgmet/common/svg</filename></member>
+</simplelist>
+</para> <para>
+Descriptions of the symbols in these directories can be found in the files:
+<simplelist>
+<member><filename><envar>$FPA</envar>/setup/pdf/psmet/common/ps_symbol_list</filename></member>
+<member><filename><envar>$FPA</envar>/setup/pdf/svgmet/common/svg_symbol_list</filename></member>
+</simplelist>
+</para> </sect1>
+
+<sect1 id='graphics_patter_files_for_drawing_lines'><title>Graphics Pattern Files for Drawing Lines</title><para>
+The &FPA; directories contain a number of predefined pattern files that can be
+used to draw lines in the &PSMet; and &SVGMet; applications. The pattern files
+are created with a set width and height of the pattern, but the pattern can be
+stretched in width or length as desired. The following keywords can be used:
+<variablelist>
+<varlistentry><term>pattern</term><listitem><para>
+the name of the pattern file</para></listitem></varlistentry>
+<varlistentry><term>pattern_width</term><listitem><para>
+the width of the pattern perpendicular to the line</para></listitem></varlistentry>
+<varlistentry><term>pattern_length</term><listitem><para>
+the length of the pattern along the line</para></listitem></varlistentry>
+</variablelist>
+Examples of predefined pattern files for the &PSMet; and &SVGMet; applications
+are shown in Appendix B. Appendix B also shows how the <userinput>pattern_width</userinput>
+and <userinput>pattern_length</userinput> keywords affect the display of a pattern.
+</para> <para>
+The &PSMet; and &SVGMet; applications also allow the user to create and use
+their own patterns for drawing lines in the output graphics products. The
+applications search for pattern files from default directories, but the user
+can add another directory to search first, if desired.
+</para> <para>
+The <userinput>directories</userinput> block of the &FPA; setup file may contain the following
+entry identifying the directory location for pattern files:
+<programlisting>directories
+  {
+  <replaceable>...</replaceable>
+  patterns        <replaceable>pattern_directory</replaceable>
+  <replaceable>...</replaceable>
+  }</programlisting>
+
+</para> <beginpage/> <para>
+The &PSMet; and &SVGMet; applications will search for a named pattern file
+from the following directories in the order given:
+<simplelist>
+<member><replaceable>pattern_directory</replaceable> (if entered)</member>
+<member><filename class='directory'><envar>$HOME</envar>/config/patterns</filename></member>
+<member><filename class='directory'><envar>$FPA</envar>/config/patterns</filename></member>
+</simplelist>
+</para> <para>
+Predefined pattern files can be found in the directory:
+<simplelist>
+<member><filename class='directory'><envar>$FPA</envar>/config/patterns</filename></member>
+</simplelist>
+</para> </sect1>
+
+<sect1><title>Graphics Fonts and Spacing for Text</title><para>
+The &PSMet; and &SVGMet; applications use various keywords to control the
+font and spacing used to display text. 
+(Note that the values for these keywords default to the current presentation if they are not present in a particular directive.)
+</para> <para>
+The size of text characters varies from font to font, and the <userinput>width_scale</userinput> and
+<userinput>height_scale</userinput> keywords are used to estimate the approximate size of
+characters (compared to a square box) so as to be able to position text strings
+with respect to the left, right, top or bottom edge of other text strings. The
+following keywords can be used:
+<variablelist>
+<varlistentry><term>font</term><listitem><para>
+the name of the text font style</para></listitem></varlistentry>
+<varlistentry><term>text_size</term><listitem><para>
+size of text characters</para></listitem></varlistentry>
+<varlistentry><term>width_scale</term><term>attribute_width_scale</term><listitem><para>
+approximate width of characters with respect to text_size</para></listitem></varlistentry>
+<varlistentry><term>height_scale</term><term>attribute_height_scale</term><listitem><para>
+approximate height of characters with respect to text_size</para></listitem></varlistentry>
+</variablelist>
+Examples of available fonts for the &PSMet; and &SVGMet; applications are
+shown in Appendix C.
+</para> </sect1>
+
+<sect1><title>Graphics Colours for Text, Lines, and Areas</title><para>
+The &PSMet; and &SVGMet; applications use various keywords to control
+colours for display of text, lines, and areas. 
+(Note that the values for these keywords default to the current presentation if they are not present in a particular directive.)
+</para> <para>
+The characters for text fonts are described by an outline that can be drawn,
+as well as the interior of the outline that can be filled with colour. The
+following keywords can be used:
+<variablelist>
+<varlistentry><term>line_width</term><listitem><para>
+the thickness of the character outlines</para></listitem></varlistentry>
+<varlistentry><term>outline</term><listitem><para>
+the colour of the character outlines</para></listitem></varlistentry>
+<varlistentry><term>fill</term><listitem><para>
+the colour of the interior of the character outlines</para></listitem></varlistentry>
+<varlistentry><term>outline_first</term><listitem><para>
+display the character outlines first (with a value of <userinput>yes</userinput>) or last (with a value of <userinput>no</userinput>).
+</para> <para>
+Note that outlines for text fonts are usually drawn last, that is, after the interior of the outlines are filled with colour
+</para></listitem></varlistentry>
+</variablelist>
+Lines can be displayed as a continuous curve, or as a sequence of filled
+areas, depending on the pattern file used for displaying the line.
+Multicoloured lines require specification of the line colours more than once.
+</para> <para>
+Lines drawn as a continuous curve use the following keywords:
+<variablelist>
+<varlistentry><term>line_width</term><listitem><para>
+the thickness of the curve</para></listitem></varlistentry>
+<varlistentry><term>outline</term><listitem><para>
+the colour (or colours) of the curve</para></listitem></varlistentry>
+</variablelist>
+Lines drawn as a sequence of filled areas use the following keywords:
+<variablelist>
+<varlistentry><term>line_width</term><listitem><para>
+the thickness of the outlines for the sequence of areas</para></listitem></varlistentry>
+<varlistentry><term>outline</term><listitem><para>
+the colour (or colours) of the outlines for the sequence</para></listitem></varlistentry>
+<varlistentry><term>fill</term><listitem><para>
+the colour of the interior of the outlines for the sequence</para></listitem></varlistentry>
+</variablelist>
+Areas can be displayed with a line for the boundary (using any of the
+keywords given above for lines) as well as with the interior area filled
+with colour or symbols. The following keywords are used for the
+displaying the interior of areas:
+<variablelist>
+<varlistentry><term>interior_fill</term><listitem><para>
+the colour of the interior of the area</para></listitem></varlistentry>
+<varlistentry><term>symbol_fill_name</term><listitem><para>
+the display for symbols within the interior of the area
+(defined in the directive <command>@symbol_fill_display</command>)</para></listitem></varlistentry>
+</variablelist>
+Examples of predefined X11 colour names for the &PSMet; and &SVGMet;
+applications are shown in Appendix D.
+</para> </sect1>
+
+<sect1><title>Graphics Arrow Heads and Tails</title><para>
+The &PSMet; and &SVGMet; applications use various keywords to allow lines
+to be displayed with various styles of arrow heads or arrow tails. The
+directives that allow arrow heads or tails contain the <userinput>arrow_name</userinput>
+keyword, and the keywords used to set the arrow display parameters
+are found in the <command>@arrow_display</command> directive.
+</para> <para>
+Examples of arrow display for the &PSMet; and &SVGMet; applications are
+shown in Appendix E. Appendix E also shows how the various
+keywords affect the display of arrow heads and tails.
+</para> </sect1>
+
+<sect1><title>Graphics Wind Barbs</title><para>
+The &PSMet; and &SVGMet; applications use various keywords to allow winds or vector winds to be displayed as wind barbs. 
+The directives that display wind barbs contain the <userinput>format</userinput> or <userinput>attribute_format</userinput> keyword, with a value of <userinput>wind_barb</userinput>.
+The keywords used to set the wind barb display parameters are found in the <command>@wind_barb_presentation</command> directive.
+</para> <para>
+Examples of the display of wind barbs for the &PSMet; and &SVGMet;
+applications are shown in Appendix F. Appendix F also shows how the
+various keywords affect the display of wind barbs.
+</para> </sect1>
+
+<sect1><title>Errors and Warnings</title><para>
+The Graphics Product Generator applications are designed to process all
+product definition file directives sequentially. The applications will halt
+and output an error message to the &FPA; log file if they encounter a
+directive that contains an unacceptable keyword, or if a required
+keyword has not been entered. The applications may output an
+incomplete product if an error condition has been encountered.
+</para> <para>
+The Graphics Product Generator applications may also output warnings to
+the &FPA; log file. The user should check these to ensure that the indicated
+warning is an acceptable condition.
+</para> <para>
+Users developing new graphics products may wish to make use of the
+<command>@verbose</command> directive. Setting the verbose mode to <userinput>yes</userinput> within a product
+definition file will result in additional comments being output as the
+product is run, which may highlight unexpected problems. The verbose
+mode should be re-set to <userinput>no</userinput> at a later point in the file, to end output of
+these additional comments.
+</para><para>
+New versions of the Graphics Product Generator are designed to simplify changes and additions to directives and keywords.
+The <command>@version</command> directive controls the output of additional comments that will help developers to update "pdf" files to new versions of the Graphics Product Generator.
+When a "pdf" file with an older <command>@version</command> value is run, a set of warnings will be output in the &FPA; log file; but the desired product should still be generated.
+The warnings in the &FPA; log file will indicate which directives and keywords need to be changed.
+Once all the required changes have been made, the <command>@version</command> directive should be changed to the newer version.
+Using obsolete directives or keywords with an up-to-date <command>@version</command> will result in error messages in the &FPA; log file.
+</para> </sect1>
+</chapter>

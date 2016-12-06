@@ -1,0 +1,66 @@
+Contents of the FPA bin directory:
+
+    This file attempts to enumerate and explain everything in the bin directory.
+
+Sub-directories:
+pcLinuxvRedHat  - Contains binary executables for Intel running Linux
+
+Symbolic links for main executables (see fpa.exec below):
+fpacreate       - Allied model to create an area outline from object attributes
+fpagpgen        - Graphical product generator (common program)
+fpaingest       - Ingest scheduler
+fpawarp         - Allied model to adjust grid data with point data
+gribin2         - GRIB data ingest (Version 2 and 1 GRIB files)
+gribin          - GRIB data ingest (Version 1 GRIB files)
+psmet           - Graphical product generator (PostScript output)
+svgmet          - Graphical product generator (SVG format output)
+texmet          - Graphical product generator (ASCII text output)
+xfpa            - Depiction sequence editor
+
+Symbolic links for support executables (see fpa.exec below):
+config_check    - Quality control config files
+dates           - Date conversion program
+fpacfg          - List referenced config files
+fpadir          - List all standard directories
+fpaenv          - List all environment variables
+fpashuffle      - Move files into the FPA directory structure
+getmap          - Define a map projection
+gribtest        - GRIB test decoder
+hostinfo        - Obtain machine ID etc.
+llmeta          - Reformat metafiles in lat-lon
+metadiff        - Find largest differences between two FPA metafiles
+xpr             - Print hardcopy graphics from FPA
+
+Master scripts:
+fpa.exec        - Master script to select and execute the appropriate binary
+                  executable for the current hardware and HP-UX revision
+                  (The binary executables and PROLOG runtimes above are linked
+                  to this script)
+fpapm           - Controls all external operations from xfpa
+d.fpa.exec      - Backup of fpa.exec
+d.fpapm         - Backup of fpapm
+
+Support scripts:
+abspath         - Tests if path is absolute or relative to . or ..
+fpabusy         - Determine whether a file or binary is being used
+fpadb_minutes   - Convert filenames in a directory to minutes format
+get_config      - Get path of given config file using setup references
+get_directory   - Get directory from setup file
+get_path        - Build path from directory in setup file plus filename
+get_setup       - Get the path of the given setup file
+get_setup_parm  - Get the value of the given parameter from the given setup file
+pathname        - Build path from directory plus filename
+platform        - Detect the current hardware and operating system revision and
+                  build the corresponding sub-directory name (e.g. hp700v8)
+samehost        - Determine whether two hosts are actually the same
+
+Installation/update scripts:
+copyuserlib     - Install the user defined library source to a working directory
+mkfpadb         - Builds/updates an FPA database
+mkfpaenv        - Builds/updates FPA environment control file
+mkfpasetup      - Builds a setup file
+pdf2fpdf        - Change Graphical product generator files with "pdf" extension
+                  to "fpdf" extension (Note that fpdf2pdf reverses the changes)
+putfonts        - Transfer FPA fonts (in putfonts.tar) to a workstation
+                  (Note that truetypefonts_on(_off) can enable (or disable)
+                  FPA True Type fonts depending on the operating system used)

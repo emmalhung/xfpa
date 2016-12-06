@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_images'> <title>@images</title> <titleabbrev>@images</titleabbrev>
+<para>
+Insert imagery into output products.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>image_tag</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Image file identifier from Image configuration file</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>image_tag_list</userinput></para></entry>
+<entry colname='type'><para>string(s)</para></entry>
+<entry colname='desc'><para>List of image file identifiers from Image configuration file</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>colour_table</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Name of colour table from Image configuration file</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>colour_table_list</userinput></para></entry>
+<entry colname='type'><para>string(s)</para></entry>
+<entry colname='desc'><para>List of colour tables from Image configuration file</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>brightness</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Set the default brightness for corresponding image files. Values between 0 and 100.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>brightness_list</userinput></para></entry>
+<entry colname='type'><para>integer(s)</para></entry>
+<entry colname='desc'><para>List of brightness values for corresponding image files. Values between 0 and 100.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>satellite_brightness</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Default brightness for all satellite images. Values between 0 and 100.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radar_brightness</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Default brightness for all radar images. Values between 0 and 100.</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/valid_time.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>Imagery may not always be available at fixed intervals. Sometimes it may be a few minutes early or late. The keywords: <userinput>match_time_before</userinput> and <userinput>match_time_after</userinput> allow you to define an acceptance window. The keywords <userinput>satellite_time_before</userinput>, <userinput>satellite_time_after</userinput>, <userinput>radar_time_before</userinput> and <userinput>radar_time_after</userinput> allow you to set different acceptance windows for satellite and radar.</entry></row>
+<row valign='top'>
+<entry colname='key'><para><userinput>match_time_before</userinput></para></entry>
+<entry colname='type'><para>vtime</para></entry>
+<entry colname='desc'><para>Lower limit of acceptance window (specify hours and minutes as in: <replaceable>hh:mm</replaceable>) </para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>match_time_after</userinput></para></entry>
+<entry colname='type'><para>vtime</para></entry>
+<entry colname='desc'><para>Upper limit of acceptance window (specify hours and minutes as in: <replaceable>hh:mm</replaceable>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>satellite_time_before</userinput></para></entry>
+<entry colname='type'><para>vtime</para></entry>
+<entry colname='desc'><para>Lower limit of acceptance window for satellite images (specify hours and minutes as in: <replaceable>hh:mm</replaceable>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>satellite_time_after</userinput></para></entry>
+<entry colname='type'><para>vtime</para></entry>
+<entry colname='desc'><para>Upper limit of acceptance window for satellite images (specify hours and minutes as in: <replaceable>hh:mm</replaceable>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radar_time_before</userinput></para></entry>
+<entry colname='type'><para>vtime</para></entry>
+<entry colname='desc'><para>Lower limit of acceptance window for radar images (specify hours and minutes as in: <replaceable>hh:mm</replaceable>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radar_time_after</userinput></para></entry>
+<entry colname='type'><para>vtime</para></entry>
+<entry colname='desc'><para>Upper limit of acceptance window for radar images (specify hours and minutes as in: <replaceable>hh:mm</replaceable>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>blend_images</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry>
+<entry colname='desc'><para>Make radar imagery semi-transparent when displayed over satellite imagery
+</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>blend_ratio</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Degree of transparency</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radar_range_rings</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry>
+<entry colname='desc'><para>Display radar range rings? 
+</para><para>(Note: If range rings are already part of the image they can not be removed)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radar_range_ring_interval</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>If the range rings are not already part of the image, sets the distance between range rings in <userinput>radar_range_ring_units</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radar_range_ring_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for range ring interval</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radar_range_ring_colour</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Radar range ring colour
+</para><para>One of: 
+<simplelist>
+<member><userinput>none</userinput></member>
+<member><userinput>CMYK <replaceable>c m y k</replaceable></userinput></member>
+<member><userinput>RGB <replaceable>r g b</replaceable></userinput></member>
+<member><userinput>X11 <replaceable>name</replaceable></userinput></member>
+</simplelist>
+where <replaceable>c,m,y,k</replaceable> and <replaceable>r,g,b</replaceable> are 0-100, and <replaceable>name</replaceable> is a valid X11 colour name
+</para><para>(Note: If range rings are already part of the image they can not be changed)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radar_limit_ring</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry>
+<entry colname='desc'><para>Display radar limit ring? 
+</para><para>(Note: If range rings are already part of the image they can not be removed)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radar_limit_ring_colour</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Radar limit ring colour
+</para><para>One of: 
+<simplelist>
+<member><userinput>none</userinput></member>
+<member><userinput>CMYK <replaceable>c m y k</replaceable></userinput></member>
+<member><userinput>RGB <replaceable>r g b</replaceable></userinput></member>
+<member><userinput>X11 <replaceable>name</replaceable></userinput></member>
+</simplelist>
+where <replaceable>c,m,y,k</replaceable> and <replaceable>r,g,b</replaceable> are 0-100, and <replaceable>name</replaceable> is a valid X11 colour name
+</para><para>(Note: If range rings are already part of the image they can not be changed)</para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@images
+{
+  brightness              = 90;
+  image_tag_list          = radar1 radar2 radar3 satellite1;
+  match_time_before       = 00:15;
+  match_time_after        = 00:20;
+  radar_limit_ring        = yes;
+  radar_limit_ring_colour = X11 Red;
+  blend_images            = yes;
+  blend_ratio             = 30;
+}</programlisting>
+Display three images blended with radar at 30% transparency.
+Match images up to 15 minutes early and 20 minutes late.
+Include a red radar limit ring.
+</para></example>
+</para></sect2>

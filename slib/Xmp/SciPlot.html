@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html><head><title>SciPlot Widget Man Page</title></head><body>
+<h1><a name="top">SciPlot Widget Programmer's Reference</a></h1>
+
+
+
+
+
+<ul>
+<li><a href="#usage">Usage</a>
+
+<li><a href="#font">Fonts</a>
+<li><a href="#point">Point Styles</a>
+<li><a href="#line">Line Styles</a>
+<li><a href="#res">New Resources</a>
+<li><a href="#pub">Public Functions</a>
+<ul>
+<li><a href="#ref">Refresh Functions</a>
+<li><a href="#ref">Color Functions</a>
+<li><a href="#list">Data Manipulation Functions</a>
+
+
+
+<li><a href="#graph">Graph Control Functions</a>
+<li><a href="#callback">Callback Structure</a>
+</ul>
+
+<ul><li>
+<a href="SciPlot.html">Back to SciPlot home page</a>
+</ul>
+
+<p><hr><h2><a name="usage">Usage</a></h2>
+<p>To use the SciPlot widget in an application, include the three source code
+files SciPlot.c, SciPlot.h, and SciPlotP.h with the rest of the source code
+for the application.  Include the object SciPlot.o in the Makefile rule that
+compiles the application.
+
+</dl>
+</code>
+
+<p>In source code that uses the SciPlot widget, include the following header
+file before references to the plot widget:
+<code>
+<dl>
+<dt>#include "SciPlot.h"
+</dl>
+
+<p>To create the SciPlot widget, use the following code as an example:
+<dl>
+<dt>plotWidget=XmVaCreateManagedSciPlot(parent, "plot2",
+<dd>		XmNheight, 250,
+<dd>		XmNwidth, 250,
+<dd>		XmNplotTitle, "Demo of Plot Widget",
+<dd>		XmNxLabel, "X Axis (units)",
+<dd>		XmNyLabel, "Y Axis (units)",
+<dd>		XmNchartType, XmPOLAR,
+<dd>		XmNdegrees, True,
+<dd>		NULL);
+</dl>
+</code>
+<p>This example creates a 250x250 polar plot widget as a child of parent,
+using degrees as the angle measurement unit.
+<p>Also available are the functions:
+<dl>
+<dd>XmCreateSciPlot(Widget parent, String name, ArgList args, int nargs)
+<dd>XmCreateManagedSciPlot(Widget parent, String name, ArgList args, int nargs)
+<dd>XmVaCreateSciPlot(Widget parent, String name, ...)
+
+<p>Data is plotted on the graph in groups called <i>lists</i>.  Each <i>list</i>
+consists of a group of coordinates that will be connected together by a drawn
+line, and share the same point style, point color, line style, line color and
+legend label.  Data is added to the widget using convenience functions only. 
+There is no current provision to add data via the argument list.
+
+<p>An example using one of the convenience functions is given below:
+<code>
+<dl>
+<dt>double rlist[]={14.,18.,22.,26.,SCIPLOT_SKIP_VAL,30.,34.,38.,42.};
+<dt>double tlist[]={30.,60.,90.,120.,SCIPLOT_SKIP_VAL,150.,180.,270.,355.};
+<dt>int line1;
+<p>
+<dt>line1=SciPlotListCreateFromDouble(plotWidget,
+<dd>9,rlist,tlist,
+<dd>"List 1");
+</dl>
+</code>
+
+<p>The variable line1 is the identifier of the <i>list</i> that will be needed to
+modify the <i>list</i> by the other convenience functions that operate on
+<i>lists</i>.
+
+<p>This example adds a <i>list</i> to be plotted in plotWidget.  If plotWidget was
+created using the call to XmVaCreateManagedSciPlot above, the line would be
+added to a polar plot, where the angles in tlist would be interpreted as
+degrees.
+
+<p>Note that this example includes the feature of skipping over a blank
+space in the line.  There will not be a line segment connecting the point
+(26,120) to (30,150).
+
+<p>There are other convenience functions to specify colors and styles of the
+points and lines drawn in the Plot widget, as well as functions to pick
+the colors used and others to update previously defined <i>lists</i>.  See
+<a href="#pub">Public Functions</a>
+below for descriptions of all of the convenience
+functions.
+
+<p><hr><h2><a name="font">Fonts</a></h2>
+<p>Fonts used by the SciPlot widget are specified in standard XmRenderTable format.
+The title, axis labels, axis numbers and legend fonts each have internal tags secified as
+"title", "axis", "lbel", and "legend" respectively and the given render table will be
+searched for these tags and the appropriate fonts used. These tags may be overriden in the
+resource file by using the XmNtitleFontTag, XmNlabelFontTag, XmNaxisFontTag and XmNlegendFontTag
+rsource settings. Thus, for example, if there is an existing render table with a font tag of "large" the
+internal tag can be overriden by inserting "*.titleFontTag: large" into the resource file.
+
+<p><hr><h2><a name="point">Point Styles</a></h2>
+<p>The SciPlot widget is capable of drawing markers at each data point.  There are
+19 predefined point marker definitions:
+
+<table border>
+<tr><th>Style Name<th>Description
+<tr><td>XmMARKER_NONE<td>no point marker drawn
+<tr><td>XmMARKER_CIRCLE<td>open circle
+<tr><td>XmMARKER_SQUARE<td>square
+<tr><td>XmMARKER_UTRIANGLE<td>triangle (pointing up)
+<tr><td>XmMARKER_DTRIANGLE<td>triangle (pointing down)
+<tr><td>XmMARKER_LTRIANGLE<td>triangle (pointing left)
+<tr><td>XmMARKER_RTRIANGLE<td>triangle (pointing right)
+<tr><td>XmMARKER_DIAMOND<td>diamond
+<tr><td>XmMARKER_HOURGLASS<td>hourglass shape
+<tr><td>XmMARKER_BOWTIE<td>bowtie shape
+<tr><td>XmMARKER_FCIRCLE<td>filled variants of the above...
+<tr><td>XmMARKER_FSQUARE<td>
+<tr><td>XmMARKER_FUTRIANGLE<td>
+<tr><td>XmMARKER_FDTRIANGLE<td>
+<tr><td>XmMARKER_FLTRIANGLE<td>
+<tr><td>XmMARKER_FRTRIANGLE<td>
+<tr><td>XmMARKER_FDIAMOND<td>
+<tr><td>XmMARKER_FHOURGLASS<td>
+<tr><td>XmMARKER_FBOWTIE<td>
+</table>
+
+<p><hr><h2><a name="line">Line Styles</a></h2>
+<p>For each <i>list</i> in the SciPlot widget, one of the following styles may be used to
+draw the lines that connect each point in the <i>list</i>:
+
+<table border>
+<tr><th>Style Name<th>Description
+<tr><td>XmLINE_NONE<td>no line (only points drawn)
+<tr><td>XmLINE_SOLID<td>solid line (the default)
+<tr><td>XmLINE_DOTTED<td>dotted line
+<tr><td>XmLINE_WIDEDOT<td>widely spaced dotted line
+</table>
+
+<p><hr><h2><a name="res">New Resources</a></h2>
+<p>Resources for the SciPlot widget are documented below, also showing the default
+values.
+
+<table border>
+<tr><th>Name<th>Class<th>Type<th>Default
+<tr><td>XmNxAutoScale<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNyAutoScale<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNchartType<td>XmCMargin<td>int<td>XmCARTESIAN
+<tr><td>XmNdegrees<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNdefaultMarkerSize<td>XmCInt<td>int<td>3
+<tr><td>XmNdrawMajor<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNdrawMajorTics<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNdrawMinor<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNdrawMinorTics<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNfontList<td>XmCFontList<td>FontList<td>NULL
+<tr><td>XmNlegendAtBottom<td>XmCBoolean<td>Boolean<td>False
+<tr><td>XmNlegendLineSize<td>XmCMargin<td>int<td>16
+<tr><td>XmNlegendMargin<td>XmCMargin<td>int<td>3
+<tr><td>XmNmarginWidth<td>XmCMargin<td>int<td>5
+<tr><td>XmNmarginHeight<td>XmCMargin<td>int<td>5
+<tr><td>XmNplotCallback<td>XmCCallback<td>XmRCallback<td>NULL
+<tr><td>XmNplotTitle<td>XmCString<td>String<td>"Plot"
+<tr><td>XmNshowLegend<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNshowTitle<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNshowXLabel<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNshowYLabel<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNtitleMargin<td>XmCMargin<td>int<td>8
+<tr><td>XmNxAxisMaxNumbers<td>XmCMargin<td>int<td>0
+<tr><td>XmNyAxisMaxNumbers<td>XmCMargin<td>int<td>0
+<tr><td>XmNxAxisNumbers<td>XmCAxisNumbers<td>int<td>XmNUMBERS_SHOW
+<tr><td>XmNyAxisNumbers<td>XmCAxisNumbers<td>int<td>XmNUMBERS_SHOW
+<tr><td>XmNyAxisNumbersNumDigits<td>XmCValue<td>int<td>0
+<tr><td>XmNxLabel<td>XmCString<td>String<td>"X Axis"
+<tr><td>XmNyLabel<td>XmCString<td>String<td>"Y Axis"
+<tr><td>XmNxLog<td>XmCBoolean<td>Boolean<td>False
+<tr><td>XmNyLog<td>XmCBoolean<td>Boolean<td>False
+<tr><td>XmNyNumbersHorizontal<td>XmCBoolean<td>Boolean<td>True
+<tr><td>XmNxOrigin<td>XmCBoolean<td>Boolean<td>False
+<tr><td>XmNyOrigin<td>XmCBoolean<td>Boolean<td>False
+<tr><td>XmNtitleFontTag<td>XmCString<td>String<td>"title"
+<tr><td>XmNlabelFontTag<td>XmCString<td>String<td>"label"
+<tr><td>XmNaxisFontTag<td>XmCString<td>String<td>"axis"
+<tr><td>XmNlegendFontTag<td>XmCString<td>String<td>"legend"
+<tr><td>XmNrenderTable<td>XmCRenderTable<td>RenderTable<td>NULL
+</table>
+
+<p>
+<dl>
+<p><dt>XmNxAutoScale
+<dt>XmNyAutoScale
+<dd>Autoscale the respective axis to fit the range of the data.
+
+<p><dt>XmNchartType
+<dd>Specifies a the type of chart to be drawn.  Currently, two types are
+available:  XmCARTESIAN = cartesian (X-Y) plot, XmPOLAR = polar plot.
+
+<p><dt>XmNdegrees
+<dd>Sets the type of angular unit measurement:  True=degrees,
+False=radians.
+
+<p><dt>XmNdefaultMarkerSize
+<dd>Size of the point style markers in pixels.
+
+<p><dt>XmNdrawMajor
+<dd>Controls the display of major gridlines.
+
+<p><dt>XmNdrawMajorTics
+<dd>Controls the display of major tic marks on the axes.
+
+<p><dt>XmNdrawMinor
+<dd>Controls the display of minor gridlines.
+
+<p><dt>XmNdrawMinorTics
+<dd>Controls the display of minor tic marks on the axes.
+
+<p><dt>XmNfontList
+<dd>The fontlist to use. This entry is depreciated and XmNrenderTable
+should be used instead. Only one of XmNfontList or XmNrenderTable may
+be specified not both.
+
+<p><dt>XmNlegendAtBottom
+<dd>Locate the legend at the lower right corner of the graph rather
+than at the top right corner.
+
+<p><dt>XmNlegendLineSize
+<dd>The length (in pixels) of the small lines used to show the line style
+and color in the legend box. If set to 0 neither the line or marker are shown.
+
+<p><dt>XmNlegendMargin
+<dd>Sets the border margin (in pixels) between the legend box outline and
+anything contained in it. Also controls the spacing between the line
+sample and the text, and the vertical spacing between legend entries.
+
+<p><dt>XmNmarginHeight
+<dt>XmNmarginWidth
+<dd>The spacing (in pixels) of the plot with the border of the widget for
+the height and width respectively.
+
+<p><dt>XmNplotCallback
+<dd>The plot callback. 
+
+<p><dt>XmNplotTitle
+<dd>This is the title of the plot that is drawn along the lower border of
+the widget.
+
+<p><dt>XmNshowLegend
+<dd>If True, the legend block is drawn.
+
+<p><dt>XmNshowTitle
+<dd>If True, the plot title is drawn.
+
+<p><dt>XmNshowXLabel
+<dd>If True, the X axis (or the polar axis) label is drawn.
+
+<p><dt>XmNshowYLabel
+<dd>If True, the Y axis label is drawn.
+
+<p><dt>XmNtitleFont
+<dd>This font is used for the title of the plot.
+
+<p><dt>XmNtitleMargin
+<dd>Spacing (in pixels) between the plot and the title.
+
+<p><dt>XmNxLabel
+<dt>XmNyLabel
+<dt>(Cartesian only.)
+<dd>Sets the label for each axis.
+
+<p><dt>XmNxAxisMaxNumbers
+<dt>XmNyAxisMaxNumbers
+<dt>(Cartesian only)
+<dd>This gives the maximum number of numbers along the respective axis other than that
+at the origin. Thus a value of 1 will create two labels, one at the origin and the other
+at the maximum value. A value of 0 will create the number of number labels the plot
+thinks are required for the data.
+
+<p><dt>XmNxAxisNumbers
+<dt>XmNyAxisNumbers
+<dd>Controls whether the axis numbers are displayed for the corresponding
+axis. This can have one of three values, XmNUMBERS_NONE, XmNUMBERS_SHOW or
+XmNUMBERS_SPACING_ALONG_AXIS. XmNUMBERS_SPACING_ALONG_AXIS is only valid for cartesian plots
+and will not display the numbers but makes allowance for the numbers along the axis.  This
+is useful for those times when you want to display stacked graphs with the same axis values
+but only one graph actualy displays the numbers. XmNxAxisNumbers also controls the display
+of the radial numbers in a polar plot.
+
+<p><dt>XmNyAxisNumbersNumDigits
+<dt>(Cartesian only)
+<dd>Sets a fixed number for the number of digits expected along the y-axis. Again this
+is useful when displaying stacked graphs.
+
+<p><dt>XmNxLog
+<dt>XmNyLog
+<dt>(Cartesian only.)
+<dd>Controls the logarithmic scales of the X and Y axes.  If either of
+the resources is set to True, the corresponding axis will display in
+logarithmic units.  Note that log axes cannot display numbers less
+than or equal to zero, so only points with values on that axis greater
+than zero will be plotted.
+
+<p><dt>XmNyNumbersHorizontal
+<dt>(Cartesian only.)
+<dd>If True, then the y axis numbers will be drawn horizontally, somewhat
+decreasing the area available for showing the plot, but more like a standard
+scientific plot.
+
+<p><dt>XmNtitleFontTag
+<dt>XmNlabelFontTag
+<dt>XmNaxisFontTag
+<dt>XmNlegendFontTag
+<dd>These allow the font tag expected to be in the render table to be overridden.
+The default tags are "title", "label", "axis" and "legend". If the appropriate tag
+is not found in the render table then the default font is used.
+
+<p><dt>XmNrenderTable
+<dd>Specifies the render table to use for text display. The default is to inherit
+from the parent.
+</dl>
+
+<p><hr><h2><a name="pub">Public Functions</a></h2>
+<p>Note that any changes to the widget are not reflected until a call to the
+public function SciPlotUpdate().  This includes any of the functions that
+add or remove <i>lists</i>, or change plot styles.  Any changes accomplished
+through XtVaSetValues, however, automatically updates the widget.
+
+<ul>
+<li>
+<h3><a name="ref">Refresh Functions</a></h3>
+<dl>
+<p><dt>void <b>SciPlotUpdate(w)</b>
+<dt>Widget w;
+<p>
+<dt>This function simply causes a recalculation of all internal parameters,
+and redraws the plot.  Call this function after adding, deleting,
+or changing <i>lists</i> to force the Widget to redraw itself.
+
+<p><dt>Boolean <b>SciPlotQuickUpdate(w)</b>
+<dt>Widget w;
+<p>
+<dt>This is an alternate function to redraw the widget.  It is provided
+mainly as a tool to use the SciPlot as a realtime display, because it does
+not clear the entire widget.
+<p>
+<dt>This function does not adjust the axis ranges, unlike SciPlotUpdate().
+It returns <b>True</b> if all points are within the current axis ranges 
+and <b>False</b> if they are not.
+</dl>
+
+<pre>
+
+
+</pre>
+<li>
+<h3><a name="ref">Color Functions</a></h3>
+<dl>
+<p><dt>void <b>SciPlotSetBackgroundColor(w,color)</b>
+<dt>Widget w;
+<dt>Pixel color;
+<p>
+<dt>Sets the background color of the widget to the color specified.
+
+<p><dt>void <b>SciPlotSetForegroundColor(w,color)</b>
+<dt>Widget w;
+<dt>Pixel color;
+<p>
+<dt>Sets the default foreground color to the color specified.
+This color is used as the default for the axis and legend
+box lines, as well as all of the text that appears in the widget.
+
+</dl>
+
+<pre>
+
+
+</pre>
+<li>
+<h3><a name="list">Data Manipulation Functions</a></h3>
+<p>Remember, you must call SciPlotUpdate() before your changes will be
+visible in the widget!
+<dl>
+<p>Note that if the parameter <b>legend</b> in the functions below is given
+the value NO_LEGEND_ENTRY, then a legend entry for the line will not be
+produced. Note too that <b>SciPlotPoint</b> is defined as "typedef struct {float x; float y;}".
+
+<p><dt>int <b>SciPlotListCreate(w,num,list,legend)</b>
+<dt>Widget w;
+<dt>int num;
+<dt>SciPlotPoint *list;
+<dt>char *legend;
+<p>
+<dt>Creates a <i>list</i> from the data given in the array list.
+The array must have num entries.  The parameter legend is the name
+of this <i>list</i>, and is drawn in the legend box.  The initial colors (for
+both the points and the line) are set to white, the initial point
+style is set to a square, and the initial line style is solid.
+
+<p>
+<dt>Returns an ID number for the newly created <i>list</i>.
+
+<p><dt>int <b>SciPlotListAdd(w,list_id,num,list)</b>
+<dt>Widget w;
+<dt>int list_id,num;
+<dt>SciPlotPoint *list;
+<p>
+<dt>Appends the new data contained in the array list to the data
+in the <i>list</i> referenced by list_id.
+
+<p><dt>void <b>SciPlotListUpdate(w,list_id,num,list)</b>
+<dt>Widget w;
+<dt>int list_id,num;
+<dt>SciPlotPoint *list;
+<p>
+<dt>Replaces the data in the <i>list</i> referenced by list_id with the new data
+contained in the array list.
+
+<p><dt>int <b>SciPlotListDelete(w,list_id)</b>
+<dt>Widget w;
+<dt>int list_id;
+<p>
+<dt>Deletes the <i>list</i> referenced by the ID number list_id.
+
+<p><dt>int <b>SciPlotListDeleteAll(w)</b>
+<dt>Widget w;
+<p>
+<dt>Deletes all of the lists.
+
+<p><dt>void <b>SciPlotListSetStyle(w,list_id,pcolor,pstyle,lcolor,lstyle)</b>
+<dt>Widget w;
+<dt>int list_id;
+<dt>int pstyle
+<dt>Pixel pcolor
+<dt>int lstyle
+<dt>Pixel lcolor;
+<p>
+<dt>Sets the styles of the <i>list</i> with an ID number of list_id.  See the
+sections
+<a href="#point">Point Styles</a>
+and
+<a href="#line">Line Styles</a>
+for descriptions of the
+available options.
+
+<p><dt>void <b>SciPlotListSetPointMove(w,list_id,move_type,start_index,end_index)</b>
+<dt>Widget w;
+<dt>int list_id;
+<dt>int move_type;
+<dt>int start_index;
+<dt>int end_index;
+<p>
+<dt>Sets up mouse event moves on the given ID number of list_id. The type of the move is
+specified by move_type and may be one of XmMOVE_XY, XmMOVE_X_ONLY or XmMOVE_Y_ONLY. The
+range of the points in the list is constrained by start_index and end_index. If end_index
+is set to 0 then the range is from start_index to the end of the list.
+
+<p><dt>void <b>SciPlotListSetLineMove(w,list_id,select_function,move_function)</b>
+<dt>Widget w;
+<dt>int list_id;
+<dt>int  (*select_function)(int point_index, SciPlotPoints *points, int npoints);
+<dt>void (*move_function)(SciPlotPoint p, SciPlotPoint *points, int npoints);
+<p>
+<dt>Sets up mouse event moves on the given ID number of list_id. The move of the list
+is controlled by the two functions. 
+<p>
+<dt>The select_function has as input the index of the
+data point in the list that was selected by SciPlot as being nearest the initial mouse
+click in the graph and the internal list of points. This function is expected to return
+the index of the list point that will be used as the control point for all mouse moves.
+The given points array must not be freed as it is an internally allocated array. If set
+NULL the default is to select the last point of the array (npoints-1) as the control point.
+<p>
+<dt> The move_function determines how the line is to be moved. The input to the function
+is the current data point of the mouse location and the internal list of points. The current
+data point is based on the control point as given by the select_function. The given points 
+array must not be freed as it is an internally allocated array. If set NULL the default action
+is to move the points as a straight line where the first point of the list does not move and
+the last point is used as the control.
+
+<p><dt>void <b>SciPlotListUnsetMove(w,list_id)</b>
+<dt>Widget w;
+<dt>int list_id;
+<p>
+<dt>Clears the given ID number of list_id of any move requests. The list will not be affected by any mouse events.
+</dl>
+
+<pre>
+
+
+</pre>
+<li>
+<h3><a name="graph">Graph Control Functions</a></h3>
+<p>Remember, you must call SciPlotUpdate() before your changes will be
+visible in the widget!
+<dl>
+<p><dt>void <b>SciPlotSetXAutoScale(w)</b>
+<dt>Widget w;
+<p>
+<dt>(Cartesian only.)
+<dt>Forces the widget to automatically scale the X axis based on the minimum
+and maximum values determined from all of the <i>lists</i>.
+
+<p><dt>void <b>SciPlotSetXUserScale(w,min,max)</b>
+<dt>Widget w;
+<dt>double min,max;
+<p>
+<dt>(Cartesian only, and not in logarithmic mode.)
+<dt>Forces the widget to display the X axis range based on the specified minimum
+and maximum values.
+
+<p><dt>void <b>SciPlotSetXUserIncrement(w, increment, minor_num)</b>
+<dt>Widget w;
+<dt>float increment;
+<dt>int minor_num;
+<p>
+<dt>(Cartesian only andnot in logarithmic mode)
+<dt>Forces the widget to use the given increment for numeric labels along the axis and
+to place minor_num minor grid lines between the increments.
+
+<p><dt>void <b>SciPlotSetYAutoScale(w)</b>
+<dt>Widget w;
+<p>
+<dt>(Cartesian only.)
+<dt>Forces the widget to automatically scale the Y axis based on the minimum
+and maximum values determined from all of the <i>lists</i>.
+
+<p><dt>void <b>SciPlotSetYUserScale(w,min,max)</b>
+<dt>Widget w;
+<dt>double min,max;
+<p>
+<dt>(Cartesian only, and not in logarithmic mode.)
+<dt>Forces the widget to display the Y axis range based on the specified minimum
+and maximum values.
+
+<p><dt>void <b>SciPlotSetYUserIncrement(w, increment, minor_num)</b>
+<dt>Widget w;
+<dt>float increment;
+<dt>int minor_num;
+<p>
+<dt>(Cartesian only and not in logarithmic mode)
+<dt>Forces the widget to use the given increment for numeric labels along the axis and
+to place minor_num minor grid lines between the increments.
+
+</dl>
+
+<pre>
+
+
+</pre>
+<li>
+<h3><a name="callback">Callback Structure</a></h3>
+<dl>
+
+<p><dt>typedef struct {
+<dd>    int    reason;
+<dd>    XEvent *event;
+<dd>    int    list_id;
+<dd>    int    point_index;
+<dd>    int    ndata;
+<dd>    SciPlotPoint *data;
+<dt>} SciPlotCallbackStruct;
+<p>
+<dt>The structure called when the callback is activated. The reason is one of
+XmCR_MOVE_LINE or XmCR_MOVE_POINT. The ID of the selected list is given by list_id
+and the index of the list control point by point_index. The list data is given by
+data and the length of the data array by ndata. Note that data points to an internally
+allocated array and must not be freed by the calling routine.
+
+</dl>
+</ul>
+<hr>

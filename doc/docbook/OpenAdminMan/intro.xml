@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE preface PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<preface id="intro"> <title>Introduction</title> <para>
+The Forecast Production Assistant (&FPA;) is a unique computer program developed by the Meteorological Service of Canada for use in operational weather forecasting.
+</para> <para>
+The &FPA; allows forecasters to represent and interact with conceptual models of the atmosphere.
+Meteorologists use the &FPA; to create a series of weather charts, known as depictions, that show weather fields over a sequence of times.
+The weather fields can contain grid point data or sets of areas, lines or scattered points.
+The weather depictions are not just graphical displays, but windows into an object database.
+By connecting processes to the database, forecast offices can automatically generate forecast products or run local models, while spending more of their time on weather analysis, diagnosis and prognosis.
+</para>
+
+<simplesect><title>About This Guide</title> <para>
+The Forecast Production Assistant Administrator's Guide is intended for the person responsible for installing, configuring, updating and maintaining the system.
+</para> <para>
+This guide assumes that you have a working knowledge of Linux. 
+</para> </simplesect>
+<!-- <![%draft; [ 
+and is divided into the following sections.
+<simplesect><title>System Requirements</title> <para>
+This chapter details the hardware and software requirements to run &FPA;.
+</para> </simplesect>
+<simplesect><title>Understanding How &FPA; Works</title> <para>
+This chapter describes the main modules of &FPA; and how they interact.
+</para> </simplesect>
+<simplesect> <title>&FPA; Installation and Update</title> <para>
+This chapter describes how to install or update the system.
+</para> </simplesect>
+<simplesect><title>Contents of the &FPA; Master Directory</title> <para>
+This chapter describes the directory map of the directory in which &FPA;
+is installed. Each of the main directories and their function is described.
+</para> </simplesect>
+<simplesect><title>Defining Your Local Setup</title> <para>
+This section describes how you can define the setup of the system to
+define office preferences, or personal preferences (e.g., specifying the
+forecast products you want).
+</para> </simplesect>
+<simplesect><title>Configuration Files</title> <para>
+This chapter describes how you can configure your system to describe
+your working environment (e.g., office-specific forecast products, default
+presentation).
+</para> </simplesect>
+<simplesect><title>Connecting to External Processes</title> <para>
+A description of the hooks which &FPA; provides to allow the initiation of
+external processes once a product is placed in a release directory.
+</para> </simplesect>
+<simplesect><title>Appendices</title> <para>
+The specific configuration information is placed in the appendices for
+ease of access. The discussion of the requirement for and framework of the
+configuration requirements is found in the body of the manual.
+</para> </simplesect>
+]]>-->
+</preface>

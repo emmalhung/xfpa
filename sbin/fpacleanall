@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Script to remove .o files in all FPA directories
+#
+
+# Remove all .o files in selected FPA directories
+
+fpacleandir lib/environ
+fpacleandir lib/extract
+fpacleandir lib/fortranlib
+fpacleandir lib/glib
+fpacleandir lib/objects
+fpacleandir lib/supportlib
+fpacleandir lib/tools
+fpacleandir lib/userlib
+
+fpacleandir slib/graphics
+fpacleandir slib/ingred
+fpacleandir slib/Xbae
+fpacleandir slib/Xgl
+fpacleandir slib/Xmp
+fpacleandir slib/XmVa
+fpacleandir slib/Xu
+
+fpacleandir sapp/allied
+fpacleandir sapp/fpagpgen
+fpacleandir sapp/fpahelp
+fpacleandir sapp/ingest
+fpacleandir sapp/misc
+fpacleandir sapp/xfpa

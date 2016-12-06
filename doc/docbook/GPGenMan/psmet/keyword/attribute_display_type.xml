@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>attribute_display_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Type of display about attribute
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>
+<colspec colwidth='1.5*'/><colspec colwidth='1*'/>
+<tbody>
+<row><entry><userinput>sized_box</userinput></entry><entry>scaled box</entry></row>
+<row><entry><userinput>fixed_box</userinput></entry><entry>fixed size box</entry></row>
+<row><entry><userinput>sized_ellipse</userinput></entry><entry>scaled ellipse</entry></row>
+<row><entry><userinput>fixed_ellipse</userinput></entry><entry>fixed size ellipse</entry></row>
+<row><entry><userinput>sized_underline</userinput></entry><entry>scaled underline</entry></row>
+<row><entry><userinput>fixed_underline</userinput></entry><entry>fixed size line</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+(Note: the <userinput><replaceable>sized_...</replaceable></userinput> display types scale the type of display to the size of the label)</para></entry></row>

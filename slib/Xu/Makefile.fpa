@@ -1,0 +1,79 @@
+# Define all the usual places to look for things:
+LIBPATH = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(SLIBDIR)/$${PLATFORM}
+INCPATH = $${INCLUDE_PATH} $${X_INCLUDE} \
+			-I$(INCDIR) -I$(LIBDIR) -I$(SINCDIR) -I$(SLIBDIR)
+
+LDIR    = $(SLIBDIR)/$(PLATFORM)
+LIB     = $(LDIR)/libXu.a
+
+MODULES =	AppInitialize.o \
+			ComboBox.o \
+			CreatePixmap.o \
+			CursorControl.o \
+			Display.o \
+			EventLoop.o \
+			FindFile.o \
+			FindLine.o \
+			Fonts.o \
+			GeneralFcns.o \
+			GetLabel.o \
+			ListWidgetFcns.o \
+			LoadColor.o \
+			Menu.o \
+			NewXmString.o \
+			PromptDialogs.o \
+			Resources.o \
+			RunProgram.o \
+			ShellControl.o \
+			StandardDialog.o \
+			State.o \
+			Visual.o \
+			Wfcns.o
+
+HEADER  = $(SINCDIR)/Xu.h
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(LIB) $(MODULES) $(HEADER)
+
+
+# Rules for building the library:
+all lib:	$(HEADER) Pmodules $(LIB)
+		@	echo FPA $${PLATFORM} X utilities library ready
+		@	echo
+
+$(LIB):		$(MODULES)
+		@	echo Re-building FPA $${PLATFORM} X utilities library
+		@   if [ ! -d $(LDIR) ]; then mkdir -p $(LDIR); fi
+		@	if [ -f $(LIB) ]; then rm -f $(LIB); fi
+		@	sleep 1
+		@	$${LIB_ARCHIVE} $(LIB) $(MODULES) 2>/dev/null
+
+
+# Rules for building the object modules:
+modules:	$(HEADER) Pmodules $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA X utilities library"
+
+$(MODULES):	Xu.h	XuP.h 
+
+# Rules for building the master header file:
+defs header:	$(HEADER)
+$(HEADER):		Xu.h
+			@	echo Updating FPA X utilities library header
+			@	cp Xu.h $(HEADER)
+			@	sleep 1
+XuP.h:	Xu.h
+		@	sleep 1; touch $@
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} X utilities module $<"
+	@	$${C_COMPILER} -c $(INCPATH) $(C_OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

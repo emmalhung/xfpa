@@ -1,0 +1,68 @@
+% ##############################################################################
+% ### Header and Footer Page
+% ##############################################################################
+
+\pagestyle{fancyplain}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\plainheadrulewidth}{0.5pt}
+\renewcommand{\plainfootrulewidth}{0.5pt}
+\setcounter{page}{1}
+
+%\def\releasebox{%
+%  \ifthenelse{\equal{\DBKreleaseinfo}{}}{}%
+%  {\framebox{\textsc{\textsf{\DBKreleaseinfo}}}}%
+%}
+
+\def\releasebox{%
+  \ifthenelse{\equal{\DBKreleaseinfo}{}}{}%
+  { v\DBKreleaseinfo}%
+}
+
+% Define front/main/back matter if not available
+\@ifundefined{frontmatter}{
+  \def\frontmatter{\cleardoublepage\pagenumbering{roman}\chead[\DBKcheadfront]{\DBKcheadfront}}
+}{}
+\@ifundefined{mainmatter}{
+  \def\mainmatter{\cleardoublepage\pagenumbering{arabic}\chead[\DBKcheadbody]{\DBKcheadbody}\cfoot[\DBKcfootbody]{\DBKcfootbody}}
+}{}
+\@ifundefined{backmatter}{
+  \def\backmatter{\if@openright\cleardoublepage\else\clearpage\fi}
+}{}
+
+
+% Fancy header/footer for the first page
+\cfoot[]{\DBKdate}
+\lfoot[]{}
+\rfoot[]{}
+
+% Fancy header/footer for the front matter
+
+\def\DBKcheadfront{%
+  \begin{tabular}{
+    >{\raggedright}p{3.4cm} >{\centering}p{10.0cm} >{\raggedleft}p{3.4cm}} %
+    \DBKfpalogo & \DBKsubtitle \releasebox & \textsf{\thepage} \tabularnewline %
+  \end{tabular}%
+}
+
+% Fancy header/footer for the doc body
+
+\def\DBKcheadbody{%
+  \begin{tabular}{
+    >{\raggedright}p{3.4cm} >{\centering}p{10cm} >{\raggedleft}p{3.4cm}} %
+    \DBKfpalogo & \DBKsubtitle \releasebox & 
+     \textsf{\thepage{} / \getpagerefnumber{LastPage}}
+  \tabularnewline%
+  \end{tabular}%
+}
+
+\def\DBKcfootbody{%
+  \begin{tabular}{
+    >{\raggedright}p{5.6cm} >{\centering}p{5.6cm} >{\raggedleft}p{5.6cm}} %
+    \textbf{\GPGENsect} & \GPGENchapter & \textbf{\GPGENsect}
+  \tabularnewline%
+  \end{tabular}%
+}
+
+\lhead[]{}
+\rhead[]{}

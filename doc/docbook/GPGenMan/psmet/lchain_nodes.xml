@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_lchain_nodes'> <title>@lchain_nodes</title> <titleabbrev>@lchain_nodes</titleabbrev>
+<para>
+Display link chain node information on the current map.
+</para><para>
+Note that the <userinput>category_attribute</userinput> and <userinput>category</userinput> keywords can be used to display only selected nodes, and that the <userinput>track_category_attribute</userinput> and <userinput>track_category</userinput> keywords can be used to display only nodes from selected tracks.
+</para><para>
+Note that the <userinput>case</userinput> and <userinput>case_look_up</userinput> keywords can only be used for simple (single-attribute) labels.
+</para><para>
+Note that every node requires a <userinput>format</userinput> keyword.
+A style of <userinput>none</userinput> will display only a mark or label_display.
+A <userinput>direct</userinput> style format will display the value of the label attribute from &FPA;.
+A <userinput>symbol</userinput> or <userinput>text</userinput> style format also requires a <userinput>look_up</userinput> keyword to define a look up table, and the value of the label attribute from &FPA; is cross-referenced in this look up table to identify the symbol or text string to display.
+A <userinput>wind_barb</userinput>, <userinput>wind_text</userinput> or <userinput>wind_symbol</userinput> format displays winds using the presentation from the directives <link linkend='ps_wind_barb_presentation'>@wind_barb_presentation</link> and <link linkend='ps_wind_presentation'>@wind_presentation</link>. 
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>element</userinput> and <userinput>level</userinput> can be specified more than once in this directive.</para></entry></row>
+<row valign='top'><entry spanname='tblnote'><para>Note that if a single element name is matched with a list of level names, or vice versa, the single name must be given first. Multiple element and level name lists should have the same number.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element_list.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level_list.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>node_speed_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for motion of link chain at node.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>node_speed_round</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Precision of node speed.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>node_stationary_max</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Limit node labels based on node speed.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>node_stationary_label</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Label to use if node speed is less than <userinput>node_stationary_max</userinput>.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for node wind speeds or gusts (if required)</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/start_time.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/end_time.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/times.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_nodes.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>track_category_attribute</userinput> and <userinput>track_category</userinput> can be specified more than once in this directive, and that <userinput>track_category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/track_category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/track_category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/track_category.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_magic.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/look_up.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>case</userinput> and <userinput>case_look_up</userinput> can be specified more than once in this directive!</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/case.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/case_look_up.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/time_zone.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/language.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/format.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/mark.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/mark_scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/symbol_scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/text_size.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/display_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/display_type.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/width_scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/height_scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fit_to_map.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fit_to_map_ref.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotation.xml'/>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotate_to_latitude.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotate_to_longitude.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotation_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/constrain_rotation.xml'/>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>x_stationary</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry> 
+<entry colname='desc'><para>Horizontal offset for stationary labels.</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>y_stationary</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry> 
+<entry colname='desc'><para>Vertical offset for stationary labels.</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_display_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_display_off.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset of node label (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset of node label (in display units)</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For display off map ...</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_shift</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal increment for display of nodes off the map (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_shift</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical increment for display of nodes off the map (in display units)</para></entry></row>
+</tbody></tgroup></informaltable>
+</para><beginpage/><para>
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_wrap.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_wrap.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline_first.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font_weight.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/italics.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/char_space.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/word_spacing.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@lchain_nodes
+{
+	element            = storm_tracks;
+	level              = surface;
+	end_time           = -0:10;
+	mark               = circle;
+	mark_scale         = 60;
+	line_width         = 0.01;
+	outline            = X11 Grey90;
+}</programlisting>
+Display nodes for link chains with times up to 10 minutes before T0 from the storm_tracks surface field in the &FPA; as grey circle marks 60% original size.
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@lchain_nodes
+{
+	element            = storm_tracks;
+	level              = surface;
+	start_time         = 0:00;
+	mark               = circle_filled;
+	outline            = X11 Black;
+}</programlisting>
+Display nodes for link chains with times at or after T0 from the storm_tracks surface field in the &FPA; as black filled circle marks.
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@lchain_nodes
+{
+	element            = tropical_tracks;
+	level              = surface;
+	times              = -12 -6 0 6 12 18 24;
+	format             = symbol;
+	attribute          = cyclone_type;
+	look_up            = tropical_storms;
+	symbol_scale       = 15;
+	fill               = X11 Blue;
+	justification      = centre;
+	rotate_to_latitude = yes;
+}</programlisting>
+Display nodes for link chains at given times from the tropical_tracks surface field in the &FPA; as symbols by matching the value from the &FPA;
+attribute cyclone_type to the values in the look up table <filename>tropical_storms.tab</filename>.
+The symbols will be centred, 15% of their original size, and rotated to be parallel to the latitude where they are located.
+</para></example>
+
+</para><beginpage/><para>
+Complex (multi-attribute) labels allow the display of several label parameters within the same directive.
+The entire complex label is displayed with respect to the <userinput>rotation</userinput>, <userinput>x_off</userinput>, <userinput>y_off</userinput>, <userinput>display_name</userinput>, and <userinput>display_type</userinput> keywords set above.
+</para><para>
+Attribute keywords apply only to the attribute that they follow.
+</para><para>
+The position of an attribute in a complex label can be related to the position of other attributes through use of the keywords <userinput>attribute_anchor</userinput>, <userinput>attribute_ref</userinput>, <userinput>attribute_justification</userinput> and <userinput>attribute_vertical_just</userinput>. 
+The <userinput>attribute_ref</userinput> keyword defines the starting position of the attribute with respect to a location about the symbol or text identified by the <userinput>attribute_anchor</userinput> keyword.
+The <userinput>attribute_justification</userinput> and <userinput>attribute_vertical_just</userinput> keywords define the horizontal and vertical positioning of the attribute with respect to this starting position.
+</para><para>
+The display parameters of each attribute default to the values of the <userinput>look_up</userinput>, <userinput>justification</userinput>, <userinput>format</userinput>, <userinput>symbol_scale</userinput>, <userinput>text_size</userinput>, <userinput>units</userinput>, <userinput>width_scale</userinput>, and <userinput>height_scale</userinput>
+keywords and the <userinput>fill</userinput>, <userinput>line_style</userinput>, <userinput>line_width</userinput>, <userinput>outline</userinput>, <userinput>outline_first</userinput>, <userinput>font</userinput>, <userinput>font_weight</userinput>, <userinput>char_space</userinput>, <userinput>word_space</userinput>, and <userinput>italics</userinput> presentation keywords set above. 
+These default values can be replaced by the appropriate attribute keyword listed below, to create multi-colour multi-format complex labels.
+</para><para>
+Note that the <userinput>attribute_show</userinput> keyword can be used to "turn off" the display of
+attributes, while still maintain positioning with respect to other attributes.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_magic.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_show.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_anchor.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_ref.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_vertical_just.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for label wind speeds or gusts</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_format.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_symbol_scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_text_size.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_display_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_display_type.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_width_scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_height_scale.xml'/>
+</tbody></tgroup></informaltable>
+</para><beginpage/><para>
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute_x_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset of node attribute (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute_y_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset of node attribute (in display units)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_outline_first.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_font.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_font_weight.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_italics.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_vertical_just.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_char_space.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_word_spacing.xml'/>
+</tbody></tgroup></informaltable>
+</para></sect2>

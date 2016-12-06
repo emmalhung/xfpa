@@ -1,0 +1,65 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM}
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+
+
+# Here is the list of object files to go into the shared library:
+MODULES  =	support_area.o \
+			support_curv.o \
+			support_line.o \
+			support_seg.o  \
+			support_sfc.o
+
+# Master header file to build/update:
+HEADER   =  support.h
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:		$(SUPLIB) $(HEADER)
+
+
+# Make the library:
+all lib libs:	$(HEADER) suplib
+			@	echo "FPA $${PLATFORM} obsolescence support library ready"
+			@	echo 
+
+
+# Rules for building the master header file(s):
+defs header:	$(HEADER)
+$(HEADER):
+
+
+# Build the library:
+suplib:			modules $(SUPLIB)
+$(SUPLIB):		$(MODULES)
+		@	echo "Re-building FPA $${PLATFORM} obsolescence support library"
+		@	if [ ! -d $(LIBDIR)/$${PLATFORM} ]; then \
+				mkdir $(LIBDIR)/$${PLATFORM}; fi
+		@	if [ -f $(SUPLIB) ]; then rm -f $(SUPLIB); fi
+		@	sleep 1
+		@	$${LIB_SHARED} -o $(SUPLIB) $(MODULES)
+
+
+# Rules for building object modules for the library:
+modules:	Pmodules $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA $${PLATFORM} obsolescence support library"
+
+support_area.o:	$(HEADER)
+support_curv.o:	$(HEADER)
+support_line.o:	$(HEADER)
+support_seg.o:	$(HEADER)
+support_sfc.o:	$(HEADER)
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} obsolescence support module $<"
+	@	$${C_COMP_SHARED} -c $(C_OPTIONS) $(INCPATH) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

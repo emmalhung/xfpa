@@ -1,0 +1,1593 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Presentation-type files in the $FPA/config directory can and will be   #
+#   updated with any new release, update, or patch of the FPA software suite.  #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Presentation file that refers to this file through  #
+#   an #include statement.  Refer to the file Presentation, or d.Presentation  #
+#   for further instructions.                                                  #
+#                                                                              #
+################################################################################
+
+# Presentation Configuration File
+
+# This file defines the appearance of all fields that FPA applications can
+# potentially display.  This refers to both guidance fields and editable
+# depiction fields.
+
+# Omitted attributes resort to default values established in the software
+# which reads this file (for example: colour=Black, style=solid, font=simplex,
+# etc).
+
+revision 6.0
+
+# The following descriptions refer to guidance fields from any source:
+
+field	pressure	msl	ALL
+
+	member	continuous	pressure
+		units	mb
+		contour	range	* * 1000 4
+			colour	Black
+			style	solid
+		maxima	* *
+			colour	Black
+			marker	plus
+		minima	* *
+			colour	Black
+			marker	diamond
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Black
+					font	simplex
+		class	hilo
+			class_member	mark	symbol	hilo_type
+				attribute	hilo_type	low
+					offset	0 16
+					size	hilo
+					colour	Red
+					symbol	L
+					font	bold_serif
+				attribute	hilo_type	high
+					offset	0 16
+					size	hilo
+					colour	CadetBlue
+					symbol	H
+					font	bold_serif
+			class_member	label	value	EVAL_spval
+				default
+					offset	0 -13
+					size	label
+					colour	Black
+					font	bold
+			class_member	mark	marker
+				default
+					angle	45
+					size	5
+					colour	Black
+					marker	circle_plus
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Black
+					font	simplex
+					hjust	left
+
+
+field	pres_change	msl	ALL
+
+	member	continuous	pres_change
+		units	mb/3hr
+		contour	list	0
+			colour	Plum
+			width	2
+		contour	range	* -1 0 1
+			colour	Red
+			width	2
+		contour	range	1 * 0 1
+			colour	CornflowerBlue
+			width	2
+		maxima	0 *
+			colour	CornflowerBlue
+			marker	plus
+		minima	* 0
+			colour	Red
+			marker	diamond
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Plum
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Plum
+					font	simplex
+					hjust	left
+
+
+field	curvature	msl	ALL
+
+	member	continuous	curvature
+		units	e-5/m
+		contour	list	0
+			colour	Plum
+			width	2
+		contour	range	* -1 0 1
+			colour	Red
+			width	2
+		contour	range	1 * 0 1
+			colour	CornflowerBlue
+			width	2
+		maxima	0 *
+			colour	CornflowerBlue
+			marker	plus
+		minima	* 0
+			colour	Red
+			marker	diamond
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Plum
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Plum
+					font	simplex
+					hjust	left
+
+
+field	pres_12hr_prev	msl	ALL
+
+	member	continuous	pres_12hr_prev
+		units	mb
+		contour	range	* * 0 1
+			colour	Red
+			style	dash
+		maxima	* *
+			colour	Red
+			marker	plus
+		minima	* *
+			colour	Red
+			marker	diamond
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Red
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Red
+					font	simplex
+					hjust	left
+
+
+field	temperature	ALL	ALL
+
+	member	continuous	temperature
+		units	degreesC
+		contour	range	* -5 0 5
+			colour	Red
+			style	dash
+		contour	list	0
+			colour	Red
+			width	2
+		contour	range	5 * 0 5
+			colour	Red
+			style	dash
+		maxima	* *
+			colour	Red
+			marker	plus
+		minima	* *
+			colour	Red
+			marker	diamond
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Red
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Red
+					font	simplex
+					hjust	left
+
+
+field	fronts	ALL ALL
+
+	member	curve	front
+		category	cold
+			pattern	front.sfc.cold
+			width	10
+			length	40
+		category	warm
+			pattern	front.sfc.warm
+			width	10
+			length	40
+		category	stationary
+			pattern	front.sfc.stationary
+			width	10
+			length	40
+		category	occluded
+			pattern	front.sfc.occluded
+			width	10
+			length	40
+		category	trowal
+			pattern	trowal		# to draw from the wave to the low
+		#	pattern	trowal.rev	# to draw from the low to the wave
+			width	10
+			length	40
+		category	trof
+			pattern	trof
+			width	10
+			length	40
+		category	ridge
+			pattern	ridge
+			width	10
+			length	40
+		category	upper_cold
+			pattern	front.upr.cold
+			width	10
+			length	40
+		category	upper_warm
+			pattern	front.upr.warm
+			width	10
+			length	40
+		category	upper_stationary
+			pattern	front.upr.stationary
+			width	10
+			length	40
+		category	upper_trof
+			pattern	trof.upr
+			width	10
+			length	40
+
+
+field	weather_system		ALL	ALL
+
+	member	discrete	weather
+		category	freezing
+			colour	Cyan
+			style	solid
+			width	5
+		category	frozen
+			colour	SkyBlue
+			style	solid
+			width	3
+		category	precip
+			colour	Green
+			style	solid
+			width	3
+		category	vis
+			colour	Yellow
+			style	solid
+			width	2
+		category	cloud
+			colour	Firebrick
+			style	solid
+			width	1
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	frozen
+					size	label
+					colour	Black
+					shadow	SkyBlue SkyBlue
+					font	simplex
+				category	freezing
+					size	label
+					colour	Black
+					shadow	Cyan Cyan
+					font	simplex
+				category	precip
+					size	label
+					colour	Green
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	vis
+					size	label
+					colour	Yellow
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	cloud
+					size	label
+					colour	Goldenrod
+					shadow	Firebrick Firebrick
+					font	simplex
+				default
+					size	label
+					colour	Green
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Green
+					font	simplex
+					hjust	left
+
+
+# Move to examples?
+field	weather_local	ALL	ALL
+
+	member	discrete	weather
+		category	freezing
+			colour	Cyan
+			style	solid
+			width	5
+		category	frozen
+			colour	SkyBlue
+			style	solid
+			width	3
+		category	precip
+			colour	Green
+			style	solid
+			width	3
+		category	vis
+			colour	Yellow
+			style	solid
+			width	2
+		category	cloud
+			colour	Firebrick
+			style	solid
+			width	1
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	frozen
+					size	label
+					colour	Black
+					shadow	SkyBlue SkyBlue
+					font	simplex
+				category	freezing
+					size	label
+					colour	Black
+					shadow	Cyan Cyan
+					font	simplex
+				category	precip
+					size	label
+					colour	Green
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	vis
+					size	label
+					colour	Yellow
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	cloud
+					size	label
+					colour	Goldenrod
+					shadow	Firebrick Firebrick
+					font	simplex
+				default
+					size	label
+					colour	Green
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Green
+					font	simplex
+					hjust	left
+
+
+field	POP		ALL	ALL
+
+	member	discrete	pop
+		category	precip
+			colour	Green
+			style	solid
+		category	None
+			colour	Green
+			style	solid
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	Cyan
+					font	simplex
+				category	precip
+					size	label
+					colour	Green
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Green
+					font	simplex
+					hjust	left
+
+
+field	actual_wind		ALL	ALL
+
+	member	discrete	wind
+		category	abs
+			colour	Thistle
+			style	solid
+		category	Vg_Msl
+			colour	Thistle
+			style	dot
+
+	member	spot	labels
+		class	wind
+			class_member	barb	wind	EVAL_wind
+				default
+					colour	Brown
+					btype	wind dirfrom noval knots
+					width	medium
+					length	40.0
+
+
+field	uv_wind			ALL	ALL
+
+	member	vector
+		units	knots
+		contour	list	5
+			colour	Green
+			style	dotted
+		contour	range	10 45 0 5
+			colour	Green
+			style	solid
+		contour	range	50 70 0 5
+			colour	Green
+			style	solid
+			width	2
+		contour	range	75 95 0 5
+			colour	Red
+			width	2
+		contour	range	100 145 0 5
+			colour	Blue
+			width	3
+		contour	range	150 170 0 5
+			colour	Magenta
+			width	3
+		contour	range	175 195 0 5
+			colour	Yellow
+			width	3
+		contour	range	200 * 0 5
+			colour	Yellow
+			width	4
+		vector	1
+			colour	Cyan
+			btype	wind dirfrom noval
+			width	medium
+			length	40.0
+		maxima	0 *
+			colour	Green
+			marker	plus
+		minima	0 *
+			colour	Green
+			marker	diamond
+
+
+field	freezing_spray	ALL	ALL
+
+	member	discrete	freezing_spray
+		category	frz
+			colour	Magenta
+			style	solid
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	CornflowerBlue
+					font	simplex
+				category	frz
+					size	label
+					colour	Magenta
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Magenta
+					font	simplex
+					hjust	left
+
+
+field	sea_ice	ALL	ALL
+
+	member	discrete	sea_ice
+		category	ice
+			colour	Cyan
+			style	solid
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	CornflowerBlue
+					font	simplex
+				category	ice
+					size	label
+					colour	Cyan
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Cyan
+					font	simplex
+					hjust	left
+
+
+field	wave_height	surface	ALL
+
+	member	continuous
+		units	m
+		contour	list	1 2
+			colour	Yellow
+			style	dash
+		contour	list	3 4
+			colour	Yellow
+			style	solid
+			width	1
+		contour	range	5 * 5 2
+			colour	Red
+			style	solid
+			width	1
+		maxima	1 *
+			colour	Yellow
+			marker	plus
+		minima	1 *
+			colour	Yellow
+			marker	diamond
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Red
+					font	simplex
+		class	hilo
+			class_member	mark	symbol	hilo_type
+				attribute	hilo_type	high
+					offset	0 16
+					size	hilo
+					colour	Red
+					shadow	Pink IndianRed
+					symbol	Max
+					font	bold_serif
+			class_member	label	value	EVAL_spval
+				default
+					offset	0 -13
+					size	label
+					colour	Black
+					shadow	Grey50 Black
+					font	bold
+			class_member	mark	marker
+				default
+					angle	45
+					size	5
+					colour	Black
+					shadow	Grey50 Black
+					marker	circle_plus
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Red
+					font	simplex
+					hjust	left
+
+
+field	uv_wave_hgt	surface	ALL
+
+	member	vector
+		units	m
+		contour	list	1 2
+			colour	Yellow
+			style	dash
+		contour	list	3 4
+			colour	Yellow
+			style	solid
+			width	1
+		contour	range	5 * 5 2
+			colour	Red
+			style	solid
+			width	1
+		vector	1
+			colour	Yellow
+			btype	arrow dirto noval
+			width	thin
+			length	30.0
+		maxima	1 *
+			colour	Yellow
+			marker	plus
+		minima	1 *
+			colour	Yellow
+			marker	diamond
+
+
+field	wave_period	surface	ALL
+
+	member	continuous
+		units	s
+		contour	range	1 * 1 1
+			colour	Orange
+			style	solid
+			width	1
+		maxima	1 *
+			colour	Orange
+			marker	plus
+		minima	1 *
+			colour	Orange
+			marker	diamond
+
+
+field	wind_plot	ALL	ALL
+
+	member	spot
+		class	plot
+			class_member	barb	Wind	wind
+				default
+					btype	wind dirfrom noval knots
+					colour	Yellow
+					length	30.0
+		class	legend
+			class_member	label	value
+				default
+					colour	Yellow
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	wave_plot	ALL	ALL
+
+	member	spot
+		class	plot
+			class_member	barb	WaveHgt		wvhgt
+				default
+					btype	arrow dirto showval m
+					length	30.0
+					bcolour	Cyan Red
+					bvaloff	-10 5
+					font	bold
+					size	label
+			class_member	barb	WavePd		wvpd
+				default
+					btype	none dirto showval s
+					length	30.0
+					bcolour	Yellow Blue
+					bvaloff	10 5
+					font	bold
+					size	label
+		class	legend
+			class_member	label	value
+				default
+					colour	Cyan
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	temp_adv	ALL	ALL
+
+	member	continuous
+		units	Cdegrees/hr
+		contour	list	0
+			colour	Plum
+			width	2
+		contour	range	* -2 0 2
+			colour	CornflowerBlue
+			width	2
+		contour	range	2 * 0 2
+			colour	Red
+			width	2
+		maxima	0 *
+			colour	Red
+			marker	plus
+		minima	* 0
+			colour	CornflowerBlue
+			marker	diamond
+
+
+field	temp_grad	ALL	ALL
+
+	member	continuous
+		units	Cdegrees/xkm
+		contour	range	1 4 0 1
+			colour	Yellow
+			width	1
+		contour	range	1.5 4.5 1.5 1
+			colour	Yellow
+			width	1
+		contour	range	5 * 0 1
+			colour	Blue
+			width	1
+		contour	range	5.5 * 1.5 1
+			colour	Blue
+			width	1
+		maxima	1 *
+			colour	Yellow
+			marker	plus
+
+
+field	dew_point	ALL	ALL
+
+	member	continuous
+		units	degreesC
+		contour	range	* -5 0 5
+			colour	Green
+			style	dot
+		contour	list	0
+			colour	Green
+			width	2
+		contour	range	5 * 0 5
+			colour	Green
+			style	dot
+		maxima	* *
+			colour	Green
+			marker	plus
+		minima	* *
+			colour	Green
+			marker	diamond
+
+
+field	height	250mb	ALL
+
+	member	continuous
+		units	Dm
+		contour	range	* * 0 12
+			colour	Black
+			style	solid
+		maxima	* *
+			colour	Black
+			marker	plus
+		minima	* *
+			colour	Black
+			marker	diamond
+
+
+field	height	ALL	ALL
+
+	member	continuous
+		units	Dm
+		contour	range	* * 0 6
+			colour	Black
+			style	solid
+		maxima	* *
+			colour	Black
+			marker	plus
+		minima	* *
+			colour	Black
+			marker	diamond
+
+
+field	height_change	ALL	ALL
+
+	member	continuous
+		units	Dm/12hr
+		contour	list	0
+			colour	Plum
+			width	2
+		contour	range	* -6 0 6
+			colour	CornflowerBlue
+			width	2
+		contour	range	6 * 0 6
+			colour	Red
+			width	2
+		maxima	0 *
+			colour	Red
+			marker	plus
+		minima	* 0
+			colour	CornflowerBlue
+			marker	diamond
+
+
+field	thickness	ALL	ALL
+
+	member	continuous
+		units	Dm
+		contour	range	* * 0 6
+			colour	Black
+			width	2
+		maxima	* *
+			colour	Black
+			marker	plus
+		minima	* *
+			colour	Black
+			marker	diamond
+
+
+field	wind_speed	ALL	ALL
+
+	member	continuous
+		units	knots
+		contour	list	10 20 30 40 50 60 70 80
+			colour	Green
+			style	solid
+		contour	list	90 100 110
+			colour	Red
+			width	1
+		contour	list	120 130 140
+			colour	Blue
+			width	1
+		contour	list	150 160 170
+			colour	Magenta
+			width	1
+		contour	list	180 190 200
+			colour	Yellow
+			width	1
+		contour	range	210 * 210 10
+			colour	Yellow
+			width	2
+		maxima	0 *
+			colour	Green
+			marker	plus
+		minima	0 *
+			colour	Green
+			marker	diamond
+
+
+field	geostr_speed	ALL	ALL
+
+	member	continuous
+		units	knots
+		contour	list	10 20 30 40 50 60 70 80
+			colour	Green
+			style	solid
+		contour	list	90 100 110
+			colour	Red
+			width	1
+		contour	list	120 130 140
+			colour	Blue
+			width	1
+		contour	list	150 160 170
+			colour	Magenta
+			width	1
+		contour	list	180 190 200
+			colour	Yellow
+			width	1
+		contour	range	210 * 210 10
+			colour	Yellow
+			width	2
+		maxima	0 *
+			colour	Green
+			marker	plus
+		minima	0 *
+			colour	Green
+			marker	diamond
+
+
+field	geomsl_speed	ALL	ALL
+
+	member	continuous
+		units	knots
+		contour	list	10 20 30 40 50 60 70 80
+			colour	Green
+			style	solid
+		contour	list	90 100 110
+			colour	Red
+			width	1
+		contour	list	120 130 140
+			colour	Blue
+			width	1
+		contour	list	150 160 170
+			colour	Magenta
+			width	1
+		contour	list	180 190 200
+			colour	Yellow
+			width	1
+		contour	range	210 * 210 10
+			colour	Yellow
+			width	2
+		maxima	0 *
+			colour	Green
+			marker	plus
+		minima	0 *
+			colour	Green
+			marker	diamond
+
+
+field	isallo_speed	ALL	ALL
+
+	member	continuous
+		units	knots
+		contour	list	10 20 30 40 50 60 70 80
+			colour	Green
+			style	solid
+		contour	list	90 100 110
+			colour	Red
+			width	1
+		contour	list	120 130 140
+			colour	Blue
+			width	1
+		contour	list	150 160 170
+			colour	Magenta
+			width	1
+		contour	list	180 190 200
+			colour	Yellow
+			width	1
+		contour	range	210 * 210 10
+			colour	Yellow
+			width	2
+		maxima	0 *
+			colour	Green
+			marker	plus
+		minima	0 *
+			colour	Green
+			marker	diamond
+
+
+field	thermal_speed	ALL	ALL
+
+	member	continuous
+		units	knots
+		contour	list	10 20 30 40 50 60 70 80
+			colour	Green
+			style	solid
+		contour	list	90 100 110
+			colour	Red
+			width	1
+		contour	list	120 130 140
+			colour	Blue
+			width	1
+		contour	list	150 160 170
+			colour	Magenta
+			width	1
+		contour	list	180 190 200
+			colour	Yellow
+			width	1
+		contour	range	210 * 210 10
+			colour	Yellow
+			width	2
+		maxima	0 *
+			colour	Green
+			marker	plus
+		minima	0 *
+			colour	Green
+			marker	diamond
+
+
+field	gradient_speed	ALL	ALL
+
+	member	continuous
+		units	knots
+		contour	list	10 20 30 40 50 60 70 80
+			colour	Green
+			style	solid
+		contour	list	90 100 110
+			colour	Red
+			width	1
+		contour	list	120 130 140
+			colour	Blue
+			width	1
+		contour	list	150 160 170
+			colour	Magenta
+			width	1
+		contour	list	180 190 200
+			colour	Yellow
+			width	1
+		contour	range	210 * 210 10
+			colour	Yellow
+			width	2
+		maxima	0 *
+			colour	Green
+			marker	plus
+		minima	0 *
+			colour	Green
+			marker	diamond
+
+
+field	cyclostr_speed	ALL	ALL
+
+	member	continuous
+		units	knots
+		contour	list	10 20 30 40 50 60 70 80
+			colour	Green
+			style	solid
+		contour	list	90 100 110
+			colour	Red
+			width	1
+		contour	list	120 130 140
+			colour	Blue
+			width	1
+		contour	list	150 160 170
+			colour	Magenta
+			width	1
+		contour	list	180 190 200
+			colour	Yellow
+			width	1
+		contour	range	210 * 210 10
+			colour	Yellow
+			width	2
+		maxima	0 *
+			colour	Green
+			marker	plus
+		minima	0 *
+			colour	Green
+			marker	diamond
+
+
+field	cyclomsl_speed	ALL	ALL
+
+	member	continuous
+		units	knots
+		contour	list	10 20 30 40 50 60 70 80
+			colour	Green
+			style	solid
+		contour	list	90 100 110
+			colour	Red
+			width	1
+		contour	list	120 130 140
+			colour	Blue
+			width	1
+		contour	list	150 160 170
+			colour	Magenta
+			width	1
+		contour	list	180 190 200
+			colour	Yellow
+			width	1
+		contour	range	210 * 210 10
+			colour	Yellow
+			width	2
+		maxima	0 *
+			colour	Green
+			marker	plus
+		minima	0 *
+			colour	Green
+			marker	diamond
+
+
+field	divergence	ALL	ALL
+
+	member	continuous
+		units	e-6/s
+		contour	range	* -2 0 2
+			colour	CornflowerBlue
+			style	solid
+		contour	list	0
+			colour	Plum
+			style	solid
+		contour	range	2 * 0 2
+			colour	Red
+			style	solid
+		maxima	0 *
+			colour	Red
+			marker	plus
+		minima	* 0
+			colour	CornflowerBlue
+			marker	diamond
+
+
+field	vorticity	ALL	ALL
+
+	member	continuous
+		units	e-5/s
+		contour	range	2 * 0 2
+			colour	Red
+			style	dot
+		contour	list	0
+			colour	Plum
+			style	dot
+		contour	range	* -2 0 2
+			colour	Blue
+			width	2
+		maxima	* *
+			colour	Red
+			marker	plus
+		minima	* *
+			colour	Blue
+			marker	diamond
+
+
+field	vort_adv	ALL	ALL
+
+	member	continuous
+		units	e-9/s2
+		contour	list	0
+			colour	Plum
+			width	2
+		contour	range	* -2 0 2
+			colour	CornflowerBlue
+			width	2
+		contour	range	2 * 0 2
+			colour	Red
+			width	2
+		maxima	0 *
+			colour	Red
+			marker	plus
+		minima	* 0
+			colour	CornflowerBlue
+			marker	diamond
+
+
+field	rel_vorticity	ALL	ALL
+
+	member	continuous
+		units	e-5/s
+		contour	range	* -2 0 2
+			colour	Blue
+			style	dot
+		contour	list	0
+			colour	Plum
+			style	dot
+		contour	range	2 * 0 2
+			colour	Red
+			style	dot
+		maxima	0 *
+			colour	Red
+			marker	plus
+		minima	* 0
+			colour	Blue
+			marker	diamond
+
+
+field	vertical_vel	ALL	ALL
+
+	member	continuous
+		units	mb/hr
+		contour	range	* -10 0 10
+			colour	Yellow
+			style	dot
+		contour	list	-1 -5
+			colour	Yellow
+			style	dot
+		contour	list	0
+			colour	Green
+			style	dot
+		contour	list	1 5
+			colour	Blue
+			style	dot
+		contour	range	10 * 0 10
+			colour	Blue
+			style	dot
+		maxima	0 *
+			colour	Blue
+			symbol	DOWN
+			font	bold
+			size	15.0
+		minima	* 0
+			colour	Yellow
+			symbol	UP
+			font	bold
+			size	15.0
+
+
+field	rel_humidity	ALL	ALL
+
+	member	continuous
+		units	percent
+		contour	range	10 60 10 10
+			colour	Firebrick
+			style	dot
+		contour	list	70 80
+			colour	Firebrick
+			width	2
+		contour	list	90 100
+			colour	Green
+			width	3
+		maxima	* *
+			colour	Firebrick
+			marker	plus
+		minima	* *
+			colour	Firebrick
+			marker	diamond
+
+
+field	dewpoint	ALL	ALL
+
+	member	continuous
+		units	degreesC
+		contour	range	* * 0 5
+			colour	Green
+			style	dash
+		maxima	* *
+			colour	Green
+			marker	plus
+		minima	* *
+			colour	Green
+			marker	diamond
+
+
+field	theta_e		ALL	ALL
+
+	member	continuous
+		units	degreesC
+		contour	range	* * 0 4
+			colour	Blue
+			width	1
+		maxima	* *
+			colour	Green
+			marker	plus
+		minima	* *
+			colour	Green
+			marker	diamond
+
+
+field	low_cloud	ALL	ALL
+	member	continuous
+		units	MKS
+		contour	range	10 90 10 10
+			colour	FireBrick
+			width	2
+
+
+field	mid_cloud	ALL	ALL
+	member	continuous
+		units	MKS
+		contour	range	10 90 10 10
+			colour	Green
+			width	2
+
+
+field	high_cloud	ALL	ALL
+	member	continuous
+		units	MKS
+		contour	range	10 90 10 10
+			colour	Purple
+			width	2
+
+
+# Move to examples
+field	guess_cloud	ALL	ALL
+	member	continuous
+		units	MKS
+		contour	range	1 20 1 1
+			colour	Orange
+			width	2
+		maxima	* *
+			colour	Orange
+			marker	plus
+		minima	* *
+			colour	Orange
+			marker	diamond
+
+
+
+field	precipitation	surface	ALL
+
+	member	continuous
+		units	mm(H2O)
+		contour	list	0.2
+			colour	Green
+			style	dot
+		contour	list	1 5
+			colour	Green
+			style	solid
+		#contour	range	10 * 10 10
+		contour	range	0.1 1 0.1 0.4
+			colour	Yellow
+			style	dot
+		contour	range	1 * 1 2
+			colour	Green
+			width	1
+		maxima	0.2 *
+			colour	Green
+			marker	plus
+		minima	0.2 *
+			colour	Green
+			marker	diamond
+
+
+field	rainfall_rate	surface	ALL
+
+	member	continuous
+		units	mm(H2O)/hr
+		contour	list	1 5
+			colour	Green
+			style	dot
+		contour	range	10 * 10 10
+			colour	Green
+			style	dot
+		maxima	* *
+			colour	Green
+			marker	plus
+		minima	* *
+			colour	Green
+			marker	diamond
+
+
+field	sea_temp	surface	ALL
+
+	member	continuous
+		units	degreesC
+		contour	range	* -2 0 2
+			colour	Blue
+			style	dot
+		contour	list	0
+			colour	Blue
+			width	2
+		contour	range	2 * 0 2
+			colour	Blue
+			style	dot
+		maxima	* *
+			colour	Blue
+			marker	plus
+		minima	* *
+			colour	Blue
+			marker	diamond
+
+
+
+field	max_temp	ALL	ALL
+
+	member	continuous	max_temp
+		units	degreesC
+		contour	range	* -5 0 5
+			colour	Green
+			style	dash
+		contour	list	0
+			colour	Green
+			width	2
+		contour	range	5 * 0 5
+			colour	Green
+			style	dash
+		maxima	* *
+			colour	Green
+			marker	plus
+		minima	* *
+			colour	Green
+			marker	diamond
+
+
+field	min_temp	ALL	ALL
+
+	member	continuous	min_temp
+		units	degreesC
+		contour	range	* -5 0 5
+			colour	Green
+			style	dash
+		contour	list	0
+			colour	Green
+			width	2
+		contour	range	5 * 0 5
+			colour	Green
+			style	dash
+		maxima	* *
+			colour	Green
+			marker	plus
+		minima	* *
+			colour	Green
+			marker	diamond
+
+
+field	max_temp_time	ALL	ALL
+
+	member	continuous	max_temp_time
+		units	hr
+		contour	list	-9 -6
+			colour	Orange
+			style	dash
+		contour	list	6 9
+			colour	Orange
+			width	2
+
+
+field	min_temp_time	ALL	ALL
+
+	member	continuous	min_temp_time
+		units	hr
+		contour	list	-9 -6
+			colour	Orange
+			style	dash
+		contour	list	6 9
+			colour	Orange
+			width	2
+
+
+field	total_totals	ALL	ALL
+
+	member	continuous	total_totals
+		units	Cdegrees
+		contour	range	44 48 44 2
+			colour	Green
+			width	2
+		contour	range	50 58 44 2
+			colour	Yellow
+			width	2
+		contour	range	60 *  44 2
+			colour	Red
+			width	2
+		maxima	* *
+			colour	Red
+			marker	plus
+
+
+field	george_k	ALL	ALL
+
+	member	continuous	george_k
+		units	degreesC
+		contour	range	15 25 15 5
+			colour	Green
+			style	dash
+		contour	list	30
+			colour	Yellow
+			style	dash
+		contour	range	35 *  15 5
+			colour	Red
+			style	dash
+		maxima	* *
+			colour	Red
+			marker	plus
+
+
+field	sun_angle	surface	ALL
+
+	member	continuous
+		units	degrees_true
+		contour	range	100 180 100 10
+			colour	Grey10
+			width	3
+			style	dash
+		contour	list	95
+			colour	Grey10
+			width	3
+			style	dash
+		contour	list	90
+			colour	Black
+			width	4
+		contour	list	85
+			colour	Grey10
+			width	3
+			style	dash
+		contour	list	80
+			colour	Grey20
+			width	2
+		contour	list	70
+			colour	Grey30
+			width	2
+		contour	list	60
+			colour	Grey40
+			width	2
+		contour	list	50
+			colour	Grey50
+			width	2
+		contour	list	40
+			colour	Grey60
+			width	2
+		contour	list	30
+			colour	Grey70
+			width	2
+		contour	list	20
+			colour	Grey80
+			width	2
+		contour	list	10
+			colour	Grey90
+			width	2
+		contour	list	00
+			colour	White
+			width	2
+
+
+field	solar_flux	surface	ALL
+
+	member	continuous
+		units	w/m2
+		contour	range	0 * 0 100
+			colour	Goldenrod
+			style	solid
+
+
+field	stn_plot	surface	ALL
+
+	member	plot
+		subfield	barb	wind
+			colour	Yellow
+			length	40.0
+			btype	wind dirfrom noval knots
+		subfield	label	pressure
+			offset	0 -10
+			colour	Black
+
+
+# Move to examples
+field	storms		msl	ALL
+	member	plot
+		subfield	label	value1
+			offset	0 +10
+			colour 	Green
+			font	simplex
+			size	15.0
+		subfield	label	value2
+			offset	-10 0
+			colour	Green
+			font	simplex
+			size	15.0
+		subfield	label	value3
+			offset	10 0
+			colour	Green
+			font	simplex
+			size	15.0
+		subfield	mark	c1
+			colour	DeepPink
+			marker	circle
+			size	10.0
+		subfield	mark	c2
+			colour	DeepPink
+			marker	cross
+			size	7.0
+
+
+# Default presentation for built-in label classes
+field	ALL		ALL	ALL
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					# Note no colour specified
+					size	label
+					font	simplex
+		class	area
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	label
+					font	simplex
+		class	wind
+			class_member	barb	wind	EVAL_wind
+				default
+					# Note no colour specified
+					btype	wind dirfrom noval knots
+					width	medium
+					length	80.0
+		class	line
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	label
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left

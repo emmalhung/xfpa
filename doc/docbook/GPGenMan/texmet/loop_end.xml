@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_loop_end'> <title>@loop_end</title> <titleabbrev>@loop_end</titleabbrev>
+<para>
+End a loop to repeat directives. 
+The directives between the matching <link linkend='tx_loop_begin'>@loop_begin</link> directive and this <link linkend='tx_loop_end'>@loop_end</link> directive will be repeated for the number of iterations specified in the <link linkend='tx_loop_begin'>@loop_begin</link> directive.
+</para><para>
+Note that <link linkend='tx_loop_begin'>@loop_begin</link> and <link linkend='tx_loop_end'>@loop_end</link> directives may be embedded.
+</para><para>
+Note that this directive has no keywords
+
+<example><title> </title><para>
+<programlisting>@loop_end { }</programlisting>
+End of looping begun by an <link linkend='tx_loop_begin'>@loop_begin</link> directive.
+</para></example>
+</para></sect2>

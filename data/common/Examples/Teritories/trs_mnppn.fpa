@@ -1,0 +1,1084 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Canyon Crescent"
+	FPA_user_label "Canyon Crescent"
+ spot 60.661N -135.04E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Crestview"
+	FPA_user_label "Crestview"
+ spot 60.789N -135.17E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Forestview"
+	FPA_user_label "Forestview"
+ spot 60.81N -135.21E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hillcrest"
+	FPA_user_label "Hillcrest"
+ spot 60.713N -135.08E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ibex Valley"
+	FPA_user_label "Ibex Valley"
+ spot 60.853N -135.67E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "MacRae"
+	FPA_user_label "MacRae"
+ spot 60.64N -135E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Mount Lorne"
+	FPA_user_label "Mount Lorne"
+ spot 60.45N -134.85E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Porter Creek"
+	FPA_user_label "Porter Creek"
+ spot 60.77N -135.15E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Riverdale"
+	FPA_user_label "Riverdale"
+ spot 60.706N -135.03E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Takhini"
+	FPA_user_label "Takhini"
+ spot 60.738N -135.09E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Valleyview"
+	FPA_user_label "Valleyview"
+ spot 60.728N -135.09E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Aishihik"
+	FPA_user_label "Aishihik"
+ spot 61.6N -137.51E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Arlington"
+	FPA_user_label "Arlington"
+ spot 64.024N -139.17E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Armstrong"
+	FPA_user_label "Armstrong"
+ spot 63.042N -133.39E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ballarat Creek"
+	FPA_user_label "Ballarat Creek"
+ spot 62.917N -138.97E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Barlow"
+	FPA_user_label "Barlow"
+ spot 63.714N -137.66E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bear Creek"
+	FPA_user_label "Bear Creek"
+ spot 64.027N -139.24E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Beaver Creek"
+	FPA_user_label "Beaver Creek"
+ spot 62.384N -140.88E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Big Salmon"
+	FPA_user_label "Big Salmon"
+ spot 61.883N -134.92E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Black Hills"
+	FPA_user_label "Black Hills"
+ spot 63.454N -138.83E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Boundary"
+	FPA_user_label "Boundary"
+ spot 64.669N -140.98E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Braeburn"
+	FPA_user_label "Braeburn"
+ spot 61.54N -135.82E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Brewer Creek"
+	FPA_user_label "Brewer Creek"
+ spot 63.182N -138.99E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Britannia Creek"
+	FPA_user_label "Britannia Creek"
+ spot 62.871N -138.69E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Brooks Brook"
+	FPA_user_label "Brooks Brook"
+ spot 60.417N -133.19E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Burwash Landing"
+	FPA_user_label "Burwash Landing"
+ spot 61.354N -138.99E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Calumet"
+	FPA_user_label "Calumet"
+ spot 63.921N -135.38E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Canyon"
+	FPA_user_label "Canyon"
+ spot 60.854N -137.03E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Canyon City"
+	FPA_user_label "Canyon City"
+ spot 61.817N -140.77E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Carcross"
+	FPA_user_label "Carcross"
+ spot 60.167N -134.7E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Carcross Cutoff"
+	FPA_user_label "Carcross Cutoff"
+ spot 60.599N -134.88E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Caribou"
+	FPA_user_label "Caribou"
+ spot 63.835N -138.75E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Champagne"
+	FPA_user_label "Champagne"
+ spot 60.789N -136.47E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Clear Creek"
+	FPA_user_label "Clear Creek"
+ spot 63.782N -137.27E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Clinton Creek"
+	FPA_user_label "Clinton Creek"
+ spot 64.401N -140.6E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Coffee Creek"
+	FPA_user_label "Coffee Creek"
+ spot 62.917N -139.08E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Conrad"
+	FPA_user_label "Conrad"
+ spot 60.069N -134.57E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Cowley"
+	FPA_user_label "Cowley"
+ spot 60.522N -134.9E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dalton Post"
+	FPA_user_label "Dalton Post"
+ spot 60.117N -137.04E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Destruction Bay"
+	FPA_user_label "Destruction Bay"
+ spot 61.254N -138.81E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "De Wette"
+	FPA_user_label "De Wette"
+ spot 60.372N -134.82E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dezadeash"
+	FPA_user_label "Dezadeash"
+ spot 60.373N -137.06E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dominion"
+	FPA_user_label "Dominion"
+ spot 63.662N -138.66E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dredge Creek"
+	FPA_user_label "Dredge Creek"
+ spot 63.417N -139.2E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dry Creek"
+	FPA_user_label "Dry Creek"
+ spot 62.172N -140.68E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dundalk"
+	FPA_user_label "Dundalk"
+ spot 60.063N -134.84E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Eagle Plains"
+	FPA_user_label "Eagle Plains"
+ spot 66.372N -136.74E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Elsa"
+	FPA_user_label "Elsa"
+ spot 63.912N -135.48E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Flat Creek"
+	FPA_user_label "Flat Creek"
+ spot 63.943N -138.62E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Reliance"
+	FPA_user_label "Fort Reliance"
+ spot 64.146N -139.48E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Selkirk"
+	FPA_user_label "Fort Selkirk"
+ spot 62.776N -137.39E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Forty Mile"
+	FPA_user_label "Forty Mile"
+ spot 63.683N -136.69E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Frances Lake"
+	FPA_user_label "Frances Lake"
+ spot 61.275N -129.28E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Glenboyle"
+	FPA_user_label "Glenboyle"
+ spot 63.965N -138.72E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Gold Bottom"
+	FPA_user_label "Gold Bottom"
+ spot 63.965N -138.97E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Gold Run"
+	FPA_user_label "Gold Run"
+ spot 63.7N -138.59E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Gordon Landing"
+	FPA_user_label "Gordon Landing"
+ spot 63.626N -135.44E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Grand Forks"
+	FPA_user_label "Grand Forks"
+ spot 63.922N -139.32E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Grand Valley Roadhouse"
+	FPA_user_label "Grand Valley Roadhouse"
+ spot 63.1N -137.77E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Granville"
+	FPA_user_label "Granville"
+ spot 63.669N -138.62E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Gravel Lake"
+	FPA_user_label "Gravel Lake"
+ spot 63.803N -137.89E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Herschel"
+	FPA_user_label "Herschel"
+ spot 69.577N -138.91E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hootalinqua"
+	FPA_user_label "Hootalinqua"
+ spot 61.583N -134.9E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hundred Mile Landing"
+	FPA_user_label "Hundred Mile Landing"
+ spot 60.717N -133.67E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Isaac Creek"
+	FPA_user_label "Isaac Creek"
+ spot 62.828N -138.5E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Jakes Corner"
+	FPA_user_label "Jakes Corner"
+ spot 60.34N -133.99E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Jensen Creek"
+	FPA_user_label "Jensen Creek"
+ spot 63.768N -138.53E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Johnsons Crossing"
+	FPA_user_label "Johnsons Crossing"
+ spot 60.489N -133.29E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Keno Hill"
+	FPA_user_label "Keno Hill"
+ spot 63.908N -135.3E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kirkman Creek"
+	FPA_user_label "Kirkman Creek"
+ spot 62.993N -139.38E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Klondike"
+	FPA_user_label "Klondike"
+ spot 64.051N -139.44E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Klukshu"
+	FPA_user_label "Klukshu"
+ spot 60.294N -137.01E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Koidern"
+	FPA_user_label "Koidern"
+ spot 61.983N -140.48E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kynocks"
+	FPA_user_label "Kynocks"
+ spot 61.263N -135.97E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lansdowne"
+	FPA_user_label "Lansdowne"
+ spot 60.261N -134.77E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lansing"
+	FPA_user_label "Lansing"
+ spot 63.744N -133.47E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lapierre House"
+	FPA_user_label "Lapierre House"
+ spot 67.396N -137.01E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lewis"
+	FPA_user_label "Lewis"
+ spot 60.333N -134.82E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Little Gold"
+	FPA_user_label "Little Gold"
+ spot 64.086N -141E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Little River"
+	FPA_user_label "Little River"
+ spot 60.907N -135.68E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Little Salmon"
+	FPA_user_label "Little Salmon"
+ spot 62.05N -135.68E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Little Teslin Lake"
+	FPA_user_label "Little Teslin Lake"
+ spot 60.485N -133.46E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Livingstone"
+	FPA_user_label "Livingstone"
+ spot 61.333N -134.33E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lorne"
+	FPA_user_label "Lorne"
+ spot 60.307N -134.8E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lower Laberge"
+	FPA_user_label "Lower Laberge"
+ spot 61.393N -135.23E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Marsh Lake"
+	FPA_user_label "Marsh Lake"
+ spot 60.517N -134.33E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Mason Landing"
+	FPA_user_label "Mason Landing"
+ spot 61.433N -134.65E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "McCabe Creek"
+	FPA_user_label "McCabe Creek"
+ spot 62.543N -136.78E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "McQuesten"
+	FPA_user_label "McQuesten"
+ spot 63.564N -137.42E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Mendenhall Landing"
+	FPA_user_label "Mendenhall Landing"
+ spot 60.772N -136.06E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Minto"
+	FPA_user_label "Minto"
+ spot 62.592N -136.88E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Minto"
+	FPA_user_label "Minto"
+ spot 60.381N -134.82E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Minto Bridge"
+	FPA_user_label "Minto Bridge"
+ spot 63.703N -135.86E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Montague"
+	FPA_user_label "Montague"
+ spot 61.767N -136.01E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Moosehide"
+	FPA_user_label "Moosehide"
+ spot 64.096N -139.43E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Morley River"
+	FPA_user_label "Morley River"
+ spot 60.011N -132.16E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Nesketahin"
+	FPA_user_label "Nesketahin"
+ spot 60.133N -137.06E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ogilvie"
+	FPA_user_label "Ogilvie"
+ spot 63.564N -139.72E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Old Crow"
+	FPA_user_label "Old Crow"
+ spot 67.568N -139.83E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Paris"
+	FPA_user_label "Paris"
+ spot 63.819N -138.67E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Pelly Crossing"
+	FPA_user_label "Pelly Crossing"
+ spot 62.818N -136.57E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Pelly Lakes"
+	FPA_user_label "Pelly Lakes"
+ spot 62.058N -130.23E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Quill Creek"
+	FPA_user_label "Quill Creek"
+ spot 61.508N -139.31E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Rampart House"
+	FPA_user_label "Rampart House"
+ spot 67.417N -140.98E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Rancheria"
+	FPA_user_label "Rancheria"
+ spot 60.087N -130.61E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Readford"
+	FPA_user_label "Readford"
+ spot 63.781N -139.11E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Robinson"
+	FPA_user_label "Robinson"
+ spot 60.447N -134.85E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Rock Creek"
+	FPA_user_label "Rock Creek"
+ spot 64.061N -139.08E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ross River"
+	FPA_user_label "Ross River"
+ spot 61.98N -132.45E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Scroggie Creek"
+	FPA_user_label "Scroggie Creek"
+ spot 63.2N -138.83E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Selwyn"
+	FPA_user_label "Selwyn"
+ spot 62.8N -138.28E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Silver City"
+	FPA_user_label "Silver City"
+ spot 61.039N -138.39E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Sixtymile"
+	FPA_user_label "Sixtymile"
+ spot 64.025N -140.75E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Snag"
+	FPA_user_label "Snag"
+ spot 62.4N -140.37E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Snag Junction"
+	FPA_user_label "Snag Junction"
+ spot 62.236N -140.69E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Stevens Roadhouse"
+	FPA_user_label "Stevens Roadhouse"
+ spot 63.183N -137.98E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Stewart Crossing"
+	FPA_user_label "Stewart Crossing"
+ spot 63.371N -136.68E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Stewart River"
+	FPA_user_label "Stewart River"
+ spot 63.315N -139.43E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Stony Creek Camp"
+	FPA_user_label "Stony Creek Camp"
+ spot 60.8N -136E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Sulphur"
+	FPA_user_label "Sulphur"
+ spot 63.755N -138.88E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Summit Roadhouse"
+	FPA_user_label "Summit Roadhouse"
+ spot 63.093N -136.47E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Swift River"
+	FPA_user_label "Swift River"
+ spot 60.009N -131.18E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Tagish"
+	FPA_user_label "Tagish"
+ spot 60.315N -134.27E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Takhini"
+	FPA_user_label "Takhini"
+ spot 60.856N -135.45E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Takhini Hotspring"
+	FPA_user_label "Takhini Hotspring"
+ spot 60.878N -135.36E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ten Mile"
+	FPA_user_label "Ten Mile"
+ spot 60.164N -134.38E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Teslin Crossing"
+	FPA_user_label "Teslin Crossing"
+ spot 61.25N -134.6E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Teslin Lake"
+	FPA_user_label "Teslin Lake"
+ spot 60.229N -132.9E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Teslin River"
+	FPA_user_label "Teslin River"
+ spot 60.482N -133.31E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Thistle Creek"
+	FPA_user_label "Thistle Creek"
+ spot 63.06N -139.5E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Tuchitua"
+	FPA_user_label "Tuchitua"
+ spot 60.903N -129.23E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Upper Laberge"
+	FPA_user_label "Upper Laberge"
+ spot 60.948N -135.09E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Upper Liard"
+	FPA_user_label "Upper Liard"
+ spot 60.05N -128.9E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Watson"
+	FPA_user_label "Watson"
+ spot 60.097N -134.83E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Wernecke"
+	FPA_user_label "Wernecke"
+ spot 63.952N -135.29E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "West Dawson"
+	FPA_user_label "West Dawson"
+ spot 64.071N -139.45E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Whitefish Station"
+	FPA_user_label "Whitefish Station"
+ spot 68.896N -136.93E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Whitestone Village"
+	FPA_user_label "Whitestone Village"
+ spot 66.417N -138.42E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Yukon Crossing"
+	FPA_user_label "Yukon Crossing"
+ spot 62.354N -136.51E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Arctic Bay"
+	FPA_user_label "Arctic Bay"
+ spot 73.087N -85.316E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Arviat"
+	FPA_user_label "Arviat"
+ spot 61.088N -94.131E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Baker Lake"
+	FPA_user_label "Baker Lake"
+ spot 64.328N -96.027E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Cambridge Bay"
+	FPA_user_label "Cambridge Bay"
+ spot 69.136N -105.25E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Cape Dorset"
+	FPA_user_label "Cape Dorset"
+ spot 64.233N -76.541E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Chesterfield Inlet"
+	FPA_user_label "Chesterfield Inlet"
+ spot 63.305N -90.79E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Clyde River"
+	FPA_user_label "Clyde River"
+ spot 70.431N -68.519E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Coral Harbour"
+	FPA_user_label "Coral Harbour"
+ spot 64.134N -83.167E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Gjoa Haven"
+	FPA_user_label "Gjoa Haven"
+ spot 68.637N -95.872E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Grise Fiord"
+	FPA_user_label "Grise Fiord"
+ spot 76.396N -82.794E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hall Beach"
+	FPA_user_label "Hall Beach"
+ spot 68.728N -81.265E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Igloolik"
+	FPA_user_label "Igloolik"
+ spot 69.391N -81.666E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kimmirut"
+	FPA_user_label "Kimmirut"
+ spot 62.847N -69.869E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kugaaruk"
+	FPA_user_label "Kugaaruk"
+ spot 63.673N -90.244E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kugluktuk"
+	FPA_user_label "Kugluktuk"
+ spot 67.796N -115.14E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Pangnirtung"
+	FPA_user_label "Pangnirtung"
+ spot 66.11N -65.668E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Pond Inlet"
+	FPA_user_label "Pond Inlet"
+ spot 72.699N -77.967E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Qikiqtarjuaq"
+	FPA_user_label "Qikiqtarjuaq"
+ spot 67.555N -64.028E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Rankin Inlet"
+	FPA_user_label "Rankin Inlet"
+ spot 62.829N -92.123E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Repulse Bay"
+	FPA_user_label "Repulse Bay"
+ spot 66.547N -86.188E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Resolute"
+	FPA_user_label "Resolute"
+ spot 74.697N -94.872E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Sanikiluaq"
+	FPA_user_label "Sanikiluaq"
+ spot 56.546N -79.202E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Taloyoak"
+	FPA_user_label "Taloyoak"
+ spot 69.537N -93.525E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Whale Cove"
+	FPA_user_label "Whale Cove"
+ spot 62.239N -92.607E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Alert"
+	FPA_user_label "Alert"
+ spot 82.5N -62.367E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Alexandra Fiord"
+	FPA_user_label "Alexandra Fiord"
+ spot 78.883N -75.8E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Amadjuak"
+	FPA_user_label "Amadjuak"
+ spot 64.017N -72.652E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Apex"
+	FPA_user_label "Apex"
+ spot 63.722N -68.449E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Aquiatulavik Point"
+	FPA_user_label "Aquiatulavik Point"
+ spot 64.374N -74.697E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bathurst Inlet"
+	FPA_user_label "Bathurst Inlet"
+ spot 66.844N -108.1E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Cape Dyer"
+	FPA_user_label "Cape Dyer"
+ spot 66.667N -61.367E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Cape Smith"
+	FPA_user_label "Cape Smith"
+ spot 60.747N -78.474E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Charlton Depot"
+	FPA_user_label "Charlton Depot"
+ spot 51.967N -79.317E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Craig Harbour"
+	FPA_user_label "Craig Harbour"
+ spot 76.207N -81E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dundas Harbour"
+	FPA_user_label "Dundas Harbour"
+ spot 74.534N -82.384E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ennadai"
+	FPA_user_label "Ennadai"
+ spot 61.133N -100.88E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Conger"
+	FPA_user_label "Fort Conger"
+ spot 81.75N -64.75E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Hope"
+	FPA_user_label "Fort Hope"
+ spot 66.533N -86.7E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Ross"
+	FPA_user_label "Fort Ross"
+ spot 72.01N -94.243E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fullerton"
+	FPA_user_label "Fullerton"
+ spot 64.019N -88.97E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hazen Camp"
+	FPA_user_label "Hazen Camp"
+ spot 81.82N -71.352E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ikaluit"
+	FPA_user_label "Ikaluit"
+ spot 63.741N -68.51E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Isachsen"
+	FPA_user_label "Isachsen"
+ spot 78.783N -103.5E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kekerten"
+	FPA_user_label "Kekerten"
+ spot 65.719N -65.375E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kipisa"
+	FPA_user_label "Kipisa"
+ spot 65.2N -66.95E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kivitoo"
+	FPA_user_label "Kivitoo"
+ spot 67.933N -64.867E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lupin"
+	FPA_user_label "Lupin"
+ spot 65.764N -111.22E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Maguse River"
+	FPA_user_label "Maguse River"
+ spot 61.281N -94.063E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Nanisivik"
+	FPA_user_label "Nanisivik"
+ spot 73.032N -84.619E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Nottingham Island"
+	FPA_user_label "Nottingham Island"
+ spot 63.117N -77.933E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Nuwata"
+	FPA_user_label "Nuwata"
+ spot 65.133N -77.617E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Padlei"
+	FPA_user_label "Padlei"
+ spot 61.917N -96.667E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Padloping Island"
+	FPA_user_label "Padloping Island"
+ spot 67.033N -62.733E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Perry Island"
+	FPA_user_label "Perry Island"
+ spot 67.789N -102.55E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Polaris"
+	FPA_user_label "Polaris"
+ spot 75.395N -96.88E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Port Burwell"
+	FPA_user_label "Port Burwell"
+ spot 60.417N -64.833E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Read Island"
+	FPA_user_label "Read Island"
+ spot 69.25N -113.75E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Resolution Island"
+	FPA_user_label "Resolution Island"
+ spot 61.315N -64.835E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Tanquary Camp"
+	FPA_user_label "Tanquary Camp"
+ spot 81.4N -76.9E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Tavani"
+	FPA_user_label "Tavani"
+ spot 62.067N -93.1E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Thom Bay"
+	FPA_user_label "Thom Bay"
+ spot 70.15N -92.401E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Umingmaktok"
+	FPA_user_label "Umingmaktok"
+ spot 67.7N -107.92E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Wager Bay"
+	FPA_user_label "Wager Bay"
+ spot 65.933N -90.817E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Wrigley"
+	FPA_user_label "Wrigley"
+ spot 63.209N -123.41E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Resolution"
+	FPA_user_label "Fort Resolution"
+ spot 61.172N -113.67E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Enterprise"
+	FPA_user_label "Enterprise"
+ spot 60.557N -116.14E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kakisa"
+	FPA_user_label "Kakisa"
+ spot 60.932N -117.42E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort McPherson"
+	FPA_user_label "Fort McPherson"
+ spot 67.436N -134.88E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Good Hope"
+	FPA_user_label "Fort Good Hope"
+ spot 66.256N -128.63E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Providence"
+	FPA_user_label "Fort Providence"
+ spot 61.358N -117.66E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Aklavik"
+	FPA_user_label "Aklavik"
+ spot 68.22N -135E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Rae"
+	FPA_user_label "Rae"
+ spot 62.828N -116.05E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Edzo"
+	FPA_user_label "Edzo"
+ spot 62.779N -116.02E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Jean Marie River"
+	FPA_user_label "Jean Marie River"
+ spot 61.533N -120.63E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Liard"
+	FPA_user_label "Fort Liard"
+ spot 60.233N -123.38E location none
+
+* 
+* End
+

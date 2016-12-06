@@ -1,0 +1,1994 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Config-type files in the $FPA/config directory can and will be updated #
+#   with any new release, update, or patch of the FPA software suite.          #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Config file that refers to this file through an     #
+#   #include statement.  Refer to the file Config, or d.Config for further     #
+#   instructions.                                                              #
+#                                                                              #
+################################################################################
+
+################################################################################
+#
+# "Config.lang.template" Configuration File template for language labels
+#
+# This config file allows you to provide equivalent labels for operating in
+# another language.
+#
+# All <*c-french*> strings should be replaced by the desired labels in the
+# appropriate language.
+#
+################################################################################
+
+revision 6.0
+
+################################################################################
+#
+# "Fields" block - Descriptions of each field
+#
+# Each field in this block is identified by a unique <element> <level> pair.
+# Each element name must correspond to an element name defined in the
+# "Elements" block below.
+# Similarly, each level name must correspond to a level name defined in the
+# "Levels" block below.
+# (Note that all name comparisons are case insensitive!)
+#
+################################################################################
+
+Fields
+	{
+
+	pressure		msl
+		{
+		label			= <*c-french*> "Pression NMM "
+		short_label		= <*c-french*> "Press NMM "
+		}
+
+	temperature		surface
+		{
+		label			= <*c-french*> "Température en surface"
+		short_label		= <*c-french*> "Temp Surf"
+		}
+
+	weather_system	surface
+		{
+		label			= <*c-french*> "Système météorologique"
+		short_label		= <*c-french*> "Système Mét"
+		}
+
+	weather_local	surface
+		{
+		label			= <*c-french*> "Météo locale"
+		short_label		= <*c-french*> "Mét Loc "
+		}
+
+	POP				surface
+		{
+		label			= <*c-french*> "Probabilité de précipitation"
+		short_label		= <*c-french*> "POP"
+		}
+
+	actual_wind	surface
+		{
+		label			= <*c-french*> "Champ de vent"
+		short_label		= <*c-french*> "Vent"
+		}
+
+	fronts			surface
+		{
+		label			= <*c-french*> "Fronts"
+		short_label		= <*c-french*> "Fronts"
+		}
+
+	wave_height		surface
+		{
+		label			= <*c-french*> "Hauteur des vagues"
+		short_label		= <*c-french*> "Haut Vag"
+		}
+
+	uv_wave_hgt		surface
+		{
+		label			= <*c-french*> "Hauteur des vagues U/V"
+		short_label		= <*c-french*> "Haut Vag U/V"
+		}
+
+	wave_period		surface
+		{
+		label			= <*c-french*> "Période de la houle"
+		short_label		= <*c-french*> "Péri Houle"
+		}
+
+	sea_temp		surface
+		{
+		label			= <*c-french*> "Température de la surface de la mer "
+		short_label		= <*c-french*> "SST"
+		}
+
+	sea_ice			surface
+		{
+		label			= <*c-french*> "Glace marine"
+		short_label		= <*c-french*> "Glace Mar"
+		}
+
+	freezing_spray	surface
+		{
+		label			= <*c-french*> "Embruns verglaçants"
+		short_label		= <*c-french*> "Embr Verg"
+		}
+
+	max_temp		surface
+		{
+		label			= <*c-french*> "Température maximale"
+		short_label		= <*c-french*> "Temp Max "
+		}
+
+	min_temp		surface
+		{
+		label			= <*c-french*> "Température minimale"
+		short_label		= <*c-french*> "Temp  Min"
+		}
+
+	max_temp_time	surface
+		{
+		label			= <*c-french*> "Heure de la température maximale "
+		short_label		= <*c-french*> "H Temp Max "
+		}
+
+	min_temp_time	surface
+		{
+		label			= <*c-french*> "Heure de la température minimale"
+		short_label		= <*c-french*> "H Temp Min"
+		}
+
+	wave_plot		surface
+		{
+		label			= <*c-french*> "Vecteur des vagues"
+		short_label		= <*c-french*> "Vect Vag"
+		}
+
+	wind_plot		surface
+		{
+		label			= <*c-french*> "Vecteur du vent"
+		short_label		= <*c-french*> "Vect Vent"
+		}
+
+	geography		geography
+		{
+		label			= <*c-french*> "Géographie"
+		short_label		= <*c-french*> "Géographie"
+		}
+
+	land_water		geography
+		{
+		label			= <*c-french*> "Zones terres/eau "
+		short_label		= <*c-french*> "Terres/eau"
+		}
+
+	boundaries		geography
+		{
+		label			= <*c-french*> "Limites géographiques"
+		short_label		= <*c-french*> "Limites"
+		}
+
+	cities			geography
+		{
+		label			= <*c-french*> "Villes"
+		short_label		= <*c-french*> "Villes"
+		}
+
+	road			geography
+		{
+		label			= <*c-french*> "Routes"
+		short_label		= <*c-french*> "Routes"
+		}
+
+	rail			geography
+		{
+		label			= <*c-french*> "Chemins de fer"
+		short_label		= <*c-french*> "Chem Fer"
+		}
+
+	hypsography		geography
+		{
+		label			= <*c-french*> "Hypsographie"
+		short_label		= <*c-french*> "Hypsographie"
+		}
+
+	forecast_areas	geography
+		{
+		label			= <*c-french*> "Zones de prévisions"
+		short_label		= <*c-french*> "Zones Prév "
+		}
+
+	app_menu		annotation
+		{
+		label			= <*c-french*> "Menu de l’application"
+		short_label		= <*c-french*> "Menu App"
+		}
+
+	legend			annotation
+		{
+		label			= <*c-french*> "Légende"
+		short_label		= <*c-french*> "Légende"
+		}
+	}
+
+################################################################################
+#
+# "Elements" block - Descriptions of each element
+#
+# Each element in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each element may optionally be identified by an alias name.
+# These aliases are used to match the element names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each element by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+# (Note that the "equation_string" in the "equation" block can use either
+# the name, the file_id, the file_ident, or any alias to refer to an element
+# or level in the equation!)
+#
+################################################################################
+
+Elements
+	{
+
+	pressure
+		{
+		label			= <*c-french*> "Pression"
+		short_label		= <*c-french*> "Press"
+		attributes		=
+			{
+			hilo_type
+				{
+				attribute_label			= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	pres_change
+		{
+		label			= <*c-french*> "Changement de pression"
+		short_label		= <*c-french*> "Chang Press"
+		}
+
+	sfc_pressure
+		{
+		label			= <*c-french*> "Pression réelle"
+		short_label		= <*c-french*> "Press Réelle"
+		attributes		=
+			{
+			hilo_type
+				{
+				attribute_label			= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	height
+		{
+		label			= <*c-french*> "Hauteur"
+		short_label		= <*c-french*> "Haut"
+		attributes		=
+			{
+			hilo_type
+				{
+				attribute_label			= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	height_change
+		{
+		label			= <*c-french*> "Changement de hauteur"
+		short_label		= <*c-french*> "Chang Haut"
+		}
+
+	thickness
+		{
+		label			= <*c-french*> "Épaisseur"
+		short_label		= <*c-french*> "Épais"
+		attributes		=
+			{
+			hilo_type
+				{
+				attribute_label			= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	geopotential
+		{
+		label			= <*c-french*> "Géopotentiel"
+		short_label		= <*c-french*> "Géopotentiel"
+		}
+
+	pressure_curvature
+		{
+		label			= <*c-french*> "Courbure de la pression"
+		short_label		= <*c-french*> "Courbure"
+		}
+
+	pressure_difference_12hr
+		{
+		label			= <*c-french*> "Différence de pression de 12 heures"
+		short_label		= <*c-french*> "Diff Press 12h"
+		}
+
+	actual_wind
+		{
+		label			= <*c-french*> "Champ de vent réel"
+		short_label		= <*c-french*> "Ch Vent Réel"
+		}
+
+	actual_wind_speed
+		{
+		label			= <*c-french*> "Vitesse réelle du vent"
+		short_label		= <*c-french*> "Vit Réelle Vent"
+		}
+
+	actual_wind_direction
+		{
+		label			= <*c-french*> "Direction réelle du vent"
+		short_label		= <*c-french*> "Dir Réelle Vent"
+		}
+
+	vertical_vel
+		{
+		label			= <*c-french*> "Vitesse verticale"
+		short_label		= <*c-french*> "Vit Vert"
+		}
+
+	u_wind
+		{
+		label			= <*c-french*> "Composante U du vent"
+		short_label		= <*c-french*> "Vent U"
+		}
+
+	v_wind
+		{
+		label			= <*c-french*> "Composante V du vent"
+		short_label		= <*c-french*> "Vent V"
+		}
+
+	uv_wind
+		{
+		label			= <*c-french*> "Composante U/V du vent"
+		short_label		= <*c-french*> "Vent U/V"
+		}
+
+	wind_speed
+		{
+		label			= <*c-french*> "Vitesse du vent"
+		short_label		= <*c-french*> "Vit Vent"
+		}
+
+	wind_direction
+		{
+		label			= <*c-french*> "Direction du vent"
+		short_label		= <*c-french*> "Dir Vent"
+		}
+
+	u_geostr
+		{
+		label			= <*c-french*> "Composante géostrophique U"
+		short_label		= <*c-french*> "Géostr U"
+		}
+
+	v_geostr
+		{
+		label			= <*c-french*> "Composante géostrophique V"
+		short_label		= <*c-french*> "Géostr V"
+		}
+
+	geostr_speed
+		{
+		label			= <*c-french*> "Vitesse du vent géostrophique"
+		short_label		= <*c-french*> "Vit Vent geostr"
+		}
+
+	geostr_direction
+		{
+		label			= <*c-french*> "Direction du vent géostrophique"
+		short_label		= <*c-french*> "Dir Vent Géostr"
+		}
+
+	u_geomsl
+		{
+		label			= <*c-french*> "Composante géostrophique U"
+		short_label		= <*c-french*> "Géostr U"
+		}
+
+	v_geomsl
+		{
+		label			= <*c-french*> "Composante géostrophique V"
+		short_label		= <*c-french*> "Géostr V"
+		}
+
+	geomsl_speed
+		{
+		label			= <*c-french*> "Vitesse du vent géostrophique"
+		short_label		= <*c-french*> "Vit Géostr"
+		}
+
+	geomsl_direction
+		{
+		label			= <*c-french*> "Direction du vent géostrophique"
+		short_label		= <*c-french*> "Dir Géostr"
+		}
+
+	u_isallo
+		{
+		label			= <*c-french*> "Composante isallobarique U"
+		short_label		= <*c-french*> "Isallo U"
+		}
+
+	v_isallo
+		{
+		label			= <*c-french*> "Composante isallobarique V"
+		short_label		= <*c-french*> "Isallo V"
+		}
+
+	isallo_speed
+		{
+		label			= <*c-french*> "Vitesse du vent isallobarique"
+		short_label		= <*c-french*> "Vit Isallo"
+		}
+
+	isallo_direction
+		{
+		label			= <*c-french*> "Direction du vent isallobarique"
+		short_label		= <*c-french*> "Dir Isallo"
+		}
+
+	u_thermal
+		{
+		label			= <*c-french*> "Composante thermique U"
+		short_label		= <*c-french*> "Therm U"
+		}
+
+	v_thermal
+		{
+		label			= <*c-french*> "Composante thermique V"
+		short_label		= <*c-french*> "Therm V "
+		}
+
+	thermal_speed
+		{
+		label			= <*c-french*> "Vitesse du vent thermique"
+		short_label		= <*c-french*> "Vit Therm"
+		}
+
+	thermal_direction
+		{
+		label			= <*c-french*> "Direction du vent thermique"
+		short_label		= <*c-french*> "Dir Therm"
+		}
+
+	gradient_speed
+		{
+		label			= <*c-french*> "Vitesse de gradient du vent"
+		short_label		= <*c-french*> "Vit Grad"
+		}
+
+	gradient_direction
+		{
+		label			= <*c-french*> "Gradient de direction du vent"
+		short_label		= <*c-french*> "Grad Dir"
+		}
+
+	gradmsl_speed
+		{
+		label			= <*c-french*> "Vitesse du vent Gradmsl"
+		short_label		= <*c-french*> "Vit Gradmsl"
+		}
+
+	gradmsl_direction
+		{
+		label			= <*c-french*> "Direction du vent Gradmsl"
+		short_label		= <*c-french*> "Dir Gradmls"
+		}
+
+	cyclostr_speed
+		{
+		label			= <*c-french*> "Vitesse du vent cyclostrophique"
+		short_label		= <*c-french*> "Vit Vent Cyclo"
+		}
+
+	cyclostr_direction
+		{
+		label			= <*c-french*> "Direction du vent cyclostrophique "
+		short_label		= <*c-french*> "Dir Cyclo"
+		}
+
+	cyclomsl_speed
+		{
+		label			= <*c-french*> "Vitesse du vent Cyclomsl"
+		short_label		= <*c-french*> "Vit Cyclomsl"
+		}
+
+	cyclomsl_direction
+		{
+		label			= <*c-french*> "Direction du vent Cyclomsl"
+		short_label		= <*c-french*> "Cyclomsl Dir"
+		}
+
+	u_geomsl_isallo
+		{
+		label			= <*c-french*> "Geomsl/Isallo U"
+		short_label		= <*c-french*> "Geomsl/Isallo U"
+		}
+
+	v_geomsl_isallo
+		{
+		label			= <*c-french*> "Geomsl/Isallo V"
+		short_label		= <*c-french*> "Geomsl/Isallo V"
+		}
+
+	geomsl_isallo_speed
+		{
+		label			= <*c-french*> "Vitesse du vent Geomsl/Isallo"
+		short_label		= <*c-french*> "Vit Geomsl/Isallo"
+		}
+
+	geomsl_isallo_direction
+		{
+		label			= <*c-french*> "Direction du vent Geomsl/Isallo"
+		short_label		= <*c-french*> "Dir Geomsl/Isallo"
+		}
+
+	vorticity
+		{
+		label			= <*c-french*> "Vorticité"
+		short_label		= <*c-french*> "Vort"
+		}
+
+	rel_vorticity
+		{
+		label			= <*c-french*> "Vorticité relative"
+		short_label		= <*c-french*> "Vort Rel"
+		}
+
+	vort_adv
+		{
+		label			= <*c-french*> "Advection de tourbillon"
+		short_label		= <*c-french*> "Adv Tourb"
+		}
+
+	vort_adv_geostr
+		{
+		label			= <*c-french*> "Advection de tourbillon géostrophique"
+		short_label		= <*c-french*> "Adv Tourb Géostr"
+		}
+
+	divergence
+		{
+		label			= <*c-french*> "Divergence"
+		short_label		= <*c-french*> "Diverg"
+		}
+
+	divergence_geostr
+		{
+		label			= <*c-french*> "Divergence géostrophique"
+		short_label		= <*c-french*> "Diverg Géostr"
+		}
+
+	divergence_geomsl
+		{
+		label			= <*c-french*> "Divergence Geomsl"
+		short_label		= <*c-french*> "Diverg Geomsl"
+		}
+
+	temperature
+		{
+		label			= <*c-french*> "Température"
+		short_label		= <*c-french*> "Temp"
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label		= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+
+		}
+
+	temp_adv
+		{
+		label			= <*c-french*> "Advection de température"
+		short_label		= <*c-french*> "Adv Temp"
+		}
+
+	temp_adv_geostr
+		{
+		label			= <*c-french*> "Advection de température géostrophique"
+		short_label		= <*c-french*> "Adv Temp Géostr"
+		}
+
+	temp_adv_geomsl
+		{
+		label			= <*c-french*> "Adv Temp Geomsl"
+		short_label		= <*c-french*> "Adv Temp Geomsl"
+		}
+
+	temp_grad
+		{
+		label			= <*c-french*> "Gradient de température "
+		short_label		= <*c-french*> "Grad Temp"
+		}
+
+	dewpoint
+		{
+		label			= <*c-french*> "Température du point de rosée"
+		short_label		= <*c-french*> "Pt Ros"
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label		= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	dewpoint_dep
+		{
+		label			= <*c-french*> "Dépression du point de rosée"
+		short_label		= <*c-french*> "Depr Pt Ros"
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label		= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	rel_humidity
+		{
+		label			= <*c-french*> "Humidité relative"
+		short_label		= <*c-french*> "RH"
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label		= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	mixing_ratio
+		{
+		label			= <*c-french*> "Rapport de mélange"
+		short_label		= <*c-french*> "Rap Mel"
+		}
+
+	virtual_temp
+		{
+		label			= <*c-french*> "Température virtuelle"
+		short_label		= <*c-french*> "Virt Temp"
+		}
+
+	air_density
+		{
+		label			= <*c-french*> "Densité de l’air"
+		short_label		= <*c-french*> "Densité Air"
+		}
+
+################################################################################
+# Formula for condensation_temp from Bolton, MWR 108, July 1980, 1046-1053
+################################################################################
+
+	condensation_temp
+		{
+		label			= <*c-french*> "Levée de la température du niveau de condensation "
+		short_label		= <*c-french*> " Temp LCL"
+		}
+
+################################################################################
+# Formula for theta_e from Bolton, MWR 108, July 1980, 1046-1053
+################################################################################
+
+	theta_e
+		{
+		label			= <*c-french*> "Temp potentielle équivalente"
+		short_label		= <*c-french*> "ThetaE"
+		}
+
+	max_temp
+		{
+		label			= <*c-french*> "Température maximale"
+		short_label		= <*c-french*> "Temp Max"
+		}
+
+	min_temp
+		{
+		label			= <*c-french*> "Température minimale"
+		short_label		= <*c-french*> "Temp Min"
+		}
+
+	max_temp_time
+		{
+		label			= <*c-french*> "Heure de la température maximale"
+		short_label		= <*c-french*> "H Temp Max"
+		}
+
+	min_temp_time
+		{
+		label			= <*c-french*> "Heure de la température minimale"
+		short_label		= <*c-french*> "H Temp Min"
+		}
+
+	total_totals
+		{
+		label			= <*c-french*> "Index des totaux"
+		short_label		= <*c-french*> "Ttotal"
+		}
+
+	george_k
+		{
+		label			= <*c-french*> "Georges K Index"
+		short_label		= <*c-french*> "George K"
+		}
+
+	sun_angle
+		{
+		label			= <*c-french*> "Angle du soleil"
+		short_label		= <*c-french*> "Angle Sol"
+		}
+
+	solar_flux
+		{
+		label			= <*c-french*> "Flux solaire"
+		short_label		= <*c-french*> "Flux Sol"
+		}
+
+	latitude
+		{
+		label			= <*c-french*> "Latitude"
+		short_label		= <*c-french*> "Lat"
+		}
+
+	longitude
+		{
+		label			= <*c-french*> "Longitude"
+		short_label		= <*c-french*> "Long"
+		}
+
+	low_cloud
+		{
+		label			= <*c-french*> "Nuages bas"
+		short_label		= <*c-french*> "Nuage Bas"
+		}
+
+	mid_cloud
+		{
+		label			= <*c-french*> "Nuages à altitude moyenne"
+		short_label		= <*c-french*> "Nuage Alt Moy"
+		}
+
+	high_cloud
+		{
+		label			= <*c-french*> "Nuages élevés"
+		short_label		= <*c-french*> "Nuages Haut"
+		}
+
+	total_cloud
+		{
+		label			= <*c-french*> "Couverture nuageuse totale"
+		short_label		= <*c-french*> "Couv Nuage Tot"
+		}
+
+	precipitation
+		{
+		label			= <*c-french*> "Précipitations"
+		short_label		= <*c-french*> "Précip"
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label		= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	convective_precip
+		{
+		label			= <*c-french*> "Précipitations convectives"
+		short_label		= <*c-french*> "Précip Conv"
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label		= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	rainfall_rate
+		{
+		label			= <*c-french*> "Débit de pluie"
+		short_label		= <*c-french*> "Débit Pluie"
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label		= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	convective_precip_rate
+		{
+		label			= <*c-french*> "Débit de la pluie convective"
+		short_label		= <*c-french*> "Débit Pluie Conv"
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label		= <*c-french*> "Type Haut/Bas"
+				attribute_short_label	= <*c-french*> "Type H/B"
+				}
+			}
+		}
+
+	POP
+		{
+		label			= <*c-french*> "Probabilité de précipitation"
+		short_label		= <*c-french*> "POP"
+		attributes		=
+			{
+			FPA_auto_label				<*c-french*> "0%"
+			FPA_user_label				<*c-french*> "0 pour cent"
+			}
+		}
+
+	precipitation_amount
+		{
+		label			= <*c-french*> "Quantité de précipitation"
+		short_label		= <*c-french*> "Quant Précip"
+		}
+
+	weather_system
+		{
+		label			= <*c-french*> "Système météorologique"
+		short_label		= <*c-french*> "Système Mét"
+		attributes		=
+			{
+			FPA_auto_label				<*c-french*> "CLR"
+			FPA_user_label				<*c-french*> "Effacer"
+			cloud_amount
+				{
+				attribute_label		= <*c-french*> "Couverture nuageuse"
+				attribute_short_label	= <*c-french*> "Quantité"
+				}
+			cloud_remarks
+				{
+				attribute_label		= <*c-french*> "Remarques sur les nuages"
+				attribute_short_label	= <*c-french*> "Remarques"
+				}
+			visibility
+				{
+				attribute_label		= <*c-french*> "Visibilité"
+				attribute_short_label	= <*c-french*> "Visib"
+				}
+			weather
+				{
+				attribute_label		= <*c-french*> "Météo"
+				attribute_short_label	= <*c-french*> "Mét"
+				}
+			weather_modifier
+				{
+				attribute_label	= <*c-french*> "Modificateur Météo"
+				attribute_short_label	= <*c-french*> "Mod Mét"
+				}
+			visibility_secondary
+				{
+				attribute_label		= <*c-french*> "Visibilité 2"
+				attribute_short_label	= <*c-french*> "Visib 2"
+				}
+			weather_secondary
+				{
+				attribute_label		= <*c-french*> "Météo 2"
+				attribute_short_label	= <*c-french*> "Mét 2"
+				}
+			wx_remarks
+				{
+				attribute_label		= <*c-french*> "Remarques sur la météo"
+				attribute_short_label	= <*c-french*> "Rem Mét "
+				}
+			}
+		}
+
+	weather_local
+		{
+		label			= <*c-french*> "Météo locale"
+		short_label		= <*c-french*> "Mét Loc"
+		attributes		=
+			{
+			FPA_auto_label				<*c-french*> "AUCUNE"
+			FPA_user_label				<*c-french*> "Pas de Mét Loc"
+			cloud_amount
+				{
+				attribute_label		= <*c-french*> "Couverture nuageuse"
+				attribute_short_label	= <*c-french*> "Quantité"
+				}
+			cloud_remarks
+				{
+				attribute_label		= <*c-french*> "Remarques sur les nuages"
+				attribute_short_label	= <*c-french*> "Remarques"
+				}
+			visibility
+				{
+				attribute_label		= <*c-french*> "Visibilité"
+				attribute_short_label	= <*c-french*> "Visib"
+				}
+			weather
+				{
+				attribute_label		= <*c-french*> "Météo"
+				attribute_short_label	= <*c-french*> "Mét"
+				}
+			weather_modifier
+				{
+				attribute_label	= <*c-french*> "Modificateur météo "
+				attribute_short_label	= <*c-french*> "Mod Mét"
+				}
+			visibility_secondary
+				{
+				attribute_label		= <*c-french*> "Visibilité 2"
+				attribute_short_label	= <*c-french*> "Visib 2"
+				}
+			weather_secondary
+				{
+				attribute_label		= <*c-french*> "Météo 2"
+				attribute_short_label	= <*c-french*> "Mét 2"
+				}
+			wx_remarks
+				{
+				attribute_label		= <*c-french*> "Remarques sur la météo"
+				attribute_short_label	= <*c-french*> "Rem Mét"
+				}
+			}
+		}
+
+	fronts
+		{
+		label			= <*c-french*> "Fronts"
+		short_label		= <*c-french*> "Fronts"
+		line_types		=
+			{
+			cold
+				{
+				type_label	= <*c-french*> "Front froid"
+				}
+			warm
+				{
+				type_label	= <*c-french*> "Front chaud"
+				}
+			stationary
+				{
+				type_label	= <*c-french*> "Front stationnaire"
+				}
+			occluded
+				{
+				type_label	= <*c-french*> "Front occlus"
+				}
+			trowal
+				{
+				type_label	= <*c-french*> "Langue d'air chaud en altitude "
+				}
+			trof
+				{
+				type_label	= <*c-french*> "Dépression"
+				}
+			ridge
+				{
+				type_label	= <*c-french*> "Crête"
+				}
+			upper_cold
+				{
+				type_label	= <*c-french*> "Front supérieur froid"
+				}
+			upper_warm
+				{
+				type_label	= <*c-french*> "Front supérieur chaud"
+				}
+			upper_stationary
+				{
+				type_label	= <*c-french*> "Front supérieur stationnaire"
+				}
+			upper_trof
+				{
+				type_label	= <*c-french*> "Dépression supérieure"
+				}
+			}
+		}
+
+	sea_temp
+		{
+		label			= <*c-french*> "Température de la mer en surface"
+		short_label		= <*c-french*> "SST"
+		}
+
+	freezing_spray
+		{
+		label			= <*c-french*> "Embruns verglaçants"
+		short_label		= <*c-french*> "Embr Verg "
+		attributes		=
+			{
+			FPA_auto_label				<*c-french*> "AUCUN"
+			FPA_user_label				<*c-french*> "Acun"
+			frzg_spray_modifier
+				{
+				attribute_label			= <*c-french*> "Modificateur des embruns verglaçants"
+				attribute_short_label	= <*c-french*> "Mod Embr Vergl"
+				}
+			frzg_spray_intensity		NONE
+				{
+				attribute_label			= <*c-french*> "Intensité des embruns verglaçants"
+				attribute_short_label	= <*c-french*> "Int Embr Vergl"
+				}
+			frzg_spray_remarks
+				{
+				attribute_label			= <*c-french*> "Remarques sur les embruns verglaçants"
+				attribute_short_label	= <*c-french*> "Rem Embr Vergl"
+				}
+			}
+		}
+
+	sea_ice
+		{
+		label			= <*c-french*> "Glace marine"
+		short_label		= <*c-french*> "Glace Mar"
+		attributes		=
+			{
+			FPA_auto_label				<*c-french*> "NONE"
+			FPA_user_label				<*c-french*> "Pas de glace"
+			}
+		}
+
+	ice_cover
+		{
+		label			= <*c-french*> "Couche de glace"
+		short_label		= <*c-french*> "Couche Glace"
+		}
+
+	wave_height
+		{
+		label			= <*c-french*> "Hauteur de vague"
+		short_label		= <*c-french*> "Haut Vag"
+		}
+
+	u_wave_hgt
+		{
+		label			= <*c-french*> "Hauteur de vague U"
+		short_label		= <*c-french*> "Haut Vag U"
+		}
+
+	v_wave_hgt
+		{
+		label			= <*c-french*> "Hauteur de vague V"
+		short_label		= <*c-french*> "Haut Vag V"
+		}
+
+	uv_wave_hgt
+		{
+		label			= <*c-french*> "Hauteur de vague U/V"
+		short_label		= <*c-french*> "Haut Vag UV"
+		}
+
+	wave_period
+		{
+		label			= <*c-french*> "Période de la houle"
+		short_label		= <*c-french*> "Péri Houle"
+		}
+
+	wave_plot
+		{
+		label			= <*c-french*> "Vecteur des vagues"
+		short_label		= <*c-french*> "Vect Vag"
+		}
+
+	wind_plot
+		{
+		label			= <*c-french*> "Vecteur du vent"
+		short_label		= <*c-french*> "Vect Vent"
+		}
+
+	storms
+		{
+		label			= <*c-french*> "Tempêtes"
+		short_label		= <*c-french*> "Tempêtes"
+		}
+
+	geography
+		{
+		label			= <*c-french*> "Géographie"
+		short_label		= <*c-french*> "Géographie"
+		}
+
+	land_water
+		{
+		label			= <*c-french*> "Zones Terres/eau"
+		short_label		= <*c-french*> "Terres/eau"
+		attributes		=
+			{
+			FPA_auto_label				<*c-french*> "EAU"
+			FPA_user_label				<*c-french*> "Eau"
+			}
+		}
+
+	boundaries
+		{
+		label			= <*c-french*> "Limites géographiques"
+		short_label		= <*c-french*> "Limites"
+		}
+
+	cities
+		{
+		label			= <*c-french*> "Villes"
+		short_label		= <*c-french*> "Villes"
+		}
+
+	road
+		{
+		label			= <*c-french*> "Routes"
+		short_label		= <*c-french*> "Routes"
+		}
+
+	rail
+		{
+		label			= <*c-french*> "Chemins de fer"
+		short_label		= <*c-french*> "Chem Fer"
+		}
+
+	hypsography
+		{
+		label			= <*c-french*> "Hypsographie"
+		short_label		= <*c-french*> "Hypsographie"
+		}
+
+	forecast_areas
+		{
+		label			= <*c-french*> "Zones de prévisions"
+		short_label		= <*c-french*> "Zones Prév"
+		}
+
+	app_menu
+		{
+		label			= <*c-french*> "Menu de l’application"
+		short_label		= <*c-french*> "Menu App"
+		}
+
+	legend
+		{
+		label			= <*c-french*> "Légende"
+		short_label		= <*c-french*> "Légende"
+		}
+
+	guess_cloud
+		{
+		label			= <*c-french*> "Nuages probables"
+		short_label		= <*c-french*> "Nuage Prob"
+		}
+
+	GENERIC_flat_field_0
+		{
+		label			= <*c-french*> "Champ plat de 0"
+		short_label		= <*c-french*> "Plat 0"
+		}
+
+	GENERIC_flat_field_50
+		{
+		label			= <*c-french*> "Champ plat de 50"
+		short_label		= <*c-french*> "Plat 50"
+		}
+
+	GENERIC_24hr_difference
+		{
+		label			= <*c-french*> "Différence 24h"
+		short_label		= <*c-french*> "Diff 24h"
+		}
+
+	GENERIC_12hr_difference
+		{
+		label			= <*c-french*> "Différence 12h"
+		short_label		= <*c-french*> "Diff 12h"
+		}
+
+	GENERIC_06hr_difference
+		{
+		label			= <*c-french*> "Différence 6h"
+		short_label		= <*c-french*> "Diff 6h"
+		}
+
+	GENERIC_06hr_forward_difference
+		{
+		label			= <*c-french*> "Différence de 6h vers l’avant"
+		short_label		= <*c-french*> "Diff 6h Av"
+		}
+
+	GENERIC_24hr_previous
+		{
+		label			= <*c-french*> "Différence de 24h vers l’arrière"
+		short_label		= <*c-french*> "Diff 24h Arr"
+		}
+
+	GENERIC_12hr_previous
+		{
+		label			= <*c-french*> "Différence de 12h vers l’arrière"
+		short_label		= <*c-french*> "Diff 12h Arr"
+		}
+
+	GENERIC_06hr_previous
+		{
+		label			= <*c-french*> "Différence de 6h vers l’arrière"
+		short_label		= <*c-french*> "Diff 6h Arr"
+		}
+
+	GENERIC_difference
+		{
+		label			= <*c-french*> "Différence générique vers l’avant"
+		short_label		= <*c-french*> "Diff Gen "
+		}
+
+	GENERIC_forward_difference
+		{
+		label			= <*c-french*> "Différence générique vers l’avant"
+		short_label		= <*c-french*> "Diff Gen Av"
+		}
+
+	GENERIC_speed_by_gradients
+		{
+		label			= <*c-french*> "Vitesse du vent par gradients"
+		short_label		= <*c-french*> "Vit Vent"
+		}
+
+	GENERIC_direction_by_gradients
+		{
+		label			= <*c-french*> "Direction du vent par gradients"
+		short_label		= <*c-french*> "Dir Vent "
+		}
+
+	GENERIC_u_geostr_height
+		{
+		label			= <*c-french*> "Altitude géostrophique de l’élément U"
+		short_label		= <*c-french*> "Alt Géostr U"
+		}
+
+	GENERIC_v_geostr_height
+		{
+		label			= <*c-french*> "Altitude géostrophique de l’élement V"
+		short_label		= <*c-french*> "Alt Géostr V"
+		}
+
+	GENERIC_u_geostr_pressure
+		{
+		label			= <*c-french*> "Pression géostrophique de l’élement U"
+		short_label		= <*c-french*> "Press Géostr U"
+		}
+
+	GENERIC_v_geostr_pressure
+		{
+		label			= <*c-french*> "Pression géostrophique de l’élement V"
+		short_label		= <*c-french*> "Press Géostr V"
+		}
+
+	GENERIC_spd_grad_height
+		{
+		label			= <*c-french*> "Hauteur de la vitesse du gradient du vent"
+		short_label		= <*c-french*> "Haut Vit Grad"
+		}
+
+	GENERIC_spd_grad_pressure
+		{
+		label			= <*c-french*> "Pression de la vitesse du gradient du vent "
+		short_label		= <*c-french*> "Vit Gradient Press"
+		}
+
+	GENERIC_spd_cyclo_height
+		{
+		label			= <*c-french*> "Hauteur de la vitesse du vent cyclostrophique"
+		short_label		= <*c-french*> "Haut Vit Cyclo"
+		}
+
+	GENERIC_spd_cyclo_pressure
+		{
+		label			= <*c-french*> "Pression de la vitesse du vent cyclostrophique"
+		short_label		= <*c-french*> "Press Vit Cyclo"
+		}
+
+	GENERIC_u_isallobaric
+		{
+		label			= <*c-french*> "Élément Isallobarique U"
+		short_label		= <*c-french*> "Isallo U"
+		}
+
+	GENERIC_v_isallobaric
+		{
+		label			= <*c-french*> "Composante isallobarique V"
+		short_label		= <*c-french*> "Isallo V"
+		}
+
+	GENERIC_coriolis_force
+		{
+		label			= <*c-french*> "Force de Coriolis"
+		short_label		= <*c-french*> "Coriolis"
+		}
+
+	GENERIC_limited_coriolis_force
+		{
+		label			= <*c-french*> "Force de Coriolis limitée"
+		short_label		= <*c-french*> "Corio Lim"
+		}
+
+	GENERIC_limited_curvature
+		{
+		label			= <*c-french*> "Courbure limitée"
+		short_label		= <*c-french*> "Courb Lim"
+		}
+
+	GENERIC_gradient_height_curvature
+		{
+		label			= <*c-french*> "Gradient de la courbure de la hauteur"
+		short_label		= <*c-french*> "Grad Courb Haut "
+		}
+
+	GENERIC_gradient_pressure_curvature
+		{
+		label			= <*c-french*> "Gradient de la courbure de la pression"
+		short_label		= <*c-french*> "Grad Courb Press"
+		}
+	}
+
+################################################################################
+#
+# "Levels" block - Descriptions of each level
+#
+# Each level in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each level may optionally be identified by an alias name.
+# These aliases are used to match the level names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each level by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+################################################################################
+
+Levels
+	{
+
+	msl
+		{
+		label			= <*c-french*> "NMM"
+		short_label		= <*c-french*> "NMM"
+		}
+
+	surface
+		{
+		label			= <*c-french*> "Surface"
+		short_label		= <*c-french*> "Surf"
+		}
+
+	geography
+		{
+		label			= <*c-french*> "Géographie"
+		short_label		= <*c-french*> "Géographie"
+		}
+
+	annotation
+		{
+		label			= <*c-french*> "Annotation"
+		short_label		= <*c-french*> "Annotation"
+		}
+	}
+
+################################################################################
+#
+# "Groups" block - Descriptions of field and element groups
+#
+################################################################################
+
+Groups
+	{
+
+	Fields
+		{
+
+		Surface
+			{
+			label		= <*c-french*> "Champs de surface"
+			short_label	= <*c-french*> "Surface"
+			}
+
+		Sea
+			{
+			label		= <*c-french*> "Champs de l’état de la mer"
+			short_label	= <*c-french*> "État de la mer"
+			}
+
+		Maxmin
+			{
+			label		= <*c-french*> "T-max / T-min"
+			short_label	= <*c-french*> "Max/min"
+			}
+
+		Upper_Level
+			{
+			label		= <*c-french*> "Champs du niveau supérieur"
+			short_label	= <*c-french*> "Supérieur"
+			}
+
+		Miscellaneous
+			{
+			label		= <*c-french*> "Divers"
+			short_label	= <*c-french*> "Divers"
+			}
+		}
+
+	Elements
+		{
+
+		Pressure
+			{
+			label		= <*c-french*> "Lié à la pression"
+			short_label	= <*c-french*> "Pression"
+			}
+
+		Temperature
+			{
+			label		= <*c-french*> "Lié à la température"
+			short_label	= <*c-french*> "Température"
+			}
+
+		Vorticity
+			{
+			label		= <*c-french*> "Vorticité et divergence"
+			short_label	= <*c-french*> "Vorticité"
+			}
+
+		Sea
+			{
+			label		= <*c-french*> "Paramètres de la surface de la mer"
+			short_label	= <*c-french*> "Mer"
+			}
+
+		Wind
+			{
+			label		= <*c-french*> "Paramètres du vent"
+			short_label	= <*c-french*> "Vent"
+			}
+
+		Miscellaneous
+			{
+			label		= <*c-french*> "Divers"
+			short_label	= <*c-french*> "Divers"
+			}
+
+		Generic_Equation
+			{
+			label		= <*c-french*> "Équations génériques"
+			short_label	= <*c-french*> "Génériques"
+			}
+		}
+	}
+
+################################################################################
+#
+# "CrossRefs" block - Descriptions of wind and value crossreferences
+#
+################################################################################
+
+CrossRefs
+	{
+
+	Winds
+		{
+
+		Vg_Msl
+			{
+			label			= <*c-french*> "Vent géostrophique NMM"
+			short_label		= <*c-french*> "Vg NMM"
+			}
+
+		Vr_Msl
+			{
+			label			= <*c-french*> "Gradient du vent NMM"
+			short_label		= <*c-french*> "Vr NMM"
+			}
+
+		Vc_Msl
+			{
+			label			= <*c-french*> "Vent cyclostrophique NMM"
+			short_label		= <*c-french*> "Vc NMM"
+			}
+
+		Vx_Msl
+			{
+			label			= <*c-french*> "Vent Geomsl/Isallo NMM"
+			short_label		= <*c-french*> "Geomsl/Isallo NMM"
+			}
+
+		Vg_850
+			{
+			label			= <*c-french*> "Vent géostrophique 850 mb"
+			short_label		= <*c-french*> "Vg 850"
+			}
+
+		Is_Msl
+			{
+			label			= <*c-french*> "Vent isallobarique"
+			short_label		= <*c-french*> "Isallo"
+			}
+
+		Th_851K
+			{
+			label			= <*c-french*> "Vent thermique 850-1000 mb"
+			short_label		= <*c-french*> "Therm 850-1000"
+			}
+
+		Fpa_Wind
+			{
+			label			= <*c-french*> "Modèle de vent FPA"
+			short_label		= <*c-french*> "Modèle"
+			}
+		}
+
+	Values
+		{
+
+		Max_Temp
+			{
+			label			= <*c-french*> "Température maximale quotidienne"
+			short_label		= <*c-french*> "Max Temp"
+			}
+
+		Min_Temp
+			{
+			label			= <*c-french*> "Température minimale quotidienne"
+			short_label		= <*c-french*> "Temp Min"
+			}
+
+		Max_Temp_Time
+			{
+			label		= <*c-french*> "Heure de la température maximale quotidienne"
+			short_label		= <*c-french*> "H Temp Max"
+			}
+
+		Min_Temp_Time
+			{
+			label		= <*c-french*> "Heure de la température minimale quotidienne"
+			short_label		= <*c-french*> "H Temp Min"
+			}
+
+		Adjusted_Wind_Speed
+			{
+			label			= <*c-french*> "Vitesse du vent du FPA"
+			short_label		= <*c-french*> "Vit Vent FPA "
+			}
+
+		Adjusted_Wind_Direction
+			{
+			label			= <*c-french*> "Direction du vent FPA"
+			short_label		= <*c-french*> "Dir Vent FPA "
+			}
+		}
+	}
+
+################################################################################
+#
+# "Samples" block - Descriptions of value and wind samples
+#
+################################################################################
+
+Samples
+	{
+
+	Values
+		{
+
+		Value_Sample
+			{
+			label			= <*c-french*> "Valeur"
+			short_label		= <*c-french*> "Valeur"
+			}
+
+		Gradient_Sample
+			{
+			label			= <*c-french*> "Gradient"
+			short_label		= <*c-french*> "Gradient"
+			}
+
+		Curvature_Sample
+			{
+			label			= <*c-french*> "Courbure"
+			short_label		= <*c-french*> "Courbure"
+			}
+
+		Magnitude_Sample
+			{
+			label			= <*c-french*> "Magnitude"
+			short_label		= <*c-french*> "Magnitude"
+			}
+
+		Direction_Sample
+			{
+			label			= <*c-french*> "Direction"
+			short_label		= <*c-french*> "Direction"
+			}
+
+		Label_Sample
+			{
+			label			= <*c-french*> "Étiquette"
+			short_label		= <*c-french*> "Étiquette"
+			}
+
+		Value_Type				### Obsolete value sample type ###
+			{
+			label			= <*c-french*> "Valeur – Appeler le groupe FPA -"
+			short_label		= <*c-french*> "Val – Appeler FPA-"
+			}
+
+		Gradient_Type			### Obsolete value sample type ###
+			{
+			label			= <*c-french*> "Gradient - Appeler le groupe FPA -"
+			short_label		= <*c-french*> "Grad – Appeler FPA-"
+			}
+
+		Curvature_Type			### Obsolete value sample type ###
+			{
+			label			= <*c-french*> "Courbure –Appeler le groupe FPA -"
+			short_label		= <*c-french*> "Courb – Appeler FPA-"
+			}
+
+		Label_Type				### Obsolete value sample type ###
+			{
+			label			= <*c-french*> "Étiquette – Appeler le groupe FPA -"
+			short_label		= <*c-french*> "Étiq – Appeler FPA-"
+			}
+
+		}
+
+	Winds
+		{
+
+		Geostrophic_Wind
+			{
+			label			= <*c-french*> "Vent géostrophique"
+			short_label		= <*c-french*> "Vent Géostr"
+			}
+
+		Gradient_Wind
+			{
+			label			= <*c-french*> "Gradient du vent"
+			short_label		= <*c-french*> "Grad Vent"
+			}
+
+		Cyclostrophic_Wind
+			{
+			label			= <*c-french*> "Vent cyclostrophique"
+			short_label		= <*c-french*> "Vent Cyclo"
+			}
+
+		Isallobaric_Wind
+			{
+			label			= <*c-french*> "Vent Isallobarique"
+			short_label		= <*c-french*> "Vent Isallo"
+			}
+
+		Thermal_Wind
+			{
+			label			= <*c-french*> "Vent thermique"
+			short_label		= <*c-french*> "Vent Therm"
+			}
+
+		UV_Component_Wind
+			{
+			label			= <*c-french*> "Composante du vent U/V"
+			short_label		= <*c-french*> "Vent UV "
+			}
+
+		DS_Component_Wind
+			{
+			label		= <*c-french*> "Direction/vitesse de l’élement du vent"
+			short_label		= <*c-french*> "Dir/Vit Vent"
+			}
+
+		Adjusted_Wind
+			{
+			label			= <*c-french*> "Vent corrigé"
+			short_label		= <*c-french*> "Vent Corr"
+			}
+		}
+	}
+
+################################################################################
+#
+# "Sources" block - Descriptions of each data source
+#
+# Each source in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each source may optionally be identified by an alias name.
+# These aliases are used to match the source names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each source by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+################################################################################
+
+Sources
+	{
+
+	depict
+		{
+		label			= <*c-french*> "Représentations"
+		short_label		= <*c-french*> "Représ"
+		}
+
+	interp
+		{
+		label			= <*c-french*> "Interpolations"
+		short_label		= <*c-french*> "Interp"
+		}
+
+	autoimport
+		{
+		label			= <*c-french*> "Répertoire d’importation automatique"
+		short_label		= <*c-french*> "Import Auto "
+		}
+
+	backup
+		{
+		label			= <*c-french*> "Copie de sauvegarde des représentations"
+		short_label		= <*c-french*> "Sauvegarde"
+		}
+
+	maps
+		{
+		label			= <*c-french*> "Cartes"
+		short_label		= <*c-french*> "Cartes"
+		}
+
+	GEM
+		{
+		label			= <*c-french*> "Modèle global environnemental multi-échelle"
+		short_label		= <*c-french*> "GEM"
+		}
+
+	GEM_ANAL
+		{
+		label			= <*c-french*> "Analyse GEM"
+		short_label		= <*c-french*> "ANAL GEM"
+		}
+
+	FEM
+		{
+		label			= <*c-french*> "Élément fini régional"
+		short_label		= <*c-french*> "EFR"
+		}
+
+	FEM_ANAL
+		{
+		label			= <*c-french*> "Analyse EFR"
+		short_label		= <*c-french*> "ANAL EFR"
+		}
+
+	Spectral
+		{
+		label			= <*c-french*> "Mondial"
+		short_label		= <*c-french*> "Glob"
+		}
+
+	Spe_ANAL
+		{
+		label			= <*c-french*> "Analyse globale"
+		short_label		= <*c-french*> "ANAL Glob"
+		}
+
+	NMC
+		{
+		label			= <*c-french*> "NMC"
+		short_label		= <*c-french*> "NMC"
+		}
+
+	ECMWF
+		{
+		label			= <*c-french*> "ECMWF"
+		short_label		= <*c-french*> "ECMWF"
+		}
+
+	JMA
+		{
+		label			= <*c-french*> "JMA"
+		short_label		= <*c-french*> "JMA"
+		}
+
+	JMA_ANAL
+		{
+		label			= <*c-french*> "JMA ANAL"
+		short_label		= <*c-french*> "JMA ANAL"
+		}
+
+	UKMetOffice
+		{
+		label			= <*c-french*> "UK Met Office"
+		short_label		= <*c-french*> "UK Met"
+		}
+
+	Metworks
+		{
+		label			= <*c-french*> "Metworks"
+		short_label		= <*c-french*> "Metworks"
+		}
+
+	FpaWarp
+		{
+		label			= <*c-french*> "Champs ajustés FPA"
+		short_label		= <*c-french*> "Ajust FPA"
+		}
+
+	Scribe
+		{
+		label			= <*c-french*> "Données SCRIBE"
+		short_label		= <*c-french*> "SCRIBE"
+		subsources		=
+			{
+			GEM
+				{
+				label			= <*c-french*> "Données SCRIBE de GEM"
+				short_label		= <*c-french*> "SCRIBE GEM"
+				}
+			RFE
+				{
+				label			= <*c-french*> "Données SCRIBE des EFR"
+				short_label		= <*c-french*> "SCRIBE EFR"
+				}
+			Global
+				{
+				label		= <*c-french*> "Données SCRIBE de Global"
+				short_label		= <*c-french*> "SCRIBE Global"
+				}
+			}
+		}
+
+	PLOT
+		{
+		label			= <*c-french*> "Divers objets tracés"
+		short_label		= <*c-french*> "Divers Trac"
+		}
+	}
+
+################################################################################
+#
+# "Constants" block - List of constants for calculating fields
+#
+################################################################################
+
+Constants
+	{
+
+	PI
+		{
+		label		= <*c-french*> "Pi"
+		short_label	= <*c-french*> "Pi"
+		}
+
+	RAD
+		{
+		label		= <*c-french*> "Radians par degré"
+		short_label	= <*c-french*> "Rad / Deg"
+		}
+
+	SECHR
+		{
+		label		= <*c-french*> "Secondes par heure"
+		short_label	= <*c-french*> "Secondes / h"
+		}
+
+	REARTH
+		{
+		label		= <*c-french*> "Rayon de terre"
+		short_label	= <*c-french*> "Rayon Terre "
+		}
+
+	GRAV
+		{
+		label		= <*c-french*> "Accélération due à la gravité"
+		short_label	= <*c-french*> "Gravité"
+		}
+
+	COR
+		{
+		label		= <*c-french*> "Paramètre de Coriolis "
+		short_label	= <*c-french*> "Coriolis"
+		}
+
+	SOLAR
+		{
+		label		= <*c-french*> "Flux solaire"
+		short_label	= <*c-french*> "Flux Sol"
+		}
+
+	RDRY
+		{
+		label		= <*c-french*> "Constante des gaz pour l’air sec"
+		short_label	= <*c-french*> "R Sec"
+		}
+
+	RVAP
+		{
+		label		= <*c-french*> "Constante des gaz pour la vapeur d’eau"
+		short_label	= <*c-french*> "R Vapeur"
+		}
+
+	EPSR
+		{
+		label		= <*c-french*> "Rapport des constantes des gaz"
+		short_label	= <*c-french*> "R sec / R vap"
+		}
+
+	ROSTD
+		{
+		label		= <*c-french*> "Densité atmosphérique standard"
+		short_label	= <*c-french*> "Densité"
+		}
+
+	ZEROC
+		{
+		label		= <*c-french*> "Zero degré C"
+		short_label	= <*c-french*> "Zero C"
+		}
+	TRIPLE
+		{
+		label		= <*c-french*> "Point triple de l’eau"
+		short_label	= <*c-french*> "Point Triple"
+		}
+	FPA_MAX_VALUE
+		{
+		label		= <*c-french*> "Valeur maximale acceptable"
+		short_label	= <*c-french*> "Valeur Max"
+		}
+	FPA_MIN_VALUE
+		{
+		label		= <*c-french*> "Valeur minimum acceptable"
+		short_label	= <*c-french*> "Valeur Min "
+		}
+	}
+################################################################################
+#
+# "Units" block - Description of units for conversion from MKS
+#
+################################################################################
+Units
+	{
+	}
+################################################################################
+#
+#  Include any fixes here.
+#
+################################################################################

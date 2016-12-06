@@ -1,0 +1,8 @@
+#!/bin/bash
+FILE="${1}.xml"
+if [ -f ${FILE} ]; then
+	echo "${FILE} exists!"
+else
+	cp template.xml ${FILE}
+	vi ${FILE}
+fi

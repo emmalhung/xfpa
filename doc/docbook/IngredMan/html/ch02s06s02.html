@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.6.2. DESCRIPTION</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s06.html" title="2.6. GEEdit" /><link rel="prev" href="ch02s06s01.html" title="2.6.1. SYNOPSIS" /><link rel="next" href="ch02s06s03.html" title="2.6.3. RETURN" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.6.2. DESCRIPTION</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s06s01.html">Prev</a> </td><th width="60%" align="center">2.6. GEEdit</th><td width="20%" align="right"> <a accesskey="n" href="ch02s06s03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4210892"></a>2.6.2. DESCRIPTION</h3></div></div></div><p> 
+Issues edit commands valid for the currently active depiction element, guidance annotation field or scratch pad.
+These commands do an auto-setback of the editing state and do not require the edit command to be re-issued after they are used.
+</p><p>
+The <span xmlns="" class="replaceable">command</span> parameter consists of the following key words:
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>BREAK</code></strong></span></dt><dd><p>
+Break a line in the currently active editing field into two sections.
+</p></dd><dt><span class="term"><strong class="userinput"><code>CANCEL</code></strong></span></dt><dd><p>
+Cancel the pending edit.
+This applies to those edits which require multiple inputs before being acted upon.
+</p></dd><dt><span class="term"><strong class="userinput"><code>CLEAR</code></strong></span></dt><dd><p>
+Clear the currently active editing field.
+Note that if the current state for a given field is <strong class="userinput"><code>LABEL</code></strong>, then all labels will be cleared from the field.
+</p></dd><dt><span class="term"><strong class="userinput"><code>DRAW_DONE</code></strong></span></dt><dd><p>
+When Ingred is in the point-by-point draw state, this command will terminate the draw and accept the line defined by the points.
+</p></dd><dt><span class="term"><strong class="userinput"><code>END_CHAIN</code></strong></span></dt><dd><p>
+Terminate the input of a timelink chain.
+</p></dd><dt><span class="term"><strong class="userinput"><code>JOIN</code></strong></span></dt><dd><p>
+Join two lines in the currently active editing field.
+</p></dd><dt><span class="term"><strong class="userinput"><code>MODIFY_CONFIRM</code></strong></span></dt><dd><p>
+When Ingred is in the point-by-point modify state, this command will confirm the final modified display of the feature.
+</p></dd><dt><span class="term"><strong class="userinput"><code>PASTE</code></strong></span></dt><dd><p>
+Paste a copied feature into the currently active editing field.
+</p></dd><dt><span class="term"><strong class="userinput"><code>REJOIN</code></strong></span></dt><dd><p>
+Rejoin two sections of a divided area.  The attributes will be taken from the first area chosen.
+</p></dd><dt><span class="term"><strong class="userinput"><code>RESUME</code></strong></span></dt><dd><p>
+Forces the editor to pick up where it left off.
+This is the command to issue if there is unrelated windowing activity going on.
+</p></dd><dt><span class="term"><strong class="userinput"><code>UNDO</code></strong></span></dt><dd><p>
+Undo the previous edit.
+</p></dd><dt><span class="term"><strong class="userinput"><code>UPDATE</code></strong></span></dt><dd><p>
+Post all pending edits.
+Note that after this command an undo is no longer possible.
+</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s06s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s06s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.6.1. SYNOPSIS </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.6.3. RETURN</td></tr></table></div></body></html>

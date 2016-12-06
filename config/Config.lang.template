@@ -1,0 +1,1698 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   This is a template to be copied and renamed to your local config           #
+#   directory.                                                                 #
+#                                                                              #
+#   See instructions below.                                                    #
+#                                                                              #
+################################################################################
+
+################################################################################
+#
+# "Config.lang.template" Configuration File template for language labels
+#
+# This config file allows you to provide equivalent labels for operating in
+# another language.
+#
+# All <*language*> strings should be replaced by the desired labels in the
+# appropriate language.
+#
+################################################################################
+
+revision 6.0
+
+################################################################################
+#
+# "Fields" block - Descriptions of each field
+#
+# Each field in this block is identified by a unique <element> <level> pair.
+# Each element name must correspond to an element name defined in the
+# "Elements" block below.
+# Similarly, each level name must correspond to a level name defined in the
+# "Levels" block below.
+# (Note that all name comparisons are case insensitive!)
+#
+################################################################################
+
+Fields
+	{
+
+	pressure		msl
+		{
+		label			= <*language*> "Msl Pressure"
+		short_label		= <*language*> "Msl Pres"
+		}
+
+	temperature		surface
+		{
+		label			= <*language*> "Surface Temperature"
+		short_label		= <*language*> "Sfc Temp"
+		}
+
+	weather_system	surface
+		{
+		label			= <*language*> "System Weather"
+		short_label		= <*language*> "System Wx"
+		}
+
+	weather_local	surface
+		{
+		label			= <*language*> "Local Weather"
+		short_label		= <*language*> "Local Wx"
+		}
+
+	POP				surface
+		{
+		label			= <*language*> "Probability of Precipitation"
+		short_label		= <*language*> "POP"
+		}
+
+	actual_wind	surface
+		{
+		label			= <*language*> "Wind Field"
+		short_label		= <*language*> "Wind"
+		}
+
+	fronts			surface
+		{
+		label			= <*language*> "Fronts"
+		short_label		= <*language*> "Fronts"
+		}
+
+	wave_height		surface
+		{
+		label			= <*language*> "Wave Height"
+		short_label		= <*language*> "Wave Hght"
+		}
+
+	wave_period		surface
+		{
+		label			= <*language*> "Wave Period"
+		short_label		= <*language*> "Wave Pd"
+		}
+
+	sea_temp		surface
+		{
+		label			= <*language*> "Sea Surface Temperature"
+		short_label		= <*language*> "SST"
+		}
+
+	sea_ice			surface
+		{
+		label			= <*language*> "Sea Ice"
+		short_label		= <*language*> "Sea Ice"
+		}
+
+	freezing_spray	surface
+		{
+		label			= <*language*> "Freezing Spray"
+		short_label		= <*language*> "Frzg Spray"
+		}
+
+	max_temp		surface
+		{
+		label			= <*language*> "Maximum Temperature"
+		short_label		= <*language*> "Max Temp"
+		}
+
+	min_temp		surface
+		{
+		label			= <*language*> "Minimum Temperature"
+		short_label		= <*language*> "Min Temp"
+		}
+
+	max_temp_time	surface
+		{
+		label			= <*language*> "Maximum Temperature Time"
+		short_label		= <*language*> "Max Temp Time"
+		}
+
+	min_temp_time	surface
+		{
+		label			= <*language*> "Minimum Temperature Time"
+		short_label		= <*language*> "Min Temp Time"
+		}
+
+	wave_plot		surface
+		{
+		label			= <*language*> "Wave Plot"
+		short_label		= <*language*> "Wave Plot"
+		}
+
+	wind_plot		surface
+		{
+		label			= <*language*> "Wind Plot"
+		short_label		= <*language*> "Wind Plot"
+		}
+
+	geography		geography
+		{
+		label			= <*language*> "Geography"
+		short_label		= <*language*> "Geography"
+		}
+
+	land_water		geography
+		{
+		label			= <*language*> "Land/Water Areas"
+		short_label		= <*language*> "Land/Water"
+		}
+
+	boundaries		geography
+		{
+		label			= <*language*> "Geographical Boundaries"
+		short_label		= <*language*> "Boundaries"
+		}
+
+	cities			geography
+		{
+		label			= <*language*> "Cities"
+		short_label		= <*language*> "Cities"
+		}
+
+	road			geography
+		{
+		label			= <*language*> "Roads"
+		short_label		= <*language*> "Roads"
+		}
+
+	rail			geography
+		{
+		label			= <*language*> "Railways"
+		short_label		= <*language*> "Railways"
+		}
+
+	hypsography		geography
+		{
+		label			= <*language*> "Hypsography"
+		short_label		= <*language*> "Hypsography"
+		}
+
+	forecast_areas	geography
+		{
+		label			= <*language*> "Forecast Areas"
+		short_label		= <*language*> "Fcst Areas"
+		}
+
+	app_menu		annotation
+		{
+		label			= <*language*> "Application Menu"
+		short_label		= <*language*> "App Menu"
+		}
+
+	legend			annotation
+		{
+		label			= <*language*> "Legend"
+		short_label		= <*language*> "Legend"
+		}
+
+	}
+
+################################################################################
+#
+# "Elements" block - Descriptions of each element
+#
+# Each element in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each element may optionally be identified by an alias name.
+# These aliases are used to match the element names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each element by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+# (Note that the "equation_string" in the "equation" block can use either
+# the name, the file_id, the file_ident, or any alias to refer to an element
+# or level in the equation!)
+#
+################################################################################
+
+Elements
+	{
+
+	pressure
+		{
+		label			= <*language*> "Pressure"
+		short_label		= <*language*> "Pres"
+		}
+
+	pres_change
+		{
+		label			= <*language*> "Pressure Change"
+		short_label		= <*language*> "Pres Change"
+		}
+
+	sfc_pressure
+		{
+		label			= <*language*> "Actual Pressure"
+		short_label		= <*language*> "Actual Pres"
+		}
+
+	height
+		{
+		label			= <*language*> "Height"
+		short_label		= <*language*> "Hght"
+		}
+
+	height_change
+		{
+		label			= <*language*> "Height Change"
+		short_label		= <*language*> "Hght Change"
+		}
+
+	thickness
+		{
+		label			= <*language*> "Thickness"
+		short_label		= <*language*> "Thick"
+		}
+
+	pressure_curvature
+		{
+		label			= <*language*> "Pressure Curvature"
+		short_label		= <*language*> "Curvature"
+		}
+
+	pressure_difference_12hr
+		{
+		label			= <*language*> "12 hour Pressure Difference"
+		short_label		= <*language*> "12hr Pres Diff"
+		}
+
+	actual_wind
+		{
+		label			= <*language*> "Wind Field"
+		short_label		= <*language*> "Wind"
+		}
+
+	vertical_vel
+		{
+		label			= <*language*> "Vertical Velocity"
+		short_label		= <*language*> "Vert Vel"
+		}
+
+	u_wind
+		{
+		label			= <*language*> "U Component Wind"
+		short_label		= <*language*> "U Wind"
+		}
+
+	v_wind
+		{
+		label			= <*language*> "V Component Wind"
+		short_label		= <*language*> "V Wind"
+		}
+
+	wind_speed
+		{
+		label			= <*language*> "Wind Speed"
+		short_label		= <*language*> "Wind Spd"
+		}
+
+	wind_direction
+		{
+		label			= <*language*> "Wind Direction"
+		short_label		= <*language*> "Wind Dir"
+		}
+
+	u_geostr
+		{
+		label			= <*language*> "U Component Geostrophic"
+		short_label		= <*language*> "U Geostr"
+		}
+
+	v_geostr
+		{
+		label			= <*language*> "V Component Geostrophic"
+		short_label		= <*language*> "V Geostr"
+		}
+
+	geostr_speed
+		{
+		label			= <*language*> "Geostrophic Wind Speed"
+		short_label		= <*language*> "Geostr Spd"
+		}
+
+	geostr_direction
+		{
+		label			= <*language*> "Geostrophic Wind Direction"
+		short_label		= <*language*> "Geostr Dir"
+		}
+
+	u_geomsl
+		{
+		label			= <*language*> "U Component Geomsl"
+		short_label		= <*language*> "U Geomsl"
+		}
+
+	v_geomsl
+		{
+		label			= <*language*> "V Component Geomsl"
+		short_label		= <*language*> "V Geomsl"
+		}
+
+	geomsl_speed
+		{
+		label			= <*language*> "Geomsl Wind Speed"
+		short_label		= <*language*> "Geomsl Spd"
+		}
+
+	geomsl_direction
+		{
+		label			= <*language*> "Geomsl Wind Direction"
+		short_label		= <*language*> "Geomsl Dir"
+		}
+
+	u_isallo
+		{
+		label			= <*language*> "U Component Isallobaric"
+		short_label		= <*language*> "U Isallo"
+		}
+
+	v_isallo
+		{
+		label			= <*language*> "V Component Isallobaric"
+		short_label		= <*language*> "V Isallo"
+		}
+
+	isallo_speed
+		{
+		label			= <*language*> "Isallobaric Wind Speed"
+		short_label		= <*language*> "Isallo Spd"
+		}
+
+	isallo_direction
+		{
+		label			= <*language*> "Isallobaric Wind Direction"
+		short_label		= <*language*> "Isallo Dir"
+		}
+
+	u_thermal
+		{
+		label			= <*language*> "U Component Thermal"
+		short_label		= <*language*> "U Thermal"
+		}
+
+	v_thermal
+		{
+		label			= <*language*> "V Component Thermal"
+		short_label		= <*language*> "V Thermal"
+		}
+
+	thermal_speed
+		{
+		label			= <*language*> "Thermal Wind Speed"
+		short_label		= <*language*> "Thermal Spd"
+		}
+
+	thermal_direction
+		{
+		label			= <*language*> "Thermal Wind Direction"
+		short_label		= <*language*> "Thermal Dir"
+		}
+
+	gradient_speed
+		{
+		label			= <*language*> "Gradient Wind Speed"
+		short_label		= <*language*> "Grad Spd"
+		}
+
+	gradient_direction
+		{
+		label			= <*language*> "Gradient Wind Direction"
+		short_label		= <*language*> "Grad Dir"
+		}
+
+	gradmsl_speed
+		{
+		label			= <*language*> "Gradmsl Wind Speed"
+		short_label		= <*language*> "Gradmsl Spd"
+		}
+
+	gradmsl_direction
+		{
+		label			= <*language*> "Gradmsl Wind Direction"
+		short_label		= <*language*> "Gradmsl Dir"
+		}
+
+	cyclostr_speed
+		{
+		label			= <*language*> "Cyclostrophic Wind Speed"
+		short_label		= <*language*> "Cyclo Spd"
+		}
+
+	cyclostr_direction
+		{
+		label			= <*language*> "Cyclostrophic Wind Direction"
+		short_label		= <*language*> "Cyclo Dir"
+		}
+
+	cyclomsl_speed
+		{
+		label			= <*language*> "Cyclomsl Wind Speed"
+		short_label		= <*language*> "Cyclomsl Spd"
+		}
+
+	cyclomsl_direction
+		{
+		label			= <*language*> "Cyclomsl Wind Direction"
+		short_label		= <*language*> "Cyclomsl Dir"
+		}
+
+	u_geomsl_isallo
+		{
+		label			= <*language*> "U Geomsl/Isallo"
+		short_label		= <*language*> "U Geomsl/Isallo"
+		}
+
+	v_geomsl_isallo
+		{
+		label			= <*language*> "V Geomsl/Isallo"
+		short_label		= <*language*> "V Geomsl/Isallo"
+		}
+
+	geomsl_isallo_speed
+		{
+		label			= <*language*> "Geomsl/Isallo Wind Speed"
+		short_label		= <*language*> "Geomsl/Isallo Spd"
+		}
+
+	geomsl_isallo_direction
+		{
+		label			= <*language*> "Geomsl/Isallo Wind Direction"
+		short_label		= <*language*> "Geomsl/Isallo Dir"
+		}
+
+	vorticity
+		{
+		label			= <*language*> "Vorticity"
+		short_label		= <*language*> "Vort"
+		}
+
+	rel_vorticity
+		{
+		label			= <*language*> "Relative Vorticity"
+		short_label		= <*language*> "Rel Vort"
+		}
+
+	vort_adv
+		{
+		label			= <*language*> "Vorticity Advection"
+		short_label		= <*language*> "Vort Adv"
+		}
+
+	vort_adv_geostr
+		{
+		label			= <*language*> "Vorticity Advection Geostrophic"
+		short_label		= <*language*> "Vort Adv Geostr"
+		}
+
+	divergence
+		{
+		label			= <*language*> "Divergence"
+		short_label		= <*language*> "Divrg"
+		}
+
+	divergence_geostr
+		{
+		label			= <*language*> "Divergence Geostrophic"
+		short_label		= <*language*> "Divrg Geostr"
+		}
+
+	divergence_geomsl
+		{
+		label			= <*language*> "Divergence Geomsl"
+		short_label		= <*language*> "Divrg Geomsl"
+		}
+
+	temperature
+		{
+		label			= <*language*> "Temperature"
+		short_label		= <*language*> "Temp"
+		}
+
+	temp_adv
+		{
+		label			= <*language*> "Temperature Advection"
+		short_label		= <*language*> "Temp Adv"
+		}
+
+	temp_adv_geostr
+		{
+		label			= <*language*> "Temperature Advection Geostrophic"
+		short_label		= <*language*> "Temp Adv Geostr"
+		}
+
+	temp_adv_geomsl
+		{
+		label			= <*language*> "Temp Adv Geomsl"
+		short_label		= <*language*> "Temp Adv Geomsl"
+		}
+
+	temp_grad
+		{
+		label			= <*language*> "Temperature Gradient"
+		short_label		= <*language*> "Temp Grad"
+		}
+
+	dewpoint
+		{
+		label			= <*language*> "Dewpoint Temperature"
+		short_label		= <*language*> "Dewpoint"
+		}
+
+	dewpoint_dep
+		{
+		label			= <*language*> "Dewpoint Depression"
+		short_label		= <*language*> "Dew Dep"
+		}
+
+	rel_humidity
+		{
+		label			= <*language*> "Relative Humidity"
+		short_label		= <*language*> "RH"
+		}
+
+	virtual_temp
+		{
+		label			= <*language*> "Virtual Temperature"
+		short_label		= <*language*> "Virt Temp"
+		}
+
+	air_density
+		{
+		label			= <*language*> "Air Density"
+		short_label		= <*language*> "Air Density"
+		}
+
+	max_temp
+		{
+		label			= <*language*> "Maximum Temperature"
+		short_label		= <*language*> "Max Temp"
+		}
+
+	min_temp
+		{
+		label			= <*language*> "Minimum Temperature"
+		short_label		= <*language*> "Min Temp"
+		}
+
+	max_temp_time
+		{
+		label			= <*language*> "Maximum Temperature Time"
+		short_label		= <*language*> "Max Temp Time"
+		}
+
+	min_temp_time
+		{
+		label			= <*language*> "Minimum Temperature Time"
+		short_label		= <*language*> "Min Temp Time"
+		}
+
+	total_totals
+		{
+		label			= <*language*> "Total Totals Index"
+		short_label		= <*language*> "Ttotal"
+		}
+
+	george_k
+		{
+		label			= <*language*> "Georges K Index"
+		short_label		= <*language*> "George K"
+		}
+
+	sun_angle
+		{
+		label			= <*language*> "Sun Angle"
+		short_label		= <*language*> "Sun Angle"
+		}
+
+	solar_flux
+		{
+		label			= <*language*> "Solar Flux"
+		short_label		= <*language*> "Solar Flux"
+		}
+
+	latitude
+		{
+		label			= <*language*> "Latitude"
+		short_label		= <*language*> "Lat"
+		}
+
+	longitude
+		{
+		label			= <*language*> "Longitude"
+		short_label		= <*language*> "Long"
+		}
+
+	low_cloud
+		{
+		label			= <*language*> "Low Cloud"
+		short_label		= <*language*> "Low Cloud"
+		}
+
+	mid_cloud
+		{
+		label			= <*language*> "Mid Cloud"
+		short_label		= <*language*> "Mid Cloud"
+		}
+
+	high_cloud
+		{
+		label			= <*language*> "High Cloud"
+		short_label		= <*language*> "High Cloud"
+		}
+
+	precipitation
+		{
+		label			= <*language*> "Precipitation"
+		short_label		= <*language*> "Precip"
+		}
+
+	convective_precip
+		{
+		label			= <*language*> "Convective Precipitation"
+		short_label		= <*language*> "Cnvct Precip"
+		}
+
+	rainfall_rate
+		{
+		label			= <*language*> "Rainfall Rate"
+		short_label		= <*language*> "Rain Rate"
+		}
+
+	convective_precip_rate
+		{
+		label			= <*language*> "Convective Rain Rate"
+		short_label		= <*language*> "Cnvct Rain Rate"
+		}
+
+	POP
+		{
+		label			= <*language*> "Probability of Precipitation"
+		short_label		= <*language*> "POP"
+		}
+
+	precipitation_amount
+		{
+		label			= <*language*> "Precipitation Amount"
+		short_label		= <*language*> "Precip Amount"
+		}
+
+	weather_system
+		{
+		label			= <*language*> "System Weather"
+		short_label		= <*language*> "System Wx"
+		}
+
+	weather_local
+		{
+		label			= <*language*> "Local Weather"
+		short_label		= <*language*> "Local Wx"
+		}
+
+	fronts
+		{
+		label			= <*language*> "Fronts"
+		short_label		= <*language*> "Fronts"
+		line_types		=
+			{
+			cold
+				{
+				type_label	= <*language*> "Cold Front"
+				}
+			warm
+				{
+				type_label	= <*language*> "Warm Front"
+				}
+			stationary
+				{
+				type_label	= <*language*> "Stationary Front"
+				}
+			occluded
+				{
+				type_label	= <*language*> "Occluded Front"
+				}
+			trowal
+				{
+				type_label	= <*language*> "Trowal"
+				}
+			trof
+				{
+				type_label	= <*language*> "Trof"
+				}
+			ridge
+				{
+				type_label	= <*language*> "Ridge"
+				}
+			upper_cold
+				{
+				type_label	= <*language*> "Upper Cold Front"
+				}
+			upper_warm
+				{
+				type_label	= <*language*> "Upper Warm Front"
+				}
+			upper_stationary
+				{
+				type_label	= <*language*> "Upper Stationary Front"
+				}
+			upper_trof
+				{
+				type_label	= <*language*> "Upper Trof"
+				}
+			}
+		}
+
+	sea_temp
+		{
+		label			= <*language*> "Sea Surface Temperature"
+		short_label		= <*language*> "SST"
+		}
+
+	freezing_spray
+		{
+		label			= <*language*> "Freezing Spray"
+		short_label		= <*language*> "Frzg Spray"
+		}
+
+	sea_ice
+		{
+		label			= <*language*> "Sea Ice"
+		short_label		= <*language*> "Sea Ice"
+		}
+
+	ice_cover
+		{
+		label			= <*language*> "Ice Cover"
+		short_label		= <*language*> "Ice Cover"
+		}
+
+	wave_height
+		{
+		label			= <*language*> "Wave Height"
+		short_label		= <*language*> "Wave Hght"
+		}
+
+	wave_period
+		{
+		label			= <*language*> "Wave Period"
+		short_label		= <*language*> "Wave Pd"
+		}
+
+	wave_plot
+		{
+		label			= <*language*> "Wave Plot"
+		short_label		= <*language*> "Wave Plot"
+		}
+
+	wind_plot
+		{
+		label			= <*language*> "Wind Plot"
+		short_label		= <*language*> "Wind Plot"
+		}
+
+	storms
+		{
+		label			= <*language*> "Storms"
+		short_label		= <*language*> "Storms"
+		}
+
+	geography
+		{
+		label			= <*language*> "Geography"
+		short_label		= <*language*> "Geography"
+		}
+
+	land_water
+		{
+		label			= <*language*> "Land/Water Areas"
+		short_label		= <*language*> "Land/Water"
+		}
+
+	boundaries
+		{
+		label			= <*language*> "Geographical Boundaries"
+		short_label		= <*language*> "Boundaries"
+		}
+
+	cities
+		{
+		label			= <*language*> "Cities"
+		short_label		= <*language*> "Cities"
+		}
+
+	road
+		{
+		label			= <*language*> "Roads"
+		short_label		= <*language*> "Roads"
+		}
+
+	rail
+		{
+		label			= <*language*> "Railways"
+		short_label		= <*language*> "Railways"
+		}
+
+	hypsography
+		{
+		label			= <*language*> "Hypsography"
+		short_label		= <*language*> "Hypsography"
+		}
+
+	forecast_areas
+		{
+		label			= <*language*> "Forecast Areas"
+		short_label		= <*language*> "Fcst Areas"
+		}
+
+	app_menu
+		{
+		label			= <*language*> "Application Menu"
+		short_label		= <*language*> "App Menu"
+		}
+
+	legend
+		{
+		label			= <*language*> "Legend"
+		short_label		= <*language*> "Legend"
+		}
+
+	guess_cloud
+		{
+		label			= <*language*> "Guess Cloud"
+		short_label		= <*language*> "Guess Cloud"
+		}
+
+	GENERIC_flat_field_0
+		{
+		label			= <*language*> "Flat Field of 0"
+		short_label		= <*language*> "Flat 0"
+		}
+
+	GENERIC_flat_field_50
+		{
+		label			= <*language*> "Flat Field of 50"
+		short_label		= <*language*> "Flat 50"
+		}
+
+	GENERIC_24hr_difference
+		{
+		label			= <*language*> "24hr Difference"
+		short_label		= <*language*> "24hr Diff"
+		}
+
+	GENERIC_12hr_difference
+		{
+		label			= <*language*> "12hr Difference"
+		short_label		= <*language*> "12hr Diff"
+		}
+
+	GENERIC_06hr_difference
+		{
+		label			= <*language*> "6hr Difference"
+		short_label		= <*language*> "6hr Diff"
+		}
+
+	GENERIC_06hr_forward_difference
+		{
+		label			= <*language*> "6hr Forward Difference"
+		short_label		= <*language*> "6hr Fwd Diff"
+		}
+
+	GENERIC_24hr_previous
+		{
+		label			= <*language*> "24hr Previous Difference"
+		short_label		= <*language*> "24hr Prev"
+		}
+
+	GENERIC_12hr_previous
+		{
+		label			= <*language*> "12hr Previous Difference"
+		short_label		= <*language*> "12hr Prev"
+		}
+
+	GENERIC_06hr_previous
+		{
+		label			= <*language*> "6hr Previous Difference"
+		short_label		= <*language*> "6hr Prev"
+		}
+
+	GENERIC_difference
+		{
+		label			= <*language*> "Generic Difference"
+		short_label		= <*language*> "Gen Diff"
+		}
+
+	GENERIC_forward_difference
+		{
+		label			= <*language*> "Generic Forward Difference"
+		short_label		= <*language*> "Gen Fwd Diff"
+		}
+
+	GENERIC_speed_by_gradients
+		{
+		label			= <*language*> "Wind Speed by Gradients"
+		short_label		= <*language*> "Wind Spd"
+		}
+
+	GENERIC_direction_by_gradients
+		{
+		label			= <*language*> "Wind Direction by Gradients"
+		short_label		= <*language*> "Wind Dir"
+		}
+
+	GENERIC_u_geostr_height
+		{
+		label			= <*language*> "U Component Geostrophic Height"
+		short_label		= <*language*> "U Geostr Hght"
+		}
+
+	GENERIC_v_geostr_height
+		{
+		label			= <*language*> "V Component Geostrophic Height"
+		short_label		= <*language*> "V Geostr Hght"
+		}
+
+	GENERIC_u_geostr_pressure
+		{
+		label			= <*language*> "U Component Geostrophic Pressure"
+		short_label		= <*language*> "U Geostr Pres"
+		}
+
+	GENERIC_v_geostr_pressure
+		{
+		label			= <*language*> "V Component Geostrophic Pressure"
+		short_label		= <*language*> "V Geostr Pres"
+		}
+
+	GENERIC_spd_grad_height
+		{
+		label			= <*language*> "Gradient Wind Speed Height"
+		short_label		= <*language*> "Grad Spd Hght"
+		}
+
+	GENERIC_spd_grad_pressure
+		{
+		label			= <*language*> "Gradient Wind Speed Pressure"
+		short_label		= <*language*> "Grad Spd Pres"
+		}
+
+	GENERIC_spd_cyclo_height
+		{
+		label			= <*language*> "Cyclostrophic Wind Speed Height"
+		short_label		= <*language*> "Cyclo Spd Hght"
+		}
+
+	GENERIC_spd_cyclo_pressure
+		{
+		label			= <*language*> "Cyclostrophic Wind Speed Pressure"
+		short_label		= <*language*> "Cyclo Spd Pres"
+		}
+
+	GENERIC_u_isallobaric
+		{
+		label			= <*language*> "U Component Isallobaric"
+		short_label		= <*language*> "U Isallo"
+		}
+
+	GENERIC_v_isallobaric
+		{
+		label			= <*language*> "V Component Isallobaric"
+		short_label		= <*language*> "V Isallo"
+		}
+
+	GENERIC_coriolis_force
+		{
+		label			= <*language*> "Coriolis Force"
+		short_label		= <*language*> "Coriolis"
+		}
+
+	GENERIC_limited_coriolis_force
+		{
+		label			= <*language*> "Limited Coriolis Force"
+		short_label		= <*language*> "Limit Corio"
+		}
+
+	GENERIC_limited_curvature
+		{
+		label			= <*language*> "Limited Curvature"
+		short_label		= <*language*> "Limit Curv"
+		}
+
+	Any_Element
+
+	NULL
+
+	}
+
+################################################################################
+#
+# "Levels" block - Descriptions of each level
+#
+# Each level in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each level may optionally be identified by an alias name.
+# These aliases are used to match the level names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each level by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+################################################################################
+
+Levels
+	{
+
+	msl
+		{
+		label			= <*language*> "Msl"
+		short_label		= <*language*> "Msl"
+		}
+
+	surface
+		{
+		label			= <*language*> "Surface"
+		short_label		= <*language*> "Sfc"
+		}
+
+	1000mb
+		{
+		label			= <*language*> "1000mb"
+		short_label		= <*language*> "1000mb"
+		}
+
+	850mb
+		{
+		label			= <*language*> "850mb"
+		short_label		= <*language*> "850mb"
+		}
+
+	700mb
+		{
+		label			= <*language*> "700mb"
+		short_label		= <*language*> "700mb"
+		}
+
+	500mb
+		{
+		label			= <*language*> "500mb"
+		short_label		= <*language*> "500mb"
+		}
+
+	400mb
+		{
+		label			= <*language*> "400mb"
+		short_label		= <*language*> "400mb"
+		}
+
+	300mb
+		{
+		label			= <*language*> "300mb"
+		short_label		= <*language*> "300mb"
+		}
+
+	250mb
+		{
+		label			= <*language*> "250mb"
+		short_label		= <*language*> "250mb"
+		}
+
+	200mb
+		{
+		label			= <*language*> "200mb"
+		short_label		= <*language*> "200mb"
+		}
+
+	150mb
+		{
+		label			= <*language*> "150mb"
+		short_label		= <*language*> "150mb"
+		}
+
+	100mb
+		{
+		label			= <*language*> "100mb"
+		short_label		= <*language*> "100mb"
+		}
+
+	500-1000mb
+		{
+		label			= <*language*> "500-1000mb"
+		short_label		= <*language*> "500-1000mb"
+		}
+
+	850-1000mb
+		{
+		label			= <*language*> "850-1000mb"
+		short_label		= <*language*> "850-1000mb"
+		}
+
+	700-850mb
+		{
+		label			= <*language*> "700-850mb"
+		short_label		= <*language*> "700-850mb"
+		}
+
+	500-700mb
+		{
+		label			= <*language*> "500-700mb"
+		short_label		= <*language*> "500-700mb"
+		}
+
+	geography
+		{
+		label			= <*language*> "Geography"
+		short_label		= <*language*> "Geography"
+		}
+
+	annotation
+		{
+		label			= <*language*> "Annotation"
+		short_label		= <*language*> "Annotation"
+		}
+
+	Any_Level
+
+	NULL
+
+	}
+
+################################################################################
+#
+# "Groups" block - Descriptions of field and element groups
+#
+################################################################################
+
+Groups
+	{
+
+	Fields
+		{
+
+		Surface
+			{
+			label		= <*language*> "Surface Fields"
+			short_label	= <*language*> "Surface"
+			}
+
+		Sea
+			{
+			label		= <*language*> "Sea State Fields"
+			short_label	= <*language*> "Sea State"
+			}
+
+		Maxmin
+			{
+			label		= <*language*> "T-max / T-min"
+			short_label	= <*language*> "Max/Min"
+			}
+
+		Upper_Level
+			{
+			label		= <*language*> "Upper Level Fields"
+			short_label	= <*language*> "Upper"
+			}
+
+		Miscellaneous
+			{
+			label		= <*language*> "Miscellaneous"
+			short_label	= <*language*> "Misc"
+			}
+
+		Not_Displayed
+
+		}
+
+	Elements
+		{
+
+		Pressure
+			{
+			label		= <*language*> "Pressure Related"
+			short_label	= <*language*> "Pressure"
+			}
+
+		Temperature
+			{
+			label		= <*language*> "Temperature Related"
+			short_label	= <*language*> "Temperature"
+			}
+
+		Vorticity
+			{
+			label		= <*language*> "Vorticity and Divergence"
+			short_label	= <*language*> "Vorticity"
+			}
+
+		Sea
+			{
+			label		= <*language*> "Sea Surface Parameters"
+			short_label	= <*language*> "Sea"
+			}
+
+		Wind
+			{
+			label		= <*language*> "Wind Parameters"
+			short_label	= <*language*> "Wind"
+			}
+
+		Miscellaneous
+			{
+			label		= <*language*> "Miscellaneous"
+			short_label	= <*language*> "Misc"
+			}
+
+		Generic_Equation
+			{
+			label		= <*language*> "Generic Equations"
+			short_label	= <*language*> "Generic"
+			}
+
+		Not_Displayed
+
+		}
+
+	}
+
+################################################################################
+#
+# "CrossRefs" block - Descriptions of wind and value crossreferences
+#
+################################################################################
+
+CrossRefs
+	{
+
+	Winds
+		{
+
+		Vg_Msl
+			{
+			label			= <*language*> "Msl Geostrophic Wind"
+			short_label		= <*language*> "Msl Geostr"
+			}
+
+		Vr_Msl
+			{
+			label			= <*language*> "Msl Gradient Wind"
+			short_label		= <*language*> "Msl Grad"
+			}
+
+		Vc_Msl
+			{
+			label			= <*language*> "Msl Cyclostrophic Wind"
+			short_label		= <*language*> "Msl Cyclo"
+			}
+
+		Vx_Msl
+			{
+			label			= <*language*> "Msl Geomsl/Isallo Wind"
+			short_label		= <*language*> "Msl Geomsl/Isallo"
+			}
+
+		Vg_850
+			{
+			label			= <*language*> "850mb Geostrophic Wind"
+			short_label		= <*language*> "850 Geostr"
+			}
+
+		Is_Msl
+			{
+			label			= <*language*> "Isallobaric Wind"
+			short_label		= <*language*> "Isallo"
+			}
+
+		Th_851K
+			{
+			label			= <*language*> "850-1000mb Thermal Wind"
+			short_label		= <*language*> "850-1000 Thermal"
+			}
+
+		Fpa_Wind
+			{
+			label			= <*language*> "FPA Model Wind"
+			short_label		= <*language*> "Model"
+			}
+
+		}
+
+	Values
+		{
+
+		Max_Temp
+			{
+			label			= <*language*> "Daily Maximum Temperature"
+			short_label		= <*language*> "Max Temp"
+			}
+
+		Min_Temp
+			{
+			label			= <*language*> "Daily Minimum Temperature"
+			short_label		= <*language*> "Min Temp"
+			}
+
+		Max_Temp_Time
+			{
+			label			= <*language*> "Daily Maximum Temperature Time"
+			short_label		= <*language*> "Max Temp Time"
+			}
+
+		Min_Temp_Time
+			{
+			label			= <*language*> "Daily Minimum Temperature Time"
+			short_label		= <*language*> "Min Temp Time"
+			}
+
+		}
+	}
+
+################################################################################
+#
+# "Samples" block - Descriptions of value and wind samples
+#
+################################################################################
+
+Samples
+	{
+
+	Values
+		{
+
+		Value_Sample
+			{
+			label				= <*language*> "Value"
+			short_label			= <*language*> "Value"
+			}
+
+		Gradient_Sample
+			{
+			label				= <*language*> "Gradient"
+			short_label			= <*language*> "Gradient"
+			}
+
+		Curvature_Sample
+			{
+			label				= <*language*> "Curvature"
+			short_label			= <*language*> "Curvature"
+			}
+
+		Label_Sample
+			{
+			label				= <*language*> "Label"
+			short_label			= <*language*> "Label"
+			}
+
+		}
+
+	Winds
+		{
+
+		Geostrophic_Wind
+			{
+			label			= <*language*> "Geostrophic Wind"
+			short_label		= <*language*> "Geostrophic"
+			}
+
+		Gradient_Wind
+			{
+			label			= <*language*> "Gradient Wind"
+			short_label		= <*language*> "Gradient"
+			}
+
+		Cyclostrophic_Wind
+			{
+			label			= <*language*> "Cyclostrophic Wind"
+			short_label		= <*language*> "Cyclostrophic"
+			}
+
+		Isallobaric_Wind
+			{
+			label			= <*language*> "Isallobaric Wind"
+			short_label		= <*language*> "Isallobaric"
+			}
+
+		Thermal_Wind
+			{
+			label			= <*language*> "Thermal Wind"
+			short_label		= <*language*> "Thermal"
+			}
+
+		UV_Component_Wind
+			{
+			label			= <*language*> "U/V Component Wind"
+			short_label		= <*language*> "UV Comp"
+			}
+
+		DS_Component_Wind
+			{
+			label			= <*language*> "Direction/Speed Component Wind"
+			short_label		= <*language*> "Dir/Spd Comp"
+			}
+
+		Adjusted_Wind
+			{
+			label			= <*language*> "Adjusted Wind"
+			short_label		= <*language*> "Adjusted"
+			}
+
+		}
+	}
+
+################################################################################
+#
+# "Sources" block - Descriptions of each data source
+#
+# Each source in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each source may optionally be identified by an alias name.
+# These aliases are used to match the source names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each source by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+################################################################################
+
+Sources
+	{
+
+	depict
+		{
+		label			= <*language*> "Depictions"
+		short_label		= <*language*> "Depict"
+		}
+
+	interp
+		{
+		label			= <*language*> "Interpolations"
+		short_label		= <*language*> "Interp"
+		}
+
+	backup
+		{
+		label			= <*language*> "Backup Depictions"
+		short_label		= <*language*> "Backup"
+		}
+
+	maps
+		{
+		label			= <*language*> "Maps"
+		short_label		= <*language*> "Maps"
+		}
+
+	GEM
+		{
+		label			= <*language*> "Global Environment Multiscale"
+		short_label		= <*language*> "GEM"
+		}
+
+	GEM_ANAL
+		{
+		label			= <*language*> "GEM Analysis"
+		short_label		= <*language*> "GEM ANAL"
+		}
+
+	FEM
+		{
+		label			= <*language*> "Regional Finite Element"
+		short_label		= <*language*> "RFE"
+		}
+
+	FEM_ANAL
+		{
+		label			= <*language*> "RFE Analysis"
+		short_label		= <*language*> "RFE ANAL"
+		}
+
+	Spectral
+		{
+		label			= <*language*> "Global"
+		short_label		= <*language*> "NGM"
+		}
+
+	Spe_ANAL
+		{
+		label			= <*language*> "Global Analysis"
+		short_label		= <*language*> "NGM ANAL"
+		}
+
+	NMC
+		{
+		label			= <*language*> "NMC"
+		short_label		= <*language*> "NMC"
+		}
+
+	ECMWF
+		{
+		label			= <*language*> "ECMWF"
+		short_label		= <*language*> "ECMWF"
+		}
+
+	JMA
+		{
+		label			= <*language*> "JMA"
+		short_label		= <*language*> "JMA"
+		}
+
+	JMA_ANAL
+		{
+		label			= <*language*> "JMA ANAL"
+		short_label		= <*language*> "JMA ANAL"
+		}
+
+	UKMetOffice
+		{
+		label			= <*language*> "UK Met Office"
+		short_label		= <*language*> "UK Met"
+		}
+
+	Metworks
+		{
+		label			= <*language*> "Metworks"
+		short_label		= <*language*> "Metworks"
+		}
+
+	FpaWarp
+		{
+		label			= <*language*> "FPA fitted fields"
+		short_label		= <*language*> "FPA fit"
+		}
+
+	Scribe
+		{
+		label			= <*language*> "SCRIBE Data"
+		short_label		= <*language*> "SCRIBE"
+		}
+
+	Any_Source
+
+	NULL
+
+	}
+
+################################################################################
+#
+# "Constants" block - List of constants for calculating fields
+#
+################################################################################
+
+Constants
+	{
+
+	PI
+		{
+		label		= <*language*> "Pi"
+		short_label	= <*language*> "Pi"
+		}
+
+	RAD
+		{
+		label		= <*language*> "Radians per Degree"
+		short_label	= <*language*> "Rad / Deg"
+		}
+
+	SECHR
+		{
+		label		= <*language*> "Seconds per Hour"
+		short_label	= <*language*> "Sec / Hr"
+		}
+
+	REARTH
+		{
+		label		= <*language*> "Radius of Earth"
+		short_label	= <*language*> "Earth Radius"
+		}
+
+	GRAV
+		{
+		label		= <*language*> "Acceleration due to Gravity"
+		short_label	= <*language*> "Gravity"
+		}
+
+	COR
+		{
+		label		= <*language*> "Coriolis Parameter"
+		short_label	= <*language*> "Coriolis"
+		}
+
+	SOLAR
+		{
+		label		= <*language*> "Solar Flux"
+		short_label	= <*language*> "Solar Flux"
+		}
+
+	RDRY
+		{
+		label		= <*language*> "Gas Constant for Dry Air"
+		short_label	= <*language*> "R dry"
+		}
+
+	RVAP
+		{
+		label		= <*language*> "Gas Constant for Water Vapour"
+		short_label	= <*language*> "R vapour"
+		}
+
+	EPSR
+		{
+		label		= <*language*> "Gas Constant Ratio"
+		short_label	= <*language*> "R dry / R vap"
+		}
+
+	ROSTD
+		{
+		label		= <*language*> "Standard Atmospheric Density"
+		short_label	= <*language*> "Density"
+		}
+
+	ZEROC
+		{
+		label		= <*language*> "Zero Degrees C"
+		short_label	= <*language*> "Zero C"
+		}
+
+	TRIPLE
+		{
+		label		= <*language*> "Triple Point of Water"
+		short_label	= <*language*> "Triple Point"
+		}
+
+	}
+
+################################################################################
+#
+# "Units" block - Description of units for conversion from MKS
+#
+################################################################################
+
+Units
+	{
+	}

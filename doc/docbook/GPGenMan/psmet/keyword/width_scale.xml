@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>width_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Approximate width of characters, for use with <userinput><replaceable>sized_...</replaceable></userinput> display types (as percent of <userinput>text_size</userinput> keyword value)
+</para><para>The default value of <userinput>60</userinput> is acceptable for most font types</para></entry></row>

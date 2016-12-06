@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_file_close'> <title>@file_close</title> <titleabbrev>@file_close</titleabbrev>
+<para>
+Close the output graphics file.
+</para><para>
+Note that this directive has no keywords.
+
+<example><title> </title><para>
+<programlisting>@file_close { }</programlisting>
+Close the PSMet or SVGMet output graphics file.
+</para></example>
+</para></sect2>

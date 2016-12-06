@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_contour_presentation'> <title>@contour_presentation</title> <titleabbrev>@contour_presentation</titleabbrev>
+<para>
+Set the appearance of contours displayed with the <link linkend='ps_contours'>@contours</link> directive.
+</para> <para>
+Note that each contour displayed is checked against the contour presentations
+defined for each value in the <userinput>values</userinput> keyword (in the order entered) followed by
+each range of values in the <userinput>range</userinput> keyword (in the order entered). Note that
+each subsequent <link linkend='ps_contour_presentation'>@contour_presentation</link> directive will add additional contour presentations to the <userinput>values</userinput> and <userinput>range</userinput> lists of values to check, or modify existing presentations for matching values.
+</para> <para>
+Note that the <link linkend='ps_reset_contour_presentation'>@reset_contour_presentation</link> directive resets all lists of
+contour presentations currently used.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/units.xml'/>
+<row><entry colname='desc'><para>(Note: <userinput>values</userinput> and <userinput>range</userinput> are given in these units)</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/values.xml'/>
+<row><entry colname='desc'><para>for which the contour presentation applies</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>range</userinput></para></entry>
+<entry colname='type'><para>range</para></entry> 
+<entry colname='desc'><para>Minimum and maximum values for which the contour presentation applies (see <xref linkend='rangefmt'/>)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/interior_fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_length.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@contour_presentation { units = mb; range = [ 800 : 1200 ];
+  line_width = 0.015; line_style = solid; outline = CMYK 0 0 0 40; }
+</programlisting>
+Display all contours from 800 mb to 1200 mb (inclusive) with a solid line 0.015 <userinput>units</userinput> wide. The
+line will be of a colour composed of 40% Black. 
+</para><para>
+(Note that <userinput>units</userinput> is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+<example><title></title><para>
+<programlisting>@contour_presentation { range = [ 3 : 5 ); units = m; line_width = 0.05; 
+	line_style = solid; outline = X11 Yellow; fill = none; }
+</programlisting>
+Display all contours from 3 m to less than 5 m with a solid Yellow line 0.05 <userinput>units</userinput> wide.
+</para><para>
+(Note that <userinput>units</userinput> is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

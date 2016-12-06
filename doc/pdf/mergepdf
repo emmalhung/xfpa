@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Merge list of pdf files into a single file. First file in the list is
+# the name of the output file.
+#
+# To convert ps to pdf
+# for file in *.ps; do; ps2pdf $file ${file%.ps}.pdf; done;
+
+output=${1}
+shift
+input=$@
+gs -q -sPAPERSIZE=letter -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=${output} ${input}
+evince ${output} &

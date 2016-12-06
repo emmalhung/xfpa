@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.5.31. @geography</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s05.html" title="2.5. Complete Description of All PSMet/SVGMet Directives" /><link rel="prev" href="ch02s05s30.html" title="2.5.30. @geo_presentation" /><link rel="next" href="ch02s05s32.html" title="2.5.32. @gpgen_group_begin" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5.31. @geography</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s05s30.html">Prev</a> </td><th width="60%" align="center">2.5. Complete Description of All PSMet/SVGMet Directives</th><td width="20%" align="right"> <a accesskey="n" href="ch02s05s32.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ps_geography"></a>2.5.31. @geography</h3></div></div></div><p>
+Display geographic features on the current map.
+</p><p>
+Note that the appearance of geographic features is given by matching the value of the "attribute" keyword for each feature with the named presentations set in the <a href="ch02s05s30.html" title="2.5.30. @geo_presentation">@geo_presentation</a> directive.
+</p><p>
+Note that the <strong class="userinput"><code>category_attribute</code></strong> and <strong class="userinput"><code>category</code></strong> keywords can be used one or more times to display only selected geographic features.
+
+</p><div class="informaltable"><table border="0"><colgroup><col align="right" /><col align="center" /><col align="left" /><col /></colgroup><thead><tr valign="top"><th align="right" valign="top"><p>KEYWORD</p></th><th align="center" valign="top"><p>TYPE</p></th><th align="left" valign="top"><p>DESCRIPTION</p></th><td class="auto-generated"> </td></tr></thead><tbody><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>geo_file</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p><span class="acronym">FPA</span> Metafile containing geography 
+</p><p>
+(Note: this must be the name of a file in the "Maps" directory or a full path name)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>element</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p> <span class="acronym">FPA</span> element name</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>level</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p><span class="acronym">FPA</span> level name</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td colspan="3" align="left" valign="top"> <p>Note that <strong class="userinput"><code>category_attribute</code></strong> and <strong class="userinput"><code>category</code></strong> can be specified more than once in this directive, and that <strong class="userinput"><code>category_cascade</code></strong> determines how to combine more than one instance.</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>category_cascade</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p>How to combine more than one instance of <strong class="userinput"><code>category_attribute</code></strong> and <strong class="userinput"><code>category</code></strong> 
+</p><p>One of: <strong class="userinput"><code>and</code></strong> or <strong class="userinput"><code>or</code></strong>
+</p><p>(default is <strong class="userinput"><code>and</code></strong>)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>category_attribute</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p> <span class="acronym">FPA</span> attribute containing category names
+</p><p>(default is <strong class="userinput"><code>FPA_category</code></strong>)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>category</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p> <span class="acronym">FPA</span> category name (or list of names) for selecting which objects to display
+</p><p>(Note: name(s) are matched with the value sampled from <strong class="userinput"><code>category_attribute</code></strong>)
+</p><p>(default is <strong class="userinput"><code>All</code></strong> names)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>attribute</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p><span class="acronym">FPA</span> attribute containing value to match with <strong class="userinput"><code>geo_name</code></strong> from <a href="ch02s05s30.html" title="2.5.30. @geo_presentation">@geo_presentation</a> directive to select a presentation (default is <strong class="userinput"><code>FPA_category</code></strong>)
+</p></td><td class="auto-generated"> </td></tr></tbody></table></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3583034"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.49.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">@geography
+{
+  geo_file           = base_map.fpa;
+  element            = land_water; 
+  level              = geography;
+  category_attribute = FPA_category; 
+  category           = land;
+  attribute          = FPA_category;
+} </pre><p xmlns="http://www.w3.org/1999/xhtml">
+Display geographic features from the geography <strong class="userinput"><code>land_water</code></strong> fields in the file <code class="filename">base_map.fpa</code> in the
+"Maps" directory. Only the features with an attribute value for <strong class="userinput"><code>FPA_category</code></strong> of land will be chosen.
+The features will be displayed by matching the attribute value for <strong class="userinput"><code>FPA_category</code></strong> to the named
+presentations previously set by the <a href="ch02s05s30.html" title="2.5.30. @geo_presentation">@geo_presentation</a> directive.
+</p></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3456319"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.50.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">@geography
+{
+  geo_file           = base_map.fpa;
+  element            = boundaries;
+  level              = geography;
+  category_attribute = FPA_category;
+  category           = border border_major;
+  attribute          = FPA_category;
+}</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Display geographic features from the geography <strong class="userinput"><code>boundaries</code></strong> fields in the file <code class="filename">base_map.fpa</code> in the
+"Maps" directory. Only the features with an attribute value for <strong class="userinput"><code>FPA_category</code></strong> of border or
+border_major will be chosen. The features will be displayed by matching the attribute value for
+<strong class="userinput"><code>FPA_category</code></strong> to the named presentations previously set by the <a href="ch02s05s30.html" title="2.5.30. @geo_presentation">@geo_presentation</a> directive.
+</p></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s05s30.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s05s32.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.5.30. @geo_presentation </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.5.32. @gpgen_group_begin</td></tr></table></div></body></html>

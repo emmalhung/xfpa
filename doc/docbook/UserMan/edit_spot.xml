@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='editing_points'> <title>Editing points</title>
+<para>
+<indexterm><primary>editor</primary><secondary>point</secondary></indexterm>
+The point editor allows you to edit fields containing information at scattered locations.
+Some examples of these would be:
+<itemizedlist>
+<listitem><para> snowfall depth </para></listitem>
+<listitem><para> total precipitation </para></listitem>
+</itemizedlist>
+</para><para>
+The point editor controls appear when you choose to edit a scattered point field.
+<figure pgwide='0' float='1'><title>Point edit tools</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_point.png'/></imageobject></mediaobject>
+</figure>
+</para>
+<sect1 id='adding_a_point'> <title>Adding a point</title>
+<para>
+<indexterm><primary>point field editor</primary><secondary>add</secondary></indexterm>
+<orderedlist><title>To add a point to your depiction:</title>
+<listitem><para>
+Select the <emphasis>Add</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Add</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/point_add.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Click the spot on your depiction where you want your point to appear.
+</para><para>
+A dialog box appears for you to fill in the attributes you want to display for this point.
+</para></listitem>
+
+<listitem><para>
+Enter the attributes and click <guibutton>Set Attributes</guibutton> to save the point to your depiction.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='deleting_points'> <title>Deleting points</title>
+<para>
+<indexterm><primary>point field editor</primary><secondary>delete</secondary></indexterm>
+<orderedlist><title>To delete a point:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the point to delete.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Delete</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para><para>
+<orderedlist><title>To delete multiple points:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/point_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the point(s) to delete.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cut</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+To restore the line(s), click the &right; mouse button and select
+<menuchoice><guimenu>Undo</guimenu></menuchoice> or
+<menuchoice><guimenu>Paste</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='moving_a_point'> <title>Moving a point</title>
+<para>
+<indexterm><primary>point field editor</primary><secondary>move</secondary></indexterm>
+You can move one or more points on your depiction use the <emphasis>Move</emphasis> tool.
+</para><para>
+<orderedlist><title>To move a point:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/point_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Move</emphasis> menus appear.
+(see <xref linkend='move_tools2'/>)
+</para></listitem>
+
+<listitem><para>
+Pick the point(s) to move.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Translate</guimenu></menuchoice>.
+</para><para>
+The picked points turn blue.
+</para></listitem>
+
+<listitem><para>
+Pick a reference point on the map and hold the &left; mouse button down.
+</para><para>
+The reference point can be anywhere; however, if you are moving the point(s) off the depiction it is important to pick a reference point that will remain on the depiction after the move.
+The point(s) attributes shimmer indicating you can now move them.
+</para></listitem>
+
+<listitem><para>
+Drag the point(s) to the new location and release the button.
+</para><para>
+The &FPA; then recomputes the field and re-displays the new point(s) in white.
+</para></listitem>
+</orderedlist>
+Note: The points remain selected until you deselect them, so you may continue to use the <emphasis>Move</emphasis> tools.
+(see <xref linkend='unpick_object'/>) 
+</para>
+</sect1>
+
+<sect1 id='copying_a_point'> <title>Copying a point</title>
+<para>
+<indexterm><primary>point field editor</primary><secondary>copy</secondary></indexterm>
+You can copy a point by using <guibutton>Copy</guibutton> and <guibutton>Paste</guibutton> with the <emphasis>Move</emphasis> tool.
+</para><para>
+<orderedlist><title>To copy a point:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/point_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Move</emphasis> menus appear.
+(see <xref linkend='move_tools2'/>)
+</para></listitem>
+
+<listitem><para>
+Pick the point(s) to copy.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Copy</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to deselect all points, or move to another depiction.
+</para><para>
+<guibutton>Paste</guibutton> is now available.
+</para><para>
+Note: if pasted to the same depiction the points will be automatically offset to avoid inadvertent duplication.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Paste</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+The points remain selected until you deselect them, thus
+<menuchoice><guimenu>Translate</guimenu></menuchoice>
+is available in the &right; mouse button context menu.
+(see <xref linkend='moving_a_point'/>)
+</para><para>
+Note: You can still remove the copied field if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='modifying_a_point'> <title>Modifying a point</title>
+<para>
+<indexterm><primary>point field editor</primary><secondary>modify</secondary></indexterm>
+<orderedlist>
+<title>To change the attributes of a point using the <emphasis>Modify</emphasis> tool:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Modify</emphasis> menus appear.
+(see <xref linkend='point_modify_tools'/>)
+<figure id='point_modify_tools' pgwide='0' float='1'><title>Point modify menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_point_modify.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Pick the point to modify.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Set</guimenu></menuchoice>.
+</para><para>
+The attribute dialog box appears.
+</para></listitem>
+
+<listitem><para>
+Change the attributes of the point.
+</para><para>
+Note: Attributes that cannot be changed are greyed out.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Set Attributes</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='merging_point_information'> <title>Merging information in a point field</title>
+<para>
+<indexterm><primary>point field editor</primary><secondary>merge</secondary></indexterm>
+You can bring a field from another source and time and merge it into the depiction using the <emphasis>Merge</emphasis> tool.
+</para><para>
+<orderedlist><title>To merge information:</title>
+<listitem><para>
+Select the <emphasis>Merge</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Merge</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/merge.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Merge</emphasis> menus appear.
+(see <xref linkend='merge_tools'/>)
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Source</guilabel>, <guilabel>Issue Time</guilabel> and <guilabel>Valid Time</guilabel> of the other field you wish to merge with your current depiction.
+</para><para>
+Note: Your System Administrator may configure a field to accept merges from another "compatible" field.
+If this is the case, there will be a <guilabel>Field</guilabel> list in the <guilabel>Merge Fields</guilabel> area.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Fetch</guibutton>.
+</para><para>
+The field information from the other source is laid over top of your depiction.
+</para></listitem>
+
+<listitem><para> Pick the point(s) to merge.  (see <xref linkend='pick_object'/>) </para></listitem>
+
+<listitem><para>
+Finish your selection by pressing the &right; mouse button and select
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><menuchoice><guimenu>Merge</guimenu></menuchoice></entry>
+	<entry>merge information in place </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Translate</guimenu></menuchoice></entry>
+	<entry>move and merge the information </entry></row>
+	</tbody></tgroup>
+</informaltable>
+Note: the picked information remains selected, so you may perform multiple translate operations.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the merge.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='sampling_point_values'> <title>Sampling values from a point field</title>
+<para>
+<indexterm><primary>point field editor</primary><secondary>sample</secondary></indexterm>
+You can add temporary labels to the &FPA; window with the <emphasis>Sample</emphasis> tool.
+</para><para>
+<orderedlist><title>To sample a value:</title>
+<listitem><para>
+Select the <emphasis>Sample</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Sample</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/sample.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Sample</emphasis> menus appear.
+(see <xref linkend='sample_tools2'/>)
+</para><para>
+The cursor appears as cross-hairs while inside the map window.
+</para></listitem>
+
+<listitem><para>
+Select the type of sample you want from the <guilabel>Sample Item</guilabel> area.
+</para><para>
+You can choose to sample <guilabel>All Attributes</guilabel> or a single attribute from the list.
+</para></listitem>
+
+<listitem><para>
+Select the display attributes: colour, size and font.
+</para></listitem>
+
+<listitem><para>
+Pick a point on the depiction.
+</para><para>
+A temporary label appears.
+</para><para>
+You can sample as many points as you want.
+</para><para>
+Note: If you selected <guilabel>All Attributes</guilabel>, a dialog box appears displaying All Attributes for the point.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice> to clear the samples from the depiction.
+</para></listitem>
+</orderedlist>
+</para>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='preset_sample_list.xml'/>
+<para>
+Note: if you select <guilabel>All Attributes</guilabel> from the <guilabel>Sample Item</guilabel> area, the <guilabel>Preset Points</guilabel> option cannot be used. Only single attributes can be displayed with this option.
+</para>
+</sect1>
+</chapter>

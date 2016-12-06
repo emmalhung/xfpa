@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_file_name'> <title>@file_name</title> <titleabbrev>@file_name</titleabbrev>
+<para>
+Set the directory and path name of the output graphics file.
+</para><para>
+Note that the current output graphics file is closed and a new output graphics file
+is opened each time this directive is called.
+Note that the location of the &PSMet; "output_directory" is defined by the "psout"
+keyword in the local setup file, and the location of the &SVGMet; "output_directory"
+is defined by the "svgout" keyword in the local setup file.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>dir</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Directory name for output graphics file
+</para><para>(The directory name can include one of the codewords found in <xref linkend='ps_dircode'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>File name for output graphics file
+</para><para>(The file name can include any of the codewords based on the name of the graphics product, the <command>T0</command> time when the product is run, the current "valid time" (<command>Tv</command>), or the actual "clock time" (<command>Tc</command>) for sampling. See <xref linkend='ps_namecode'/>)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<table id='ps_dircode' frame='all' rowsep='1' colsep='1'><title>Directory Codewords</title><tgroup cols='2'>
+<colspec colwidth='2*' align='right'/><colspec colwidth='3*'/><tbody>
+<row valign='top'><entry><userinput>&lt;default&gt;</userinput></entry><entry>for path to sub-directory in the default output directory</entry></row>
+<row valign='top'><entry><userinput>&lt;psmet&gt;</userinput></entry><entry>for &PSMet; directory</entry></row>
+<row valign='top'><entry><userinput>&lt;psout&gt;</userinput></entry><entry>for &PSMet; output directory</entry></row>
+<row valign='top'><entry><userinput>&lt;svgmet&gt;</userinput></entry><entry>for &SVGMet; directory</entry></row>
+<row valign='top'><entry><userinput>&lt;svgout&gt;</userinput></entry><entry>for &SVGMet; output directory</entry></row>
+<row valign='top'><entry><userinput>&lt;texmet&gt;</userinput></entry><entry>for &TexMet; directory</entry></row>
+<row valign='top'><entry><userinput>&lt;texout&gt;</userinput></entry><entry>for &TexMet; output directory</entry></row>
+<row valign='top'><entry><userinput>&lt;home&gt;</userinput></entry><entry>for "home" directory defined in local setup file</entry></row>
+</tbody></tgroup></table>
+
+</para><beginpage/><para>
+
+<table id='ps_namecode' frame='all' rowsep='1' colsep='1'><title>Filename Codewords</title><tgroup cols='2'>
+<colspec colwidth='2*' align='right'/><colspec colwidth='3*'/><tbody>
+<row valign='top'><entry><userinput>&lt;pdf&gt;</userinput></entry><entry>for the <replaceable>product_name</replaceable> of the controlling product definition file ( without trailing ".fpdf")</entry></row>
+<row valign='top'><entry><userinput>&lt;iteration&gt;</userinput></entry><entry>for a <link linkend='ps_loop_begin'>@loop_begin</link> iteration value.</entry></row>
+<row valign='top'><entry><userinput>&lt;iteration _attribute&gt;</userinput></entry><entry>for the value of the attribute in a <link linkend='ps_loop_begin'>@loop_begin</link> iteration.</entry></row>
+<row valign='top'><entry><userinput>&lt;year&gt;</userinput></entry><entry>for <command>T0</command> year (such as 2008 )</entry></row>
+<row valign='top'><entry><userinput>&lt;month&gt;</userinput></entry><entry>for <command>T0</command> month (01-12)</entry></row>
+<row valign='top'><entry><userinput>&lt;day&gt;</userinput></entry><entry>for <command>T0</command> day (01-31)</entry></row>
+<row valign='top'><entry><userinput>&lt;julian&gt;</userinput></entry><entry>for <command>T0</command> day of the year (001-366)</entry></row>
+<row valign='top'><entry><userinput>&lt;hour&gt;</userinput></entry><entry>for <command>T0</command> hour of the day (00-23)</entry></row>
+<row valign='top'><entry><userinput>&lt;minute&gt;</userinput></entry><entry>for <command>T0</command> minute in  hour (00-59)</entry></row>
+<row valign='top'><entry><userinput>&lt;local&gt;</userinput></entry><entry>L if <command>T0</command> time is a local time</entry></row>
+
+<row valign='top'><entry><userinput>&lt;v_year&gt;</userinput></entry><entry>for <command>Tv</command> year (such as 2008 )</entry></row>
+<row valign='top'><entry><userinput>&lt;v_month&gt;</userinput></entry><entry>for <command>Tv</command> month (01-12)</entry></row>
+<row valign='top'><entry><userinput>&lt;v_day&gt;</userinput></entry><entry>for <command>Tv</command> day (01-31)</entry></row>
+<row valign='top'><entry><userinput>&lt;v_julian&gt;</userinput></entry><entry>for <command>Tv</command> day of the year (001-366)</entry></row>
+<row valign='top'><entry><userinput>&lt;v_hour&gt;</userinput></entry><entry>for <command>Tv</command> hour of the day (00-23)</entry></row>
+<row valign='top'><entry><userinput>&lt;v_minute&gt;</userinput></entry><entry>for <command>Tv</command> minute in  hour (00-59)</entry></row>
+<row valign='top'><entry><userinput>&lt;v_local&gt;</userinput></entry><entry>L if <command>Tv</command> time is a local time</entry></row>
+
+<row valign='top'><entry><userinput>&lt;p_hour&gt;</userinput></entry><entry>for <command>Tv-T0</command> in hours</entry></row>
+<row valign='top'><entry><userinput>&lt;p_minute&gt;</userinput></entry><entry>for <command>Tv-T0</command> in minutes</entry></row>
+<row valign='top'><entry><userinput>&lt;p_hr_min&gt;</userinput></entry><entry>for <command>Tv-T0</command> in hours and minutes (xx:tt)</entry></row>
+
+<row valign='top'><entry><userinput>&lt;c_year&gt;</userinput></entry><entry>for <command>Tc</command> year (such as 2008 )</entry></row>
+<row valign='top'><entry><userinput>&lt;c_month&gt;</userinput></entry><entry>for <command>Tc</command> month (01-12)</entry></row>
+<row valign='top'><entry><userinput>&lt;c_day&gt;</userinput></entry><entry>for <command>Tc</command> day (01-31)</entry></row>
+<row valign='top'><entry><userinput>&lt;c_julian&gt;</userinput></entry><entry>for <command>Tc</command> day of the year (001-366)</entry></row>
+<row valign='top'><entry><userinput>&lt;c_hour&gt;</userinput></entry><entry>for <command>Tc</command> hour of the day (00-23)</entry></row>
+<row valign='top'><entry><userinput>&lt;c_minute&gt;</userinput></entry><entry>for <command>Tc</command> minute in  hour (00-59)</entry></row>
+</tbody></tgroup></table>
+
+<example><title> </title><para>
+<programlisting>@file_name { dir = &lt;default&gt;; name = &lt;pdf&gt;;}</programlisting>
+Sets the file name for the output graphics file in &PSMet; to:
+<filename><replaceable>output_directory</replaceable>/<replaceable>sub_directory</replaceable>/<replaceable>product_name</replaceable>.ps</filename>
+where <replaceable>output_directory</replaceable> is identified by the directory tag "psout" in the local setup file, 
+<replaceable>sub_directory</replaceable> is the &PSMet; directory name for this product,
+and <replaceable>product_name</replaceable> is base name of the controlling product definition file for this product. 
+(Note that this example is the default file name for the output PostScript file, if this directive is not included!)
+</para></example>
+</para></sect2>

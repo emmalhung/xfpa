@@ -1,0 +1,291 @@
+##############################################################################
+#
+#  FPA Setup File
+#
+##############################################################################
+
+revision 6.0
+
+##############################################################################
+#
+#  This setup file provides customised information specific to controlling the
+#  ingest of data for use by other FPA applications.  It contains only the
+#  information needed to identify relevant directories and Configuration files
+#  and to identify the files to be ingested.
+#
+#  In general, a setup file can provide customised information to multiple FPA
+#  applications.  Some of the information pertains to every application, while
+#  other information is only relevant to a specific application.  To facilitate
+#  this, the information in this file is organized into logical blocks.  Each
+#  block is represented in the following simple structure:
+#
+#      block_id
+#      {
+#          keyword value1 value2 ...
+#          keyword value1 value2 ...
+#      }
+#
+#  Note: (1) Lines starting with a "#" or "*" are comments.
+#        (2) To maintain embedded spaces put the string in quotes.
+#        (3) Brackets delimiting a block must be on their own line.
+#        (4) In some instances '$' may be used in a value to refer to shell
+#            variables, but correct expansion of complex patterns is not
+#            guaranteed.
+#
+##############################################################################
+
+##############################################################################
+#
+#  Target Map Setup:
+#
+#  This block defines the target map projection and related parameters used by
+#  all FPA applications.
+#
+#  All data brought into the application will be transformed to the map
+#  projection given here.
+#
+#  The information here takes precedence over the map projections given in
+#  the map background and overlays, the depictions and the ingested guidance.
+#
+#  If you wish to have an ingest using a different target map projection or
+#  resolution you must use a separate setup file for your ingest process.
+#
+#  The target map projection is defined by 3 lines, beginning with
+#  "projection", "mapdef" and "resolution".  The "projection" and "mapdef"
+#  lines use the same format as the current metafile standard (version 1.5 and
+#  later).  The "resolution" line specifies the desired spline resolution and
+#  units for continuous spline fields.
+#
+#  Latitudes and longitudes may be specified in decimal degrees, or degrees,
+#  minutes and seconds.  The hemisphere may be indicated by a letter (N,S,E,W)
+#  or by a sign (+=N,E -=S,W).  Examples:
+#
+#     52W
+#     45.75N    (decimal)
+#     67:45W    (degrees-minutes)
+#     47:33:20N (degrees-minutes-seconds)
+#
+##############################################################################
+
+target_map
+{
+#!	Specify target map projection (examples):
+#	projection	polar_stereographic north 60N
+#	projection	oblique_stereographic 40N 60W
+#	projection	lambert_conformal 60N 30N
+#	projection	mercator_equatorial
+#	projection	plate_caree
+
+	<<projection>>
+
+#!	Specify target map definition (examples):
+##	parameters: origin-lat origin-lon vertical-lon xmin ymin xmax ymax units
+#	mapdef	26:45N 90W 85W 0 0 4000 5000 1000		/* eastern North America */
+#	mapdef	44N 117:30W 87W 0 0 5200 4400 1000		/* Canadian arctic */
+#	mapdef	45N 80W 80W -2000 -2500 2000 2500 1000	/* centered Ontario map */
+#	mapdef	45N 20E 20E -2000 -2500 2000 2500 1000	/* centered Europe map */
+#	mapdef	35N 110W 110W -3000 -3000 3000 3000 1609.2	/* centered U.S. map */
+
+	<<mapdef>>
+
+#!	Specify target chart resolution (examples):
+##	Parameters: res units
+##	Best if xmax-xmin and ymax-ymin are both multiples of res
+#	resolution	 30 1000	/*  30 km */
+#	resolution	100 1000	/* 100 km */
+#	resolution	200 1000	/* 200 km */
+#	resolution	500 1000	/* 500 km */
+#	resolution	200 1609.2	/* 200 mi */
+
+	<<resolution>>
+}
+
+##############################################################################
+#
+#  Directories Setup:
+#
+#  This block defines the directories used by FPA applications.
+#
+#  The first word is a key used by the system software to identify the
+#  directory and the second is the path of the directory.
+#
+#  Use of "home" directory:
+#
+#    If a "home" directory is defined in this block all relative paths will be
+#    interpretted as being relative to its path.  The library software which
+#    reads this file does a chdir() to the "home" directory automatically.
+#
+#    If "home" is omitted from this block, no chdir() will be done.  Instead,
+#    all relative paths will be interpretted as relative to the directory
+#    defined by the $FPA environment variable (or $HOME if $FPA is not
+#    defined), and will be converted to absolute paths by concatenating this
+#    directory.
+#
+#  Default directories:
+#
+#    Most of the directories that can be specified here have been given
+#    internal default values.  For most directories, the default is
+#    appropriate and a value does not need to be specified in this file.
+#
+#    Many directory keys can actually refer to a list of directories.  If so,
+#    this defines a prioritized sequence of places to look, when searching for
+#    an existing file.  The first matching file found is used.
+#
+#    If a directory key is defined in this block, then the specified directory
+#    is searched ahead of the default directories.  This provides a mechanism
+#    to supply local files that override certain default files.
+#
+#    To view the internally defined list of default directories, use the
+#    fpadir utility.
+#
+##############################################################################
+
+directories
+{
+#!	Home directory:
+##	If this setup file was built by the mkfpadb or mkfpasetup script then this
+##	entry should be correct, otherwise set it to the absolute path of your
+##	database directory
+	home			<<data>>
+
+#!	Local setup and config directories
+	setup			<<sdir>>
+	config			<<cdir>>
+
+##	Standard directories
+	#	Data			.
+	#	Maps			Maps
+
+##	Guidance directories
+	#	Guidance		Guidance
+
+##	Imagery directories
+	images				$HOME/Images
+	ctables				<<cdir>>/Ctables
+
+#!	Directories used by ingest
+##	Define ingest.src to be the location of GRIB data on this host.  In most
+##	cases $FPA_LOCAL_GRIB will work, as long as this variable is defined
+##	correctly in $HOME/.fparc, and ALL the required GRIB files will be found
+##	in that directory.  Otherwise, set this to the appropriate directory.
+	#	ingest.src		$FPA_LOCAL_GRIB
+	#	ingest.stat		Guidance
+	#	ingest.log		Guidance
+
+##	Allied model directories
+	#	AModels.Exec	$FPA/AModels.EXEC
+	#	AModels.Data	AModels.DATA
+}
+
+##############################################################################
+#
+#  Configuration File Setup:
+#
+#  This block defines the configuration files used by FPA applications.
+#
+#  The first word is a key used by the system software to identify the
+#  configuration file and the second is the path of the file.
+#  Usually the key word will be the same as one of the setup blocks, but this
+#  is not a requirement.
+#
+#  Relative paths are interpretted as being relative to the "config" directory
+#  (defined in the "directories" block) and will be converted to absolute paths
+#  by concatenating this directory.
+#
+##############################################################################
+
+config_files
+{
+	config			Config
+	presentation	Presentation
+	forecasts		$FPA/config/Forecasts
+	gribs			$FPA/config/Gribs
+	image			Image
+	ingest			Ingest
+}
+
+################################################################################
+#
+#  Ingest Setup:
+#
+#  This block controls the ingest of numerical weather model output (GRIB
+#  format and others).
+#
+#  The ingest operation is overseen by the Ingest Daemon (fpaingest).  This
+#  program monitors the raw data files identified in this block, and detects
+#  if they have been created or updated.  If this happens, the Ingest Daemon
+#  will launch the appropriate Ingester (e.g. gribin for GRIB data).  The
+#  Ingester extracts and processes the desired data and creates new FPA
+#  metafiles in the appropriate guidance directory of your database.
+#
+#  A line beginning with "wait" defines the time (in seconds) that the Ingest
+#  Deamon will go to sleep before checking for new data again.  If this line
+#  is omitted, a default (300) will be used.
+#
+#  A line beginning with "log" identifies the log file to be used. The log
+#  file will be placed in the "ingest.log" directory, as defined in the
+#  "directories" block, unless an absolute path is given.  If this line is
+#  omitted, a default (ingest.log) will be used.  This line also specifies a
+#  backup log file and the time of day (GMT) at which to move the current log
+#  to the backup.  If omitted, defaults (ingest.old at 0000 GMT) will be used.
+#
+#  A line beginning with "status" identifies the status file to be used. The
+#  status file will be placed in the "ingest.stat" directory, as defined in
+#  the "directories" block, unless an absolute path is given.  If this line is
+#  omitted, a default (ingest.stat) will be used.
+#
+#  Each line beginning with "monitor" or "monitor_in" identifies a set of data
+#  files to be monitored by the Ingest Daemon.  These lines have the following
+#  format:
+#           monitor <type> <pattern>
+#           monitor_in <dir> <type> <pattern>
+#
+#  where <type> defines the type of data so that the Ingest Daemon can launch
+#               the correct Ingester to process files.  The following <type>s
+#               are currently supported:
+#                 grib  = process GRIB Version 0 or 1 files with "gribin"
+#                 grib2 = process GRIB Version 0, 1 or 2 files with "gribin2"
+#
+#        <pattern> specifies a filename, or a sed(1) style regular expression
+#                  that may match one or more filenames.  If one or more
+#                  matching files arrives, its new modification time is
+#                  detected, and the appropriate Ingester is started up to
+#                  process it.
+#
+#        <dir> specifies a directory tag (must be defined in the Directories
+#              Block), which tells the Ingest Daemon where to search to find
+#              files that match the given pattern.  By default (for "monitor")
+#              the Ingest Daemon searches in the "ingest.src" directory.
+#
+#  Note: "monitor" may become obsolete in future releases.
+#
+################################################################################
+
+ingest
+{
+##	Shouldn't need to change:
+		wait	600
+		log		<<setup>>.log <<setup>>.old 0030
+		status	<<setup>>.stat
+
+#!	National grid should work for all MSC sites
+##	Change to your local grid if receiving one
+##	sed(1) style regular expressions are permitted
+	#	monitor_in	ingest.src	grib	^natroa..$		(analysis)
+	#	monitor_in	ingest.src	grib	^natrgem.._000$	(T+00 prog)
+	#	monitor_in	ingest.src	grib	^natrgem.._006$
+	#	monitor_in	ingest.src	grib	^natrgem.._012$
+	#	monitor_in	ingest.src	grib	^natrgem.._018$
+	#	monitor_in	ingest.src	grib	^natrgem.._024$
+	#	monitor_in	ingest.src	grib	^natrgem.._030$
+	#	monitor_in	ingest.src	grib	^natrgem.._036$
+	#	monitor_in	ingest.src	grib	^natrgem.._042$
+	#	monitor_in	ingest.src	grib	^natrgem.._048$
+
+#!	Sea surface temperature (examples):
+	#	monitor_in	ingest.src	grib	^oceanstgoa..$  (Atlantic)
+	#	monitor_in	ingest.src	grib	^pwcstgoa..$    (Pacific)
+
+#!	Data in other directories (examples):
+	#	monitor_in	<dir>	grib	<pattern>
+}

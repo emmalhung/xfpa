@@ -1,0 +1,59 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa -lfpauser \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	fpaingest
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "ingest controller"
+
+
+# Rules for building GRIB ingest programs:
+FPAINGEST		= $(BINDIR)/$(PLATFORM)/fpaingest
+FPAINGEST_OBJ	= fpaingest.o
+fpaingest:		Pobjects $(FPAINGEST)
+			@	echo "FPA $(PLATFORM) fpaingest ready"
+			@	echo 
+$(FPAINGEST):		$(FPAINGEST_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) fpaingest"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(FPAINGEST_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/fpaingest ]; \
+					then cd $(BINDIR); ln -s fpa.exec fpaingest; fi
+
+
+# Rules for building object modules:
+fpaingest.o:	$(FPAHDR)
+
+
+# Rules for keeping header files up to date:
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) ingest module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

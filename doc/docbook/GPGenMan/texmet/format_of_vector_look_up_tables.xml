@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_format_of_vector_look_up_tables'> <title>Format of Vector Look Up Tables</title> <titleabbrev>vector look up</titleabbrev>
+<para>
+Vector look up tables control the format for displaying vector speed and
+direction as text. They are set by the <userinput>vector_look_up</userinput>
+keyword in the <link linkend='tx_vector_presentation'>@vector_presentation</link> directive.
+Files containing vector look up tables have a ".vtab" suffix.
+</para><para>
+Vector look up tables contain three sections. One section must specify the
+"calm" condition, since this may override both the direction and speed
+displays. The other sections specify the "direction" or "speed" formats to
+use when displaying vector parameters.
+</para><para>
+Note that all parameters that follow the ! or # characters in a line are
+considered comments.
+</para><para>
+Note that examples are taken from vector look up tables in the directories
+<filename><envar>$FPA</envar>/setup/pdf/texmet/examples</filename>.
+
+</para><para>
+The "calm" section can include the following two formats:
+<programlisting>
+calm value
+    <replaceable>min_spd max_spd round factor sdigits</replaceable>
+    end
+calm text
+    <replaceable>min_spd max_spd text</replaceable>
+    end
+</programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>min_spd</replaceable></entry><entry> is the minimum vector speed for "calm" conditions</entry></row>
+<row valign='top'><entry><replaceable>max_spd</replaceable></entry><entry> is the maximum vector speed for "calm" conditions</entry></row>
+<row valign='top'><entry><replaceable>round</replaceable></entry><entry> is the value to round the speed to the nearest multiple of</entry></row>
+<row valign='top'><entry><replaceable>factor</replaceable></entry><entry> is the power of 10 to divide the vector speed by</entry></row>
+<row valign='top'><entry><replaceable>sdigits</replaceable></entry><entry><para> is the signiﬁcant digits of the vector speed to display
+    <simplelist>
+    <member>0 - for the nearest integer</member>
+    <member>&gt;0 - for the nearest integer this long (with leading zeroes)</member>
+    <member>&lt;0 - for a real number with digits after the decimal place</member>
+    </simplelist></para></entry></row>
+<row valign='top'><entry><replaceable>text</replaceable></entry><entry> is the text to display (in double quotes)</entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>calm value
+    0 5 1 0 0
+      end</programlisting>
+Vector speeds from 0 to 5 are rounded to the nearest whole value, and all signiﬁcant digits are displayed.
+</para></example>
+
+<example><title> </title><para>
+<programlisting>calm text
+    0 7.5 "CALM"
+    end</programlisting>
+Vector speeds from 0 to 7.5 are displayed using the text string "CALM".
+</para></example>
+</para><beginpage/><para>
+The "direction" section can include the following two formats:
+<programlisting>
+direction value
+    <replaceable>min_spd max_spd round factor sdigits</replaceable>
+    end
+direction text
+    <replaceable>mid_dir max_dir text</replaceable>
+    <replaceable>mid_dir max_dir text</replaceable>
+    <replaceable>...</replaceable>
+    end
+</programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>min_spd</replaceable></entry><entry> is the minimum vector speed</entry></row>
+<row valign='top'><entry><replaceable>max_spd</replaceable></entry><entry> is the maximum vector speed</entry></row>
+<row valign='top'><entry><replaceable>round</replaceable></entry><entry> is the value to round the speed to the nearest multiple of</entry></row>
+<row valign='top'><entry><replaceable>factor</replaceable></entry><entry> is the power of 10 to divide the vector direction by</entry></row>
+<row valign='top'><entry><replaceable>sdigits</replaceable></entry><entry><para> is the signiﬁcant digits of the vector direction to display
+    <simplelist>
+    <member>0 - for the nearest integer</member>
+    <member>&gt;0 - for the nearest integer this long (with leading zeroes)</member>
+    <member>&lt;0 - for a real number with digits after the decimal place</member>
+    </simplelist></para></entry></row>
+<row valign='top'><entry><replaceable>text</replaceable></entry><entry> is the text to display (in double quotes)</entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>direction value
+    0 999 10 1 2
+    end</programlisting>
+Vector directions for vector speeds from 0 to 999 are rounded to the nearest 10
+degrees, divided by 10<superscript>1</superscript> and displayed as the nearest integer 2 digits long. (That is, a vector
+direction of "53" degrees would be rounded to "50", divided by 10 to give a value of "5", and displayed as "05".)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>direction text
+    337.5 22.5 "N"
+    22.5  67.5 "NE"
+    end</programlisting>
+Vector directions from 337.5 to 22.5 degrees are displayed using the text
+string "N", vector directions from 22.5 to 67.5 degrees are displayed using the
+text string "NE". 
+</para><para>
+Note that a vector direction of -22.5 is equivalent to a vector direction of 337.5!
+</para></example>
+
+</para><beginpage/><para>
+The "speed" section can include the following two formats:
+<programlisting>
+speed value
+    <replaceable>min_spd max_spd round factor sdigits</replaceable>
+    end
+speed text
+    <replaceable>min_spd max_spd text</replaceable>
+    <replaceable>min_spd max_spd text</replaceable>
+    <replaceable>...</replaceable>
+    end
+</programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>min_spd</replaceable></entry><entry> is the minimum vector speed</entry></row>
+<row valign='top'><entry><replaceable>max_spd</replaceable></entry><entry> is the maximum vector speed</entry></row>
+<row valign='top'><entry><replaceable>round</replaceable></entry><entry> is the value to round the speed to the nearest multiple of</entry></row>
+<row valign='top'><entry><replaceable>factor</replaceable></entry><entry> is the power of 10 to divide the vector speed by</entry></row>
+<row valign='top'><entry><replaceable>sdigits</replaceable></entry><entry><para> is the signiﬁcant digits of the vector speed to display
+    <simplelist>
+    <member>0 - for the nearest integer</member>
+    <member>&gt;0 - for the nearest integer this long (with leading zeroes)</member>
+    <member>&lt;0 - for a real number with digits after the decimal place</member>
+    </simplelist></para></entry></row>
+<row valign='top'><entry><replaceable>text</replaceable></entry><entry> is the text to display (in double quotes)</entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>speed value
+    5 999 0 0 -1
+    end</programlisting>
+Vector speeds from 5 to 999 are displayed to 1 decimal place accuracy. (That is, a vector of "24.783" would be displayed as 24.8".)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>speed text
+     5     15    "LIGHT"
+    15     30    "STRONG"
+    end</programlisting>
+Vector speeds from 5 to 15 are displayed using the text string "LIGHT", vector
+speeds from 15 to 30 are displayed using the text string "STRONG".
+</para></example>
+</para></sect2>

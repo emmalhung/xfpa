@@ -1,0 +1,58 @@
+calm  value
+ 0  1  0  0  0
+ end
+
+calm  text
+ 0  1  "CALM"
+ end
+
+calm  symbol
+ 0  1  none
+ end
+
+direction  value
+ 0  999  10  0  3
+ end
+
+direction  text
+  22.5   67.5  "NE"
+  67.5  112.5  "E"
+ 112.5  157.5  "SE"
+ 157.5  202.5  "S"
+ 202.5  247.5  "SW"
+ 247.5  295.5  "W"
+ 295.5  337.5  "NW"
+ 337.5   22.5  "N"
+ end
+
+direction  symbol  uniform
+  22.5   67.5  arrow_from  -1
+  67.5  112.5  arrow_from  -1
+ 112.5  157.5  arrow_from  -1
+ 157.5  202.5  arrow_from  -1
+ 202.5  247.5  arrow_from  -1
+ 247.5  295.5  arrow_from  -1
+ 295.5  337.5  arrow_from  -1
+ 337.5   22.5  arrow_from  -1
+ end
+
+direction symbol proportional
+  1   10  wave   20  200
+ 10  100  wave  200  500
+ end
+
+speed  value
+ 1  999  1  0  0
+ end
+
+speed  text
+  1    5  "LIGHT"
+  5   10  "MODERATE"
+ 10  999  "HEAVY"
+ end
+
+speed symbol
+  1    5  wave
+  5   10  wave
+ 10  999  wave
+ end

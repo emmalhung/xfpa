@@ -1,0 +1,527 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Common Dialog messages.
+!
+!  The various utility dialogs used in the FPA have their common
+!  messages stored here. The extraction routine will eliminate all
+!  spaces after the \n.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+alliedModelNoField.title:  Missing Allied Model Field
+alliedModelNoField.posn:   -50 -150
+alliedModelNoField.dialog: One or more fields required to run Allied Model\n\
+                           "%s" are not available.\n\
+						   The fields are:\n\n\
+						   %s\n\
+						   Do you still want to run the model?
+
+AnimationMinNr.title:  Notice
+AnimationMinNr.posn:   320 90
+AnimationMinNr.dialog: A minimum of two depictions are required for animation.
+
+
+AutoImportCreateDepiction.title:  Depiction Creation Request
+AutoImportCreateDepiction.posn:   0 0
+AutoImportCreateDepiction.dialog: A depiction does not exist at %s.\n\nDo you wish to create one?
+
+coc.title:  Field Overwrite Confirmation
+coc.posn:   45 -115
+coc.dialog: The field %s exists at the given target time.\n\
+            Do you wish to replace it with a new field?\n\n\
+			There is no undo from this operation.
+
+CreateDepiction.title:  Create Depiction Request
+CreateDepiction.posn:   -30 -206
+CreateDepiction.dialog: A depiction does not exist at the selected target time.\n\
+						Do you wish to create one and copy the fields into it?
+
+createField.title:  Create Depiction Field
+createField.posn:   250 250 
+createField.dialog: Do you wish to create a %s field of type "%s"\n\
+					at this time? Note that the field will not have any\n\
+					features on it and will look empty.
+
+DeleteConfirm.title:  Delete Confirm
+DeleteConfirm.posn:   284 160
+DeleteConfirm.dialog: This deletion can not be undone.\n\
+						   Proceed with deletion?
+
+exit_fpa_confirm.title:  Exit Confirm
+exit_fpa_confirm.posn:   40 140
+
+field_overwrite_confirm.title:  Field Overwrite Confirmation
+field_overwrite_confirm.posn:   45 -115
+field_overwrite_confirm.dialog: Overwrite the existing field(s)?
+
+FieldConfigError.title:  Configuration Error
+FieldConfigError.posn:   0 0
+FieldConfigError.dialog: This field has a configuration error.\n\
+						 Please contact your system manager.
+
+FieldExists.title:  Input Error
+FieldExists.posn:   10 -100
+FieldExists.dialog: The selected field is already in the list.
+
+FieldMissing_Text.title:  Forecast Field Missing
+FieldMissing_Text.posn:   0 -150
+FieldMissing_Text.dialog: One or more required fields have not been interpolated.\n\
+                          The missing fields are for forecast %s\
+						  \n\
+                          Do you wish to proceed with forecast generation?
+
+FieldMissing_Model.title:  Model Field Missing
+FieldMissing_Model.posn:   0 0
+FieldMissing_Model.dialog: One or more required fields have not been interpolated.\n\
+                           The missing fields are for model %s\
+                           \n\
+                           Do you wish to proceed with the model run?
+
+GuidanceReselection.title:  Selected Guidance Action
+GuidanceReselection.posn:   -500 100
+GuidanceReselection.dialog: Guidance fields have been updated.\n\n\
+						    Some displayed fields at the "Current" issue time\n\
+						    have been reselected as the "Previous" issue time.\n\n\
+						    Do you wish to update to the "Current" issue time?
+
+GuidancePartialReselection.title:  Selected Guidance Action
+GuidancePartialReselection.posn:   -500 100
+GuidancePartialReselection.dialog: Guidance fields have been updated.\n\n\
+								   Some displayed fields at the "Current" issue time\n\
+								   have been reselected as the "Previous" issue time.\n\
+								   Fields that could not be reselected were removed.\n\n\
+								   Do you wish to update to the "Current" issue time?
+
+import_confirm.title:  Save Request
+import_confirm.posn:   -20 -105
+import_confirm.dialog: A depiction already exists at the specified target\n\
+					   time.  Save it before making the change?
+
+InterpDelta.title:  Warning
+InterpDelta.posn:   150 300
+InterpDelta.dialog: The depiction time sequence does not match the interpolation delta.\n\
+                    Timelink will not operate properly!\n\n\
+                    Please exit and correct "interpolation.delta" in the setup file.
+
+LatLimit.title:  Input Error
+LatLimit.posn:   15 185
+LatLimit.dialog: Error in the latitude entry.
+
+LongLimit.title:  Input Error
+LongLimit.posn:   15 185
+LongLimit.dialog: Error in the longitude entry.
+
+ListExists.title:  Input Error
+ListExists.posn:   15 15
+ListExists.dialog: An entry for list "%s" already exists.
+
+MissingDependences.title:  Model Field Missing
+MissingDependences.posn:   0 0
+MissingDependences.dialog: One or more required fields are not available.  The\n\
+                           missing fields (given as "source  element  level") are\n\n\
+						   Model:  %s\n\
+                           Do you wish to proceed with the model run?
+
+MissingPointFcstLabel.title:  Input Error
+MissingPointFcstLabel.posn:   15 185
+MissingPointFcstLabel.dialog: Point forecast label not specified.
+
+MissingPointFcstValidTime.title:  Input Error
+MissingPointFcstValidTime.posn:   15 185
+MissingPointFcstValidTime.dialog: The forecast period was not specified.
+
+NoConfig.title:  Configuration Error
+NoConfig.posn:   50 100
+NoConfig.dialog: Error while reading the configuration.\n\
+                 Contact your system administrator.
+
+NoDepict.title:  Configuration Error
+NoDepict.posn:   50 100
+NoDepict.dialog: Unable to find the depiction directory\n\
+                 as specified by the configuration.\n\
+                 Contact your system administrator.
+
+NoInterp.title:  Configuration Error
+NoInterp.posn:   50 100
+NoInterp.dialog: Unable to find the interpolation directory\n\
+                 as specified by the configuration.\n\
+                 Contact your system administrator.
+
+NoBackup.title:  Configuration Error
+NoBackup.posn:   50 100
+NoBackup.dialog: Unable to find the depiction backup directory\n\
+                 as specified by the configuration.\n\
+                 Contact your system administrator.
+
+NoDepictTime.title:  No Depiction
+NoDepictTime.posn:   -47 -60
+NoDepictTime.dialog: No depictions exist with any of the times specifed\n\
+					 in the pdf file exist. Generation request ignored.
+
+MissingDepict.title:  Missing Depictions
+MissingDepict.posn:   -47 -60
+MissingDepict.dialog: The following depictions are not available:\n\n\
+					  %s\n\n \
+					  Do you still wish to proceed?
+
+NoEditor.title:  Editor Not Found
+NoEditor.posn:   300 300
+NoEditor.dialog: The text editor "%s" was not found.\n\
+                 Please contact your system administrator.
+
+NoEntryDialog.title:  Configuration Error
+NoEntryDialog.posn:   -270 -150
+NoEntryDialog.dialog: A data entry dialog for this element was not\n\
+					  found.  Please contact your sysetm manager.
+
+NoFcstRelease.title:  Procedure Error
+NoFcstRelease.posn:   50 100
+NoFcstRelease.dialog: No forecast is available for release.\n\
+					  Have you generated one?
+
+NoFieldToAdd.title:  Warning
+NoFieldToAdd.posn:   -10 -125
+NoFieldToAdd.dialog: The requested field is not available.\n\
+                     Do you still wish to add it to the list?
+
+NoFieldsToInterp.title:  Field List Message
+NoFieldsToInterp.posn:   -200 -50
+NoFieldsToInterp.dialog: There are no fields available for selection.
+
+NoHelp.title:  Help System Error
+NoHelp.posn:   -150 0
+NoHelp.dialog: The online help system is not available.\n\
+			   Please contact your system manager.
+
+NoImportSelect.title:  Selection Error
+NoImportSelect.posn:   -5 -106
+NoImportSelect.dialog: There are no fields selected for copy.
+
+NoOpenReportLog.title:  Log File Error
+NoOpenReportLog.posn:   0 -100
+NoOpenReportLog.dialog: Unable to open log file "%s" for update.\n\n\
+						Check path permissions (must be read & write).
+
+no-pgm.title:  Program Error
+no-pgm.posn:   -142 -53
+no-pgm.dialog: Unable to run %s.\n\n\
+               Reason: "%s"
+
+NoValidSources.title:  Source Error
+NoValidSources.posn:   50 50
+NoValidSources.dialog: No sources specified in the setup file contain\n\
+					   data to update the depiction fields from.
+
+NoValidTimeSelect.title:  Selection Error
+NoValidTimeSelect.posn:   -5 -106
+NoValidTimeSelect.dialog: No valid time has been selected.
+
+NoUndo.title:  Warning
+NoUndo.posn:   50 50
+NoUndo.dialog: This action is permanent. No undo is possible.\n\
+			   Do you still wish to proceed?
+
+Overwrite.title:  Confirm Copy
+Overwrite.posn:   -27 -116
+Overwrite.dialog: The existing depiction will be overwritten.\n\
+				  Proceed with the copy?
+
+OutsideMap.title:	Input Error
+OutsideMap.posn:    15 185
+OutsideMap.dialog:	Latitude-Longitude point is outside map area.
+
+ProfileDelete.title:  Delete Confirm
+ProfileDelete.posn:   0 0
+ProfileDelete.dialog: Delete profile "%s"?
+
+ActiveProfileDelete.title:  Delete Confirm
+ActiveProfileDelete.posn:   0 0
+ActiveProfileDelete.dialog: "%s" is the active profile and deletion is not allowed.\n\n\
+							 If necessary, do a 'save as' to another profile then delete.
+
+run-fail.title:  System Error
+run-fail.posn:   -142 -53
+run-fail.dialog: Unable to run %s for some unknown reason.\n\
+				 Please try again in about 20 seconds.
+
+pending_edit.title:  Edit Warning
+pending_edit.posn:   0 0
+pending_edit.dialog: There is a pending edit.\n\
+	                 If you proceed this edit may not be saved.\n\n\
+	                 Do you still wish to proceed?
+
+PgmRunning.title:  Program Notice
+PgmRunning.posn:   -142 -53
+PgmRunning.dialog: %s is already running. Request Ignored.
+
+PointFcstMod.title:  Save Request
+PointFcstMod.posn:   50 50
+PointFcstMod.dialog: The existing forecast has been modified.\n\
+                     Save and overwrite the origional?
+
+ProblemReportEntryError.title:  Input Error
+ProblemReportEntryError.posn:   100 250
+ProblemReportEntryError.dialog: The Name, Synopsis and Description fields must be filled in.
+
+SaveDepiction.title:  Save Request
+SaveDepiction.posn:   80 110
+SaveDepiction.dialog: Save the modified depiction?
+
+SomeModified.title:  Save Request
+SomeModified.posn:   50 110
+SomeModified.dialog: One or more of the depictions have been modified.\n\
+					 Do you want to save before deletion?
+
+SomethingGenerating.title:  Interpolate Confirmation
+SomethingGenerating.posn:   -200 -50
+SomethingGenerating.dialog: A process is running which is accessing interpolated\n\
+							depictions.  Proceeding with interpolation at this\n\
+							point may compromise the process.\n\n\
+							Do you still want to proceed?
+
+
+TimelinkDepictNr.title:  Procedure Error
+TimelinkDepictNr.posn:   -350 50
+TimelinkDepictNr.dialog: The time link procedure requires\n\
+						 a minimun of two depictions.
+
+TimelinkElementNr.title:  Procedure Error
+TimelinkElementNr.posn:   -150 100
+TimelinkElementNr.dialog: There are no linkable elements\n\
+						  in the depiction sequence.
+
+YouSure.title:  Input Confirm
+YouSure.posn:   -100 60
+YouSure.dialog: Are you sure?
+
+!
+! Returns from FoG_WeatherEntryValid() function. See weatherEntryDialog().
+!
+bad_input.FoG:      Not a legal code.
+Executable.FoG:     Executation error in systax check procedure.\n\
+				    Please contact your system manager.
+modification.FoG:   Only one modification is permitted.
+no_visby_cause.FoG: Reduced visibility must have a cause.
+parsing.FoG:        Illegal sequence.
+trash.FoG:          This input has been discarded.
+visibility.FoG:     Visibilities must be from 0 to 8.
+weather.FoG:        At most 3 weather varieties are allowed.
+
+hot_parse.title:  Input Error
+hot_parse.posn:   -50 200
+hot_parse.dialog: Input verification procedure is not available.\n\
+				  Please inform your system manager.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  State Flag Labels - Label strings for the general preferences dialog.
+!                      The keys are number.pref, where number has to
+!                      agree in order with the enumerated status keys in
+!                      the state.h header file.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+000.pref:
+001.pref:
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Date Words - The first in the list is the full name followed by
+!               the required short form.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+mon.day: Monday    Mon
+tue.day: Tuesday   Tue
+wed.day: Wednesday Wed
+thu.day: Thursday  Thu
+fri.day: Friday    Fri
+sat.day: Saturday  Sat
+sun.day: Sunday    Sun
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Warnings.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+BitmapFileInvalid.warn: Bitmap file format is invalid -> %s
+BitmapOpenFailed.warn: Unable to open Bitmap file -> %s
+BitmapNoMemory.warn: Insufficient memory to create Bitmap from file -> %s
+EmptyElementGroup.warn: Empty element group defined in configuration file -> %s
+ErrorInField.warn: Error detected in relation to field -> %s
+FcstType.warn: No concepts file "%s"
+ForkFail.warn: Fork() failed in function %s
+FrameStartFailed.warn: Unable to startup the Frame Viewer -> "%s"
+GraphicProdType.warn: Unrecognized graphic product type specification -> "%s"
+MetsisSizeCode.warn: Unrecognized graphics size code in interface section of setup file
+NoAlliedConfig.warn: Allied Model "%s%s%s" not found in config file. Model entry ignored.
+NoBitmapFile.warn: Unable to find bitmap file -> "%s"
+NoEditorEnv.warn: The environment variable FPA_TEXT_EDITOR is not defined.
+NoGuidListFile.warn: Unable to open the guidance list definition file "%s/%s"
+NoLineLabel.warn: Label not found for line type -> %s
+UnknownSetupKey.warn: Key word "%s" not found in interface block of setup file.
+NoFcstAreas.warn: Unable to find forecast areas associated with forecast "%s"
+NoFieldEditor.warn: No editor specified for field in configuration file.
+NoFieldGroup.warn: No entry for field "%s" in the Group config file.  >>> Field ignored.
+NoFrameDir.warn: There is no "help.viewer" entry in the setup file directory block.
+NoHelpFile.warn: Unable to open the online help file -> "%s"
+no-weather-menu.warn: Unable to find Weather Menu configuration file "%s" for element "%s".
+PrintOrientation.warn: Invalid print orientation: %s
+PrintSize.warn: Invalid print size: %s
+UnknownElement.warn: Unrecognized element name -> "%s"
+UnknownFieldType.warn: Unrecognized field type in configuration file.
+UnknownGroup.warn: Field group "%s" was not found in the Group config file.
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Errors.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+NoElements.error: No elements are defined in the setup file.
+NoSetup.error: Setup file "%s" not found
+Setup.error: Failed to read "interface" block from the setup file.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Status. The messages expect to have " at <date-time>" added to end.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+ClientConnected.status: %s connected
+ClientDisconnect.status: %s disconnected
+EndByError.status: Terminated by error
+EndByUser.status: Ended
+Start.status: Started
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Most of the interface is configured for the language of choice 
+!  through the user of X resource files.  For labels which are
+!  printed out depending on events it was found to be easier to handle
+!  them here.  Note that labels are limited to a maximum of 100 chars.
+!  All labels are first letter capitalized by default.  Any other form,
+!  (ie. all capitalized) is done by the retrevial functions.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+AllAttrib.label: All Attributes
+amd.label: Amendment
+AMD.label: Amendment
+area.label: Area
+cancel.label: Cancel
+change_request.label: Change Request
+contour.label: Contour
+cor.label: Corrected
+COR.label: Corrected
+current.label: Current
+curr.label: Curr
+default.label: Default
+delta.label: Delta
+demoDate.label: Demo date set to:
+depictions.label: Depictions
+display.label: Display
+doc_bug.label: Documentation Bug
+english.label: English
+fcst.label: Fcst
+fcstNa.label: Forecast is not available.
+fcstNotSel.label: No forecast is selected.
+fields.label: Fields
+forecasts.label: Forecasts
+french.label: French
+generating.label: Being generated
+globalMaster.label: Global Master
+graphics.label: Graphics
+hidden.label: Hidden
+high.label: High
+idle.label: Idle
+interpolations.label: Interpolations
+labelType.label: Label Type
+line.label: Line
+link.label: Link
+low.label: Low
+kasspr.label: Kasspr
+masterLink.label: Group Master
+medium.label: Medium
+merged.label: Forecast Rollup
+models.label: Models
+na.label: Not Available 
+na-short.label: NA
+napp.label: Not Applicable 
+new.label: New
+noData.label: No Data
+no_metafiles.label: No Metafiles Defined
+no_time_match.label: No Time Match
+no.label: No
+nofieldlabel.label: Field Label Missing
+noLabel.label: < No Label >
+none.label: None
+none_found.label: None Found
+noField.label: Field Not Defined
+noInterp.label: No Interpolated Depictions
+nor.label: Regular
+NOR.label: Regular
+ok.label: OK
+on.label: on
+off.label: off
+outdated.label: Older Than Interpolated Depictions
+processing.label: Processing
+pointFcsts.label: Point Forecasts
+presetList.label: Type: Predefined
+previous.label: Previous
+previous-depict.label: Previous Depiction
+prev.label: Prev
+quit.label: Quit
+released.label: Released
+refNr.label: Ref Nr.
+requirement.label: Requirement
+sameReleased.label: Same As Released Forecast
+saved.label: Saved
+status.label: Status
+submitted.label: Submitted
+suggestion.label: Suggestion
+support.label: User Question
+sw_bug.label: Software Bug
+textFcsts.label: Text Forecasts
+type.label: Type
+unknownElem.label: Unrecognized Element
+unreleased.label: Not Released
+updating.label: Being updated
+userList.label: Type: User Defined
+value.label: Value
+version.label: Version
+wind.label: Wind
+working.label: Working
+xrefwind.label: CrossRef Wind
+xrefvalue.label: CrossRef Value
+yes.label: Yes
+<temp>.label: * Temporary *
+
+! Weather element labels
+
+weather.label: Weather
+wind.label: Wind
+sea-state.label: Sea State
+sky-cover.label: Sky Cover
+temperature.label: Temperature
+
+! Timezones
+
+pacific.label: Pacific
+mountain.label: Mountain
+central.label: Central
+eastern.label: Eastern
+atlantic.label: Atlantic
+newfoundland.label: Nfld
+
+! Product Status
+
+abort.label: Aborted
+model.label: Model
+noPrevRun.label: No Previous Run
+prep.label: Pre-Processor
+post.label: Post-Processor
+running.label: Running

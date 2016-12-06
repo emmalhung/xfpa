@@ -1,0 +1,134 @@
+#!/bin/bash
+
+################################################################################
+#
+# Copy the user-defined output template modules to a local directory.
+#
+################################################################################
+
+. .fpafuncs
+
+pwd=`pwd`
+odir=$FPA/templates/useroutput
+cd $odir
+lfiles=`ls README binmake binput binrestore Makefile.bin *.[ch]`
+cd $pwd
+
+# Choose a target directory.
+pecho
+pecho "Select directory for local library development: \c"
+read tdir
+
+# Substitute environment variables.
+tdir=`eval echo $tdir`
+tdir=`pathname $pwd $tdir`
+
+# Check out the target directory.
+if [ "$tdir" = "" ]
+then
+	pecho
+	pecho "Bye!"
+	exit 1
+
+# If directory exists verify overwrite and deletion.
+elif [ -d "$tdir" ]
+then
+	pecho
+	pecho "Directory \"$tdir\" exists."
+
+	# See what files are there.
+	over=
+	files=`ls $tdir`
+	if [ -n "$files" ]
+	then
+		pecho
+		pecho "The following files already exist:"
+		for file in $files
+		do
+			# Only worry about real files.
+			if [ -f $tdir/$file ]
+			then
+				# Will it be overwirtten?
+				lfile=`echo "$lfiles" | grep $file`
+				if [ -n "$lfile" ]
+				then
+					over=over
+					pecho "  * $file"
+				else
+					pecho "    $file"
+				fi
+			fi
+		done
+	fi
+
+	# Confirm overwrite.
+	if [ -n "$over" ]
+	then
+		pecho
+		pecho "\"*\" indicates files that will be overwritten:"
+		pecho "Do you want to proceed? \c"
+		read answer
+
+		if [ "$answer" != "y" -a "$answer" != "Y" ]
+		then
+			pecho
+			pecho "Back up your files and run this script again."
+			pecho "Bye!"
+			exit 1
+		fi
+	fi
+
+	# Confirm deletion.
+	if [ -n "$files" ]
+	then
+		pecho
+		pecho "Do you want to delete these files? \c"
+		read answer
+
+		if [ "$answer" = "y" -o "$answer" = "Y" ]
+		then
+			for file in $files
+			do
+				# Only worry about real files.
+				if [ -f $tdir/$file ]
+				then
+					rm -f $tdir/$file
+				fi
+			done
+		fi
+	fi
+
+# Create if required.
+else
+	pecho
+	pecho "Directory \"$tdir\" does not exist."
+	pecho "Do you want to create it? \c"
+	read answer
+
+	if [ "$answer" != "y" -a "$answer" != "Y" ]
+	then
+		pecho
+		pecho "Bye!"
+		exit 1
+	fi
+
+	# Create the directory.
+	mkdir -p $tdir
+	if [ ! -d "$tdir" ]
+	then
+		pecho
+		pecho "Cannot create directory \"$tdir\"."
+		pecho "Bye!"
+		exit 1
+	fi
+fi
+
+# Copy the files.
+pecho
+pecho "Copying user-defined library files."
+for file in $lfiles
+do
+	cp $odir/$file $tdir
+done
+pecho
+pecho "Done!"

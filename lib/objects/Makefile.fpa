@@ -1,0 +1,303 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM}
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+
+
+
+# Here is the list of object files to go into the library:
+MODULES =	dispnode.o \
+			metafile.o \
+			raster.o \
+			field.o \
+			field_prep.o \
+			menu.o \
+			surface.o \
+			surface_cont.o \
+			surface_eval.o \
+			surface_oper.o \
+			surface_mem.o \
+			spline.o \
+			pipe.o \
+			pipe_filter.o \
+			pipe_buffer.o \
+			pipe_spline.o \
+			pipe_clip.o \
+			pipe_fill.o \
+			pipe_echo.o \
+			pipe_disp.o \
+			pipe_save.o \
+			pipe_meta.o \
+			polynomial.o \
+			plot.o \
+			set.o \
+			set_prep.o \
+			item.o \
+			item_prep.o \
+			lchain.o \
+			lchain_oper.o \
+			lchain_set.o \
+			curve.o \
+			curve_oper.o \
+			curve_set.o \
+			area.o \
+			area_oper.o \
+			area_prep.o \
+			area_set.o \
+			label.o \
+			label_set.o \
+			mark.o \
+			mark_set.o \
+			barb.o \
+			barb_set.o \
+			button.o \
+			button_set.o \
+			spot.o \
+			spot_set.o \
+			segment.o \
+			segment_oper.o \
+			bound.o \
+			bound_oper.o \
+			line.o \
+			line_oper.o \
+			pspec_disp.o \
+			pspec_units.o \
+			pspec_attrib.o \
+			attrib.o \
+			projection.o \
+			project_oper.o \
+			misc.o
+
+
+# Here is the list of include files to go into the master header file:
+HEADER   =	objects.h
+HEADERS  =	dispnode.h \
+			pipe.h \
+			metafile.h \
+			raster.h \
+			field.h \
+			menu.h \
+			surface.h \
+			spline.h \
+			polynomial.h \
+			plot.h \
+			set.h \
+			set_oper.h \
+			item.h \
+			lchain.h \
+			curve.h \
+			area.h \
+			label.h \
+			mark.h \
+			barb.h \
+			button.h \
+			segment.h \
+			bound.h \
+			line.h \
+			pspec.h \
+			attrib.h \
+			projection.h \
+			misc.h
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(MODULES) $(HEADER) $(HEADERS)
+
+
+# Rules for building everything:
+all ALL:	modules
+
+
+# Rules for building object modules:
+modules:	Pmodules $(HEADER) $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA objects modules"
+
+dispnode.o:		dispnode.h $(GETMEM) $(TOOLS) $(MATH)
+pipe.o:			pipeP.h
+pipe_filter.o:	pipeP.h $(TOOLS)
+pipe_buffer.o:	pipeP.h
+pipe_spline.o:	pipeP.h $(MATH)
+pipe_clip.o:	pipeP.h
+pipe_fill.o:	pipeP.h $(MATH)
+pipe_echo.o:	pipeP.h
+pipe_disp.o:	pipeP.h
+pipe_save.o:	pipeP.h $(GETMEM)
+pipe_meta.o:	pipeP.h
+metafile.o:		metafile.h $(GETMEM) $(TOOLS) $(MATH)
+raster.o:		raster.h $(GETMEM) $(MATH)
+field.o:		field.h $(GETMEM) $(TOOLS)
+field_prep.o:	field.h
+menu.o:			menu.h $(GETMEM) $(TOOLS) $(MATH)
+surface.o:		surface.h $(GETMEM) $(TOOLS)
+surface_cont.o:	surface.h set_oper.h $(TOOLS) $(GETMEM)
+surface_eval.o:	surface.h set_oper.h $(TOOLS)
+surface_oper.o:	surface.h projection.h $(GETMEM) $(TOOLS) $(MATH)
+surface_mem.o:	surface.h $(TOOLS)
+spline.o:		spline.h surface.h $(GETMEM) $(TOOLS) $(MATH)
+polynomial.o:	polynomial.h $(TOOLS)
+plot.o:			plot.h projection.h $(GETMEM) $(TOOLS) $(MATH)
+set.o:			set.h set_oper.h $(GETMEM) $(TOOLS) $(MATH)
+set_prep.o:		set.h
+item.o:			item.h $(TOOLS) $(MATH)
+item_prep.o:	item.h
+lchain.o:		lchain.h $(GETMEM) $(MATH)
+lchain_oper.o:	lchain.h $(GETMEM) $(MATH)
+lchain_set.o:	lchain.h set_oper.h
+curve.o:		curve.h $(GETMEM) $(MATH)
+curve_oper.o:	curve.h $(MATH)
+curve_set.o:	curve.h set_oper.h $(MACROS) $(GETMEM) $(TOOLS) $(MATH)
+area.o:			area.h $(GETMEM) $(TOOLS) $(MATH)
+area_oper.o:	area.h $(GETMEM) $(TOOLS)
+area_prep.o:	area.h item.h $(GETMEM) $(TOOLS)
+area_set.o:		area.h set_oper.h $(GETMEM) $(TOOLS) $(MATH)
+label.o:		label.h $(GETMEM)
+label_set.o:	label.h set_oper.h $(TOOLS) $(MATH)
+mark.o:			mark.h $(GETMEM)
+mark_set.o:		mark.h set_oper.h $(TOOLS) $(MATH)
+barb.o:			barb.h $(TOOLS) $(GETMEM)
+barb_set.o:		barb.h set_oper.h $(TOOLS) $(MATH)
+button.o:		button.h $(TOOLS) $(GETMEM) $(MATH)
+button_set.o:	button.h set_oper.h $(TOOLS) $(MATH)
+spot.o:			spot.h $(TOOLS) $(GETMEM)
+spot_set.o:		spot.h set_oper.h $(TOOLS) $(MATH)
+pspec_disp.o:	pspec.h $(TOOLS) $(GETMEM)
+pspec_units.o:	pspec.h $(TOOLS) $(GETMEM)
+pspec_attrib.o:	pspec.h $(TOOLS)
+attrib.o:		attrib.h $(TOOLS) $(GETMEM) $(MACROS)
+segment.o:		segment.h $(GETMEM) $(MATH)
+segment_oper.o:	segment.h $(MATH)
+bound.o:		bound.h $(GETMEM) $(MATH)
+bound_oper.o:	bound.h $(MATH)
+line.o:			line.h $(GETMEM) $(TOOLS)
+line_oper.o:	line.h $(GETMEM) $(TOOLS)
+projection.o:	projection.h $(TOOLS) $(MACROS) $(MATH)
+project_oper.o:	projection.h spline.h line.h $(GETMEM) $(TOOLS) $(MATH)
+misc.o:			misc.h $(TOOLS) $(GETMEM) $(MATH)
+
+
+# Rules for building the master header file:
+header:		$(HEADER)
+
+$(HEADER):		$(HEADERS)
+			@	echo "Updating FPA objects module header"
+			@	sleep 1; touch $@; sleep 1
+dispnode.h:		metafile.h pspec.h
+			@	sleep 1; touch $@
+pipe.h:			metafile.h
+			@	sleep 1; touch $@
+pipeP.h:		pipe.h
+			@	sleep 1; touch $@
+metafile.h:		field.h raster.h projection.h
+			@	sleep 1; touch $@
+raster.h:		$(TYPES)
+			@	sleep 1; touch $@
+field.h:		surface.h plot.h set.h
+			@	sleep 1; touch $@
+menu.h:			set.h
+			@	sleep 1; touch $@
+surface.h:		spline.h set.h
+			@	sleep 1; touch $@
+spline.h:		polynomial.h set.h
+			@	sleep 1; touch $@
+polynomial.h:	misc.h
+			@	sleep 1; touch $@
+plot.h:			item.h
+			@	sleep 1; touch $@
+set.h:			item.h
+			@	sleep 1; touch $@
+set_oper.h:		set.h
+			@	sleep 1; touch $@
+item.h:			spot.h area.h barb.h button.h curve.h label.h lchain.h mark.h \
+				projection.h
+			@	sleep 1; touch $@
+lchain.h:		line.h pspec.h attrib.h
+			@	sleep 1; touch $@
+curve.h:		line.h pspec.h attrib.h
+			@	sleep 1; touch $@
+area.h:			segment.h bound.h pspec.h attrib.h
+			@	sleep 1; touch $@
+label.h:		pspec.h attrib.h
+			@	sleep 1; touch $@
+mark.h:			pspec.h attrib.h
+			@	sleep 1; touch $@
+barb.h:			pspec.h attrib.h
+			@	sleep 1; touch $@
+button.h:		pspec.h attrib.h
+			@	sleep 1; touch $@
+spot.h:			pspec.h attrib.h
+			@	sleep 1; touch $@
+segment.h:		line.h
+			@	sleep 1; touch $@
+bound.h:		line.h
+			@	sleep 1; touch $@
+line.h:			projection.h
+			@	sleep 1; touch $@
+pspec.h:		misc.h
+			@	sleep 1; touch $@
+attrib.h:		$(TYPES)
+			@	sleep 1; touch $@
+projection.h:	misc.h
+			@	sleep 1; touch $@
+misc.h:			$(TYPES) $(MACROS) $(MATH)
+			@	sleep 1; touch $@
+
+
+# Assorted Compiler options:
+#
+# TIME_SPLINE:	To report spline fit timing
+#
+OPTIONS = $(C_OPTIONS)
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} objects module $<"
+	@	$${C_COMP_SHARED} -c $(INCPATH) $(OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}
+
+
+
+# Rules for building stand-alone test programs:
+
+test tests:	proj range
+
+TTLIB       = ../tools/$${PLATFORM}/*.o
+PROJ		= $(PLATFORM)/projection
+PROJ_OBJ	= projection.c project_oper.o line.o line_oper.o misc.o
+proj:		Pproj $(PROJ)
+		@	echo "FPA $${PLATFORM} projection test ready"
+		@	echo 
+Pproj:
+		@	$(SBINDIR)/platform_get object "FPA projection"
+$(PROJ):	$(TYPES) $(MACROS) $(TOOLS) $(PROJ_OBJ) $(FPALIB)
+		@	echo Building stand-alone test program for projection
+		@	rm -f projection.o
+		@	$${C_COMPLOAD} -o $@ -D STANDALONE $(INCPATH) $(C_OPTIONS) \
+			$(PROJ_OBJ) $(FPALIB) $(USRLIB) $(FPALIB) $(USRLIB) $(EXTRA_LIBS)
+		@	rm -f projection.o
+		@	if [ -f $${PLATFORM}/projection.o ]; then \
+				ln $${PLATFORM}/projection.o .; \
+			fi
+
+RANGE		= $(PLATFORM)/range
+RANGE_OBJ	= misc.c
+range:		Prange $(RANGE)
+		@	echo "FPA $${PLATFORM} range test ready"
+		@	echo 
+Prange:
+		@	$(SBINDIR)/platform_get object "FPA range"
+$(RANGE):	$(TYPES) $(MACROS) $(RANGE_OBJ)
+		@	echo Building stand-alone test program for range
+		@	rm -f misc.o
+		@	$${C_COMPLOAD} -o $@ -D STANDALONE $(INCPATH) $(C_OPTIONS) \
+			$(RANGE_OBJ) $(TTLIB) $(EXTRA_LIBS)
+		@	rm -f misc.o
+		@	if [ -f $${PLATFORM}/misc.o ]; then \
+				ln $${PLATFORM}/misc.o .; \
+			fi

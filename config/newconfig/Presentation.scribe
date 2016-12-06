@@ -1,0 +1,304 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Presentation-type files in the $FPA/config directory can and will be   #
+#   updated with any new release, update, or patch of the FPA software suite.  #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Presentation file that refers to this file through  #
+#   an #include statement.  Refer to the file Presentation, or d.Presentation  #
+#   for further instructions.                                                  #
+#                                                                              #
+################################################################################
+
+# Presentation Configuration File
+
+# This file defines the appearance of all fields that FPA applications can
+# potentially display.  This refers to both guidance fields and editable
+# depiction fields.
+
+# Omitted attributes resort to default values established in the software
+# which reads this file (for example: colour=Black, style=solid, font=simplex,
+# etc).
+
+revision 6.0
+
+
+field	scribe_dailymax	ALL	ALL
+
+	member	spot
+		class	plot
+			class_member	label	StnID	ID
+				default
+					colour	Black
+					font	simplex
+					hjust	centre
+					size	15
+			class_member	label	High	TLO_max2
+				default
+					offset	+10 +15
+					colour	Red
+					font	simplex
+					hjust	left
+					size	15
+			class_member	label	CHigh	CT2_max
+				default
+					offset	+10 -15
+					colour	Red
+					font	simplex
+					hjust	left
+					size	15
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	scribe_dailymin	ALL	ALL
+
+	member	spot
+		class	plot
+			class_member	label	StnID	ID
+				default
+					colour	Black
+					font	simplex
+					hjust	centre
+					size	15
+			class_member	label	Low		TLO_min2
+				default
+					offset	-10 +15
+					colour	Blue
+					font	simplex
+					hjust	right
+					size	15
+			class_member	label	CLow	CT2_min
+				default
+					offset	-10 -15
+					colour	Blue
+					font	simplex
+					hjust	right
+					size	15
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	scribe_3hr		ALL	ALL
+
+	member	spot
+		class	plot
+			class_member	label	StnID	ID
+				default
+					colour	Black
+					font	simplex
+					size	15
+			class_member	label	PcpAmt	QPS
+				default
+					offset	-10 +12
+					colour	Green
+					font	simplex
+					size	15
+			class_member	label	Cloud	CLD
+				default
+					offset	+10 +12
+					colour	Brown
+					font	simplex
+					size	15
+			class_member	label	PcpType	TYP
+				default
+					offset	-10 -12
+					colour	Blue
+					font	simplex
+					size	15
+			class_member	label	RtoVis	AC
+				default
+					offset	+10 -12
+					colour	Blue
+					font	simplex
+					size	15
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	scribe_6hr		ALL	ALL
+
+	member	spot
+		class	plot
+			class_member	label	StnID	ID
+				default
+					colour	Black
+					font	simplex
+					size	15
+			class_member	label	Pop6hr	P06
+				default
+					offset	0 +20
+					colour	Yellow
+					font	simplex
+					size	15
+			class_member	label	Pop6hrDiag	P6M
+				default
+					offset	0 -20
+					colour	Yellow
+					font	simplex
+					size	15
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	scribe_12hr		ALL	ALL
+
+	member	spot
+		class	plot
+			class_member	label	StnID	ID
+				default
+					colour	Black
+					font	simplex
+					size	15
+			class_member	label	Pop12hr	P12
+				default
+					offset	0 +20
+					colour	Yellow
+					font	simplex
+					size	15
+			class_member	label	Pop12hrDiag	P2M
+				default
+					offset	0 -20
+					colour	Yellow
+					font	simplex
+					size	15
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	sc3hr_marine	ALL	ALL
+
+	member	spot
+		class	plot
+			class_member	label	StnID	ID
+				default
+					colour	Black
+					font	simplex
+					size	15
+			class_member	label	SST		SST
+				default
+					offset	0 +20
+					colour	Yellow
+					font	simplex
+					size	15
+			class_member	label	WvHgt	SWH
+				default
+					offset	0 -20
+					colour	Yellow
+					font	simplex
+					size	15
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	sc3hr_direct	ALL	ALL
+
+	member	spot
+		class	plot
+			class_member	label	StnID	ID
+				default
+					colour	Black
+					font	simplex
+					size	15
+			class_member	label	Temp	TST
+				default
+					offset	0 +20
+					colour	Yellow
+					font	simplex
+					size	15
+			class_member	label	DewPt	DPD
+				default
+					offset	0 -20
+					colour	Yellow
+					font	simplex
+					size	15
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	pop_fld06	ALL	ALL
+
+	member	continuous
+		units	percent
+		contour	list	10 30 50
+			colour	Blue
+			style	solid
+		contour	list	70 90
+			colour	Blue
+			style	wide
+			width	5
+
+
+field	pcp_amt03	ALL	ALL
+
+	member	continuous
+		units	mm(H2O)/10
+		contour	range	2 10 2 2
+			colour	Green
+			style	dot
+		contour	range	10 * 10 2
+			colour	Green
+			width	2
+		maxima	2 *
+			colour	Green
+			marker	plus
+
+
+field	cld_opa03	ALL	ALL
+
+	member	continuous
+		units	10ths
+		contour	list	1
+			colour	Brown
+			style	dot
+		contour	list	5
+			colour	Brown
+			style	solid
+		contour	list	8
+			colour	Brown
+			style	wide
+			width	5

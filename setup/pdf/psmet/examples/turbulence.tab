@@ -1,0 +1,6 @@
+Look-up   | Symbol file          | Text String | Presentation
+*default* : none                 : NIL TURBC   : clear1
+SVR       : svrturbc             :             : clear1
+MDT       : mdtturbc             :             : clear1
+LGT       : lgtturbc             :             : clear1
+NONE      : none                 : NIL TURBC   : clear1

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.7. FPAWarp (Fitting Point Data to a Field)</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ape.html" title="Appendix E. Adding New Allied Models" /><link rel="prev" href="apes06.html" title="E.6. Allowing User Access to Tested Allied Models" /><link rel="next" href="apes08.html" title="E.8. FPA Create Area (Creating Discrete Areas From Objects)" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">E.7. FPAWarp (Fitting Point Data to a Field)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apes06.html">Prev</a> </td><th width="60%" align="center">Appendix E. Adding New Allied Models</th><td width="20%" align="right"> <a accesskey="n" href="apes08.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2075476"></a>E.7. FPAWarp (Fitting Point Data to a Field)</h2></div></div></div><p>
+<a id="id2075482" class="indexterm"></a>
+The <span class="acronym">FPA</span> <span class="application">Warp</span> model is an internal Allied Model designed to allow users to merge point data (whether at locations on a grid or random locations) with continuous field data.
+The <span class="acronym">FPA</span> <span class="application">Warp</span> model accomplishes this merge by calculating the differences between the point data values and the values from a "guess" continuous field at the same locations, and then applying adjustments iteratively until the continuous field values become reasonably close to the point data values.
+The user can access the <span class="acronym">FPA</span> <span class="application">Warp</span> model without the need to develop special code, by simply adding lines in the Local Setup file and the Local Configuration file.
+</p><div class="itemizedlist"><ul type="disc"><li><p>Edit the Local Setup file and add a line to the "[allied.model]" section of the 'interface' block as in: </p><pre class="programlisting">NewFPAWarp</pre></li><li><p>Edit the Local Configuration file and add another 'Sources' block, as in:</p></li></ul></div><p>
+</p><pre class="programlisting">
+Sources
+  {
+  NewFpaWarp
+    {
+    label            = "<span xmlns="" class="replaceable">New FPA Warp</span>"
+    short_label      = "<span xmlns="" class="replaceable">New FpaWarp</span>"
+    source_type      = Allied
+    directory_tag    = AModels.Data
+    directory_path   = FpaWarp
+    directory_layers = 1
+    subsources       = None
+    allied_model     =
+      {
+      time_matching  = True
+      source_info    = interp or depict
+      process        = fpawarp_exec &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; &lt;RTIME&gt; \
+                        <span xmlns="" class="replaceable">tension influence file_creation</span> \
+                        [<span class="optional"><span xmlns="" class="replaceable">( guess_time  plot_time  output_time  ... )</span></span>]
+      programs       = None
+      files          = None
+ </pre><p>
+ </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The <span xmlns="" class="replaceable">tension</span> and <span xmlns="" class="replaceable">influence</span> parameters are used by the <span class="acronym">FPA</span> <span class="application">Warp</span> model to control the fit of the point data to the continuous field.</p></div><p>
+ The <span xmlns="" class="replaceable">tension</span> parameter is used to control the accuracy of the fitting.
+ The <span class="acronym">FPA</span> <span class="application">Warp</span> model calculates the mean absolute error between the point data values and the guess field values for each iteration.
+ The iterations end when the mean absolute error no longer decreases, or when the change in the mean absolute error becomes less than the average error divided by the <span xmlns="" class="replaceable">tension</span>.
+ A larger value of <span xmlns="" class="replaceable">tension</span> will therefore result in more iterations, which should result in the point data being fitted more closely.
+ (Note that the minimum allowed <span xmlns="" class="replaceable">tension</span> is 10.)
+ </p><p>
+ The <span xmlns="" class="replaceable">influence</span> parameter is used to control the effect of the point data on the guess field in data sparse areas.
+ Each point data value will adjust the continuous field at nearby locations.
+ However, if no data points are found to be closer to a given location than the number of <span class="acronym">FPA</span> grid spaces given by <span xmlns="" class="replaceable">influence</span>, then the continuous field will remain unchanged at that location.
+ A smaller value of <span xmlns="" class="replaceable">influence</span> will therefore restrict adjustments to the continuous field to the immediate vicinity of the point data.
+ (Note that the minimum allowed <span xmlns="" class="replaceable">influence</span> is 1 <span class="acronym">FPA</span> grid space.)
+ </p><p>
+ The <span xmlns="" class="replaceable">file_creation</span> parameter controls whether an output file will be created if no acceptable plot data is found (YES or NO).
+ </p><p>
+ The times for which the <span class="acronym">FPA</span> <span class="application">Warp</span> model is run are normally the times available in the directory identified by the 'source_info' declaration.  However, the "<span xmlns="" class="replaceable">..._time</span>" parameters give optional control over exactly which times are used for the guess field, the plot data fields, and the output metafiles.
+ Each set of files required is identified by three times.
+ The format for the times is given by one of the following:
+ </p><div class="itemizedlist"><ul type="disc"><li><p>xx - for hours from the 'zero' hour in the Depiction sequence, that is, the time at which the application is run (RTIME)</p></li><li><p>rr/hh - for the day (rr where 0 is today, 1 is tomorrow) and GMT hour of the day (hh)</p></li><li><p>rr/hhL - for the day (rr where 0 is today, 1 is tomorrow) and local hour of the day (hh)</p></li></ul></div><p>
+ The 'required_fields' section below is used to identify the guess field for the continuous data (identified by the name 'guess_field'), and the file(s) containing the point data to merge with the guess field (identified by a name that begins with 'plot_field').
+ The location of these data files will default to the 'source_info' declaration given at the start of the 'allied_model' section unless it is reset here.
+The 'guess_field' and 'plot_field' information will be used in the <span class="acronym">FPA</span> <span class="application">Warp</span> model code to identify all required data.
+ Note that the <span xmlns="" class="replaceable">element</span>, <span xmlns="" class="replaceable">level</span> and <span xmlns="" class="replaceable">source</span> names in the 'field_info' declarations, must be declared in the 'Elements' or 'Levels' or 'Sources' blocks of a Configuration file!
+ The user will have to include declarations in the Local Configuration file for any <span xmlns="" class="replaceable">element</span>, <span xmlns="" class="replaceable">level</span> or <span xmlns="" class="replaceable">source</span> data which is required by a new <span class="acronym">FPA</span> <span class="application">Warp</span> model but is not already declared.
+ The user can refer to <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>, as well as the examples given in the <code class="filename">Config.<span xmlns="" class="replaceable">name</span></code> files in <code class="filename"><code class="envar">$FPA</code>/config</code>.
+</p><pre class="programlisting">
+      required_fields    =
+        {
+        guess_field
+          {
+          # input data identified by element and level
+          field_info     = <span xmlns="" class="replaceable">element  level</span>
+          # optional: location of input field
+          source_info    = <span xmlns="" class="replaceable">source</span> 
+          }
+        plot_field
+          {
+          # input data identified by element and level
+          field_info     = <span xmlns="" class="replaceable">element  level</span>
+          # optional: member of a Plot Object
+          sub_field_info = <span xmlns="" class="replaceable">sub_field</span> 
+          # optional: location of input field
+          source_info    = <span xmlns="" class="replaceable">source</span> 
+          }
+        } # End of required_fields Block
+      required_wind_crossrefs  = None
+      required_value_crossrefs = None
+</pre><p>
+ The 'metafiles' section below is used to identify the output <span class="acronym">FPA</span> data produced by the new <span class="acronym">FPA</span> <span class="application">Warp</span> model.
+ The location of the file will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data).
+ The <span xmlns="" class="replaceable">metafile_alias</span> (which can be any name) will be used in the <span class="acronym">FPA</span> <span class="application">Warp</span> model code to identify the output data.
+ Note that the <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span> names in the 'field_info' declarations must be declared in the 'Elements' or 'Levels' blocks of a Configuration file!
+ The user will have to include declarations in the Local Configuration file for any <span xmlns="" class="replaceable">element</span> or <span xmlns="" class="replaceable">level</span> data which is required by a new <span class="acronym">FPA</span> <span class="application">Warp</span> model but is not already declared.
+ The user can refer to <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>, as well as the examples given in the <code class="filename">Config.<span xmlns="" class="replaceable">name</span></code> files in <code class="filename"><code class="envar">$FPA</code>/config</code>.
+</p><pre class="programlisting">
+      metafiles      =
+        {
+        <span xmlns="" class="replaceable">metafile_alias</span>
+          {
+          # output data identified by element and level
+          field_info = <span xmlns="" class="replaceable">element  level</span>
+          }
+        } # End of metafiles Block
+      } # End of allied_model Block
+    } # End of NewFpaWarp Block
+  } # End of Sources Block
+</pre><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apes06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ape.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apes08.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.6. Allowing User Access to Tested Allied Models </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.8. FPA Create Area (Creating Discrete Areas From Objects)</td></tr></table></div></body></html>

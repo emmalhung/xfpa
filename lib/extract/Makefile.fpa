@@ -1,0 +1,155 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM}
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+
+
+
+# Here is the list of object files to go into the library:
+MODULES =	winds.o \
+			values.o \
+			equation.o \
+			equationData.o \
+			equationOper.o \
+			sampler_access.o \
+			sampler_old.o \
+			sampler_codes.o
+
+
+# Here is the list of include files to go into the master header file:
+HEADER   =	extract.h
+HEADERS  =	values.h \
+			winds.h \
+			equation.h \
+			sampler.h
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(MODULES) $(HEADER) $(HEADERS)
+
+
+# Rules for building everything:
+all ALL:	modules
+
+
+# Rules for building object modules:
+modules:	Pmodules $(HEADER) $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA extract modules"
+
+winds.o:		$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) $(OBJECTS) $(ENVIRON) \
+					winds.h values.h equation.h
+values.o:		$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) $(OBJECTS) $(ENVIRON) \
+					winds.h values.h equation.h
+equation.o:		$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) $(OBJECTS) $(ENVIRON) \
+					values.h equation.h
+equationData.o:	$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) $(OBJECTS) $(ENVIRON) \
+					equation.h
+equationOper.o:	$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) $(MATH) $(OBJECTS) $(ENVIRON) \
+					equation.h
+sampler_access.o:	$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) sampler.h
+sampler_old.o:		$(TYPES) $(GETMEM) $(TOOLS) sampler.h
+sampler_codes.o:	sampler.h
+
+
+# Rules for building the master header file:
+header:		$(HEADER)
+
+$(HEADER):		$(HEADERS)
+			@	echo "Updating FPA extract module header"
+			@	sleep 1; touch $@; sleep 1
+winds.h:		$(TYPES) $(OBJECTS) $(ENVIRON)
+			@	sleep 1;	touch $@
+values.h:		$(TYPES) $(OBJECTS)
+			@	sleep 1;	touch $@
+equation.h:		$(TYPES) $(OBJECTS) $(ENVIRON)
+			@	sleep 1;	touch $@
+sampler.h:		$(TYPES) $(MACROS)
+			@	sleep 1;	touch $@
+
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} extract module $<"
+	@	$${C_COMP_SHARED} -c $(INCPATH) $(C_OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}
+
+
+# Rules for building stand-alone test programs:
+
+test tests:	winds values equation
+
+WINDS			= $(PLATFORM)/winds
+WINDS_OBJ		= winds.c values.o equation.o equationData.o equationOper.o
+WINDS_HDR		= winds.h values.h equation.h
+winds:			Pwinds $(WINDS)
+			@	echo "FPA $${PLATFORM} winds test ready"
+			@	echo 
+Pwinds:
+			@	$(SBINDIR)/platform_get object "FPA winds"
+$(WINDS):		$(TYPES) $(MACROS) $(GETMEM) $(TOOLS) $(OBJECTS) $(ENVIRON) \
+					$(WINDS_HDR) $(WINDS_OBJ) $(FPALIB)
+			@	echo Building stand-alone test program for winds
+			@	rm -f winds.o
+			@	$${C_COMPLOAD} -o $@ -D WINDS_STANDALONE -D DEBUG_WINDS \
+					$(INCPATH) $(C_OPTIONS) $(WINDS_OBJ) \
+					$(FPALIB) $(USRLIB) $(FPALIB) \
+					$(EXTRA_FTN_LIBS) $(EXTRA_LIBS)
+			@	rm -f winds.o
+			@	if [ -f $${PLATFORM}/winds.o ]; then \
+					ln $${PLATFORM}/winds.o .; \
+				fi
+
+VALUES			= $(PLATFORM)/values
+VALUES_OBJ		= values.c winds.o equation.o equationData.o equationOper.o
+VALUES_HDR		= winds.h values.h equation.h
+values:			Pvalues $(VALUES)
+			@	echo "FPA $${PLATFORM} values test ready"
+			@	echo 
+Pvalues:
+			@	$(SBINDIR)/platform_get object "FPA values"
+$(VALUES):		$(TYPES) $(MACROS) $(GETMEM) $(TOOLS) $(OBJECTS) $(ENVIRON) \
+					$(VALUES_HDR) $(VALUES_OBJ) $(FPALIB)
+			@	echo Building stand-alone test program for values
+			@	rm -f values.o
+			@	$${C_COMPLOAD} -o $@ -D VALUES_STANDALONE -D DEBUG_VALUES \
+					$(INCPATH) $(C_OPTIONS) $(VALUES_OBJ) \
+					$(FPALIB) $(USRLIB) $(FPALIB) \
+					$(EXTRA_FTN_LIBS) $(EXTRA_LIBS)
+			@	rm -f values.o
+			@	if [ -f $${PLATFORM}/values.o ]; then \
+					ln $${PLATFORM}/values.o .; \
+				fi
+
+EQUATION		= $(PLATFORM)/equation
+EQUATION_OBJ	= equation.c equationData.c equationOper.c winds.o values.o
+EQUATION_HDR	= values.h equation.h
+equation:		Pequation $(EQUATION)
+			@	echo "FPA $${PLATFORM} equation test ready"
+			@	echo 
+Pequation:
+			@	$(SBINDIR)/platform_get object "FPA equation"
+$(EQUATION):	$(TYPES) $(MACROS) $(GETMEM) $(TOOLS) $(OBJECTS) $(ENVIRON) \
+					$(EQUATION_HDR) $(EQUATION_OBJ) $(FPALIB) $(FORTLIB)
+			@	echo Building stand-alone test program for equation
+			@	rm -f equation.o equationData.o equationOper.o
+			@	$${C_COMPLOAD} -o $@ -D EQUATION_STANDALONE -D DEBUG_EQUATION \
+					$(INCPATH) $(C_OPTIONS) $(EQUATION_OBJ) \
+					$(FPALIB) $(USRLIB) $(FPALIB) \
+					$(EXTRA_FTN_LIBS) $(EXTRA_LIBS)
+			@	rm -f equation.o equationData.o equationOper.o
+			@	if [ -f $${PLATFORM}/equation.o ]; then \
+					ln $${PLATFORM}/equation.o .; \
+				fi
+			@	if [ -f $${PLATFORM}/equationData.o ]; then \
+					ln $${PLATFORM}/equationData.o .; \
+				fi
+			@	if [ -f $${PLATFORM}/equationOper.o ]; then \
+					ln $${PLATFORM}/equationOper.o .; \
+				fi

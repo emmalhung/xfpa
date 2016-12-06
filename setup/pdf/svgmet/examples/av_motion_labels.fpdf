@@ -1,0 +1,48 @@
+! Set the default presentation for text ...
+@presentation
+	{
+	outline       = none;
+	fill          = X11 Navy;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	text_size     = 0.15;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Set a named presentation to draw a surrounding ellipse ...
+@label_display
+	{
+	display_name  = ellipse;
+	margin_left   =  0.02;
+	margin_right  =  0.05;
+	margin_bottom =  0.05;
+	line_width    =  0.02;
+	outline       = X11 Navy;
+	interior_fill = X11 White;
+	}
+
+! Display the feature motion speeds ...
+@lchain_nodes
+	{
+	element                 = feature_motion;
+	level                   = surface;
+	node_speed_units        = knots;
+	node_speed_round        = 5.0;
+	node_stationary_max     = 12.5;
+	node_stationary_label   = QS;
+	x_stationary            = 0.10;
+	times                   = 2;
+
+	attribute               = FPA_lnode_speed;
+	attribute_anchor        = none;
+	attribute_ref           = centre;
+	attribute_justification = centre;
+	attribute_vertical_just = centre;
+	attribute_format        = direct %s;
+	attribute_display_name  = ellipse;
+	attribute_display_type  = sized_ellipse;
+	attribute_x_off         = -0.02;
+	attribute_y_off         =  0.02;
+	}

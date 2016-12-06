@@ -1,0 +1,172 @@
+################################################################################
+# Gribs Configuration File - January 2003
+#
+# !!!!!!!!!!!!!!!!!!!!!!! FPA Development Group Request !!!!!!!!!!!!!!!!!!!!!!!
+# ! Please contact the FPA Development Group about any additions you make to  !
+# ! this file, and we will incorporate as many of the changes as possible in  !
+# ! the next FPA release.  You can contact us by using the "Change Request"   !
+# ! option in the "HELP" pulldown inside the FPA.                             !
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
+# This configuration file contains default information for model identifiers
+# or element identifiers not yet recognized by the GRIB decoder, and element
+# and level identifiers for unwanted fields in the GRIB processing
+#
+# Note that the default model and element identifiers are only used by
+# GRIB Edition 1 messages!
+#
+################################################################################
+
+revision 6.0
+
+################################################################################
+# List of Model Identifiers ... and those presently recognized
+#
+#            GRIB centre   GRIB model      FPA source
+#            id number     id number no.   label
+#
+#            54            30              GEM_Analysis
+#            54            31              GEM_Analysis
+#            54            32              GEM_Analysis
+#            54            33              GEM_Analysis
+#            54            34              GEM_Analysis
+#            54            35              GEM
+#            54            36              GEM
+#            54            37              GEM
+#            54            38              GEM
+#            54            39              GEM
+#            54            40              Spectral_Analysis
+#            54            41              Spectral_Analysis
+#            54            42              Spectral_Analysis
+#            54            43              Spectral_Analysis
+#            54            44              Spectral_Analysis
+#            54            45              Spectral
+#            54            46              Spectral
+#            54            47              Spectral
+#            54            48              Spectral
+#            54            49              Spectral
+#
+#             7            77              NMC
+#             7            78              NMC
+#             7            79              NMC
+#             7            80              NMC
+#
+#            98            40              ECMWF
+#
+# Example line for adding a new Model identifier:
+#
+# "gribmodel  1            15              MelbourneWMC"
+#
+# Note: All "gribmodel" FPA source labels must be consistent with the
+#       "source" list in the Fields Config file
+#       (or be added to the "source" list in the Fields Config file).
+#
+#            GRIB centre   GRIB model      FPA source
+#            id number     id number no.   label
+################################################################################
+
+
+
+################################################################################
+# List of Element/Units Identifiers ... and those presently recognized
+#
+#              GRIB element  FPA element             FPA units
+#              parameter id  label                   label
+#
+#               1            real_pressure           Pa
+#               2            pressure                Pa
+#               3            pressure_tendency       Pa/s
+#               6            geopotential            m2/s/s
+#               7            height                  m
+#              11            temperature             degreesK
+#              12            virtual_temperature     degreesK
+#              13            potential_temperature   degreesK
+#              15            maximum_temperature_gmt degreesK
+#              16            minimum_temperature_gmt degreesK
+#              17            dewpoint                degreesK
+#              18            dewpoint_depression     Kdegrees
+#              19            lapse_rate              Kdegrees/m
+#              31            wind_direction          degrees_true
+#              32            wind_speed              m/s
+#              33            u_wind                  m/s
+#              34            v_wind                  m/s
+#              39            vertical_velocity       Pa/s
+#              40            real_vertical_velocity  m/s
+#              41            vorticity               1/s
+#              42            divergence              1/s
+#              43            relative_vorticity      1/s
+#              44            relative_divergence     1/s
+#              51            specific_humidity       kg/kg
+#              52            relative_humidity       percent
+#              59            rainfall_rate           kg/m2/s
+#              61            precipitation           kg/m2
+#              63            convective_precip       kg/m2
+#              71            total_cloud             percent
+#              72            convective_cloud        percent
+#              73            low_cloud               percent
+#              74            mid_cloud               percent
+#              75            high_cloud              percent
+#              80            sea_temperature         degreesK
+#              91            ice_cover               ratio
+#
+# Example line for adding a new Element/Units identifier:
+#
+# "gribelement 25            temperature_anomaly     degreesK"
+#
+# Note: All "gribelement" FPA element labels must be consistent with the
+#       "element" list in the Fields Config file
+#       (or be added to the "element" list in the Fields Config file).
+# Note: All "gribelement" FPA units labels must be consistent with the
+#       "units" list in the Fields Config file
+#       (or be added to the "units" list in the Fields Config file).
+#
+#              GRIB element  FPA element             FPA units
+#              parameter id  label                   label
+################################################################################
+
+
+
+################################################################################
+# List of Unwanted GRIB Fields
+#
+# Unwanted GRIB fields can be identified here by element and level.  The fields
+# will not be processed when the GRIB decoder is run.
+#
+# Individual fields as well as groups of fields can be identified.
+#
+# For example, the  1000mb height  field could be skipped by entering:
+#
+# "gribfieldskip    height          1000mb"
+#
+# All  height  fields could be skipped by entering:
+#
+# "gribfieldskip    height          ANY"
+#
+# All  1000mb  fields could be skipped by entering:
+#
+# "gribfieldskip    ANY             1000mb"
+#
+# Note: All "gribfieldskip" FPA element labels must be consistent with the
+#       "element" list in the Fields Config file
+#       (or be added to the "element" list in the Fields Config file).
+# Note: All "gribfieldskip" FPA level labels must be consistent with the
+#       "level" list in the Fields Config file
+#       (or be added to the "level" list in the Fields Config file).
+#
+#                FPA element     FPA level
+#                label           label
+################################################################################
+
+# gribfieldskip    ANY             1000mb
+# gribfieldskip    ANY             850mb
+# gribfieldskip    ANY             700mb
+# gribfieldskip    ANY             400mb
+# gribfieldskip    ANY             300mb
+# gribfieldskip    ANY             250mb
+# gribfieldskip    ANY             200mb
+# gribfieldskip    ANY             150mb
+# gribfieldskip    ANY             100mb
+
+# gribfieldskip    u_wind          ANY
+# gribfieldskip    v_wind          ANY
+# gribfieldskip    precip          ANY

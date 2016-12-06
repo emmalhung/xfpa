@@ -1,0 +1,35 @@
+# Command file to set up FPA windows environment.
+
+# NOTE: This is not a script - it must be sourced.
+
+# Define the non-graphics environment first
+	. $FPA/bin/.fpaenvrc
+
+# See if we are running windows in some form or other
+if [ "$TERM" = "hpterm" -o "$TERM" = "xterm" ]
+then
+	windows=true
+elif [ "${VUE:-'false'}" = "true" ]
+then
+	windows=true
+else
+	windows=false
+fi
+
+# Try to figure out which display is being used
+# (Required for multi-head systems)
+display=${DISPLAY:-''}
+if [ "$display" = "" -a "$windows" = "true" ]
+then
+	display=`who -R am i | cut -f2 -d'(' | cut -f1 -d')'`
+	screen=`echo $display: | cut -f2 -d':'`
+	if [ "$screen" = "" ]
+	then
+		display=$display:0.0
+	fi
+fi
+
+# Define variables required for finding and running the real executables
+export DISPLAY;          DISPLAY=${DISPLAY:-$display}
+export XAPPLRESDIR;      XAPPLRESDIR=$FPA/app-defaults/
+export XENVIRONMENT;     XENVIRONMENT=$FPA_RESOURCE

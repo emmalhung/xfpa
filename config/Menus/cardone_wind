@@ -1,0 +1,37 @@
+#     Wind Entry Menu Definition File
+#
+# This file defines the format for the information required by the
+# wind entry menus (including the background wind entry menu).
+# It is rather simple for now, but is expected to increase in
+# complexity with time as system capabilities grow.
+#
+# The format of the entries is:
+#
+#    [header1 key]
+#        data line 1
+#        data line 2
+#        ...
+#    [header1 key]
+#        data line 1
+#        ...
+#
+# At the moment there is just one header key defined and this is
+# "models" followed by the recognized model names as specified in
+# the config files.
+#
+# Example:
+#
+#    [models]
+#        Vg_Msl
+#        Vr_Msl
+#        Vc_Msl
+#        Vx_Msl
+#
+
+[models]
+    Vg_Msl
+    Vr_Msl
+    Vc_Msl
+    Vx_Msl
+	Vg_850
+	Cardone_Sfc

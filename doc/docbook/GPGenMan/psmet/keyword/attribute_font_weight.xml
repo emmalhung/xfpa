@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>attribute_font_weight</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Text display
+</para><para>One of: 
+<userinput>none</userinput> <userinput>thin</userinput> <userinput>ultralight</userinput>
+<userinput>light</userinput> <userinput>normal</userinput> <userinput>medium</userinput>
+<userinput>demibold</userinput> <userinput>bold</userinput> <userinput>ultrabold</userinput>
+<userinput>black</userinput>
+</para><para>
+(default is <userinput>font_weight</userinput> set above)</para></entry></row>

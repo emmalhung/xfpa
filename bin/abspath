@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Determine if a given filename is an absolute path or not (for the purpose
+# of deciding whether to prefix a standard directory.
+
+if [ "$1" = "" ]
+then
+	echo "Usage: abspath [-v] <file>"
+	exit 2
+fi
+
+# Turn on/off verbose mode.
+verbose=
+if [ "$1" = "-v" ]
+then
+	verbose=ON
+	shift
+fi
+
+# If the file uses a path relative to "/", "." or ".." then call it absolute.
+if [ "$1" = "." -o "$1" = ".." \
+	-o `echo $1 | cut -c-1` = "/" \
+	-o `echo $1 | cut -c-2` = "./" \
+	-o `echo $1 | cut -c-3` = "../" ]
+then
+	if [ $verbose ]
+	then
+		echo "\"$1\" is absolute!"
+	fi
+	exit 0
+fi
+
+# Must be a relative path.
+if [ $verbose ]
+then
+	echo "\"$1\" is relative!"
+fi
+exit 1

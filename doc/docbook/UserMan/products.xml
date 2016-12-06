@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='generating_forecasts_and_other_products'> <title>	Generating Forecasts and Other Products</title>
+<para>
+The Products menu has been designed to generate output products in the form(s) your office requires.
+</para> <para>
+Note: Not all of these product generation options may be available, depending on your local office configuration.
+</para>
+<sect1 id='creating_graphics_products'> <title>Creating graphics products</title>
+<sect2 id='transferring_the_fpa_depiction_files'> <title>Transferring the &FPA; depiction files</title>
+<para>
+You can send some database information to other locations.
+</para> <para>
+<orderedlist>
+<title>To transfer the &FPA; <glossterm linkend='g_depiction'>depiction</glossterm>
+<indexterm><primary>depiction</primary></indexterm>
+files:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Products</guimenu><guimenuitem>Graphics...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/graphic-product.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+
+</para> <para>
+The <guilabel>Graphics Products</guilabel> dialog box appears.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>List Display</guilabel>, select <guilabel>Depiction Files</guilabel>.
+</para> <para>
+<figure pgwide='0' float='1'><title>Graphic Products - Depictions</title>
+<mediaobject><imageobject><imagedata fileref='png/graphic_products_depiction.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select any of the target locations listed.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Send</guibutton> to transfer a copy of your depiction database to the selected target location.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='creating_a_graphic'> <title>Creating a graphic</title>
+<para>
+<indexterm><primary>PSMet</primary></indexterm>
+<indexterm><primary>SVGMet</primary></indexterm>
+Some information can be displayed graphically through the
+<glossterm linkend='g_psmet'>PSMet</glossterm> or
+<glossterm linkend='g_svgmet'>SVGMet</glossterm> system.
+</para> <para>
+<orderedlist> <title>To create a graphic:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Products</guimenu><guimenuitem>Graphics...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/graphic-product.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Graphics Products</guilabel> dialog box appears.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>List Display</guilabel>, select <guilabel>PSMet</guilabel> or <guilabel>SVGMet</guilabel>.
+</para> <para>
+<figure pgwide='0' float='1'><title>Graphic Products - PSMet</title>
+<mediaobject><imageobject><imagedata fileref='png/graphic_products_psmet.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select one of the listed products.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Generate</guibutton> to produce a graphical representation of the selected information.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='creating_a_tabular_product'> <title>Creating a tabular product</title>
+<para>
+<indexterm><primary>TexMet</primary></indexterm>
+Some information can be displayed in a tabular format using the
+<glossterm linkend='g_texmet'>TexMet</glossterm> system.
+</para> <para>
+<orderedlist> <title>To create a tabular product:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Products</guimenu><guimenuitem>Graphics...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/graphic-product.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Graphics Products</guilabel> dialog box appears.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>List Display</guilabel>, select <guilabel>TexMet</guilabel>.
+</para>
+<para>
+<figure pgwide='0' float='1'><title>Graphic Products - TexMet</title>
+<mediaobject><imageobject><imagedata fileref='png/graphic_products_texmet.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select any of the listed products.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Generate</guibutton> to create a table displaying the selected information.
+</para> <para>
+Note: If you have the required text editor on your system you may be able to click <guibutton>Launch Editor</guibutton> to edit this table.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='displaying_products_status'> <title>Displaying products status</title>
+<para>
+<orderedlist>
+<title>To display the status of all available products:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Products</guimenu><guimenuitem>Status...</guimenuitem></menuchoice> or click the clock
+<inlinemediaobject><imageobject>
+<imagedata scale='50' fileref='png/graphic_products_status_clock.png'/> </imageobject></inlinemediaobject>
+icon in the upper right-hand corner of the screen.
+</para> <para>
+The <guilabel>Product Status</guilabel> dialog box appears listing all the products available.
+The status displays "No Previous Run", "Running" or the time at which the product was last generated.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='running_allied_models'> <title>Running Allied Models</title>
+<para>
+
+<indexterm><primary>allied model</primary></indexterm>
+The available models are determined by your System Administrator.
+This button is greyed out and not selectable if there are no models available to run.
+</para> <para>
+<orderedlist>
+<title>To run <glossterm linkend='g_allied_models'>Allied Models</glossterm>:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Products</guimenu><guimenuitem>Allied Models...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/allied-model.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Allied Model Run Select</guilabel> dialog box appears.
+(<xref linkend='allied_model_select'/>)
+</para> <para>
+<figure id='allied_model_select' pgwide='0' float='1'><title>Allied Model Run Select Dialog</title>
+<mediaobject><imageobject><imagedata fileref='png/allied_model_run_select.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the models to be run.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Run</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+</chapter>

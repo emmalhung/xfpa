@@ -1,0 +1,1324 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Naugatuck"
+	FPA_user_label "Naugatuck"
+ spot 41.494N -73.052E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Key Biscayne"
+	FPA_user_label "Key Biscayne"
+ spot 25.69N -80.165E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Miami Shores"
+	FPA_user_label "Miami Shores"
+ spot 25.865N -80.188E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "North Palm Beach"
+	FPA_user_label "North Palm Beach"
+ spot 26.818N -80.064E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Palm Springs"
+	FPA_user_label "Palm Springs"
+ spot 26.64N -80.095E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Pinecrest"
+	FPA_user_label "Pinecrest"
+ spot 25.662N -80.308E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Royal Palm Beach"
+	FPA_user_label "Royal Palm Beach"
+ spot 26.706N -80.227E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Wellington"
+	FPA_user_label "Wellington"
+ spot 26.655N -80.254E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Addison"
+	FPA_user_label "Addison"
+ spot 41.932N -88.002E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Algonquin"
+	FPA_user_label "Algonquin"
+ spot 42.163N -88.303E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Alsip"
+	FPA_user_label "Alsip"
+ spot 41.67N -87.732E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Arlington Heights"
+	FPA_user_label "Arlington Heights"
+ spot 42.095N -87.981E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Barrington"
+	FPA_user_label "Barrington"
+ spot 42.153N -88.132E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bartlett"
+	FPA_user_label "Bartlett"
+ spot 41.979N -88.196E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Beach Park"
+	FPA_user_label "Beach Park"
+ spot 42.424N -87.848E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bellwood"
+	FPA_user_label "Bellwood"
+ spot 41.883N -87.876E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bensenville"
+	FPA_user_label "Bensenville"
+ spot 41.958N -87.946E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bloomingdale"
+	FPA_user_label "Bloomingdale"
+ spot 41.95N -88.083E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bolingbrook"
+	FPA_user_label "Bolingbrook"
+ spot 41.699N -88.089E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bourbonnais"
+	FPA_user_label "Bourbonnais"
+ spot 41.165N -87.878E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bradley"
+	FPA_user_label "Bradley"
+ spot 41.146N -87.859E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bridgeview"
+	FPA_user_label "Bridgeview"
+ spot 41.742N -87.807E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Brookfield"
+	FPA_user_label "Brookfield"
+ spot 41.823N -87.848E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Buffalo Grove"
+	FPA_user_label "Buffalo Grove"
+ spot 42.166N -87.963E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Burr Ridge"
+	FPA_user_label "Burr Ridge"
+ spot 41.753N -87.92E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Cahokia"
+	FPA_user_label "Cahokia"
+ spot 38.562N -90.173E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Carol Stream"
+	FPA_user_label "Carol Stream"
+ spot 41.922N -88.141E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Carpentersville"
+	FPA_user_label "Carpentersville"
+ spot 42.121N -88.275E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Cary"
+	FPA_user_label "Cary"
+ spot 42.212N -88.247E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Chicago Ridge"
+	FPA_user_label "Chicago Ridge"
+ spot 41.702N -87.779E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Crestwood"
+	FPA_user_label "Crestwood"
+ spot 41.645N -87.744E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Deerfield"
+	FPA_user_label "Deerfield"
+ spot 42.168N -87.851E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dolton"
+	FPA_user_label "Dolton"
+ spot 41.628N -87.599E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Downers Grove"
+	FPA_user_label "Downers Grove"
+ spot 41.791N -88.015E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Elk Grove Village"
+	FPA_user_label "Elk Grove Village"
+ spot 42.003N -87.996E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Elmwood Park"
+	FPA_user_label "Elmwood Park"
+ spot 41.922N -87.815E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Evergreen Park"
+	FPA_user_label "Evergreen Park"
+ spot 41.72N -87.703E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Forest Park"
+	FPA_user_label "Forest Park"
+ spot 41.873N -87.811E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Frankfort"
+	FPA_user_label "Frankfort"
+ spot 41.498N -87.85E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Franklin Park"
+	FPA_user_label "Franklin Park"
+ spot 41.934N -87.873E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Glen Carbon"
+	FPA_user_label "Glen Carbon"
+ spot 38.76N -89.969E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Glendale Heights"
+	FPA_user_label "Glendale Heights"
+ spot 41.92N -88.079E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Glen Ellyn"
+	FPA_user_label "Glen Ellyn"
+ spot 41.871N -88.063E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Glenview"
+	FPA_user_label "Glenview"
+ spot 42.079N -87.816E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Godfrey"
+	FPA_user_label "Godfrey"
+ spot 38.948N -90.203E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Grayslake"
+	FPA_user_label "Grayslake"
+ spot 42.348N -88.032E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Gurnee"
+	FPA_user_label "Gurnee"
+ spot 42.374N -87.934E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hanover Park"
+	FPA_user_label "Hanover Park"
+ spot 41.979N -88.146E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hazel Crest"
+	FPA_user_label "Hazel Crest"
+ spot 41.573N -87.686E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hinsdale"
+	FPA_user_label "Hinsdale"
+ spot 41.801N -87.928E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hoffman Estates"
+	FPA_user_label "Hoffman Estates"
+ spot 42.063N -88.119E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Homewood"
+	FPA_user_label "Homewood"
+ spot 41.558N -87.663E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Justice"
+	FPA_user_label "Justice"
+ spot 41.746N -87.834E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "La Grange"
+	FPA_user_label "La Grange"
+ spot 41.808N -87.873E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "La Grange Park"
+	FPA_user_label "La Grange Park"
+ spot 41.83N -87.869E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lake in the Hills"
+	FPA_user_label "Lake in the Hills"
+ spot 42.187N -88.347E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lake Zurich"
+	FPA_user_label "Lake Zurich"
+ spot 42.192N -88.088E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lansing"
+	FPA_user_label "Lansing"
+ spot 41.566N -87.546E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lemont"
+	FPA_user_label "Lemont"
+ spot 41.669N -87.989E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Libertyville"
+	FPA_user_label "Libertyville"
+ spot 42.284N -87.961E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lincolnwood"
+	FPA_user_label "Lincolnwood"
+ spot 42.005N -87.734E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lindenhurst"
+	FPA_user_label "Lindenhurst"
+ spot 42.419N -88.026E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lisle"
+	FPA_user_label "Lisle"
+ spot 41.792N -88.088E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lombard"
+	FPA_user_label "Lombard"
+ spot 41.876N -88.015E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lyons"
+	FPA_user_label "Lyons"
+ spot 41.813N -87.822E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Machesney Park"
+	FPA_user_label "Machesney Park"
+ spot 42.355N -89.041E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Matteson"
+	FPA_user_label "Matteson"
+ spot 41.51N -87.739E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Maywood"
+	FPA_user_label "Maywood"
+ spot 41.881N -87.843E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Melrose Park"
+	FPA_user_label "Melrose Park"
+ spot 41.9N -87.86E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Midlothian"
+	FPA_user_label "Midlothian"
+ spot 41.626N -87.721E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Mokena"
+	FPA_user_label "Mokena"
+ spot 41.534N -87.877E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Morton"
+	FPA_user_label "Morton"
+ spot 40.612N -89.463E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Morton Grove"
+	FPA_user_label "Morton Grove"
+ spot 42.041N -87.786E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Mount Prospect"
+	FPA_user_label "Mount Prospect"
+ spot 42.065N -87.936E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Mundelein"
+	FPA_user_label "Mundelein"
+ spot 42.265N -88.005E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "New Lenox"
+	FPA_user_label "New Lenox"
+ spot 41.508N -87.971E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Niles"
+	FPA_user_label "Niles"
+ spot 42.032N -87.817E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Norridge"
+	FPA_user_label "Norridge"
+ spot 41.965N -87.824E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "North Aurora"
+	FPA_user_label "North Aurora"
+ spot 41.809N -88.329E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Northbrook"
+	FPA_user_label "Northbrook"
+ spot 42.129N -87.841E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Oak Lawn"
+	FPA_user_label "Oak Lawn"
+ spot 41.715N -87.753E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Oak Park"
+	FPA_user_label "Oak Park"
+ spot 41.886N -87.79E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Orland Park"
+	FPA_user_label "Orland Park"
+ spot 41.612N -87.854E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Oswego"
+	FPA_user_label "Oswego"
+ spot 41.691N -88.342E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Palatine"
+	FPA_user_label "Palatine"
+ spot 42.117N -88.041E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Park Forest"
+	FPA_user_label "Park Forest"
+ spot 41.484N -87.687E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Plainfield"
+	FPA_user_label "Plainfield"
+ spot 41.617N -88.203E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Rantoul"
+	FPA_user_label "Rantoul"
+ spot 40.305N -88.152E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Richton Park"
+	FPA_user_label "Richton Park"
+ spot 41.482N -87.725E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Riverdale"
+	FPA_user_label "Riverdale"
+ spot 41.641N -87.631E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "River Forest"
+	FPA_user_label "River Forest"
+ spot 41.893N -87.817E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "River Grove"
+	FPA_user_label "River Grove"
+ spot 41.926N -87.84E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Romeoville"
+	FPA_user_label "Romeoville"
+ spot 41.64N -88.103E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Roselle"
+	FPA_user_label "Roselle"
+ spot 41.981N -88.085E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Round Lake Beach"
+	FPA_user_label "Round Lake Beach"
+ spot 42.377N -88.084E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Sauk Village"
+	FPA_user_label "Sauk Village"
+ spot 41.489N -87.566E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Schaumburg"
+	FPA_user_label "Schaumburg"
+ spot 42.03N -88.087E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Schiller Park"
+	FPA_user_label "Schiller Park"
+ spot 41.956N -87.87E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Skokie"
+	FPA_user_label "Skokie"
+ spot 42.037N -87.74E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "South Elgin"
+	FPA_user_label "South Elgin"
+ spot 41.992N -88.308E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "South Holland"
+	FPA_user_label "South Holland"
+ spot 41.597N -87.599E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Streamwood"
+	FPA_user_label "Streamwood"
+ spot 42.021N -88.173E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Summit"
+	FPA_user_label "Summit"
+ spot 41.789N -87.814E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Swansea"
+	FPA_user_label "Swansea"
+ spot 38.542N -89.987E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Tinley Park"
+	FPA_user_label "Tinley Park"
+ spot 41.574N -87.804E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Vernon Hills"
+	FPA_user_label "Vernon Hills"
+ spot 42.231N -87.969E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Villa Park"
+	FPA_user_label "Villa Park"
+ spot 41.889N -87.978E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Westchester"
+	FPA_user_label "Westchester"
+ spot 41.854N -87.884E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Western Springs"
+	FPA_user_label "Western Springs"
+ spot 41.806N -87.901E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Westmont"
+	FPA_user_label "Westmont"
+ spot 41.794N -87.976E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Wheeling"
+	FPA_user_label "Wheeling"
+ spot 42.132N -87.93E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Wilmette"
+	FPA_user_label "Wilmette"
+ spot 42.077N -87.724E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Winnetka"
+	FPA_user_label "Winnetka"
+ spot 42.106N -87.738E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Woodridge"
+	FPA_user_label "Woodridge"
+ spot 41.745N -88.044E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Worth"
+	FPA_user_label "Worth"
+ spot 41.689N -87.793E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Beverly Hills"
+	FPA_user_label "Beverly Hills"
+ spot 42.525N -83.233E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Beachwood"
+	FPA_user_label "Beachwood"
+ spot 39.931N -74.196E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bellmawr"
+	FPA_user_label "Bellmawr"
+ spot 39.867N -75.092E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bergenfield"
+	FPA_user_label "Bergenfield"
+ spot 40.924N -73.999E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bound Brook"
+	FPA_user_label "Bound Brook"
+ spot 40.565N -74.54E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Carteret"
+	FPA_user_label "Carteret"
+ spot 40.583N -74.23E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Cliffside Park"
+	FPA_user_label "Cliffside Park"
+ spot 40.822N -73.989E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Collingswood"
+	FPA_user_label "Collingswood"
+ spot 39.916N -75.075E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dumont"
+	FPA_user_label "Dumont"
+ spot 40.945N -73.993E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Eatontown"
+	FPA_user_label "Eatontown"
+ spot 40.294N -74.057E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Elmwood Park"
+	FPA_user_label "Elmwood Park"
+ spot 40.906N -74.12E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fair Lawn"
+	FPA_user_label "Fair Lawn"
+ spot 40.934N -74.117E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fairview"
+	FPA_user_label "Fairview"
+ spot 40.817N -74.001E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fort Lee"
+	FPA_user_label "Fort Lee"
+ spot 40.85N -73.975E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Franklin Lakes"
+	FPA_user_label "Franklin Lakes"
+ spot 41.01N -74.208E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Freehold"
+	FPA_user_label "Freehold"
+ spot 40.26N -74.275E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Glassboro"
+	FPA_user_label "Glassboro"
+ spot 39.706N -75.117E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Glen Rock"
+	FPA_user_label "Glen Rock"
+ spot 40.961N -74.126E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Haddonfield"
+	FPA_user_label "Haddonfield"
+ spot 39.896N -75.036E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hasbrouck Heights"
+	FPA_user_label "Hasbrouck Heights"
+ spot 40.863N -74.075E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hawthorne"
+	FPA_user_label "Hawthorne"
+ spot 40.958N -74.156E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Highland Park"
+	FPA_user_label "Highland Park"
+ spot 40.5N -74.426E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hillsdale"
+	FPA_user_label "Hillsdale"
+ spot 41.007N -74.042E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hopatcong"
+	FPA_user_label "Hopatcong"
+ spot 40.939N -74.664E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Keansburg"
+	FPA_user_label "Keansburg"
+ spot 40.447N -74.131E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lincoln Park"
+	FPA_user_label "Lincoln Park"
+ spot 40.923N -74.294E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lindenwold"
+	FPA_user_label "Lindenwold"
+ spot 39.818N -74.991E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Little Ferry"
+	FPA_user_label "Little Ferry"
+ spot 40.849N -74.041E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lodi"
+	FPA_user_label "Lodi"
+ spot 40.878N -74.083E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Madison"
+	FPA_user_label "Madison"
+ spot 40.759N -74.416E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Manville"
+	FPA_user_label "Manville"
+ spot 40.539N -74.593E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Metuchen"
+	FPA_user_label "Metuchen"
+ spot 40.541N -74.361E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Middlesex"
+	FPA_user_label "Middlesex"
+ spot 40.575N -74.502E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "New Milford"
+	FPA_user_label "New Milford"
+ spot 40.936N -74.019E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "New Providence"
+	FPA_user_label "New Providence"
+ spot 40.7N -74.403E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "North Arlington"
+	FPA_user_label "North Arlington"
+ spot 40.791N -74.133E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "North Plainfield"
+	FPA_user_label "North Plainfield"
+ spot 40.623N -74.436E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Oakland"
+	FPA_user_label "Oakland"
+ spot 41.029N -74.237E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Palisades Park"
+	FPA_user_label "Palisades Park"
+ spot 40.846N -73.995E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Paramus"
+	FPA_user_label "Paramus"
+ spot 40.947N -74.07E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Pine Hill"
+	FPA_user_label "Pine Hill"
+ spot 39.785N -74.986E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Point Pleasant"
+	FPA_user_label "Point Pleasant"
+ spot 40.08N -74.07E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Pompton Lakes"
+	FPA_user_label "Pompton Lakes"
+ spot  41N -74.286E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Princeton"
+	FPA_user_label "Princeton"
+ spot 40.352N -74.657E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ramsey"
+	FPA_user_label "Ramsey"
+ spot 41.059N -74.142E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Red Bank"
+	FPA_user_label "Red Bank"
+ spot 40.347N -74.067E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ridgefield"
+	FPA_user_label "Ridgefield"
+ spot 40.833N -74.005E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ridgefield Park"
+	FPA_user_label "Ridgefield Park"
+ spot 40.857N -74.024E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ridgewood"
+	FPA_user_label "Ridgewood"
+ spot 40.984N -74.114E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ringwood"
+	FPA_user_label "Ringwood"
+ spot 41.096N -74.26E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "River Edge"
+	FPA_user_label "River Edge"
+ spot 40.928N -74.037E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Roselle"
+	FPA_user_label "Roselle"
+ spot 40.654N -74.261E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Roselle Park"
+	FPA_user_label "Roselle Park"
+ spot 40.665N -74.269E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Rutherford"
+	FPA_user_label "Rutherford"
+ spot 40.829N -74.111E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Sayreville"
+	FPA_user_label "Sayreville"
+ spot 40.466N -74.324E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Somerville"
+	FPA_user_label "Somerville"
+ spot 40.571N -74.605E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "South Plainfield"
+	FPA_user_label "South Plainfield"
+ spot 40.581N -74.414E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "South River"
+	FPA_user_label "South River"
+ spot 40.444N -74.382E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Tenafly"
+	FPA_user_label "Tenafly"
+ spot 40.922N -73.964E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Tinton Falls"
+	FPA_user_label "Tinton Falls"
+ spot 40.278N -74.09E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Wallington"
+	FPA_user_label "Wallington"
+ spot 40.853N -74.109E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Wanaque"
+	FPA_user_label "Wanaque"
+ spot 41.04N -74.289E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "West Paterson"
+	FPA_user_label "West Paterson"
+ spot 40.894N -74.199E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Westwood"
+	FPA_user_label "Westwood"
+ spot 40.989N -74.031E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Los Lunas"
+	FPA_user_label "Los Lunas"
+ spot 34.809N -106.74E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Babylon"
+	FPA_user_label "Babylon"
+ spot 40.695N -73.329E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Depew"
+	FPA_user_label "Depew"
+ spot 42.912N -78.702E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dobbs Ferry"
+	FPA_user_label "Dobbs Ferry"
+ spot 41.013N -73.866E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "East Rockaway"
+	FPA_user_label "East Rockaway"
+ spot 40.644N -73.667E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Endicott"
+	FPA_user_label "Endicott"
+ spot 42.103N -76.055E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Floral Park"
+	FPA_user_label "Floral Park"
+ spot 40.722N -73.703E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fredonia"
+	FPA_user_label "Fredonia"
+ spot 42.441N -79.334E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Freeport"
+	FPA_user_label "Freeport"
+ spot 40.654N -73.587E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Garden City"
+	FPA_user_label "Garden City"
+ spot 40.727N -73.65E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hamburg"
+	FPA_user_label "Hamburg"
+ spot 42.723N -78.834E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Harrison"
+	FPA_user_label "Harrison"
+ spot 41.007N -73.718E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Haverstraw"
+	FPA_user_label "Haverstraw"
+ spot 41.196N -73.967E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hempstead"
+	FPA_user_label "Hempstead"
+ spot 40.705N -73.617E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Johnson City"
+	FPA_user_label "Johnson City"
+ spot 42.117N -75.959E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kenmore"
+	FPA_user_label "Kenmore"
+ spot 42.965N -78.872E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kiryas Joel"
+	FPA_user_label "Kiryas Joel"
+ spot 41.34N -74.167E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lake Grove"
+	FPA_user_label "Lake Grove"
+ spot 40.856N -73.117E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lancaster"
+	FPA_user_label "Lancaster"
+ spot 42.9N -78.673E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lindenhurst"
+	FPA_user_label "Lindenhurst"
+ spot 40.685N -73.372E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lynbrook"
+	FPA_user_label "Lynbrook"
+ spot 40.658N -73.673E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Mamaroneck"
+	FPA_user_label "Mamaroneck"
+ spot 40.949N -73.734E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Massapequa Park"
+	FPA_user_label "Massapequa Park"
+ spot 40.685N -73.449E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Massena"
+	FPA_user_label "Massena"
+ spot 44.93N -74.891E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Mineola"
+	FPA_user_label "Mineola"
+ spot 40.747N -73.638E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ossining"
+	FPA_user_label "Ossining"
+ spot 41.165N -73.857E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Patchogue"
+	FPA_user_label "Patchogue"
+ spot 40.763N -73.018E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Port Chester"
+	FPA_user_label "Port Chester"
+ spot 41.005N -73.669E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Rockville Centre"
+	FPA_user_label "Rockville Centre"
+ spot 40.663N -73.637E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Scarsdale"
+	FPA_user_label "Scarsdale"
+ spot 40.992N -73.787E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Spring Valley"
+	FPA_user_label "Spring Valley"
+ spot 41.114N -74.048E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Suffern"
+	FPA_user_label "Suffern"
+ spot 41.112N -74.146E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Tarrytown"
+	FPA_user_label "Tarrytown"
+ spot 41.069N -73.86E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Valley Stream"
+	FPA_user_label "Valley Stream"
+ spot 40.665N -73.703E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Westbury"
+	FPA_user_label "Westbury"
+ spot 40.759N -73.588E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "West Haverstraw"
+	FPA_user_label "West Haverstraw"
+ spot 41.205N -73.991E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Clemmons"
+	FPA_user_label "Clemmons"
+ spot 36.025N -80.386E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Baldwin"
+	FPA_user_label "Baldwin"
+ spot 40.357N -79.969E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Berwick"
+	FPA_user_label "Berwick"
+ spot 41.057N -76.248E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bethel Park"
+	FPA_user_label "Bethel Park"
+ spot 40.327N -80.037E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Brentwood"
+	FPA_user_label "Brentwood"
+ spot 40.374N -79.976E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Carlisle"
+	FPA_user_label "Carlisle"
+ spot 40.203N -77.195E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Chambersburg"
+	FPA_user_label "Chambersburg"
+ spot 39.935N -77.656E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Columbia"
+	FPA_user_label "Columbia"
+ spot 40.033N -76.497E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Darby"
+	FPA_user_label "Darby"
+ spot 39.918N -75.258E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dunmore"
+	FPA_user_label "Dunmore"
+ spot 41.418N -75.624E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Elizabethtown"
+	FPA_user_label "Elizabethtown"
+ spot 40.153N -76.6E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Emmaus"
+	FPA_user_label "Emmaus"
+ spot 40.537N -75.496E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ephrata"
+	FPA_user_label "Ephrata"
+ spot 40.181N -76.182E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Franklin Park"
+	FPA_user_label "Franklin Park"
+ spot 40.59N -80.092E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Hanover"
+	FPA_user_label "Hanover"
+ spot 39.807N -76.985E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Indiana"
+	FPA_user_label "Indiana"
+ spot 40.621N -79.155E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Kingston"
+	FPA_user_label "Kingston"
+ spot 41.266N -75.889E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lansdale"
+	FPA_user_label "Lansdale"
+ spot 40.242N -75.284E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Lansdowne"
+	FPA_user_label "Lansdowne"
+ spot 39.941N -75.275E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Morrisville"
+	FPA_user_label "Morrisville"
+ spot 40.207N -74.78E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Munhall"
+	FPA_user_label "Munhall"
+ spot 40.391N -79.901E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Municipality of Monroeville"
+	FPA_user_label "Municipality of Monroeville"
+ spot 40.431N -79.765E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Municipality of Murrysville"
+	FPA_user_label "Municipality of Murrysville"
+ spot 40.435N -79.657E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Norristown"
+	FPA_user_label "Norristown"
+ spot 40.12N -75.342E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Phoenixville"
+	FPA_user_label "Phoenixville"
+ spot 40.131N -75.519E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Plum"
+	FPA_user_label "Plum"
+ spot 40.494N -79.754E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Pottstown"
+	FPA_user_label "Pottstown"
+ spot 40.25N -75.64E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "State College"
+	FPA_user_label "State College"
+ spot 40.791N -77.859E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "West Chester"
+	FPA_user_label "West Chester"
+ spot 39.959N -75.605E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "West Mifflin"
+	FPA_user_label "West Mifflin"
+ spot 40.368N -79.898E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Whitehall"
+	FPA_user_label "Whitehall"
+ spot 40.36N -79.986E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Wilkinsburg"
+	FPA_user_label "Wilkinsburg"
+ spot 40.444N -79.877E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Yeadon"
+	FPA_user_label "Yeadon"
+ spot 39.933N -75.252E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Allouez"
+	FPA_user_label "Allouez"
+ spot 44.474N -88.025E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Ashwaubenon"
+	FPA_user_label "Ashwaubenon"
+ spot 44.487N -88.083E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Brown Deer"
+	FPA_user_label "Brown Deer"
+ spot 43.173N -87.978E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Germantown"
+	FPA_user_label "Germantown"
+ spot 43.223N -88.12E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Grafton"
+	FPA_user_label "Grafton"
+ spot 43.318N -87.954E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Greendale"
+	FPA_user_label "Greendale"
+ spot 42.938N -87.997E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Howard"
+	FPA_user_label "Howard"
+ spot 44.563N -88.082E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Little Chute"
+	FPA_user_label "Little Chute"
+ spot 44.284N -88.314E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Menomonee Falls"
+	FPA_user_label "Menomonee Falls"
+ spot 43.151N -88.11E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Pleasant Prairie"
+	FPA_user_label "Pleasant Prairie"
+ spot 42.539N -87.87E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Plover"
+	FPA_user_label "Plover"
+ spot 44.466N -89.544E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Shorewood"
+	FPA_user_label "Shorewood"
+ spot 43.092N -87.886E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Weston"
+	FPA_user_label "Weston"
+ spot 44.904N -89.568E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Whitefish Bay"
+	FPA_user_label "Whitefish Bay"
+ spot 43.112N -87.901E location none
+
+* 
+* End
+

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_perspective_view'> <title>@perspective_view</title> <titleabbrev>@perspective_view</titleabbrev>
+<para>
+Display graphics on the current map with a tilted or stretched perspective.
+</para><para>
+Note that the map is tilted back from the top, as if hinged along the bottom edge.
+The <userinput>y_tilt_off</userinput> keyword can be used to adjust this tilting position up or down from the bottom edge.
+</para><para>
+Note that the "eye" is located at twice the map height in front of the centre of the
+map. The <userinput>x_eye</userinput> <userinput>y_eye</userinput> <userinput>z_eye</userinput> keywords can be used to adjust this position.
+</para><para>
+Note that only the positions of symbols or text are adjusted by perspective, 
+the <userinput>scale_to_perspective</userinput> keyword can be used to adjust the size of symbols or text to a size appropriate for the perspective position.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>show_perspective_view</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry>
+<entry colname='desc'><para>(default is <userinput>no</userinput>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>scale_to_perspective</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry>
+<entry colname='desc'><para>Adjust size of symbols or text on the map to match the appropriate perspective location?
+</para><para>(default is <userinput>no</userinput>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_title_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset of tilt position (in display units from bottom of map)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>title_angle</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Title angle for map (in decimal degrees back from vertical)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_eye</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset of "eye" location (in display units from centre of map)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_eye</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset of "eye" location (in display units from centre of map)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>z_eye</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Offset of "eye" location away from map (in display units from twice the map height in front of the centre of map)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_stretch</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Stretch map features horizontally (in percent)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_stretch</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Stretch map features vertically (in percent)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@perspective_view { 
+	show_perspective_view = yes; scale_to_perspective = yes;
+  y_tilt_offset = 4.25; tilt_angle = 60; x_stretch = 90; y_stretch = 110; }</programlisting>
+Display all features on the current map as if the map display were tilted backwards 60 degrees about
+a horizontal axis 4.25 "units" above the bottom of the map, with all features stretched horizontally by
+90% and vertically by 110%. All symbols and text on the map will be scaled to a size appropriate to
+the perspective view, that is, symbols and text towards the top of the map will be proportionately
+smaller, and those towards the bottom of the map will be proportionately larger than normal.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

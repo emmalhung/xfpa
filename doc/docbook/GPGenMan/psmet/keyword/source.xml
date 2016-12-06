@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>source</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>&FPA; source name for data directory for field to sample
+</para><para>(Note: the format for this keyword would be <userinput><replaceable>source</replaceable></userinput> if the data directory has no sub sources, or <userinput><replaceable>source</replaceable>:<replaceable>subsource</replaceable></userinput> if the data directory has sub sources)
+</para><para>(Default is current <userinput>source</userinput> from <link linkend='ps_set_source'>@set_source</link> directive)</para></entry></row>

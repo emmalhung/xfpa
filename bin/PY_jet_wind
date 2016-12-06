@@ -1,0 +1,61 @@
+#!/usr/bin/python
+
+### DO NOT EDIT
+###-->
+import sys
+import FPALib
+
+fileName = sys.argv[1]
+dict     = FPALib.get_dict(fileName)
+###<--
+
+### INSERT YOUR CODE HERE
+###-->
+# Compute wind label for jet wind if possible
+if ( not dict.has_key("jet_core_speed") ) or ( not dict.has_key(FPALib.FPA_line_direction)):
+	#print FPALib.NO_ATTRIBUTE % ('jet_core_speed')
+	#print FPALib.NO_ATTRIBUTE % (FPALib.FPA_line_direction)
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+# Get jet core speed ... which must be in knots
+spd = dict["jet_core_speed"]
+try:
+	dspd = float(spd)
+except ValueError:
+	#print FPALib.INVALID_ATTRIBUTE % ('jet_core_speed', spd)
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+# Get line direction at location
+# ... which must be in degrees true in a direction towards 
+dir = dict[FPALib.FPA_line_direction]
+try:
+	ddir = float(dir) - 180
+except ValueError:
+	#print FPALib.INVALID_ATTRIBUTE % (FPALib.FPA_line_direction, dir)
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+if ( ddir < 0.0 ):
+	ddir += 360.0
+	
+
+# Build the wind value string
+wv =  FPALib.WIND_VAL()
+wv.dir = ddir
+#wv.dunit = "degrees_true"
+wv.speed = dspd
+wv.gust  = 0.0
+wv.sunit = "knots"
+wval = wv.build_wind_value_string()
+
+# Set 'EVAL_jet_wind' value
+dict['jet_wind'] = wval
+###<--
+
+### ALL DONE! 
+###-->
+FPALib.print_dict(fileName, dict)
+sys.exit()
+###<--

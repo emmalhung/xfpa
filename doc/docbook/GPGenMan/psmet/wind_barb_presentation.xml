@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_wind_barb_presentation'> <title>@wind_barb_presentation</title> <titleabbrev>@wind_barb_presentation</titleabbrev>
+<para>
+Set the appearance of winds displayed as wind barbs.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>shaft_length</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Length of wind barb shaft (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>barb_length</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Length of 10 unit and 50 unit wind barbs (as fraction of <userinput>shaft_length</userinput>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>barb_width</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Width of base of 50 unit wind barb (as fraction of <userinput>shaft_length</userinput>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>barb_space</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Space between wind barbs (as fraction of <userinput>shaft_length</userinput>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>barb_angle</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Angle from wind shaft to wind barbs (in counter-clockwise decimal degrees)
+</para><para>
+(Note: clockwise in southern hemisphere)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_round</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Round speed to the closest multiple of this value.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_above</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Gust speed must be larger than wind speed by this amount to be displayed (in units of wind speed)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_size</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Gust speed height (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_distance</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Distance from wind shaft to gust speed (as fraction of <userinput>shaft_length</userinput>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_angle</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Angle from wind shaft to gust speed (in counter-clockwise decimal degrees)
+</para><para>(Note: clockwise in southern hemisphere)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Gust speed justification
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format for gust speed, applied to the value before displaying
+</para><para>(Note: use \ before all control characters)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_round</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Round gusts to the closest multiple of this value.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_max</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Maximum wind speed for "calm" conditions (in units of wind speed)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_symbol</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Name of the graphic symbol file to display for "calm" conditions
+</para><para>(Note that full path names are allowed. see <xref linkend='graphics_symbol_files'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Scale factor wrt original graphic (in percent)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>huge_min</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Minimum wind speed for "very large" winds (in units of wind speed)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>huge_symbol</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Name of the graphic symbol file to display for "very large" winds
+</para><para>(Note that full path names are allowed. See <xref linkend='graphics_symbol_files'/> for default file locations)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>huge_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Scale factor wrt original graphic (in percent)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@wind_barb_presentation
+{
+  shaft_length       = 0.40;
+  barb_length        = 0.50;
+  barb_width         = 0.25;
+  barb_space         = 0.20;
+  barb_angle         = 60;
+  gust_above         = 5;
+  gust_size          = 0.20;
+  gust_distance      = 0.50;
+  gust_angle         = 90;
+  gust_justification = centre;
+  gust_format        = G%.0f;
+  calm_max           = 5;
+  calm_symbol        = circle_mark;
+  calm_scale         = 50;
+  huge_min           = 100;
+  huge_symbol        = circle_mark;
+  huge_scale         = 100;
+}</programlisting>
+Display wind barbs with a shaft 0.40 "units" long, barbs 0.20 "units" long, 50 unit barbs 0.10 "units"
+wide at the base, and barbs spaced 0.08 "units" apart at an angle of 60 degrees to the wind shaft.
+Display wind gusts more than 5 units greater than wind speed with a G followed by a %.0f formatted
+value at a location 0.20 "units" and an angle of 90 degrees to the wind shaft. The formatted gust
+speed will be 0.20 "units" high and centre justified.
+Display "calm" winds (less than 5 units of wind speed) by a "circle_mark" 50% of its original size.
+Display "very large" winds (more than 100 units of wind speed) by a "circle_mark" at normal size.
+(Note that the default &PSMet; symbol would be <filename><envar>$FPA</envar>/setup/pdf/psmet/common/ps/circle_mark.ps</filename>,
+ and the default &SVGMet; symbol would be <filename><envar>$FPA</envar>/setup/pdf/svgmet/common/svg/circle_mark.svg</filename>.)
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>, and wind units are set by sampling/display directive.)
+</para></example>
+</para></sect2>

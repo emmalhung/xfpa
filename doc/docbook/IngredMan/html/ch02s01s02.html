@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.1.2. DESCRIPTION</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s01.html" title="2.1. GEAction" /><link rel="prev" href="ch02s01s01.html" title="2.1.1. SYNOPSIS" /><link rel="next" href="ch02s01s03.html" title="2.1.3. RETURN" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.1.2. DESCRIPTION</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s01s01.html">Prev</a> </td><th width="60%" align="center">2.1. GEAction</th><td width="20%" align="right"> <a accesskey="n" href="ch02s01s03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4104637"></a>2.1.2. DESCRIPTION</h3></div></div></div><p> 
+The <span xmlns="" class="replaceable">command</span> parameter consists of a string of key words. These are:
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>FONT ADD </code></strong> <span xmlns="" class="replaceable"> key  description</span></span></dt><dd><p>
+Add a font to the list of fonts that Ingred will recognize.
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr><td><span xmlns="" class="replaceable">key</span></td><td>The key name to use to identify the font in Ingred commands.</td></tr><tr><td><span xmlns="" class="replaceable">description</span></td><td>The font in standard X font descriptor format.</td></tr></tbody></table></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>LINK PALETTE </code></strong> <span xmlns="" class="replaceable"> chains  labels  guess</span></span></dt><dd><p>
+Set the link chain colour coding scheme (use '-' for the default colour).
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr><td><span xmlns="" class="replaceable">chains</span></td><td>Colour for link chains and nodes.</td></tr><tr><td><span xmlns="" class="replaceable">labels</span></td><td>Colour for labels.</td></tr><tr><td><span xmlns="" class="replaceable">guess</span></td><td>Colour of link node that is not attached to a feature.</td></tr></tbody></table></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>STATE DRAW_MODE CONT</code></strong> | <strong class="userinput"><code>PPS</code></strong> <span xmlns="" class="replaceable">smoothing</span></span></dt><dd><p>
+Specifies the way in which lines will be drawn by the input device. The options are: 
+</p><div class="orderedlist"><ol type="1"><li><p>
+Continuous (<strong class="userinput"><code>CONT</code></strong>) in which lines are drawn by pressing and holding down the first 
+mouse button, drawing the line, then releasing it when the line is to be terminated. The 
+smoothing parameter is not used. This is the default mode on start-up.
+</p></li><li><p>
+Point-to-point smoothed (<strong class="userinput"><code>PPS</code></strong>) in which lines are drawn as smoothed line segments by 
+clicking a point with the first mouse button, then moving to the next point and clicking 
+again. This process continues until terminated by clicking with the secon button. The 
+amount of smoothing is given by the smoothing parameter as a percentage (0 - 100).
+</p></li></ol></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>STATE LINK_MODE NORMAL</code></strong> | <strong class="userinput"><code>INTERMEDIATE</code></strong></span></dt><dd><p>
+Set the current linking mode.
+</p></dd><dt><span class="term"><strong class="userinput"><code>STATE MOVE_MODE FIELD</code></strong> | <strong class="userinput"><code>FIELD_AND_LABELS</code></strong></span></dt><dd><p>
+Sets what is to be moved when the move edit command is issued. For any given object in 
+the field either just the object itself or the object and any associated labels will be moved.
+</p></dd><dt><span class="term"><strong class="userinput"><code>STATE MERGE_MODE FIELD</code></strong> | <strong class="userinput"><code>FIELD_AND_LABELS</code></strong></span></dt><dd><p>
+
+Sets what is to be merged into a field when the merge edit command is issued. Either the 
+field by itself will be merged in or the field and its associated labels.
+</p></dd><dt><span class="term"><strong class="userinput"><code>STATE MODIFY_MODE CONT</code></strong> | <strong class="userinput"><code>PPS</code></strong> | <strong class="userinput"><code>PUCK</code></strong> [<span class="optional"><span xmlns="" class="replaceable">size</span></span>] <span xmlns="" class="replaceable">smoothing</span></span></dt><dd><p>
+Specifies the way in which lines will be modified when the editor is in modify mode for 
+both line and area edit. The options are:
+</p><div class="orderedlist"><ol type="1"><li><p>
+Continuous (<strong class="userinput"><code>CONT</code></strong>) in which lines are modified by pressing and holding down the first 
+mouse button close to the existing line, drawing the new line position, then releasing it 
+when the line is to be terminated. The <span xmlns="" class="replaceable">size</span> and <span xmlns="" class="replaceable">smoothing</span> parameters are not used.
+</p></li><li><p>
+Point-to-point smoothed (<strong class="userinput"><code>PPS</code></strong>) in which lines are drawn as smoothed line segments by 
+clicking a point with the first mouse button, then moving to the next point and clicking 
+again. This process continues until terminated by clicking with the secon button. Otherwise 
+the it is the same as option 1. The amount of smoothing is given by the <span xmlns="" class="replaceable">smoothing</span> parameter 
+as a percentage (0 - 100). The <span xmlns="" class="replaceable">size</span> parameter is not used.
+</p></li><li><p>
+<strong class="userinput"><code>PUCK</code></strong> modify. Lines are modified by being "pushed" by a puck shaped tool. The size 
+of the puck is specified as a percentage (1 - 100) given by the <span xmlns="" class="replaceable">size</span> parameter and the amount 
+of smoothing by the <span xmlns="" class="replaceable">smoothing</span> parameter as a percentage (0 - 100).
+</p></li></ol></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>STATE SMOOTHING_AMOUNT</code></strong> <span xmlns="" class="replaceable">amount</span></span></dt><dd><p>
+Specifies the amount of smoothing, in number of patches, to apply to a field when the edit 
+command SMOOTH is in effect. The <span xmlns="" class="replaceable">amount</span> must have a minimum of 1.0.
+</p></dd><dt><span class="term"><strong class="userinput"><code>STATE SPREAD</code></strong> <span xmlns="" class="replaceable">amount</span></span></dt><dd><p>
+Specifies the radius of influence of an edit on a continuous field. This is given as a percentage of the maximum radius of influence (<span xmlns="" class="replaceable">amount</span>) which is about one quarter of the visible 
+map area. The minimum radius of influence depends on the resolution of the underlying 
+grid. If a zoom operation is performed these rules are still in operation and the maximum 
+radius of influence is still about one quarter of the visible map area (what the user sees on 
+the screen). Note that if the zoom in is near the resolution of the grid then the maximum 
+and minimum radius of influence may be the same.
+</p></dd><dt><span class="term"><strong class="userinput"><code>STATE STACK_ORDER TOP</code></strong> | <strong class="userinput"><code>BOTTOM</code></strong></span></dt><dd><p>
+Specifies the stacking order of any new area drawn on a discrete field. If the order if given 
+as <strong class="userinput"><code>TOP</code></strong> then all new areas will be drawn on top of any existing areas. If the order is given 
+as <strong class="userinput"><code>BOTTOM</code></strong> then all new areas will be drawn underneath any existing areas.
+</p></dd><dt><span class="term"><strong class="userinput"><code>MAP BASE</code></strong> <span xmlns="" class="replaceable">map</span> <span xmlns="" class="replaceable">noverlays</span></span></dt><dd><p>
+Specifies the base <span xmlns="" class="replaceable">map</span> and the number of map overlays, <span xmlns="" class="replaceable">noverlays</span>, which are defined. Note 
+that this command must come before any <strong class="userinput"><code>MAP OVERLAY</code></strong> commands.
+</p></dd><dt><span class="term"><strong class="userinput"><code>MAP OVERLAY</code></strong> <span xmlns="" class="replaceable">overlay</span> <span xmlns="" class="replaceable">map</span> | <strong class="userinput"><code>OFF [<span class="optional">REREAD</span>]</code></strong></span></dt><dd><p>
+Display map overlay found in the file <span xmlns="" class="replaceable">map</span> in overlay number <span xmlns="" class="replaceable">overlay</span> or turn off overlay 
+number <span xmlns="" class="replaceable">overlay</span>. <span xmlns="" class="replaceable">overlay</span> must have a value between 1 and <span xmlns="" class="replaceable">noverlays</span> inclusive (see above). 
+The optional parameter <strong class="userinput"><code>REREAD</code></strong> will force Ingred to reread the overlay file and redisplay 
+the overlay. This is necessary if the overlay file changes.
+</p></dd><dt><span class="term"><strong class="userinput"><code>MAP PALETTE</code></strong> <span xmlns="" class="replaceable">land water coast border lat-lon forecast-area forecast-border</span></span></dt><dd><p>
+Change the colours of the map background (use "-" to leave a colour alone).
+</p></dd><dt><span class="term"><strong class="userinput"><code>MODE NORMAL</code></strong> | <strong class="userinput"><code>SUSPEND</code></strong></span></dt><dd><p>
+Change the mode of operation. By default Ingred starts up in <strong class="userinput"><code>START_UP</code></strong> mode. In this 
+mode all interactive commands are blocked until the mode is changed by this command. 
+The modes are:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr><td><strong class="userinput"><code>NORMAL</code></strong></td><td>Start full interactive mode.</td></tr><tr><td><strong class="userinput"><code>SUSPEND</code></strong></td><td>Clean up all ongoing processes and suspend all operations.</td></tr></tbody></table></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>DEFAULTS WINDS</code></strong> <span xmlns="" class="replaceable">windmin</span> <span xmlns="" class="replaceable">windmax</span> <span xmlns="" class="replaceable">units</span> </span></dt><dd><p>
+Sets the minimum and maximum wind speeds (in the given <span xmlns="" class="replaceable">units</span>)
+for display of winds in the interface.  Winds outside this range may be displayed as circles.
+</p></dd><dt><span class="term"><strong class="userinput"><code>DEFAULTS TIMELINK</code></strong> <span xmlns="" class="replaceable">units</span> <span xmlns="" class="replaceable">label</span> </span></dt><dd><p>
+Sets the <span xmlns="" class="replaceable">units</span> (and a label for the units) for display of motion at timelink nodes.
+</p></dd><dt><span class="term"><strong class="userinput"><code>RASTER_DUMP</code></strong> <span xmlns="" class="replaceable">format mode vtime</span> | <strong class="userinput"><code>ACTIVE</code></strong> <span xmlns="" class="replaceable">width height dfile</span> <strong class="userinput"><code>PAD</code></strong> | <strong class="userinput"><code>NOPAD</code></strong> [<span class="optional"><span xmlns="" class="replaceable">overlay</span></span>]</span></dt><dd><p>
+Print the given depiction to an output file.
+</p><p>
+</p><div class="itemizedlist"><ul type="disc"><li><p>
+<span xmlns="" class="replaceable">format</span> sets the image encoding scheme and must be one of
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr><td><strong class="userinput"><code>gif</code></strong></td><td>Graphical Interchange Format</td></tr><tr><td><strong class="userinput"><code>xgl</code></strong></td><td>Native graphics library format</td></tr><tr><td><strong class="userinput"><code>xwd</code></strong></td><td>X windows dump format</td></tr></tbody></table></div><p>
+</p></li><li><p>
+<span xmlns="" class="replaceable">mode</span> determines the type of image required and must be one of
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr><td><strong class="userinput"><code>bw</code></strong></td><td>Depiction is converted to black and white</td></tr><tr><td><strong class="userinput"><code>greyscale</code></strong></td><td>Depiction is converted greyscale</td></tr><tr><td><strong class="userinput"><code>colour</code></strong></td><td>Depiction output in origional colours</td></tr></tbody></table></div><p>
+</p></li><li><p>
+<span xmlns="" class="replaceable">vtime</span> is the valid time of the depiction wanted. This must be either 
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr><td><span xmlns="" class="replaceable">vtime</span></td><td>the valid time of the depiction or</td></tr><tr><td><strong class="userinput"><code>ACTIVE</code></strong></td><td>whatever is displaying on the screen will be output.</td></tr></tbody></table></div><p>
+</p></li><li><p>
+<span xmlns="" class="replaceable">width</span> and <span xmlns="" class="replaceable">height</span> of the image are given in pixels.
+</p></li><li><p>
+<span xmlns="" class="replaceable">dfile</span> is the name of the output file
+</p></li><li><p>
+<strong class="userinput"><code>PAD</code></strong> | <strong class="userinput"><code>NOPAD</code></strong> Normally Ingred will create an output image with the same aspect ratio as 
+the requested depiction and maximize the image size based on the given <span xmlns="" class="replaceable">width</span> and 
+<span xmlns="" class="replaceable">height</span> (<strong class="userinput"><code>NOPAD</code></strong>). If <strong class="userinput"><code>PAD</code></strong> is specified the output image will be exactly <span xmlns="" class="replaceable">width</span> x 
+</p></li><li><p>
+<span xmlns="" class="replaceable">height</span> with padding added to the depiction image if the aspect ratio differs from 
+that of the depiction.
+</p></li><li><p>
+<span xmlns="" class="replaceable">overlay</span> (optional parameter) specifies the full path-name of a meta-file which will be overlaid on the output image. This can be used to provide labels for graphical output.
+</p></li></ul></div><p>
+</p></dd><dt></dt><dd></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>REDISPLAY</code></strong></span></dt><dd><p>
+This command forces Ingred to redisplay its graphics. This command is most useful at the 
+end of the mainline after all of the initialization has been done. If the user has resized the 
+window during the initialization procedure, Ingred will not receive the proper resize event 
+and the display may not appear correctly forcing the user to resize the window again to get 
+the correct appearance. Using this command just before entering the main loop will avoid 
+this problem.
+</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s01s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s01s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.1.1. SYNOPSIS </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.1.3. RETURN</td></tr></table></div></body></html>

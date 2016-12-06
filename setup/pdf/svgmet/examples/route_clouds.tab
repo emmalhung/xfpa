@@ -1,0 +1,17 @@
+Look-up      | Symbol file | Text String | Presentation
+*default*    : none        :             : 
+SCT          : sct         : SCT         : 
+BKN          : bkn         : BKN         : 
+OVC          : ovc         : OVC         : 
+SCT OCNL BKN : sct         : SCT         : 
+SCT VRBL BKN : bkn         : BKN         : 
+SCT OCNL OVC : sct         : SCT         : 
+SCT VRBL OVC : ovc         : OVC         : 
+BKN OCNL SCT : bkn         : BKN         : 
+BKN VRBL SCT : bkn         : BKN         : 
+BKN OCNL OVC : bkn         : BKN         : 
+BKN VRBL OVC : ovc         : OVC         : 
+OVC OCNL SCT : ovc         : OVC         : 
+OVC VRBL SCT : ovc         : OVC         : 
+OVC OCNL BKN : ovc         : OVC         : 
+OVC VRBL BKN : ovc         : OVC         : 

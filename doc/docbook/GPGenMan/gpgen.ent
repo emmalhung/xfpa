@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!ENTITY version '8'>
+<!ENTITY FPA '<acronym>FPA</acronym>'>
+<!ENTITY PSMet '<application>PSMet</application>'>
+<!ENTITY SVGMet '<application>SVGMet</application>'>
+<!ENTITY TexMet '<application>TexMet</application>'>
+<!ENTITY cform '<replaceable>&lt;cform&gt;</replaceable>'>
+<!ENTITY tadj '<replaceable>&lt;tadj&gt;</replaceable>'>
+<!ENTITY colwidth "<colspec colwidth='1*'/><colspec colwidth='4*'/>">
+<!ENTITY colwidth2 "<colspec colwidth='1*'/><colspec colwidth='3*'/>">
+<!ENTITY extraline "<para>&#160;</para>">
+<!ENTITY dircols "
+<colspec  colname='key'       align='right'  colwidth='5*'/> 
+<colspec  colname='type'      align='center' colwidth='1*'/>
+<colspec  colname='desc'      align='left'   colwidth='7*'/>
+<spanspec spanname='tbltitle' align='left'   namest='key' nameend='desc'/>
+<spanspec spanname='tblnote'  align='left'   namest='key' nameend='desc'/>
+">
+<!ENTITY keyhead "
+<thead> <row valign='top'>
+<entry colname='key'><para>KEYWORD</para></entry>
+<entry colname='type'><para>TYPE</para></entry>
+<entry colname='desc'><para>DESCRIPTION</para></entry>
+</row></thead>">
+<!ENTITY pkeyhead "
+<thead> <row valign='top'>
+<entry colname='key'><para>PRESENTATION KEYWORD</para></entry>
+<entry colname='type'><para>TYPE</para></entry>
+<entry colname='desc'><para>DESCRIPTION</para></entry>
+</row></thead>">
+<!ENTITY valuehead "
+<thead> <row valign='top'>
+<entry colname='key'><para>VALUE</para></entry>
+<entry colname='desc'><para>DESCRIPTION</para></entry>
+</row></thead>">
+

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.9. FPA Create Contour (Creating Discrete Areas From Contours)</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ape.html" title="Appendix E. Adding New Allied Models" /><link rel="prev" href="apes08.html" title="E.8. FPA Create Area (Creating Discrete Areas From Objects)" /><link rel="next" href="apf.html" title="Appendix F.  Predefined GUI Selection Lists " /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">E.9. FPA Create Contour (Creating Discrete Areas From Contours)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apes08.html">Prev</a> </td><th width="60%" align="center">Appendix E. Adding New Allied Models</th><td width="20%" align="right"> <a accesskey="n" href="apf.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2047552"></a>E.9. FPA Create Contour (Creating Discrete Areas From Contours)</h2></div></div></div><p>
+<a id="id2047558" class="indexterm"></a>
+The <span class="acronym">FPA</span> <span class="application">Create Contour</span> model is an internal Allied Model designed to allow users to generate Discrete type fields from the contours of Continuous type fields.
+The <span class="acronym">FPA</span> <span class="application">Create Contour</span> model accomplishes this by using minimum and maximum contour values to create the boundary of a discrete object.
+The user can access the <span class="acronym">FPA</span> <span class="application">Create Contour</span> model without the need to develop special code, by simply adding lines in the Local Setup file and the Local Configuration file.
+</p><div class="itemizedlist"><ul type="disc"><li><p>Edit the Local Setup file and add a line to the "[allied.model]" section of the 'interface' block as in: </p><pre class="programlisting">NewFPACreateContour</pre></li><li><p>Edit the Local Configuration file and add another 'Sources' block, as in:</p></li></ul></div><p>
+</p><pre class="programlisting">
+Sources
+  {
+  NewFpaCreateContour
+    {
+    label             = "<span xmlns="" class="replaceable">New FPA Create Contour</span>"
+    short_label       = "<span xmlns="" class="replaceable">New FpaCont</span>"
+    source_type       = Allied
+    directory_tag     = AModels.Data
+    directory_path    = FpaCreateCont
+    directory_layers  = 1
+    subsources        = None
+    allied_model      =
+      {
+      time_matching   = True
+      source_info     = interp or depict
+      process         = fpacreate_cont &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; &lt;RTIME&gt; 
+      process         = fpacreate_cont &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; \
+	                     &lt;RTIME&gt; <span xmlns="" class="replaceable">smoothing  min_points</span> \
+                         <span xmlns="" class="replaceable">min_value  max_value  units</span> [<span class="optional"><span xmlns="" class="replaceable">( valid_times )</span></span>]
+      programs        = None
+      files           = None
+</pre><p>
+ </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The <span xmlns="" class="replaceable">smoothing</span> and <span xmlns="" class="replaceable">min_points</span> parameters are used by the <span class="acronym">FPA</span> <span class="application">Create Contour</span> model to control the amount of detail in the discrete areas being created.</p></div><p>
+ The <span xmlns="" class="replaceable">smoothing</span> parameter is used to control the detail in the discrete areas being created, with a larger values creating smoother discrete areas.  The default <span xmlns="" class="replaceable">smoothing</span> value is 500, and the minimum allowed is 10.
+ </p><p>
+ The <span xmlns="" class="replaceable">min_points</span> parameter sets the minimum number of points allowed, to prevent very small discrete areas (and holes) being created.  The default <span xmlns="" class="replaceable">min_points</span> value is 10.
+ </p><p>
+ The <span xmlns="" class="replaceable">min_value</span>, <span xmlns="" class="replaceable">max_value</span>, and <span xmlns="" class="replaceable">units</span> parameters set the range of contour values for creating the discrete areas.
+ A value of '-' for the <span xmlns="" class="replaceable">min_value</span> parameter will create discrete areas within regions below the <span xmlns="" class="replaceable">max_value</span>.
+ A value of '-' for the <span xmlns="" class="replaceable">max_value</span> parameter will create discrete areas within regions above the <span xmlns="" class="replaceable">min_value</span>.
+ </p><p>
+ The times for which the <span class="acronym">FPA</span> <span class="application">Create Contour</span> model is run are normally the times available in the directory identified by the 'source_info' declaration.  However, the <span xmlns="" class="replaceable">valid_times</span> parameter gives optional control for specifying one or more times to be used for extracting discrete areas.
+ The format for the times is given by one of the following:
+ </p><div class="itemizedlist"><ul type="disc"><li><p>xx - for hours from the 'zero' hour in the Depiction sequence, that is, the time at which the application is run (RTIME)</p></li><li><p>rr/hh - for the day (rr where 0 is today, 1 is tomorrow) and GMT hour of the day (hh)</p></li><li><p>rr/hhL - for the day (rr where 0 is today, 1 is tomorrow) and local hour of the day (hh)</p></li></ul></div><p>
+ The 'required_fields' section below is used to identify the continuous field containing the contours to be extracted.
+ The location of these data files will default to the 'source_info' declaration given at the start of the 'allied_model' section unless it is reset here.
+ </p><p>
+ The <span xmlns="" class="replaceable">required_field_alias</span> (which can be any name) will be used in the <span class="acronym">FPA</span> <span class="application">Create Contour</span> model code to identify all required data.
+ </p><p>
+Note that the <span xmlns="" class="replaceable">element</span>, <span xmlns="" class="replaceable">level</span> and <span xmlns="" class="replaceable">source</span> names in the 'field_info' declarations, must be declared in the 'Elements' or 'Levels' or 'Sources' blocks of a Configuration file!
+The user will have to include declarations in the Local Configuration file for any <span xmlns="" class="replaceable">element</span>, <span xmlns="" class="replaceable">level</span> or <span xmlns="" class="replaceable">source</span> data which is required by a new <span class="acronym">FPA</span> <span class="application">Create Contour</span> model but is not already declared.
+The user can refer to <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>, as well as the examples given in the <code class="filename">Config.<span xmlns="" class="replaceable">name</span></code> files in <code class="filename"><code class="envar">$FPA</code>/config</code>.
+ </p><p>
+The <span xmlns="" class="replaceable">field_type</span> can be set to <strong class="userinput"><code>Scattered</code></strong> for field labels or left blank to use the field itself.
+</p><pre class="programlisting">
+	  required_fields = 
+        {
+        <span xmlns="" class="replaceable">required_field_alias</span>
+          {
+          field_info               = <span xmlns="" class="replaceable">element  level</span> [ <span xmlns="" class="replaceable">field_type</span> ]
+          sub_field_info           = <span xmlns="" class="replaceable">sub_field</span>
+          source_info              = <span xmlns="" class="replaceable">source</span>
+          }
+        } # End of required_fields Block
+      required_wind_crossrefs  = None
+      required_value_crossrefs = None
+</pre><p>
+
+The 'metafiles' section below is used to identify the output <span class="acronym">FPA</span> data produced by the new <span class="acronym">FPA</span> <span class="application">Create Contour</span> model.
+The location of the file will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data).
+The <span xmlns="" class="replaceable">metafile_alias</span> (which can be any name) will be used in the <span class="acronym">FPA</span> <span class="application">Create Contour</span> model code to identify the output data.
+Note that the <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span> names in the 'field_info' declarations must be declared in the 'Elements' or 'Levels' blocks of a Configuration file!
+The user will have to include declarations in the Local Configuration file for any <span xmlns="" class="replaceable">element</span> or <span xmlns="" class="replaceable">level</span> data which is required by a new <span class="acronym">FPA</span> <span class="application">Create Contour</span> model but is not already declared.
+The user can refer to <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>, as well as the examples given in the <code class="filename">Config.<span xmlns="" class="replaceable">name</span></code> files in <code class="filename"><code class="envar">$FPA</code>/config</code>.
+</p><pre class="programlisting">
+      metafiles      =
+        {
+        <span xmlns="" class="replaceable">metafile_alias</span>
+          {
+          # output field identified by element and level
+          field_info          = <span xmlns="" class="replaceable">element  level</span>
+          # list of default attributes for output field
+          default_attrib_info = <span xmlns="" class="replaceable">tag attrib_name attrib_units</span>
+          <span xmlns="" class="replaceable">...</span>
+          }
+        } # End of metafiles Block
+      } # End of allied_model Block
+    } # End of NewFPACreateArea Block
+  } # End of Sources Block
+</pre><p>
+ Each 'default_attrib_info' line specifies an <span xmlns="" class="replaceable">attrib_name</span> and a default <span xmlns="" class="replaceable">attrib_value</span> to include in each new discrete area.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apes08.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ape.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apf.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.8. FPA Create Area (Creating Discrete Areas From Objects) </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix F.  Predefined GUI Selection Lists </td></tr></table></div></body></html>

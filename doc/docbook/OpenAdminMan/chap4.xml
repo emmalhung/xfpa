@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<chapter id='master_directory'><title>Contents of the &FPA; Directories</title> <para>
+<indexterm><primary>master directory</primary></indexterm>
+This chapter provides a brief overview of the contents of the &FPA; master directory (<envar>$FPA</envar>),
+and the structure of the data directory required in the user account(s).
+</para>
+
+<sect1><title>FPA Master Directory</title>
+
+<sect2><title>app-defaults</title> <para>
+The <filename class='directory'>app-defaults</filename> directory contains files related to the behaviour of X-windows features used by &FPA; applications.
+It contains the following directories:
+<table frame='topbot'><title>app-defaults directory</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>name</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>Pixmaps</entry><entry>Contains pixel maps used for icons in the user interface</entry></row>
+<row valign='top'><entry><replaceable>lang</replaceable></entry><entry>Contains X resource files for the version of the &FPA; which corresponds to the language as set in the <envar>LANG</envar> environment variable</entry></row>
+</tbody></tgroup></table>
+</para> </sect2>
+
+<sect2><title>bin and sbin</title> <para>
+The <filename class='directory'>bin</filename> directory contains the executable code for &FPA; applications, plus a number of support scripts.
+The actual executable files are found in one or more subdirectories which reflect a particular hardware and operating system.
+The <filename class='directory'>bin</filename> directory contains a script which detects which sub-directory is to be used.
+</para> <para>
+The <filename class='directory'>sbin</filename> directory contains scripts to build or update &FPA; applications.
+</para>
+
+<table frame='topbot'><title>Main executables</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>name</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>fpacreate_area</entry><entry>Allied model to create an area outline from object attributes</entry></row>
+<row valign='top'><entry>fpacreate_cont</entry><entry>Allied model to create an area outline from field contours</entry></row>
+<row valign='top'><entry>fpagpgen</entry><entry>Graphical product generator (common program)</entry></row>
+<row valign='top'><entry>fpaingest</entry><entry>Ingest scheduler</entry></row>
+<row valign='top'><entry>fpawarp</entry><entry>Allied model to adjust grid data with point data</entry></row>
+<row valign='top'><entry>gribin2</entry><entry>&GRIB; data ingest (Version 2 and 1 &GRIB; files)</entry></row>
+<row valign='top'><entry>gribin</entry><entry>&GRIB; data ingest (Version 1 &GRIB; files)</entry></row>
+<row valign='top'><entry>psmet</entry><entry>Graphical product generator (PostScript output)</entry></row>
+<row valign='top'><entry>svgmet</entry><entry>Graphical product generator (SVG output)</entry></row>
+<row valign='top'><entry>texmet</entry><entry>Graphical product generator (ASCII text output)</entry></row>
+<row valign='top'><entry>xfpa</entry><entry>Depiction sequence editor</entry></row>
+</tbody></tgroup></table>
+
+<table frame='topbot'><title>Support executables</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>name</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>config_check</entry><entry>Quality control for config files</entry></row>
+<row valign='top'><entry>dates</entry><entry>Date conversion (month and day to julian day and vice versa)</entry></row>
+<row valign='top'><entry>fpacfg</entry><entry>List referenced config files</entry></row>
+<row valign='top'><entry>fpadir</entry><entry>List all standard directories</entry></row>
+<row valign='top'><entry>fpaenv</entry><entry>List all environment variables</entry></row>
+<row valign='top'><entry>fpashuffle</entry><entry>Move files into the &FPA; directory structure</entry></row>
+<row valign='top'><entry>getmap</entry><entry>Define a map projection</entry></row>
+<row valign='top'><entry>gribtest</entry><entry>&GRIB; test decoder</entry></row>
+<row valign='top'><entry>hostinfo</entry><entry>List host name, machine ID and IP address</entry></row>
+<row valign='top'><entry>llmeta</entry><entry>Reformat metafiles in lat-lon</entry></row>
+<row valign='top'><entry>metadiff</entry><entry>Find largest differences between two &FPA; metafiles</entry></row>
+</tbody></tgroup></table>
+
+<table frame='topbot'><title>Master scripts</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>name</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>fpa.exec</entry><entry>Master script to select and execute the appropriate binary executable for the current hardware and operating system revision</entry></row>
+<row valign='top'><entry>fpapm</entry><entry>Controls all external operations from <command>xfpa</command></entry></row>
+<row valign='top'><entry>d.fpa.exec</entry><entry>Backup of fpa.exec</entry></row>
+<row valign='top'><entry>d.fpapm</entry><entry>Backup of fpapm</entry></row>
+</tbody></tgroup></table>
+
+<table frame='topbot'><title>Support scripts</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>name</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>abspath</entry><entry>Test if path is absolute or relative to . or ..</entry></row>
+<row valign='top'><entry>findx</entry><entry>List binaries</entry></row>
+<row valign='top'><entry>fpabusy</entry><entry>Determine if a binary is being used</entry></row>
+<row valign='top'><entry>fpadb_minutes</entry><entry>Convert filenames in a directory to minutes format</entry></row>
+<row valign='top'><entry>fpagrep</entry><entry>Find a string in the &FPA; library code</entry></row>
+<row valign='top'><entry>fparev</entry><entry>Reports the version, revision and patch level of &FPA; binaries</entry></row>
+<row valign='top'><entry>get_config</entry><entry>Get path of given config file using setup references</entry></row>
+<row valign='top'><entry>get_directory</entry><entry>Get directory from setup file</entry></row>
+<row valign='top'><entry>get_path</entry><entry>Build path from directory in setup file plus filename</entry></row>
+<row valign='top'><entry>get_setup</entry><entry>Get the path of the given setup file</entry></row>
+<row valign='top'><entry>get_setup_parm</entry><entry>Get the value of the given parameter from the given setup file</entry></row>
+<row valign='top'><entry>pathname</entry><entry>Build path from directory plus filename</entry></row>
+<row valign='top'><entry>platform</entry><entry>Detect the current hardware and operating system revision and build the corresponding sub-directory name (e.g. pcLinuxvRedHat)</entry></row>
+<row valign='top'><entry>samehost</entry><entry>Determine whether two hosts area actually the same</entry></row>
+</tbody></tgroup></table>
+
+<table frame='topbot'><title>Installation/update scripts</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>name</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>copyuserlib</entry><entry>Install the user defined library source to a working directory</entry></row>
+<row valign='top'><entry>fpacleanall</entry><entry>Remove all compiled files from directories</entry></row>
+<row valign='top'><entry>fpacleandir</entry><entry>Remove all compiled files from a directory</entry></row>
+<row valign='top'><entry>fpamake</entry><entry>Main &FPA; make file</entry></row>
+<row valign='top'><entry>mkfpadb</entry><entry>Build/update an &FPA; database</entry></row>
+<row valign='top'><entry>mkfpaenv</entry><entry>Build/update &FPA; environment control file</entry></row>
+<row valign='top'><entry>mkfpasetup</entry><entry>Build setup file</entry></row>
+<row valign='top'><entry>pdf2fpdf</entry><entry>Change graphical product generator files with "pdf" extension to "fpdf" extension (Note that fpdf2pdf reverses the changes)</entry></row>
+<row valign='top'><entry>put_fonts</entry><entry>Transfer &FPA; fonts (in putfonts.tar) to a workstation (Note that truetypefonts_on(_off) can enable (or disable) &FPA; True Type fonts depending on the operating system used)</entry></row>
+</tbody></tgroup></table>
+</sect2>
+
+<sect2><title>config</title> <para>
+The <filename class='directory'>config</filename> directory contains configuration files that define the elements, guidance fields, and colour tables.
+config files define all the possible configurations your system might have.
+The config directory contains the following files and directories:
+<table frame='topbot'><title>config directory</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>name</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>Config</entry><entry>Template for user configuration files</entry></row>
+<row valign='top'><entry>Config.<replaceable>name</replaceable></entry><entry>Global configuration files defining all known information for &FPA; files and fields.</entry></row>
+<row valign='top'><entry>Gribs</entry><entry>Additional identifiers for the &GRIB; decoder (Note that this file is being replaced by the Ingest files listed below. It is included for backwards compatibility)</entry></row>
+<row valign='top'><entry>Image</entry><entry>Template for image configuration file</entry></row>
+<row valign='top'><entry>Ingest</entry><entry>Template for &GRIB;2 decoder configuration</entry></row>
+<row valign='top'><entry>Ingest.<replaceable>name</replaceable></entry><entry>Global &GRIB;2 configuration files link &GRIB;2 identifiers with valid &FPA; sources, elements and levels.</entry></row>
+<row valign='top'><entry>Memory</entry><entry>Directory containing files which define memory presets</entry></row>
+<row valign='top'><entry>Menus</entry><entry>Directory containing files which define attribute entry menus for fields and labels</entry></row>
+<row valign='top'><entry>Presentation</entry><entry>Template for user presentation files</entry></row>
+<row valign='top'><entry>Presentation.<replaceable>name</replaceable></entry><entry>Default presentation files</entry></row>
+<row valign='top'><entry>patterns</entry><entry>Directory containing line patterns</entry></row>
+<row valign='top'><entry>App_<replaceable>name</replaceable></entry><entry>Specific configuration directory for each application</entry></row>
+<row valign='top'><entry>newconfig</entry><entry>Contains new versions of configuration files, from updating the &FPA;</entry></row>
+</tbody></tgroup></table>
+</para> </sect2>
+
+<sect2><title>data</title> <para>
+The <filename class='directory'>data</filename> directory contains data which applies to all &FPA; implementations.
+It contains the following directories:
+<table frame='topbot'><title>data directory</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>name</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>common</entry><entry>Contains common map overlays, etc.</entry></row>
+<row valign='top'><entry><replaceable>map_dir</replaceable></entry><entry>Contains a template database directory tree for a particular weather centre, including predefined map backgrounds and forecast area definitions</entry></row>
+<row valign='top'><entry>remote</entry><entry>One suggested destination for downloaded &GRIB; data from &CMC; Could be a NFS mount point.</entry></row>
+</tbody></tgroup></table>
+</para> </sect2>
+
+<sect2><title>doc</title> <para>
+The <filename class='directory'>doc</filename> directory contains documentation in HTML and pdf file formats.
+</para> </sect2>
+
+<sect2><title>etc</title> <para>
+The <filename class='directory'>etc</filename> directory contains the automatic ingest control file as well as templates for a number of environment control files.
+</para> </sect2>
+
+<sect2><title>fonts</title> <para>
+The <filename class='directory'>fonts</filename> directory contains print fonts used internally by the &FPA;.
+</para> </sect2>
+
+<sect2><title>ingest</title> <para>
+The <filename class='directory'>ingest</filename> directory is set aside for keeping track of currently active automatic ingests.
+</para> </sect2>
+
+<sect2><title>license</title> <para>
+The <filename class='directory'>license</filename> directory contains the &FPA; Open Source codeword file.
+</para> </sect2>
+
+<sect2><title>revs</title> <para>
+The <filename class='directory'>revs</filename> directory contains the latest list of modules that have been installed.
+</para> </sect2>
+
+<sect2><title>setup</title> <para>
+The <filename class='directory'>setup</filename> files for various &FPA; databases may optionally be placed in the <filename class='directory'>setup</filename> directory.
+It also contains the following directories and files:
+<table frame='topbot'><title>setup directory</title>
+<tgroup cols='2'>&colwidth2;
+<thead><row><entry>name</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>Template</entry><entry>Template file for building setup files using the <application>mkfpadb</application> script</entry></row>
+<row valign='top'><entry>newsetup</entry><entry>Receives new setup information when updating the &FPA;</entry></row>
+<row valign='top'><entry>pdf/metafiles/template</entry><entry>Example of a "metafile" product,  for transferring &FPA; metafiles to another location</entry></row>
+<row valign='top'><entry>pdf/psmet/common</entry><entry>Directory for <application>psmet</application> predefined symbols</entry></row>
+<row valign='top'><entry>pdf/psmet/examples</entry><entry>Examples of product definition files for use with <application>psmet</application></entry></row>
+<row valign='top'><entry>pdf/svgmet/common</entry><entry>Directory for <application>svgmet</application> predefined symbols</entry></row>
+<row valign='top'><entry>pdf/svgmet/examples</entry><entry>Examples of product definition files for use with <application>svgmet</application></entry></row>
+<row valign='top'><entry>pdf/texmet/examples</entry><entry>Examples of product definition files for use with <application>texmet</application></entry></row>
+<row valign='top'><entry>preset_lists/TEMPLATES</entry><entry>Examples of files for advanced interface control.
+The files are self documented.
+(See <xref linkend='appendf'/>)</entry></row>
+</tbody></tgroup></table>
+</para> </sect2>
+
+<sect2><title>lib</title> <para>
+The <filename class='directory'>lib</filename> directory contains header files for &FPA; library code, and the shared libraries for running the &FPA;.
+</para> </sect2>
+
+<sect2><title>liblocal</title> <para>
+The <filename class='directory'>liblocal</filename> directory contains operational versions of the local User Defined Library (see <xref linkend='appendh'/>).
+</para> </sect2>
+
+<sect2><title>slib</title> <para>
+The <filename class='directory'>slib</filename> directory contains the internal libraries for running the &FPA;.
+</para> </sect2>
+
+<sect2><title>sapp</title> <para>
+The <filename class='directory'>sapp</filename> directory contains the libraries for building &FPA; applications.
+</para> </sect2>
+
+<sect2><title>templates</title> <para>
+The <filename class='directory'>templates</filename> directory contains example code for input/output of &FPA; data, and for developing User Defined Library code (see <xref linkend='appendh'/>).
+</para> </sect2>
+</sect1>
+
+<beginpage/>
+<sect1><title>&FPA; Data Directory</title> <para>
+<indexterm><primary>data directory</primary></indexterm>
+Created by the script <application>mkfpadb</application> (refer to <xref linkend='install_database'/>).
+</para>
+
+<sect2><title>Depict</title> <para>
+The <filename class='directory'>Depict</filename> directory contains depiction metafiles for the database.
+<note><para>Do not add, delete or modify files in this directory while the &FPA; is running!</para></note>
+</para> </sect2>
+
+<sect2><title>Backup</title> <para>
+The <filename class='directory'>Backup</filename> directory contains metafiles from the Depict directory that have been manually Saved.
+<note><para>Do not add, delete or modify files in this directory while the &FPA; is running!</para></note>
+</para> </sect2>
+
+<sect2><title>Interp</title> <para>
+The <filename class='directory'>Interp</filename> directory contains interpolated metafiles for the database.
+<note><para>Do not add, delete or modify files in this directory while the &FPA; is running!</para></note>
+</para> </sect2>
+
+<sect2><title>Guidance</title> <para>
+The <filename class='directory'>Guidance</filename> directory contains guidance metafiles for the database.
+</para> </sect2>
+
+<sect2><title>AModels.DATA</title> <para>
+The <filename class='directory'>AModels.DATA</filename> directory contains Allied Model metafiles for the database.
+</para> </sect2>
+
+<sect2><title>Maps</title> <para>
+The <filename class='directory'>Maps</filename> directory contains base maps and map overlays for the database and graphic products.
+</para> </sect2>
+</sect1>
+<sect1 id='file_naming_conventions'><title>File Naming Conventions</title> <para>
+There are a number of file types used to store data in an &FPA; database. File naming conventions for each of these file types are described below.
+</para>
+<sect2><title>Data files</title><para>
+&FPA; data file names may not be more than 128 characters long and may not contain spaces. They must conform to one of two formats:
+</para>
+<sect3><title><replaceable>eellll_YYYY:JJJ:HH<optional>:MM</optional></replaceable><optional>L</optional></title><para>
+The old format was constructed from a two letter element identifier [<replaceable>ee</replaceable>], followed by a level identifier [<replaceable>llll</replaceable>]; these were separated from the time stamp by an underscore '_'. The time stamp consisted of the four digit year [<replaceable>YYYY</replaceable>], three digit julian day [<replaceable>JJJ</replaceable>], two digit hour [<replaceable>HH</replaceable>], and an optional two digit minute [<replaceable>MM</replaceable>] separated by the ':' character. An optional 'L' character at the end indicated local time rather than GMT.
+</para><para>
+The element and level identifiers were defined in the Elements and Levels blocks of the configuration file, with the keyword 'file_id'. 
+See <xref linkend='elements_block'/> and <xref linkend='levels_block'/>.
+</para><para>
+As the number of configured elements increased the two letter element identifier was found to be too restricting. Thus, with the release of Version 7, a new naming convention was introduced.
+</para></sect3>
+<sect3><title><replaceable>eeee~llll~YYYY-JJJ-HH<optional>-MM</optional></replaceable><optional>L</optional></title><para>
+The new format uses a '~' character to separate an element identifier [<replaceable>eeee</replaceable>], a level identifier [<replaceable>llll</replaceable>] and a time stamp.
+As before, the time stamp consists of the four digit year [<replaceable>YYYY</replaceable>], three digit julian day [<replaceable>JJJ</replaceable>], two digit hour [<replaceable>HH</replaceable>], and optional two digit minute [<replaceable>MM</replaceable>] separated by the '-' character.
+An optional 'L' character at the end indicates local time rather than GMT. 
+</para><para>
+The element and level identifiers are defined in the Elements and Levels blocks of the configuration file with the keyword 'file_ident'. 
+They may not contain spaces or '~' characters. 
+The keyword 'file_id' was left alone to allow for backwards compatibility.
+See <xref linkend='elements_block'/> and <xref linkend='levels_block'/>.
+</para></sect3></sect2>
+<sect2><title>Map files</title><para>
+There are only two restrictions on map file names: They may not be more than 255 characters long; and they may not contain spaces. Map files should be located in the Maps directory defined in the setup file or they should be referred to using their full path name.
+</para></sect2>
+<sect2><title>Image files</title><para>
+&FPA; image files are limited to 120 characters and may not contain spaces. Image files are identified using "file name masking". The mask is defined in the Image block of the Image configuration file with the keyword 'fname_mask'. See <xref linkend='image_block'/>.
+</para></sect2></sect1>
+</chapter>

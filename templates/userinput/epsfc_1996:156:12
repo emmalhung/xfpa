@@ -1,0 +1,18 @@
+* MSRB Metafile Standard
+ rev 2.0
+* 
+ projection polar_stereographic north 60   
+ mapdef 51N 136W 111W 0 0 4700 3800 1000
+ units latlon
+* 
+* example_plot
+ field scattered example_plot surface
+ subfields 4
+   LABELS   label
+   WINDS    barb
+   INTEGERS int
+   FLOATS   float
+ plot ep1 64.3167 -96 "Baker Lake" 120 30 105 1013.5
+ plot ep1 74.72 -94.95 "Resolute" 150 20 215 1004.8
+* 
+* End

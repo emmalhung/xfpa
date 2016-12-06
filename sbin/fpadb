@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Simplified script for running the FPA programs in debug mode
+
+if [ "$#" -lt 1 ]
+then
+	echo " "
+	echo "To run: fpadb <prog>"
+	echo " "
+	echo "For command line dbx emulation mode run 'fpadb dbx <prog>'"
+	echo "For command line gdb enter 'fpadb gdb <prog>'"
+	echo " "
+	exit
+fi
+
+ARGS1=
+ARGS2=
+
+# Determine the debugger
+if [ "$1" = "mem" ]
+then
+	DB="valgrind"
+	shift
+	ARGS1=
+	ARGS2="$2 $3 $4 $5"
+elif [ "$1" = "dbx" ]
+then
+	DB="gdb --dbx"
+	shift
+	ARGS1="-args"
+	ARGS2="$2 $3 $4 $5"
+elif [ "$1" = "gdb" ]
+then
+	DB="gdb"
+	shift
+	ARGS1="-args"
+	ARGS2="$2 $3 $4 $5"
+else
+	DB="kdbg"
+	ARGS1="-a '$2 $3 $4 $5'"
+fi
+FPA_DEBUG_DUMP=on;
+export FPA_DEBUG_DUMP;
+echo "FPA_DEBUG_DUMP set to $FPA_DEBUG_DUMP"
+
+# Define the required environment
+case $PROG in
+	x*)		. .fpawinrc;;
+	*)		. .fpaenvrc;;
+esac
+
+# Now debug the program
+if [ "$2" = "" ]
+then
+	$DB $FPA/bin/$PLATFORM/$1
+else
+	$DB $ARGS1 $FPA/bin/$PLATFORM/$1 $ARGS2
+fi

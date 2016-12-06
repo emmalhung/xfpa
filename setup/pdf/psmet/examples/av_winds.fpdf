@@ -1,0 +1,36 @@
+! Set barb presentation for winds ...
+@wind_barb_presentation
+	{
+	shaft_length       = 0.40;
+	barb_length        = 0.50;
+	barb_width         = 0.25;
+	barb_space         = 0.20;
+	barb_angle         =   60;
+	gust_above         =    5;
+	gust_size          = 0.20;
+	gust_distance      = 0.50;
+	gust_angle         =   90;
+	gust_justification = Centre;
+	gust_format        = G%.0f;
+	calm_max           =    5;
+	calm_symbol        = circle_mark;
+	calm_scale         =   50;
+	huge_min           =  100;
+	huge_symbol        = circle_mark;
+	huge_scale         =  100;
+	}
+
+! Display labelled winds ....
+@label
+	{
+	element    = actual_wind;
+	level      = surface;
+	units      = knots;
+	attribute  = EVAL_wind;
+	format     = wind_barb;
+	line_width = 0.04;
+	outline    = X11 FireBrick;
+	fill       = X11 FireBrick;
+	x_off      = 0.00;
+	y_off      = 0.00;
+	}

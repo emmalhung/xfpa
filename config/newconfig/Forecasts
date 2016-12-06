@@ -1,0 +1,1388 @@
+# Forecasts configuration file
+
+revision 3.8
+
+forecast uk_71
+
+	class		marine
+	timezone	UTC
+	generator	ukfog
+
+	select_areas	True
+
+	areas	\
+	viking					"Viking" \
+	north_utsire				"North Utsire" \
+	south_utsire				"South Utsire" \
+	forties					"Forties" \
+	cromarty				"Cromarty" \
+	forth					"Forth" \
+	tyne					"Tyne" \
+	dogger					"Dogger" \
+	fisher					"Fisher" \
+	german_bight				"German Bight" \
+	humber					"Humber" \
+	thames					"Thames" \
+	dover					"Dover" \
+	wight					"Wight" \
+	portland				"Portland" \
+	plymouth				"Plymouth" \
+	biscay					"Biscay" \
+	trafalgar				"Trafalgar" \
+	finisterre				"Finisterre" \
+	sole					"Sole" \
+	lundy					"Lundy" \
+	fastnet					"Fastnet" \
+	irish_sea				"Irish Sea" \
+	shannon					"Shannon" \
+	rockall					"Rockall" \
+	malin					"Malin" \
+	hebrides				"Hebrides" \
+	bailey					"Bailey" \
+	fair_isle				"Fair Isle" \
+	faeroes					"Faeroes" \
+	southeast_iceland			"Southeast Iceland" 
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp22		# optional (default hx_22.e.0)
+	french			fp82		# optional (default hx_22.f.0)
+	warnings		FOG.hx_22
+
+	editor			bullet
+
+	summer_issue    0345 48 00
+	summer_issue    0830 43 24
+	summer_issue    1430 37 24
+	summer_issue    2000 31 24
+
+	winter_issue    0445 48 00
+	winter_issue    0930 43 24
+	winter_issue    1530 37 24
+	winter_issue    2100 31 24
+
+
+# Forecasts for MWC:
+
+forecast hx_22
+	class		marine
+	timezone	AST4ADT
+	select_areas	True
+	areas	\
+	fundy					"Fundy" \
+	grand_manan				"Grand Manan" \
+	lurcher					"Lurcher" \
+	browns_bank				"Browns Bank" \
+	georges_bank				"Georges Bank" \
+	southwestern_shore			"Southwestern Shore" \
+	lahave_bank				"Lahave Bank" \
+	west_scotian_slope			"West Scotian Slope" \
+	eastern_shore				"Eastern Shore" \
+	sable					"Sable" \
+	east_scotian_slope			"East Scotian Slope" \
+	fourchu					"Fourchu" \
+	banquereau				"Banquereau" \
+	laurentian_fan				"Laurentian Fan" \
+	cabot_strait				"Cabot Strait" \
+	northumberland_strait			"Northumberland Strait" \
+	gulf_magdalen				"Gulf Magdalen" \
+	chaleur_miscou				"Chaleur Miscou" \
+	anticosti				"Anticosti"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp22		# optional (default hx_22.e.0)
+	french			fp82		# optional (default hx_22.f.0)
+	warnings		FOG.hx_22
+
+	generator		qxfog
+	editor			bullet
+	ce.bkgnd		hx_22.map
+	ce.specs		hx_22.specs
+	ce.areas		hx_22.areas
+
+	summer_issue    0345 48 00
+	summer_issue    0830 43 24
+	summer_issue    1430 37 24
+	summer_issue    2000 31 24
+
+	winter_issue    0445 48 00
+	winter_issue    0930 43 24
+	winter_issue    1530 37 24
+	winter_issue    2100 31 24
+
+forecast hx_23
+	class		marine
+	timezone	AST4ADT
+	select_areas	True
+	areas	\
+	fundy					"Fundy" \
+	grand_manan				"Grand Manan" \
+	lurcher					"Lurcher" \
+	browns_bank				"Browns Bank" \
+	georges_bank				"Georges Bank" \
+	southwestern_shore			"Southwestern Shore" \
+	lahave_bank				"Lahave Bank" \
+	west_scotian_slope			"West Scotian Slope"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp23		# optional (default hx_23.e.0)
+	french			fp83		# optional (default hx_23.f.0)
+
+	generator		navtex
+	concepts		hx_22
+	editor			text_editor
+
+	summer_issue	0620 45 00
+	summer_issue	1020 41 24
+	summer_issue	1820 33 24
+	summer_issue	2220 29 24
+
+	winter_issue	0720 45 00
+	winter_issue	1120 41 24
+	winter_issue	1920 33 24
+	winter_issue	2320 29 24
+
+forecast hx_24
+	class		marine
+	timezone	AST4ADT
+	select_areas	True
+	areas	\
+	eastern_shore				"Eastern Shore" \
+	sable					"Sable" \
+	east_scotian_slope			"East Scotian Slope" \
+	fourchu					"Fourchu" \
+	banquereau				"Banquereau" \
+	laurentian_fan				"Laurentian Fan" \
+	cabot_strait				"Cabot Strait" \
+	northumberland_strait			"Northumberland Strait" \
+	gulf_magdalen				"Gulf Magdalen" \
+	chaleur_miscou				"Chaleur Miscou" \
+	anticosti				"Anticosti"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp24		# optional (default hx_24.e.0)
+	french			fp84		# optional (default hx_24.f.0)
+
+	generator		navtex
+	concepts		hx_22
+	editor			text_editor
+
+	summer_issue	0540 46 00
+	summer_issue	0940 42 24
+	summer_issue	1740 34 24
+	summer_issue	2140 30 24
+
+	winter_issue	0640 46 00
+	winter_issue	1040 42 24
+	winter_issue	1840 34 24
+	winter_issue	2240 30 24
+
+forecast hx_11
+	class		public
+	timezone	AST4ADT
+	select_areas	True
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp11		# optional
+	french			fp81		# optional
+	generator		ftxgen
+
+	summer_issue	0030 48 00
+	summer_issue	0800 43 24
+	summer_issue	1400 37 24
+	summer_issue	1900 31 24
+
+	winter_issue	0130 48 00
+	winter_issue	0900 43 24
+	winter_issue	1500 37 24
+	winter_issue	2000 31 24
+
+forecast hx_13
+	class		public
+	timezone	AST4ADT
+	select_areas	True
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp13		# optional
+	french			fp83		# optional
+	generator		ftxgen
+	summer_issue	0030 48 00
+	summer_issue	0800 43 24
+	summer_issue	1400 37 24
+	summer_issue	1900 31 24
+
+	winter_issue	0130 48 00
+	winter_issue	0900 43 24
+	winter_issue	1500 37 24
+	winter_issue	2000 31 24
+
+forecast hx_15
+	class		public
+	timezone	AST4ADT
+	select_areas	True
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp15		# optional
+	french			fp85		# optional
+	generator		ftxgen
+
+	summer_issue	0030 48 00
+	summer_issue	0800 43 24
+	summer_issue	1400 37 24
+	summer_issue	1900 31 24
+
+	winter_issue	0130 48 00
+	winter_issue	0900 43 24
+	winter_issue	1500 37 24
+	winter_issue	2000 31 24
+
+forecast hx_16
+	class		public
+	timezone	AST4ADT
+	select_areas	True
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp16		# optional
+	french			fp86		# optional
+	generator		ftxgen
+
+	summer_issue	0030 48 00
+	summer_issue	0800 43 24
+	summer_issue	1400 37 24
+	summer_issue	1900 31 24
+
+	winter_issue	0130 48 00
+	winter_issue	0900 43 24
+	winter_issue	1500 37 24
+	winter_issue	2000 31 24
+
+# Forecasts for NWC:
+
+forecast qx_20
+	class		marine
+	timezone	NST3:30NDT
+	select_areas	True
+	areas	\
+	belle_isle				"Belle Isle" \
+	northeast_gulf				"Northeast Gulf" \
+	gulf_port_au_port			"Gulf Port Au Port" \
+	southwest_coast				"Southwest Coast" \
+	south_coast				"South Coast" \
+	east_coast				"East Coast" \
+	northeast_coast				"Northeast Coast" \
+	belle_isle_bank				"Belle Isle Bank" \
+	funk_island_bank			"Funk Island Bank" \
+	northern_grand_banks			"Northern Grand Banks" \
+	southeastern_grand_banks		"Southeastern Grand Banks" \
+	southwestern_grand_banks		"Southwestern Grand Banks"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp20		# optional
+	french			fp80		# optional
+	warnings		FOG.qx_20
+
+	generator		qxfog
+	editor			bullet
+	ce.bkgnd		qx_20.map
+	ce.specs		qx_20.specs
+	ce.areas		qx_20.areas
+
+	summer_issue	0530 45 00
+	summer_issue	1230 38 00
+	summer_issue	1800 33 24
+	summer_issue	2230 28 24
+
+	winter_issue	0630 45 00
+	winter_issue	1330 38 00
+	winter_issue	1900 33 24
+	winter_issue	2330 28 24
+
+forecast qx_21
+	class		marine
+	timezone	NST3:30NDT
+	select_areas	True
+	areas	\
+	lake_melville				"Lake Melville" \
+	south_labrador_coast			"South Labrador Coast" \
+	mid_labrador_coast			"Mid Labrador Coast" \
+	north_labrador_coast			"North Labrador Coast" \
+	south_labrador_sea			"South Labrador Sea" \
+	northwest_labrador_sea			"Northwest Labrador Sea" \
+	east_labrador_sea			"East Labrador Sea"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp21		# optional
+	french			fp81		# optional
+	warnings		FOG.qx_21
+
+	generator		qxfog
+	editor			bullet
+	ce.bkgnd		qx_21.map
+	ce.specs		qx_21.specs
+	ce.areas		qx_21.areas
+
+	summer_issue	0000 27 24
+	summer_issue	0630 44 00
+	summer_issue	1200 39 00
+	summer_issue	1830 32 24
+
+	winter_issue	0100 27 24
+	winter_issue	0730 44 00
+	winter_issue	1300 39 00
+	winter_issue	1930 32 24
+
+forecast qx_24
+	class		marine
+	timezone	NST3:30NDT
+	select_areas	True
+	areas	\
+	southwest_coast				"Southwest Coast" \
+	south_coast				"South Coast" \
+	east_coast				"East Coast" \
+	northeast_coast				"Northeast Coast" \
+	belle_isle_bank				"Belle Isle Bank" \
+	funk_island_bank			"Funk Island Bank" \
+	northern_grand_banks			"Northern Grand Banks" \
+	southeastern_grand_banks		"Southeastern Grand Banks" \
+	southwestern_grand_banks		"Southwestern Grand Banks"
+
+
+	english			fp24		# optional
+	french			fp84		# optional
+
+	generator		navtex
+	concepts		qx_20
+	editor			text_editor
+
+	summer_issue	0520 45 00
+	summer_issue	0920 41 00
+	summer_issue	1720 33 24
+	summer_issue	2120 29 24
+
+	winter_issue	0620 45 00
+	winter_issue	1020 41 00
+	winter_issue	1820 33 24
+	winter_issue	2220 29 24
+
+forecast qx_25
+	class		marine
+	timezone	NST3:30NDT
+	select_areas	True
+	areas	\
+	lake_melville				"Lake Melville" \
+	south_labrador_coast			"South Labrador Coast" \
+	mid_labrador_coast			"Mid Labrador Coast" \
+	north_labrador_coast			"North Labrador Coast" \
+	south_labrador_sea			"South Labrador Sea" \
+	northwest_labrador_sea			"Northwest Labrador Sea" \
+	east_labrador_sea			"East Labrador Sea"
+
+
+	english			fp25		# optional
+	french			fp85		# optional
+
+	generator		navtex
+	concepts		qx_21
+	editor			text_editor
+
+	summer_issue	0650 44 00
+	summer_issue	1050 40 00
+	summer_issue	1850 32 24
+	summer_issue	2250 28 24
+
+	winter_issue	0750 44 00
+	winter_issue	1150 40 00
+	winter_issue	1950 32 24
+	winter_issue	2350 28 24
+
+forecast qx_26
+	class		marine
+	timezone	NST3:30NDT
+	select_areas	True
+	areas	\
+	belle_isle				"Belle Isle" \
+	northeast_gulf				"Northeast Gulf" \
+	gulf_port_au_port			"Gulf Port Au Port"
+
+
+	english			fp26		# optional
+	french			fp86		# optional
+
+	generator		navtex
+	concepts		qx_20
+	editor			text_editor
+
+	summer_issue	0320 47 00
+	summer_issue	0720 43 00
+	summer_issue	1520 35 24
+	summer_issue	1920 31 24
+
+	winter_issue	0420 47 00
+	winter_issue	0820 43 00
+	winter_issue	1620 35 24
+	winter_issue	2020 31 24
+
+forecast qx_11
+	class		public
+	timezone	NST3:30NDT
+	select_areas	True
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp11		# optional
+	french			fp81		# optional
+	generator		ftxgen
+
+	summer_issue	0130 48 00
+	summer_issue	0800 43 24
+	summer_issue	1340 37 24
+	summer_issue	1830 31 24
+
+	winter_issue	0200 48 00
+	winter_issue	0900 43 24
+	winter_issue	1430 37 24
+	winter_issue	1930 31 24
+
+forecast qx_13
+	class		public
+	timezone	NST3:30NDT
+	select_areas	True
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp11		# optional
+	french			fp81		# optional
+	generator		ftxgen
+
+	summer_issue	0900 43 24
+	summer_issue	1430 37 24
+	summer_issue	2030 31 24
+
+	winter_issue	1000 43 24
+	winter_issue	1530 37 24
+	winter_issue	2130 31 24
+
+#  CMQ (Montreal)
+
+forecast ul_80
+	class           marine
+	timezone        EST5EDT
+	select_areas	True
+	areas	\
+	cornwall,  	"Cornwall a Montreal" \
+	montreal, 	"Montreal a Trois-Rivieres" \
+	trois_rivieres, "Trois-Rivieres a Donnacona" \
+	donnacona,	"Donnacona a Ile-aux-Coudres" \
+	ile_aux_coudres, "Ile-aux-Coudres a Tadoussac" \
+	tadoussac, 	"Tadoussac a Baie-Comeau" \
+	baie_comeau,  	"Baie-Comeau a Pointe-des-Monts" \
+	pointe_des_monts, "Pointe-des-Monts a Sept-Iles" \
+	sept_iles, 	"Sept-Iles a Anticosti" \
+        nord_tadoussac, "Secteur Nord Tadoussac a Baie-Comeau" \
+        sud_tadoussac,  "Secteur Sud Tadoussac a Baie-Comeau" \
+	nord_baie_comeau, "Secteur Nord Baie-Comeau a Pointe-des-Monts" \
+	sud_baie_comeau, "Secteur Sud Baie-Comeau a Pointe-des-Monts" \
+	nord_pointe_des_monts, "Secteur Nord Pointe-des-Monts a Sept-Iles" \
+	sud_pointe_des_monts, "Secteur Sud Pointe-des-Monts a Sept-Iles" \
+	nord_sept_iles, 	"Secteur Nord Sept-Iles a Anticosti" \
+	sud_sept_iles, 	"Secteur Sud Sept-Iles a Anticosti"
+
+
+	required_fields		pressure msl \
+				temperature surface
+
+	french          fp80
+	warnings        FOG.ul_80
+
+	generator	egfog
+	editor		text_editor
+
+	summer_issue    2030 31 0
+	summer_issue    0700 43 24
+
+	winter_issue    2130 31 0
+	winter_issue    0800 43 24
+
+
+
+forecast ul_83
+	class           marine
+	timezone        EST5EDT
+	select_areas	True
+	areas	\
+	povungnituk				"Povungnituk" \
+        nord_povungnituk                        "Povungnituk secteur au nord de 60N" \
+        sud_povungnituk                         "Povungnituk secteur au sud de 60N" \
+	belcher					"Belcher" \
+        nord_belcher                            "Secteur au nord des iles Belcher" \
+        sud_belcher                             "Secteur au sud des iles Belcher" \
+	james_bay				"James Bay" \
+        nord_jmsba                              "Moitie Nord de la baie de James" \
+        sud_jmsba                               "Moitie Sud de la baie de James"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	french          fp83
+	warnings        FOG.ul_83
+
+	generator	egfog
+	editor		text_editor
+
+	summer_issue    2200 31 0
+	summer_issue    1000 43 24
+
+	winter_issue    2330 31 0
+	winter_issue    1100 43 24
+
+
+# Forecasts for ArWC:
+
+forecast eg_20
+	class           marine
+	timezone        MST7MDT
+	select_areas	True
+	areas	\
+	great_slave_lake			"Great Slave Lake" \
+	great_bear_lake				"Great Bear Lake" \
+	mackenzie_river_a			"Mackenzie River A" \
+	mackenzie_river_b			"Mackenzie River B" \
+	mackenzie_river_c			"Mackenzie River C" \
+	mackenzie_river_d			"Mackenzie River D" \
+	mackenzie_river_e			"Mackenzie River E" \
+	mackenzie_river_f			"Mackenzie River F" \
+	mackenzie_river_g			"Mackenzie River G" \
+	mackenzie_river_h			"Mackenzie River H"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp20
+	warnings        FOG.eg_20
+
+	generator		egfog
+	editor			bullet
+	ce.bkgnd        eg_20.map
+	ce.specs        eg_20.specs
+	ce.areas        eg_20.areas
+
+	summer_issue    2300 31 24
+	summer_issue    1100 43 24
+
+	winter_issue    0000 31 24
+	winter_issue    1200 43 24
+
+forecast eg_21
+	class           marine
+	timezone        MST7MDT
+	select_areas	True
+	areas	\
+	yukon_coast				"Yukon Coast" \
+	mackenzie				"Mackenzie" \
+	tuktoyaktuk				"Tuktoyaktuk" \
+	baillie					"Baillie" \
+	amundsen				"Amundsen" \
+	dolphin					"Dolphin" \
+	coronation				"Coronation" \
+	dease					"Dease" \
+	holman					"Holman" \
+	banks					"Banks" \
+	maud					"Maud" \
+	st_roch					"St Roch"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp21
+	warnings        FOG.eg_21
+
+	generator		egfog
+	editor			bullet
+	ce.bkgnd        eg_21.map
+	ce.specs        eg_21.specs
+	ce.areas        eg_21.areas
+
+	summer_issue    0100 29 24
+	summer_issue    1300 41 24
+
+	winter_issue    0200 29 24
+	winter_issue    1400 41 24
+
+forecast eg_22
+	class           marine
+	timezone        CST6CDT
+	select_areas	True
+	areas	\
+	west_baffin				"West Baffin" \
+	lancaster				"Lancaster" \
+	barrow					"Barrow" \
+	east_baffin				"East Baffin" \
+	clarence				"Clarence" \
+	kane					"Kane" \
+	robeson					"Robeson" \
+	admiralty				"Admiralty" \
+	regent					"Regent" \
+	boothia					"Boothia" \
+	committee				"Committee" \
+	peel					"Peel" \
+	larsen					"Larsen" \
+	mcclintock				"McClintock" \
+	rae					"Rae" \
+	melville				"Melville" \
+	prince_of_wales				"Prince of Wales" \
+	mcclure					"McClure" \
+	jones					"Jones" \
+	queens					"Queens" \
+	byam					"Byam" \
+	norwegian				"Norwegian" \
+	eureka					"Eureka"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp22
+	#french         fp74
+	warnings        FOG.eg_22
+
+	generator		egfog
+	editor			bullet
+	ce.bkgnd        eg_22.map
+	ce.specs        eg_22.specs
+	ce.areas        eg_22.areas
+
+	summer_issue    2130 32 24
+	summer_issue    0930 44 24
+
+	winter_issue    2230 32 24
+	winter_issue    0930 44 24
+
+forecast eg_23
+	class           marine
+	timezone        CST6CDT
+	select_areas	True
+	areas	\
+	churchill				"Churchill" \
+	arviat					"Arviat" \
+	rankin					"Rankin" \
+	baker					"Baker" \
+	coats					"Coats" \
+	central					"Central" \
+	roes_welcome			"Roes Welcome" \
+	york					"York" \
+	sc_hudson				"South Central Hudson" \
+	s_hudson				"South Hudson"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp23
+	#french         fp75
+	warnings        FOG.eg_23
+
+	generator		egfog
+	editor			bullet
+	ce.bkgnd        eg_23.map
+	ce.specs        eg_23.specs
+	ce.areas        eg_23.areas
+
+	summer_issue    0015 29 24
+	summer_issue    1215 41 24
+
+	winter_issue    0115 29 24
+	winter_issue    1315 41 24
+
+forecast eg_24
+	class           marine
+	timezone        EST5EDT
+	select_areas	True
+	areas	\
+	resolution				"Resolution" \
+	ungava					"Ungava" \
+	nottingham				"Nottingham" \
+	foxe_west				"Foxe West" \
+	foxe_east				"Foxe East" \
+	prince_charles				"Prince Charles" \
+	igloolik				"Igloolik"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp24
+	#french         fp76
+	warnings        FOG.eg_24
+
+	generator		egfog
+	editor			bullet
+	ce.bkgnd        eg_24.map
+	ce.specs        eg_24.specs
+	ce.areas        eg_24.areas
+
+	summer_issue    2130 31 24
+	summer_issue    0930 43 24
+
+	winter_issue    2230 31 24
+	winter_issue    0930 43 24
+
+forecast eg_25
+	class           marine
+	timezone        EST5EDT
+	select_areas	True
+	areas	\
+	frobisher_bay			"Frobisher Bay" \
+	east_brevoort			"East Brevoort" \
+	east_davis				"East Davis" \
+	east_clyde				"East Clyde" \
+	central_brevoort		"Central Brevoort" \
+	west_brevoort			"West Brevoort" \
+	west_davis				"West Davis" \
+	west_clyde				"West Clyde" \
+	cumberland				"Cumberland"
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp25
+	#french         fp77
+	warnings        FOG.eg_25
+
+	generator		egfog
+	editor			bullet
+	ce.bkgnd        eg_25.map
+	ce.specs        eg_25.specs
+	ce.areas        eg_25.areas
+
+	summer_issue    2100 31 24
+	summer_issue    0900 43 24
+
+	winter_issue    2200 31 24
+	winter_issue    0900 43 24
+
+forecast eg_cbc
+	class           table
+	timezone        EST5EDT
+	select_areas	True
+	areas	\
+	cyjf "Fort Liard" \
+	cyfs "Fort Simpson" \
+	cywy "Wrigley" \
+	cwid "Fort Providence" \
+	cyhy "Hay River" \
+	cysm "Fort Smith" \
+	czng "Lutselke" \
+	cyzf "Yellowknife" \
+	czfn "Fort Norman" \
+	cywj "Deline" \
+	cyvq "Norman Wells" \
+	cygh "Fort Good Hope" \
+	czfm "Fort McPherson" \
+	czrr "Arctic Red River" \
+	cykd "Aklavik" \
+	cyev "Inuvik" \
+	cyub "Tuktoyaktuk" \
+	cypc "Paulatuk" \
+	cysy "Sachs Harbour" \
+	cyhi "Holman Island" \
+	cyco "Coppermine" \
+	cycb "Cambridge Bay" \
+	cyhk "Gjoa Haven" \
+	cyyh "Taloyoak" \
+	cybb "Pelly Bay" \
+	cyoc "Old Crow" \
+	cyda "Dawson" \
+	cyma "Mayo" \
+	cyxq "Beaver Creek" \
+	cyxy "Whitehorse" \
+	cyqh "Watson Lake" \
+	cwdl "Dease Lake" \
+	sgsl "South Great Slave" \
+	ngsl "North Great Slave" \
+	dcho "dcho" \
+	natk "natk" \
+	satu "satu" \
+	dlta "Delta" \
+	corn "corn" \
+	bank "Banks Is."\
+	crow "Old Crow" \
+	dawn "Dawson" \
+	whse "Whitehorse" \
+	wtlk "Watson Lake" \
+	cwgz "Grise Fiord" \
+	cyrb "Resolute" \
+	cyio "Pond Inlet" \
+	cysr "Arctic Bay" \
+	cygt "Igloolik" \
+	cycy "Clyde River" \
+	cyvm "Broughton Island" \
+	cyxp "Pangnirtung" \
+	cyfb "Iqaluit" \
+	cylc "Lake Harbour" \
+	cyte "Cape Dorset" \
+	cyut "Repulse Bay" \
+	cyux "Hall Beach" \
+	cyzs "Coral Harbour" \
+	cycs "Chesterfield Inlet" \
+	cybk "Baker Lake" \
+	cyrt "Rankin Inlet" \
+	cyxn "Whale Cove" \
+	cyek "Arviat" \
+	cyyq "Churchill" \
+	cysk "Sanikiluaq" \
+	cyph "Inukjuak" \
+	cypx "Povingnituk" \
+	cyzg "Salliut" \
+	cyvp "Kuujjuaq" \
+	cydp "Nain" \
+	cyft "Makkovik" \
+	sbaf "South Baffin" \
+	nbaf "North Baffin" \
+	harc "High Arctic" \
+	avlk "avlk" \
+	kvlq "kvlq" \
+	chcl "Churchill" \
+	hdst "hdst" \
+	ugva "Ungava" \
+	hdby "Hudson Bay" \
+	lbdr "Labrador"
+
+	english         eg_cbc
+	generator	ftxgen
+	editor		text_editor
+
+	summer_issue    2100 31 24
+	summer_issue    2100 31 24
+	summer_issue    0900 43 24
+
+	winter_issue    2200 31 24
+	winter_issue    2200 31 24
+	winter_issue    0900 43 24
+forecast eg_31
+	class           table
+	timezone        MST7MDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp31
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue    1500 15 24
+	summer_issue    2100 33 24
+
+	winter_issue    1600 15 24
+	winter_issue    2200 33 24
+
+forecast eg_wb4
+	class           table
+	timezone        MST7MDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         wb4
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue	 830 24 0
+	summer_issue	2130 30 0
+
+	winter_issue	 930 24 0
+	winter_issue	2230 30 0
+
+forecast eg_15
+	class           public
+	timezone        MST7MDT
+	select_areas	False
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp15
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue	 945 36 0
+	summer_issue	1645 36 0
+	summer_issue	2145 56 0
+
+	winter_issue	1045 36 0
+	winter_issue	1645 36 0
+	winter_issue	2245 56 0
+
+forecast eg_16
+	class           public
+	timezone        MST7MDT
+	select_areas	False
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp16
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue	1015 36 0
+	summer_issue	1615 36 0
+	summer_issue	2215 56 0
+
+	winter_issue	1115 36 0
+	winter_issue	1715 36 0
+	winter_issue	2315 56 0
+
+forecast eg_17
+	class           public
+	timezone        CST6CDT
+	select_areas	False
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp17
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue	 900 36 0
+	summer_issue	1500 36 0
+	summer_issue	2100 56 0
+
+	winter_issue	1000 36 0
+	winter_issue	1600 36 0
+	winter_issue	2200 56 0
+
+forecast eg_18
+	class           public
+	timezone        EST5EDT
+	select_areas	False
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp18
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue	 800 36 0
+	summer_issue	1400 36 0
+	summer_issue	2000 56 0
+
+	winter_issue	 900 36 0
+	winter_issue	1500 36 0
+	winter_issue	2100 56 0
+
+forecast eg_19
+	class           public
+	timezone        CST6CDT
+	select_areas	False
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp19
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue	 800 36 0
+	summer_issue	1400 36 0
+	summer_issue	2000 56 0
+
+	winter_issue	 900 36 0
+	winter_issue	1500 36 0
+	winter_issue	2100 56 0
+
+
+# Forecasts for Kelowna MWSO:
+
+forecast lw_1
+	class           table
+	timezone        PST8PDT
+	select_areas	True
+
+	required_fields		temperature surface
+
+	english         wb1
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue    1300 42  0
+
+	winter_issue    1400 42  0
+
+forecast lw_6
+	class           table
+	timezone        PST8PDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         wb6
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue    1700 62  0
+
+	winter_issue    1800 62  0
+
+forecast lw_8
+	class           table
+	timezone        PST8PDT
+	select_areas	True
+
+	required_fields		temperature surface
+
+	english         wb8
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue    2100 35  0
+
+	winter_issue    2100 35  0
+
+forecast lw_11
+	class           public
+	timezone        PST8PDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp11
+	french          fp71
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+forecast lw_13
+	class           public
+	timezone        PST8PDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp13
+	french          fp73
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+forecast lw_15
+	class           public
+	timezone        PST8PDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp15
+	french          fp75
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+forecast lw_16
+	class           public
+	timezone        PST8PDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp16
+	french          fp76
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+# Forecasts for Saskatoon SkWSO:
+
+forecast vr_20
+	class		marine
+	timezone	PST8PDT
+	generator	egfog
+
+forecast xe_22
+	class		marine
+	timezone	CST6CDT
+	select_areas	True
+	areas	\
+	lake_athabasca					"Lake Athabasca" \
+	lac_la_ronge					"Lac la Ronge" \
+	lake_diefenbaker				"Lake Diefenbaker" 
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp22
+	french			fp81
+	warnings		FOG.xe_22
+
+	generator		qxfog
+	editor			bullet
+	ce.bkgnd		xe_22.map
+	ce.specs		xe_22.specs
+	ce.areas		xe_22.areas
+
+	summer_issue	1300 37 24
+	summer_issue	2000 31 24
+
+	winter_issue	1300 37 24
+	winter_issue	2000 31 24
+
+forecast xe_15
+	class           public
+	timezone        CST6CDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp15
+	french          fp75
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+# Forecasts for PrWC:
+
+forecast wg_11
+	class           public
+	timezone        CST6CDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp11
+	french          fp71
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+forecast wg_13
+	class           public
+	timezone        CST6CDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp13
+	french          fp73
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+forecast wg_15
+	class           public
+	timezone        CST6CDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp15
+	french          fp75
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+forecast wg_16
+	class           public
+	timezone        CST6CDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp16
+	french          fp76
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+forecast wg_18
+	class           public
+	timezone        CST6CDT
+	select_areas	True
+
+	required_fields		pressure msl \
+				temperature surface
+
+	english         fp18
+	french          fp78
+
+	generator		ftxgen
+	editor			text_editor
+
+	summer_issue     200 24  0
+	summer_issue    1200 24  0
+	summer_issue    1700 24  0
+	summer_issue    2200 24  0
+
+	winter_issue     300 24  0
+	winter_issue    1300 24  0
+	winter_issue    1800 24  0
+	winter_issue    2300 24  0
+
+# Forecasts for OWC:
+
+forecast yz_11
+	class		public
+	timezone	EST5EDT
+	select_areas	True
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp11		# optional
+	french			fp81		# optional
+	generator		ftxgen
+
+	summer_issue	0030 48 00
+	summer_issue	0800 43 24
+	summer_issue	1400 37 24
+	summer_issue	1900 31 24
+
+	winter_issue	0130 48 00
+	winter_issue	0900 43 24
+	winter_issue	1500 37 24
+	winter_issue	2000 31 24
+
+forecast yz_12
+	class		public
+	timezone	EST5EDT
+	select_areas	True
+	required_fields		pressure msl \
+				temperature surface
+
+	english			fp12		# optional
+	french			fp82		# optional
+	generator		ftxgen
+
+	summer_issue	0030 48 00
+	summer_issue	0800 43 24
+	summer_issue	1400 37 24
+	summer_issue	1900 31 24
+
+	winter_issue	0130 48 00
+	winter_issue	0900 43 24
+	winter_issue	1500 37 24
+	winter_issue	2000 31 24
+

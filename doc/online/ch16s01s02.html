@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>16.1.2. Examples of time linking</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch16s01.html" title="16.1. Time linking and interpolation" /><link rel="prev" href="ch16s01s01.html" title="16.1.1. Optional time link information" /><link rel="next" href="ch16s01s03.html" title="16.1.3. Guess Nodes" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">16.1.2. Examples of time linking</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch16s01s01.html">Prev</a> </td><th width="60%" align="center">16.1. Time linking and interpolation</th><td width="20%" align="right"> <a accesskey="n" href="ch16s01s03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="examples_of_time_linking"></a>16.1.2. Examples of time linking</h3></div></div></div><div class="toc"><dl><dt><span class="sect3"><a href="ch16s01s02.html#time_linking_continuous_fields">16.1.2.1. Time linking continuous or vector fields</a></span></dt><dt><span class="sect3"><a href="ch16s01s02.html#time_linking_line_fields">16.1.2.2. Time linking line fields</a></span></dt><dt><span class="sect3"><a href="ch16s01s02.html#time_linking_area_fields">16.1.2.3. Time linking area fields</a></span></dt><dt><span class="sect3"><a href="ch16s01s02.html#linking_an_area_that_splits_into_two_areas">16.1.2.4. Linking an area that splits into two areas (or two areas that merge into one)</a></span></dt><dt><span class="sect3"><a href="ch16s01s02.html#linking_split_and_merge_areas">16.1.2.5. Linking "split and merge" areas</a></span></dt><dt><span class="sect3"><a href="ch16s01s02.html#linking_a_divided_area">16.1.2.6. Linking a divided area</a></span></dt><dt><span class="sect3"><a href="ch16s01s02.html#early_late_start_end">16.1.2.7. Early starts, late starts, early ends and late ends</a></span></dt></dl></div><div class="sect3" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="time_linking_continuous_fields"></a>16.1.2.1. Time linking continuous or vector fields</h4></div></div></div><p>
+<a id="id1602471" class="indexterm"></a>
+<a id="id1602480" class="indexterm"></a>
+Choose the significant features
+<a id="id1602490" class="indexterm"></a>
+on continuous or vector fields to provide the link.
+For example, links can identify locations of the maximum or minimum values of a field (such as highs and lows in an msl pressure field) or the location of axes (such as troughs or ridges in an msl pressure field).
+</p><p>
+It is important to link features that appear stationary over time as well as features that move.
+This guarantees that such features remain stationary relative to other moving features.
+</p></div><div class="sect3" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="time_linking_line_fields"></a>16.1.2.2. Time linking line fields</h4></div></div></div><p>
+<a id="id1548108" class="indexterm"></a>
+Choose the most significant points on each line.
+Link at approximately the same <span class="emphasis"><em>relative</em></span> locations on each line through all depictions.
+</p><p>
+For example, if the line moves or rotates, pick the same feature on the line in each depiction, such as a kink in the line or a location close to one end of the line.
+</p><p>
+Note that the line pattern is often used to determine which end of the line is which.
+</p></div><div class="sect3" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="time_linking_area_fields"></a>16.1.2.3. Time linking area fields</h4></div></div></div><p>
+<a id="id1548143" class="indexterm"></a>
+Choose the most significant points on the area perimeter.
+In the subsequent times, click on approximately the same <span class="emphasis"><em>relative</em></span> spots on the perimeter.
+See <a href="ch16s01s02.html#linkarea" title="Figure 16.1. Linking areas">Figure 16.1</a>.
+</p><p>
+Note that the first set of links will cause the area to change shape between each panel in a distorted manner, whereas the second set of links will cause the area to rotate.
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="linkarea"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 16.1. Linking areas</b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/linkarea.png" alt="Linking areas" /></div></td></tr></table></div></div><p>
+</p><p>
+Even if the area changes shape, it will interpolate properly as long as you choose distinguishable features on the area and link consistently.
+</p></div><div class="sect3" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="linking_an_area_that_splits_into_two_areas"></a>16.1.2.4. Linking an area that splits into two areas (or two areas that merge into one)</h4></div></div></div><p>
+<a id="id1601222" class="indexterm"></a>
+When an area field splits, you need to maintain consistency.
+See <a href="ch16s01s02.html#linksplt" title="Figure 16.2. ">Figure 16.2</a>
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="linksplt"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 16.2. </b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/linksplt.png" /></div></td></tr></table></div></div><p>
+</p><p>
+Start another chain at the depiction just before the split.
+After the two areas split, each field has its separate time chain.
+For a merge, which is this scenario backwards in time, end the second chain at the depiction where the two areas merge.
+</p></div><div class="sect3" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="linking_split_and_merge_areas"></a>16.1.2.5. Linking "split and merge" areas</h4></div></div></div><p>
+<a id="id1601274" class="indexterm"></a>
+This example is a more complicated case of splitting and merging.
+There are initially two areas, then one area splits (now there are three areas) and then the newly-split area merges with the other area (now there are two areas again).
+</p><p>
+The same principles apply as explained in <a href="ch16s01s02.html#linking_an_area_that_splits_into_two_areas" title="16.1.2.4. Linking an area that splits into two areas (or two areas that merge into one)">Linking an area that splits into two areas (or two areas that merge into one), (Section 16.1.2.4)</a>.
+Start the new chain at the depiction right before the split and end the third chain at the depiction where the two areas merge.
+See <a href="ch16s01s02.html#linksm" title="Figure 16.3. ">Figure 16.3</a>
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="linksm"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 16.3. </b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/linksm.png" /></div></td></tr></table></div></div><p>
+</p><p>
+Note: At the moment when there are three areas, there are four chains; one chain starts in this depiction and one is ending.
+</p></div><div class="sect3" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="linking_a_divided_area"></a>16.1.2.6. Linking a divided area</h4></div></div></div><p>
+<a id="id1602546" class="indexterm"></a>
+You must link dividing lines in a divided area to another divide line in the next depiction.
+If there are two dividing lines, link each one.
+</p><p>
+Note that the position of the link on the dividing line matters. If the dividing line has only a single link, position it towards one end of the dividing line. This will ensure that the divided areas do not switch places unexpectedly.
+See <a href="ch16s01s02.html#linkdiv" title="Figure 16.4.  ">Figure 16.4</a>
+(Dividing lines can be drawn left-to-right or right-to-left and the direction of drawing is important in the time link process, especially when the dividing line is drawn in different directions in different depictions. With two or more links, the direction of the dividing line can be determined by the locations of the links, but with a single link, the direction is determined by which end of the line is closest.
+Single links should therefore be placed close to the same end of the dividing line.)
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="linkdiv"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 16.4.  </b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/linkdiv.png" /></div></td></tr></table></div></div><p>
+</p><p>
+Note that dividing lines are interpolated separately from the areas they divide. If the extrapolated position of the dividing line moves outside of the extrapolated position of the area, then the area will no longer be divided, and the values of the area will depend on which side of the interpolated dividing line the area is on.
+</p></div><div class="sect3" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="early_late_start_end"></a>16.1.2.7. Early starts, late starts, early ends and late ends</h4></div></div></div><p>
+Discrete, wind and line fields can be linked so that the features appear at times different from the depiction times. 
+(See the time selection section in <a href="ch16s02s01.html" title="16.2.1. Linking forward">Linking forward, (Section 16.2.1)</a> or <a href="ch16s02s02.html" title="16.2.2. Linking backward">Linking backward, (Section 16.2.2)</a>.)
+If link times are chosen so as to begin before the first depiction time in the link chain (an early start) or after the last depiction time in the link chain ( a late end), then the feature is extrapolated to the earlier or later times. If the link times are chosen so as  to begin after the first depiction time in the link chain (a late start) or before the last depiction time in the link chain (an early end), then the feature is interpolated to the in between times, and the feature may not appear at the depiction times in the interpolations.
+</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch16s01s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch16s01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch16s01s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">16.1.1. Optional time link information </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 16.1.3. Guess Nodes</td></tr></table></div></body></html>

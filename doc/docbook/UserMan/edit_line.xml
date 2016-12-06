@@ -1,0 +1,801 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='editing_lines'> <title>Editing lines</title>
+<para>
+<indexterm><primary>editor</primary><secondary>line</secondary></indexterm>
+You can use the line editor for features such as fronts and jet axes to add additional details to your depictions.
+<figure pgwide='0' float='1'><title>Line edit tools</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_line.png'/></imageobject></mediaobject>
+</figure>
+</para>
+<sect1 id='drawing_lines'> <title>Drawing lines</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>draw</secondary></indexterm>
+<orderedlist><title>To draw a line:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Draw</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/draw.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Draw</emphasis> menus appear.
+(see <xref linkend='line_draw_tools'/>)
+<figure id='line_draw_tools' pgwide='0' float='1'><title>Line draw menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_line_draw.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+The cursor appears as a pencil while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Select a <guilabel>Line Type</guilabel> from the list.
+</para></listitem>
+
+<listitem><para>
+Draw the line.
+(see <xref linkend='drawing_with_the_freehand_tool'/> or <xref linkend='drawing_with_the_curve_tool'/>)
+</para><para>
+The selected line type appears.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='deleting_lines'> <title>Deleting lines</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>delete</secondary></indexterm>
+<orderedlist><title>To delete a line:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the line to delete.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Delete</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para><para>
+<orderedlist><title>To delete multiple lines:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/line_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the line(s) to delete.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cut</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+To restore the line(s), click the &right; mouse button and select
+<menuchoice><guimenu>Undo</guimenu></menuchoice> or
+<menuchoice><guimenu>Paste</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='moving_a_line'> <title>Moving a line</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>move</secondary></indexterm>
+To move one or more lines.
+<orderedlist>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/line_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the line(s) to move.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Translate</guimenu></menuchoice>.
+</para><para>
+The picked lines turn blue.
+</para></listitem>
+
+<listitem><para>
+Pick a reference point on the map and hold the &left; mouse button down.
+</para><para>
+The reference point can be anywhere; however, if you are moving a portion of the line(s) off the depiction it is important to pick a point that will remain on the depiction after the move.
+The lines shimmer indicating you can now move them.
+</para></listitem>
+
+<listitem><para>
+Drag the line(s) to the new location and release the button.
+</para><para>
+The &FPA; then recomputes the field and re-displays the new line(s) in white.
+</para></listitem>
+</orderedlist>
+Note: The lines remain selected until you deselect them, so you may continue to use the <emphasis>Move</emphasis> tools.
+(see <xref linkend='unpick_object'/>) 
+</para>
+</sect1>
+
+<sect1 id='rotating_a_line'> <title>Rotating a line</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>rotate</secondary></indexterm>
+<orderedlist><title>To rotate a line:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/line_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the line(s) to rotate.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Rotate</guimenu></menuchoice>.
+</para><para>
+The picked lines turn blue.
+</para></listitem>
+
+<listitem><para>
+Click the &left; mouse button at the point you want to rotate around (the centre of rotation).
+</para></listitem>
+
+<listitem><para>
+Select a second point to form a <emphasis>handle</emphasis> to rotate the line(s) and hold the button down.
+</para><para>
+A line displays between the two chosen points.
+This is your rotation handle (like the handle of a car window).
+</para></listitem>
+
+<listitem><para>
+Turn the handle to a new location.
+</para></listitem>
+
+<listitem><para>
+When you have reached the point where the rotation should end, release the &left; mouse button.
+</para><para>
+The &FPA; displays the rotated line(s).
+</para><para>
+Note: You can still restore the field if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+Note: The lines remain selected until you deselect them, so you may continue to use the <emphasis>Move</emphasis> tools.
+(see <xref linkend='unpick_object'/>) 
+</para>
+</sect1>
+
+<sect1 id='copying_a_line'> <title>Copying a line</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>copy</secondary></indexterm>
+You can copy a line by using <guibutton>Copy</guibutton> and <guibutton>Paste</guibutton> with the <emphasis>Move</emphasis> tool.
+</para><para>
+<orderedlist><title>To copy a line:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/line_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>move</emphasis> menus appear.
+(see <xref linkend='move_tools2'/>)
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.
+</para></listitem>
+
+<listitem><para>
+Pick the line(s) to copy.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Copy</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to deselect all lines, or move to another depiction.
+</para><para>
+<guibutton>Paste</guibutton> is now available.
+</para><para>
+Note: if pasted to the same depiction the lines will be automatically offset to avoid inadvertent duplication.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Paste</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+The lines remain selected until you deselect them, thus
+<menuchoice><guimenu>Translate</guimenu></menuchoice> and
+<menuchoice><guimenu>Rotate</guimenu></menuchoice> are available in the &right; mouse button context menu.
+(see <xref linkend='moving_a_line'/> and <xref linkend='rotating_a_line'/>)
+</para><para>
+Note: You can still remove the copied field if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='flipping_a_line'> <title>Flipping a line</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>flip</secondary></indexterm>
+Some line styles are not symmetrical.
+You can use this tool to flip the line across its width or along its length.
+</para><para>
+<orderedlist><title>To flip a line:</title>
+<listitem><para>
+Select the <emphasis>Flip</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Flip</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/flip.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the line to flip.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select:
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row><entry><menuchoice><guimenu>Flip</guimenu></menuchoice></entry>
+	<entry>to flip it across its width. </entry></row>
+	<row><entry><menuchoice><guimenu>Reverse</guimenu></menuchoice></entry>
+	<entry>to flip the line along its length. </entry></row>
+	<row><entry><menuchoice><guimenu>Flip &amp; Reverse</guimenu></menuchoice></entry>
+	<entry>to flip it across its width and along its length. </entry></row>
+	</tbody></tgroup>
+</informaltable>
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='modifying_a_line'> <title>Modifying a line</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>modify</secondary></indexterm>
+Modify allows you to change the shape of a line, to extend or shorten a line, or to change a line type.
+</para><para>
+You can modify lines with two types of drawing tools.
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry>a drawing tool</entry>
+	<entry>draw a new line segment</entry></row>
+	<row valign='top'><entry>one of the puck sizes</entry>
+	<entry>sculpt an existing line or extend/shorten a line</entry></row>
+	</tbody></tgroup>
+</informaltable>
+</para>
+
+<sect2 id='drawing_a_new_line'> <title>Drawing a new line</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>redraw</secondary></indexterm>
+<orderedlist><title>To draw a new line:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Modify</emphasis> menus appear.
+(see <xref linkend='line_modify_tools'/>)
+<figure id='line_modify_tools' pgwide='0' float='1'><title>Line modify menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_line_modify.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Pick the line to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The picked line turns yellow, with blue boxes at both ends.
+</para></listitem>
+
+<listitem><para>
+Select the "Freehand"
+<inlinemediaobject><imageobject><imagedata scale='50' fileref='png/freehand_draw.png'/></imageobject></inlinemediaobject>
+or "Curve" drawing tool.
+<inlinemediaobject><imageobject><imagedata scale='50' fileref='png/point_by_point_draw.png'/></imageobject></inlinemediaobject>
+</para></listitem>
+
+<listitem><para>
+Draw the new line segment.
+Start or end the line as close to the existing line as possible.
+</para><para>
+The way the line gets redrawn depends on how the new segment was drawn.
+<itemizedlist>
+<listitem><para>
+If the new segment starts and ends on the existing line, the new line segment adopts the direction of the existing line.
+(see <xref linkend='line_draw_1'/>)
+<figure id='line_draw_1' pgwide='0' float='1'><title>New segment starts and ends on the existing line</title>
+<mediaobject><imageobject><imagedata fileref='png/draw_mod_1a.png'/></imageobject></mediaobject>
+<mediaobject><imageobject><imagedata fileref='png/draw_mod_1b.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+If the new segment starts, but does not end, on the existing line, the new line segment connects to the existing line in the direction it was drawn.
+Thus the end of the existing line is replaced by the new segment.
+(see <xref linkend='line_draw_2'/>)
+<figure id='line_draw_2' pgwide='0' float='1'><title>New segment starts, but does not end, on the existing line</title>
+<mediaobject><imageobject><imagedata fileref='png/draw_mod_2a.png'/></imageobject></mediaobject>
+<mediaobject><imageobject><imagedata fileref='png/draw_mod_2b.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+If the new segment ends, but does not start, on the existing line, the new line segment connects to the existing line in the direction it was drawn.
+Thus the start of the existing line is replaced by the new segment.
+(see <xref linkend='line_draw_3'/>)
+<figure id='line_draw_3' pgwide='0' float='1'><title>New segment ends, but does not start, on the existing line</title>
+<mediaobject><imageobject><imagedata fileref='png/draw_mod_3a.png'/></imageobject></mediaobject>
+<mediaobject><imageobject><imagedata fileref='png/draw_mod_3b.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+If the new segment starts and ends too far away from the existing line, the new line segment will replace the existing line.
+(see <xref linkend='line_draw_4'/>)
+<figure id='line_draw_4' pgwide='0' float='1'><title>New segment starts and ends too far away from existing line</title>
+<mediaobject><imageobject><imagedata fileref='png/draw_mod_4a.png'/></imageobject></mediaobject>
+<mediaobject><imageobject><imagedata fileref='png/draw_mod_4b.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+</itemizedlist>
+</para><para>
+The new line turns blue and the original line remains yellow.
+</para><para>
+</para></listitem>
+
+<listitem><para>
+If the line is acceptable, click the &right; mouse button and select <menuchoice><guimenu>Confirm</guimenu></menuchoice>.
+If the line is not acceptable select <menuchoice><guimenu>Cancel</guimenu></menuchoice> and the line will remain selected you can attempt the edit again.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='sculpting_an_existing_line'> <title>Sculpting an existing line</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>sculpt</secondary></indexterm>
+<orderedlist><title>To sculpt an existing line:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Modify</emphasis> menus appear.
+(see <xref linkend='line_modify_tools'/>)
+</para></listitem>
+
+<listitem><para>
+Pick the line to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The picked line turns yellow, with blue boxes at both ends.
+</para></listitem>
+
+<listitem><para>
+Select a puck size.
+(see <xref linkend='modifying_with_the_sculpt_tool'/>)
+</para><para>
+The number indicates the proportional size of the puck.
+</para><para>
+The cursor appears as concentric circles while inside the map window.
+</para></listitem>
+
+<listitem><para>
+Choose a smoothing mode.
+(see <xref linkend='modifying_with_the_sculpt_tool'/>)
+</para></listitem>
+
+<listitem><para>
+Click and hold the &left; mouse button to activate the sculpting puck.
+</para><para>
+The line is modified when the puck comes in contact with it.
+</para></listitem>
+
+<listitem><para>
+Release the button when finished.
+</para><para>
+You can repeat the previous step as often as you wish.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the edit.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='extending_or_shortening_a_line'> <title>Extending or shortening a line</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>extend</secondary></indexterm>
+<orderedlist><title>To extend or shorten a line by sculpting:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+</para></listitem>
+
+<listitem><para>
+Pick the line to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The picked line turns yellow, with blue boxes at both ends.
+</para></listitem>
+
+<listitem><para>
+Select a puck size.
+(see <xref linkend='modifying_with_the_sculpt_tool'/>)
+</para><para>
+The number indicates the proportional size of the puck.
+</para></listitem>
+
+<listitem><para>
+Choose a smoothing mode.
+(see <xref linkend='modifying_with_the_sculpt_tool'/>)
+</para></listitem>
+
+<listitem><para>
+Click and hold the &left; mouse button inside one of the blue boxes.
+</para><para>
+The cursor changes to a pencil while the button is held down.
+</para></listitem>
+
+<listitem><para>
+Drag the cursor to a new location.
+</para><para>
+If you drag the cursor along the line towards the opposite end, the line will be shortened.
+If you drag the cursor away from the line, the line will be extended.
+</para></listitem>
+
+<listitem><para>
+Release the button when finished.
+</para><para>
+You can repeat the previous step as often as you wish.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the edit.
+</para></listitem>
+</orderedlist>
+</para><para>
+<orderedlist><title>To extend a line by redrawing:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+</para></listitem>
+
+<listitem><para>
+Pick the line to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The picked line turns yellow, with blue boxes at both ends.
+</para></listitem>
+
+<listitem><para>
+Select a drawing tool.
+(see <xref linkend='drawing_with_the_freehand_tool'/>)
+</para></listitem>
+
+<listitem><para>
+Start or end the extension inside one of the a blue boxes.
+</para><para>
+With the "Freehand" tool click and hold the &left; mouse button.
+The cursor changes to a pencil while the button is held down.
+</para><para>
+With the "Curve" tool click the &left; mouse button.
+The cursor changes to a pencil while in "Curve" draw mode.
+</para><para>
+Draw the extension.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the edit.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='joining_lines'> <title>Joining lines</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>join</secondary></indexterm>
+<orderedlist><title>To join two lines:</title>
+<listitem><para>
+Select the <emphasis>Join</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Join</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/join.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick two lines to join. <note><para>The lines must be of the same type.</para></note>
+(see <xref linkend='pick_object'/>)
+</para><para>
+The picked lines turn yellow.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Join</guimenu></menuchoice>.
+</para> <para>
+The new line remains selected until you deselect it, thus you may continue to join another line to the new one.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to deselect all lines, or move to another depiction.
+</para></listitem>
+</orderedlist></para></sect2>
+
+<sect2 id='breaking_lines'> <title>Breaking lines</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>break</secondary></indexterm>
+<orderedlist><title>To break one line into two lines:</title>
+<listitem><para>
+Select the <emphasis>Join</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Join</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/join.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick a line to break.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The picked line turns yellow.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Break</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Pick a break point on the line.
+</para></listitem>
+</orderedlist></para></sect2>
+
+<sect2 id='changing_the_line_type'> <title>Changing the line type</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>line type</secondary></indexterm>
+<orderedlist><title>To change the type of line:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Modify</emphasis> menus appear.
+(see <xref linkend='line_modify_tools'/>)
+</para></listitem>
+
+<listitem><para>
+Pick the line to modify.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+From the line list, pick a line type.
+</para><para>
+The line is redrawn as the selected type.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+</sect1>
+
+<sect1 id='merging_line_information'> <title>Merging information in a line field </title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>merge</secondary></indexterm>
+You can bring a field from another source and time and merge it into the depiction using the <emphasis>Merge</emphasis> tool.
+</para><para>
+<orderedlist><title>To merge information:</title>
+<listitem><para>
+Select the <emphasis>Merge</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Merge</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/merge.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Merge</emphasis> menus appear.
+(see <xref linkend='merge_tools'/>)
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Source</guilabel>, <guilabel>Issue Time</guilabel> and <guilabel>Valid Time</guilabel> of the other field you wish to merge with your current depiction.
+</para><para>
+Note: Your System Administrator may configure a field to accept merges from another "compatible" field.
+If this is the case, there will be a <guilabel>Field</guilabel> list in the <guilabel>Merge Fields</guilabel> area.
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.</para></listitem>
+
+<listitem><para>
+Click <guibutton>Fetch</guibutton>.
+</para><para>
+The field information from the other source is laid over top of your depiction.
+</para></listitem>
+
+<listitem><para>
+Pick the line(s) to merge.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Finish your selection by pressing the &right; mouse button and select
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><menuchoice><guimenu>Merge</guimenu></menuchoice></entry>
+	<entry>merge information in place </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Translate</guimenu></menuchoice></entry>
+	<entry>move and merge the information </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Rotate</guimenu></menuchoice></entry>
+	<entry>rotate and merge the information </entry></row>
+	</tbody></tgroup>
+</informaltable>
+Note: the picked information remains selected, so you may perform multiple translate and rotate operations.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the merge.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='labelling_your_line_field'> <title>Labelling your depiction</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>label</secondary></indexterm>
+<orderedlist><title>To label points on some lines:</title>
+<listitem><para>
+Select the <emphasis>Labelling</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Label</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/label.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select a <menuchoice><guimenu>Label Type</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select a <guilabel>Label Action</guilabel>:
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry> Select...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Add</guimenuitem></menuchoice></entry>
+	<entry>add a label at a specified point</entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Move</guimenuitem></menuchoice></entry>
+	<entry>facilitate clicking and dragging a label from one location to another (if applicable)</entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Show</guimenuitem></menuchoice></entry>
+	<entry>display a list of attributes of the particular label selected</entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Modify</guimenuitem></menuchoice></entry>
+	<entry>change label attributes</entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Delete</guimenuitem></menuchoice></entry>
+	<entry> delete a label </entry></row>
+	</tbody></tgroup>
+</informaltable>
+Note: some labels have fixed attributes and cannot be modified.
+In these cases the <emphasis>Modify</emphasis> tool does not appear.
+</para></listitem>
+
+<listitem><para>
+Pick a point to label using the &left; mouse button.
+</para></listitem>
+
+<listitem><para>
+If you have picked Add...
+</para><para>
+Labels appear on the closest line object.
+</para><para>
+Note: If your label type requires additional information, an entry menu may appear.
+You can modify the information as required.
+Clicking on <guibutton>Set Attributes</guibutton> will add the label.
+</para></listitem>
+
+<listitem><para>
+If you have picked <guibutton>Move</guibutton>, <guibutton>Show</guibutton>, <guibutton>Modify</guibutton> or <guibutton>Delete</guibutton> ...
+</para><para>
+The nearest label is chosen.
+</para></listitem>
+
+<listitem><para>
+To delete all the labels, click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='sampling_line_field_values'> <title>Sampling values from a line field</title>
+<para>
+<indexterm><primary>line field editor</primary><secondary>sample</secondary></indexterm>
+You can add temporary labels to the &FPA; window with the <emphasis>Sample</emphasis> tool.
+</para><para>
+<orderedlist><title>To sample a value:</title>
+<listitem><para>
+Select the <emphasis>Sample</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Sample</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/sample.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Sample</emphasis> menus appear.
+(see <xref linkend='sample_tools2'/>)
+</para><para>
+The cursor appears as cross-hairs while inside the map window.
+</para></listitem>
+
+<listitem><para>
+Select the type of sample you want from the <guilabel>Sample Item</guilabel> area.
+</para><para>
+You can choose to sample <guilabel>All Attributes</guilabel> or a single attribute from the list.
+</para></listitem>
+
+<listitem><para>
+Select the display attributes: colour, size and font.
+</para></listitem>
+
+<listitem><para>
+Pick a point on the depiction.
+</para><para>
+A temporary label appears.
+</para><para>
+You can sample as many points as you want.
+</para><para>
+Note: If you selected <guilabel>All Attributes</guilabel>, a dialog box appears displaying All Attributes for the point.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice> to clear the samples from the depiction.
+</para></listitem>
+</orderedlist>
+</para>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='preset_sample_list.xml'/>
+<para>
+Note: if you select <guilabel>All Attributes</guilabel> from the <guilabel>Sample Item</guilabel> area, the <guilabel>Preset Points</guilabel> option cannot be used. Only single attributes can be displayed with this option.
+</para>
+</sect1>
+</chapter>

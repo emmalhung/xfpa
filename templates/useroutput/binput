@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Set up the FPA environment
+. .fpaenvrc
+
+# This is the default user executable directory
+bdir=$FPA/binlocal/$PLATFORM
+
+# Get the program names
+files=`findx -p *`
+if [ "$files" = "" ]
+then
+	echo "No program files to copy"
+	echo "Bye!"
+	exit 1
+fi
+
+# Create the target directory if necessary
+if [ ! -d $bdir ]
+then
+	# Does not exist
+	echo
+	echo "Target directory \"$bdir\" does not exist."
+	echo "Do you want to create it? \c"
+	read answer
+	if [ "$answer" != "y" -a "$answer" != "Y" ]
+	then
+		echo "Bye!"
+		exit 1
+	fi
+
+	# Try to create it
+	mkdir -m 777 $bdir
+	if [ ! -d $bdir ]
+	then
+		echo
+		echo "Cannot create!"
+		echo "Bye!"
+		exit 1
+	fi
+fi
+
+# Copy each program file
+for file in $files
+do
+	# Save the original if there
+	if [ -f $bdir/$file ]
+	then
+		cp $bdir/$file $bdir/$file.old
+	fi
+
+	# Copy the routine
+	echo "Copying $file to $bdir"
+	cp $file $bdir
+	if [ "$?" -ne 0 ]
+	then
+		echo "Cannot copy!"
+		echo "Bye!"
+		exit 1
+	fi
+	chmod 777 $bdir/$file
+	ls -l $bdir/$file
+done
+
+echo
+echo "Done!"

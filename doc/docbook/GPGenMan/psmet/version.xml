@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_version'> <title>@version</title> <titleabbrev>@version</titleabbrev>
+<para>
+Set the &PSMet; or &SVGMet; version number.
+</para><para>
+Note that this must be the first directive!
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&valuehead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>psmet8.0</userinput></para></entry>
+<entry colname='desc'><para>Current version number.
+</para><para>(Note: psmet6.0 is also accepted for backwards compatibility</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>svgmet8.0</userinput></para></entry>
+<entry colname='desc'><para>Current version number.
+</para><para>(Note: svgmet6.0 is also accepted for backwards compatibility</para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@version { psmet8.0 }</programlisting>
+Set &PSMet; version number. Note that this must be the first directive!
+</para></example>
+</para></sect2>

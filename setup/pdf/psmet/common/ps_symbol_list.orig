@@ -1,0 +1,225 @@
+
+Various Display Symbols ...
+
+-------------------------|-------------------------------|------------|--------|
+                         |                               | Modify     | Modify |
+Postscript Symbol File   |  Description                  | outline &  |  fill  |
+                         |                               | line_width |        |
+-------------------------|-------------------------------|------------|--------|
+bkn.ps  .................| Broken cloud                  |    yes     |   no   |
+block_high_circle.ps  ...| Circled block High label      |     no     |  yes   |
+block_low_circle.ps  ....| Circled block Low label       |     no     |  yes   |
+calm.ps  ................| Calm mark                     |    yes     |   no   |
+canada_flag.ps  .........| Canadian flag (colour)        |     no     |   no   |
+canada_flag_outline.ps  .| Canadian flag (outline)       |     no     |  yes   |
+canada_logo.ps  .........| Canadian half-flag (colour)   |     no     |   no   |
+canada_logo_outline.ps  .| Canadian half-flag (outline)  |     no     |  yes   |
+circle.ps  ..............| Circle                        |    yes     |   no   |
+circle_mark.ps  .........| Circle mark (area)            |     no     |  yes   |
+circle_filled.ps  .......| Filled circle                 |     no     |  yes   |
+clr.ps  .................| No cloud                      |    yes     |   no   |
+cross.ps  ...............| Cross                         |    yes     |   no   |
+cross_mark.ps  ..........| Cross mark (area)             |     no     |  yes   |
+dash.ps  ................| Dash                          |    yes     |   no   |
+dash_mark.ps  ...........| Dash mark (area)              |     no     |  yes   |
+geostr_wind_scale.ps  ...| Geostrophic wind scale        |     no     |   no   |
+hi_lo.ps  ...............| Hi-Lo mark (area)             |     no     |  yes   |
+high.ps  ................| High label                    |     no     |  yes   |
+high_circle.ps  .........| Circled High label            |     no     |  yes   |
+hilo.ps  ................| Hi-Lo mark                    |    yes     |   no   |
+hurricane.ps  ...........| Hurricane mark                |    yes     |  yes   |
+hurricane_shem.ps  ......| Hurricane mark (Srn Hem)      |    yes     |  yes   |
+lgticg.ps  ..............| Light icing                   |    yes     |   no   |
+lgtturbc.ps  ............| Light turbulence              |    yes     |   no   |
+low.ps  .................| Low label                     |     no     |  yes   |
+low_circle.ps  ..........| Circled Low label             |     no     |  yes   |
+mdticg.ps  ..............| Moderate icing                |    yes     |   no   |
+mdtturbc.ps  ............| Moderate turbulence           |    yes     |   no   |
+none.ps  ................| Blank mark (for wireframe)    |     no     |   no   |
+ovc.ps  .................| Overcast cloud                |    yes     |   no   |
+plus.ps  ................| Plus                          |    yes     |   no   |
+plus_mark.ps  ...........| Plus mark (area)              |     no     |  yes   |
+post_tropical.ps  .......| Post tropical cyclone mark    |    yes     |   no   |
+post_tropical_shem.ps  ..| Post tropical mark (Srn Hem)  |    yes     |   no   |
+sct.ps  .................| Scattered cloud               |    yes     |   no   |
+square.ps  ..............| Square                        |    yes     |   no   |
+square_mark.ps  .........| Square mark (area)            |     no     |  yes   |
+square_filled.ps  .......| Filled square                 |     no     |  yes   |
+star.ps  ................| Star                          |    yes     |   no   |
+svricg.ps  ..............| Severe icing                  |    yes     |   no   |
+svrturbc.ps  ............| Severe turbulence             |    yes     |   no   |
+triangle.ps  ............| Triangle                      |    yes     |   no   |
+triangle_mark.ps  .......| Triangle mark (area)          |     no     |  yes   |
+triangle_down.ps  .......| Solid triangle (peak down)    |     no     |  yes   |
+triangle_left.ps  .......| Solid triangle (peak left)    |     no     |  yes   |
+triangle_right.ps  ......| Solid triangle (peak right)   |     no     |  yes   |
+triangle_up.ps  .........| Solid triangle (peak up)      |     no     |  yes   |
+tropical_storm.ps  ......| Tropical storm mark           |    yes     |   no   |
+tropical_storm_shem.ps  .| Tropical storm mark (Srn Hem) |    yes     |   no   |
+wnd_arrow.ps  ...........| Wind arrow mark               |     no     |  yes   |
+-------------------------|-------------------------------|------------|--------|
+
+
+
+
+
+Weather Icons (full colour) ...
+
+--------------------------------------|-------------------------------|--------|
+                                      |                               |   No   |
+Postscript Symbol File                |  Description                  | Modify |
+                                      |                               |        |
+--------------------------------------|-------------------------------|--------|
+blizz.ps  ............................| Blizzard icon                 |   -    |
+blosno.ps  ...........................| Blowing snow icon             |   -    |
+cldy.ps  .............................| Cloudy icon                   |   -    |
+cldy_p_d.ps  .........................| Partly cloudy icon (day)      |   -    |
+cldy_p_n.ps  .........................| Partly cloudy icon (night)    |   -    |
+clear.ps  ............................| Clear icon (night)            |   -    |
+clrng_d.ps  ..........................| Clearing icon (day)           |   -    |
+clrng_n.ps  ..........................| Clearing icon (night)         |   -    |
+flurr_d.ps  ..........................| Snow flurry icon (day)        |   -    |
+flurr_n.ps  ..........................| Snow flurry icon (night)      |   -    |
+fog.ps  ..............................| Fog icon                      |   -    |
+incld_d.ps  ..........................| Increasing cloud icon (day)   |   -    |
+incld_n.ps  ..........................| Increasing cloud icon (night  |   -    |
+r_frz.ps  ............................| Freezing rain icon            |   -    |
+r_show_d.ps  .........................| Rain shower icon (day)        |   -    |
+r_show_n.ps  .........................| Rain shower icon (night)      |   -    |
+rain.ps  .............................| Rain icon                     |   -    |
+rs_mix.ps  ...........................| Mixed rain/snow icon          |   -    |
+snow.ps  .............................| Snow icon                     |   -    |
+sunny.ps  ............................| Sunny icon (day)              |   -    |
+sunny_bw~.ps  ........................| Sunny icon (black and white)  |   -    |
+thunder.ps  ..........................| Thunderstorm icon             |   -    |
+vs_wind.ps  ..........................| Very windy icon               |   -    |
+w_chill.ps  ..........................| Wind chill icon               |   -    |
+windy.ps  ............................| Windy icon                    |   -    |
+--------------------------------------|-------------------------------|--------|
+
+
+
+
+
+Synoptic Symbols (based on Canadian standard symbol set) ...
+
+--------------------------------------|-------------------------------|--------|
+                                      |                               | Modify |
+Postscript Symbol File                |  Description                  |  fill  |
+                                      |                               |        |
+--------------------------------------|-------------------------------|--------|
+syno_blowing_dust_spray.ps  ..........| Blowing dust or spray         |  yes   |
+syno_blowing_snow.ps  ................| Blowing snow                  |  yes   |
+syno_decreasing.ps  ..................| Decreasing intensity          |  yes   |
+syno_dust.ps  ........................| Dust                          |  yes   |
+syno_dust_storm.ps  ..................| Dust storm                    |  yes   |
+syno_dust_storm_nearby.ps  ...........| Dust storm nearby             |  yes   |
+syno_dust_whirl.ps  ..................| Dust or sand whirl            |  yes   |
+syno_drifting_snow.ps  ...............| Drifting snow                 |  yes   |
+syno_drizzle.ps  .....................| Drizzle                       |  yes   |
+syno_drizzle_nobs.ps  ................| Drizzle (not at obs time)     |  yes   |
+syno_fog.ps  .........................| Fog                           |  yes   |
+syno_fog_nearby.ps  ..................| Fog nearby                    |  yes   |
+syno_fog_nobs.ps  ....................| Fog (not at obs time)         |  yes   |
+syno_fog_patches.ps  .................| Fog patches                   |  yes   |
+syno_freezing_precip.ps  .............| Freezing precipitation        |  yes   |
+syno_freezing_precip_nobs.ps  ........| Frzg precip (not at obs time) |  yes   |
+syno_hail_shower_nobs.ps  ............| Hail shower (not at obs time) |  yes   |
+syno_hail_storm.ps  ..................| Thunderstorm with hail        |  yes   |
+syno_hail_storm_nobs.ps  .............| TS w/hail (not at obs time)   |  yes   |
+syno_haze.ps  ........................| Haze                          |  yes   |
+syno_heavy_blowing_snow.ps  ..........| Heavy blowing snow            |  yes   |
+syno_heavy_drifting_snow.ps  .........| Heavy drifting snow           |  yes   |
+syno_heavy_drizzle.ps  ...............| Heavy drizzle                 |  yes   |
+syno_heavy_hail_storm.ps  ............| Thunderstorm with heavy hail  |  yes   |
+syno_heavy_hail_storm_nobs.ps  .......| TS w/heavy hail (not at obs)  |  yes   |
+syno_heavy_inter_drizzle.ps  .........| Heavy intermittent drizzle    |  yes   |
+syno_heavy_inter_rain.ps  ............| Heavy intermittent rain       |  yes   |
+syno_heavy_inter_snow.ps  ............| Heavy intermittent snow       |  yes   |
+syno_heavy_rain.ps  ..................| Heavy rain                    |  yes   |
+syno_heavy_rain_storm.ps  ............| Thunderstorm w/heavy rain/snow|  yes   |
+syno_heavy_rain_storm_nobs.ps  .......| TS w/heavy rain (not at obs)  |  yes   |
+syno_heavy_snow.ps  ..................| Heavy snow                    |  yes   |
+syno_heavy_thunder_storm.ps  .........| Heavy thunderstorm            |  yes   |
+syno_ice_crystals.ps  ................| Ice crystals                  |  yes   |
+syno_ice_pellets.ps  .................| Ice pellets                   |  yes   |
+syno_increasing.ps  ..................| Increasing intensity          |  yes   |
+syno_light_drizzle.ps  ...............| Light drizzle                 |  yes   |
+syno_light_freezing_drizzle.ps  ......| Light freezing drizzle        |  yes   |
+syno_light_freezing_rain.ps  .........| Light freezing rain           |  yes   |
+syno_light_hail_shower.ps  ...........| Light hail shower             |  yes   |
+syno_light_ice_pellet_shower.ps  .....| Light ice pellet shower       |  yes   |
+syno_light_rain.ps  ..................| Light rain                    |  yes   |
+syno_light_rain_drizzle.ps  ..........| Light rain and drizzle        |  yes   |
+syno_light_rain_shower.ps  ...........| Light rain shower             |  yes   |
+syno_light_rain_snow.ps  .............| Light rain and snow           |  yes   |
+syno_light_rain_snow_shower.ps  ......| Light rain and snow shower    |  yes   |
+syno_light_snow.ps  ..................| Light snow                    |  yes   |
+syno_light_snow_shower.ps  ...........| Light snow shower             |  yes   |
+syno_lightning.ps  ...................| Lightning                     |  yes   |
+syno_mist.ps  ........................| Mist                          |  yes   |
+syno_moderate_drizzle.ps  ............| Moderate drizzle              |  yes   |
+syno_moderate_freezing_drizzle.ps  ...| Moderate freezing drizzle     |  yes   |
+syno_moderate_freezing_rain.ps  ......| Moderate freezing rain        |  yes   |
+syno_moderate_hail_shower.ps  ........| Moderate hail shower          |  yes   |
+syno_moderate_ice_pellet_shower.ps  ..| Moderate ice pellet shower    |  yes   |
+syno_moderate_inter_drizzle.ps  ......| Moderate intermittent drizzle |  yes   |
+syno_moderate_inter_rain.ps  .........| Moderate intermittent rain    |  yes   |
+syno_moderate_inter_snow.ps  .........| Moderate intermittent snow    |  yes   |
+syno_moderate_rain.ps  ...............| Moderate rain                 |  yes   |
+syno_moderate_rain_drizzle.ps  .......| Moderate rain and drizzle     |  yes   |
+syno_moderate_rain_shower.ps  ........| Moderate rain shower          |  yes   |
+syno_moderate_rain_snow.ps  ..........| Moderate rain and snow        |  yes   |
+syno_moderate_rain_snow_shower.ps  ...| Moderate rain and snow shower |  yes   |
+syno_moderate_snow.ps  ...............| Moderate snow                 |  yes   |
+syno_moderate_snow_shower.ps  ........| Moderate snow shower          |  yes   |
+syno_not_at_obs_time.ps  .............| Not at observation time       |  yes   |
+syno_precip_distant.ps  ..............| Distant precipitation         |  yes   |
+syno_precip_nearby.ps  ...............| Precipitation nearby          |  yes   |
+syno_rain.ps  ........................| Rain                          |  yes   |
+syno_rain_nobs.ps  ...................| Rain (not at obs time)        |  yes   |
+syno_rain_shower_nobs.ps  ............| Rain shower (not at obs time) |  yes   |
+syno_rain_snow_nobs.ps  ..............| Rain+snow (not at obs time)   |  yes   |
+syno_rain_storm.ps  ..................| Thunderstorm with rain/snow   |  yes   |
+syno_rain_storm_nobs.ps  .............| TS w/rain (not at obs time)   |  yes   |
+syno_rime_fog.ps  ....................| Rime fog                      |  yes   |
+syno_severe_dust_storm.ps  ...........| Severe dust storm             |  yes   |
+syno_shallow_fog.ps  .................| Shallow fog                   |  yes   |
+syno_shallow_fog_patches.ps  .........| Shallow fog patches           |  yes   |
+syno_shower.ps  ......................| Shower                        |  yes   |
+syno_slash.ps  .......................| Slash mark (divider)          |  yes   |
+syno_smoke.ps  .......................| Smoke                         |  yes   |
+syno_snow.ps  ........................| Snow                          |  yes   |
+syno_snow_crystals.ps  ...............| Snow crystals                 |  yes   |
+syno_snow_grains.ps  .................| Snow grains                   |  yes   |
+syno_snow_nobs.ps  ...................| Snow (not at obs time)        |  yes   |
+syno_snow_shower_nobs.ps  ............| Snow shower (not at obs time) |  yes   |
+syno_squall.ps  ......................| Squall                        |  yes   |
+syno_thin_fog.ps  ....................| Thin fog                      |  yes   |
+syno_thin_rime_fog.ps  ...............| Thin rime fog                 |  yes   |
+syno_thunder_dust_storm.ps  ..........| Thunderstorm with dust        |  yes   |
+syno_thunder_storm.ps  ...............| Thunderstorm                  |  yes   |
+syno_thunder_storm_nobs.ps  ..........| Thunderstorm (not at obs time)|  yes   |
+syno_tornado.ps  .....................| Tornado                       |  yes   |
+syno_violent_rain_shower.ps  .........| Violent rain shower           |  yes   |
+syno_virga.ps  .......................| Virga                         |  yes   |
+--------------------------------------|-------------------------------|--------|
+
+
+
+
+
+Provincial Forestry symbols ...
+
+--------------------------------------|-------------------------------|--------|
+                                      |                               | Modify |
+Postscript Symbol File                |  Description                  |  fill  |
+                                      |                               |        |
+--------------------------------------|-------------------------------|--------|
+fire_160.ps  .........................| Fire symbol (/160)            |  yes   |
+fire_161.ps  .........................| Fire symbol (/161)            |  yes   |
+fire_162.ps  .........................| Fire symbol (/162)            |  yes   |
+fire_163.ps  .........................| Fire symbol (/163)            |  yes   |
+fire_164.ps  .........................| Fire symbol (/164)            |  yes   |
+fire_165.ps  .........................| Fire symbol (/165)            |  yes   |
+--------------------------------------|-------------------------------|--------|

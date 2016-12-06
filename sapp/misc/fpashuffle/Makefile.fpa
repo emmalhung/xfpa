@@ -1,0 +1,56 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	fpashuffle
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "FPA Shuffle"
+
+
+# Rules for building FPA Shuffle program:
+FPASHUFFLE      = $(BINDIR)/$(PLATFORM)/fpashuffle
+FPASHUFFLE_OBJ  = fpashuffle.o
+fpashuffle:		Pobjects $(FPASHUFFLE)
+			@	echo "FPA $(PLATFORM) fpashuffle ready"
+			@	echo 
+$(FPASHUFFLE):	$(FPASHUFFLE_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) fpashuffle"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(FPASHUFFLE_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/fpashuffle ]; \
+					then cd $(BINDIR); ln -s fpa.exec fpashuffle; fi
+
+
+# Rules for building object modules:
+fpashuffle.o:	$(FPAHDR)
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) FPA Shuffle module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

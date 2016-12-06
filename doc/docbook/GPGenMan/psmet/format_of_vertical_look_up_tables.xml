@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_format_of_vertical_look_up_tables'> <title>Format of Vertical Look Up Tables</title> <titleabbrev>vertical look up</titleabbrev>
+<para>
+Vertical look up tables are used to set vertical positions in cross sections.
+They are accessed by the <userinput>vertical_look_up</userinput> keyword which can be found in the
+<link linkend='ps_cross_section_areas'>@cross_section_areas</link>
+<link linkend='ps_cross_section_contours'>@cross_section_contours</link>
+<link linkend='ps_cross_section_axis_labels'>@cross_section_axis_labels</link>
+<link linkend='ps_define_cross_section'>@define_cross_section</link>
+<link linkend='ps_draw_cross_section_line'>@draw_cross_section_line</link>
+<link linkend='ps_sample_field'>@sample_field</link>
+<link linkend='ps_sample_wind'>@sample_wind</link> directives.
+Files containing vertical look up tables have a ".ztab" suffix.
+</para><para>
+Vertical look up tables contain lines with the following format:
+<programlisting>
+   <replaceable>ident</replaceable>   <replaceable>value</replaceable> <replaceable>axis_location</replaceable>    [<replaceable>text_string</replaceable>]
+   <replaceable>ident</replaceable>   <replaceable>value</replaceable> <replaceable>axis_location</replaceable>    [<replaceable>text_string</replaceable>]
+   <replaceable>...</replaceable></programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>ident</replaceable></entry><entry>is the location identifier (in string format)</entry></row>
+<row valign='top'><entry><replaceable>value</replaceable></entry><entry>is a vertical value for the level (in real format)</entry></row>
+<row valign='top'><entry><replaceable>axis_location</replaceable></entry><entry>is a percentage of cross section height, from the "height" keyword in the <link linkend='ps_define_cross_section'>@define_cross_section</link> directive (in real format)</entry></row>
+<row valign='top'><entry><replaceable>text_string</replaceable></entry><entry>is an optional text description (in string format)</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+Note that the <userinput>-</userinput> character can be used as a placeholder for any "missing" parameters.
+</para><para>
+Note that all parameters that follow the <userinput>!</userinput> or <userinput>#</userinput> characters in a line are considered comments.
+The vertical parameters from the directive are matched with the set of
+<replaceable>value</replaceable> parameters from the lines of the vertical look up table to set the
+appropriate location along the vertical axis of the cross section, given by the
+set of <replaceable>axis_location</replaceable> parameters, for display or sampling.
+</para></sect2>

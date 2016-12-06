@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_loop_begin'> <title>@loop_begin</title> <titleabbrev>@loop_begin</titleabbrev>
+<para>
+Begin a loop to repeat all directives from this <link linkend='ps_loop_begin'>@loop_begin</link> directive up to the matching <link linkend='ps_loop_end'>@loop_end</link> directive.
+The keyword values for each group and keyword are reset to the next value in the list for each iteration.
+If the number of keyword values is less than the number of iterations, then the command reuses the list of keyword values as many times as is necessary.
+The number of iterations is set either by the keyword <userinput>number_of_iterations</userinput> or 
+it is determined by the number of features that match the category specified for a particular field (element/level pair).
+</para><para>
+Note that the <userinput>category_attribute</userinput> and <userinput>category</userinput> keywords can be used one or more times to choose only selected features for a particular field (element/level pair).
+</para><para>
+Note that the keywords and their values are included in another directive by using the format &lt;<replaceable>group_name</replaceable> in the keyword list.
+</para><para>
+Note that <link linkend='ps_loop_begin'>@loop_begin</link> and <link linkend='ps_loop_end'>@loop_end</link> directives may be embedded.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>number_of_iterations</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Number of iterations of directives (up to the matching <link linkend='ps_loop_end'>@loop_end</link> directive)</para></entry></row>
+
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>element</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Element to loop on</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>level</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Level to loop on</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/field_type_loop.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/area_type.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para> value to replace magic term <userinput>&lt;iteration_attribute&gt;</userinput>.
+</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>group_name</userinput>, <userinput>keyword_name</userinput>, <userinput>keyword_value</userinput> and <userinput>keyword_value_list</userinput> can be specified more than once in this directive, and that a <userinput>group_name</userinput> may not require a <userinput>keyword_name</userinput> if the directive to be accessed requires only a value.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>group_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Group name for keyword list</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>keyword_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Keyword name</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>keyword_value</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Keyword value for one iteration</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>keyword_value_list</userinput></para></entry>
+<entry colname='type'><para>string(s)</para></entry>
+<entry colname='desc'><para>Keyword value for a number of iterations</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@loop_begin {
+  number_of_iterations = 5;
+  group_name   = source_group;
+  keyword_name = source;     keyword_value = interp;
+  keyword_name = valid_time; keyword_value_list = 00 06 12 18 24; }</programlisting>
+Set a "macro" called "source_group" containing values for the keywords source and valid_time to be
+used in subsequent directives. (The value of the source keyword will be interp for each iteration.)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@loop_begin { 
+  element            = storms;
+  level              = surface;
+  category_attribute = storm_type;
+  category           = tornado;
+  attribute          = storm_id;
+  }</programlisting>
+  Loop through all the storms with storm_type = tornado. Where &lt;iteration_attribute&gt; is the value of storm_id.
+</para></example>
+
+</para></sect2>

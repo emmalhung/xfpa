@@ -1,0 +1,85 @@
+! Define a macro for coloured boxes ...
+@group
+	{
+	group_name = ContourBox;
+	width      = 0.50;
+	height     = 0.40;
+	y_off      = 0.50;
+	line_width = 0.03;
+	outline    = X11 Black;
+	}
+
+! Display row of boxes with contour colours enclosed ...
+@box { <ContourBox;  x_off = -2.75;  interior_fill = X11 White }
+@box { <ContourBox;  x_off = -2.25;  interior_fill = X11 Gray90; }
+@box { <ContourBox;  x_off = -1.75;  interior_fill = X11 Turquoise; }
+@box { <ContourBox;  x_off = -1.25;  interior_fill = X11 BlueViolet; }
+@box { <ContourBox;  x_off = -0.75;  interior_fill = X11 CadetBlue3; }
+@box { <ContourBox;  x_off = -0.25;  interior_fill = X11 Green; }
+@box { <ContourBox;  x_off =  0.25;  interior_fill = X11 PaleGreen; }
+@box { <ContourBox;  x_off =  0.75;  interior_fill = X11 Yellow; }
+@box { <ContourBox;  x_off =  1.25;  interior_fill = X11 LightSalmon; }
+@box { <ContourBox;  x_off =  1.75;  interior_fill = X11 Orange; }
+@box { <ContourBox;  x_off =  2.25;  interior_fill = X11 OrangeRed; }
+@box { <ContourBox;  x_off =  2.75;  interior_fill = X11 Firebrick3; }
+
+! Define a macro for text in boxes ...
+@group
+	{
+	group_name    = TextBox;
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	text_size     = 0.25;
+	line_width    = 0.02;
+	y_off         = 0.40;
+	justification = centre;
+	char_space    =   0;
+	word_space    =  75;
+	line_space    = 100;
+	}
+
+! Display text in each contour colour box ...
+@text { <TextBox;  x_off = -2.75;  string = -35 }
+@text { <TextBox;  x_off = -2.25;  string = -30 }
+@text { <TextBox;  x_off = -1.75;  string = -25 }
+@text { <TextBox;  x_off = -1.25;  string = -20 }
+@text { <TextBox;  x_off = -0.75;  string = -15 }
+@text { <TextBox;  x_off = -0.25;  string = -10 }
+@text { <TextBox;  x_off =  0.25;  string =  -5 }
+@text { <TextBox;  x_off =  0.75;  string =   5 }
+@text { <TextBox;  x_off =  1.25;  string =  10 }
+@text { <TextBox;  x_off =  1.75;  string =  15 }
+@text { <TextBox;  x_off =  2.25;  string =  20 }
+@text { <TextBox;  x_off =  2.75;  string =  25 }
+
+! Display and label the zero degree location ...
+@box
+	{
+	width         = 0.50;
+	height        = 0.30;
+	x_off         = 0.50;
+	y_off         = 0.15;
+	line_width    = 0.03;
+	outline       = X11 Black;
+	interior_fill = X11 Red;
+	}
+@box
+	{
+	width         = 0.00;
+	height        = 0.43;
+	x_off         = 0.50;
+	y_off         = 0.50;
+	line_width    = 0.07;
+	outline       = X11 Red;
+	interior_fill = X11 Red;
+	}
+@text
+	{
+	<TextBox;
+	x_off  = 0.50;
+	y_off  = 0.07;
+	string = 0 C;
+	}

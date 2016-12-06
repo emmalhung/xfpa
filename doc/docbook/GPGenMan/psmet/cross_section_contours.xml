@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_cross_section_contours'> <title>@cross_section_contours</title> <titleabbrev>@cross_section_contours</titleabbrev>
+<para>
+Display contours determined from "continuous" field values at several levels (or
+determined from "vector" field magnitudes at several levels) in a cross section.
+</para><para>
+Contours are created by sampling several fields (or equations) at different levels
+along the horizontal axis of the cross section, and then contouring this pseudo
+grid of values by mapping the horizontal positions to the location look up table
+<userinput>location_look_up</userinput> and mapping the level parameters to the vertical locations in
+the vertical look up table <userinput>vertical_look_up</userinput>.
+</para><para>
+Note that entries in <userinput>location_look_up</userinput> table MUST be entries from the location
+look up table in directive <link linkend='ps_define_cross_section'>@define_cross_section</link>.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/cross_section_name.xml'/>
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>element</userinput> and <userinput>level</userinput> can be specified more than once in this directive.</para></entry></row>
+<row valign='top'><entry spanname='tblnote'><para>Note that if a single element name is matched with a list of level names, or vice versa, the single name must be given first. Multiple element and level name lists should have the same number.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element_list.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level_list.xml'/>
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>equation</userinput> can be specified more than once in this directive.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/equation.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/units.xml'/>
+<row><entry colname='desc'><para>(Note: <userinput>values</userinput> <userinput>min</userinput> <userinput>max</userinput> <userinput>base</userinput> and <userinput>interval</userinput> are given in these units)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_location_look_up.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_distances.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_units.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_times.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_fractions.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/values.xml'/>
+<row><entry colname='desc'><para>of contours to display</para></entry></row>
+
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/min.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/max.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/base.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/interval.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/display_as_areas.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/interior_fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/symbol_fill_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_length.xml'/>
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>line_width</userinput>, <userinput>line_style</userinput>, <userinput>outline</userinput> and <userinput>fill</userinput> can be specified more than once in this directive, for drawing multi-coloured contours!</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@cross_section_contours
+{
+  cross_section_name = route_cross_section;
+  element            = wind_speed;
+  level_list         = SFC 850 700 500 250;
+  units              = knots;
+  location_look_up   = route_contours;
+  vertical_look_up   = xsect_heights;
+  pattern            = simple;
+  min = 10; max = 1000; base = 10; interval = 10;
+}</programlisting>
+Display contours on a cross section named <userinput>route_cross_section</userinput> (set in the <link linkend='ps_define_cross_section'>@define_cross_section</link>
+directive). The contours are created from the SFC wind_speed, 850 wind_speed, 700 wind_speed,
+500 wind_speed, and 250 wind_speed fields. The field is sampled at each location identified in the
+location look up table <filename>route_contours.ltab</filename> (whose locations must be a subset of the default location
+look up table set in the <link linkend='ps_define_cross_section'>@define_cross_section</link> directive), and the values are converted to vertical
+locations using the vertical look up table <filename>xsect_heights.ztab</filename>. The contours are displayed every 10
+knots, between 10 knots and 1000 knots, with a simple line, and with a presentation previously set by
+the <link linkend='ps_contour_presentation'>@contour_presentation</link> directive.
+</para></example>
+</para></sect2>

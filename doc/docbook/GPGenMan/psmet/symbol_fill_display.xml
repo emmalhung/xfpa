@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_symbol_fill_display'> <title>@symbol_fill_display</title> <titleabbrev>@symbol_fill_display</titleabbrev>
+<para>
+Set display parameters for filling an area with symbols.
+</para><para>
+Note that symbol fills are always anchored to the centre of the current map, and
+all keywords are measured with respect to this location.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>symbol_fill_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Symbol fill name</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/symbol.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/symbol_scale.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>symbol_rotation</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Angle of rotation for graphic (in counter-clockwise decimal degrees)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset of initial graphic symbol wrt centre of current map (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset of initial graphic symbol wrt centre of current map (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_repeat</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal spacing for subsequent "columns" of graphic symbols (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_repeat</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical spacing for subsequent "rows" of graphic symbols (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_shift</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset between graphic symbols in adjoining "rows" (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_shift</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset between graphic symbols in adjoining "columns" (in display units)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@symbol_fill_display 
+	{ 
+	symbol_fill_name = cross_fill;
+	symbol           = cross;
+	symbol_scale     = 40.0;
+	symbol_rotation  =  0.0;
+	x_off            =  0.0;
+	x_repeat         =  0.2;
+	x_shift          =  0.1;
+	y_off            =  0.0;
+	y_repeat         =  0.2;
+	y_shift          =  0.0;
+	line_width       =  0.005;
+	outline          = X11 Red;
+	fill             = none;
+	}</programlisting>
+Set parameters for a symbol fill display called cross_fill. The display will fill an outlined area with
+graphics from file "cross", beginning at a location at the centre of the current map, repeated every 0.2
+"units" horizontally and every 0.2 "units" vertically, and offset 0.1 "units" horizontally between
+adjoining "rows" of symbols. The symbols will be drawn with a line 0.005 "units" wide in X11 Red. The graphic will be 40% of its original size. See <xref linkend='graphics_symbol_files'/> for default symbol location.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

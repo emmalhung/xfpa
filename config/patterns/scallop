@@ -1,0 +1,17 @@
+* MSRB Metafile Standard
+ rev 1.2
+* 
+ mapdef 0 0 0 180 100 1
+ units xy
+*
+*
+ info pattern repeat 1
+ info pattern baseline centre
+ info pattern symmetric no
+* 
+* lines
+ entity-c NULL NULL LSPEC "[colour=Firebrick width=3]"
+ curve r 7
+ 0 0 30 50 60 87 90 100 120 87 150 50 180 0
+*
+* End

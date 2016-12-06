@@ -1,0 +1,56 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	hostinfo
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "Host Info"
+
+
+# Rules for building Host Info program:
+HOSTINFO      = $(BINDIR)/$(PLATFORM)/hostinfo
+HOSTINFO_OBJ  = hostinfo.o
+hostinfo:		Pobjects $(HOSTINFO)
+			@	echo "FPA $(PLATFORM) hostinfo ready"
+			@	echo 
+$(HOSTINFO):	$(HOSTINFO_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) hostinfo"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(HOSTINFO_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/hostinfo ]; \
+					then cd $(BINDIR); ln -s fpa.exec hostinfo; fi
+
+
+# Rules for building object modules:
+hostinfo.o:	$(FPAHDR)
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) Host Info module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

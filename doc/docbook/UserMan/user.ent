@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!ENTITY version '8'>
+<!ENTITY FPA '<acronym>FPA</acronym>'>
+<!ENTITY CMC '<acronym>CMC</acronym>'>
+<!ENTITY GRIB '<acronym>GRIB</acronym>'>
+<!ENTITY right '<mousebutton>right</mousebutton>'>
+<!ENTITY left '<mousebutton>left</mousebutton>'>
+<!ENTITY colwidth "<colspec colwidth='1*'/><colspec colwidth='4*'/>">
+<!ENTITY colwidth2 "<colspec colwidth='1*'/><colspec colwidth='2*'/>">
+<!ENTITY colwidth3 "<colspec colwidth='1*'/><colspec colwidth='3*'/>">

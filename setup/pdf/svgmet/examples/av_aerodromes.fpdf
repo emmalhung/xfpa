@@ -1,0 +1,41 @@
+! Set the default presentation for red text bordered with black ...
+@presentation
+	{
+	line_width    = 0.01;
+	outline       = CMYK 0   0   0 100;
+	fill          = CMYK 0 100 100  30;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	justification = left;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Display aerodromes at selected locations ...
+@define_sample_list
+	{
+	list_name           = aerodrome_list;
+	location_ident_list = CYFC CYYG CYHZ CYQY CYQX CYJT CYYY CYZV CYQB CYUL
+	location_ident_list = KBOS KJFK
+	!location_ident_list = GPGEN_All
+	}
+@add
+	{
+	list_name        = aerodrome_list;
+	location_look_up = aerodromes;
+	symbol           = circle_mark;
+	scale            =    50;
+	x_off            =  0.00;
+	y_off            =  0.00;
+	}
+@text
+	{
+	attribute        = GPGEN_ident;
+	list_name        = aerodrome_list;
+	location_look_up = aerodromes;
+	text_size        =  0.15;
+	x_off            =  0.05;
+	y_off            = -0.04;
+	}

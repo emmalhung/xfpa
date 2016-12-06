@@ -1,0 +1,342 @@
+#! /bin/bash
+
+export statfd
+check_process_status() {
+	if [ "$?" != 0 ]
+	then
+		echo "ERROR STATUS $*"
+		if [ "$statfd" != "/dev/null" ]
+		then
+			echo "ERROR STATUS $*" 1>&$statfd
+		fi
+		trap "" 0
+		# HP-UX 10 has a bug which doesn't reset this trap properly
+		error_exit() { trap "" 0; }
+		exit 1
+	fi
+}
+error_exit() {
+	echo "ERROR"
+	if [ "$statfd" != "/dev/null" ]
+	then
+		echo "ERROR" 1>&$statfd
+	fi
+	trap "" 0
+	exit 1
+}
+send_status() {
+	echo "STATUS $*"
+	if [ "$statfd" != "/dev/null" ]
+	then
+		echo "STATUS $*" 1>&$statfd
+	fi
+}
+send_success() {
+	echo "END"
+	if [ "$statfd" != "/dev/null" ]
+	then
+		echo "END" 1>&$statfd
+	fi
+	trap "" 0
+	# HP-UX 10 has a bug which doesn't reset this trap properly
+	error_exit() { trap "" 0; }
+	exit 0
+}
+
+echo "[fpapm script] $*"
+
+# Send error status on abnormal exit
+trap "error_exit" 0
+
+# Let this script run through interreupts, quits and logouts
+trap "" 1 2 3 13
+
+# Make sure FPA executables can be found
+. .fpaenvrc
+
+# Set the variable default values.
+# These names must agree with the names used within the invoking process.
+amodel=
+args=
+config_file=
+directory=
+display=
+dpi=150
+fcst_id=
+file_name=
+info_file=
+key=
+matrix_code=
+mode=
+output_file=
+pdf=
+post_process=
+pre_process=
+process=
+print_fmt=pcl
+printer=
+program=
+select=
+setup=`get_setup 2>/dev/null`
+source=depict
+statfd=/dev/null
+subarea=
+T0=
+time=
+time_delta=0
+window=
+xoff=0
+yoff=0
+xlen=0
+ylen=0
+
+# Set operation dependent default values for certain parameters.
+text_printer=${FPA_TEXT_PRINTER:-laser}
+pcl_printer=${FPA_PCL_PRINTER:-laser}
+ps_printer=${FPA_PS_PRINTER:-laser}
+key_FoG_normal=n
+key_bullet_normal=Normal
+
+# The command inputs to this procedure are in the form of vrbl=data
+# where vrbl is one of the above variables. For example program=FoG
+for i
+do
+	eval $i
+	if [ -n "$FPA_DEBUG" ]
+	then
+		echo "[fpapm]: $i"
+	fi
+done
+
+# Display setting for all processes.
+if [ ! "$display" = "" ]
+then
+	DISPLAY=$display
+	export DISPLAY
+fi
+
+
+# Text forecast generation:
+if [ "$program" = "FoG" ]
+then
+
+	if [ "$select" = "regular_fcst" ]
+	then
+		send_status start FoG
+		fcst.sh "$select" "$fcst_id" "$setup" "${key:-$key_FoG_normal}" "$info_file"
+		check_process_status FoG
+
+	elif [ "$select" = "point_fcst" ]
+	then
+
+		send_status start FoG
+		fcst.sh "$select" "$fcst_id" "$setup" "${key:-$key_FoG_normal}" "$info_file"
+		check_process_status FoG
+
+	elif [ "$select" = "release_point_fcst" ]
+	then
+
+		cp "$file_name" "$directory"
+
+	else
+		echo "[fpapm] ERROR: Unrecognized select <$select> in FoG program."
+	fi
+
+# Graphic generation:
+elif [ "$program" = "graphic" ]
+then
+
+	if [ "$select" = "texmet" ]
+	then
+
+		texmet "$setup" "$directory" "$pdf" "$T0"
+
+	elif [ "$select" = "svgmet" ]
+	then
+
+		svgmet "$setup" "$directory" "$pdf" "$T0"
+
+	elif [ "$select" = "psmet" ]
+	then
+
+		psmet "$setup" "$directory" "$pdf" "$T0"
+
+	elif [ "$select" = "metafiles" ]
+	then
+
+		eval "$post_process"
+
+	elif [ "$select" = "editor" ]
+	then
+
+		rtn=`type "$post_process"`
+		for i in $rtn
+		do
+			a=$i
+		done
+		if [ "$a" != "$post_process" ]
+		then
+			a=`basename $a`
+		fi
+		if [ "$a" = "$post_process" ]
+		then
+			eval "$post_process $args &"
+		elif [ "$statfd" != "/dev/null" ]
+		then
+			echo "ERROR STATUS $rtn" 1>&$statfd
+		fi
+	fi
+
+
+# Allied models:
+elif [ "$program" = "allied_model" ]
+then
+
+	# Check if something gets executed
+	Any=
+
+	if [ "$pre_process" != "" ]
+	then
+		Any=T
+		send_status start prep
+		$pre_process
+		check_process_status prep
+	fi
+
+	if [ "$process" != "" ]
+	then
+		Any=T
+		send_status start model
+		$process
+		check_process_status model
+	fi
+
+	if [ "$post_process" != "" ]
+	then
+		Any=T
+		send_status start post
+		$post_process
+		check_process_status post
+	fi
+
+	if [ "$Any" = "" ]
+	then
+		echo "[fpapm] No allied model processes were defined."
+		error_exit
+	fi
+
+
+# Archive facility:
+elif [ "$program" = "archive" ]
+then
+
+	# NOTE: The archive facility is not activated when FPA is first installed.
+	#       If you wish to activate the archive, simply create the appropriate
+	#       archive directory (i.e. <data>/Archive).
+
+	# NOTE: When activated, the archive facility will continue to add files to
+	#       the archive directory.  It is your own responsibility to remove the
+	#       files once they have been safely transferred to your achive medium.
+
+	# See if the archive directory has been created
+	arcdir=`get_directory "${setup}" "archive" 2>/dev/null`
+	if [ $? -eq 0 -a -d archdir ]
+	then
+
+		# Build the archive file name.
+		arcfile=${arcdir}/${fcst_id}.${time}
+
+		# Remove the archive file for the same issue time if one exists.	
+		rm -f ${arcfile}.tar.Z
+
+		# Now create the archive of the depictions and forecasts.
+		depict_dir=`get_directory "${setup}" "depict"`
+		fcst_dir=`get_directory "${setup}" "fcst.release"`
+		tar cf ${arcfile}.tar ${depict_dir}/????:???:?? ${fcst_dir}/${fcst_id}*
+		compress ${arcfile}.tar
+	fi
+
+
+# Hardcopy graphics output:
+elif [ "$program" = "screen_print" ]
+then
+
+	if [ -r "$info_file" ]
+	then
+
+		# Set up platform-specific options for xpr program
+		case $print_fmt in
+			ps) 		dev=ps;;
+			PS) 		dev=ps;;
+			postscript)	dev=ps;;
+			PostScript)	dev=ps;;
+			POSTSCRIPT)	dev=ps;;
+			*)			dev=ljet;;
+		esac
+
+		# Print to a file.
+		if [ ! "$file_name" = "" ]
+		then
+
+			# Print to a PCL or PostScript file.
+			if [ "$mode" = "portrait" -o "$mode" = "landscape" ]
+			then
+
+				echo "[fpapm] Saving image to file: $file_name"
+				xpr -$mode -device $dev -density $dpi -plane 0 -rv \
+					-left $xoff -top $yoff "$info_file" -output "$file_name"
+
+			else
+				echo "[fpapm] Unknown print mode: $mode"
+			fi
+
+		# Print to an actual printer.
+		else
+
+			if [ "$mode" = "portrait" -o "$mode" = "landscape" ]
+			then
+
+				if [ "$printer" = "" ]
+				then
+					case $dev in
+						ps)		printer=$ps_printer;;
+						ljet)	printer=$pcl_printer;;
+					esac
+				fi
+
+				echo "[fpapm] Printing image"
+				sleep 1
+				xpr -$mode -device $dev -density $dpi -plane 0 -rv \
+					-left $xoff -top $yoff "$info_file" \
+					| lp -d"$printer" -onb -oraw
+
+			else
+				echo "[fpapm] Unknown print mode: $mode"
+			fi
+		fi
+		rm -f "$info_file"
+	fi
+
+
+# Hardcopy text output:
+elif [ "$program" = "file_print" ]
+then
+
+	expand -${TABS:-8} "$file_name" | lp -d${FPA_TEXT_PRINTER:-text_printer} -onb
+
+
+# Run the default text editor program:
+elif [ "$program" = "editor" ]
+then
+
+	$select "$file_name"
+	check_process_status $select
+
+
+# Unknown:
+else
+	echo "[fpapm] Run requested for unrecognized program > $program."
+	error_exit
+fi
+
+send_success

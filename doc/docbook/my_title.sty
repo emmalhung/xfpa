@@ -1,0 +1,47 @@
+% ******************************************************************************
+% *** Page de garde
+% ******************************************************************************
+
+\newlength{\oldbaselineskip}
+
+\def\DBKcover{
+\ifthenelse{\equal{\DBKedition}{}}{\def\edhead{}}{\def\edhead{Ed. \DBKedition}}
+
+\def\DBKfpalogo{\scalebox{0.1}{\includegraphics{FPAHlogo-can}}}
+\def\DBKfpacover{\scalebox{0.9}{\includegraphics{FPAXlogo-can}}}
+
+% interligne double
+\setlength{\oldbaselineskip}{\baselineskip}
+\setlength{\baselineskip}{2\oldbaselineskip}
+\textsf{
+\vfill
+\vspace{2.5cm}
+\begin{center}
+  \huge{\textbf{\DBKtitle}}\\ %
+  \ifthenelse{\equal{\DBKsubtitle}{}}{}{
+  % \underline{\ \ \ \ \ \ \ \ \ \ \ }\\ %
+  \ \\ %
+  \huge{\textbf{\DBKsubtitle}}\\ %
+  }
+  \vfill
+  \vspace{0.5cm}
+  \DBKfpacover
+\end{center}
+\vfill
+\setlength{\baselineskip}{\oldbaselineskip}
+\hspace{1cm}
+\vspace{1cm}
+\begin{center}
+\begin{tabular}{p{7cm} p{7cm}}
+\Large{\DBKreference{} \edhead} & \\
+\end{tabular}
+\end{center}
+}
+
+% Format for the other pages
+\newpage
+\setlength{\baselineskip}{\oldbaselineskip}
+\chead[\DBKcheadfront]{\DBKcheadfront}
+\cfoot[]{}
+}
+

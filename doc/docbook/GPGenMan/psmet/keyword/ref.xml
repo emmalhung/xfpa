@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'>
+<entry colname='key'><para><userinput>ref</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Starting point for new reference location
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'> <tgroup cols='2'> <tbody>
+<row valign='top'>
+  <entry><userinput>map</userinput></entry>
+  <entry>reset to centre of current map</entry></row>
+<row valign='top'>
+  <entry><userinput>map_latlon</userinput></entry>
+  <entry>wrt lat/lon on current map</entry></row>
+<row valign='top'>
+  <entry><userinput>absolute</userinput></entry>
+  <entry>wrt page centre</entry></row>
+<row valign='top'>
+  <entry><userinput>lower_left</userinput></entry>
+  <entry>wrt current map</entry></row>
+<row valign='top'>
+  <entry><userinput>centre_left</userinput></entry>
+  <entry>wrt current map</entry></row>
+<row valign='top'>
+  <entry><userinput>upper_left</userinput></entry>
+  <entry>wrt current map</entry></row>
+<row valign='top'>
+  <entry><userinput>lower_centre</userinput></entry>
+  <entry>wrt current map</entry></row>
+<row valign='top'>
+  <entry><userinput>centre</userinput></entry>
+  <entry>wrt current map</entry></row>
+<row valign='top'>
+  <entry><userinput>upper_centre</userinput></entry>
+  <entry>wrt current map</entry></row>
+<row valign='top'>
+  <entry><userinput>lower_right</userinput></entry>
+  <entry>wrt current map</entry></row>
+<row valign='top'>
+  <entry><userinput>centre_right</userinput></entry>
+  <entry>wrt current map</entry></row>
+<row valign='top'>
+  <entry><userinput>upper_right</userinput></entry>
+  <entry>wrt current map</entry></row>
+<row valign='top'>
+  <entry><userinput>current</userinput></entry>
+  <entry>wrt current anchor position</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>

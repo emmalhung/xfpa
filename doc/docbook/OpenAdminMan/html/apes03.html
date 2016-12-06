@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.3. The Local Configuration File</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ape.html" title="Appendix E. Adding New Allied Models" /><link rel="prev" href="apes02.html" title="E.2. The Local Setup File" /><link rel="next" href="apes04.html" title="E.4. Changes to Allied Model Source Code" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">E.3. The Local Configuration File</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apes02.html">Prev</a> </td><th width="60%" align="center">Appendix E. Adding New Allied Models</th><td width="20%" align="right"> <a accesskey="n" href="apes04.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2051891"></a>E.3. The Local Configuration File</h2></div></div></div><p>
+<a id="id2051897" class="indexterm"></a>
+The format of the Local Configuration file is described in <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>.
+The location of this file is given in the 'directories' block of the Local Setup file by the keyword 'config'.
+The name of the Local Configuration file is given in the 'config_files' block of the Local Setup file by the keyword 'config'.
+(The usual name of the Local Configuration file is 'Config'.)
+</p><p>
+The user must add another 'Sources' block to the Local Configuration file to describe the new Allied Model directory and file locations, the data files required from the <span class="acronym">FPA</span> to run the Allied Model, and the data files that the Allied Model can produce for the <span class="acronym">FPA</span> to use.
+The format of the 'Sources' block is given in <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>.
+An example of a 'Sources' block for an Allied Model can be found in the file <code class="filename"><code class="envar">$FPA</code>/templates/useroutput/README</code>
+</p><p>
+</p><pre class="programlisting">
+Sources
+  {
+  NewModel
+    {
+    label            = "New Allied Model"
+    short_label      = "New Model"
+    description      = "New Allied Model Example - <span class="acronym">FPA</span> Version 6"
+    source_type      = Allied
+    directory_tag    = AModels.Data
+    directory_path   = NewModel
+    directory_layers = 3 # number of directory layers
+    subsources       =
+      {
+      Area1
+        {
+        label              = "New Model Area1"
+        short_label        = "Area1"
+        sub_directory_path = Area1
+        }
+      } # End of subsources Block
+</pre><p>
+Note that the 'directory_tag' line identifies the default data directory keyword from the 'directories' block of the Local Setup file, and the 'directory_path' line identifies the default subdirectory for the data files.
+Any 'directory_tag' or '..._path' lines in the following sections override these default values.
+Note that the pathname in the 'sub_directory_path' line is appended to each subdirectory for each 'subsource' of the Allied Model.
+</p><p>
+Note that the 'directory_layers' line identifies the number of directories available for saving data from successive runs of the Allied Model.
+For example, 'directory_layers = 3' would result in a base data directory and two Prev subdirectories.
+</p><p>
+The 'allied_model' section below is used to identify all Allied Model parameters.
+The 'source_info' line identifies the default location for all <span class="acronym">FPA</span> input data fields.
+Run strings for the 'pre_process', 'process', and 'post_process' modules can include any of the following keywords, which automatically substitute the appropriate parameters into the run string when the Allied Model is run.
+</p><div xmlns="" class="table"><a xmlns="http://www.w3.org/1999/xhtml" id="id2054321"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Table E.1. Allied Model process keywords</b></p><table xmlns="http://www.w3.org/1999/xhtml" summary="Allied Model process keywords" border="1"><colgroup><col /><col /></colgroup><thead><tr valign="top"><th valign="top">Keyword</th><th valign="top">Meaning</th></tr></thead><tbody><tr valign="top"><td valign="top">&lt;SETUP&gt;</td><td valign="top">the Local Setup file (local_setup)</td></tr><tr valign="top"><td valign="top">&lt;SOURCE&gt;</td><td valign="top">the Allied Model name in the Sources Block (NewModel)</td></tr><tr valign="top"><td valign="top">&lt;SUBSOURCE&gt;</td><td valign="top">the Allied Model subarea in the sub_sources Block (Area1, for example)</td></tr><tr valign="top"><td valign="top">&lt;RTIME&gt;</td><td valign="top">'zero' hour in the Depiction sequence, that is, the time at which the application is run (rtime) (Note that this is the time that is written to the 'Dstamp' file in the Data Directory when the application is run)</td></tr><tr valign="top"><td valign="top">&lt;ELEMENT&gt;</td><td valign="top">The active element in the depiction editor</td></tr><tr valign="top"><td valign="top">&lt;LEVEL&gt;</td><td valign="top">The active level in the depiction editor</td></tr><tr valign="top"><td valign="top">&lt;VTIME&gt;</td><td valign="top">The active depiction time</td></tr></tbody></table></div><p>
+</p><p>
+</p><pre class="programlisting">
+    allied_model    =
+      {
+      time_matching = False
+      source_info   = interp or depict
+      pre_process   = <span xmlns="" class="replaceable">allied_prep arg ...</span> # run string for pre-processing
+      process       = <span xmlns="" class="replaceable">allied_exec arg ...</span> # run string for execution
+      post_process  = <span xmlns="" class="replaceable">allied_post arg ...</span> # run string for post-processing
+</pre><p>
+The 'programs' section below is used to identify the actual Allied Model application that will be run when the specialized execution module is run.
+The <span xmlns="" class="replaceable">program_alias</span> will be used in the specialized execution module code to identify the Allied Model program.
+</p><pre class="programlisting">
+      programs          =
+        {
+        <span xmlns="" class="replaceable">program_alias</span>
+          {
+          directory_tag = AModels.Test
+          program_path  = bin/<span xmlns="" class="replaceable">executable</span>
+          }
+        } # End of programs Block
+</pre><p>
+The 'files' section below is used to identify all input or output files used by the actual Allied Model application.
+The location of the files will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data) unless the 'directory_tag' is reset for an individual file.
+Note that <span xmlns="" class="replaceable">file_alias_name</span> will be used in the specialized module code to identify a file.
+</p><pre class="programlisting">
+      files            =
+        {
+        <span xmlns="" class="replaceable">file_alias_name</span> # For Constant Files
+          {
+          directory_tag = AModels.Test
+          file_path     = <span xmlns="" class="replaceable">file</span>
+          }
+        <span xmlns="" class="replaceable">file_alias_name</span> # For Variable Files
+          {
+          file_path     = <span xmlns="" class="replaceable">file</span>
+          }
+        } # End of files Block
+</pre><p>
+The 'required_fields', 'required_wind_crossrefs', and 'required_value_crossrefs' sections below are used to identify the input <span class="acronym">FPA</span> data used by the pre-processing module of the Allied Model.
+If not required, these can be set to None.
+The location of this input data will default to the 'source_info' declaration given at the start of the 'allied_model' section unless it is reset here.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The <span xmlns="" class="replaceable">required_field_alias</span> or the <span xmlns="" class="replaceable">required_crossref_alias</span> will be used in the pre-processing module code to identify all required data.</p><p>The <span xmlns="" class="replaceable">tag_label</span> names will be used in the pre-processing module code to extract attribute information from the input data.</p></div><p>
+The <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span> names in the 'field_info' declarations, the <span xmlns="" class="replaceable">source</span> names in the 'source_info' declarations, and the <span xmlns="" class="replaceable">crossref</span> names in the 'crossref_info' declarations must be declared in the 'Elements', 'Levels', 'Sources', or 'CrossRefs' blocks of a Configuration file! The user will have to include declarations in the Local Configuration file for any <span xmlns="" class="replaceable">element</span>, <span xmlns="" class="replaceable">level</span>, <span xmlns="" class="replaceable">source</span>, or <span xmlns="" class="replaceable">crossref</span> data which is required by a new Allied Model but is not already declared.
+The user can refer to <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>, as well as the examples given in the <code class="filename">Config.<span xmlns="" class="replaceable">name</span></code> files in <code class="filename"><code class="envar">$FPA</code>/config</code>.
+</p><pre class="programlisting">
+      required_fields          =
+        {
+        <span xmlns="" class="replaceable">required_field_alias</span>
+          {
+          # input data identified by element and level
+          field_info                = <span xmlns="" class="replaceable">element  level</span> 
+          # optional: member of a Plot Object
+          sub_field_info            = <span xmlns="" class="replaceable">sub_field</span> 
+          # optional: location of input field
+          source_info               = <span xmlns="" class="replaceable">source</span> 
+          # optional: reset list of attributes
+          attribute_info_reset      = <strong class="userinput"><code>True | False</code></strong>
+          # optional: attributes required by allied model 
+          # (may be specified more than once to generate a list)
+          attribute_info            = <span xmlns="" class="replaceable">tag_label  attrib_name  attrib_units</span>
+          # optional: reset list of link chain node attributes
+          node_attribute_info_reset = <strong class="userinput"><code>True | False</code></strong>
+          # optional: link chain node attributes required by allied model 
+          # (may be specified more than once to generate a list)
+          node_attribute_info       = <span xmlns="" class="replaceable">tag_label  attrib_name  attrib_units</span>
+          }
+        } # End of required_fields Block
+      required_wind_crossrefs  =
+      # OR
+      required_value_crossrefs =
+        {
+        <span xmlns="" class="replaceable">required_crossref_alias</span>
+          {
+          # input data identified by cross-reference
+          crossref_info        = <span xmlns="" class="replaceable">crossref</span>
+          # optional: location of input field
+          source_info          = <span xmlns="" class="replaceable">source</span>
+          }
+        } # End of required_..._crossrefs Block
+</pre><p>
+
+The 'metafiles' section below is used to identify the output <span class="acronym">FPA</span> data produced by the post-processing module of the Allied Model.
+The location of the files will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data).
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The <span xmlns="" class="replaceable">metafile_alias</span> will be used in the post-processing module code to identify all metafiles.</p><p>The <span xmlns="" class="replaceable">tag_label</span> names will be used in the post-processing module code to pass attribute information to the output data.</p></div><p>
+The 'file_alias' line identifies the Allied Model data file from which the data will be extracted, where the <span xmlns="" class="replaceable">file_alias_name</span> referes to a file identified in the 'files' section above. The 'field_info' line identifies the output <span class="acronym">FPA</span> metafile.
+The <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span> names in the 'field_info' declarations must be declared in the 'Elements' or 'Levels' blocks of a Configuration file! The user will have to include declarations in the Local Configuration file for any <span xmlns="" class="replaceable">element</span> or <span xmlns="" class="replaceable">level</span> data which is required by a new Allied Model but is not already declared.
+The user can refer to <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>, as well as the examples given in the <code class="filename">Config.<span xmlns="" class="replaceable">name</span></code> files in <code class="filename"><code class="envar">$FPA</code>/config</code>.
+</p><pre class="programlisting">
+      metafiles      =
+        {
+        <span xmlns="" class="replaceable">metafile_alias</span>
+          {
+          #from files declaration, above
+          file_alias           = <span xmlns="" class="replaceable">file_alias_name</span>
+          #output data identified by element and level
+          field_info           = <span xmlns="" class="replaceable">element  level</span>
+          # optional: reset list of attributes
+          attribute_info_reset = <strong class="userinput"><code>True | False</code></strong>
+          # optional: output attributes from allied model 
+          # (may be specified more than once to generate a list)
+          attribute_info       = <span xmlns="" class="replaceable">tag_label  attrib_name  attrib_units</span>
+          # optional: reset list of default attributes
+          default_attrib_info_reset = <strong class="userinput"><code>True | False</code></strong>
+          # optional: default attributes set in output data
+          # (may be specified more than once to generate a list)
+          default_attrib_info       = <span xmlns="" class="replaceable">attrib_name  attrib_value</span>
+          }
+        } # End of metafiles Block
+      } # End of allied_model Block
+    } # End of NewModel Block
+  } # End of Sources Block
+</pre><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apes02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ape.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apes04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.2. The Local Setup File </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.4. Changes to Allied Model Source Code</td></tr></table></div></body></html>

@@ -1,0 +1,30 @@
+a { text-decoration:none }
+
+p[class='title'] {
+	font-weight: normal;
+}
+span[class='term'] {
+	font-weight: bold;
+}
+
+span[class='guimenu'], span[class='guisubmenu'], span[class='guimenuitem'] {
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+span[class='guibutton'] {
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+span[class='guilabel'] {
+	font-weight: bold;
+	font-style: italic;
+}
+pre.programlisting, pre.screen { 
+	background-color: #E0E0E0;
+}
+span.replaceable {
+	font-weight: bold;
+	font-style: italic;
+}

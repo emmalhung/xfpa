@@ -1,0 +1,604 @@
+! Aviation route forecast example ...
+
+! Set version ... this line must be first!
+@version { svgmet7.0 }
+
+! Set verbose mode for diagnostic output ...
+@verbose { no }
+
+! Set the display units used in all following directives ...
+!  "type" can be  inches  cm  mm  picas  points
+@display_units { type = inches }
+
+! Set the page size ...
+@size { width = 8.50; height = 11.00 }
+
+! Open the output file for the cross section ...
+@file_name
+	{
+	dir  = <default>;
+				! Options <default> <home>
+	name = AVIATION_ROUTES3;
+				! Options <pdf> <year> <month> <day> <julian> <hour>
+	}
+
+! Define the map ...
+@include { route_map_setup }
+
+! Set the source and valid time ...
+@set_source { source = av_5min_interp; valid_time = 00 }	!EDIT!
+
+! Anchor the cross section on the page ...
+@display_units { type = inches }
+@anchor { ref = absolute; x = -2.30; y = 1.10 }
+
+! Reset the display units used in all following directives ...
+@display_units { type = inches; scale_factor = 65 }
+
+! Define the cross section ...
+@define_cross_section
+	{
+	cross_section_name = route_cross_section;
+	map_scale          = 10000000;
+	height             =  5.00;
+	type               = time_route;
+	location_look_up   = route.ltab;
+	vertical_look_up   = xsect.ztab;
+	}
+
+! Draw the cross section axes ...
+@presentation
+	{
+	pattern    = simple;
+	outline    = X11 Black;
+	line_width = .030;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = lower;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = upper;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = left;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = right;
+	}
+@arrow_display
+	{
+	arrow_name     = route_direction;
+	arrow_length   = 0.10;
+	arrow_angle    =   50;
+	return_angle   =   35;
+	length_offset  =  0.0;
+	width_offset   =  0.0;
+	head_length    =  0.2;
+	tail_length    =  0.2;
+	arrow_features = head;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = lower;
+	y_off              = -0.75;
+	location_look_up   = route_direction;
+	arrow_name         = route_direction;
+	}
+
+! Draw the cross section tick marks ...
+@define_line
+	{
+	line_name = horizontal_ticks;
+	line      = -0.100  0.000  0.100  0.000
+	}
+@define_line
+	{
+	line_name = vertical_ticks;
+	line      =  0.000 -0.100  0.000  0.100
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = ticks;
+	axis_for_display   = upper;
+	line_name          = vertical_ticks;
+	location_look_up   = route_sub;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = ticks;
+	axis_for_display   = lower;
+	line_name          = vertical_ticks;
+	location_look_up   = route_sub;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = ticks;
+	axis_for_display   = left;
+	line_name          = horizontal_ticks;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = ticks;
+	axis_for_display   = right;
+	line_name          = horizontal_ticks;
+	}
+
+! Draw the cross section horizontal and vertical lines ...
+@presentation
+	{
+	pattern    = simple;
+	outline    = X11 Black;
+	line_width = .010;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = horizontal_lines;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = vertical_lines;
+	location_look_up   = route_sub;
+	}
+
+! Draw the cross section horizontal and vertical axis labels ...
+@presentation
+	{
+	outline       = none;
+	fill          = X11 Black;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	text_size     = 0.17;
+	char_space    =  0;
+	word_space    = 75;
+	}
+@cross_section_axis_labels
+	{
+	cross_section_name      = route_cross_section;
+	location_look_up        = route_sub;
+	axis_for_display        = lower;
+	format                  = direct;
+	y_off                   = -0.08;
+
+	attribute               = GPGEN_label;
+	attribute_anchor        = none;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = GPGEN_prog_time;
+	attribute_anchor        = GPGEN_label;
+	attribute_ref           = lower_centre;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+	attribute_format        = direct T%s
+	attribute_text_size     = 0.12;
+	}
+@cross_section_axis_labels
+	{
+	cross_section_name      = route_cross_section;
+	axis_for_display        = left;
+	vertical_look_up        = xsect;
+	format                  = direct;
+	x_off                   = -0.11;
+	y_off                   =  0.05;
+
+	attribute               = GPGEN_ident;
+	attribute_anchor        = none;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+	attribute_format        = direct %s;
+	}
+@cross_section_axis_labels
+	{
+	cross_section_name      = route_cross_section;
+	axis_for_display        = right;
+	vertical_look_up        = xsect;
+	format                  = direct;
+	x_off                   =  0.11;
+	y_off                   =  0.05;
+
+	attribute               = GPGEN_ident;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_vertical_just = centre;
+	attribute_format        = direct %s;
+	}
+
+! Display the cross section clouds and weather ...
+@include { route_wx_areas }
+
+! Display the cross section wind speed contours ...
+@set_source { source = GEM; valid_time = 00 }				!EDIT!
+@include { route_wind_contours }
+@set_source { source = av_5min_interp; valid_time = 00 }	!EDIT!
+
+! Sample some cross section winds ...
+@include { route_winds }
+
+! Sample the cross section clouds and weather ...
+@include { route_wx_labels }
+
+! Display cross section surface temperature ...
+@set_source { source = interp; valid_time = 00 }
+@include { route_temps }
+@set_source { source = av_5min_interp; valid_time = 00 }	!EDIT!
+
+! Set default presentation for all text to follow ...
+@presentation
+	{
+	line_width    = 0;
+	outline       = X11 Black;
+	fill          = X11 Black;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	justification = left;
+	text_size     = 0.18;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Anchor the label on the page ...
+@display_units { type = inches }
+@anchor { ref = absolute; x = -1.10; y = 5.05 }
+
+! Reset the display units used in all following directives ...
+@display_units { type = inches; scale_factor = 65 }
+
+! Display a label including the valid time in a box ...
+@box
+	{
+	width         =  4.00;
+	height        =  0.80;
+	x_off         =  2.00;
+	y_off         = -0.40;
+	outline       = X11 Black;
+	interior_fill = X11 White;
+	line_width    = .050;
+	}
+@text
+	{
+	text_size  = 0.25;
+	string     = Route Forecast - FPA Development
+	x_off      =  0.15;
+	y_off      = -0.27;
+	}
+@set_source { source = interp; valid_time = 00 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = VALID PERIOD:  %HZ  %b %d
+	x_off      =  0.20;
+	y_off      = -0.50;
+	}
+@set_source { source = interp; valid_time = 12 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = -  %HZ  %b %d
+	x_off      =  2.65;
+	y_off      = -0.50;
+	}
+@set_source { source = interp; valid_time = 00 }
+@text
+	{
+	string     = Boston USA to St John's NFLD
+	x_off      =  0.20;
+	y_off      = -0.70;
+	}
+
+! Set the source and valid time ...
+@set_source { source = av_5min_interp; valid_time = 00 }	!EDIT!
+
+! Anchor the cross section on the page ...
+@display_units { type = inches }
+@anchor { ref = absolute; x = -2.30; y = -3.60 }
+
+! Reset the display units used in all following directives ...
+@display_units { type = inches; scale_factor = 65 }
+
+! Define the cross section ...
+@define_cross_section
+	{
+	cross_section_name = rev_route_cross_section;
+	map_scale          = 10000000;
+	height             =  5.00;
+	type               = time_route;
+	location_look_up   = rev_route.ltab;
+	vertical_look_up   = xsect.ztab;
+	}
+
+! Draw the cross section axes ...
+@presentation
+	{
+	pattern    = simple;
+	outline    = X11 Black;
+	line_width = .030;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = lower;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = upper;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = left;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = right;
+	}
+@arrow_display
+	{
+	arrow_name     = route_direction;
+	arrow_length   = 0.10;
+	arrow_angle    =   50;
+	return_angle   =   35;
+	length_offset  =  0.0;
+	width_offset   =  0.0;
+	head_length    =  0.2;
+	tail_length    =  0.2;
+	arrow_features = head;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = lower;
+	y_off              = -0.75;
+	location_look_up   = rev_route_direction;
+	arrow_name         = route_direction;
+	}
+
+! Draw the cross section tick marks ...
+@define_line
+	{
+	line_name = horizontal_ticks;
+	line      = -0.100  0.000  0.100  0.000
+	}
+@define_line
+	{
+	line_name = vertical_ticks;
+	line      =  0.000 -0.100  0.000  0.100
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = ticks;
+	axis_for_display   = upper;
+	line_name          = vertical_ticks;
+	location_look_up   = rev_route_sub;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = ticks;
+	axis_for_display   = lower;
+	line_name          = vertical_ticks;
+	location_look_up   = rev_route_sub;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = ticks;
+	axis_for_display   = left;
+	line_name          = horizontal_ticks;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = ticks;
+	axis_for_display   = right;
+	line_name          = horizontal_ticks;
+	}
+
+! Draw the cross section horizontal and vertical lines ...
+@presentation
+	{
+	pattern    = simple;
+	outline    = X11 Black;
+	line_width = .010;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = horizontal_lines;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = rev_route_cross_section;
+	line_to_draw       = vertical_lines;
+	location_look_up   = rev_route_sub;
+	}
+
+! Draw the cross section horizontal and vertical axis labels ...
+@presentation
+	{
+	outline       = none;
+	fill          = X11 Black;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	text_size     = 0.17;
+	char_space    =  0;
+	word_space    = 75;
+	}
+@cross_section_axis_labels
+	{
+	cross_section_name      = rev_route_cross_section;
+	location_look_up        = rev_route_sub;
+	axis_for_display        = lower;
+	format                  = direct;
+	y_off                   = -0.08;
+
+	attribute               = GPGEN_label;
+	attribute_anchor        = none;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = GPGEN_prog_time;
+	attribute_anchor        = GPGEN_label;
+	attribute_ref           = lower_centre;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+	attribute_format        = direct T%s
+	attribute_text_size     = 0.12;
+	}
+@cross_section_axis_labels
+	{
+	cross_section_name      = rev_route_cross_section;
+	axis_for_display        = left;
+	vertical_look_up        = xsect;
+	format                  = direct;
+	x_off                   = -0.11;
+	y_off                   =  0.05;
+
+	attribute               = GPGEN_ident;
+	attribute_anchor        = none;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+	attribute_format        = direct %s;
+	}
+@cross_section_axis_labels
+	{
+	cross_section_name      = rev_route_cross_section;
+	axis_for_display        = right;
+	vertical_look_up        = xsect;
+	format                  = direct;
+	x_off                   =  0.11;
+	y_off                   =  0.05;
+
+	attribute               = GPGEN_ident;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_vertical_just = centre;
+	attribute_format        = direct %s;
+	}
+
+! Display the cross section clouds and weather ...
+@include { rev_route_wx_areas }
+
+! Display the cross section wind speed contours ...
+@set_source { source = GEM; valid_time = 00 }				!EDIT!
+@include { rev_route_wind_contours }
+@set_source { source = av_5min_interp; valid_time = 00 }	!EDIT!
+
+! Sample some cross section winds ...
+@include { rev_route_winds }
+
+! Sample the cross section clouds and weather ...
+@include { rev_route_wx_labels }
+
+! Display cross section surface temperature ...
+@set_source { source = interp; valid_time = 00 }
+@include { rev_route_temps }
+@set_source { source = av_5min_interp; valid_time = 00 }	!EDIT!
+
+! Set default presentation for all text to follow ...
+@presentation
+	{
+	line_width    = 0;
+	outline       = X11 Black;
+	fill          = X11 Black;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	justification = left;
+	text_size     = 0.18;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Anchor the label on the page ...
+@display_units { type = inches }
+@anchor { ref = absolute; x = -1.10; y =  0.35 }
+
+! Reset the display units used in all following directives ...
+@display_units { type = inches; scale_factor = 65 }
+
+! Display a label including the valid time in a box ...
+@box
+	{
+	width         =  4.00;
+	height        =  0.80;
+	x_off         =  2.00;
+	y_off         = -0.40;
+	outline       = X11 Black;
+	interior_fill = X11 White;
+	line_width    = .050;
+	}
+@text
+	{
+	text_size  = 0.25;
+	string     = Route Forecast - FPA Development
+	x_off      =  0.15;
+	y_off      = -0.27;
+	}
+@set_source { source = interp; valid_time = 00 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = VALID PERIOD:  %HZ  %b %d
+	x_off      =  0.20;
+	y_off      = -0.50;
+	}
+@set_source { source = interp; valid_time = 12 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = -  %HZ  %b %d
+	x_off      =  2.65;
+	y_off      = -0.50;
+	}
+@set_source { source = interp; valid_time = 00 }
+@text
+	{
+	string     = St John's NFLD to Boston USA
+	x_off      =  0.20;
+	y_off      = -0.70;
+	}
+
+! Close the file ...
+@file_close { }
+
+! Display the result using "gv" (ghostview) ...
+@process
+	{
+	cd <default>;
+	gv AVIATION_ROUTES3.svg;
+	}

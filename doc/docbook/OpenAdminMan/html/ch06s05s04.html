@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.5.4. Fields Block</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch06s05.html" title="6.5. Ingest and Ingest.name" /><link rel="prev" href="ch06s05s03.html" title="6.5.3. Levels Block" /><link rel="next" href="ch06s05s05.html" title="6.5.5. DataFiles Block" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.5.4. Fields Block</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s05s03.html">Prev</a> </td><th width="60%" align="center">6.5. Ingest and Ingest.<span xmlns="" class="replaceable">name</span></th><td width="20%" align="right"> <a accesskey="n" href="ch06s05s05.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2069831"></a>6.5.4. Fields Block</h3></div></div></div><p>
+<a id="id2069838" class="indexterm"></a>
+The <strong class="userinput"><code>Fields</code></strong> block is used to specify a list of fields to process or skip when generating <span class="acronym">FPA</span> metafiles.
+</p><pre class="programlisting">Fields
+  {
+  process  = <span xmlns="" class="replaceable">source element level</span>
+  skip     = <span xmlns="" class="replaceable">source element level</span>
+  redirect = <span xmlns="" class="replaceable">original destination</span>
+  }
+</pre><p>
+</p><div class="informaltable"><table border="1"><colgroup><col /><col /></colgroup><thead><tr><th>command</th><th>purpose</th></tr></thead><tbody><tr valign="top"><td valign="top">process</td><td valign="top">Convert only selected fields into <span class="acronym">FPA</span> metafiles</td></tr><tr valign="top"><td valign="top">skip</td><td valign="top">Convert all but the selected fields into <span class="acronym">FPA</span> metafiles.
+You cannot combine process and skip directives.
+If a process directive exists then all skip directives are ignored.</td></tr><tr valign="top"><td valign="top">redirect</td><td valign="top">Redirect from origin source to destination source for processed fields.
+This allows us to separate metafiles and datafiles generated from the same <span class="acronym">GRIB</span> field into different directories.
+Here the destination source must be defined in a <code class="filename">Config</code> file.</td></tr></tbody></table></div><p>
+The '*' character may be used to match all possible choices for source, element or level.
+</p><div class="informalexample"><pre class="programlisting">process = GFS   *   surface</pre></div><p>
+will process all surface fields from the <span class="acronym">GFS</span> source.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s05s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s05s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.5.3. Levels Block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.5.5. DataFiles Block</td></tr></table></div></body></html>

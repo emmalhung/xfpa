@@ -1,0 +1,51 @@
+! Set vector presentation for waves ...
+@vector_presentation
+	{
+	vector_look_up          = waves;
+	calm_type               = symbol;
+	calm_justification      = centre;
+	calm_size               =  0.20;
+	calm_scale              =    80;
+	x_calm                  =  0.00;
+	y_calm                  =  0.00;
+	direction_type          = uniform;
+	direction_justification = centre;
+	direction_size          =  0.20;
+	direction_scale         =   100;
+	x_dir                   =  0.00;
+	y_dir                   =  0.00;
+	speed_type              = value;
+	speed_justification     = centre;
+	speed_size              =  0.20;
+	speed_scale             =    80;
+	x_spd                   =  0.00;
+	y_spd                   = -0.10;
+	}
+
+! Set up a grid for sampling waves ...
+@define_sample_grid
+	{
+	grid_name      = grid_waves1;
+	lat_begin      = 22.5S;
+	lat_end        = 60.0N;
+	lat_interval   =  5.0N;
+	lon_begin      = 92.5W;
+	lon_end        = 20.0W;
+	lon_interval   =  5.0E;
+	}
+
+! Display sampled waves ....
+@sample_field
+	{
+	element       = uv_wave_hgt;
+	level         = surface;
+	units         = m;
+	format        = vector_symbol;
+	grid_name     = grid_waves1;
+	fit_to_map    = yes;
+	x_off         = 0.00;
+	y_off         = 0.00;
+	outline       = X11 NavyBlue;
+	fill          = X11 NavyBlue;
+	line_width    = 0.02;
+	}

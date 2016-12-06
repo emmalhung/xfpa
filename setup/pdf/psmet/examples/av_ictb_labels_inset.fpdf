@@ -1,0 +1,174 @@
+! Set the default presentation for black text bordered with white ...
+@presentation
+	{
+	line_width    = 0.04;
+	outline       = CMYK 0 0 0   0;
+	fill          = CMYK 0 0 0 100;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	text_size     = 0.12;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Display no icing with text string ...
+! (Note that LGT/MDT/SVR icing is displayed as a blank string!)
+@label
+	{
+	element            = weather_system;
+	level              = surface;
+	attribute          = icing_intensity;
+	justification      = centre;
+	format             = text;
+	look_up            = icing;
+	}
+
+! Display moderate/light icing symbol and type, base, and top wrt symbol ...
+@label
+	{
+	element            = weather_system;
+	level              = surface;
+	category_attribute = icing_intensity;
+	category           = LGT MDT;
+	mark               = none;
+	mark_scale         = 100.0;
+
+	attribute               = icing_intensity;
+	attribute_anchor        = none;
+	attribute_justification = centre;
+	attribute_format        = symbol;
+	attribute_look_up       = icing;
+	attribute_symbol_scale  = 15;
+	attribute_x_off         = 0.00;
+	attribute_y_off         = 0.05;
+	attribute_line_width    = 0.03;
+	attribute_outline       = CMYK 0 0 0 100;
+	attribute_fill          = none;
+
+	attribute               = icing_type;
+	attribute_anchor        = none;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+	attribute_format        = direct;
+	attribute_x_off         =  0.00;
+	attribute_y_off         = -0.05;
+
+	attribute               = icing_base;
+	attribute_anchor        = none;
+	attribute_justification = right;
+	attribute_format        = direct;
+	attribute_x_off         = -0.10;
+	attribute_y_off         = -0.05;
+
+	attribute               = icing_top;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_format        = direct;
+	attribute_x_off         =  0.10;
+	attribute_y_off         = -0.05;
+	}
+
+! Display severe icing symbol and type, base, and top wrt symbol ...
+@label
+	{
+	element            = weather_system;
+	level              = surface;
+	category_attribute = icing_intensity;
+	category           = SVR;
+	mark               = none;
+	mark_scale         = 100.0;
+
+	attribute               = icing_intensity;
+	attribute_anchor        = none;
+	attribute_justification = centre;
+	attribute_format        = symbol;
+	attribute_look_up       = icing;
+	attribute_symbol_scale  = 20;
+	attribute_x_off         = 0.00;
+	attribute_y_off         = 0.10;
+	attribute_line_width    = 0.03;
+	attribute_outline       = CMYK 0 0 0 100;
+	attribute_fill          = none;
+
+	attribute               = icing_type;
+	attribute_anchor        = none;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+	attribute_look_up       = icing;
+	attribute_format        = direct;
+	attribute_x_off         =  0.00;
+	attribute_y_off         = -0.05;
+
+	attribute               = icing_base;
+	attribute_anchor        = none;
+	attribute_justification = right;
+	attribute_format        = direct;
+	attribute_x_off         = -0.10;
+	attribute_y_off         = -0.05;
+
+	attribute               = icing_top;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_format        = direct;
+	attribute_x_off         =  0.10;
+	attribute_y_off         = -0.05;
+	}
+
+! Display no turbulence with text string ...
+! (Note that LGT/MDT/SVR turbulence is displayed as a blank string!)
+@label
+	{
+	element            = weather_system;
+	level              = surface;
+	attribute          = turbulence_intensity;
+	justification      = centre;
+	format             = text;
+	look_up            = turbulence;
+	}
+
+! Display turbulence symbol and type, base, and top wrt symbol ...
+@label
+	{
+	element            = turbulence;
+	level              = surface;
+	category_attribute = turbulence_intensity;
+	category           = LGT MDT SVR;
+	mark               = none;
+	mark_scale         = 100.0;
+
+	attribute               = turbulence_intensity;
+	attribute_anchor        = none;
+	attribute_justification = centre;
+	attribute_format        = symbol;
+	attribute_look_up       = turbulence;
+	attribute_symbol_scale  = 25;
+	attribute_x_off         = 0.00;
+	attribute_y_off         = 0.00;
+	attribute_line_width    = 0.03;
+	attribute_outline       = CMYK 0 0 0 100;
+	attribute_fill          = none;
+
+	attribute               = turbulence_type;
+	attribute_anchor        = none;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+	attribute_format        = direct;
+	attribute_x_off         = 0.00;
+	attribute_y_off         = 0.00;
+
+	attribute               = turbulence_base;
+	attribute_anchor        = none;
+	attribute_justification = right;
+	attribute_format        = direct;
+	attribute_x_off         = -0.10;
+	attribute_y_off         =  0.10;
+
+	attribute               = turbulence_top;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_format        = direct;
+	attribute_x_off         =  0.10;
+	attribute_y_off         =  0.10;
+	}

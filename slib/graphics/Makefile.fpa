@@ -1,0 +1,103 @@
+# Define all the usual places to look for things:
+LIBPATH = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(SLIBDIR)/$${PLATFORM}
+INCPATH = $${INCLUDE_PATH} $${X_INCLUDE} \
+			-I$(INCDIR) -I$(LIBDIR) -I$(SINCDIR) -I$(SLIBDIR)
+
+LDIR    = $(SLIBDIR)/$(PLATFORM)
+LIB     = $(LDIR)/graphics.a
+MODULES = display.o \
+		  gx.o \
+		  gx_barb.o \
+		  gx_colour.o \
+		  gx_fill.o \
+		  gx_text.o \
+		  gx_line.o \
+		  gx_marker.o \
+		  gx_trans.o \
+		  panel_map.o \
+		  panel_text.o \
+		  pattern_line.o
+
+
+HEADER  = $(SINCDIR)/graphics.h
+HEADERS = display.h \
+		  gx.h \
+		  panel.h \
+		  pattern.h \
+		  image_info.h
+XGLHDR  = $(SINCDIR)/FpaXgl.h
+
+
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(HEADER) $(MODULES) $(LIB)
+
+
+# Rules for building the library:
+all lib:	$(HEADER) Pmodules $(LIB)
+		@	echo FPA $${PLATFORM} graphics library ready
+		@	echo
+$(LIB):		$(MODULES)
+		@	echo Re-building FPA $${PLATFORM} graphics library
+		@	if [ ! -d $(LDIR) ]; then mkdir -p $(LDIR); fi
+		@	if [ -f $(LIB) ]; then rm -f $(LIB); fi
+		@	sleep 1
+		@	$${LIB_ARCHIVE} $(LIB) $(MODULES) 2>/dev/null
+
+
+# Rules for building the object modules:
+modules:	$(HEADER) Pmodules $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA graphics library"
+
+display.o:			display.h pattern.h gx.h
+gx.o:				gx.h
+gx_barb.o:			gx.h
+gx_colour.o:		gx.h
+gx_fill.o:			gx.h
+gx_text.o:			gx.h
+gx_line.o:			gx.h
+gx_marker.o:		gx.h
+gx_trans.o:			gx.h
+gx_image.o:			gx.h image_info.h
+panel_map.o:		panel.h gx.h
+panel_text.o:		panel.h display.h gx.h
+pattern_line.o:		pattern.h gx.h
+pattern_symbol.o:	pattern.h gx.h
+image_info.o:		image_info.h $(XGLHDR)
+
+
+# Rules for building the master header file(s):
+defs header:	$(HEADER)
+$(HEADER):	graphics.h
+		@	echo "Updating Fpa graphics Library header"
+		@	sleep 1; cp graphics.h $(HEADER)
+		@	sleep 1
+
+
+# Make sure the FPA header is up to date
+$(FPAHDR):
+			@	cd $(LIBDIR); $(MAKE) header
+
+graphics.h:		$(HEADERS)
+			@	sleep 1; touch $@
+display.h:		$(FPAHDR)
+			@	sleep 1; touch $@
+gx.h:			$(FPAHDR) $(XGLHDR)
+			@	sleep 1; touch $@
+panel.h:		$(FPAHDR)
+			@	sleep 1; touch $@
+pattern.h:		$(FPAHDR)
+			@	sleep 1; touch $@
+image_info.h:	$(FPAHDR)
+			@	sleep 1; touch $@
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} graphics module $<"
+	@	$${C_COMPILER} -c $(INCPATH) $(C_OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

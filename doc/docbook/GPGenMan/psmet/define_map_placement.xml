@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_define_map_placement'> <title>@define_map_placement</title> <titleabbrev>@define_map_placement</titleabbrev>
+<para>
+Set the size and location of the centre of the current map to be displayed.
+</para><para>
+Note that the map is either set to a given map scale using <userinput>map_scale</userinput>, or one of
+the axes is scaled to a given size using <userinput>size</userinput> and <userinput>axis_to_scale</userinput>.
+</para><para>
+Note that the current map is defined by the directives: <link linkend='ps_mapdef'>@mapdef</link> <link linkend='ps_projection'>@projection</link> <link linkend='ps_resolution'>@resolution</link>
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_scale.xml'/>
+<row valign='top'><entry colname='desc'><para>applied to the current map</para></entry></row>
+<row valign='top'>
+<entry colname='key'><para><userinput>size</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Length of scaled axis for the current map (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>axis_to_scale</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Axis of the current map to be scaled
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><tbody>
+<row><entry><userinput>x_axis</userinput></entry><entry>scale x axis</entry></row>
+<row><entry><userinput>y_axis</userinput></entry><entry>scale y axis</entry></row>
+<row><entry><userinput>longest</userinput></entry><entry>scale longest axis</entry></row>
+<row><entry><userinput>shortest</userinput></entry><entry>scale shortest axis</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_off.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@define_map_placement
+{
+  size          = 6.5;
+  axis_to_scale = x_axis;
+  x_off         = 0.0;
+  y_off         = 1.0;
+}</programlisting>
+Set the location of the centre of the current map to 1.0 "units" above the current anchor location. The
+map will have a size of 6.5 "units" horizontally, with all vertical dimensions scaled accordingly.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>, and "anchor position" is set by <link linkend='ps_anchor'>@anchor</link>.)
+</para></example>
+</para></sect2>

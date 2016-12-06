@@ -1,0 +1,53 @@
+#!/bin/bash
+ID="[get_directory]"
+
+
+# Retrieve the directory for the given keyword from the "directories" block
+# of the given setup file.
+
+# It is up to the calling function to determine whether the directory exists!
+
+if [ "$1" = "" -o "$2" = "" ]
+then
+	echo "Usage: get_directory <setup> <key>" 1>&2
+	exit 1
+fi
+
+# Is the given setup file valid?
+setup=`get_setup $1`
+if [ $? -ne 0 ]
+then
+	exit 2
+fi
+
+# Find the keyword in the setup file and grab the value.
+key=$2
+dir=`get_setup_parm $setup directories $key`
+if [ $? -ne 0 ]
+then
+	exit 2
+fi
+
+# If the result is an absolute path look no further.
+if abspath "$dir"
+then
+	echo $dir
+	exit 0
+fi
+
+# If this is the "home" directory look no further.
+if [ "$key" = "home" ]
+then
+	echo $dir
+	exit 0
+fi
+
+# Append the home directory - if not defined use $FPA.
+home=`get_setup_parm $setup directories home`
+if [ $? -ne 0 ]
+then
+	home=-${FPA:-$HOME}
+fi
+dir=`pathname $home $dir`
+echo $dir
+exit 0

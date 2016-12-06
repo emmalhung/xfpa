@@ -1,0 +1,70 @@
+#
+#  Product Definition File (PDF) for copying and processing
+#  FPA graphic metafiles.
+#
+#  This process can be used to copy graphic metafiles to a
+#  given directory and then apply some processing to those
+#  files. Usually this will be to send the files to another
+#  machine at the production site or to another site via
+#  ftp or some other mechanism.
+#
+#  The keys in this PDF are:
+#
+#  SOURCE = Where the metafiles are to be taken from. Usually
+#           this is either "depict" or "interp" for depictions
+#           and interpolations. More then one source may be
+#           specified.
+#
+#  TIME = Time offset, in hours, from T0 to use for the graphic.
+#         Either ALL for all times or a list of time offsets.
+#         The offsets can have one of two formats. The first is
+#         þdt where dt is the offset in hours. The second if
+#         þd/hr where d is the offset in days from the day of T0
+#         and hr is the absolute houre (GMT) on that dey. If T0
+#         was 1996/10/8 06Z, a time offset of 1/12 would result
+#         in a time of 1996/10/9 12Z where as a time offset of
+#         12 would result in a time of 1996/10/8 18Z.
+#
+#  FIELDS = Either ALL for all fields or a list of fields. Thus
+#           one could have pressure msl temperature sfc wind sfc,
+#           and so on.
+#
+#  SEND_LINK_FILE = Send the time link information along with the
+#                   metafiles. Usually this would only be required
+#                   if the source was interp and ALL was specified
+#                   for TIME and FIELDS.
+#
+#  TARGET_DIRECTORY = The directory into which the metafiles are copied
+#                     by FPA. If the directory does not exist it is
+#                     created. Note that the directory is not emptied or removed. 
+#
+#                     If not specified then a temporary directory is created, and
+#                     once the post process finishes the directory and its contents
+#                     are removed. The temporary directory is referenced in the
+#                     post process line by including the macro $METADIR.
+#
+# POST_PROCESS = Optional parameter. This sets shell command(s) which
+#                are executed after the metafiles have been copied. This
+#                could be used for additional processing, for example
+#                sending the metafiles to some other node via ftp or
+#                some such process. Note that a variety of commands 
+#                could be executed if separated by a semi-colon.
+#
+# 
+# Example 1
+# 
+# SOURCE           = interp
+# TIME             = ALL
+# FIELDS           = ALL
+# SEND_LINK_FILE   = True
+# TARGET_DIRECTORY = 
+# POST_PROCESS     = tar -cf /tmp/meta.tar $METADIR; compress /tmp/meta.tar;
+# 
+# Example 2
+# 
+# SOURCE           = depict
+# TIME             = 0 6 12 24
+# FIELDS           = pressure msl temperature sfc
+# SEND_LINK_FILE   = False
+# TARGET_DIRECTORY = users/fpa/analysis/depictions
+# POST_PROCESS     = analysis_program

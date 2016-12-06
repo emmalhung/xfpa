@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.3.3. DESCRIPTION</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch03s03.html" title="3.3. status_proc" /><link rel="prev" href="ch03s03s02.html" title="3.3.2. ARGUMENTS" /><link rel="next" href="ch04.html" title="Chapter 4. Attribute List (CAL) Functions" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.3.3. DESCRIPTION</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s03s02.html">Prev</a> </td><th width="60%" align="center">3.3. status_proc</th><td width="20%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4156856"></a>3.3.3. DESCRIPTION</h3></div></div></div><p> 
+The status information is sent as a series of key words and will depend on the current operating mode of Ingred.
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>ANIMATION  SHOWING</code></strong>  <span xmlns="" class="replaceable">valid_time</span></span></dt><dd><p>
+The valid time of the depiction/interpolation currently being displayed in the animation sequence.
+</p></dd><dt><span class="term"><strong class="userinput"><code>BACKGROUND</code></strong>  <span xmlns="" class="replaceable">element</span>  <span xmlns="" class="replaceable">level</span></span></dt><dd><p>
+The background attribute values of the given field.
+If no background attribute values exist <span xmlns="" class="replaceable">cal</span> will be null.
+This is an implied request for the controlling program to send Ingred valid background attribute values.
+</p></dd><dt><span class="term"><strong class="userinput"><code>EDIT</code></strong> 
+<strong class="userinput"><code>CONTOUR</code></strong>|<strong class="userinput"><code>VECTOR</code></strong>|<strong class="userinput"><code>AREA</code></strong>|<strong class="userinput"><code>WIND</code></strong>|<strong class="userinput"><code>LINE</code></strong>|<strong class="userinput"><code>LCHAIN</code></strong>|<strong class="userinput"><code>POINT</code></strong>
+<strong class="userinput"><code>SELECT</code></strong>|<strong class="userinput"><code>DESELECT</code></strong>
+[<span class="optional"> <strong class="userinput"><code>SET</code></strong> </span>]</span></dt><dd><p>
+An area, line, link chain, point or an area of influence of a spline or vector field has been selected or deselected.
+If selected and  <span xmlns="" class="replaceable">cal</span> is not NULL, then the attribute values will be contained in this structure.
+If the <strong class="userinput"><code>SET</code></strong> parameter is part of the command, then the appropriate object attributes can be given values.
+If not present then the object attribute values may not be modified.
+(See <strong class="userinput"><code>EDIT</code></strong> for commands to sent to Ingred).
+</p></dd><dt><span class="term"><strong class="userinput"><code>EDIT</code></strong> 
+<strong class="userinput"><code>AREA</code></strong>|<strong class="userinput"><code>WIND</code></strong> <strong class="userinput"><code>SELECT</code></strong>
+[<span class="optional"> <strong class="userinput"><code>HOLE</code></strong> </span>]</span></dt><dd><p>
+An area hole has been selected, and can be deleted.
+</p></dd><dt><span class="term"><strong class="userinput"><code>EDIT</code></strong> 
+<strong class="userinput"><code>LCHAIN</code></strong> <strong class="userinput"><code>SELECT</code></strong>|<strong class="userinput"><code>DESELECT</code></strong>
+[<span class="optional"> <strong class="userinput"><code>SET</code></strong> </span>]</span></dt><dd><p>
+A link chain node has been selected or deselected.
+If selected and  <span xmlns="" class="replaceable">cal</span> is not NULL, then the attribute values will be contained in this structure.
+If the <strong class="userinput"><code>SET</code></strong> parameter is part of the command, then the link chain node attributes can be given values.
+If not present then the link chain node attribute values may not be modified.
+</p></dd><dt><span class="term"><strong class="userinput"><code>EDIT ADDING</code></strong>  <span xmlns="" class="replaceable">time</span>|<strong class="userinput"><code>NEW</code></strong></span></dt><dd><p>
+This status return gives the time of a link chain node that is about to be added or <strong class="userinput"><code>NEW</code></strong>.
+The latter return indicates that the chosen link chain node location is at the start or end of another link chain, and Ingred must be informed whether the next node will be a new link chain or a continuation of the other link chain.
+</p></dd><dt><span class="term"><strong class="userinput"><code>EDIT  BUTTON</code></strong>  <span xmlns="" class="replaceable">command</span>  <strong class="userinput"><code>ON</code></strong>|<strong class="userinput"><code>OFF</code></strong></span></dt><dd><p>
+The button corresponding to the given Ingred edit command should be set active (<strong class="userinput"><code>ON</code></strong>) or inactive (<strong class="userinput"><code>OFF</code></strong>).
+The permitted values of command are
+<strong class="userinput"><code>BREAK</code></strong>, 
+<strong class="userinput"><code>CANCEL</code></strong>, 
+<strong class="userinput"><code>CLEAR</code></strong>, 
+<strong class="userinput"><code>COPY</code></strong>,  
+<strong class="userinput"><code>CREATE</code></strong>, 
+<strong class="userinput"><code>DELETE</code></strong>, 
+<strong class="userinput"><code>JOIN</code></strong>, 
+<strong class="userinput"><code>PASTE</code></strong>, 
+<strong class="userinput"><code>PRESET_OUTLINE</code></strong>, 
+<strong class="userinput"><code>PROCEED</code></strong>, 
+<strong class="userinput"><code>REJOIN</code></strong>, 
+<strong class="userinput"><code>UNDO</code></strong> or 
+<strong class="userinput"><code>UPDATE</code></strong>.
+(See GEEdit for the associated command that is to be sent to Ingred when the button has been made visible and the user has selected it.
+For <strong class="userinput"><code>PRESET_OUTLINE</code></strong> see GEDepiction.
+Note also that in this case there is a series of commands associated with the requested button).
+</p></dd><dt><span class="term"><strong class="userinput"><code>EDIT  DRAWING</code></strong>  <strong class="userinput"><code>ON</code></strong>|<strong class="userinput"><code>OFF</code></strong></span></dt><dd><p>
+This command is issued at the start of a point-by-point draw.
+The interface is expected to make available buttons that will issue a <strong class="userinput"><code>DRAW_DONE</code></strong> or <strong class="userinput"><code>CANCEL GEEdit</code></strong> command.
+</p></dd><dt><span class="term"><strong class="userinput"><code>EDIT  MODIFYING</code></strong>  <strong class="userinput"><code>ON</code></strong>|<strong class="userinput"><code>OFF</code></strong></span></dt><dd><p>
+This command is issued when an object has been modified (such as the border of an area having been redrawn).
+</p></dd><dt><span class="term"><strong class="userinput"><code>EDIT  OUTLINE</code></strong>  
+<strong class="userinput"><code>DRAWN</code></strong>|<strong class="userinput"><code>HOLE</code></strong>|<strong class="userinput"><code>MOVED</code></strong>|<strong class="userinput"><code>STOMP</code></strong></span></dt><dd><p>
+This is status information. It lets the interface know that outlines of the appropriate type have been created and are now available
+for use in the <strong class="userinput"><code>PRESET_OUTLINE</code></strong> command. Normally the interface would make the corresponding action buttons available for use. Once created
+these outlines are always available.
+</p></dd><dt><span class="term"><strong class="userinput"><code>FIELD  CREATE</code></strong>  <span xmlns="" class="replaceable">element  level  valid_time</span>  [<span class="optional"> <strong class="userinput"><code>ASK</code></strong> </span>]</span></dt><dd><p>
+The controlling interface is requested to send the command to create an empty field at <span xmlns="" class="replaceable">valid_time</span>.
+If the last parameter is <strong class="userinput"><code>ASK</code></strong>, the the interface must put up a requestor asking the user for permission to create the field.
+</p></dd><dt><span class="term"><strong class="userinput"><code>FIELD  STATUS</code></strong>  <span xmlns="" class="replaceable">element  level  time  status</span></span></dt><dd><p>
+The given field as defined by <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span> has had a status change at the time given by time.
+This can be used by the controlling interface to set visual indications of what times the field exists at and what is the link state of the field at each depiction time.
+Status can have a value of - (dash, meaning not defined), <strong class="userinput"><code>DELETED</code></strong> (meaning the field does not exist anymore), <strong class="userinput"><code>NONE</code></strong>, <strong class="userinput"><code>PARTIAL</code></strong>, <strong class="userinput"><code>LINKED</code></strong>, <strong class="userinput"><code>FIELD</code></strong> or <strong class="userinput"><code>INTERP</code></strong> (See <strong class="userinput"><code>TIMELINK</code></strong>  <strong class="userinput"><code>STATUS_UPDATE</code></strong> command below for a description of the last five keywords).
+</p><p>
+The <span xmlns="" class="replaceable">element</span> can be returned as "<strong class="userinput"><code>MASTER_LINK</code></strong>" with the <span xmlns="" class="replaceable">level</span> undefined.
+This is a special case and gives the status of the Master Link.
+</p></dd><dt><span class="term"><strong class="userinput"><code>FIELD  TIMES</code></strong>  <span xmlns="" class="replaceable">element  level  ntimes  time1  status1  time2  status2   ... </span></span></dt><dd><p>
+The given field as defined by <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span> exists as the times as given in the list <span xmlns="" class="replaceable">time1</span>, <span xmlns="" class="replaceable">time2</span>, ....  with a link status for each time given by <span xmlns="" class="replaceable">status1</span>, <span xmlns="" class="replaceable">status2</span>, ...  The number of times is given by ntimes.
+The content of the status  returns is the same as those defined for the <strong class="userinput"><code>FIELD STATUS</code></strong> command above.
+</p></dd><dt><span class="term"><strong class="userinput"><code>GUIDANCE  LEGEND</code></strong>  <span xmlns="" class="replaceable">field_id  colour_index</span></span></dt><dd><p>
+Information about any active guidance fields are usually displayed in a legend dialog.
+This status information line provides the colour that the information should be displayed in.
+The guidance field (as identified by <span xmlns="" class="replaceable">field_id</span>) should have its information displayed in the colour as given by <span xmlns="" class="replaceable">colour_index</span>.
+</p></dd><dt><span class="term"><strong class="userinput"><code>INTERRUPT</code></strong>  <strong class="userinput"><code>ON</code></strong>|<strong class="userinput"><code>OFF</code></strong></span></dt><dd><p>
+The editor is in a state such that GUI elements (such as dialogs) can be popped up for the users consideration (<strong class="userinput"><code>ON</code></strong>).
+If  <strong class="userinput"><code>OFF</code></strong> ,  the editor is in a state where interruptions cannot be tolerated.
+</p></dd><dt><span class="term"><strong class="userinput"><code>INTERPOLATE</code></strong>  <span xmlns="" class="replaceable">element level  %done  %total</span></span></dt><dd><p>
+The field as given by <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span> is being interpolated.
+The percentage complete of the interpolation procedure for the field is given by <span xmlns="" class="replaceable">%done</span> and the percentage complete of the interpolation for all of the fields is given by <span xmlns="" class="replaceable">%total</span>.
+</p></dd><dt><span class="term"><strong class="userinput"><code>LABEL</code></strong></span></dt><dd><p>
+The <span class="type">CAL</span> structure for the label is given in <span xmlns="" class="replaceable">cal</span>.
+The contents of the structure should be put into an attribute editor for possible label addition or modification depending on the current state of the interface.
+</p></dd><dt><span class="term"><strong class="userinput"><code>MODE  BUTTON</code></strong>  <span xmlns="" class="replaceable">command</span>  <strong class="userinput"><code>ON</code></strong>|<strong class="userinput"><code>OFF</code></strong></span></dt><dd><p>
+The button corresponding to the given Ingred mode command should be set active at this time (<strong class="userinput"><code>ON</code></strong>) or inactive at this time (<strong class="userinput"><code>OFF</code></strong>).
+The permitted value of command is DRAW.
+(See the GE_ACTION command).
+</p></dd><dt><span class="term"><strong class="userinput"><code>SAMPLE  DISPLAY</code></strong>  <strong class="userinput"><code>ON</code></strong>|<strong class="userinput"><code>OFF</code></strong></span></dt><dd><p>
+If the amount of information to be displayed for a sample operation is too great to look reasonable on the screen, Ingred will pass off the display of this information to the calling interface.
+If sample information is to be shown, then the <strong class="userinput"><code>ON</code></strong> command is given and the information is contained in the passed <span class="type">CAL</span> structure.
+If the sample display is to be turned off, then the <strong class="userinput"><code>OFF</code></strong> command is sent.
+</p></dd><dt><span class="term"><strong class="userinput"><code>SCRATCHPAD  BUTTON DELETE</code></strong>  <strong class="userinput"><code>ON</code></strong>|<strong class="userinput"><code>OFF</code></strong></span></dt><dd><p>A button allowing scratchpad lines to be deleted should be turned on or off.</p></dd><dt><span class="term"><strong class="userinput"><code>TIMELINK LINKING</code></strong>  <span xmlns="" class="replaceable">time</span>|<strong class="userinput"><code>NEW</code></strong>|<strong class="userinput"><code>EXTRAP</code></strong>  [<span class="optional">  <span xmlns="" class="replaceable">state</span>  </span>]</span></dt><dd><p>
+This status return gives the time of the field that is about to be linked or <strong class="userinput"><code>NEW</code></strong> or <strong class="userinput"><code>EXTRAP</code></strong>.
+The latter returns indicate that Ingred has put up the requestor for the start time of the timelink chain or the the end time of the chain.
+The optional <span xmlns="" class="replaceable">state</span> parameter can have the values:
+	</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>NO_FIELD</code></strong></span></dt><dd><p>No field is available for linking.</p></dd><dt><span class="term"><strong class="userinput"><code>NO_DATA</code></strong></span></dt><dd><p>No data is available.</p></dd></dl></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>TIMELINK  STATUS_UPDATE</code></strong>  <span xmlns="" class="replaceable">element  level</span>  <strong class="userinput"><code>NONE</code></strong>|<strong class="userinput"><code>PARTIAL</code></strong>|<strong class="userinput"><code>LINKED</code></strong>|<strong class="userinput"><code>FIELD</code></strong>|<strong class="userinput"><code>INTERP</code></strong></span></dt><dd><p>
+The link status of the given <span xmlns="" class="replaceable">element</span> at <span xmlns="" class="replaceable">level</span> is:
+	</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>NONE</code></strong></span></dt><dd><p>the element is not linked or interpolated,</p></dd><dt><span class="term"><strong class="userinput"><code>PARTIAL</code></strong></span></dt><dd><p>the element is partially linked but not enough for interpolation,</p></dd><dt><span class="term"><strong class="userinput"><code>LINKED</code></strong></span></dt><dd><p>the element is linked but not interpolated,</p></dd><dt><span class="term"><strong class="userinput"><code>FIELD</code></strong></span></dt><dd><p>the element is both linked and interpolated by the labels are not</p></dd><dt><span class="term"><strong class="userinput"><code>INTERP</code></strong></span></dt><dd><p>the element and labels are both linked and interpolated</p></dd></dl></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>TIMELINK MASTER_LINK_STATUS_UPDATE</code></strong>   <span xmlns="" class="replaceable">group</span>|<strong class="userinput"><code>GLOBAL NONE</code></strong>|<strong class="userinput"><code>PARTIAL</code></strong>|<strong class="userinput"><code>LINKED</code></strong></span></dt><dd><p>
+The status of the master link for the given group is:
+	</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>NONE</code></strong></span></dt><dd><p>not linked or interpolated,</p></dd><dt><span class="term"><strong class="userinput"><code>PARTIAL</code></strong></span></dt><dd><p>partially linked but not enough for interpolation,</p></dd><dt><span class="term"><strong class="userinput"><code>LINKED</code></strong></span></dt><dd><p>there are sufficient links for interpolation</p></dd></dl></div><p>
+If group is GLOBAL then the link status of the global master  link is given.
+</p></dd><dt><span class="term"><strong class="userinput"><code>TIMELINK  ACTION</code></strong>  <span xmlns="" class="replaceable">type</span></span></dt><dd><p>
+The action of type has been completed.
+The types are:
+	</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>INTERMEDIATE_DONE</code></strong></span></dt><dd><p>The selection and move  of an intermiediate link point as requested by a timelink edit move command has been completed
+	( see the GETimelink "TIMELINK EDIT MOVE" command).
+	</p></dd><dt><span class="term"><strong class="userinput"><code>SELECT</code></strong></span></dt><dd><p>One or more of the links that were fetched during the <strong class="userinput"><code>MERGE</code></strong> operation have been selected
+	(See the GETimelink "EDIT MERGE FETCH ..." command).
+	</p></dd><dt><span class="term"><strong class="userinput"><code>DESELECT</code></strong></span></dt><dd><p>Any links selected during the <strong class="userinput"><code>MERGE</code></strong> operation have been deselected.
+	</p></dd></dl></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>ZOOM AREA</code></strong>  <span xmlns="" class="replaceable">x y width height</span></span></dt><dd><p>
+The specifications for the zoom area defined interactively by the user within Ingred.
+Once Ingred has accepted the area this message will be sent to the interface.
+The values are the position of the zoom area within the main map (<span xmlns="" class="replaceable">x</span>, <span xmlns="" class="replaceable">y</span>) and the size of the area (<span xmlns="" class="replaceable">width</span>, <span xmlns="" class="replaceable">height</span>)  in decimal percent of the map axis length.
+(For example: 20.0 34.3 34.0 35.3 would define a zoomed area starting 20% along the x-axis, 34.3% along the y-axis and with a <span xmlns="" class="replaceable">width</span> of 34% of the x-axis length and a <span xmlns="" class="replaceable">height</span> of 35.3% of the y-axis length.)
+</p></dd><dt><span class="term"><strong class="userinput"><code>ZOOM PAN END</code></strong></span></dt><dd><p>This message is sent when the user indicates to Ingred that they are finished the current panning operation.</p></dd><dt><span class="term"><strong class="userinput"><code>ZOOM START</code></strong></span></dt><dd><p>This message is sent as soon as the user has defined the zoom area on the map and has released the mouse button.
+This should be used to put up a "zooming in progress" cursor indicator.
+</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s03s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03s03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.3.2. ARGUMENTS </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. Attribute List (CAL) Functions</td></tr></table></div></body></html>

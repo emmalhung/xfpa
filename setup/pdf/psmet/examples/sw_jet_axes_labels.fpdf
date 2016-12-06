@@ -1,0 +1,43 @@
+! Set barb presentation for jet axes winds ...
+@wind_barb_presentation
+	{
+	shaft_length       = 0.40;
+	barb_length        = 0.50;
+	barb_width         = 0.25;
+	barb_space         = 0.20;
+	barb_angle         =   60;
+	}
+
+! Display labelled jet axes winds ... outlined in white
+@label
+	{
+	element            = jet_axis;
+	level              = surface;
+	category_attribute = FPA_label_type;
+	category           = jet_core_labelling;
+	attribute          = jet_wind;
+	units              = knots;
+	format             = wind_barb;
+	line_width         = 0.05;
+	outline_first      = yes;
+	outline            = X11 White;
+	fill               = X11 White;
+	x_off              = 0.00;
+	y_off              = 0.00;
+	}
+@label
+	{
+	element            = jet_axis;
+	level              = surface;
+	category_attribute = FPA_label_type;
+	category           = jet_core_labelling;
+	attribute          = jet_wind;
+	units              = knots;
+	format             = wind_barb;
+	line_width         = 0.02;
+	outline_first      = yes;
+	outline            = X11 Plum;
+	fill               = X11 Plum;
+	x_off              = 0.00;
+	y_off              = 0.00;
+	}

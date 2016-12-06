@@ -1,0 +1,62 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(ULIBDIR)/$${PLATFORM} \
+					-lfpa -lfpasup -lfpauser -lfpa -lfpauser \
+					$(EXTRA_LIBS)
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+# Note ... use this LIBPATH if including fortran modules ...
+#LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(ULIBDIR)/$${PLATFORM} \
+#					-lfpafort -lfpa -lfpasup -lfpauser -lfpa -lfpauser \
+#					$(EXTRA_FTN_LIBS) $(EXTRA_LIBS)
+
+
+# Make what?
+null:
+
+
+# Make the stand-alone programs:
+all:			example_plot example_grid
+			@	echo "FPA $${PLATFORM} input example programs ready"
+			@	echo 
+
+
+# Rules for building object modules:
+example_plot.o:	$(FPAHDR)
+example_grid.o:	$(FPAHDR)
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling FPA $${PLATFORM} input example program $<"
+	@	$${C_COMP_SHARED} -c $(C_OPTIONS) $(INCPATH) $<
+
+.f.o:
+	@	echo "Compiling FPA $${PLATFORM} input example program $<"
+	@	$${FTN_COMP_SHARED} -c $(FTN_OPTIONS) $< 2>/dev/null
+
+
+# Rules for building stand-alone programs:
+
+# Building stand-alone program for example_plot:
+EX_PLOT			= ex_plot
+EX_PLOT_OBJ		= example_plot.c
+example_plot:	$(EX_PLOT)
+			@	echo "FPA $${PLATFORM} ex_plot ready"
+			@	echo 
+$(EX_PLOT):		$(EX_PLOT_OBJ) $(FPAHDR) $(FPALIB)
+			@	echo "Building program for example_plot"
+			@	$${C_COMPLOAD} -o $@ \
+					$(INCPATH) $(C_OPTIONS) \
+					$(EX_PLOT_OBJ) $(LIBPATH)
+
+# Building stand-alone program for example_grid:
+EX_GRID			= ex_grid
+EX_GRID_OBJ		= example_grid.c
+example_grid:	$(EX_GRID)
+			@	echo "FPA $${PLATFORM} ex_grid ready"
+			@	echo 
+$(EX_GRID):		$(EX_GRID_OBJ) $(FPAHDR) $(FPALIB)
+			@	echo "Building program for example_grid"
+			@	$${C_COMPLOAD} -o $@ \
+					$(INCPATH) $(C_OPTIONS) \
+					$(EX_GRID_OBJ) $(LIBPATH)

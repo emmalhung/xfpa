@@ -1,0 +1,55 @@
+#!/bin/bash
+
+name=`basename $0`
+
+# Check for no arguments
+if [ "$*" = "" ]
+then
+	echo "Usage: $name host1 host2:"
+	exit 1
+fi
+
+# Get first host
+host1=$1
+if [ "$host1" = "" -o "$host1" = "local" ]
+then
+	host1=`hostname`
+fi
+
+# Get second host
+host2=$2
+if [ "$host2" = "" -o "$host2" = "local" ]
+then
+	host2=`hostname`
+fi
+
+# See if hosts are obviously the same
+if [ $host1 = $host2 ]
+then
+	exit 0
+fi
+
+# Get address of first host (if known)
+addr1=`nslookup $host1 | grep "Address:" | tail -1`
+if [ "$addr1" = "" ]
+then
+	echo "Cannot access host $host1"
+	exit 1
+fi
+
+# Get address of second host (if known)
+addr2=`nslookup $host2 | grep "Address:" | tail -1`
+if [ "$addr2" = "" ]
+then
+	echo "Cannot access host $host2"
+	exit 1
+fi
+
+# See if addresses are the same
+if [ "$addr1" = "$addr2" ]
+then
+	exit 0
+fi
+
+# Not the same
+exit 1

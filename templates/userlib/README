@@ -1,0 +1,41 @@
+User-Defined Library Template Source-Code Files
+
+This directory contains template files (ANSI-C source, scripts and makefiles)
+for building your own local client-written library, that can be accessed by FPA
+applications.
+
+	W A R N I N G ! ! !
+
+	Do not modify the original files found in $FPA/templates.  These files
+	will be updated with future releases and patches.  It is intended that
+	you copy them to a convenient directory, and build the library there.
+	The script "copyuserlib" has been provided for this purpose.
+
+This directory should contain the following files:
+
+	README ........... this file
+	copyuserlib ...... script which copies the template files to a working
+					   directory
+	user_rules.c ..... source template for rules to calculate attribute values
+	user_values.c .... source template for value calculations
+	user_winds.c ..... source template for wind calculations
+	libmake .......... script which builds the library
+	libput ........... script which places the library where it can be accessed
+					   by the operational FPA software
+	librestore ....... script which restores the previous version of the library
+					   for use by the operational FPA software
+	Makefile.lib ..... "make" file used by libmake
+
+Once you have copied the template files to a convenient working directory,
+instructions for writing your own functions are given inside the individual
+".c" files.
+
+To test the library before installing it as the operational version, build the
+library using libmake, then set and export the FPA_SHLIB_PATH variable to the
+directory in which the library was built.  Running any FPA application from that
+environment will access the newly built library.
+
+Once tested, you may then install the library in the standard directory, using
+the libput script.  Unset the FPA_SHLIB_PATH variable.  The librestore script
+provides the ability to go back to the last working version of the library, if
+it turns out to have been installed prematurely!

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_cross_section_curves'> <title>@cross_section_curves</title> <titleabbrev>@cross_section_curves</titleabbrev>
+<para>
+Display a curve in a cross section. The curve is created from a vertical attribute in
+a "discrete", "line", "link chain" or "scattered" field, or from a vertical value from a "continuous" or "vector" field.
+</para><para>
+The curve is created by sampling the field along the horizontal axis of the cross
+section, and extracting the value from the <userinput>vertical_attribute</userinput> (for a "discrete", "line", "link chain" or "scattered"
+field), or the value sampled from the field or equation (for a "continuous" or
+"vector" field). The vertical extent is determined by mapping the extracted value
+to the vertical look up table <userinput>vertical_look_up</userinput>.
+</para><para>
+Note that entries in <userinput>location_look_up</userinput> table MUST be entries from the location
+look up table in directive <link linkend='ps_define_cross_section'>@define_cross_section</link>.
+</para><para>
+Note that the <userinput>category_attribute</userinput> and <userinput>category</userinput> keywords can be used one or
+more times to display only selected areas.
+
+</para><para>
+It is now possible to sample information from ASCII data files, and display the data on a cross section. Note that all data files must be arranged row by row, with each data parameter in a separate column. The keywords <userinput>vertical_data_file</userinput>, <userinput>vertical_data_file_format</userinput> and <userinput>vertical_data_file_units</userinput> provide control for this action. Note that all parameters in the data file are accessed by magic attributes, as follows:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>
+<colspec colwidth='1*'/>
+<colspec colwidth='1.4*'/><tbody>
+<row valign='top'><entry><userinput>GPGEN_ident</userinput></entry><entry>Identifier string</entry></row>
+<row valign='top'><entry><userinput>GPGEN_lat</userinput> or <userinput>GPGEN_lat_ddmm</userinput></entry><entry>Latitude location</entry></row>
+<row valign='top'><entry><userinput>GPGEN_lon</userinput> or <userinput>GPGEN_lon_ddmm</userinput></entry><entry>Longitude location</entry></row>
+<row valign='top'><entry><userinput>GPGEN_label</userinput></entry><entry>Data string</entry></row>
+<row valign='top'><entry><userinput>GPGEN_value</userinput></entry><entry>Data value</entry></row>
+</tbody></tgroup></informaltable>
+The keywords <userinput>proximity</userinput> and <userinput>proximity_units</userinput> allow sampling attributes from discrete areas, line features, link chains or scattered points within the given proximity of the sample location, and displaying the sampled values as lines. The magic attribute <userinput>GPGEN_proximity</userinput> can be used to extract the distance from the sample location to the feature in km.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/cross_section_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_level.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_equation.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_units.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_location_look_up.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_distances.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_units.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_times.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_fractions.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/display_function.xml'/>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/proximity.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/proximity_units.xml'/>
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_data_file.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_data_file_units.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_data_file_format.xml'/>
+
+<row valign='top'><entry spanname='tbltitle'>&extraline;<para>For box display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/box_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_box_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_box_off.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_length.xml'/>
+<row valign='top'><entry spanname='tblnote'><para>(Note that <userinput>line_width</userinput>, <userinput>line_style</userinput>, <userinput>outline</userinput> and <userinput>fill</userinput> can be specified more than once in this directive, for drawing multi-coloured curves!)</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title>Example vertical_data_file_format</title><para>
+The <userinput>vertical_data_file_format</userinput> string is a list of recognized format types separated by the same characters used to separate the values in the ASCII data file.
+</para><para>
+The following format would indicate that the identifier string is located in the first column of the ASCII data file, the time stamp in the second column, a data file value in the fourth column, and that the columns are separated by white space (blanks or tabs).
+<programlisting>vertical_data_file_format = identifier timestamp - value</programlisting>
+The following format would indicate that the latitude and longitude are located in the first and second columns of the ASCII data file, a data file value in the fifth column, the &FPA; units for the value in the fourth column, and that the columns are separated by semi-colons. 
+<programlisting>vertical_data_file_format = latitude;longitude;-;units;value</programlisting>
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@cross_section_curves
+{ 
+  cross_section_name = route_cross_section;
+  vertical_element   = temperature;
+  vertical_level     = surface;
+  vertical_units     = degreesC;
+  location_look_up   = route_temps;
+  vertical_look_up   = xsect_temps;
+  pattern            = simple;
+  outline            = X11 Red;
+  line_width         = 0.025;
+  line_style         = 2 8 3;
+} </programlisting>
+Display a curve on a cross section named route_cross_section (set in the <link linkend='ps_define_cross_section'>@define_cross_section</link>
+directive). The curve is created by sampling the surface temperature field in units of degreesC at
+each location in the location look up table <filename>route_temps.ltab</filename> (whose locations must be a subset of
+the default location look up table set in the <link linkend='ps_define_cross_section'>@define_cross_section</link> directive), and the values are
+converted to vertical locations using the vertical look up table <filename>xsect_temps.ztab</filename>. The curve will be
+drawn with a line 0.025 "units" wide and with a colour of X11 Red, using a simple line with a dash
+pattern of 8 times the line width followed by a space of 3 times the line width.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+
+<example><title>Sample from a data file</title><para>
+<programlisting>@cross_section_curves
+{ 
+  cross_section_name        = route_cross_section;
+  location_look_up          = route_temps;
+  vertical_look_up          = xsect_temps;
+  vertical_data_file        = temp_file.txt;
+  vertical_data_file_format = - latitude longitude timestamp value units;
+  vertical_units            = degreesC;
+  pattern                   = simple;
+  outline                   = X11 Red;
+} </programlisting>
+Display a curve on a cross section named route_cross_section (set in the <link linkend='ps_define_cross_section'>@define_cross_section</link>
+directive). The curve is created by sampling the data file <filename>temp_file.txt</filename> at the locations in the location look up table <filename>route_temps.ltab</filename> (whose locations must be a subset of the default location look up table set in the <link linkend='ps_define_cross_section'>@define_cross_section</link> directive), and the values are converted to vertical locations using the vertical look up table <filename>xsect_temps.ztab</filename>. 
+The temperature value is located in the fifth column of the data file and the units of temperature in data file is located in the sixth column. The value will be displayed in degreesC (vertical_units).
+</para></example>
+</para></sect2>

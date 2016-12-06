@@ -1,0 +1,68 @@
+! Display axis for surface temperature ...
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = axis;
+	axis_for_display   = left;
+	vertical_look_up   = xsect_temps;
+	x_off              = -0.75;
+	pattern            = simple;
+	outline            = X11 Red;
+	line_width         = .025;
+	}
+@draw_cross_section_line
+	{
+	cross_section_name = route_cross_section;
+	line_to_draw       = ticks;
+	axis_for_display   = left;
+	line_name          = horizontal_ticks;
+	vertical_look_up   = xsect_temps;
+	x_off              = -0.75;
+	pattern            = simple;
+	outline            = X11 Red;
+	line_width         = .025;
+	}
+@cross_section_axis_labels
+	{
+	cross_section_name      = route_cross_section;
+	axis_for_display        = left;
+	vertical_look_up        = xsect_temps;
+	format                  = direct;
+	x_off                   = -0.86;
+	y_off                   =  0.02;
+	outline                 = none;
+	fill                    = X11 Red;
+
+	attribute               = GPGEN_ident;
+	attribute_anchor        = none;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+	}
+
+! Display axis label for surface temperature ...
+@text
+	{
+	string        = Surface Temperature
+	justification = centre;
+	rotation      = 90;
+	x_off         = -1.25;
+	y_off         =  0.70;
+	text_size     =  0.20;
+	outline       = none;
+	fill          = X11 Red;
+	}
+
+! Display surface temperature at cross section locations ...
+@cross_section_curves
+	{
+	cross_section_name = route_cross_section;
+	location_look_up   = route_temps;
+	vertical_look_up   = xsect_temps;
+	vertical_element   = temperature;
+	vertical_level     = surface;
+	vertical_units     = degreesC;
+	pattern            = simple;
+	outline            = X11 Red;
+	line_width         = .025;
+	line_style         = 2 8 3;
+	}

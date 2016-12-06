@@ -1,0 +1,1003 @@
+# -------- Attribute Entry Menu Definition File Description ---------------
+#
+#
+# This file defines the contents of a specific entry menu configuration.
+# There can be different files for different elements. Which entry file
+# is associated with a specific element is set in the configuration
+# files by the use of the "entry_file" keyword.
+#
+# NOTE: The function which parses this file is rather stupid so be careful.
+#
+# The first few lines define values which apply to the preset controls
+# in the menu. These are (with example values):
+#
+#       menu_title              = "Synoptic Weather Entry Menu"
+#       geometry                = -600 -300 600 600
+#       label_display_height    = 1                  (default 1)
+#       value_display_height    = 3                  (default 2)
+#       category_display_width  = 10                 (default 20)
+#       initialization          = normal
+#
+#    The first entry, menu_title, sets the title to appear in the menu
+#    frame at the very top of the window.
+#
+#    The second, geometry, sets the size of the entire entry menu as x y
+#    width height all given in pixels. The position x and y is relative to
+#    the button which causes the menu to appear and can thus have a negative
+#    value. 
+#
+#    The third and fourth, label_display_height and value_display_height,
+#    set the height, in rows, of the User Label and Auto Label displays
+#    respectively. If the label_display_height and/or the value_display_height
+#    are set to zero (0), then the given display will not appear in the menu.
+#
+#    The fifth entry, category_display_width, sets the width of the category
+#    display which is just to the right of the Auto Label display. If the width
+#    is set to zero (0), then the display will not appear in the menu.
+#
+#    If all three display sizes are set to zero, then none of them will appear.
+#
+#    The last entry, initialization, is optional and if present can have two
+#    values, "none" or "normal". If none, the menu will always appear with the
+#    menu items set to whatever this menu file defines as the startup state. If
+#    normal, the menu will be filled in with the values of the last object that
+#    had its attributes set or modified by the entry menu.
+#
+#
+# After this all lines refer to dynamically configured and created
+# entry objects.
+#
+# The entry objects are arranged into panels, with each panel controlled
+# by a tab. The keyword is "panel" followed by the tab label enclosed
+# in quotes.
+#
+# Within each panel can be arranged any number of objects. At the moment
+# there are four types of objects defined: layout objects, attribute
+# entry objects, control objects and display only objects.
+#
+# The layout objects are:
+#
+#   1. frame
+#
+# The attribute entry objects are:
+#
+#   1. popup list
+#   2. scrolled list
+#   3. button list
+#   4. spin box
+#   5. composite list
+#   6. text
+#
+# The control object is:
+#
+#   1. run_program
+#   2. clear_btn
+#
+# The display only objects are:
+#
+#   1. display_label
+#   2. display_attribute
+#   3. line
+#
+# ----------------------------------------------------------------------------
+#
+# Description of the objects available for use in the entry menu.
+#
+#  Object          Description
+#  ------          -----------
+#
+#  button_list     This is a button, that when activated, pops up a list of
+#                  choices. Unlike the popup_list below, there is no visual
+#                  indication that the button will popup a list when activated.
+#                  Note that this object is not available for old systems
+#                  like HPUX 10x.
+#
+#  clear_btn       A button, which when pressed, clears a specified list
+#                  of attribute objects.
+#
+#  composite_list  This object contains other objects that provide input
+#                  to a single attribute. Any object can be a child of a
+#                  composite, but only the button_list, popup_list,
+#                  scrolled_list and spin_list objects will allow input.
+#
+#  display_label   Displays a given label in the menu. Used to provide static
+#                  information to users.
+#
+#  display_attribute  Used to display the value of a given attribute with no
+#                     modification capability.
+#
+#  frame           This is an object that encloses other object(s). It is
+#                  used to "fancy up" the display. The frame can be given
+#                  an optional label which is embedded in the upper left part
+#                  of the frame border.
+#
+#  line            Displays either a horizontal or vertical line of various
+#                  types.
+#
+#  popup_list      An object, indicated by a dash to the right of the display
+#                  area, which pops up a list of choices when the mouse button
+#                  is pushed down. When the mouse button is released the list
+#                  pops down.
+#
+#  scrolled_list   An object, with a display area and an arrow displayed to
+#                  the right of the area which pops up a list of choices. The
+#                  list pops down when the mouse button is pushed outside of
+#                  the list and selects an item if the mouse button is pushed
+#                  on a list item.
+#
+#  spin_box        An object that displays a numeric value which is controlled
+#                  by two arrows. The object must contain a value and cannot
+#                  contain the idea of none, the object must have a value.
+#
+#  spin_list       An object that displays a value from a defined list of
+#                  values in a spin_box style object. This can contain the
+#                  idea of none.
+#
+#  run_program     A button that when activated will run a specified program.
+#
+#  text            An object that allows for the free form input of text.
+#
+# ----------------------------------------------------------------------------
+#
+# The list objects are for entering the value of any attribute from
+# predefined list of values. The composite list does the same but
+# constructs the attribute from several lists the contents of which
+# are concatenated together. (For example the string RW-F could be
+# made up of components from three lists, one of which contains
+# RW, the second the - and the third the F.
+#
+# These objects are nested and related in the following manner.
+#
+#      panel "panel label"
+#      {
+#          entry object
+#          {
+#              keyword = value
+#              ...
+#          }
+#          frame object
+#          {
+#              keyword = value
+#              ...
+#              entry object
+#              {
+#                  keyword = value
+#                  ...
+#              }
+#              composite object
+#              {
+#                  keyword = value
+#                  ...
+#                  entry object
+#                  {
+#                      keyword = value
+#                      ...
+#                  }
+#                  entry object
+#                  {
+#                      keyword = value
+#                      ...
+#                  }
+#              }
+#          }
+#          entry object
+#          {
+#              keyword = value
+#              ...
+#          }
+#      }
+#      panel "panel label"
+#      {
+#          ...
+#      }
+#
+# The characteristics of each of these objects is set by a list of
+# keyword-value pairs. If part of a value string has embedded spaces
+# this can be preserved by enclosing the part in quotes. For example:
+#
+#  label    = "Cloud Amount"
+#  position = 241 377
+#  size     = 500 370
+#
+#
+# ------- Object Specification ---------------------------------------------
+#
+# Notes common to most objects.
+#
+# 1. Most objects have a number of columns setting. If not specified the
+#    program will try to set the correct number, but due to font differences
+#    you might have to set the number of columns "ncolumns" to more than
+#    you might expect.
+#
+# 2. In all references to colour below, the colour is entered in normal X
+#    notation. Some choices are:
+#
+#  - a colour name such as "wheat"
+#  - by the rgb specification RGB:<red>/<green>/<blue> notation where
+#    <red>,<green> and <blue> are each between 1 and 4 hexadecmial digits.
+#  - by RGBi:<red>/<green>/<blue> where <red>,<green> and <blue> are
+#    floating point numbers between 0.0 and 1.0 inclusive.
+#
+#    For a complete list of options see any X Windows reference book.
+#
+# 3. For those objects which take a list of items the following is valid:
+#
+#   The list of items to appear in the list must be separated by white space.
+#   If any item must have embedded spaces, then the item must be enclosed in
+#   quotes.
+#
+#   There is a special item with a name of "none" which can be inserted into
+#   the list and when selected will set the current value of the corresponding
+#   attribute to no value.
+#
+#   There is another special item that can be in the list, "range:". The syntax
+#   for this is:
+#                                
+#       range:minimum,maximum,increment,decimals
+#                                
+#   where minimum and maximum are the limits to a range of numbers, increment
+#   is the amount to step between values by, and decimals is the number of
+#   decimal points to display. If decimals is not specified or is 0 (zero)
+#   then the range is taken to be a range of integers. If it is specified then
+#   the range is taken to be a range of float values. It is important that 
+#   there either be no spaces beween the parameters or that the entire range
+#   specification (including the minimum, maximum, increment and decimals
+#   parameters) be enclosed in quotes. There can be more than one range
+#   specification in any item list.
+#
+# 4. For those objects which can have their list of values limited by another
+#    object the following applies for the limit keyword:
+#   
+#   There are two parameters: the limit definition and the id (attribute_id or
+#   composite_id) of the object doing the limiting. The limit definition must
+#   be one of LT, LE, GE, GT. For example:
+#
+#      limit = GT cloud_base_lower
+#
+#   Some very simple logic can also be done limited to AND or OR. For example if
+#   there were two objects defining the cloud base as a range, say with
+#   composite_id's of cb1 and cb2, then we could have:
+#
+#     limit = GT base:cb1 AND GT base:cb2
+#
+#   How the values in the two objects are compared depends on the limit_type
+#   key. The possible values for this are string, integer or float. This
+#   determines if the comparison is done by comparing strings, integer values
+#   or float values. The default is integer.
+#
+#   For numerical comparisons there are several assumptions:
+#
+#   1. The values go from smaller to larger in the string.
+#   2. If an entry starts with a ">" symbol it is unbounded, and if it starts
+#      with a "<" symbol it is very small.
+#
+#   See the composite_list object for information on the composite_id keyword.
+#
+#
+#
+# Available object types:
+#
+#   object        keyword        value
+#   ------        -------        -----
+#
+# - Layout Objects -
+#
+#  frame          label          The label to display on the frame which is to
+#                                enclose the other objects. If not given then
+#                                the frame will be created without a label.
+#
+#                 position       The offset, as x and y in pixels, of the frame
+#                                from the upper left corner of its parent which
+#                                can be either a panel or another frame.
+#
+#                 size           The width and height, in pixels, of the frame.
+#
+#
+# - Attribute Entry Objects -
+#
+#  button_list    attribute_id   The name of the attribute to be controlled by
+#                                this object.
+#
+#                 label          If not set, then the label of the list is the
+#                                attribute label. If set, the given value is
+#                                used instead of the attribute label. If set to
+#                                "none" then no label is displayed.
+#
+#                 label_size     Either "short" or "long". Used if the label
+#                                above is not set and the label is taken from
+#                                the attribute. In this case there is a long
+#                                form and short form attribute label available.
+#                                Default "long".
+#
+#                 position       The offset, as x and y in pixels, of the entry
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 foreground     The foreground colour of the label.
+#                                Default parent's.
+#
+#                 background     The background colour of the label.
+#                                Default parent's.
+#
+#                 border_width   The width of the border around the label.
+#                                Default 0.
+#
+#                 border_color   The colour of the border.
+#
+#                 margin_height  The height of the margin, in pixels, above and
+#                                below the string in the label. Default 2.
+#
+#                 margin_width   The width of the margin, in pixels, to the
+#                                right and left of the string in the label.
+#                                Default 2.
+#
+#                 items          The list of items to appear in the list.
+#
+#                 nvisible       The number of items which will be visible in
+#                                the scrolled list area. Default is the number
+#                                of items.
+#
+#                 ncolumns       The size of the display area specified in
+#                                character columns. If not specified the
+#                                default size is taken from the maximum length
+#                                of the entries in the items list.
+#
+#                 none_sub       Substitute the given string for the "none"
+#                                entry in the list. The user will see this
+#                                substituted string but its action will be the
+#                                same as "none". Default is a blank (" ").
+#
+#                 default        The item from the above list to be used as the
+#                                default value.
+#
+#                 limit          If the allowed values in the list are limited
+#                                by some other entry object, this key defines
+#                                the relationship. See note above.
+#
+#                 limit_type     One of "integer", "float" or "string". This
+#                                has meaning only if a limit is specified and
+#                                determines if the limit testing is numeric or
+#                                by string comparison. Default is integer.
+#
+# 
+#  popup_list     attribute_id   The name of the attribute to be controlled by
+#                                this object.
+#
+#                 label          If not set, then the label of the list is the
+#                                attribute label. If set, the given value is
+#                                used instead of the attribute label. If set to
+#                                "none" then no label is displayed.
+#
+#                 label_size     Either "short" or "long". Used if the label
+#                                above is not set and the label is taken from
+#                                the attribute. In this case there is a long
+#                                form and short form attribute label available.
+#                                Default "long".
+#
+#                 position       The offset, as x and y in pixels, of the entry
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 items          The list of items to appear in the list.
+#
+#                 none_sub       Substitute the given string for the "none"
+#                                entry in the list. The user will see this
+#                                substituted string but its action will be the
+#                                same as "none". Default is a blank (" ").
+#
+#                 default        The item from the above list to be used as the
+#                                default value.
+#
+#                 limit          If the allowed values in the list are limited
+#                                by some other entry object, this key defines
+#                                the relationship. See note above.
+#
+#                 limit_type     One of "integer", "float" or "string". This
+#                                has meaning only if a limit is specified and
+#                                determines if the limit testing is numeric or
+#                                by string comparison. Default is integer.
+#
+#
+#  scrolled_list  attribute_id   The name of the attribute to be controlled by
+#                                this object.
+#
+#                 label          If not set, then the label of the list is the
+#                                attribute label. If set, the given value is
+#                                used instead of the attribute label. If set to
+#                                "none" then no label is displayed.
+#
+#                 label_size     Either "short" or "long". Used if the label
+#                                above is not set and the label is taken from
+#                                the attribute. In this case there is a long
+#                                form and short form attribute label available.
+#                                Default "long".
+#
+#                 position       The offset, as x and y in pixels, of the entry
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 ncolumns       The size of the object specified in character
+#                                columns.
+#
+#                 items          The list of items to appear in the list.
+#
+#                 none_sub       Substitute the given string for the "none"
+#                                entry in the list. The user will see this
+#                                substituted string but its action will be the
+#                                same as "none". Default is a blank (" ").
+#
+#                 nvisible       The number of items which will be visible in
+#                                the scrolled list area. Default is the number
+#                                of items in the list.
+#
+#                 default        The item from the above list to be used as the
+#                                default value.
+#
+#                 limit          If the allowed values in the list are limited
+#                                by some other entry object, this key defines
+#                                the relationship. See note above.
+#
+#                 limit_type     One of "integer", "float" or "string". This
+#                                has meaning only if a limit is specified and
+#                                determines if the limit testing is numeric or
+#                                by string comparison. Default is integer.
+#
+#
+#  spin_box       attribute_id   The name of the attribute to be controlled by
+#                                this object.
+#
+#                 label          If not set, then the label of the list is the
+#                                attribute label. If set, the given value is
+#                                used instead of the attribute label. If set to
+#                                "none" then no label is displayed.
+#
+#                 label_size     Either "short" or "long". Used if the label
+#                                above is not set and the label is taken from
+#                                the attribute. In this case there is a long
+#                                form and short form attribute label available.
+#                                Default "long".
+#
+#                 position       The offset, as x and y in pixels, of the entry.
+#
+#                 ncolumns       The number of columns that will be used by the
+#                                spin_box to display the value.
+#
+#                 value_max      The maximum value that a value may be.
+#
+#                 value_min      The minimum value of a value.
+#
+#                 default        The value which will appear in the spin_box.
+#                 
+#                 increment      The amount to increment the value by.
+#                                Defaults to 1.
+#                 
+#                 wrap           Either "True" of "False". When the value in
+#                                the spin_box reaches the maximum or minimum
+#                                does it spin around to the next value. If, for
+#                                example, the spin_box reaches the maximum,
+#                                then a wrap value of True means that it will
+#                                spin around to the minumum. Default False.
+#
+#
+#  spin_list      attribute_id   The name of the attribute to be controlled by
+#                                this object.
+#
+#                 label          If not set, then the label of the list is the
+#                                attribute label. If set, the given value is
+#                                used instead of the attribute label. If set to
+#                                "none" then no label is displayed.
+#
+#                 label_size     Either "short" or "long". Used if the label
+#                                above is not set and the label is taken from
+#                                the attribute. In this case there is a long
+#                                form and short form attribute label available.
+#                                Default "long".
+#
+#                 position       The offset, as x and y in pixels, of the entry
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 ncolumns       The size of the object specified in character
+#                                columns.
+#
+#                 items          The list of items to appear in the list.
+#
+#                 none_sub       Substitute the given string for the "none"
+#                                entry in the list. The user will see this
+#                                substituted string but its action will be the
+#                                same as "none". Default is a blank (" ").
+#
+#                 default        The item from the above list to be used as the
+#                                default value.
+#
+#                 limit          If the allowed values in the list are limited
+#                                by some other entry object, this key defines
+#                                the relationship. See note above.
+#
+#                 limit_type     One of "integer", "float" or "string". This
+#                                has meaning only if a limit is specified and
+#                                determines if the limit testing is numeric or
+#                                by string comparison. Default is integer.
+#                 
+#                 wrap           Either "True" of "False". When the value in
+#                                the spin_box reaches the maximum or minimum
+#                                does it spin around to the next value. If, for
+#                                example, the spin_box reaches the maximum,
+#                                then a wrap value of True means that it will
+#                                spin around to the minumum. Default False.
+#
+#        
+#  composite_list attribute_id   The name of the attribute to be controlled by
+#                                this composite list object.
+#
+#                 label          If not set, then the label of the list is the
+#                                attribute label. If set, the given value is
+#                                used instead of the attribute label. If set to
+#                                "none" then no label is displayed.
+#
+#                 label_size     Either "short" or "long". Used if the label
+#                                above is not set and the label is taken from
+#                                the attribute. In this case there is a long
+#                                form and short form attribute label available.
+#                                Default "long".
+#
+#                 position       The offset, as x and y in pixels, of the entry
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 border_width   The width of the border around the label.
+#                                Default 0.
+#
+#                 border_color   The colour of the border.
+#
+#                 margin_height  The height of the margin, in pixels, above and
+#                                below the child objects. Default 0.
+#
+#                 margin_width   The width of the margin, in pixels, to the
+#                                right and left of the child objects. Default 0.
+#
+#                 The objects to be part of the composite follow these
+#                 parameters.
+#
+#                 For example:
+#
+#                   composite_list
+#                   {
+#                       attribute_id = cloud_base
+#                       position     = 73, 127
+#                       ....
+#
+#                       popup_list
+#                       {
+#                           composite_id cb1
+#                           ....
+#                       }
+#                       popup_list
+#                       {
+#                           composite_id cb2
+#                           prefix       dash
+#                           ....
+#                       }
+#                   }
+#
+#                 The list of items that make up the individual parts of the
+#                 composite must be specified as the item list in each child
+#                 object.
+#
+#                 None of the child objects requires their attribute_id keyword
+#                 to be specified and it is ignored if present. In addition all
+#                 of the children of the composite_list can have the following
+#                 keywords in addition to their normal keyword set:
+# 
+#                 composite_id - If a child needs to make reference to another
+#                                child, such as is required by the "limit"
+#                                keyword, this key provides the means to give
+#                                the referenced child an identifier that can be
+#                                used as the reference id. If an object outside
+#                                of the composite list needs to refer to an
+#                                object in the composite it can do so by using
+#                                the fully qualified identifier
+#                                   attribute_id:composite_id
+#                                In the above example this could be
+#                                   cloud_base:cb2 
+#
+#                 prefix       - A character that will be inserted before that
+#                                part of the composite entry controlled by the
+#                                child object. If specified and the character
+#                                is not a space, then the composite object will
+#                                display the character before the child object.
+#                                There are two special entries here that can be
+#                                used for clarity: "space" which denotes the
+#                                use of a space as a prefix and "dash" which
+#                                denotes the use of a dash "-". All other cases
+#                                are taken as literal.
+#
+#
+#  text           attribute_id   The name of the attribute to be controlled by
+#                                this object.
+#
+#                 label          If not set, then the label of the list is the
+#                                attribute label. If set, the given value is
+#                                used instead of the attribute label. If set to
+#                                "none" then no label is displayed.
+#
+#                 label_size     Either "short" or "long". Used if the label
+#                                above is not set and the label is taken from
+#                                the attribute. In this case there is a long
+#                                form and short form attribute label available.
+#                                Default "long".
+#
+#                 position       The offset, as x and y in pixels, of the entry
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 ncolumns       The horizontal size of the text area in
+#                                columns. Defaults to 10.
+#
+#                 nrows          The vertical size of the text area in rows.
+#                                Defaults to 1.
+#
+#                 default        A string to initialize the attribute with.
+#
+#
+# - Control Objects -
+#
+#  clear_btn      label          Optional. The label to display to the user.
+#                                (Default "<< Clear".)
+#
+#                 position       The offset, as x and y in pixels, of the button
+#                                from the upper left corner of its parent which
+#                                can be either a panel or frame.
+#
+#                 foreground     The foreground colour of the label.
+#                                Default parent's.
+#
+#                 background     The background colour of the label.
+#                                Default parent's.
+#
+#                 border_width   The width of the border around the label.
+#                                Default 0.
+#
+#                 border_color   The colour of the border.
+#
+#                 margin_height  The height of the margin, in pixels, above and
+#                                below the string in the label. Default 2.
+#
+#                 margin_width   The width of the margin, in pixels, to the
+#                                right and left of the string in the label.
+#                                Default 2.
+#
+#                 attribute_id_list  A list of attribute ids which are to be
+#                                    reset to their default state when this
+#                                    button is pressed.
+#
+#
+#  run_program    label          The label to display on the button.
+#
+#                 position       The offset, as x and y in pixels, of the
+#                                button from the upper left corner of its
+#                                parent, which can be either a panel or frame.
+#                                
+#                 size           The width and height of the button, in pixels,
+#                                if you do not want the button default size.
+#
+#                 foreground     The foreground colour of the label.
+#                                Default parent's.
+#
+#                 background     The background colour of the label.
+#                                Default parent's.
+#
+#                 border_width   The width of the border around the label.
+#                                Default 0.
+#
+#                 border_color   The colour of the border.
+#
+#                 margin_height  The height of the margin, in pixels, above and
+#                                below the string in the label. Default 2.
+#
+#                 margin_width   The width of the margin, in pixels, to the
+#                                right and left of the string in the label.
+#                                Default 2.
+#
+#                 program        The name of the program to run.
+#
+#                 missing        The string to pass the program if any of the
+#                                parameter values is missing or not available.
+#                                The default if not specified is "none".
+#
+#                 parms          The run time parameters of the program. All
+#                                entries are taken as literal except for
+#                                special key words given in angle backets
+#                                <key>. These are substituted for the actual
+#                                values when the button is activated.
+#                                The keys available are:
+#
+#                                <SETUP>       - The name of the setup file.
+#                                <RTIME>       - Run time. For depictions this
+#                                                 is T0.
+#                                <VTIME>       - Valid time.
+#                                <ELEMENT>     - Currently active element.
+#                                <LEVEL>       - Currently active level.
+#                                <LATITUDE>    - Latitude of point or label.
+#                                <LONGITUDE>   - Longitude of point or label.
+#                                <ATTRIB:name> - The value of the attribute
+#                                                 "name".
+#
+#                                Latitude and longitude are only available for
+#                                point fields and labels.
+#                                
+#                                One could have as an entry in the parms line
+#                                items like "latitude=<latitude>". 
+#
+#
+# - Display Only Objects -
+#
+#  display_label  label          The label to display to the user.
+#
+#                 position       The offset, as x and y in pixels, of the label
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 foreground     The foreground colour of the label.
+#                                Default parent's.
+#
+#                 background     The background colour of the label.
+#                                Default parent's.
+#
+#                 border_width   The width of the border around the label.
+#                                Default 0.
+#
+#                 border_color   The colour of the border.
+#
+#                 margin_height  The height of the margin, in pixels, above and
+#                                below the string in the label. Default 2.
+#
+#                 margin_width   The width of the margin, in pixels, to the
+#                                right and left of the string in the label.
+#                                Default 2.
+#
+#
+#  display_attribute
+#
+#                 attribute_id   The name of the attribute to be displayed by
+#                                this object.
+#
+#                 label          If not set, then the label is the attribute
+#                                label. If set, the given value is used instead
+#                                of the attribute label. If set to "none" then
+#                                no label is displayed.
+#
+#                 label_size     Either "short" or "long". Used if the label
+#                                above is not set and the label is taken from
+#                                the attribute. In this case there is a long
+#                                form and short form attribute label available.
+#                                Default "long"
+#
+#                 position       The offset, as x and y in pixels, of the entry
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 ncolumns       The horizontal size of the text area in
+#                                characters. Defaults to 10.
+#
+#
+#  line           line_style     One of "etched_in" (default), "etched_out",
+#                                "single", "double", "single_dashed" or
+#                                "double_dashed".
+#
+#                 orientation    Either "horizontal" (default) or "vertical".
+#
+#                 position       The offset, as x and y in pixels, of the entry
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 length         The length of the line in pixels.
+#
+#                 foreground     The foreground colour of the line.
+#                                Default parent's.
+#
+#                 background     The background colour of the line.
+#                                Default parent's.
+#
+#
+#
+# ========= OBSOLETE MENU DEFINITIONS KEPT FOR BACKWARDS COMPATABILITY =========
+#
+# composite_list  attribute_id   The name of the attribute to be controlled by
+#                                this composite list object.
+#
+#                 label          If not set, then the label of the list is the
+#                                attribute label. If set, the given value is
+#                                used instead of the attribute label. If set to
+#                                "none" then no label is displayed.
+#
+#                 label_size     Either "short" or "long". Used if the label
+#                                above is not set and the label is taken from
+#                                the attribute. In this case there is a long
+#                                form and short form attribute label available.
+#
+#                 position       The offset, as x and y in pixels, of the entry
+#                                object from the upper left corner of its
+#                                parent which can be either a panel or frame.
+#
+#                 The following keywords are all prefixed by list<n>_ where <n>
+#                 is the list number in the composite starting with one (1) and
+#                 going to a maximum of nine (9). For example list5_...
+#
+#                 list<n>_type   The list type. This may be one of popup_list,
+#                                scrolled_list or button_list.
+#
+#                 list<n>_nitems The number of items in the list.
+#
+#                 list<n>_items  The list of items. The special list item "none"
+#                                will result in nothing being inserted into the
+#                                composite attribute value by this list.
+#
+#                 list<n>_none_sub Substitute the given string for the "none"
+#                                  entry in the list. The user will see this
+#                                  substituted string but its action will be
+#                                  the same as "none". Default is a blank (" ").
+#
+#                 list<n>_prefix Specifies a character to automatically prefix
+#                                the selected list item with. This may be one
+#                                of none (default) or blank.
+#
+#                 list<n>_ncolumns Used only by the scrolled_list. (See
+#                                  scrolled_list description for details.)
+#
+#                 list<n>_nvisible Used only by the scrolled_list. (See
+#                                  scrolled_list description for details.)
+#
+# spinbox         See "spin_box" above.
+#
+# ========= OBSOLETE MENU DEFINITIONS KEPT FOR BACKWARDS COMPATABILITY =========
+#
+# ----------------------------------------------------------------------------
+#
+#============== EXAMPLE MENU FILE =================
+#
+
+menu_title           =  Weather Entry Menu
+geometry             =  -650 -300 700 600
+label_display_height =  1
+value_display_height =  3
+#
+panel "Cloud"
+{
+	# First cloud layer - base, cover, top
+	composite_list
+	{
+		attribute_id   = cloud_base
+		label          = Cloud
+		position       = 20 30
+		default        = 10
+		button_list
+		{
+			composite_id = cb1
+			ncolumns     = 3
+			nvisible     = 10
+			none_sub     = ""
+			items        = none 10 20 30 40 50 60 70 80 90 100 \
+							110 120 130 140 150 160 170 180 190 200 \
+							210 220 230 240 250 260 270 280 290 300 \
+							310 320 330 340 350 360 370 380 390 400
+		}
+		button_list
+		{
+			ncolumns     = 3
+			nvisible     = 10
+			none_sub     = ""
+			prefix       = dash
+			limit        = GT cb1
+			limit_type   = integer
+			items        = none range:10,400,10,0
+		}
+	}
+	composite_list
+	{
+		attribute_id   = cloud_amount
+		label          = none
+		position       = 215 30
+		default        = SCT
+		scrolled_list
+		{
+			ncolumns = 4
+			none_sub = CLR
+			items    = none SCT BKN OVC
+		}
+		scrolled_list
+		{
+			prefix   = space
+			ncolumns = 5
+			nvisible = 3
+			none_sub = ""
+			items    = none OCNL VRBL
+		}
+		scrolled_list
+		{
+			prefix   = space
+			ncolumns = 4
+			none_sub = None
+			items    = none SCT BKN OVC
+		}
+		scrolled_list
+		{
+			prefix   = space
+			ncolumns = 5
+			none_sub = None
+			items    = none CU TCU CB LYRS
+		}
+	}
+	scrolled_list
+	{
+		attribute_id = cloud_top
+		label        = none
+		position     = 530 30
+		default      = 50
+		item_type    = integer
+		ncolumns     = 3
+		none_sub     = ""
+		items        = none range:10,400,10,0
+	}
+	frame
+	{
+		label    = Frame
+		position = 20 180
+		size     = 600 80
+		text
+		{
+			attribute_id  = cloud_remarks
+			position      = 10 10
+			ncolumns      = 40
+			nrows         = 2
+		}
+	}
+}
+panel "Weather"
+{
+	composite_list
+	{
+		attribute_id   = weather
+		position       = 20 30
+		default        = none
+		scrolled_list
+		{
+			ncolumns     = 3
+			none_sub     = Unl
+			items        = none 0 1/4 1/2 3/4 1 2 3 4 5 6 P6
+		}
+		scrolled_list
+		{
+			prefix       = dash
+			ncolumns     = 4
+			none_sub     = ""
+			items        = none 1/4 1/2 3/4 1 2 3 4 5 6 P6
+		}
+		scrolled_list
+		{
+			ncolumns     = 3
+			none_sub     = ""
+			items        = SM none
+		}
+		scrolled_list
+		{
+			prefix       = space
+			ncolumns     = 1
+			none_sub     = ""
+			items        = none "+" "-"
+		}
+		scrolled_list
+		{
+			ncolumns     = 5
+			none_sub     = None
+			items        = none RA SHRA SN SHSN DZ FZRA FZDZ
+		}
+		scrolled_list
+		{
+			prefix       = space
+			ncolumns     = 6
+			none_sub     = None
+			items        = none BR FG BR/FG
+		}
+	}
+}

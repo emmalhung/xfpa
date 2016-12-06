@@ -1,0 +1,599 @@
+! Aviation 2 panel example ...
+
+! Set version ... this line must be first!
+@version { psmet7.0 }
+
+! Set verbose mode for diagnostic output ...
+@verbose { no }
+
+! Set the display units used in all following directives ...
+!  "type" can be  inches  cm  mm  picas  points
+@display_units { type = inches }
+
+! Set the page size ...
+@size { width = 11.00; height = 8.50 }
+
+! Open the output file for the first panel of the T12 product ...
+@file_name
+	{
+	dir  = <default>;
+				! Options <default> <home>
+	name = <pdf>wx_12;
+				! Options <pdf> <year> <month> <day> <julian> <hour>
+	}
+
+! Define the map ...
+@include { av_map_setup2 }
+
+! Define a size and placement for the map ...
+@anchor { ref = absolute }
+@define_map_placement
+	{
+	map_scale     = 10000000;
+	axis_to_scale = x_axis;
+	x_off         = -1.40;
+	y_off         =  0.00;
+	}
+@anchor { ref = map }
+
+! Set the source and valid time ...
+@set_source { source = depict; valid_time = 12 }
+
+! Display some weather areas ...
+@include { av_wx_areas }
+
+! Display geographic features as outlines ... pre-determined!
+@anchor { ref = centre }
+@add
+	{
+	symbol = $FPA/setup/pdf/psmet/examples/geography_AVIATION_2;
+	scale  = 100;
+	x_off  =  0.00;
+	y_off  =  0.00;
+	}
+@anchor { ref = map }
+
+! Display some pressure contours ...
+@include { av_pressure_contours }
+
+! Display selected aerodromes (one by one) ...
+@include { av_aerodromes_1x1 }
+
+! Display some feature motion lines ...
+@include { av_motion }
+
+! Display some fronts (and other line type features) ...
+@include { av_fronts }
+
+! Display some feature motion labels ... MUST be labelled in FPA to appear
+@include { av_motion_labels }
+
+! Display some pressure hi-lo labels ... MUST be labelled in FPA to appear
+@include { av_pressure_labels }
+
+! Display some wind barbs ... MUST be labelled in FPA to appear
+@include { av_winds }
+
+! Display some weather labels ... MUST be labelled in FPA to appear
+@include { av_wx_labels }
+
+! Draw a background box around the map ... unfilled!
+@background
+	{
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	line_width    = 0.05;
+	}
+
+! Set default presentation for all text to follow ...
+@presentation
+	{
+	line_width    = 0;
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	justification = left;
+	text_size     = 0.15;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Display a label including the valid time in a box ...
+@anchor { ref = upper_right }
+@box
+	{
+	width         =  2.80;
+	height        =  1.00;
+	x_off         =  1.40;
+	y_off         = -0.50;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = CMYK 0 0 0 0;
+	line_width    = .050;
+	}
+@text
+	{
+	text_size  = 0.20;
+	string     = Aviation - FPA Development
+	x_off      =  0.10;
+	y_off      = -0.25;
+	}
+@set_source { source = depict; valid_time = 00 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = VALID PERIOD:  %HZ  %b %d
+	x_off      =  0.10;
+	y_off      = -0.45;
+	}
+@set_source { source = depict; valid_time = 12 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = -  %HZ  %b %d
+	x_off      =  1.60;
+	y_off      = -0.60;
+	}
+@set_source { source = depict; valid_time = 12 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = CHART VALID AT:  %HZ  %b %d
+	x_off      =  0.10;
+	y_off      = -0.80;
+	}
+
+! Draw a comments box in the lower corner ...
+@anchor { ref = lower_right }
+@box
+	{
+	width         =  2.80
+	height        =  6.90;
+	x_off         =  1.40;
+	y_off         =  3.45;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = CMYK 0 0 0 0;
+	line_width    = .050;
+	}
+@text
+	{
+	string        = COMMENTS
+	x_off         =  1.40;
+	y_off         =  6.65;
+	text_size     =  0.20;
+	justification = centre;
+	}
+@text
+	{
+	! Note that the "text_file" is created by TexMet process
+	!  ... examples COMMENTS_AVIATION_2
+	text_file     = $HOME/setup/pdf/texmet/examples/Comments_AVIATION_2wx_12.txt;
+	x_off         =  0.10;
+	y_off         =  6.40;
+	justification = left;
+	char_space    =   0;
+	word_space    = 100;
+	line_space    = 120;
+	}
+@text
+	{
+	string        = Polar Sterographic Projection
+	x_off         =  1.40;
+	y_off         =  0.75;
+	justification = centre;
+	}
+@text
+	{
+	string        = Scale 1:10,000,000 true at 60N
+	x_off         =  1.40;
+	y_off         =  0.55;
+	justification = centre;
+	}
+
+! Display a distance scale ...
+@draw_distance_scale
+	{
+	scale_name          = distance_scale1;
+	scale_length        = 500;
+	scale_units         = km;
+	scale_justification = centre;
+	scale_rotation      =  0.0;
+	x_off               = 1.40;
+	y_off               = 0.35;
+	outline             = X11 Black;
+	line_width          = 0.03;
+	}
+@distance_scale_ticks
+	{
+	scale_name          = distance_scale1;
+	tick_location		=   0;
+	tick_location		= 500;
+	tick_length         =  50;
+	tick_units          = km;
+	tick_justification  = centre;
+	tick_rotation       = 90.0;
+	outline             = X11 Black;
+	line_width          = 0.03;
+	}
+@distance_scale_ticks
+	{
+	scale_name          = distance_scale1;
+	tick_location		= 100;
+	tick_location		= 200;
+	tick_location		= 300;
+	tick_location		= 400;
+	tick_length         =  15;
+	tick_units          = km;
+	tick_justification  = left;
+	tick_rotation       = 90.0;
+	outline             = X11 Black;
+	line_width          = 0.03;
+	}
+@distance_scale_labels
+	{
+	scale_name          = distance_scale1;
+	label_location		= 250;
+	label_string        = 500 km;
+	label_units         = km;
+	label_justification = centre;
+	label_rotation      =   0.0;
+	text_size           =  0.15;
+	outline             = none;
+	fill                = X11 Black;
+	x_off               =  0.00;
+	y_off               = -0.20;
+	}
+
+! Close the file ...
+@file_close { }
+
+! Display the result using "display" or "evince" ...
+@process
+	{
+	cd <default>;
+	!display <pdf>wx_12.ps;
+	evince <pdf>wx_12.ps;
+	}
+
+! Open the output file for the second panel of the T12 product ...
+@file_name
+	{
+	dir  = <default>;
+				! Options <default> <home>
+	name = <pdf>ictb_12;
+				! Options <pdf> <year> <month> <day> <julian> <hour>
+	}
+
+! Define the map ...
+@include { av_map_setup2 }
+
+! Define a size and placement for the map ...
+@anchor { ref = absolute }
+@define_map_placement
+	{
+	map_scale     = 10000000;
+	axis_to_scale = x_axis;
+	x_off         = -1.40;
+	y_off         =  0.00;
+	}
+@anchor { ref = map }
+
+! Set the source and valid time ...
+@set_source { source = depict; valid_time = 12 }
+
+! Display some icing and turbulence areas ...
+@include { av_ictb_areas }
+
+! Display geographic features as outlines ... pre-determined!
+@anchor { ref = centre }
+@add
+	{
+	symbol = $FPA/setup/pdf/psmet/examples/geography_AVIATION_2;
+	scale  = 100;
+	x_off  =  0.00;
+	y_off  =  0.00;
+	}
+@anchor { ref = map }
+
+! Display selected aerodromes (from a location lookup file) ...
+@include { av_aerodromes }
+
+! Display freezing level ...
+@include { av_frzglvl }
+
+! Display some freezing level labels ... MUST be labelled in FPA to appear
+@include { av_frzglvl_labels }
+
+! Display some icing and turbulence labels ... MUST be labelled in FPA to appear
+@include { av_ictb_labels }
+
+! Draw a background box around the map ... unfilled!
+@background
+	{
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	line_width    = 0.05;
+	}
+
+! Set default presentation for all text to follow ...
+@presentation
+	{
+	line_width    = 0;
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	justification = left;
+	text_size     = 0.15;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Display a label including the valid time in a box ...
+@anchor { ref = upper_right }
+@box
+	{
+	width         =  2.80;
+	height        =  1.00;
+	x_off         =  1.40;
+	y_off         = -0.50;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = CMYK 0 0 0 0;
+	line_width    = .050;
+	}
+@text
+	{
+	text_size  = 0.20;
+	string     = Aviation - FPA Development
+	x_off      =  0.10;
+	y_off      = -0.25;
+	}
+@set_source { source = depict; valid_time = 00 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = VALID PERIOD:  %HZ  %b %d
+	x_off      =  0.10;
+	y_off      = -0.45;
+	}
+@set_source { source = depict; valid_time = 12 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = -  %HZ  %b %d
+	x_off      =  1.60;
+	y_off      = -0.60;
+	}
+@set_source { source = depict; valid_time = 12 }
+@write_time
+	{
+	type       = valid;
+	time       = GMT;
+	format     = CHART VALID AT:  %HZ  %b %d
+	x_off      =  0.10;
+	y_off      = -0.80;
+	}
+
+! Draw a comments box in the lower corner ...
+@anchor { ref = lower_right }
+@box
+	{
+	width         =  2.80
+	height        =  6.90;
+	x_off         =  1.40;
+	y_off         =  3.45;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = CMYK 0 0 0 0;
+	line_width    = .050;
+	}
+@text
+	{
+	string        = COMMENTS
+	x_off         =  1.40;
+	y_off         =  6.65;
+	text_size     =  0.20;
+	justification = centre;
+	}
+@text
+	{
+	! Note that the "text_file" is created by TexMet process
+	!  ... examples COMMENTS_AVIATION_2
+	text_file     = $HOME/setup/pdf/texmet/examples/Comments_AVIATION_2ictb_12.txt;
+	x_off         =  0.10;
+	y_off         =  6.40;
+	justification = left;
+	char_space    =   0;
+	word_space    = 100;
+	line_space    = 120;
+	}
+@text
+	{
+	string        = Polar Sterographic Projection
+	x_off         =  1.40;
+	y_off         =  0.75;
+	justification = centre;
+	}
+@text
+	{
+	string        = Scale 1:10,000,000 true at 60N
+	x_off         =  1.40;
+	y_off         =  0.55;
+	justification = centre;
+	}
+
+! Display a distance scale ...
+@draw_distance_scale
+	{
+	scale_name          = distance_scale2;
+	scale_length        = 500;
+	scale_units         = km;
+	scale_justification = centre;
+	scale_rotation      =  0.0;
+	x_off               = 1.40;
+	y_off               = 0.35;
+	outline             = X11 Green;
+	line_width          = 0.10;
+	}
+@distance_scale_ticks
+	{
+	scale_name          = distance_scale2;
+	tick_location		= 100;
+	tick_location		= 300;
+	tick_length         = 100;
+	tick_units          = km;
+	tick_justification  = left;
+	tick_rotation       = 0.0;
+	outline             = X11 Red;
+	line_width          = 0.10;
+	}
+@distance_scale_ticks
+	{
+	scale_name          = distance_scale2;
+	tick_location		=   0;
+	tick_location		= 500;
+	tick_length         =  60;
+	tick_units          = km;
+	tick_justification  = centre;
+	tick_rotation       = 90.0;
+	outline             = X11 Red;
+	line_width          = 0.02;
+	}
+@distance_scale_labels
+	{
+	scale_name          = distance_scale2;
+	label_location		= 250;
+	label_string        = 500 km;
+	label_units         = km;
+	label_justification = centre;
+	label_rotation      =  0.0;
+	text_size           =  0.15
+	outline             = none;
+	fill                = X11 Red;
+	x_off               =  0.00;
+	y_off               = -0.20;
+	}
+
+! Add icing and turbulence symbols in the comments box ...
+@presentation
+	{
+	line_width    = 0.025;
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	justification = centre;
+	}
+@add
+	{
+	symbol        = lgticg;
+	scale         = 12;
+	x_off         =  0.25;
+	y_off         =  1.75;
+	}
+@add
+	{
+	symbol        = mdticg;
+	scale         = 12;
+	rotation      = 0;
+	x_off         =  0.25;
+	y_off         =  1.50;
+	}
+@add
+	{
+	symbol        = svricg;
+	scale         = 15;
+	rotation      = 0;
+	x_off         =  0.25;
+	y_off         =  1.20;
+	}
+@add
+	{
+	symbol        = lgtturbc;
+	scale         = 20;
+	rotation      = 0;
+	x_off         =  1.50;
+	y_off         =  1.65;
+	}
+@add
+	{
+	symbol        = mdtturbc;
+	scale         = 20;
+	rotation      = 0;
+	x_off         =  1.50;
+	y_off         =  1.40;
+	}
+@add
+	{
+	symbol        = svrturbc;
+	scale         = 20;
+	rotation      = 0;
+	x_off         =  1.50;
+	y_off         =  1.15;
+	}
+
+! Add icing and turbulence text in the comments box ...
+@presentation
+	{
+	line_width    = 0;
+	outline       = CMYK 0 0 0 100;
+	fill          = CMYK 0 0 0 100;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	justification = left;
+	text_size     = 0.12;
+	char_space    =  0;
+	word_space    = 75;
+	}
+@text
+	{
+	string        = Light Icing
+	x_off         =  0.40;
+	y_off         =  1.75;
+	}
+@text
+	{
+	string        = Moderate Icing
+	x_off         =  0.40;
+	y_off         =  1.50;
+	}
+@text
+	{
+	string        = Severe Icing
+	x_off         =  0.40;
+	y_off         =  1.20;
+	}
+@text
+	{
+	string        = Light Turbulence
+	x_off         =  1.65;
+	y_off         =  1.70;
+	}
+@text
+	{
+	string        = Moderate Turbulence
+	x_off         =  1.65;
+	y_off         =  1.45;
+	}
+@text
+	{
+	string        = Severe Turbulence
+	x_off         =  1.65;
+	y_off         =  1.20;
+	}
+
+! Close the file ...
+@file_close { }
+
+! Display the result using "display" or "evince" ...
+@process
+	{
+	cd <default>;
+	!display <pdf>ictb_12.ps;
+	evince <pdf>ictb_12.ps;
+	}

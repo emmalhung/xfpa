@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# This script builds and/or updates the FPA environment file, $HOME/.fparc.
+
+# Check FPA variable.
+if [ "${FPA:-}" = "" ]
+then
+	echo
+	echo "FPA variable is not set!"
+	echo "It must be set in your profile and exported before executing"
+	echo "this application."
+	exit 1
+fi
+
+# If we do have one, lets see how new it is.
+if [ -r $HOME/.fparc ]
+then
+	# Compare modify time with this script
+	list=`find $FPA/etc -name d.fparc -newer $HOME/.fparc`
+	if [ "$list" = "" ]
+	then
+		# Existing file newer than the delivered template - leave it alone.
+		echo
+		echo "$HOME/.fparc is up-to-date."
+		exit 0
+	fi
+
+	# So we have an out-of-date one.
+	mv $HOME/.fparc $HOME/.fparc.old
+	cat $HOME/.fparc.old \
+		| sed "s@[$]@\\\\\$@g" \
+		| sed "s@[{]@\\{@g" \
+		| sed "s@[}]@\\}@g" \
+		> $HOME/.fparc
+	. $HOME/.fparc
+	echo
+	echo "Building a new environment file $HOME/.fparc."
+	echo "Your old file has been saved as $HOME/.fparc.old."
+
+else
+	# So we don't have one.
+	echo
+	echo "Building a new environment file $HOME/.fparc."
+fi
+
+# Get list of required variables from new template (hide white-space).
+list=`grep '^<<.*>>$' $FPA/etc/d.fparc \
+		| sed "s@[ 	]@#@g" \
+		| sed "s@<<@@" \
+		| sed "s@>>@@"`
+
+# Process each member in the list.
+cmd="expand -4 $FPA/etc/d.fparc"
+echo
+for mem in $list
+do
+	# Re-insert white-space.
+	mem=`echo $mem | sed 's@#@ @g'`
+
+	# Parse variable name and default value.
+	name=`echo $mem | cut -f1 -d=`
+	val=`echo $mem | cut -f2 -d=`
+
+	# Substitute with value from existing file if defined.
+	eval "old=\${$name:-UNDEF}"
+	if [ "$old" != "UNDEF" ]
+	then
+		val=$old
+		if [ `echo $val | wc -w` -gt 1 ]
+		then
+			val=\"$val\"
+		fi
+	fi
+
+	# Build the substitution command.
+	echo $name=$val
+	eval 'pat="^<<$name=.*>>$"'
+	eval 'sub="	export $name\;	$name=$val"'
+	cmd="$cmd | sed 's@$pat@$sub@'"
+done
+cmd="$cmd > $HOME/.fparc"
+eval $cmd

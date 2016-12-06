@@ -1,0 +1,111 @@
+! Define some named presentations for lines ...
+@presentation
+	{
+	name           = stationary;
+	pattern        = front.sfc.stationary;
+	pattern_width  = .150;
+	pattern_length = .750;
+	outline        = none;
+	fill           = CMYK 100 100   0 0;
+	fill           = CMYK   0 100 100 0;
+	}
+@presentation
+	{
+	name           = cold;
+	pattern        = front.sfc.cold;
+	pattern_width  = .150;
+	pattern_length = .750;
+	outline        = none;
+	fill           = CMYK 100 100 0 0;
+	}
+@presentation
+	{
+	name           = occluded;
+	pattern        = front.sfc.occluded;
+	pattern_width  = .150;
+	pattern_length = .750;
+	outline        = none;
+	fill           = CMYK 100 100 0 0;
+	fill           = CMYK 0 100 100 0;
+	}
+@presentation
+	{
+	name           = warm;
+	pattern        = front.sfc.warm;
+	pattern_width  = .150;
+	pattern_length = .750;
+	outline        = none;
+	fill           = CMYK 0 100 100 0;
+	}
+@presentation
+	{
+	name           = trowal;
+	pattern        = trowal;
+	pattern_width  = .150;
+	pattern_length = .750;
+	outline        = none;
+	fill           = CMYK 100 100 0 0;
+	fill           = CMYK 0 100 100 0;
+	}
+@presentation
+	{
+	name           = trof;
+	pattern        = trof;
+	pattern_width  = .050;
+	pattern_length = .500;
+	outline        = CMYK 0 50 60 20;
+	fill           = none;
+	line_width     = .050;
+	line_style     = solid;
+	}
+@presentation
+	{
+	name           = ridge;
+	pattern        = ridge;
+	pattern_width  = .050;
+	pattern_length = .500;
+	outline        = CMYK 100 100 0 0;
+	fill           = none;
+	line_width     = .050;
+	line_style     = solid;
+	}
+
+! Display some fronts ... in order they were drawn
+!@lines
+	{
+	element            = fronts;
+	level              = surface;
+	category_attribute = FPA_category;
+	category           = stationary cold occluded warm trowal trof ridge;
+	attribute          = FPA_category;
+	look_up            = fronts;
+	}
+
+! Display some fronts ... ordered by type
+@lines
+	{
+	element            = fronts;
+	level              = surface;
+	category_attribute = FPA_category;
+	category           = stationary cold occluded;
+	attribute          = FPA_category;
+	look_up            = fronts;
+	}
+@lines
+	{
+	element            = fronts;
+	level              = surface;
+	category_attribute = FPA_category;
+	category           = warm;
+	attribute          = FPA_category;
+	look_up            = fronts;
+	}
+@lines
+	{
+	element            = fronts;
+	level              = surface;
+	category_attribute = FPA_category;
+	category           = trowal trof ridge;
+	attribute          = FPA_category;
+	look_up            = fronts;
+	}

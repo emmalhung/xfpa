@@ -1,0 +1,31 @@
+! Reset presentations for contours (independent of element) ...
+@reset_contour_presentation { }
+
+! Set presentation for pressure contours ...
+@contour_presentation
+	{
+	units      = mb;
+	range      = [800 : 1200];
+	line_width = 0.015;
+	line_style = solid;
+	outline    = CMYK  0 0 0 40;
+	}
+
+! Set a filter for drawing contours ...
+@filter	{ 0.01 }
+
+! Display the pressure contours at regular intervals ...
+@contours
+	{
+	element  = pressure;
+	level    = msl;
+	units    = mb;
+	pattern  = simple;
+	min      =  900;
+	max      = 1060;
+	base     = 1000;
+	interval =    4;
+	}
+
+! Reset filter ...
+@filter	{ 0 }

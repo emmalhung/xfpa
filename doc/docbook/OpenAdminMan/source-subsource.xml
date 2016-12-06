@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE listitem PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<listitem><para>model source (and sub-source if required) as <replaceable>source</replaceable>:<replaceable>sub-source</replaceable></para></listitem>

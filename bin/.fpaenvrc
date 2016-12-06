@@ -1,0 +1,47 @@
+# Command file to set up FPA development environment.
+
+# NOTE: This is not a script - it must be sourced.
+
+# Check FPA variable
+if [ "${FPA:-}" = "" ]
+then
+	echo "FPA variable is not set!"
+	echo "It must be set in your profile and exported before executing"
+	echo "this application."
+	exit 1
+fi
+
+# Define user specific variables
+if [ -r $HOME/.fparc ]
+then
+	. $HOME/.fparc
+fi
+
+# Define variables required for finding and running the real executables
+export PLATFORM;  PLATFORM=${PLATFORM:-`$FPA/bin/platform`}
+export PROLOGMAXSIZE;    PROLOGMAXSIZE=20M
+export FPA_EXEC_PATH;   FPA_EXEC_PATH=${FPA_EXEC_PATH:-""}${FPA_EXEC_PATH:+":"}$FPA/binlocal/$PLATFORM:$FPA/binlocal:$FPA/bin
+export PATH;             PATH=$FPA_EXEC_PATH:$PATH
+export FPA_LOG_FILE;     FPA_LOG_FILE=${FPA_LOG_FILE:-"!FPA_AUTO_LOG"}
+export FPA_PCL_PRINTER;  FPA_PCL_PRINTER=${FPA_PCL_PRINTER:-laser}
+export FPA_PS_PRINTER;   FPA_PS_PRINTER=${FPA_PS_PRINTER:-laser}
+export FPA_TEXT_PRINTER; FPA_TEXT_PRINTER=${FPA_TEXT_PRINTER:-laser}
+export FPA_TEXT_EDITOR;  FPA_TEXT_EDITOR=${FPA_TEXT_EDITOR:-'/usr/bin/X11/hpterm -title Edit -name Edit -e vi'}
+export FPA_RESOURCE;     FPA_RESOURCE=${FPA_RESOURCE:-''}
+export FPA_MMM;          FPA_MMM=${FPA_MMM:-""}
+export FPA_SHLIB_PATH;   FPA_SHLIB_PATH=${FPA_SHLIB_PATH:-""}${FPA_SHLIB_PATH:+":"}$FPA/liblocal/$PLATFORM:$FPA/liblocal:$FPA/lib/$PLATFORM:$FPA/lib
+export SHLIB_PATH;       SHLIB_PATH=$FPA_SHLIB_PATH:$SHLIB_PATH
+export LD_RUN_PATH;      LD_RUN_PATH=$SHLIB_PATH:/usr/dt/lib:/usr/openwin/lib:/usr/X11R6/lib
+export LD_LIBRARY_PATH;  LD_LIBRARY_PATH=$SHLIB_PATH:/usr/dt/lib:/usr/openwin/lib:/usr/X11R6/lib
+export PYTHONPATH;		 PYTHONPATH=$FPA/bin
+
+# The default font path for version 8 is $FPA/fonts.
+# This variable resets the font location, if desired.
+#export FPA_FONT_PATH;    FPA_FONT_PATH=${FPA_FONT_PATH:-$FPA/fonts}
+
+# The X11 RGB colour table is usually located here.
+# The location can be reset if necessary for another operating system.
+export RGB_TXT_FILE;	 RGB_TXT_FILE=/usr/share/X11/rgb.txt
+
+# Define various functions
+. .fpafuncs

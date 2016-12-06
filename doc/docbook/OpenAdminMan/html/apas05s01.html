@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>A.5.1. Template of a 'Fields' Block</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apas05.html" title="A.5. Fields block" /><link rel="prev" href="apas05.html" title="A.5. Fields block" /><link rel="next" href="apas06.html" title="A.6. Levels block" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">A.5.1. Template of a 'Fields' Block</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apas05.html">Prev</a> </td><th width="60%" align="center">A.5. Fields block</th><td width="20%" align="right"> <a accesskey="n" href="apas06.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2071397"></a>A.5.1. Template of a 'Fields' Block</h3></div></div></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>Fields</code></strong></span></dt><dd><p>
+<strong class="userinput"><code>{</code></strong>
+	</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code><span xmlns="" class="replaceable">element_name</span> <span xmlns="" class="replaceable">level_name</span></code></strong></span></dt><dd><p>
+	<strong class="userinput"><code>{</code></strong>
+		</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		This is the label that the user sees in the <span class="acronym">FPA</span> menus.
+		The default is the <span xmlns="" class="replaceable">level_name</span> label followed by the <span xmlns="" class="replaceable">element_name</span> label.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>short_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		The short_label is used when there is not enough room on the <span class="acronym">FPA</span> screen or button to use the longer label.
+		The default is the <span xmlns="" class="replaceable">level_name</span> short_label followed by the <span xmlns="" class="replaceable">element_name</span> short_label.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>field_group = <span xmlns="" class="replaceable">group_name</span></code></strong></span></dt><dd><p>
+		This parameter will group the <span class="acronym">FPA</span> fields in the interface.
+		The <span xmlns="" class="replaceable">group_name</span> is from the 'Fields' sub block of the Groups block.
+		The default group is 'Miscellaneous'.
+		</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>element_info = Default</code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term"><strong class="userinput"><code>element_info =</code></strong></span></dt><dd><p>
+		<strong class="userinput"><code>{</code></strong>
+			</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>attributes_reset = True | False</code></strong></span></dt><dd><p>
+			</p></dd><dt><span class="term"><strong class="userinput"><code>attributes = </code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+				(see attributes keyword in 'Elements' block for acceptable keywords) </p><p>
+			<strong class="userinput"><code>}</code></strong>
+			</p></dd></dl></div><p>
+			<dt></dt><dd><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following <strong class="userinput"><code>line_types</code></strong> keywords are applicable to <strong class="userinput"><code>Line</code></strong> fields.</p></div></dd>
+			</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>line_types_reset = True | False</code></strong></span></dt><dd><p>
+			</p></dd><dt><span class="term"><strong class="userinput"><code>line_types =</code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+				(see line_types keyword in 'Elements' block for acceptable keywords) </p><p>
+			<strong class="userinput"><code>}</code></strong>
+			</p></dd></dl></div><p>
+			<dt></dt><dd><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following <strong class="userinput"><code>scattered_types</code></strong> keywords are applicable to <strong class="userinput"><code>Scattered</code></strong> fields.</p></div></dd>
+			</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>scattered_types_reset = True | False </code></strong></span></dt><dd><p>
+			</p></dd><dt><span class="term"><strong class="userinput"><code>scattered_types =</code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+				(see scattered_types keyword in 'Elements' block for acceptable keywords) </p><p>
+			<strong class="userinput"><code>}</code></strong>
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>editor =</code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+				(see editor keyword in 'Elements' block for acceptable keywords) </p><p>
+			<strong class="userinput"><code>}</code></strong>
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>labelling_reset = True | False</code></strong></span></dt><dd><p>
+			</p></dd><dt><span class="term"><strong class="userinput"><code>labelling =</code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+				(see labelling keyword in 'Elements' block for acceptable keywords) </p><p>
+			<strong class="userinput"><code>}</code></strong>
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>sampling_reset = True | False</code></strong></span></dt><dd><p>
+			</p></dd><dt><span class="term"><strong class="userinput"><code>sample = </code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+				(see sample keyword in 'Elements' block for acceptable keywords) </p><p>
+			<strong class="userinput"><code>}</code></strong>
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>equation =</code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+				(see equation keyword in 'Elements' block for acceptable keywords) </p><p>
+			<strong class="userinput"><code>}</code></strong>
+			</p></dd><dt><span class="term"><strong class="userinput"><code>value_calculation = </code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+				(see value_calculation keyword in 'Elements' block for acceptable keywords) </p><p>
+			<strong class="userinput"><code>}</code></strong>
+			</p></dd><dt><span class="term"><strong class="userinput"><code>linking = </code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+				(see linking keyword in 'Elements' block for acceptable keywords) </p><p>
+			<strong class="userinput"><code>}</code></strong>
+			</p></dd></dl></div><p>
+		<strong class="userinput"><code>}</code></strong> #(End of element_info Block)
+		</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>level_info = Default</code></strong></span></dt><dd><p>
+		</p></dd></dl></div><p>
+	<strong class="userinput"><code>}</code></strong> #(End of <span xmlns="" class="replaceable">element_name</span> <span xmlns="" class="replaceable">level_name</span> Block)
+	</p></dd></dl></div><p>
+<strong class="userinput"><code>}</code></strong> #(End of 'Fields' Block)
+</p></dd></dl></div><p>
+
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apas05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apas05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apas06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">A.5. Fields block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> A.6. Levels block</td></tr></table></div></body></html>

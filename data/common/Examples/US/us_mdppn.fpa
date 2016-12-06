@@ -1,0 +1,464 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Anchorage"
+	FPA_user_label "Anchorage"
+ spot 61.192N -149.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Florence"
+	FPA_user_label "Florence"
+ spot 33.042N -111.38E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fountain Hills"
+	FPA_user_label "Fountain Hills"
+ spot 33.605N -111.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gilbert"
+	FPA_user_label "Gilbert"
+ spot 33.344N -111.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Marana"
+	FPA_user_label "Marana"
+ spot 32.387N -111.13E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Oro Valley"
+	FPA_user_label "Oro Valley"
+ spot 32.421N -110.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Paradise Valley"
+	FPA_user_label "Paradise Valley"
+ spot 33.545N -111.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Payson"
+	FPA_user_label "Payson"
+ spot 34.239N -111.33E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Prescott Valley"
+	FPA_user_label "Prescott Valley"
+ spot 34.602N -112.32E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Apple Valley"
+	FPA_user_label "Apple Valley"
+ spot 34.511N -117.21E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Danville"
+	FPA_user_label "Danville"
+ spot 37.811N -121.97E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hillsborough"
+	FPA_user_label "Hillsborough"
+ spot 37.56N -122.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Los Gatos"
+	FPA_user_label "Los Gatos"
+ spot 37.236N -121.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Moraga"
+	FPA_user_label "Moraga"
+ spot 37.844N -122.12E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Paradise"
+	FPA_user_label "Paradise"
+ spot 39.762N -121.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "San Anselmo"
+	FPA_user_label "San Anselmo"
+ spot 37.98N -122.57E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Truckee"
+	FPA_user_label "Truckee"
+ spot 39.342N -120.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Windsor"
+	FPA_user_label "Windsor"
+ spot 38.546N -122.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Yucca Valley"
+	FPA_user_label "Yucca Valley"
+ spot 34.126N -116.42E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Castle Rock"
+	FPA_user_label "Castle Rock"
+ spot 39.381N -104.85E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Parker"
+	FPA_user_label "Parker"
+ spot 39.519N -104.77E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Davie"
+	FPA_user_label "Davie"
+ spot 26.081N -80.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Jupiter"
+	FPA_user_label "Jupiter"
+ spot 26.926N -80.105E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lady Lake"
+	FPA_user_label "Lady Lake"
+ spot 28.929N -81.931E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Palm Beach"
+	FPA_user_label "Palm Beach"
+ spot 26.715N -80.039E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cicero"
+	FPA_user_label "Cicero"
+ spot 41.845N -87.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Normal"
+	FPA_user_label "Normal"
+ spot 40.512N -88.989E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Brownsburg"
+	FPA_user_label "Brownsburg"
+ spot 39.842N -86.396E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chesterton"
+	FPA_user_label "Chesterton"
+ spot 41.604N -87.058E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Clarksville"
+	FPA_user_label "Clarksville"
+ spot 38.312N -85.767E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dyer"
+	FPA_user_label "Dyer"
+ spot 41.5N -87.512E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fishers"
+	FPA_user_label "Fishers"
+ spot 39.956N -86.013E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Griffith"
+	FPA_user_label "Griffith"
+ spot 41.531N -87.426E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Highland"
+	FPA_user_label "Highland"
+ spot 41.55N -87.458E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Merrillville"
+	FPA_user_label "Merrillville"
+ spot 41.486N -87.335E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Munster"
+	FPA_user_label "Munster"
+ spot 41.551N -87.501E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Plainfield"
+	FPA_user_label "Plainfield"
+ spot 39.697N -86.385E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Schererville"
+	FPA_user_label "Schererville"
+ spot 41.489N -87.443E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Speedway"
+	FPA_user_label "Speedway"
+ spot 39.792N -86.25E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bel Air"
+	FPA_user_label "Bel Air"
+ spot 39.537N -76.348E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Easton"
+	FPA_user_label "Easton"
+ spot 38.772N -76.07E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elkton"
+	FPA_user_label "Elkton"
+ spot 39.61N -75.826E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dover"
+	FPA_user_label "Dover"
+ spot 40.886N -74.558E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Guttenberg"
+	FPA_user_label "Guttenberg"
+ spot 40.794N -74.007E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hackettstown"
+	FPA_user_label "Hackettstown"
+ spot 40.853N -74.829E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hammonton"
+	FPA_user_label "Hammonton"
+ spot 39.641N -74.786E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Harrison"
+	FPA_user_label "Harrison"
+ spot 40.746N -74.155E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kearny"
+	FPA_user_label "Kearny"
+ spot 40.763N -74.137E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Morristown"
+	FPA_user_label "Morristown"
+ spot 40.799N -74.479E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Phillipsburg"
+	FPA_user_label "Phillipsburg"
+ spot 40.689N -75.185E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Secaucus"
+	FPA_user_label "Secaucus"
+ spot 40.788N -74.062E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Westfield"
+	FPA_user_label "Westfield"
+ spot 40.65N -74.343E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "West New York"
+	FPA_user_label "West New York"
+ spot 40.788N -74.013E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Silver City"
+	FPA_user_label "Silver City"
+ spot 32.778N -108.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Apex"
+	FPA_user_label "Apex"
+ spot 35.732N -78.853E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Boone"
+	FPA_user_label "Boone"
+ spot 36.211N -81.669E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carrboro"
+	FPA_user_label "Carrboro"
+ spot 35.92N -79.084E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cary"
+	FPA_user_label "Cary"
+ spot 35.779N -78.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chapel Hill"
+	FPA_user_label "Chapel Hill"
+ spot 35.926N -79.039E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cornelius"
+	FPA_user_label "Cornelius"
+ spot 35.479N -80.885E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Garner"
+	FPA_user_label "Garner"
+ spot 35.698N -78.623E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hope Mills"
+	FPA_user_label "Hope Mills"
+ spot 34.971N -78.957E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Huntersville"
+	FPA_user_label "Huntersville"
+ spot 35.41N -80.864E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Indian Trail"
+	FPA_user_label "Indian Trail"
+ spot 35.07N -80.654E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kernersville"
+	FPA_user_label "Kernersville"
+ spot 36.116N -80.082E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Matthews"
+	FPA_user_label "Matthews"
+ spot 35.117N -80.716E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mint Hill"
+	FPA_user_label "Mint Hill"
+ spot 35.18N -80.664E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mooresville"
+	FPA_user_label "Mooresville"
+ spot 35.584N -80.82E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Smithfield"
+	FPA_user_label "Smithfield"
+ spot 35.509N -78.346E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Southern Pines"
+	FPA_user_label "Southern Pines"
+ spot 35.182N -79.398E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tarboro"
+	FPA_user_label "Tarboro"
+ spot 35.903N -77.546E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wake Forest"
+	FPA_user_label "Wake Forest"
+ spot 35.973N -78.519E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bloomsburg"
+	FPA_user_label "Bloomsburg"
+ spot 41.001N -76.454E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hilton Head Island"
+	FPA_user_label "Hilton Head Island"
+ spot 32.179N -80.743E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Irmo"
+	FPA_user_label "Irmo"
+ spot 34.093N -81.186E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mount Pleasant"
+	FPA_user_label "Mount Pleasant"
+ spot 32.823N -79.845E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Newberry"
+	FPA_user_label "Newberry"
+ spot 34.278N -81.617E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Summerville"
+	FPA_user_label "Summerville"
+ spot 33.008N -80.183E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Collierville"
+	FPA_user_label "Collierville"
+ spot 35.054N -89.682E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Farragut"
+	FPA_user_label "Farragut"
+ spot 35.878N -84.174E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Greeneville"
+	FPA_user_label "Greeneville"
+ spot 36.168N -82.822E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Smyrna"
+	FPA_user_label "Smyrna"
+ spot 35.98N -86.521E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Addison"
+	FPA_user_label "Addison"
+ spot 32.958N -96.835E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Flower Mound"
+	FPA_user_label "Flower Mound"
+ spot 33.032N -97.079E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Blacksburg"
+	FPA_user_label "Blacksburg"
+ spot 37.23N -80.418E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Christiansburg"
+	FPA_user_label "Christiansburg"
+ spot 37.141N -80.408E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Front Royal"
+	FPA_user_label "Front Royal"
+ spot 38.926N -78.192E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Herndon"
+	FPA_user_label "Herndon"
+ spot 38.971N -77.389E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Leesburg"
+	FPA_user_label "Leesburg"
+ spot 39.109N -77.558E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vienna"
+	FPA_user_label "Vienna"
+ spot 38.899N -77.261E location none
+
+* 
+* End
+

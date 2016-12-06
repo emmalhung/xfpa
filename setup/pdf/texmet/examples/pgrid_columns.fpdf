@@ -1,0 +1,12 @@
+! Define the y coordinate table locations ...
+@table_site { <map_x_pos; map_y = 1000; y_off =  0 }
+@table_site { <map_x_pos; map_y = 1200; y_off =  1 }
+@table_site { <map_x_pos; map_y = 1400; y_off =  2 }
+@table_site { <map_x_pos; map_y = 1600; y_off =  3 }
+@table_site { <map_x_pos; map_y = 1800; y_off =  4 }
+@table_site { <map_x_pos; map_y = 2000; y_off =  5 }
+@table_site { <map_x_pos; map_y = 2200; y_off =  6 }
+@table_site { <map_x_pos; map_y = 2400; y_off =  7 }
+@table_site { <map_x_pos; map_y = 2600; y_off =  8 }
+@table_site { <map_x_pos; map_y = 2800; y_off =  9 }
+@table_site { <map_x_pos; map_y = 3000; y_off = 10 }

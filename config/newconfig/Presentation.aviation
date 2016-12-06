@@ -1,0 +1,353 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Presentation-type files in the $FPA/config directory can and will be   #
+#   updated with any new release, update, or patch of the FPA software suite.  #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Presentation file that refers to this file through  #
+#   an #include statement.  Refer to the file Presentation, or d.Presentation  #
+#   for further instructions.                                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+#
+#   "Presentation.aviation"  Example presentation file for aviation parameters
+#
+################################################################################
+
+revision 6.0
+
+################################################################################
+#
+#   Local presentation information.
+#
+#   Any presentation definitions given here will override the corresponding
+#   defintions in the files included at the end of this file.
+#
+################################################################################
+
+field	pressure	ALL	FPA
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Black
+					font	simplex
+		class	hilo
+			class_member	mark	symbol	hilo_type
+				attribute	hilo_type	low
+					offset	0 16
+					size	hilo
+					colour	Red
+					shadow	Pink IndianRed
+					symbol	L
+					font	bold_serif
+				attribute	hilo_type	high
+					offset	0 16
+					size	hilo
+					colour	CadetBlue
+					shadow	SkyBlue Navy
+					symbol	H
+					font	bold_serif
+			class_member	label	name	hilo_name
+				attribute	hilo_type	low
+					offset	14 10
+					hjust	left
+					size	label
+					colour	Red
+					shadow	Pink IndianRed
+					font	bold_serif
+				attribute	hilo_type	high
+					offset	16 10
+					hjust	left
+					size	label
+					colour	CadetBlue
+					shadow	SkyBlue Navy
+					font	bold_serif
+			class_member	label	value	EVAL_spval
+				default
+					offset	0 -13
+					size	label
+					colour	Black
+					shadow	Grey50 Black
+					font	bold
+			class_member	mark	marker
+				attribute	FPA_label_type	detached_low
+					size	9
+					colour	Red
+					shadow	Pink IndianRed
+					marker	asterisk
+				default
+					angle	45
+					size	5
+					colour	Black
+					shadow	Grey50 Black
+					marker	circle_plus
+		class	cyclone
+			class_member	mark	type	cyclone_type
+				attribute	cyclone_type	depression
+					offset	10 9
+					size	25
+					colour	Green
+					shadow	Black Black
+					symbol	TD
+					font	bold_serif
+					hjust	left
+				attribute	cyclone_type	storm
+					offset	10 9
+					size	25
+					colour	Yellow
+					shadow	Black Black
+					symbol	TS
+					font	bold_serif
+					hjust	left
+				attribute	cyclone_type	hurricane
+					offset	10 9
+					size	25
+					colour	Orange
+					shadow	Black Black
+					symbol	Hurricane
+					font	bold_serif
+					hjust	left
+				attribute	cyclone_type	typhoon
+					offset	10 9
+					size	25
+					colour	Orange
+					shadow	Black Black
+					symbol	Typhoon
+					font	bold_serif
+					hjust	left
+				attribute	cyclone_type	cyclone
+					offset	10 9
+					size	25
+					colour	Orange
+					shadow	Black Black
+					symbol	Cyclone
+					font	bold_serif
+					hjust	left
+			class_member	label	name	cyclone_name
+				default
+					offset	10 -9
+					size	label
+					colour	Gold
+					shadow	Black Black
+					font	bold
+					hjust	left
+			class_member	label	infl	EVAL_spval
+				default
+					offset	-10 9
+					size	label
+					colour	Black
+					shadow	Grey50 Black
+					font	bold
+					hjust	right
+			class_member	label	value	cyclone_cpres
+				default
+					offset	-10 -9
+					size	label
+					colour	Black
+					shadow	Grey50 Black
+					font	bold
+					hjust	right
+			class_member	mark	marker
+				default
+					size	8
+					colour	Yellow
+					shadow	Black Black
+					marker	circle
+				
+
+field	fronts	ALL	FPA
+
+	member	spot	labels
+		class	line
+			class_member	label	value	front_name
+				category	cold
+					size	label
+					colour	Blue
+					font	simplex
+				category	warm
+					size	label
+					colour	Red
+					font	simplex
+				default
+					size	label
+					colour	Black
+					font	simplex
+
+
+field	weather_system	ALL	FPA
+
+	member	spot	labels
+		class	public
+			class_member	label	value
+				category	none
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	frozen
+					size	label
+					colour	White
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	freezing
+					size	label
+					colour	White
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	precip
+					size	label
+					colour	Green
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	vis
+					size	label
+					colour	Yellow
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	cloud
+					size	label
+					colour	Goldenrod
+					shadow	Firebrick Firebrick
+					font	simplex
+				default
+					size	label
+					colour	Orange
+					font	simplex
+
+		class	aviation
+			class_member	label	value	wx_label_category
+				attribute	wx_label_category	Wx
+					offset	0 -10
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				attribute	wx_label_category	Icg
+					offset	0 -10
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+
+			class_member	mark	marker
+				default
+					size	4
+					colour	Red
+					shadow	Pink Pink
+					marker	circle
+
+
+field	turbulence		surface	ALL
+
+	member	discrete	turbulence
+		default
+			colour	Green
+			style	solid
+			width	1
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				default
+					colour	Green
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+					size	label
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	freezing_level	surface ALL
+
+	member	curve	freezing_level
+		category	freezing_line
+			pattern	freezing_line
+			width	10
+			length	40
+
+	member	spot	labels
+		class	line
+			class_member	label	value	frzg_lvl_label
+				category	freezing_line
+					size	label
+					colour	Red
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left
+
+
+field	feature_motion	surface ALL
+	member	lchain		track
+		default
+			colour	Chocolate
+			width	4
+	member	nodes		link_nodes
+		class	normal
+			class_member	mark	marker
+				default
+					colour  Brown
+					marker  circle
+					size    12
+
+		class	control
+			class_member	mark	marker
+				default
+					colour  Brown
+					marker  diamond
+					size    12
+
+		class	interp
+			class_member	mark	marker
+				default
+					colour  Cyan
+					marker  diamond
+					size    2
+
+
+field	old_feature_motion	surface ALL
+
+	member	curve	old_feature_motion
+		category	motion_line
+			pattern	motion_line
+			width	20
+			length	80
+
+	member	spot	labels
+		class	line
+			class_member	label	value	ftr_motion_speed
+				category	motion_line
+					offset	10 10
+					size	label
+					colour	Blue
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					# Note no colour specified
+					size	legend
+					font	simplex
+					hjust	left

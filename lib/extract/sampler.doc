@@ -1,0 +1,215 @@
+New sampler access functions:
+
+int		fpa_sampler_connect(setup_file)
+STRING	setup_file;
+
+		Starts up sampler and passes it the setup file.
+
+
+int		fpa_sampler_disconnect()
+
+		Shuts down sampler.
+
+
+int		fpa_sampler_setup(setup_file)
+STRING	setup_file;
+
+		Passes sampler a setup file.  This is not normally needed since
+		fpa_sampler_connect() calls this function internally.
+
+
+int		fpa_sampler_source(source, subsrc)
+STRING	source, subsrc;
+
+		Selects a new data source.  Source is equivalent to dir in
+		sampler_sequence(), but can now take on any guidance or allied model
+		data source defined in Fields config.  Subsrc is only used for allied
+		models.
+
+	
+int		fpa_sampler_avail_rtime(&year, &jday, &hour)
+int		*year, *jday, *hour;
+
+		Returns the list of available run-times for the current data source.
+		The function value contains the number of available run-times.  For
+		depict and interp, this returns the valid time of the first regular
+		field.  Otherwise it returns the set of run-times found in the Dstamp
+		files in appropriate data directories.
+
+
+int		fpa_sampler_rtime(year, jday, hour)
+int		year, jday, hour;
+
+		Selects a new run-time for the current data source.  For depict and
+		interp, this can be any valid-time, and all valid-times in the sequence
+		will be treated relative to this run-time.  For guidance and allied
+		models, this must match one of the available run-times, since it is
+		used to select the data directory.
+
+	
+int		fpa_sampler_avail_tplus(&progs)
+int		*progs;
+
+		Returns the list of available prog-times for the current data source
+		and run-time.  The function value contains the number of available
+		prog-times.  For depict and interp, these can be both positive and
+		negative, depending on the selection of run-time.
+
+
+int		fpa_sampler_tplus(nprog, progs)
+int		nprog;
+int		*progs;
+
+		Selects the given list of prog-times for the current data source and
+		run-time.
+
+	
+int		fpa_sampler_empty_tplus()
+
+		De-selects the current list of prog-times.
+	
+
+int		fpa_sampler_add_tplus(prog)
+int		prog;
+
+		Adds a new prog-time to the current list of prog-times.
+
+
+int		fpa_sampler_field(nfld, elems, levels)
+int		nfld;
+STRING	*elems, *levels;
+
+		Selects the given list of fields for the current data source and
+		run-time.
+
+	
+int		fpa_sampler_empty_field()
+
+		De-selects the current list of fields.
+	
+	
+int		fpa_sampler_add_field(elem, level)
+STRING	elem, level;
+
+		Adds a new field to the current list of fields.
+
+
+int		fpa_sampler_point(npt, lats, lons)
+int		npt;
+STRING	*lats, *lons;
+
+		Selects the given list of points for the current data source and
+		run-time.
+
+	
+int		fpa_sampler_empty_point()
+
+		De-selects the current list of points.
+	
+	
+int		fpa_sampler_add_point(lat, lon)
+STRING	lat, lon;
+
+		Adds a new point to the current list of points.
+
+
+int		fpa_sampler_evaluate()
+
+		Evaluates the current list of fields, at the current list of points,
+		at the current list of prog-times.  The values are held in a triply
+		dimensioned array, which can be accessed by fpa_sampler_get_value().
+
+
+STRING	fpa_sampler_get_value(iprog, ifld, ipt)
+int		iprog, ifld, ipt;
+
+		Returns the evaluated value at the given prog-time index, field index
+		and point index, corresponding to the evaluations performed by
+		fpa_sampler_evaluate().
+
+
+All functions except fpa_sampler_get_value() return either a count (specifically
+fpa_sampler_avail...()), or SUCCESS if they succeed.  A value of FAILURE is
+returned if the given request could not be satisfied for some reason.  A value
+of PROBLEM is returned if sampler aborts.  The values of SUCCESS, FAILURE and
+PROBLEM are defined in sampler.h.
+
+The paradigm for accessing the new sampler via the new interface functions is
+as follows:
+
+		#include "sampler.h"
+
+
+		status = fpa_sampler_connect(setup);
+
+		status = fpa_sampler_source(source, subsrc);
+
+		status = fpa_sampler_rtime(year, jday, hour);
+
+		At this point, any combination of function calls which will define a
+		list of prog-times, fields and points is needed.
+
+		status = fpa_sampler_evaluate();
+
+			values[i][j][k] = fpa_sampler_get_value(i, j, k);
+
+		At this point, any combination of function calls which will alter
+		either the list of prog-times, fields or points is permitted.
+
+		status = fpa_sampler_evaluate();
+
+			values[i][j][k] = fpa_sampler_get_value(i, j, k);
+
+		Repeat as necessary. . .
+
+		status = fpa_sampler_disconnect();
+
+Old sampler access functions - temporarily supported for compatibility:
+
+int		sampler_connect(setup_file)
+STRING	setup_file;
+
+		Starts up sampler and passes it the setup file.
+
+
+int		sampler_disconnect()
+
+		Shuts down sampler.
+
+
+int		sampler_setup(setup_file)
+STRING	setup_file;
+
+		Passes sampler a setup file.  This is not normally needed since
+		sampler_connect() calls this function internally.
+
+
+int		sampler_sequence(dir,year,jday,hour,maxprog)
+STRING	dir;
+int		year, jday, hour, maxprog;
+
+		Selects the given data source (depict or interp), start time and time
+		range.  The number of charts (prog-times) encountered in the given time
+		range is returned.
+
+
+int		sampler_prog_time(ichart)
+int		ichart;
+
+		Returns the retrieved prog-time for the given index, corresponding to
+		the data sequence obtained by sampler_sequence().
+
+
+int		sampler_evaluate(elem,level,lat,lon)
+STRING	elem, level;
+int		lat, lon;
+
+		Evaluates the given field at the given point for each chart in the
+		current sequence (as specified by sampler_sequence()).
+
+
+STRING	sampler_get_value(ichart)
+int		ichart;
+
+		Returns the evaluated value at the given prog-time index, corresponding
+		to the evaluations performed by sampler_evaluate().

@@ -1,0 +1,67 @@
+This is the Xbae library
+------------------------
+	See http://xbae.sourceforge.net
+
+Documentation
+-------------
+
+Documentation is provided as a set of manpages in the src/ subdirectory.
+Please read the Xbae-FAQ (in doc/FAQ.html) before contacting the maintainers 
+or mailing list unless you are willing to receive some nasty (or no) replies!
+
+You may convert the man pages and print them out with a suitable
+roff-like program. Using GNUroff (groff) a sample commandline
+would be
+   groff -t -Tps -man XbaeMatrix.3 >XbaeMatrix.ps
+
+The online XbaeMatrix(3) man page suffers from a very large table,
+spread over a few pages which causes problems with most versions of
+nroff, groff, etc.  If this is the case for you, you will need to use
+the PostScript version for the resource table.  If you can help out in
+formatting the table so it works in the online manual page, please
+contact us.
+
+
+What the widgets do:
+--------------------
+
+XbaeMatrix:
+
+XbaeMatrix is a Motif widget which presents an editable array of
+string data to the user in a scrollable table similar to a
+spreadsheet. The rows and columns of the Matrix may optionally be
+labeled. Also, a number of "fixed" and "trailing fixed" rows or
+columns may be specified - these behave similarly to the labels. While
+XbaeMatrix looks and acts like a grid oF XmText widgets, it
+actually contains only one XmText.  This means that XbaeMatrix
+widgets with hundreds or thousands of rows have much less overhead
+than they would if they used an XmText for each cell. XbaeMatrix
+has callbacks for doing field validation and customizing traversal. It
+allows cells to be assigned independent colors.  It allows rows,
+columns and regions of cells to be selected or highlighted.  The
+matrix can be dynamically grown or shrunk by adding and deleting rows
+and columns at any position.  The widget has many resources to allow
+individual customisation and can be made to look and behave like an
+extended list widget with added functionality.  Pixmaps (both colour
+xpm and standard bitmaps) can be displayed in individual cells with
+the callbacks available in the widget.
+   
+
+XbaeCaption:
+
+XbaeCaption is a simple Motif manager widget used to associate an
+XmLabel (caption) with it's single child. The label may be either an
+XmString or Pixmap and can be displayed in any one of twelve positions
+around the perimeter of the child. XbaeCaption's geometry management
+technique is to simply "shrink wrap" it's child and display the
+caption alongside it.  By using XbaeCaption with an XmFrame child,
+groups of related widgets can be labeled similarly to the IBM CUA
+"Group Box", but with more flexibility.  XbaeCaption is also useful
+for associating labels with individual XmText widgets.
+
+
+XbaeInput
+
+XbaeInput is a subclassed from the XmText widget and allows keystrokes
+to be validated as well as the final string.  It is very handy for
+restricting user input.

@@ -1,0 +1,514 @@
+'\" t
+.\" $Id: XbaeInput.3.in,v 1.5 2002/03/09 16:10:14 amai Exp $
+..
+.de cI
+.IP \fI\\$1\fR 10
+..
+.de LI
+.IP \fB\\$1\fR 5
+..
+.TH XbaeInput 3x "4.60.2" "xbae"
+.SH NAME
+XbaeInput
+\- The Input widget class.
+.SH SYNOPSIS
+#include <Xbae/Input.h>
+.SH DESCRIPTION
+.B XbaeInput
+is a text input field that provides generic customised data entry
+and formatting for strings.  It does this by using a clever
+.B XmNmodifyVerifyCallback
+that is installed when the
+.B XmNpattern
+resource is set.  The
+.B XmNpattern
+value may include optional characters and literals which will be
+discussed later in this document.
+.PP
+The
+.B XbaeInput
+widget is ideal for restricting data input to a digit, alphanumeric
+character or an alphabetic character.  If 
+.B XmNconvertCase
+is set, the widget automatically changes an inserted character
+to uppercase or lowercase. Literal characters can also be included
+in the
+.B XmNpattern
+that can be automatically inserted as the user types by setting the
+.B XmNautofill
+resource to True. Optional literals cannot be auto inserted, however.
+.PP
+Unlike the 
+.B XmText
+field from which this widget is subclassed, the
+.B toggle-overwrite
+action is bound to the
+.B osfInsert
+key.  The
+.B XmNoverwriteMode
+is also provided to allow the resource to be changed programatically.
+.PP
+When the
+.B XbaeInput
+widget loses focus or is activated in the same way as the
+.B XmText
+field would be, callbacks on the
+XmNvalidateCallback
+list are invoked, allowing the programmer to validate the data as
+well as reformatting the existing string.
+.SS "Classes"
+.B XbaeInput
+inherits behavior and resources from the
+.BR Core ,
+.BR XmPrimitive ,
+and
+.B XmText
+widget classes.
+.br
+The class pointer is
+.BR xbaeInputWidgetClass .
+.br
+The class name is
+.BR XbaeInput .
+.SS "New Resources"
+The following table lists the new resources defined by
+.BR XbaeInput .
+The codes in the Access column indicate whether
+the given resource can be set at creation time (C), or set by
+using XtSetValues (S), or retrieved by using XtGetValues (G).
+
+.TS
+expand box;
+c s s s s
+lb | lb | lb | lb | lb
+lp8 | lp8 | lp8 | lp8 | lp8 .
+XbaeInput Resource Set
+_
+Name	Class	Type	Default	Access
+=
+XmNalignment	XmCAlignment	unsigned char	XmALIGNMENT_BEGINNING	CSG
+_
+XmNautoFill	XmCBoolean	Boolean	False	CSG
+_
+XmNconvertCase	XmCBoolean	Boolean	True	CSG
+_
+XmNoverwriteMode	XmCBoolean	Boolean	False	CSG
+_
+XmNpattern	XmCString	String	NULL	CSG
+_
+XmNvalidateCallback	XmCCallback	Callback	NULL	CSG
+.TE
+This resource has not been implemented.
+.sp
+.LI XmNalignment
+This resource has not been implemented!
+.sp
+Specifies the alignment of the text when being edited and displayed.
+Possible values are
+.BR XmALIGNMENT_BEGINNING and
+.BR XmALIGNMENT_END .
+If 
+.B XmNalignment
+is set to
+.BR XmALIGNMENT_END ,
+the text will be right justified. If left as the default of
+.BR XmALIGNMENT_BEGINNING ,
+the text will be left justified. 
+.LI XmNautoFill
+The
+.B XmNautoFill
+resource, when set to True, attempts to automatically insert a literal
+if a non literal is hit in an allowed literal position.  For example,
+if the 
+.B XmNpattern
+resource was set up to accept a date in dd/mm/yyyy format and the
+user typed "18041999" The resulting string would appear as
+"18/04/1999". The default value is False, where the user would have
+to type the literal.
+.LI XmNconvertCase
+Tells the 
+.B XbaeInput
+widget what should be done to alphabetic characters if the
+.XmNpattern
+requires a lowercase or uppercase letter.  If the
+.B XmNconvertCase
+is set to True (default), then the character is automatically converted
+to the correct case.  If set to False, then the user must type the
+character in the correct case in order for it to be accepted.  See
+the
+.B EXAMPLE PATTERNS
+section towards the end of this document for some examples.
+.LI overwriteMode
+Whether the
+.XbaeInput
+widget accepts characters in insert mode or overwrite mode is controlled by
+the
+.XmNoverwriteMode
+resource.  Setting this resource calls the
+.B XmText
+.B toggle-overwrite()
+action routine, so the Motif toolkit being used must also support this
+routine.
+.LI XmNpattern
+The
+.B XmNpattern
+resource specifies what can be typed into the
+.B XbaeInput
+widget.  If set to the default value of
+.SM NULL
+any character may be entered.  The
+.B XmNpattern
+can be set to a string containing the following characters.
+.br
+\fC
+.TS
+lB l .
+a	alphabetic characters only
+b	both - either digit or character
+c	any character at all
+d	digits only
+U	upperchase character only
+L	lowercase character only
+[	start of optional sequence
+]	end of optional sequence
+\\\\	escapes the next character
+|	next char is an alternative to previous. May be chained.
+.TE
+\fP
+.PP
+.SS "Inherited Resources"
+The following table lists the resources which
+.B XbaeInput
+inherits from
+it's superclasses
+.BR XmText ,
+.B XmPrimitive and
+.BR Core .
+For a complete
+description of each resource, refer to the man page for that superclass.
+The codes in the "Access" column indicate whether the given resource can
+be set at creation time (C), or set by using XtSetValues (S), or
+retrieved by using XtGetValues (G).
+.LP
+.TS
+expand box;
+c s s s s
+lb | lb | lb | lb | lb
+lp8 | lp8 | lp8 | lp8 | lp8 .
+XmText Resource Set
+_
+Name	Class	Type	Default	Access
+=
+XmNautoShowCursorPosition	XmCAutoShowCursorPosition	Boolean	True	CSG
+_
+XmNcursorPosition	XmCCursorPosition	XmTextPosition	0	CSG
+_
+XmNeditable	XmCEditable	Boolean	True	CSG
+_
+XmNeditMode	XmCEditMode	int	XmSINGLE_LINE_EDIT	CSG
+_
+XmNfocusCallback	XmCCallback	XtCallbackList	NULL	CSG
+_
+XmNgainPrimaryCallback	XmCCallback	XtCallbackList	NULL	CSG
+_
+XmNlosePrimaryCallback	XmCCallback	XtCallbackList	NULL	CSG
+_
+XmNlosingFocusCallback	XmCCallback	XtCallbackList	NULL	CSG
+_
+XmNmarginHeight	XmCMarginHeight	Dimension	5	CSG
+_
+XmNmarginWidth	XmCMarginWidth	Dimension	5	CSG
+_
+XmNmaxLength	XmCMaxLength	int	largest integer	CSG
+_
+XmNmodifyVerifyCallback	XmCCallback	XtCallbackList	NULL	CSG
+_
+XmNmodifyVerifyCallbackWcs	XmCCallback	XtCallbackList	NULL	CSG
+_
+XmNmotionVerifyCallback	XmCCallback	XtCallbackList	NULL	CSG
+_
+XmNsource	XmCSource	XmTextSource	Default source	CSG
+_
+XmNtopCharacter	XmCTextPosition	XmTextPosition	0	CSG
+_
+XmNvalue	XmCValue	String	""	CSG
+_
+XmNvalueChangedCallback	XmCCallback	XtCallbackList	NULL	CSG
+_
+XmNvalueWcs	XmCvalueWcs	wchar_t *	(wchar_t *)""	CSG
+_
+XmNverifyBell	XmCVerifyBell	Boolean	dynamic	CSG
+.TE
+.LP
+.sp
+.TS
+expand box;
+c s s s s
+lb | lb | lb | lb | lb
+lp8 | lp8 | lp8 | lp8 | lp8 .
+XmPrimitive Resource Set
+_
+Name	Class	Type	Default	Access
+=
+XmNbottomShadowColor	XmCBottomShadowColor	Pixel	dynamic	CSG
+_
+XmNbottomShadowPixmap	XmCBottomShadowPixmap	Pixmap	XmUNSPECIFIED_PIXMAP	CSG
+_
+XmNforeground	XmCForeground	Pixel	dynamic	CSG
+_
+XmNhighlightColor	XmCHighlightColor	Pixel	dynamic	CSG
+_
+XmNhighlightOnEnter	XmCHighlightOnEnter	Boolean	False	CSG
+_
+XmNhighlightPixmap	XmCHighlightPixmap	Pixmap	dynamic	CSG
+_
+XmNhighlightThickness	XmCHighlightThickness	Dimension	2	CSG
+_
+XmNnavigationType	XmCNavigationType	XmNavigationType	XmNONE	CSG
+_
+XmNshadowThickness	XmCShadowThickness	Dimension	2	CSG
+_
+XmNtopShadowColor	XmCTopShadowColor	Pixel	dynamic	CSG
+_
+XmNtopShadowPixmap	XmCTopShadowPixmap	Pixmap	dynamic	CSG
+_
+XmNtraversalOn	XmCTraversalOn	Boolean	True	CSG
+_
+XmNunitType	XmCUnitType	unsignedChar	dynamic	CSG
+_
+XmNuserData	XmCUserData	Pointer	NULL	CSG
+.TE
+.LP
+.sp
+.TS
+expand box;
+c s s s s
+lb | lb | lb | lb | lb
+lp8 | lp8 | lp8 | lp8 | lp8 .
+Core Resource Set
+=
+Name	Class	Type	Default	Access
+_
+XmNaccelerators	XmCAccelerators	XtAccelerators	NULL	CSG
+_
+XmNancestorSensitive	XmCSensitive	Boolean	dynamic	G
+_
+XmNbackground	XmCBackground	Pixel	dynamic	CSG
+_
+XmNbackgroundPixmap	XmCPixmap	Pixmap	XmUNSPECIFIED_PIXMAP	CSG
+_
+XmNborderColor	XmCBorderColor	Pixel	XtDefaultForeground	CSG
+_
+XmNborderPixmap	XmCPixmap	Pixmap	XmUNSPECIFIED_PIXMAP	CSG
+_
+XmNborderWidth	XmCBorderWidth	Dimension	1	CSG
+_
+XmNcolormap	XmCColormap	Colormap	dynamic	CG
+_
+XmNdepth	XmCDepth	int	dynamic	CG
+_
+XmNdestroyCallback	XmCCallback	XtCallbackList	NULL	C
+_
+XmNheight	XmCHeight	Dimension	dynamic	CSG
+_
+XmNinitialResourcesPersistent	XmCInitialResourcesPersistent	Boolean	True	C
+_
+XmNmappedWhenManaged	XmCMappedWhenManaged	Boolean	True	CSG
+_
+XmNscreen	XmCScreen	Screen	dynamic	CG
+_
+XmNsensitive	XmCSensitive	Boolean	True	CSG
+_
+XmNtranslations	XmCTranslations	XtTranslations	dynamic	CSG
+_
+XmNwidth	XmCWidth	Dimension	dynamic	CSG
+_
+XmNx	XmCPosition	Position	0	CSG
+_
+XmNy	XmCPosition	Position	0	CSG
+.TE
+.sp
+.SS "Callback Information"
+.LI XmNvalidateCallback
+Callbacks on the
+.B XmNvalidateCallback
+list are called when the edits to the
+.B XbaeInput
+widget are activated or a losing focus event occurs.
+Each callback function is passed the following structure:
+.sp
+.ne 7
+.TS
+lb s s
+l lb li .
+typedef struct
+\&{
+	int	reason;
+	XEvent	*event;
+	String	pattern;
+	String	value;
+	Boolean	doit;
+.T&
+lb s s.
+\&} XbaeInputValidateCallbackStruct;
+.TE
+.RS
+.sp
+.cI reason
+Set to
+.B XmCR_ACTIVATE
+if the user caused the callback to be invoked by activating the changes
+in the cell or
+.B XmCR_LOSING_FOCUS
+if the callback was called due to a losing focus event.
+.cI event
+The event pointer that triggered the callback.
+.cI pattern
+A pointer to the pattern for the 
+.B XbaeInput
+widget or
+.SM NULL
+if one does not exist.  This value is provided as a convenience to
+the callback.
+.cI value
+The value as it appears in the cell at the time of the callback being
+invoked.
+.cI doit
+Indicates whether or not the value is valid.  By setting \fIdoit\fP to
+False the value will not be accepted.
+.PP
+This callback provides the application of checking the validity of
+the value entered into the
+.B XbaeInput
+widget.  Checking the validity of a date may be one such instance.
+If the value is verified as valid, all values of the callback may
+be left unchanged.  If the pointer to the value is changed, the
+new value will be displayed in the cell and storage for the old
+value deallocated by the 
+.B XbaeInput
+widget.  The new value's memory is owned by the application and
+it is up to the application to use XtFree to deallocate it.
+.PP
+If the \fIvalue\fP is not considered valid, the \fIdoit\fP flag
+should be set to False, forcing the user to make changes before the
+value can be accepted.
+.RE
+.SS Translations
+.B XbaeInput
+inherits translations from
+.BR XmText .
+Some versions of Motif do not have the 
+\fC
+.TS
+lw(6cm) l .
+:<Key>osfInsert:	toggle-overstrike(\|)
+.TE
+\fR
+.PP
+translation installed by default.  If this is the case,
+.B XbaeInput
+automatically registers this translation.
+.PP
+.SS "Type Converters"
+.PP
+.B XbaeInput
+does not define any new type converters other than the standard type
+converters registered by Xt and Motif.
+.PP
+.SS "Public Functions"
+.sp
+The following external entry points to
+.B XbaeInput
+class methods are
+defined:
+.sp
+.ne 6
+.B XbaeCreateInput(\|)
+.PP
+.RS
+.TS
+l s s
+l l li .
+Widget XbaeCreateInput(\|)
+	Widget	parent;
+	String	name;
+	ArgList	arglist;
+	Cardinal	argcount;
+.TE
+.sp
+.cI parent
+Specifies the parent widget ID.
+.cI name
+Specifies the name of the created widget
+.cI arglist
+Specifies the argument list
+.cI argcount
+Specifies the number of attribute/value pairs in the argument list (arglist)
+.PP
+.B XbaeCreateInput(\|)
+creates an instance of an XbaeInput widget and returns the associated
+widget ID.
+.SS "EXAMPLE PATTERNS"
+.LI \fCd[d]/d[d]/dd[dd]\fP
+A date that would accept 1/1/99, 12/1/99, 1/12/1999, 01/01/2000, etc.
+.LI \fCU[L][L][L][L][L],\ U[L][L][L][L][L]\fP
+"Surname, Firstname" combination, automatically forcing correct case
+and allowing between 1 and 6 characters per name.
+.LI \fCUU-dd[d][d]\fP
+A flight number consisting of two uppercase letters and 2 to 4 numbers
+.LI \fC(ddd)\ ddd-dddd\fP
+An American style phone number
+.LI \fCUdU[-]dUd\fP
+A Canadian postcode with optional dash.
+.PP
+.SS "Virtual Bindings"
+.sp
+The bindings for virtual keys are vendor specific. For information about
+bindings for virtual buttons and keys, see
+.BR VirtualBindings(3X) .
+.SH AUTHOR
+.B Andrew Lister
+\fC(lister@db.com)\fP
+.sp
+.SH RELEASE
+.sp
+This document describes XbaeInput from Xbae Version 4.9.
+.SH "SEE ALSO"
+.B Core(3X), XmPrimitive(3X), XmText(3X)
+.SH "Notice of Limitation"
+.sp
+The Author, previous and current maintainers of the Xbae widgets
+(collectively 'authors') provide this information solely
+to professionals who have the appropriate degree of experience to
+understand and interpret its contents in accordance with generally
+accepted engineering or other professional standards and applicable
+regulations. No recommendations as to products or vendors is made or
+should be implied.
+.PP
+While the information contained herein has been prepared from sources
+deemed to be reliable, the authors reserve the right to revise the
+information without notice, but have no obligation to do so. Unless the
+recipient has been expressly granted a license by Bellcore under
+separate applicable written agreement with Bellcore, no license,
+expressed or implied, is granted under any patents, copyrights or other
+intellectual property rights. Use of the information is at your
+discretion and shall not be deemed an inducement by Bellcore to infringe
+any existing or later-issued patent, copyrights or other intellectual
+property right.
+.PP
+THE AUTHORS MAKE NO REPRESENTATIONS AND EXTENDS NO WARRANTIES, EXPRESS OR
+IMPLIED, WITH RESPECT TO THE INFORMATION, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR ANY PARTICULAR
+PURPOSE, AND THE WARRANTY AGAINST INFRINGEMENT OF PATENTS OR OTHER
+INTELLECTUAL PROPERTY RIGHTS. THE INFORMATION IS PROVIDED ``AS IS'', AND
+IN NO EVENT SHALL THE AUTHORS OR ANY OF ITS AFFILIATES BE LIABLE FOR ANY
+DAMAGES, INCLUDING ANY LOST PROFITS OR OTHER INCIDENTAL OR CONSEQUENTIAL
+DAMAGES RELATING TO THE INFORMATION.
+.PP
+Copyright 1999 Andrew Lister.  All Rights Reserved.
+.br
+Copyright 1999-2002 LessTif Developers
+.sp 3
+The above no warranty extends to all additions and contributions.  No
+contributor shall be held liable; this work is provided ``as is''.  If
+this is a problem for you, then don't use this software.

@@ -1,0 +1,1985 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE appendix PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<appendix id='appenda'><title>Config and Config.<replaceable>name</replaceable> File Format</title>
+<para><indexterm><primary>config file</primary></indexterm></para>
+
+<sect1><title>Overview</title><para>
+The <filename>Config</filename> and <filename>Config.<replaceable>name</replaceable></filename> files (see <xref linkend='config_files'/>, "Configuration Files") contain information used to identify all directories, files, and fields used by the &FPA;.
+</para><para>
+This Appendix identifies all presently recognized keywords for information in the primary blocks of these types of configuration file.
+The general format of the <filename>Config</filename> files is:
+<programlisting>revision    <replaceable>revision_number</replaceable>
+
+include   <replaceable>filename1</replaceable>
+include   <replaceable>filename2</replaceable>
+
+<replaceable>block_name</replaceable>
+  {
+  <replaceable>member_name</replaceable>
+    {
+    <replaceable>keyword</replaceable> = <replaceable>value(s)</replaceable>
+#     OR
+    <replaceable>keyword</replaceable> =
+      {
+      <replaceable>keyword</replaceable> = <replaceable>value(s)</replaceable>
+      }
+    }
+  }
+</programlisting>
+
+In some cases, there are also <replaceable>sub_block_name</replaceable> or <replaceable>sub_member_name</replaceable> sections, but this general format is seen throughout.</para><para>
+The revision line must be the first uncommented line in each configuration file.
+(The <replaceable>revision_number</replaceable> is &version;.0)</para><para>
+The include lines allow several configuration files to be used at the same time.
+The configuration file reader merges the information from the included configuration files with the information in the current configuration file to determine all parameters used by the &FPA;.</para><para>
+<note><para> Keyword information for any particular <replaceable>block_name</replaceable> or <replaceable>member_name</replaceable> may be included in any of the configuration files, any number of times.
+The information from each occurrence is merged with information already encountered to provide a full set of configuration parameters.</para></note>
+The general format does not allow line concatenation; for example, <programlisting>block_name {</programlisting> on the same line would not be recognized.
+<note><para>In order to make this appendix easier to read the following conventions were adopted:<itemizedlist>
+<listitem><para>when a word is being used as a place holder it is formatted to indicate it should be <replaceable>replaced</replaceable> by an appropriate value.</para></listitem>
+<listitem><para>if a keyword only accepts values from a predefined list, the list is separated with '|' to indicate "or" or '&amp;|' to indicate "and/or".</para></listitem>
+<listitem><para>Sub-blocks are indented</para></listitem>
+<listitem><para>The values for some keywords can only be specified once.
+If such a keyword has additional specifications, only the first one is accepted.
+The rest are ignored.
+(Those keywords are preceded by a '!' in the following sections.)</para></listitem>
+</itemizedlist></para></note>
+<note><para>The format of the actual configuration files is important as the parsing program can be rather unforgiving.<itemizedlist>
+<listitem><para>Line continuations (where necessary) are indicated by ending the line with '\'.</para></listitem>
+<listitem><para>Comment lines begin with '#', but the format also allows for appended comments on most lines.</para><para></para></listitem>
+<listitem><para>The values given for keywords can usually be specified as often as desired, with each new value replacing the previous specification.
+(Note that "language" specific keywords are a special case, described in more detail below.) In those cases where the keyword defines a list of values, each new value is added to the present list; there is usually a "reset_" keyword to allow the user to remove all previous specifications.</para></listitem>
+<listitem><para>The values for some keywords refer to members of other blocks.
+These members must therefore be defined in one of the <filename>Config</filename> files used.
+</para></listitem>
+<listitem><para>There are several "magic" values for keywords (examples are Default or None), which have a special meaning to the programs.
+These magic values should not be used as members in any block in the <filename>Config</filename> files.</para></listitem>
+<listitem><para>All '{' or '}' characters must be located on their own lines.</para></listitem>
+<listitem><para>The '=' must be separated from the rest of the line by white space.</para></listitem>
+</itemizedlist></para></note>
+Some changes to the <filename>Config</filename> files are not allowed, or not presently supported.
+Attempts to make such changes will result in a warning message in the log file, but should not affect the running of the &FPA;.
+Errors in a line of a <filename>Config</filename> file will cause an error for that member of the block, and will print out an error message in the log file.
+The affected member will no longer be recognized by the &FPA;, and will no longer appear in any list! 
+</para><para>
+<warning><para> Users should NEVER attempt to edit a <filename>Config</filename> file when the &FPA; is running, as this may have a catastrophic effect on the &FPA; and its data files.</para></warning>
+</para></sect1>
+
+<sect1><title>Support for Other Languages</title><para>
+There are two independent portions of the &FPA; where the language can be controlled locally.
+One is the set of menu selections (upper left corner of the &FPA; windows) and informative messages displayed by the &FPA; (displayed in the upper corner of the depiction window, just below these buttons.) These items make up the 'interface' proper, and the only aspect which is accessible by users is the text displayed on the buttons or messages.
+The <envar>FPA_LANG</envar> setting in the UNIX environment controls the language in the &FPA; interface through a series of language files in subdirectories of <filename class='directory'><envar>$FPA</envar>/app-defaults</filename>.</para><para>
+The other portion of the &FPA; that is language dependent is the set of buttons on the right hand side of the &FPA; window.
+These buttons can be altered and configured within the configuration files, as discussed below.
+</para>
+
+<sect2><title>Other Languages in the Configurable Menus</title><para>
+A language specifier is allowed in all lines with the format <replaceable>keyword</replaceable> = <replaceable>label</replaceable> in the &FPA; configuration files (for example, label = <replaceable>label</replaceable> or short_label = <replaceable>label</replaceable>).
+The format of language dependent labels is given by:
+<programlisting>
+<replaceable>keyword</replaceable> = &lt;*default*&gt; "default label" \
+    &lt;*second_language*&gt; "second language label" \
+    &lt;*third_language*&gt;  "third language label"
+#     OR
+<replaceable>keyword</replaceable> = &lt;*default*&gt;         "default label"
+<replaceable>keyword</replaceable> = &lt;*second_language*&gt; "second language label"
+<replaceable>keyword</replaceable> = &lt;*third_language*&gt;  "third language label"
+</programlisting>
+For example, labels for mean sea level pressure in English and Canadian French (indicated by c-french in UNIX) could be entered as:
+<programlisting>label = &lt;*default*&gt; "MSL Pressure" &lt;*c-french*&gt; "Pression MSL"</programlisting>
+In this example, if the <envar>FPA_LANG</envar> environment variable is set to c-french, "Pression MSL" would be displayed in the &FPA; interface.
+</para><para>
+As noted above, keywords can appear several times in different config files, but the final entry in the configuration files normally takes precedence.
+However, keywords that allow a language specifier are special cases, and only lines containing the language set by the <envar>FPA_LANG</envar> environment variable are recognized.
+This allows keywords for different languages to be contained in separate configuration files.
+The default value for each label is used if no "language" specific value is encountered!</para><para>
+</para></sect2>
+</sect1>
+
+<sect1><title>Common Keywords</title><para>
+The following table describes keywords that are common to several configuration file blocks, or which contain lists of preset choices for keywords.
+A description of each of the preset choices is also given.
+Occurrences of these keywords in the individual configuration file blocks described below will refer back to this Table.
+<table frame='topbot' id='common_keys'><title>Common Keywords</title><tgroup cols='2'>&colwidth3;
+<thead><row><entry>Keyword</entry><entry>Explanation</entry></row></thead>
+<tbody>
+<row valign='top'><entry><userinput>label</userinput></entry><entry>This is the label the user sees.</entry></row>
+<row valign='top'><entry><userinput>short_label</userinput></entry><entry>This is the label the user sees when there is not much space on the button.
+It should be less than 12 characters</entry></row>
+<row valign='top'><entry><userinput>description</userinput></entry><entry>This is an optional descriptive label</entry></row>
+<row valign='top'><entry><userinput>file_id</userinput></entry><entry>This is the identifier used to construct (old style) &FPA; file names.
+(element identifiers are limited to 2 characters!)
+For example, in the <filename>Config.master</filename> file, pressure has a file_id of pn.
+Thus metafiles containing pressure data are named with the prefix pn (e.g.
+a depiction metafile named pnmsl_1998:182:00 for mean sea level pressure).</entry></row>
+<row valign='top'><entry><userinput>file_ident</userinput></entry><entry>This is the identifier used to construct (new style) &FPA; file names 
+(limited to 32 characters.)
+May not contain spaces or '~')</entry></row>
+<row valign='top'><entry><userinput>field_group</userinput></entry><entry>This parameter will group the &FPA; fields in the interface.
+The group name must be from the 'Fields' sub block of the 'Groups' block.</entry></row>
+<row valign='top'><entry><userinput>element_group</userinput></entry><entry>This parameter will group the &FPA; elements in the interface.
+The group name must be from the 'Elements' sub block of the 'Groups' block</entry></row>
+<row valign='top'><entry><userinput>field_type</userinput></entry><entry><para>This parameter identifies the type of meteorological field.
+One of:</para>
+<para><userinput>Continuous</userinput>: for contoured b-spline fields (grid point data).</para>
+<para><userinput>Vector</userinput>: for u, v component b-spline fields</para>
+<para><userinput>Discrete</userinput>: for area fields</para>
+<para><userinput>Wind</userinput>: for fields containing areas of adjusted wind</para>
+<para><userinput>Line</userinput>: for line fields</para>
+<para><userinput>LChain</userinput>: for link chain fields</para>
+<para><userinput>Scattered</userinput>: for data at random points</para>
+<para><userinput>Special</userinput>: for all other fields</para>
+</entry></row>
+<row valign='top'><entry><userinput>level_type</userinput></entry><entry><para>This parameter matches acceptable elements and levels to create fields.
+One of: </para>
+<para><userinput>Msl</userinput>: for mean sea level fields</para>
+<para><userinput>Surface</userinput>: for surface of the Earth fields</para>
+<para><userinput>Level</userinput>: for level type fields</para>
+<para><userinput>Layer</userinput>: for layer type fields</para>
+<para><userinput>Geography</userinput>: for geographical fields</para>
+<para><userinput>Annotation</userinput>: for menus or legends</para>
+<para><userinput>Any</userinput>: for special elements that may be valid at any level</para>
+</entry></row>
+<row valign='top'><entry><userinput>source_type</userinput> or <userinput>source_types</userinput></entry><entry><para>This parameter sets the type of files for a data source.
+One of:</para>
+<para><userinput>Depiction</userinput>: for data sources where all fields are unique</para>
+<para><userinput>Guidance</userinput>: for data sources where fields may be reproduced at a different run time for the data source</para>
+<para><userinput>Allied</userinput>: for data sources from Allied Models (these are similar to Guidance type data sources)</para>
+<para><userinput>Maps</userinput>: for geographical data sources</para>
+<para><userinput>Direct</userinput>: (not yet used)</para>
+<para><userinput>Any</userinput>: for any of the above types</para>
+</entry></row>
+<row valign='top'><entry><userinput>value_function</userinput></entry><entry><para>This parameter sets a value calculation function used to determine a given field.
+Note that each value calculation function refers to an FPA routine to calculate a value based on given input fields.
+One of:</para>
+<para><userinput>FPA_Value_Func</userinput>: extract values from a single field</para>
+<para><userinput>FPA_Vector_Magnitude_Func</userinput>: extract a magnitude from a vector field</para>
+<para><userinput>FPA_Vector_Direction_Func</userinput>: extract a direction from a vector field</para>
+<para><userinput>FPA_Daily_Max_Value/Time_Func</userinput>: extract maximum values or times of maximum values from a series of fields</para>
+<para><userinput>FPA_Daily_Min_Value/Time_Func</userinput>: extract minimum values or times of minimum values from a series of fields</para>
+<para><userinput>FPA_Get_Daily_Value_Func</userinput>: extracts values from a daily field that matches a given time.</para>
+<para><userinput>FPA_Actual_Wind_Speed/Direction_Func</userinput>: extract wind speed or wind direction from a field containing areas of adjusted wind</para>
+<para>Note that user defined value functions can also be used.</para></entry></row>
+<row valign='top'><entry><userinput>wind_function</userinput></entry><entry><para>This parameter sets a wind calculation function used to determine a given type of wind.
+Note that each wind calculation function refers to an FPA routine to calculate wind speed and direction based on given input fields.
+One of:</para>
+<para><userinput>FPA_Geostrophic_Wind_Func</userinput>: extract wind based on the geostrophic wind equation</para>
+<para><userinput>FPA_Gradient_Wind_Func</userinput>: extract wind based on the gradient wind equation</para>
+<para><userinput>FPA_Cyclostrophic_Wind_Func</userinput>: extract wind based on the cyclostrophic wind equation</para>
+<para><userinput>FPA_Isallobaric_Wind_Func</userinput>: extract wind based on the isallobaric wind equation</para>
+<para><userinput>FPA_Thermal_Wind_Func</userinput>: extract wind based on the thermal wind equation</para>
+<para><userinput>FPA_UVcomponent_Wind_Func</userinput>: extract wind based on the u and v components of wind</para>
+<para><userinput>FPA_DirectionSpeed_Wind_Func</userinput>: extract wind based on the direction and speed components of wind</para>
+<para><userinput>FPA_Adjusted_Wind_Func</userinput>: extract wind from the wind adjustment field where <userinput>field_type = Wind</userinput></para>
+<para><userinput>FPA_Absolute_Wind_Func</userinput>: set absolute wind speed and direction to zero.</para>
+<para>Note that user defined wind functions can also be used.</para>
+</entry></row>
+<row valign='top'><entry><userinput>value_sample</userinput></entry><entry><para>This parameter determines the type of value to sample from a field.
+Note that each type of value refers to an FPA routine to determine parameters from a given input field.
+One of:</para>
+<para><userinput>FPA_Sample_Value</userinput>: sample the value of Continuous or Vector type field</para>
+<para><userinput>FPA_Sample_Gradient</userinput>: sample the gradient of a Continuous type field</para>
+<para><userinput>FPA_Sample_Curvature</userinput>: sample the curvature of a Continuous type field</para>
+<para><userinput>FPA_Sample_Magnitude</userinput>: sample the Magnitude of a Vector type field</para>
+<para><userinput>FPA_Sample_Direction</userinput>: sample the direction of a Vector type field</para>
+</entry></row>
+<row valign='top'><entry><userinput>value_sample_types</userinput></entry><entry>This parameter sets value sampling types for a given field.
+Each <replaceable>sample_type_name</replaceable> is from the 'Values' sub block of the 'Samples' block.</entry></row>
+<row valign='top'><entry><para><userinput>wind_sample_type</userinput></para>
+<para>or</para>
+<para><userinput>wind_sample_types</userinput></para></entry>
+<entry>This parameter sets wind sampling types for a given field.
+Each <replaceable>sample_type_name</replaceable> is from the 'Winds' sub block of the 'Samples' block</entry></row>
+</tbody></tgroup></table>
+</para></sect1>
+
+<sect1 id='elements_block'><title>Elements block</title><para>
+<indexterm><primary>config file</primary><secondary>elements block</secondary></indexterm>
+An element is a meteorological parameter that exists at one or more levels.
+The 'Elements' block is used to identify information specific to an element in the &FPA;.
+</para><para>Note that <replaceable>group_name</replaceable> must be a member of the 'Elements' sub block of the 'Groups' block, or the 'Fields' sub block of the 'Groups' block.
+</para><para>Note that <replaceable>crossref_name</replaceable> must be a member of the 'Winds' sub block of the 'CrossRefs' block, or the 'Values' sub block of the 'CrossRefs' block.
+</para><para>Note that <replaceable>sample_type_name</replaceable> must be a member of the 'Values' sub block of the 'Samples' block, or the 'Winds' sub block of the 'Samples' block.
+</para><para>Note that <replaceable>unit_name</replaceable> must be a member of the 'Units' block.
+</para>
+
+<sect2><title>Template of an 'Elements' Block</title><para>
+<variablelist>
+<varlistentry><term><userinput>Elements</userinput></term><listitem><para>
+<userinput>{</userinput>
+	<variablelist>
+	<varlistentry><term><userinput><replaceable>element_name</replaceable></userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is the label that the user sees.
+		The default is <replaceable>element_name</replaceable>.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+		The default is <replaceable>element_name</replaceable>.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>description = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is an optional descriptive label.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>field_type = </userinput></term><listitem><para> 
+		Must be one of: 
+		<userinput>Continuous</userinput>,
+		<userinput>Vector</userinput>,
+		<userinput>Discrete</userinput>,
+		<userinput>Wind</userinput>,
+		<userinput>Line</userinput>,
+		<userinput>LChain</userinput>,
+		<userinput>Scattered</userinput>,
+		<userinput>Special</userinput></para><para>
+		This parameter identifies the type of meteorological field.
+		The choices are described in <xref linkend='common_keys'/>.</para><para>
+		The choices available for the 'editor', 'labelling', and 'sample' keywords (below) are determined by the field_type.
+		This is indicated in the comments associated with each keywords.
+		Note that no 'editor', 'labelling', or 'sample' keywords are available for Special elements.</para><para>
+		Note that this parameter cannot be re-specified!
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>level_type = </userinput></term><listitem><para>
+		Must be one of: 
+		<userinput>Msl</userinput>,
+		<userinput>Surface</userinput>,
+		<userinput>Level</userinput>,
+		<userinput>Layer</userinput>,
+		<userinput>Geography</userinput>,
+		<userinput>Annotation</userinput>,
+		<userinput>Any</userinput></para><para>
+		This parameter matches the element to an acceptable level to create a field.
+		The choices are described in <xref linkend='common_keys'/>.
+		</para><para>
+		Note that this parameter cannot be re-specified!
+		</para></listitem></varlistentry>
+
+		</variablelist>
+		<varlistentry><listitem>
+		<beginpage/>
+		<note><para>The following <userinput>display_format</userinput> keyword is applicable to <userinput>Discrete</userinput> fields.</para></note></listitem></varlistentry>
+		<variablelist>
+
+		<varlistentry><term><userinput>display_format = Simple | Complex</userinput></term><listitem><para>
+		This parameter should be set to <userinput>Complex</userinput> only if the <userinput>Discrete</userinput> field will have both dividing lines AND holes.
+		A <userinput>Discrete</userinput> field with both dividing lines and holes requires more complicated calculations to ensure correct masking and display of features.
+		</para></listitem></varlistentry>
+		<varlistentry/>
+
+		<varlistentry><term><userinput>element_group = <replaceable>group_name</replaceable></userinput></term><listitem><para>
+		This parameter groups &FPA; elements in the interface.
+		The <replaceable>group_name</replaceable> is from the 'Elements' sub block of the 'Groups' block.
+		The default group is 'Miscellaneous'.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>field_group = <replaceable>group_name</replaceable></userinput></term><listitem><para>
+		This parameter groups &FPA; fields in the interface.
+		The <replaceable>group_name</replaceable> is from the 'Fields' sub block of the 'Groups' block.
+		This parameter is the default group if the field or the field_group for the field are not specified.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>alias = <replaceable>alias_name(s)</replaceable></userinput></term><listitem><para>
+		These can be shorter names for use, say, in equations.
+		(An example is the label "Pressure" which has a short_label "Pres".
+		Aliases include "p" and "pres".
+		These aliases can be used in equations which involve pressure.) Alias names cannot be reused by another element.
+		Only the first one encountered gets used.
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>file_id = None | <replaceable>identifier</replaceable></userinput></term><listitem><para>
+		This is the identifier used to construct old style &FPA; file names (see <xref linkend='common_keys'/>).
+		It cannot be re-specified unless changed from <userinput>None</userinput>!
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>file_ident = None | <replaceable>identifier</replaceable></userinput></term><listitem><para>
+		This is the identifier used to construct new style &FPA; file names (see <xref linkend='common_keys'/>).
+		It cannot be re-specified unless changed from <userinput>None</userinput>!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>precision = <replaceable>value unit_name</replaceable></userinput></term><listitem><para>
+		This is the output precision of the element for metafiles (usually 0.01) and the normal units for the element.
+		This value is required for Continuous fields.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>time_dependence = Normal</userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>time_dependence =</userinput></term><listitem><para>
+		<userinput>{</userinput></para><para>
+			This parameter identifies temporal information for the field.
+			<variablelist>
+			<varlistentry><term><userinput>time_type = </userinput></term><listitem>
+			<para>Sets the time coverage of the field.
+			Must be one of:</para>
+			<para>- <userinput>Normal</userinput>: for fields valid at one time (such as hourly temperature).</para>
+			<para>- <userinput>Daily</userinput>: for fields valid over a time period (such as the daily maximum temperature).</para>
+			<para>- <userinput>Static</userinput>: for fields that remain unchanged in time (such as ice cover).</para>
+			</listitem></varlistentry>
+			<varlistentry><term><userinput>daily_range = <replaceable>normal_time begin_time end_time unit_name</replaceable></userinput></term><listitem><para>
+			This parameter sets times for Daily fields; the normal time of day for the field, the begin and end times for display of the field, and the units that the times are in.
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of time_dependence Block)
+		</para></listitem></varlistentry>
+		<varlistentry/>
+		<varlistentry><term><userinput>wind_class = </userinput></term><listitem>
+		<para>Identifies the type of wind calculation appropriate for the meteorological field.
+		Must be one of:</para>
+		<para>- <userinput>Pressure</userinput>: for pressure or pressure change fields.</para>
+		<para>- <userinput>Height</userinput>: for geopotential height fields.</para>
+		<para>- <userinput>Thickness</userinput>: for geopotential thickness fields.</para>
+		<para>- <userinput>Adjustment</userinput>: for wind adjustment fields.</para>
+		<para>- <userinput>None</userinput>: for fields with no appropriate type of wind calculation.</para>
+		</listitem></varlistentry>
+		<varlistentry><term><userinput>attributes_reset = True | False</userinput></term><listitem><para>
+		This parameter resets the attributes list given below.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>attributes = Default</userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>attributes = </userinput></term><listitem><para>
+		This parameter identifies allowed attributes for the field.
+		Attributes are parameters that can be attached to objects in Discrete, Wind, Line, or LChain type fields, or attached to labels in any field.</para><para>
+		Some default attributes are automatically declared by the &FPA;, and therefore do not need to be declared in any configuration file.
+		However, the default value of those attributes with the prefix "FPA_" may be reset in this section, or in the labelling block described below.
+		Also, the values for default attributes with the prefix "EVAL_" are automatically calculated from the &FPA; fields.
+		(Note that they are most often used for field labels, and are set with a default_value of Yes in the attribute_defaults section of the labelling block described below.)</para>
+		<para>Default attributes for all fields</para>
+		<para>- <userinput>FPA_user_label</userinput>: for a user defined label</para>
+		<para>- <userinput>FPA_auto_label</userinput>: for an automatic label</para>
+		<para>- <userinput>FPA_category</userinput>: for a category of feature</para>
+		<para>- <userinput>FPA_label_type</userinput>: for a type of label</para>
+		<para>Default attributes for <userinput>Continuous</userinput> and <userinput>Vector</userinput> fields</para>
+		<para>- <userinput>EVAL_contour</userinput>: for the value on the closest field contour</para>
+		<para>- <userinput>EVAL_spval</userinput>: for the value at a set location on the field</para>
+		<para>- <userinput>EVAL_wind</userinput>: for a wind evaluated at a set location</para>
+		<para>Default attributes for <userinput>Wind</userinput> fields</para>
+		<para>- <userinput>FPA_wind_model</userinput>: for the default wind calculation model</para>
+		<para>- <userinput>FPA_wind_direction</userinput>: for the default wind direction adjustment</para>
+		<para>- <userinput>FPA_wind_speed</userinput>: for the default wind speed adjustment</para>
+		<para>- <userinput>FPA_wind_gust</userinput>: for the default wind gust adjustment</para>
+		<para>- <userinput>EVAL_wind</userinput>: for a wind evaluated at a set location</para>
+		<para>Default attributes for <userinput>Line</userinput> fields</para>
+		<para>- <userinput>FPA_line_type</userinput>: for the type of line</para>
+		<para>- <userinput>FPA_proximity</userinput>: proximity of sample to line (kilometres)</para>
+		<para>- <userinput>FPA_line_direction</userinput>: direction of line at sample point (degrees true)</para>
+		<para>- <userinput>FPA_line_length</userinput>: length of the line in (kilometres)</para>
+		<para>Default attributes for <userinput>LChain</userinput> fields</para>
+		<para>- <userinput>FPA_lchain_reference</userinput>: T0 associated with link chain.</para>
+		<para>- <userinput>FPA_lchain_start_time</userinput>: time wrt <userinput>FPA_lchain_reference</userinput> of first node in link chain.</para>
+		<para>- <userinput>FPA_lchain_end_time</userinput>: time wrt <userinput>FPA_lchain_reference</userinput> of last node in link chain.</para>
+		<para>Default attributes for <userinput>LChain nodes</userinput></para>
+		<para>- <userinput>FPA_lnode_type</userinput>: type of node one of ...</para>
+		<para>- <userinput>FPA_lnode_time</userinput>: time wrt <userinput>FPA_lchain_reference</userinput> of node.</para>
+		<para>- <userinput>FPA_lnode_direction</userinput>: direction of movement calculated from current link node to the next node in the link chain.</para>
+		<para>- <userinput>FPA_lnode_speed</userinput>: speed calculated from current link node to the next link node in the link chain.</para>
+		<para>- <userinput>FPA_lnode_vector</userinput>: direction and speed calculated from current link node to the next link node in the link chain.</para>
+		<para>Default attributes for <userinput>Scattered</userinput> fields</para>
+		<para>- <userinput>FPA_scattered_type</userinput>: for the type of line</para>
+		<para>- <userinput>FPA_proximity</userinput>: proximity of sample to scattered point (kilometres)</para>
+		<para><userinput> </userinput></para>
+		<para>Note that, unless <userinput>attributes_reset = True</userinput> is used, attributes defined below are ADDED to those already defined.
+		</para><para>
+		<userinput>{</userinput>
+			<variablelist>
+			<varlistentry><term><userinput>attribute_name <optional><replaceable>default_value</replaceable></optional></userinput></term><listitem><para>
+			Note that if only the default_value is required, it can be set on this line!.</para><para>
+			<userinput>{</userinput>
+				<variablelist>
+				<varlistentry><term><userinput>attribute_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+				This is the label that the user sees.
+				The default is attribute_name.
+				This parameter is "language" sensitive!
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>attribute_short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+				The attribute_short_label is used when there is not enough room on the &FPA; screen to use the longer attribute_label.
+				The default is attribute_name.
+				This parameter is "language" sensitive!
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>attribute_background_default = <replaceable>default_value</replaceable></userinput></term><listitem><para>
+				This parameter identifies the default value for the attribute.
+				Note that the <replaceable>default_value</replaceable> can also be set in an entry menu (described in the entry_file or background_entry_file keywords in the editor block below).
+				The <replaceable>default_value</replaceable> in these files takes precedence over any value set here!
+				</para></listitem></varlistentry>
+				</variablelist>
+			<userinput>}</userinput> #(End of attribute_name Block)
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of attributes Block)
+		</para></listitem></varlistentry>
+		</variablelist>
+
+		<varlistentry><listitem>
+		<beginpage/>
+		<note><para>The following <userinput>line_types</userinput> keywords are applicable to <userinput>Line</userinput> fields.</para></note></listitem></varlistentry>
+
+		<variablelist>
+		<varlistentry><term><userinput>line_types_reset = True | False</userinput></term><listitem><para>
+		This parameter resets the line_types list given below.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>line_types = None</userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>line_types = </userinput></term><listitem><para>
+		This parameter identifies allowed line types for the field.
+		The line_types keyword is only applicable to <userinput>field_type = Line</userinput>.</para>
+		<para>Note that, unless <userinput>line_types_reset = True</userinput> is used, subelements are ADDED to those already defined. 
+		</para><para>
+		<userinput>{</userinput>
+			<variablelist>
+			<varlistentry><term><userinput>line_type_name</userinput></term><listitem><para>
+			<userinput>{</userinput>
+				<variablelist>
+				<varlistentry><term><userinput>type_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+				This is the label that the user sees.
+				The default is <replaceable>label_type_name</replaceable>.
+				This parameter is "language" sensitive!
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>type_short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+				The type_short_label is used when there is not enough room on the &FPA; screen to use the longer type_label.
+				The default is <replaceable>label_type_name</replaceable>.
+				This parameter is "language" sensitive!
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>pattern = <replaceable>filename</replaceable></userinput></term><listitem><para>
+				This is an &FPA; metafile describing the line pattern.
+				It will appear in the drawing selection list for the <userinput>field_type = Line</userinput> field editor.
+				</para></listitem></varlistentry>
+				</variablelist>
+			<userinput>}</userinput> #(End of line_type_name Block)
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of line_types Block)
+		</para></listitem></varlistentry>
+
+		</variablelist>
+		<varlistentry><listitem>
+		<note><para>The following <userinput>scattered_types</userinput> keywords are applicable to <userinput>Scattered</userinput> fields.</para></note></listitem></varlistentry>
+		<variablelist>
+
+		<varlistentry><term><userinput>scattered_types_reset = True | False</userinput></term><listitem><para>
+		This parameter resets the scattered_types list given below.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>scattered_types = None</userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>scattered_types =</userinput></term><listitem><para>
+		This parameter identifies allowed scattered types for the field.
+		The scattered_types keyword is only applicable to <userinput>field_type = Scattered</userinput>.</para>
+		<para>Note that, unless <userinput>scattered_types_reset = True</userinput> is used, scattered types are ADDED to those already defined. 
+		</para><para>
+		<userinput>{</userinput>
+			<variablelist>
+				<varlistentry><term><userinput><replaceable>scattered_type_name</replaceable></userinput></term><listitem><para>
+				<userinput>{</userinput>
+					<variablelist>
+					<varlistentry><term><userinput>type_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+					This is the label that the user sees.
+					The default is scattered_type_name.
+					This parameter is "language" sensitive!
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>type_short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+					The type_short_label is used when there is not enough room on the &FPA; screen to use the longer type_label.
+					The default is <replaceable>label_type_name</replaceable>.This parameter is "language" sensitive!
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>type_class = <replaceable>class_name</replaceable></userinput></term><listitem><para>
+					This parameter sets a label category.
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>type_entry_file = <replaceable>entry_file_name</replaceable></userinput></term><listitem><para>
+					Identifies an entry menu file to be accessed when a label is added or modified.
+					Note that self-documented example menus can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Menus</filename>.
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>type_modify_file = <replaceable>entry_modify_name</replaceable></userinput></term><listitem><para>
+					Identifies an entry menu file to be accessed when a label is modified.
+					The default is type_entry_file above.
+					Note that self-documented example menus can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Menus</filename>.
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>type_attach = </userinput></term><listitem>
+					<para>This parameter controls where the label appears on the field.
+					Must be one of:</para>
+					<para>- <userinput>attach_auto</userinput>: for the closest point</para>
+					<para>- <userinput>attach_point</userinput>: for the closest point</para>
+					</listitem></varlistentry>
+					<varlistentry><term><userinput>attribute_defaults_reset = True | False</userinput></term><listitem><para>
+					This parameter resets the attribute_defaults list given below.
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>attribute_defaults =</userinput></term><listitem><para>
+					This parameter sets default attribute values for this type of label.</para>
+					<para>Note that, unless <userinput>attribute_defaults_reset = True</userinput> is used, default attribute values are ADDED to those already defined. 
+					Note that default attributes which can be set here (including those with the prefix "EVAL_") are described in the attributes block above.</para><para>
+					<userinput>{</userinput></para><para>
+						attribute_name default_value</para><para>
+					<userinput>}</userinput>
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>type_rules_reset = True | False</userinput></term><listitem><para>
+					This parameter resets the type_rules list given below.</para></listitem></varlistentry>
+					<varlistentry><term><userinput>type_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+					Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for this label are set.</para>
+					<para>Note that, unless <userinput>type_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined.
+					Note that user defined entry rule functions can also be used.</para></listitem></varlistentry>
+					<varlistentry><term><userinput>python_type_rules_reset = True | False</userinput></term><listitem><para>
+					This parameter resets the python_type_rules list given below.</para></listitem></varlistentry>
+					<varlistentry><term><userinput>python_type_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+					Identifies a list of name(s) for &FPA; python entry rule functions that will be invoked when attributes for this label are set.</para>
+					<para>Note that, unless <userinput>python_type_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined.
+					Note that user defined entry rule functions can also be used.</para></listitem></varlistentry>
+					</variablelist>
+				<userinput>}</userinput> #(End of scattered_type_name Block)
+				</para></listitem></varlistentry>
+				</variablelist>
+			<userinput>}</userinput> #(End of scattered_types Block)
+			</para></listitem></varlistentry>
+			<varlistentry/>
+
+			<varlistentry><term><userinput>editor = None</userinput></term><listitem><para>
+			OR
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>editor =</userinput></term><listitem><para>
+			This parameter identifies information for editing the field.</para><para>
+			<userinput>{</userinput></para><para>
+
+			</para><para>
+				<note><para>The following keywords are applicable to all field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>merge_fields_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the merge_fields list given below</para></listitem></varlistentry>
+				<varlistentry><term><userinput>merge_fields = <replaceable>element level</replaceable></userinput></term><listitem><para>
+				Identifies fields that can be used in the <emphasis>Merge</emphasis> editor tool, so that features can be copied from another &FPA; field.
+				Note that the fields must have units that can be converted to those of the &FPA; field.
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				</variablelist>
+
+				<note><para>The following keywords are applicable to <userinput>Continuous</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>hilo = True | False </userinput></term><listitem><para>
+				Determines whether maxima and minima of the field will be shown.</para></listitem></varlistentry>
+				<varlistentry><term><userinput>poke = <replaceable>value unit_name</replaceable></userinput></term><listitem><para>
+				Identifies the magnitude and units used on the sidebar for field edits.
+				A poke value is required if you want this element to be editable.</para></listitem></varlistentry>
+				<varlistentry/>
+				</variablelist>
+
+				<note><para>The following keywords are applicable to <userinput>Vector</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>hilo = True | False </userinput></term><listitem><para>
+				Determines whether maxima and minima of the field will be shown.</para></listitem></varlistentry>
+				<varlistentry><term><userinput>magnitude_poke = <replaceable>value unit_name</replaceable></userinput></term><listitem><para>
+				Identifies the magnitude and units used on the sidebar for field edits.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>direction_poke = <replaceable>value unit_name</replaceable></userinput></term><listitem><para>
+				Identifies the magnitude and units used on the sidebar for field edits.
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				</variablelist>
+
+				<beginpage/>
+				<note><para>The following keywords are applicable to <userinput>Wind</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>display_order = True | False</userinput></term><listitem><para>
+				Show numbered boxes to display the stacking order of areas drawn.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_file = <replaceable>entry_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when the "Set" button on the sidebar is clicked.
+				Note that self-documented example menus can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Menus</filename>.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>modify_file = <replaceable>modify_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when the "Set" button for a modified area is clicked.
+				The default is entry_file_name above.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>memory_file = <replaceable>memory_file_name</replaceable></userinput></term><listitem><para>
+				Identifies a predefined list of choices for applying to drawn areas.
+				Note that self-documented example memory lists can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Memory</filename>.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>background_entry_file = <replaceable>background_entry_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when the background "Set" button on the sidebar is clicked.
+				Note that self-documented example background menus can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Menus</filename>.
+				(The format is identical to entry_file.)
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>background_memory_file = <replaceable>background_memory_file_name</replaceable></userinput></term><listitem><para>
+				Identifies a predefined list of choices for applying as the background value for the given field.
+				Note that self-documented example background memory lists can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Memory</filename>.
+				(The format is identical to memory_file.)
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for any entry_file, modify_file or memory_file are set.</para>
+				<para>Note that, unless <userinput>entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the python_entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions, written in python, that will be invoked when attributes for any entry_file,
+				modify_file or memory_file are set.</para>
+				<para>Note that, unless <userinput>python_entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</para></listitem></varlistentry>
+				<varlistentry/>
+				</variablelist>
+
+				<beginpage/>
+				<note><para>The following keywords are applicable to <userinput>Discrete</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>display_order = True | False</userinput></term><listitem><para>
+				Show numbered boxes to display the stacking order of areas drawn.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_file = <replaceable>entry_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when the "Set" button on the sidebar is clicked.
+				Note that self-documented example menus can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Menus</filename>.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>modify_file = <replaceable>modify_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when the "Set" button for a modified area is clicked.
+				The default is entry_file_name above.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>memory_file = <replaceable>memory_file_name</replaceable></userinput></term><listitem><para>
+				Identifies a predefined list of choices for applying to drawn areas.
+				Note that self-documented example memory lists can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Memory</filename>.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>background_entry_file = <replaceable>background_entry_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when the background "Set" button on the sidebar is clicked.
+				Note that self-documented example background menus can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Menus</filename>.
+				(The format is identical to entry_file.)
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>background_memory_file = <replaceable>background_memory_file_name</replaceable></userinput></term><listitem><para>
+				Identifies a predefined list of choices for applying as the background value for the given field.
+				Note that self-documented example background memory lists can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Memory</filename>.
+				(The format is identical to memory_file.)
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for any entry_file, modify_file or memory_file are set.</para>
+				<para>Note that, unless <userinput>entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the python_entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions, written in python, that will be invoked when attributes for any entry_file,
+				modify_file or memory_file are set.</para>
+				<para>Note that, unless <userinput>python_entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</para></listitem></varlistentry>
+				<varlistentry><term><userinput>overlaying = True | False</userinput></term><listitem><para>
+				Determines whether the overlapping areas can both be sampled.
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				</variablelist>
+
+				<beginpage/>
+				<note><para>The following keywords are applicable to <userinput>Line</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>entry_file = <replaceable>entry_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when a line type is drawn
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>modify_file = <replaceable>modify_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when a line type is modified.
+				The default is <replaceable>entry_file_name</replaceable>
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules = <replaceable>entry_rules_name(s)</replaceable> </userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for any entry_file or modify_file are set.</para>
+				<para>Note that, unless <userinput>entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the python_entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions, written in python, that will be invoked when attributes for any entry_file or modify_file are set.</para>
+				<para>Note that, unless <userinput>python_entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</para></listitem></varlistentry>
+				<varlistentry/>
+				</variablelist>
+
+				<note><para>The following keywords are applicable to <userinput>Scattered</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>entry_file = <replaceable>entry_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when a scattered type is drawn
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>modify_file = <replaceable>modify_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when a scattered type is modified.
+				The default is <replaceable>entry_file_name</replaceable>
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules = <replaceable>entry_rules_name(s)</replaceable> </userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for any entry_file or modify_file are set.</para>
+				<para>Note that, unless <userinput>entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the python_entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions, written in python, that will be invoked when attributes for any entry_file or modify_file are set.</para>
+				<para>Note that, unless <userinput>python_entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</para></listitem></varlistentry>
+				<varlistentry/>
+				</variablelist>
+
+				<note><para>The following keywords are applicable to <userinput>LChain</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>entry_file = <replaceable>entry_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when a lchain type is drawn
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>modify_file = <replaceable>modify_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when a lchain type is modified.
+				The default is <replaceable>entry_file_name</replaceable>
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>entry_rules = <replaceable>entry_rules_name(s)</replaceable> </userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for any entry_file or modify_file are set
+				Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for any entry_file or modify_file are set.</para>
+				<para>Note that, unless <userinput>entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the python_entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_entry_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions, written in python, that will be invoked when attributes for any entry_file or modify_file are set.</para>
+				<para>Note that, unless <userinput>python_entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</para></listitem></varlistentry>
+				<varlistentry><term><userinput>interpolation_delta = <replaceable>HH:mm</replaceable></userinput></term><listitem><para>
+				Sets the default time between nodes when adding a link chain.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>node_entry_file = <replaceable>entry_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when a link chain node is placed.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>node_modify_file = <replaceable>modify_file_name</replaceable></userinput></term><listitem><para>
+				Identifies an entry menu file to be accessed when a link chain node is modified.
+				The default is <replaceable>entry_file_name</replaceable>
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>node_entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the node_entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>node_entry_rules = <replaceable>entry_rules_name(s)</replaceable> </userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for any node_entry_file or node_modify_file are set
+				Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for any node entry_file or modify_file are set.</para>
+				<para>Note that, unless <userinput>node_entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_node_entry_rules_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the python_node_entry_rules list given below.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>python_node_entry_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+				Identifies a list of name(s) for &FPA; entry rule functions, written in python, that will be invoked when attributes for any node_entry_file or node_modify_file are set.</para>
+				<para>Note that, unless <userinput>python_node_entry_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</para></listitem></varlistentry>
+				<varlistentry><term><userinput>link_fields_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the link_fields list given below</para></listitem></varlistentry>
+				<varlistentry><term><userinput>link_fields = <replaceable>element level</replaceable></userinput></term><listitem><para>
+				Identifies fields that can be used in the <emphasis>Merge</emphasis> editor tool, so that link chains used to timelink another &FPA; field can be copied to this field.
+				</para></listitem></varlistentry>
+				</variablelist>
+			<userinput>}</userinput> #(End of editor Block)
+			</para></listitem></varlistentry>
+			<varlistentry/>
+			<varlistentry><term><userinput>labelling_reset = True | False</userinput></term><listitem><para>
+			This parameter resets the labelling list to default values.
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>labelling = Default</userinput></term><listitem><para>
+			OR
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>labelling =</userinput></term><listitem><para>
+			This parameter identifies information for labelling the field.
+			The labelling keyword is NOT applicable to <userinput>field_type = Scattered</userinput>.</para><para>
+			<userinput>{</userinput>
+				<variablelist>
+				<varlistentry><term><userinput>label_types_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the label_types list given below to default values.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>label_types =</userinput></term><listitem><para>
+				This parameter identifies allowed types of labels for the field.</para>
+				<para>Note that, unless <userinput>label_types_reset = True</userinput> is used, label types are ADDED to those already defined.
+				</para><para>
+				<userinput>{</userinput>
+					<variablelist>
+					<varlistentry><term><userinput><replaceable>label_type_name</replaceable></userinput></term><listitem><para>
+					<userinput>{</userinput>
+						<variablelist>
+						<varlistentry><term><userinput>type_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+						This is the label that the user sees.
+						The default is <replaceable>label_type_name</replaceable>.
+						This parameter is "language" sensitive!
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>type_short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+						The type_short_label is used when there is not enough room on the &FPA; screen to use the longer type_label.
+						The default is <replaceable>label_type_name</replaceable>.
+						This parameter is "language" sensitive!
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>type_class = <replaceable>class_name</replaceable></userinput></term><listitem><para>
+						This parameter sets a label category.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>type_entry_file = <replaceable>entry_file_name</replaceable></userinput></term><listitem><para>
+						Identifies an entry menu file to be accessed when a label is added.
+						Note that self-documented example menus can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Menus</filename>.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>type_modify_file = <replaceable>entry_modify_name</replaceable></userinput></term><listitem><para>
+						Identifies an entry menu file to be accessed when a label is modified.
+						The default is <replaceable>type_entry_file</replaceable> above.
+						Note that self-documented example menus can be found in the directory <filename class='directory'><envar>$FPA</envar>/config/Menus</filename>.
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>type_attach =</userinput></term><listitem>
+				<para>This parameter controls where the label appears on the field.</para>
+				<para>Acceptable parameters for <userinput>field_type = Continuous</userinput> or <userinput>Vector</userinput> fields are:</para>
+				<para>- <userinput>no_attach</userinput>: for the current location (when chosen)</para>
+				<para>- <userinput>attach_auto</userinput>: for the closest minimum, maximum, or contour</para>
+				<para>- <userinput>attach_min</userinput>: for the closest minimum on the field</para>
+				<para>- <userinput>attach_max</userinput>: for the closest maximum on the field</para>
+				<para>- <userinput>attach_col</userinput>: for the closest saddle point on the field</para>
+				<para>- <userinput>attach_contour</userinput>: for the closest contour on the field</para>
+				<para>Acceptable parameters for <userinput>field_type = Discrete</userinput> or <userinput>Wind</userinput> fields are:</para>
+				<para>- <userinput>attach_auto</userinput>: for the current location (when chosen)</para>
+				<para>Acceptable parameters for <userinput>:field_type = Line</userinput> fields are:</para>
+				<para>- <userinput>attach_auto</userinput>: for the closest line</para>
+				<para>- <userinput>attach_line</userinput>: for the closest line</para>
+			</listitem></varlistentry>
+			<varlistentry><term><userinput>attribute_defaults_reset = True | False</userinput></term><listitem><para>
+				This parameter resets the attribute_defaults list given below.
+			</para></listitem></varlistentry>
+						<varlistentry><term><userinput>attribute_defaults =</userinput></term><listitem><para>
+						This parameter sets default attribute values for this type of label.</para><para>
+						Note that, unless <userinput>attribute_defaults_reset = True</userinput> is used, default attribute values are ADDED to those already defined.
+						</para><para>
+						Note that default attributes which can be set here (including those with the prefix "EVAL_") are described in the attributes block above.</para><para>
+						Note that if a label is to have extra attributes that are not part of the object to which the label is attached, then those attributes must be listed here.
+						Otherwise, any modifications of the object will replace the value of the extra attribute with a blank!</para><para>
+						<userinput>{</userinput></para><para>
+							<replaceable>attribute_name default_value</replaceable></para><para>
+						<userinput>}</userinput>
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>type_rules_reset = True | False</userinput></term><listitem><para>
+						This parameter resets the type_rules list given below.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>type_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+						Identifies a list of name(s) for &FPA; entry rule functions that will be invoked when attributes for this label are set.</para><para>
+						Note that, unless <userinput>type_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined.
+						</para><para>
+						Note that user defined entry rule functions can also be used.</para><para>
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>python_type_rules_reset = True | False</userinput></term><listitem><para>
+						This parameter resets the python_type_rules list given below.</para></listitem></varlistentry>
+						<varlistentry><term><userinput>python_type_rules = <replaceable>entry_rule_name(s)</replaceable></userinput></term><listitem><para>
+						Identifies a list of name(s) for &FPA; python entry rule functions that will be invoked when attributes for this label are set.</para>
+						<para>Note that, unless <userinput>python_type_rules_reset = True</userinput> is used, entry rule functions are ADDED to those already defined.
+						Note that user defined entry rule functions can also be used.</para></listitem></varlistentry>
+						</variablelist>
+					<userinput>}</userinput> #(End of label_type_name Block)
+					</para></listitem></varlistentry>
+					</variablelist>
+				<userinput>}</userinput> #(End of label_types Block)
+				</para></listitem></varlistentry>
+				</variablelist>
+			<userinput>}</userinput> #(End of labelling Block)
+			</para></listitem></varlistentry>
+			<varlistentry/>
+			<varlistentry><term><userinput>sampling_reset = True | False</userinput></term><listitem><para>
+			The parameter resets the sample list below to its default values.
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>sample = Default</userinput></term><listitem><para>
+			OR
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>sample =</userinput></term><listitem><para>
+			This parameter identifies information for sampling the field.</para><para>
+			<userinput>{</userinput></para><para>
+
+				<note><para>The following keywords are applicable to <userinput>Continuous</userinput> or <userinput>Vector</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>value_sample_types = <replaceable>sample_type_name(s)</replaceable></userinput></term><listitem><para>
+				This parameter sets the types of values to sample from a given field.</para><para>
+				Each <replaceable>sample_type_name</replaceable> is from the Values sub block of the 'Samples' block.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>wind_sample_types = <replaceable>sample_type_name(s)</replaceable></userinput></term><listitem><para>
+				This parameter sets the types of winds to sample from a given field.</para><para>
+				Each <replaceable>sample_type_name</replaceable> is from the 'Winds' sub block of the 'Samples' block.
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				</variablelist>
+
+				<note><para>The following keywords are applicable to <userinput>Discrete</userinput>, <userinput>Line</userinput>, <userinput>LChain</userinput> or <userinput>Scattered</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>attribute_sample_names = <replaceable>attribute_name(s)</replaceable></userinput></term><listitem><para>
+				This parameter sets the names of attributes to sample from a given field.</para><para>
+				Each <replaceable>attribute_name</replaceable> is from the attributes sub block above..
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				</variablelist>
+				
+				<note><para>The following keywords are applicable to <userinput>Wind</userinput> field editors.</para></note>
+				<variablelist>
+				<varlistentry><term><userinput>wind_crossrefs = <replaceable>crossref_name(s)</replaceable></userinput></term><listitem><para>
+				This parameter sets the types of winds to sample based on other cross-referenced fields.
+				Each <replaceable>crossref_name</replaceable> is from the 'Winds' sub block of the 'CrossRefs' block.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>wind_sample_type = <replaceable>sample_type_name</replaceable></userinput></term><listitem><para>
+				This parameter sets the adjusted wind to sample from a given wind field.</para><para>
+				The <replaceable>sample_type_name</replaceable> is from the 'Winds' sub block of the 'Samples' block, and must use wind_function = FPA_Adjusted_Wind_Func.
+				</para></listitem></varlistentry>
+				</variablelist>
+			<userinput>}</userinput> #(End of sample Block)
+			</para></listitem></varlistentry>
+			<varlistentry/>
+			<varlistentry><term><userinput>equation = None</userinput></term><listitem><para>
+			OR
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>equation =</userinput></term><listitem><para>
+			This parameter is used to identify an equation for calculating the given meteorological field from other meteorological fields with a mathematical equation.
+			See <xref linkend='appendb'/> for more information about equations.</para><para>
+			<userinput>{</userinput>
+				<variablelist>
+				<varlistentry><term><userinput>force_calculation = True | False</userinput></term><listitem><para>
+				This parameter should be set to True for testing new equations.
+				It forces a recalculation of the equation from the input fields.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>equation_string = <replaceable>equation</replaceable></userinput></term><listitem><para>
+				This parameter gives the equation for the meteorological field.
+				The format of equations is explained in <xref linkend='appendb'/>.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>equation_units = <replaceable>unit_name</replaceable></userinput></term><listitem><para>
+				This parameter gives the units for the equation.
+				</para></listitem></varlistentry>
+				</variablelist>
+			<userinput>}</userinput> #(End of equation Block)
+			</para></listitem></varlistentry>
+			<varlistentry/>
+			<varlistentry><term><userinput>value_calculation = None</userinput></term><listitem><para>
+			OR
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>value_calculation =</userinput></term><listitem><para>
+			This parameter is used to identify a method of determining the given meteorological field from other meteorological fields with a cross-reference.</para><para>
+			<userinput>{</userinput>
+				<variablelist>
+				<varlistentry><term><userinput>force_calculation = True | False</userinput></term><listitem><para>
+				This parameter should be set to True for testing new equations.
+				It forces a recalculation of the equation from the input fields.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>value_crossref = <replaceable>crossref_name</replaceable></userinput></term><listitem><para>
+				This parameter identifies the cross-reference for determining the meteorological field.
+				The <replaceable>crossref_name</replaceable> is from the 'Values' sub block of the 'CrossRefs' block.
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>source_types = </userinput></term><listitem><para>
+			This parameter sets the types of data sources for determining the meteorological field.
+			More than one can be specified.
+			The choices are described in <xref linkend='common_keys'/>.
+			May be one or more of:
+			<userinput>Depiction</userinput>,
+			<userinput>Guidance</userinput>,
+			<userinput>Allied</userinput>,
+			<userinput>Maps</userinput>,
+			<userinput>Direct</userinput>,
+			<userinput>NotUsed</userinput>.
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of value_calculation Block)
+		</para> </listitem></varlistentry>
+
+		<varlistentry><listitem><beginpage/></listitem></varlistentry>
+
+		<varlistentry><term><userinput>components = None</userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>components =</userinput></term><listitem><para>
+		This parameter is used to identify meteorological fields that have u and v (x and y) components, or vector (direction and magnitude) components.
+		Both components must be identified.</para><para>
+		<userinput>{</userinput></para><para>
+			<userinput>x_component = <replaceable>element_name</replaceable></userinput></para><para>
+			<userinput>y_component = <replaceable>element_name</replaceable></userinput></para><para>
+			These parameters identify the u and v (x and y) components of a meteorological field.</para><para>
+			OR</para><para>
+			<userinput>direction_component = <replaceable>element_name</replaceable></userinput></para><para>
+			<userinput>magnitude_component = <replaceable>element_name</replaceable></userinput></para><para>
+			These parameters identify the vector (direction and magnitude) 	components of a meteorological field.</para><para>
+		<userinput>}</userinput> #(End of components Block)
+		</para></listitem></varlistentry>
+		<varlistentry/>
+		<varlistentry><term><userinput>linking_reset = True | False</userinput></term><listitem><para>
+		The parameter resets the link list below to its default values.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>linking = Default</userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>linking =</userinput></term><listitem><para>
+		You can share time links between fields by including them here.</para><para>
+			<userinput>{</userinput> </para><para>
+			<userinput>link_fields_reset   = True | False</userinput></para><para>
+			The parameter resets the <userinput>link_fields</userinput> list below to empty.
+			</para><para>
+			<userinput>link_fields         = <replaceable>element_name level_name</replaceable></userinput></para><para>
+			This parameter may be specified more than once to build a list of fields (element/level pairs) from which link chains can be imported.
+			</para><para>
+			<userinput>}</userinput> #(End of <userinput>linking</userinput> Block)
+		</para></listitem></varlistentry>
+		<varlistentry/>
+		</variablelist>
+	<userinput>}</userinput> #(End of <replaceable>element_name</replaceable> Block)
+	</para></listitem></varlistentry>
+	</variablelist>
+<userinput>}</userinput> #(End of 'Elements' Block)
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+</sect1>
+
+<sect1><title>Fields block</title><para>
+<indexterm><primary>config file</primary><secondary>fields block</secondary></indexterm>
+A field is an element at a specific level.
+The 'Fields' block is used to identify information specific to a field in the &FPA;.
+Note that a field accessed in the &FPA; need not be declared as a field in the 'Fields' block.
+Only the element and level need to be declared; the &FPA; will automatically create a field for any given element and level using the default values.
+An entry in the 'Fields' block is only required if the user wishes to override the information for a specific element and level.
+</para><para>Note that <replaceable>element_name</replaceable> must be a member of the 'Elements' block, and that <replaceable>level_name</replaceable> must be a member of the 'Levels' block.
+</para><para>Note that <replaceable>group_name</replaceable> must be a member of the 'Fields' sub block of the 'Groups' block.
+</para>
+
+<sect2><title>Template of a 'Fields' Block</title><para>
+<variablelist>
+<varlistentry><term><userinput>Fields</userinput></term><listitem><para>
+<userinput>{</userinput>
+	<variablelist>
+	<varlistentry><term><userinput><replaceable>element_name</replaceable> <replaceable>level_name</replaceable></userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is the label that the user sees in the &FPA; menus.
+		The default is the <replaceable>level_name</replaceable> label followed by the <replaceable>element_name</replaceable> label.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+		The default is the <replaceable>level_name</replaceable> short_label followed by the <replaceable>element_name</replaceable> short_label.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>field_group = <replaceable>group_name</replaceable></userinput></term><listitem><para>
+		This parameter will group the &FPA; fields in the interface.
+		The <replaceable>group_name</replaceable> is from the 'Fields' sub block of the Groups block.
+		The default group is 'Miscellaneous'.
+		</para></listitem></varlistentry>
+		<varlistentry/>
+		<varlistentry><term><userinput>element_info = Default</userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>element_info =</userinput></term><listitem><para>
+		<userinput>{</userinput>
+			<variablelist>
+			<varlistentry><term><userinput>attributes_reset = True | False</userinput></term><listitem><para>
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>attributes = </userinput></term><listitem><para>
+			<userinput>{</userinput></para><para>
+				(see attributes keyword in 'Elements' block for acceptable keywords) </para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+
+			</variablelist>
+			<varlistentry><listitem>
+			<note><para>The following <userinput>line_types</userinput> keywords are applicable to <userinput>Line</userinput> fields.</para></note></listitem></varlistentry>
+			<variablelist>
+
+			<varlistentry><term><userinput>line_types_reset = True | False</userinput></term><listitem><para>
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>line_types =</userinput></term><listitem><para>
+			<userinput>{</userinput></para><para>
+				(see line_types keyword in 'Elements' block for acceptable keywords) </para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+
+			</variablelist>
+			<varlistentry><listitem>
+			<note><para>The following <userinput>scattered_types</userinput> keywords are applicable to <userinput>Scattered</userinput> fields.</para></note></listitem></varlistentry>
+			<variablelist>
+
+			<varlistentry><term><userinput>scattered_types_reset = True | False </userinput></term><listitem><para>
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>scattered_types =</userinput></term><listitem><para>
+			<userinput>{</userinput></para><para>
+				(see scattered_types keyword in 'Elements' block for acceptable keywords) </para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+			<varlistentry/>
+			<varlistentry><term><userinput>editor =</userinput></term><listitem><para>
+			<userinput>{</userinput></para><para>
+				(see editor keyword in 'Elements' block for acceptable keywords) </para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+			<varlistentry/>
+			<varlistentry><term><userinput>labelling_reset = True | False</userinput></term><listitem><para>
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>labelling =</userinput></term><listitem><para>
+			<userinput>{</userinput></para><para>
+				(see labelling keyword in 'Elements' block for acceptable keywords) </para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+			<varlistentry/>
+			<varlistentry><term><userinput>sampling_reset = True | False</userinput></term><listitem><para>
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>sample = </userinput></term><listitem><para>
+			<userinput>{</userinput></para><para>
+				(see sample keyword in 'Elements' block for acceptable keywords) </para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+			<varlistentry/>
+			<varlistentry><term><userinput>equation =</userinput></term><listitem><para>
+			<userinput>{</userinput></para><para>
+				(see equation keyword in 'Elements' block for acceptable keywords) </para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>value_calculation = </userinput></term><listitem><para>
+			<userinput>{</userinput></para><para>
+				(see value_calculation keyword in 'Elements' block for acceptable keywords) </para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>linking = </userinput></term><listitem><para>
+			<userinput>{</userinput></para><para>
+				(see linking keyword in 'Elements' block for acceptable keywords) </para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of element_info Block)
+		</para></listitem></varlistentry>
+		<varlistentry/>
+		<varlistentry><term><userinput>level_info = Default</userinput></term><listitem><para>
+		</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of <replaceable>element_name</replaceable> <replaceable>level_name</replaceable> Block)
+	</para></listitem></varlistentry>
+	</variablelist>
+<userinput>}</userinput> #(End of 'Fields' Block)
+</para></listitem></varlistentry>
+</variablelist>
+
+</para></sect2>
+</sect1>
+
+<sect1 id='levels_block'><title>Levels block</title><para>
+<indexterm><primary>config file</primary><secondary>levels block</secondary></indexterm>
+The 'Levels' block is used to identify information specific to a level in the &FPA; where level is a level in the atmosphere at which meteorological parameters are valid.
+</para><para>Note that <replaceable>group_name</replaceable> must be a member of the 'Fields' sub block of the Groups block.
+</para>
+
+<sect2><title>Template of a 'Levels' Block</title><para>
+<variablelist>
+<varlistentry><term><userinput>Levels</userinput></term><listitem><para>
+<userinput>{</userinput>
+	<variablelist>
+	<varlistentry><term><userinput><replaceable>level_name</replaceable></userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is the label that the user sees.
+		The default is <replaceable>level_name</replaceable>.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+		The default is <replaceable>level_name</replaceable>.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>description = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is an optional descriptive label.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>level_type = </userinput></term><listitem><para>
+		This parameter matches the level to an acceptable element to create a field.
+		The choices are described in <xref linkend='common_keys'/>.
+		Must be one of: 
+		<userinput>Msl</userinput>,
+		<userinput>Surface</userinput>,
+		<userinput>Level</userinput>,
+		<userinput>Layer</userinput>,
+		<userinput>Geography</userinput>,
+		<userinput>Annotation</userinput>,
+		<userinput>Any</userinput>.
+		Note that this parameter cannot be re-specified!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>field_group = <replaceable>group_name</replaceable></userinput></term><listitem><para>
+		This parameter will group the &FPA; fields in the interface.
+		The <replaceable>group_name</replaceable> is from the 'Fields' sub block of the Groups block.
+		This parameter is the default group if the field or the field_group for the field or the field_group for the element of the field are not specified.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>alias = <replaceable>alias_name(s)</replaceable></userinput></term><listitem><para>
+		These can be shorter names for use in equations, for example.
+		Alias names cannot be reused by another level.
+		Only the first one encountered gets used.
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>file_id = None | <replaceable>identifier</replaceable></userinput></term><listitem><para>
+		This is the identifier used to construct old style &FPA; file names (see <xref linkend='common_keys'/>).
+		It cannot be re-specified unless changed from <userinput>None</userinput>!
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>file_ident = None | <replaceable>identifier</replaceable></userinput></term><listitem><para>
+		This is the identifier used to construct new style &FPA; file names (see <xref linkend='common_keys'/>).
+		It cannot be re-specified unless changed from <userinput>None</userinput>!
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>level_levels = <replaceable>category</replaceable></userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>level_levels = <replaceable>category value</replaceable></userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>level_levels = <replaceable>category upper lower</replaceable></userinput></term><listitem>
+		<para>This parameter identifies information used to set the vertical location in the atmosphere of the given <replaceable>level_name</replaceable>, where:</para>
+		<para>- <replaceable>category</replaceable> is one of:
+		<userinput>Msl</userinput>, <userinput>Surface</userinput>, <userinput>Pressure</userinput>,
+		<userinput>Height</userinput>, <userinput>Sigma</userinput>, <userinput>Theta</userinput>,
+		<userinput>Geography</userinput>, <userinput>Annotation</userinput>.</para>
+		<para>- <replaceable>value</replaceable> is a single numeric value for a level</para>
+		<para>- <replaceable>upper lower</replaceable> are two numeric values for a layer</para>
+		<para>Note that this parameter cannot be re-specified!</para>
+		<para>The acceptable value for <userinput>level_type = Msl</userinput> is:</para>
+		<para>- <userinput>level_levels = Msl</userinput> (for mean sea level)</para>
+		<para>The acceptable value for <userinput>level_type = Surface</userinput> is:</para>
+		<para>- <userinput>level_levels = Surface</userinput> (for the surface of the Earth)</para>
+		<para>The acceptable values for <userinput>level_type = Level</userinput> are:</para>
+		<para>- <userinput>level_levels = Pressure <replaceable>value</replaceable></userinput> (for a constant pressure surface)</para>
+		<para>- <userinput>level_levels = Height <replaceable>value</replaceable></userinput> (for a constant height surface)</para>
+		<para>- <userinput>level_levels = Sigma <replaceable>value</replaceable></userinput> (for a sigma surface)</para>
+		<para>- <userinput>level_levels = Theta <replaceable>value</replaceable></userinput> (for an isentropic surface)</para>
+		<para>The acceptable values for <userinput>level_type = Layer</userinput> are:</para>
+		<para>- <userinput>level_levels = Pressure <replaceable>upper lower</replaceable></userinput> (for a pressure layer)</para>
+		<para>- <userinput>level_levels = Height <replaceable>upper lower</replaceable></userinput> (for a height layer)</para>
+		<para>- <userinput>level_levels = Sigma <replaceable>value</replaceable></userinput> (for a sigma layer)</para>
+		<para>- <userinput>level_levels = Theta <replaceable>value</replaceable></userinput> (for an isentropic layer)</para>
+		<para>The acceptable value for <userinput>level_type = Geography</userinput> is:</para>
+		<para>- <userinput>level_levels = Geography</userinput> (for geographical information)</para>
+		<para>The acceptable value for <userinput>level_type = Annotation</userinput> is:</para>
+		<para>- <userinput>level_levels = Annotation</userinput> (for menus or legends)</para>
+		</listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of <replaceable>level_name</replaceable> Block)
+	</para></listitem></varlistentry>
+	</variablelist>
+<userinput>}</userinput> #(End of 'Levels' Block)
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+</sect1>
+
+<beginpage/>
+<sect1><title>Groups block</title><para>
+<indexterm><primary>config file</primary><secondary>groups block</secondary></indexterm>
+The Groups block is used to identify grouping of fields and elements in the &FPA; interface.
+The 'Fields' <replaceable>group_name</replaceable> "Not_Displayed" identifies fields that will not appear in the interface,
+the 'Elements' <replaceable>group_name</replaceable> "Not_Displayed" identifies elements that will not appear in the interface, and 
+the 'Elements' <replaceable>group_name</replaceable>, "Generic_Equation" identifies internally accessed equations that will also not appear in the interface.
+</para>
+
+<sect2><title>Template of a 'Groups' Block</title><para>
+<variablelist>
+<varlistentry><term><userinput>Groups</userinput></term><listitem><para>
+<userinput>{</userinput>
+	<variablelist>
+	<varlistentry><term><userinput>Fields</userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput><replaceable>group_name</replaceable></userinput></term><listitem><para>
+		<userinput>{</userinput>
+			<variablelist>
+			<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is the label that the user sees.
+			The default is <replaceable>group_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+			The default is <replaceable>group_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of <replaceable>group_name</replaceable> Block)
+		</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of 'Fields' Block)
+	</para></listitem></varlistentry>
+	<varlistentry><term><userinput>Elements</userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput><replaceable>group_name</replaceable></userinput></term><listitem><para>
+		<userinput>{</userinput>
+			<variablelist>
+			<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is the label that the user sees.
+			The default is <replaceable>group_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+			The default is <replaceable>group_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of <replaceable>group_name</replaceable> Block)
+		</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of 'Elements' Block)
+	</para></listitem></varlistentry>
+	</variablelist>
+<userinput>}</userinput> #(End of Groups Block)
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+</sect1>
+
+<sect1><title>CrossRefs block</title><para>
+<indexterm><primary>config file</primary><secondary>cross references block</secondary></indexterm>
+The 'CrossRefs' block is used to identify internal models used to determine winds or values from a given field or fields.
+Note that each <replaceable>wind_function_name</replaceable> or <replaceable>value_function_name</replaceable> refers to an &FPA; routine to calculate wind speed and direction or value based on the given field or fields in the cross-reference.
+</para><para>Note that <replaceable>element_name</replaceable> must be a member of the 'Elements' block, and that <replaceable>level_name</replaceable> must be a member of the 'Levels' block.
+</para><para>Note that <replaceable>unit_name</replaceable> must be a member of the 'Units' block.
+</para>
+
+<sect2><title>Template of a 'CrossRefs' Block</title><para>
+<variablelist>
+<varlistentry><term><userinput>CrossRefs</userinput></term><listitem><para>
+<userinput>{</userinput>
+	<variablelist>
+	<varlistentry><term><userinput>Winds</userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput><replaceable>crossref_name</replaceable></userinput></term><listitem><para>
+		<userinput>{</userinput>
+			<variablelist>
+			<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is the label that the user sees.
+			The default is <replaceable>crossref_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+			The default is <replaceable>crossref_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>description = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is an optional descriptive label.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>wind_function = <replaceable>wind_function_name</replaceable></userinput></term><listitem><para>
+			This parameter sets the name of a wind calculation function used to determine a given cross-reference wind.
+			Note that each <replaceable>wind_function_name</replaceable> refers to an &FPA; routine to calculate wind speed and direction based on a given input field or fields.
+			Preset choices are described in <xref linkend='common_keys'/>.
+			Note that user defined wind functions can also be used.
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>crossref_fields = None</userinput></term><listitem><para>
+			OR
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>crossref_fields =</userinput></term><listitem><para>
+			This parameter sets the field or fields used to determine the cross-reference wind from a given element and level.</para><para>
+			<userinput>{</userinput></para><para>
+			<replaceable>element_name</replaceable> <replaceable>level_name</replaceable></para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of <replaceable>crossref_name</replaceable> Block)
+		</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of 'Winds' Block)
+	</para></listitem></varlistentry>
+	<varlistentry/>
+	<varlistentry><term><userinput>Values</userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput><replaceable>crossref_name</replaceable></userinput></term><listitem><para>
+		<userinput>{</userinput>
+			<variablelist>
+			<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is the label that the user sees.
+			The default is <replaceable>crossref_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+			The default is <replaceable>crossref_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>description = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is an optional descriptive label.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>value_function = <replaceable>value_function_name</replaceable></userinput></term><listitem><para>
+			This parameter sets the name of a value calculation function used to determine a given cross-reference field.
+			Note that each type of <replaceable>value_function_name</replaceable> refers to an &FPA; routine to calculate a value based on a given input field or fields.
+			Preset choices are described in <xref linkend='common_keys'/>.
+			Note that user defined value functions can also be used.
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>crossref_fields = None</userinput></term><listitem><para>
+			OR
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>crossref_fields =</userinput></term><listitem><para>
+			This parameter sets the field or fields used to determine the cross-reference value from a given element and level.</para><para>
+			<userinput>{</userinput></para><para>
+			<replaceable>element_name</replaceable> <replaceable>level_name</replaceable></para><para>
+			<userinput>}</userinput>
+			</para></listitem></varlistentry>
+			</variablelist>
+			<varlistentry><listitem>
+			<note><para>The following keywords are used by the value calculation functions (referred to in <xref linkend='common_keys'/>)
+			<userinput>FPA_Daily_Max_Value_Func</userinput>,
+			<userinput>FPA_Daily_Max_Time_Func</userinput>,
+			<userinput>FPA_Daily_Min_Value_Func</userinput>, and
+			<userinput>FPA_Daily_Min_Time_Func</userinput>.
+			</para></note></listitem></varlistentry>
+			<variablelist>
+			<varlistentry><term><userinput>time_weight = <replaceable>time_wgt unit_name</replaceable></userinput></term></varlistentry>
+			<varlistentry><term><userinput>value_weight = <replaceable>value_wgt unit_name</replaceable></userinput></term><listitem><para>
+			In general, if a value is given for the normal time of the field, a maximum (or minimum) value at <replaceable>time_wgt</replaceable> away from the normal time must be more than <replaceable>value_wgt</replaceable> greater (or less) than the value at the normal time in order to be accepted as a new maximum (or minimum) value.
+			This limits noise in the resulting fields by forcing the maximum (or minimum) values to the field closest to the normal time.
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of <replaceable>crossref_name</replaceable> Block)
+		</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of 'Values' Block)
+	</para></listitem></varlistentry>
+	</variablelist>
+<userinput>}</userinput> #(End of 'CrossRefs' Block)
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+</sect1>
+
+<sect1><title>Samples block</title><para>
+<indexterm><primary>config file</primary><secondary>samples block</secondary></indexterm>
+The 'Samples' block is used to identify internal models used to sample parameters or winds from a given field.
+Note that each <userinput>value_samptype</userinput> or <userinput>wind_function</userinput> refers to an &FPA; routine to determine parameters or wind speed and direction based on a given field.
+</para>
+
+<sect2><title>Template of a 'Samples' Block</title><para>
+<variablelist>
+<varlistentry><term><userinput>Samples</userinput></term><listitem><para>
+<userinput>{</userinput>
+	<variablelist>
+	<varlistentry><term><userinput>Values</userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput><replaceable>sample_type_name</replaceable></userinput></term><listitem><para>
+		<userinput>{</userinput>
+			<variablelist>
+			<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is the label that the user sees.
+			The default is <replaceable>sample_type_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+			The default is <replaceable>sample_type_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>description = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is an optional descriptive label.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>value_samptype = </userinput></term><listitem>
+			<para>This parameter sets the type of value to sample from a given field.
+			Note that each type of value to sample refers to an &FPA; routine to determine parameters from the given field.
+			Preset choices are described in <xref linkend='common_keys'/>.
+			Note that user defined sampling functions CANNOT be defined or used! Must be one of:
+			<userinput>FPA_Sample_Value</userinput>,
+			<userinput>FPA_Sample_Gradient</userinput>,
+			<userinput>FPA_Sample_Curvature</userinput>,
+			<userinput>FPA_Sample_Magnitude</userinput>,
+			<userinput>FPA_Sample_Direction</userinput></para>
+			</listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of <replaceable>sample_type_name</replaceable> Block)
+		</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of 'Values' Block)
+	</para></listitem></varlistentry>
+	<varlistentry><term><userinput>Winds</userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput><replaceable>sample_type_name</replaceable></userinput></term><listitem><para>
+		<userinput>{</userinput>
+			<variablelist>
+			<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is the label that the user sees.
+			The default is <replaceable>sample_type_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+			The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+			The default is <replaceable>sample_type_name</replaceable>.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>description = <replaceable>label</replaceable></userinput></term><listitem><para>
+			This is an optional descriptive label.
+			This parameter is "language" sensitive!
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>wind_function = <replaceable>wind_function_name</replaceable></userinput></term><listitem><para>
+			This parameter sets the name of a wind calculation function used to determine a wind sampled from the given field.
+			Note that each <replaceable>wind_function_name</replaceable> refers to an &FPA; routine to calculate wind speed and direction based on the given field.
+			Preset choices are described in <xref linkend='common_keys'/>.
+			Note that user defined wind functions can also be used.
+			</para></listitem></varlistentry>
+			</variablelist>
+		<userinput>}</userinput> #(End of <replaceable>sample_type_name</replaceable> Block)
+		</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of 'Winds' Block)
+	</para></listitem></varlistentry>
+	</variablelist>
+<userinput>}</userinput> #(End of 'Samples' Block)
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+</sect1>
+
+<sect1><title>Sources block</title><para>
+<indexterm><primary>config file</primary><secondary>sources block</secondary></indexterm>
+The Sources block is used to identify information about data sources for &FPA; input and output fields.
+Some &FPA; data sources have sub-sources, that is, sub directories for the data.
+An example is the Donelan Lake Wave Model, which has subdirectories for each of the Great Lakes.
+These data sources are identified by <replaceable>source_name</replaceable> <replaceable>subsource_name</replaceable>, but can also be identified by <replaceable>source_name:subsource_name</replaceable> if only a single string is to be used.
+</para><para>Note that <replaceable>element_name</replaceable> must be a member of the 'Elements' block, and that <replaceable>level_name</replaceable> must be a member of the 'Levels' block.
+</para><para>Note that <replaceable>crossref_name</replaceable> must be a member of the 'Winds' sub block of the 'CrossRefs' block, or the 'Values' sub block of the 'CrossRefs' block.
+</para><para>Note that <replaceable>unit_name</replaceable> must be a member of the 'Units' block.
+</para><para>Note that <replaceable>subfield_name</replaceable> must be a subfield of a plot object metafile!
+</para>
+
+<sect2><title>Template of a 'Sources' Block</title><para>
+<variablelist>
+<varlistentry><term><userinput>Sources</userinput></term><listitem><para>
+<userinput>{</userinput>
+	<variablelist>
+	<varlistentry><term><userinput>source_name</userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is the label that the user sees.
+		The default is source_name.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+		The default is source_name.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>description = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is an optional descriptive label.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>source_type = </userinput></term><listitem>
+		<para>This parameter sets the type of files for a data source.
+		The choices are described in <xref linkend='common_keys'/>.
+		Must be one of: <userinput>Depiction</userinput>,
+		<userinput>Guidance</userinput>, <userinput>Allied</userinput>,
+		<userinput>Maps</userinput>, <userinput>Direct</userinput>,
+		<userinput>NotUsed</userinput>.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>minutes_required = True | False</userinput></term><listitem><para>
+		This parameter identifies whether the data source uses minutes in the file timestamps.
+		The default is False
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>alias = <replaceable>alias_name(s)</replaceable></userinput></term><listitem><para>
+		These can be shorter names for use in equations, for example.
+		Alias names cannot be reused by another source.
+		Only the first one encountered gets used.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>directory_tag = None</userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>directory_tag = <replaceable>string</replaceable></userinput></term><listitem><para>
+		This is a directory tag defined in the directories block of the setup file.
+		(See <xref linkend='appendg'/> for more information.)
+		Note that this parameter cannot be re-specified (unless changed from <userinput>None</userinput>)!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>directory_path = None</userinput></term><listitem><para>
+		OR
+		</para></listitem></varlistentry>
+		<varlistentry><term>! <userinput>directory_path = <replaceable>string</replaceable></userinput></term><listitem><para>
+		This is the directory path name in the file structure.
+		This path is appended to the directory identified by directory_tag above.
+		Note that this parameter cannot be re-specified (unless changed from <userinput>None</userinput>)!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>directory_layers = <replaceable>number_of_layers</replaceable></userinput></term><listitem><para>
+		This specifies the number of data directories available for saving historical data.
+		The default <replaceable>number_of_layers</replaceable> is 1, which would create just the data directory (specified by directory_tag and directory_path).
+		A value greater than 1 will create (<replaceable>number_of_layers</replaceable> - 1) <filename class='directory'>Prev</filename> subdirectories.
+		(For example, a value of 4 would create <filename class='directory'><replaceable>base_directory</replaceable>/Prev/Prev/Prev</filename>.)
+		Note that increasing <replaceable>number_of_layers</replaceable> will automatically increase the number of subdirectories in the database, but decreasing <replaceable>number_of_layers</replaceable> will not delete subdirectories! The system rmdir command must be used to delete subdirectories in &FPA; databases.
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>subsources = None</userinput></term><listitem><para>
+			OR
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>subsources =</userinput></term><listitem><para>
+			These are subdirectories for each source_name.
+			It is not necessary for a source to have subsources.</para><para>
+			<userinput>{</userinput>
+				<variablelist>
+				<varlistentry><term><userinput><replaceable>subsource_name</replaceable></userinput></term><listitem><para>
+				<userinput>{</userinput>
+					<variablelist>
+					<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+					This is the label that the user sees.
+					The default is <replaceable>subsource_name</replaceable>.
+					This parameter is "language" sensitive!
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+					The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+					The default is <replaceable>subsource_name</replaceable>.
+					This parameter is "language" sensitive!
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>description = <replaceable>label</replaceable></userinput></term><listitem><para>
+					This is an optional descriptive label.
+					This parameter is "language" sensitive!
+					</para></listitem></varlistentry>
+					<varlistentry><term><userinput>sub_directory_path = None</userinput></term><listitem><para>
+					OR
+					</para></listitem></varlistentry>
+					<varlistentry><term>! <userinput>sub_directory_path = <replaceable>string</replaceable></userinput></term><listitem><para>
+					This is the subdirectory name in the file structure.
+					This path is appended to the directory identified by directory_tag and directory_path above.
+					Note that this parameter cannot be re-specified (unless changed from <userinput>None</userinput>)!
+					</para></listitem></varlistentry>
+					</variablelist>
+				<userinput>}</userinput> #(End of <replaceable>subsource_name</replaceable> Block)
+				</para></listitem></varlistentry>
+				</variablelist>
+			<userinput>}</userinput> #(End of subsources Block)
+			</para></listitem></varlistentry>
+			<varlistentry/>
+			<varlistentry><term><userinput>allied_model = None</userinput></term><listitem><para>
+			OR
+			</para></listitem></varlistentry>
+			<varlistentry><term><userinput>allied_model =</userinput></term><listitem><para>
+			This parameter is used to identify information relating to an Allied Model.
+			Each Allied Model in the &FPA; is identified by its own source_name, and information relating to the Allied Model is contained in this sub block.
+			Note that the allied_model block MUST be specified if source_type = Allied.
+			For all other source_type values, allied_model = None can be used.
+			See <xref linkend='appende'/> for more information on Allied Models.</para><para>
+			<userinput>{</userinput>
+				<variablelist>
+				<varlistentry><term><userinput>time_matching = True | False</userinput></term><listitem><para>
+				This parameter should be set to True if the Allied Model will be run from data files whose times will not match the times required by the Allied Model.
+				The Allied Model will then attempt to find the closest available time to match the requested data.
+				(For example, if the Allied Model requires hourly data and will be run from an &FPA; which will be interpolated to every second hour, then the Allied Model would use the same data for two hourly time steps.)
+				This parameter should be set to False in all other cases.
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>source_info = <replaceable>source_name</replaceable> <optional><replaceable>subsource_name</replaceable></optional></userinput></term><listitem><para>
+				This parameter identifies the <replaceable>source_name</replaceable> (and <replaceable>subsource_name</replaceable>, if necessary) of the default location of all input data files for the Allied Model.
+				This is usually interp (for &FPA; interpolated data) or depict (for &FPA; depiction data).
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>pre_process = <replaceable>pre_process_run_string</replaceable></userinput></term></varlistentry>
+				<varlistentry><term><userinput>process = <replaceable>process_run_string</replaceable></userinput></term></varlistentry>
+				<varlistentry><term><userinput>post_process = <replaceable>post_process_run_string</replaceable></userinput></term><listitem><para>
+				These keywords set the run strings for the pre-processing, processing, and post-processing modules of a given Allied Model.
+				These run strings can contain any of the following keywords, which automatically substitute the appropriate parameters into the run string when the Allied Model is run.</para>
+				<para>- <userinput>&lt;SETUP&gt;</userinput>: for the setup file name</para>
+				<para>- <userinput>&lt;SOURCE&gt;</userinput>: for the <replaceable>source_name</replaceable> and <userinput>&lt;SUBSOURCE&gt;</userinput>: for the <replaceable>subsource_name</replaceable></para>
+				<para>- <userinput>&lt;RTIME&gt;</userinput>: for the "zero" hour in the Depiction sequence</para>
+				<para>- <userinput>&lt;ELEMENT&gt;</userinput>: for the active depiction element</para>
+				<para>- <userinput>&lt;LEVEL&gt;</userinput>: for the active depiction level</para>
+				<para>- <userinput>&lt;VTIME&gt;</userinput>: for the active depiction</para>
+				</listitem></varlistentry>
+				<varlistentry><term><userinput>programs = None</userinput></term><listitem><para>
+				OR
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>programs =</userinput></term><listitem><para>
+				This parameter identifies the name(s) and location(s) of the actual Allied Model application(s) that will be launched by the &FPA; when the processing module of the Allied Model is run.</para><para>
+				<userinput>{</userinput>
+					<variablelist>
+					<varlistentry><term><userinput>program_alias</userinput></term><listitem><para>
+					<userinput>{</userinput>
+						<variablelist>
+						<varlistentry><term><userinput>directory_tag = None</userinput></term><listitem><para>
+						OR
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>directory_tag = <replaceable>string</replaceable></userinput></term><listitem><para>
+						This is a directory tag defined in the directories block of the setup file.
+						(See <xref linkend='appendg'/> for more information.)
+						The default is the string from the directory_tag parameter declared at the start of the <replaceable>source_name</replaceable> section.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>program_path = <replaceable>string</replaceable></userinput></term><listitem><para>
+						This is the application name in the file structure.
+						This name is appended to the directory identified by directory_tag above.
+						</para></listitem></varlistentry>
+						</variablelist>
+					<userinput>}</userinput> #(End of program_alias Block)
+					</para></listitem></varlistentry>
+					</variablelist>
+				<userinput>}</userinput> #(End of programs Block)
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				<varlistentry><term><userinput>files = None</userinput></term><listitem><para>
+				OR
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>files =</userinput></term><listitem><para>
+				This parameter identifies all input and output files required by the application or the &FPA; pre-processing, processing, or post-processing modules in running the Allied Model.</para><para>
+				<userinput>{</userinput>
+					<variablelist>
+					<varlistentry><term><userinput>file_alias</userinput></term><listitem><para>
+					<userinput>{</userinput>
+						<variablelist>
+						<varlistentry><term><userinput>directory_tag = None</userinput></term><listitem><para>
+						OR
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>directory_tag = <replaceable>string</replaceable></userinput></term><listitem><para>
+						This is a directory tag defined in the directories block of the setup file.
+						(See <xref linkend='appendg'/> for more information.)
+						The default is the string from the directory_tag parameter declared at the start of the <replaceable>source_name</replaceable> section.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>file_path = <replaceable>string</replaceable></userinput></term><listitem><para>
+						This is the file name in the file structure.
+						This name is appended to the directory identified by directory_tag above.
+						</para></listitem></varlistentry>
+						</variablelist>
+					<userinput>}</userinput> #(End of file_alias Block)
+					</para></listitem></varlistentry>
+					</variablelist>
+				<userinput>}</userinput> #(End of files Block)
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				<varlistentry/>
+				<varlistentry><term><userinput>required_fields = None</userinput></term><listitem><para>
+				OR
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>required_fields =</userinput></term><listitem><para>
+				This parameter identifies all &FPA; fields required by the application to run the Allied Model.
+				(These fields will be checked when the user requests the Allied Model to be run by the &FPA;.)</para><para>
+				<userinput>{</userinput>
+					<variablelist>
+					<varlistentry><term><userinput>required_field_alias</userinput></term><listitem><para>
+					<userinput>{</userinput>
+						<variablelist>
+						<varlistentry><term><userinput>field_info = <replaceable>element_name</replaceable> <replaceable>level_name</replaceable> <optional> <replaceable>field_type</replaceable>
+						</optional></userinput></term><listitem><para>
+						This parameter identifies the required field by element and level. If <replaceable>field_type</replaceable> is specified as <userinput>Scattered</userinput> the labels of the required field are used.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>sub_field_info = <replaceable>subfield_name</replaceable> <replaceable>unit_name</replaceable></userinput></term><listitem><para>
+						This parameter identifies the sub field and 'units' of the sub-field for information from a plot object metafile.
+						The <replaceable>subfield_name</replaceable> must be defined in the entity line in the metafile.
+						(Can be used with <userinput>field_type = Scattered</userinput> )
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>source_info = <replaceable>source_name</replaceable> <optional><replaceable>subsource_name</replaceable></optional></userinput></term><listitem><para>
+						This parameter identifies the <replaceable>source_name</replaceable> (and <replaceable>subsource_name</replaceable>, if necessary) of the location of the required field for the Allied Model.
+						The default is the <replaceable>source_name</replaceable> <optional><replaceable>subsource_name</replaceable></optional> from the source_info parameter declared at the start of the allied_model block.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>attribute_info_reset = True | False</userinput></term><listitem><para>
+						This parameter resets the attribute_info list given below.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>attribute_info = <replaceable>tag attrib_name attrib_units</replaceable></userinput></term><listitem><para>
+						Multiple <userinput>attribute_info</userinput> entries can be included to build a list of attributes to use in the allied model. 
+						For attributes from Discrete, Line, Point and LChain type fields.
+						The <replaceable>tag</replaceable> is an arbitrary name that will be used by the allied model to refer to each attribute.
+						The <replaceable>attrib_name</replaceable> is the actual attribute (from the <userinput>attributes</userinput> list in the 'Elements' Block)
+						which contains the value to be used, and the <userinput>attrib_units</userinput> gives the units of the attribute value.
+						(Note that the use of tags instead of attribute names allows for more generic Allied Models.)
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>node_attribute_info_reset = True | False</userinput></term><listitem><para>
+						This parameter resets the node_attribute_info list given below.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>node_attribute_info = <replaceable>tag attrib_name attrib_units</replaceable></userinput></term><listitem><para>
+						Multiple <userinput>node_attribute_info</userinput> entries can be included to build a list of node attributes to use in the allied model.
+						For attributes from nodes on LChain type fields.
+						The <replaceable>tag</replaceable> is an arbitrary name that will be used by the allied model to refer to each attribute.
+						The <replaceable>node_attrib_name</replaceable> is the actual attribute (from the <userinput>attributes</userinput> list in the 'Elements' Block)
+						which contains the value to be used, and the <userinput>node_attrib_units</userinput> gives the units of the attribute value.
+						(Note that the use of tags instead of attribute names allows for more generic Allied Models.)
+						</para></listitem></varlistentry>
+						</variablelist>
+					<userinput>}</userinput> #(End of required_field_alias Block)
+					</para></listitem></varlistentry>
+					</variablelist>
+				<userinput>}</userinput> #(End of required_fields Block)
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				<varlistentry><term><userinput>required_wind_crossrefs = None</userinput></term><listitem><para>
+				OR
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>required_wind_crossrefs =</userinput></term><listitem><para>
+				This parameter identifies all &FPA; wind cross-reference fields required by the application to run the Allied Model.
+				(These wind cross-references will be checked when the user requests the Allied Model to be run by the &FPA;.)</para><para>
+				<userinput>{</userinput>
+					<variablelist>
+					<varlistentry><term><userinput>required_wind_crossref_alias</userinput></term><listitem><para>
+					<userinput>{</userinput>
+						<variablelist>
+						<varlistentry><term><userinput>crossref_info = <replaceable>crossref_name</replaceable></userinput></term><listitem><para>
+						This parameter identifies the required wind cross-reference.
+						The <replaceable>crossref_name</replaceable> is from the Winds sub block of the 'CrossRefs' block.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>source_info = <replaceable>source_name</replaceable> <optional><replaceable>subsource_name</replaceable></optional></userinput></term><listitem><para>
+						This parameter identifies the <replaceable>source_name</replaceable> (and <replaceable>subsource_name</replaceable>, if necessary) of the location of the required wind cross-reference for the Allied Model.
+						The default is the <replaceable>source_name</replaceable> <optional><replaceable>subsource_name</replaceable></optional> from the source_info parameter declared at the start of the allied_model block.
+						</para></listitem></varlistentry>
+						</variablelist>
+					<userinput>}</userinput> #(End of required_wind_crossref_alias Block)
+					</para></listitem></varlistentry>
+					</variablelist>
+				<userinput>}</userinput> #(End of required_wind_crossrefs Block)
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				<varlistentry><term><userinput>required_value_crossrefs = None</userinput></term><listitem><para>
+				OR
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>required_value_crossrefs =</userinput></term><listitem><para>
+				This parameter identifies all &FPA; value cross-reference fields required by the application to execute the Allied Model.
+				(These value cross-references will be checked when the user requests the Allied Model to be run by the &FPA;.)</para><para>
+				<userinput>{</userinput>
+					<variablelist>
+					<varlistentry><term><userinput>required_value_crossref_alias</userinput></term><listitem><para>
+					<userinput>{</userinput>
+						<variablelist>
+						<varlistentry><term><userinput>crossref_info = <replaceable>crossref_name</replaceable></userinput></term><listitem><para>
+						This parameter identifies the required value cross-reference.
+						The <replaceable>crossref_name</replaceable> is from the Values sub block of the 'CrossRefs' block.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>source_info = <replaceable>source_name</replaceable> <optional><replaceable>subsource_name</replaceable></optional></userinput></term><listitem><para>
+						This parameter identifies the <replaceable>source_name</replaceable> (and <replaceable>subsource_name</replaceable>, if necessary) of the location of the required value cross-reference for the Allied Model.
+						The default is the <replaceable>source_name</replaceable> <optional><replaceable>subsource_name</replaceable></optional> from the source_info parameter declared at the start of the allied_model block.
+						</para></listitem></varlistentry>
+						</variablelist>
+					<userinput>}</userinput> #(End of required_value_crossref_alias Block)
+					</para></listitem></varlistentry>
+					</variablelist>
+				<userinput>}</userinput> #(End of required_value_crossrefs Block)
+				</para></listitem></varlistentry>
+				<varlistentry/>
+				<varlistentry><term><userinput>metafiles = None</userinput></term><listitem><para>
+				OR
+				</para></listitem></varlistentry>
+				<varlistentry><term><userinput>metafiles =</userinput></term><listitem><para>
+				This parameter identifies all &FPA; metafiles produced by running the Allied Model.
+				The metafiles are output to the directory determined from the directory_tag, directory_path, and sub_directory_path parameters identified above.</para><para>
+				<userinput>{</userinput>
+					<variablelist>
+					<varlistentry><term><userinput>metafile_alias</userinput></term><listitem><para>
+					<userinput>{</userinput>
+						<variablelist>
+						<varlistentry><term><userinput>file_alias = <replaceable>file_alias</replaceable></userinput></term><listitem><para>
+						This parameter identifies a member of the files block above from which the metafile information will be extracted.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>field_info = <replaceable>element_name</replaceable> <replaceable>level_name</replaceable></userinput></term><listitem><para>
+						This parameter identifies the output metafile by element and level.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>attribute_info_reset = True | False</userinput></term><listitem><para>
+						This parameter resets the attribute_info list given below.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>attribute_info = <replaceable>tag attrib_name attrib_units</replaceable></userinput></term><listitem><para>
+						Multiple <userinput>attribute_info</userinput> entries can be included to build a list of attributes to output from in the allied model. 
+						For attributes from Discrete, Line, Point and LChain type fields. 
+						The <replaceable>tag</replaceable> is an arbitrary name that will be used by the allied model to refer to each attribute.
+						The <replaceable>attrib_name</replaceable> is the actual attribute (from the <userinput>attributes</userinput> list in the 'Elements' Block)
+						which contains the value to be used, and the <userinput>attrib_units</userinput> gives the units of the attribute value.
+						(Note that the use of tags instead of attribute names allows for more generic Allied Models.)
+						</para></listitem></varlistentry>
+
+
+						<varlistentry><term><userinput>default_attrib_info_reset = True | False</userinput></term><listitem><para>
+						This parameter resets the default_attrib_info list given below.
+						</para></listitem></varlistentry>
+						<varlistentry><term><userinput>default_attrib_info = <replaceable>attrib_name attrib_value</replaceable></userinput></term><listitem><para>
+						Multiple <userinput>default_attrib_info</userinput> entries can be included to build a list of default attributes to output from the allied model. 
+						The <replaceable>attrib_name</replaceable> is the actual attribute (from the <userinput>attributes</userinput> list in the 'Elements' Block),
+						and the <userinput>attrib_value</userinput> gives the default attribute value.
+						</para></listitem></varlistentry>
+
+						</variablelist>
+					<userinput>}</userinput> #(End of metafile_alias Block)
+					</para></listitem></varlistentry>
+					</variablelist>
+				<userinput>}</userinput> #(End of metafiles Block)
+				</para></listitem></varlistentry>
+				</variablelist>
+			<userinput>}</userinput> #(End of allied_model Block)
+			</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of <replaceable>source_name</replaceable> Block)
+	</para></listitem></varlistentry>
+	</variablelist>
+<userinput>}</userinput> #(End of Sources Block)
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+</sect1>
+
+<sect1><title>Constants block</title><para>
+<indexterm><primary>config file</primary><secondary>constants block</secondary></indexterm>
+The 'Constants' block is used to identify meteorological values used in equations.
+</para><para> Note that <replaceable>unit_name</replaceable> must be a member of the 'Units' block.
+</para>
+
+<sect2><title>Template of a 'Constants' Block</title><para>
+<variablelist>
+<varlistentry><term><userinput>Constants</userinput></term><listitem><para>
+<userinput>{</userinput>
+	<variablelist>
+	<varlistentry><term><userinput><replaceable>constant_name</replaceable></userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is the label that the user sees.
+		The default is <replaceable>constant_name</replaceable>.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+		The default is <replaceable>constant_name</replaceable>.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>description = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is an optional descriptive label.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>constant = value <replaceable>unit_name</replaceable></userinput></term><listitem><para>
+		This is the numeric value and units for <replaceable>constant_name</replaceable>.
+		</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of <replaceable>constant_name</replaceable> Block)
+	</para></listitem></varlistentry>
+	</variablelist>
+<userinput>}</userinput> #(End of Constants Block)
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+</sect1>
+
+<sect1><title>Units block</title><para>
+<indexterm><primary>config file</primary><secondary>units block</secondary></indexterm>
+The 'Units' block is used to identify units that the &FPA; recognizes and the conversion of these units to and from &MKS; units.
+</para><para>Note that <replaceable>mks_unit_name</replaceable> must be a member of the 'Units' block.
+</para>
+
+<sect2><title>Template of a 'Units' Block</title><para>
+<variablelist>
+<varlistentry><term><userinput>Units</userinput></term><listitem><para>
+<userinput>{</userinput>
+	<variablelist>
+	<varlistentry><term><userinput><replaceable>unit_name</replaceable></userinput></term><listitem><para>
+	<userinput>{</userinput>
+		<variablelist>
+		<varlistentry><term><userinput>label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		This is the label that the user sees.
+		The default is <replaceable>unit_name</replaceable>.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>short_label = <replaceable>label</replaceable></userinput></term><listitem><para>
+		The short_label is used when there is not enough room on the &FPA; screen or button to use the longer label.
+		The default is <replaceable>unit_name</replaceable>.
+		This parameter is "language" sensitive!
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>MKS_equivalent = <replaceable>mks_unit_name</replaceable></userinput></term><listitem><para>
+		This is an &MKS; unit that <replaceable>unit_name</replaceable> can be converted to.
+		</para></listitem></varlistentry>
+		<varlistentry><term><userinput>MKS_conversion = <replaceable>factor offset</replaceable></userinput></term><listitem><para>
+		These are the parameters needed to convert <replaceable>unit_name</replaceable> to its &MKS; equivalent according to the equation:
+		</para><para>&MKS; value = (value - offset)/factor.
+		</para></listitem></varlistentry>
+		</variablelist>
+	<userinput>}</userinput> #(End of <replaceable>unit_name</replaceable> Block)
+	</para></listitem></varlistentry>
+	</variablelist>
+<userinput>}</userinput> #(End of 'Units' Block)
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+</sect1>
+</appendix>

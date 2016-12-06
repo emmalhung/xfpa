@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>arrow_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para> Arrow display name (from <link linkend='ps_arrow_display'>@arrow_display</link>)</para></entry></row>

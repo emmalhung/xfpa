@@ -1,0 +1,52 @@
+#!/bin/bash
+
+mode=${1:-"startup"}
+
+# Setup FPA variable if not already set
+export FPA;		FPA=${FPA:-'$HOME/fpav8'}
+export PATH;	PATH=$PATH:/bin:/usr/bin:/usr/sbin:$FPA/bin
+
+# Bootup script to start up all the FPA Ingest Schedulers
+if [ "$mode" = "startup" ]; then
+echo Starting up FPA Ingest Schedulers:
+else
+echo Shutting down FPA Ingest Schedulers:
+fi
+
+# The sched() function below should need no customization.
+sched()
+    {
+    # Make sure the given user exists (check /etc/passwd).
+    user=${1:-root}
+	name=`su $user -c whoami`
+	if [ $? != 0 ]; then
+		echo "    No such user $user"
+		return 1
+    fi
+
+    # Make sure the given user has a home directory.
+    home=${2:-/home/$user}
+    if [ ! -d "$home" ]; then
+		echo "    User $user does not have home directory $home"
+		return 1
+    fi
+
+    # Make sure the given user has an FPA Ingest Scheduler startup file
+    file=$home/.fpaingestrc
+    if [ ! -f "$file" ]; then
+		echo "    User $user has no FPA Ingest Scheduler startup file $file"
+		return 1
+    fi
+
+    # Attempt to start up or shut down the FPA Ingest Scheduler
+	if [ "$mode" = "startup" ]; then
+		echo "    Starting Up FPA Ingest Scheduler for user $user:"
+	else
+		echo "    Shutting Down FPA Ingest Scheduler for user $user:"
+	fi
+	echo "HOME=$home; PATH=$PATH; export HOME PATH; . $file $mode" | su $user
+    }
+
+# Here is where we start up or shut down all the FPA Ingest Schedulers.
+# We need one line per user, of the following form:
+#   sched <user> <home_dir>

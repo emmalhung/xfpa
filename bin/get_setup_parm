@@ -1,0 +1,46 @@
+#!/bin/bash
+ID="[get_setup_parm]"
+
+# Script to find the value of a given parameter in the given block of the
+# given setup file
+
+if [ "$1" = "" -o "$2" = "" -o "$3" = "" ]
+then
+	echo "Usage: get_setup_parm <setup> <block> <key>" 1>&2
+	exit 1
+fi
+
+# Find the setup file first
+setup=`get_setup $1`
+if [ $? -ne 0 ]
+then
+	exit 2
+fi
+block=$2
+key=$3
+
+if [ "$block" = "directories" ]
+then
+	parm=`fpadir $setup $key | tail -1`
+	if [ $? -ne 0 ]
+	then
+		exit 1
+	fi
+elif [ "$block" = "config_files" ]
+then
+	parm=`fpacfg $setup $key | tail -1`
+	if [ $? -ne 0 ]
+	then
+		exit 1
+	fi
+fi
+
+if [ "$parm" = "" ]
+then
+	echo "$ID Parameter \"$key\" not found in \"$block\" setup block." 1>&2
+	exit 1
+fi
+
+# Found the parameter.
+eval "parm=$parm"
+echo $parm

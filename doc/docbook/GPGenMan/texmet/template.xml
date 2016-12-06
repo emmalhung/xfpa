@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_template'> <title>@template</title> <titleabbrev>@template</titleabbrev>
+<para>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>
+</programlisting>
+</para></example>
+</para></sect2>

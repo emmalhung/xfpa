@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_draw_distance_scale'> <title>@draw_distance_scale</title> <titleabbrev>@draw_distance_scale</titleabbrev>
+<para>
+Display a distance scale.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>scale_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Scale name</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>scale_length</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Length in <userinput>scale_units</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>scale_units</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>&FPA; units of the scale</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>scale_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>scale_rotation</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Angle of rotation (in counter-clockwise decimal degrees)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_off.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@draw_distance_scale
+{
+scale_name          = distance_scale1;
+scale_length        = 500;
+scale_units         = km;
+scale_justification = centre;
+scale_rotation      = 0.0;
+x_off               = 1.4;
+y_off               = -0.35;
+outline             = X11 Black;
+line_width          = 0.03;
+}
+</programlisting>
+Draw a horizontal 500km scale.
+</para></example>
+</para></sect2>

@@ -1,0 +1,25 @@
+! Define a macro for presentation of banded contours ...
+@group
+	{
+	group_name       = MaxTempAreas;
+	element          = max_temp;
+	level            = surface;
+	units            = degreesC;
+	display_as_areas = yes;
+	outline          = none;
+	fill             = none;
+	}
+
+! Display the contour areas at regular intervals ...
+@contours { <MaxTempAreas; min = -35; max = -30; interior_fill = X11 White }
+@contours { <MaxTempAreas; min = -30; max = -25; interior_fill = X11 Gray90 }
+@contours { <MaxTempAreas; min = -25; max = -20; interior_fill = X11 Turquoise }
+@contours { <MaxTempAreas; min = -20; max = -15; interior_fill = X11 BlueViolet }
+@contours { <MaxTempAreas; min = -15; max = -10; interior_fill = X11 CadetBlue3 }
+@contours { <MaxTempAreas; min = -10; max =  -5; interior_fill = X11 Green }
+@contours { <MaxTempAreas; min =  -5; max =   0; interior_fill = X11 PaleGreen }
+@contours { <MaxTempAreas; min =   0; max =   5; interior_fill = X11 Yellow }
+@contours { <MaxTempAreas; min =   5; max =  10; interior_fill = X11 LightSalmon }
+@contours { <MaxTempAreas; min =  10; max =  15; interior_fill = X11 Orange }
+@contours { <MaxTempAreas; min =  15; max =  20; interior_fill = X11 OrangeRed }
+@contours { <MaxTempAreas; min =  20; max =  25; interior_fill = X11 Firebrick3 }

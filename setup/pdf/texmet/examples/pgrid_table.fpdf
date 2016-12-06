@@ -1,0 +1,140 @@
+! Define a table for each column of sampling ...
+@define_table { table_name = T1; type = column; x_off = 0; y_off = 5 }
+@define_table { table_name = T2; type = column; x_off = 0; y_off = 5 }
+@define_table { table_name = T3; type = column; x_off = 0; y_off = 5 }
+@define_table { table_name = T4; type = column; x_off = 0; y_off = 5 }
+@define_table { table_name = T5; type = column; x_off = 0; y_off = 5 }
+@define_table { table_name = T6; type = column; x_off = 0; y_off = 5 }
+
+! Set a macro for sampling msl pressure ...
+@group
+	{
+	group_name    = field1
+	element       = pressure;
+	level         = msl;
+	units         = mb;
+	format        = direct %.1f;
+	source        = depict;
+	valid_time    = 1/00;
+	justification = right;
+	}
+
+! Format below is           "      ,"
+!  overwritten by sampling  "xxxx.x"
+!  followed by              "              ,"
+!  overwritten by sampling  "        xxxx.x"
+!  followed by              "                      ,"
+!  overwritten by sampling  "                xxxx.x"
+!  followed by              "                              ,"
+!  overwritten by sampling  "                        xxxx.x"
+!  followed by              "                                      ,"
+!  overwritten by sampling  "                                xxxx.x"
+!  followed by              "                                          ,"
+!  overwritten by sampling  "                                        xxxx.x"
+
+! Set macro for first column of table ...
+@group
+	{
+	group_name    = map_x_pos
+	table_name    = T1
+	site_label    = ,
+	map_x         = 3500
+	x_off         = 6
+	justification = left
+	}
+
+! Set table sites for each row of first column of table ...
+@include { pgrid_columns }
+
+! Sample pressure for each table site for first column of table ...
+@sample_field { <field1; table_name = T1; x_off = 5 }
+
+
+! Set macros for second column of table ...
+@group
+	{
+	group_name    = map_x_pos
+	table_name    = T2
+	site_label    = ,
+	map_x         = 3750
+	x_off         = 14
+	justification = left
+	}
+
+! Set table sites for each row of second column of table ...
+@include { pgrid_columns }
+
+! Sample pressure for each table site for second column of table ...
+@sample_field { <field1; table_name = T2; x_off = 13 }
+
+
+! Set macros for third column of table ...
+@group
+	{
+	group_name    = map_x_pos
+	table_name    = T3
+	site_label    = ,
+	map_x         = 4000
+	x_off         = 22
+	justification = left
+	}
+
+! Set table sites for each row of third column of table ...
+@include { pgrid_columns }
+
+! Sample pressure for each table site for third column of table ...
+@sample_field { <field1; table_name = T3; x_off = 21 }
+
+
+! Set macros for fourth column of table ...
+@group
+	{
+	group_name    = map_x_pos
+	table_name    = T4
+	site_label    = ,
+	map_x         = 4250
+	x_off         = 30
+	justification = left
+	}
+
+! Set table sites for each row of fourth column of table ...
+@include { pgrid_columns }
+
+! Sample pressure for each table site for fourth column of table ...
+@sample_field { <field1; table_name = T4; x_off = 29 }
+
+
+! Set macros for fifth column of table ...
+@group
+	{
+	group_name    = map_x_pos
+	table_name    = T5
+	site_label    = ,
+	map_x         = 4500
+	x_off         = 38
+	justification = left
+	}
+
+! Set table sites for each row of fifth column of table ...
+@include { pgrid_columns }
+
+! Sample pressure for each table site for fifth column of table ...
+@sample_field { <field1; table_name = T5; x_off = 37 }
+
+
+! Set macros for sixth column of table ...
+@group
+	{
+	group_name    = map_x_pos
+	table_name    = T6
+	site_label    = ,
+	map_x         = 4750
+	x_off         = 46
+	justification = left
+	}
+
+! Set table sites for each row of sixth column of table ...
+@include { pgrid_columns }
+
+! Sample pressure for each table site for sixth column of table ...
+@sample_field { <field1; table_name = T6; x_off = 45 }

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE table PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgen SYSTEM 'gpgen.ent'>
+%gpgen;
+]>
+
+<table frame='topbot'><title>Projection types and associated parameters</title><tgroup cols='3'>
+<colspec colwidth='1*'/> <colspec colwidth='1*'/> <colspec colwidth='1*'/>
+<thead><row><entry>Projection</entry><entry>Type</entry><entry>Parameters</entry></row></thead>
+<tbody>
+<row valign='top'><entry>Lambert Conformal</entry><entry><userinput>lambert_conformal</userinput></entry>
+	<entry><para>upper reference latitude</para><para>lower reference latitude</para></entry></row>
+<row valign='top'><entry>Latitude-Longitude</entry><entry><userinput>latitude_longitude</userinput></entry></row>
+<row valign='top'><entry>Mercator Equatorial</entry><entry><userinput>mercator_equatorial</userinput></entry></row>
+<row valign='top'><entry>Oblique Stereographic</entry><entry><userinput>oblique_stereographic</userinput></entry>
+	<entry><para>central latitude</para><para>central longitude</para><para>secant angle [optional]</para></entry></row>
+<row valign='top'><entry>Plate-Caree</entry><entry><userinput>plate_caree</userinput></entry></row>
+<row valign='top'><entry>Polar Stereographic</entry><entry><userinput>polar_stereographic</userinput></entry>
+	<entry><para><userinput>north</userinput> or <userinput>south</userinput></para><para>"true" latitude</para></entry></row>
+<row valign='top'><entry>Rotated Latitude-Longitude</entry><entry><userinput>rotated_lat_lon</userinput></entry>
+	<entry><para>bottom axis latitude</para><para>bottom axis longitude</para><para>rotation angle [optional]</para></entry></row>
+</tbody></tgroup></table>

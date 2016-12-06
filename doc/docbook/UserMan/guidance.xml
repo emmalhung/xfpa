@@ -1,0 +1,672 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='guidance'><title>Guidance</title>
+<para>
+<indexterm><primary>guidance</primary></indexterm>
+This chapter describes how to use the &FPA; <glossterm linkend='g_guidance'>Guidance</glossterm> feature.
+</para> <para>
+Guidance allows you to display fields to <emphasis>guide</emphasis> your manipulation of other fields in the &FPA;.
+You can view, overlay, animate and sample guidance fields, but you cannot edit them.
+</para> <para>
+There could be hundreds, possibly thousands, of guidance fields that the user might wish to view.
+The fields are arranged in lists to minimize the time it would take to browse through all of the fields to find the one of interest.
+</para> <para>
+Some lists are predetermined by the System Administrator; they are identified as "<guilabel>Predefined</guilabel>".
+The user cannot modify these lists. 
+Other lists can be modified by users as desired, that is, fields can be added or deleted from the lists. 
+These lists are identified as "<guilabel>User Defined</guilabel>".
+</para> <para>
+To manage guidance fields, you arrange them in guidance field lists in the <guilabel>Guidance Field List</guilabel> dialog box (see <xref linkend='guidance_field_list_display'/>).
+Note that the choice of which fields to include in each list is arbitrary; the users decide which fields to include.
+<figure id='guidance_field_list_display' pgwide='0' float='1'><title>Guidance Field List - Display</title>
+<mediaobject><imageobject><imagedata fileref='png/guidance_field_list_displayb.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+Note that whenever you open the Guidance Field List dialog, the Guidance Fields Display box is also displayed (see <xref linkend='guidance_fields_displayed'/>). 
+<figure id='guidance_fields_displayed' pgwide='0' float='1'><title>Guidance Fields Displayed</title>
+<mediaobject><imageobject><imagedata fileref='png/guidance_fields_displayed.png'/></imageobject></mediaobject>
+</figure>
+This box lists all the guidance fields that are currently displayed.
+This box will remain displayed even if the Guidance Field List dialog is closed. 
+</para> <para>
+Many guidance fields have an issue time associated with them, such as the run time for an NWP field.
+Two  "magic" issue times are <guilabel>Current</guilabel> and <guilabel>Previous</guilabel>, which refer to the most recent issue time and the next most recent issue time.
+When new data arrives during updates, the &FPA; will check if the issue time has changed for displayed Guidance fields.
+If new data is available, the &FPA; will search the Guidance display lists for an entry corresponding to the currently displayed field
+(with an issue time of <guilabel>Previous</guilabel> rather than <guilabel>Current</guilabel>, for example), and switch the displayed field to this entry. If no entry is available, the field is removed from display.
+A red flag icon 
+<guiicon><inlinemediaobject>
+<textobject><phrase>Red Flag</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/redflag.png'/>
+</imageobject></inlinemediaobject></guiicon>
+appears in the top right corner of the depiction editor if this should happen.
+</para>
+<sect1 id='checking_guidance_status'> <title>Checking guidance status	</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>status</secondary></indexterm>
+You can check the last update date and time for all of the guidance sources.
+</para> <para>
+<orderedlist> <title>To check guidance status:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Status</guimenuitem></menuchoice>
+or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Bookshelf</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/guidance_bookshelf.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon in the upper right-hand corner of your screen. 
+</para> <para>
+The <guilabel>Guidance Status</guilabel> dialog box appears.
+(see <xref linkend='guidance_status_dialog'/>)
+</para> <para>
+Note: The bookshelf icon flashes when new source is coming in.
+The bookshelf icon stops flashing after you check the status.
+<figure id='guidance_status_dialog' pgwide='0' float='1'><title>Guidance Status</title>
+<mediaobject><imageobject><imagedata fileref='png/guidance_status.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<sect1 id='checking_available_guidance_fields'> <title>Checking available guidance fields</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>availability</secondary></indexterm>
+<orderedlist> <title>To check available fields:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Availability</guimenuitem></menuchoice>.
+</para> <para>
+The <guilabel>Guidance Availability</guilabel> dialog box appears.
+(see <xref linkend='guidance_availability'/>)
+<figure id='guidance_availability' pgwide='0' float='1'><title>Guidance Availability</title>
+<mediaobject><imageobject><imagedata fileref='png/guidance_availability.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+You can use the <guilabel>Level Filter</guilabel> to selectively display guidance field availability information.
+<figure pgwide='0' float='1'><title>Guidance Availability - Level Filter</title>
+<mediaobject><imageobject><imagedata fileref='png/guidance_availability_filter.png'/></imageobject></mediaobject>
+</figure>
+</para> <para>
+If you select a <guilabel>Level Filter</guilabel>, only the fields from the selected level will be displayed in the <guilabel>Fields Available</guilabel> list.
+If you select <guilabel>None</guilabel>, all available fields will be displayed.
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Source</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Issue Time</guilabel>.
+</para> <para>
+The <guilabel>Fields Available</guilabel> list displays the fields available from the selected <guilabel>Source</guilabel> and <guilabel>Issue Time</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<sect1 id='adding_fields_to_guidance_field_lists'> <title>Adding fields to guidance field lists</title>
+<para>
+Note: You can not add a guidance field to a <guilabel>Predefined</guilabel> type list.
+<indexterm><primary>guidance</primary><secondary>lists</secondary></indexterm>
+</para> <para>
+<orderedlist> <title>To add a field to a guidance field list:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Select...</guimenuitem></menuchoice>
+or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Guidance Selection</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/guidance-select.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Guidance Field List</guilabel> dialog box appears.
+(see <xref linkend='guidance_field_list_display'/>)
+</para></listitem>
+
+<listitem><para>
+Click the <guilabel>Display</guilabel> tab.
+</para> <para>
+You can either put guidance fields in a temporary guidance field list or create a new list.
+</para> <para>
+Note: If you choose the <guilabel>* Temporary *</guilabel> field list the &FPA; DOES NOT save the list for the next run of the &FPA;.
+</para></listitem>
+</orderedlist>
+</para>
+<sect2 id='copying_an_existing_list_to_a_new_guidance_field_list'> <title>Copying an existing list to a new guidance field list</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>lists</secondary></indexterm>
+<orderedlist>
+<title>To copy an existing field list (including the temporary field list):</title>
+<listitem><para>
+In the <guilabel>Guidance Field List</guilabel> dialog box, select an <guilabel>Active List</guilabel> to display.
+</para></listitem>
+
+<listitem><para>
+Choose <menuchoice><guimenu>Lists</guimenu><guimenuitem>Save as...</guimenuitem></menuchoice>.
+</para> <para>
+The <guilabel>Create List</guilabel> dialog box appears.
+(see <xref linkend='guidance_create_list'/>)
+<figure id='guidance_create_list' pgwide='0' float='1'><title>Guidance Create List</title>
+<mediaobject><imageobject><imagedata fileref='png/guidance_create_list.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+In the <guilabel>List Name</guilabel> field, type the name of the new list.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Apply</guibutton>.
+</para> <para>
+The contents of the new list automatically appear in the Display tab.
+</para> <para>
+Now you can add fields to this list.
+See <xref linkend='adding_fields_to_a_guidance_field_list'/>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='creating_a_new_empty_guidance_field_list'> <title>Creating a new, empty guidance field list</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>lists</secondary></indexterm>
+<orderedlist> <title>To create a new list:</title>
+<listitem><para>
+From the menu in the <guilabel>Guidance Field List</guilabel> dialog box, select <menuchoice><guimenu>Lists</guimenu><guimenuitem>New...</guimenuitem></menuchoice>.
+</para> <para>
+The <guilabel>Create List</guilabel> dialog box appears.
+(see <xref linkend='guidance_create_list'/>)
+</para></listitem>
+
+<listitem><para>
+In the <guilabel>List Name</guilabel> field, type the name of the new list.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Apply</guibutton>.
+</para> <para>
+Now you can add fields to this list.
+See <xref linkend='adding_fields_to_a_guidance_field_list'/>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='adding_fields_to_a_guidance_field_list'> <title>Adding fields to a guidance field list</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>lists</secondary></indexterm>
+<orderedlist> <title>To add fields to a guidance field list:</title>
+<listitem><para>
+In the <guilabel>Guidance Field List</guilabel> dialog box, select <menuchoice><guimenu>Fields</guimenu><guimenuitem>Add...</guimenuitem></menuchoice>.
+</para> <para>
+The <guilabel>Add Field to List</guilabel> dialog box appears.
+(see <xref linkend='add_field_to_list'/>)
+<figure id='add_field_to_list' pgwide='0' float='1'><title>Add Field to Guidance List</title>
+<mediaobject><imageobject><imagedata fileref='png/add_field_to_guidance.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Element Group</guilabel>.
+<indexterm><primary>groups</primary></indexterm>
+Note: the fields in each <guilabel>Element Group</guilabel> can be changed by your System Administrator.
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Element</guilabel> and <guilabel>Level</guilabel>.
+<indexterm><primary>elements</primary></indexterm>
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Source</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Depending on the source, select the <guilabel>Issue Time</guilabel>.
+</para> <para>
+<guilabel>Current</guilabel> and <guilabel>Previous</guilabel> are not absolute times, but relative times.
+The &FPA; checks the current and previous issue times for the source and indicates in the guidance field list whether the source that is displaying is the current or previous source or whether you need to update the guidance because a more recent source is available.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Add to List</guibutton>.
+</para></listitem>
+
+<listitem><para>
+Repeat until you have added all the desired fields to the list.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para> <para>
+The fields should be listed in the guidance field list.
+</para> <para>
+Note: You can add more fields to the list at a later time.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id='selecting_guidance_fields'> <title>Selecting guidance fields</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>selecting</secondary></indexterm>
+<orderedlist> <title>To select one or more fields to view: </title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Select...</guimenuitem></menuchoice>
+or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Guidance Selection</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/guidance-select.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Guidance Field List</guilabel> dialog box appears.
+(see <xref linkend='guidance_field_list_display'/>)
+</para></listitem>
+
+<listitem><para>
+Select an <guilabel>Active List</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Click the <guilabel>Display</guilabel> tab.
+</para> <para>
+Note: You can add fields if the field you want is not in an available list.
+See <xref linkend='adding_fields_to_guidance_field_lists'/>.
+</para></listitem>
+
+<listitem><para>
+Click the fields that you want to select.
+</para> <para>
+Note: If the valid time for the guidance field is not the same as for the
+<glossterm linkend='g_active_depiction'>active depiction</glossterm>
+<indexterm><primary>depiction</primary><secondary>active</secondary></indexterm>
+, a yellow box may appear around the valid time for that field in the list.
+Whether or not this happens depends on the Display option settings that you choose.
+See <xref linkend='using_the_displaying_options_for_guidance_fields'/>
+</para> <para>
+For an explanation of box colours around various list entries, click <guibutton>Legend</guibutton> in the <guilabel>Display</guilabel> tab.
+(see <xref linkend='guidance_select_legend'/>)
+<figure pgwide='0' float='1' id='guidance_select_legend'><title>Guidance Field List Legend</title>
+<mediaobject><imageobject><imagedata fileref='png/guidance_field_list_legend.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Click the field again to deselect it.
+</para> <para>
+Note: you can deselect all fields by choosing <menuchoice><guimenu>Actions</guimenu><guimenuitem>Turn All Fields Off</guimenuitem></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<sect1 id='using_the_displaying_options_for_guidance_fields'> <title>Using the displaying options for guidance fields</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>display options</secondary></indexterm>
+There are a number of options that affect how guidance fields are displayed.
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Select...</guimenuitem></menuchoice>
+or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Guidance Selection</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/guidance-select.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para>
+<para>
+The <guilabel>Guidance Field List</guilabel> dialog box appears.
+(see <xref linkend='guidance_field_list_display'/>)
+</para></listitem>
+
+<listitem><para>
+From the menu bar within the <guilabel>Guidance Field List</guilabel> dialog box select:
+<variablelist>
+<varlistentry><term><menuchoice><guimenu>Options</guimenu><guimenuitem>Synchronize with depictions</guimenuitem></menuchoice> </term><listitem><para>
+To set guidance fields to change with the depictions.
+They will be exactly the same times as your depictions.
+(Note that if there is no guidance field at exactly the same time as your depiction, you will not be able to see a guidance field at that time.)
+</para></listitem></varlistentry>
+<varlistentry><term><menuchoice><guimenu>Options</guimenu><guimenuitem>Show Field Nearest Depiction Time</guimenuitem></menuchoice></term><listitem><para>
+To set guidance fields to always display, showing the field nearest to the time of the depiction.
+</para></listitem></varlistentry>
+<varlistentry><term><menuchoice><guimenu>Options</guimenu><guimenuitem>Display Long Form Description</guimenuitem></menuchoice></term><listitem><para>
+To set guidance fields to show full-word descriptions in the field name list instead of shortened names. (Note that your System Administrator can change the full-word or shortened names if desired.)
+</para></listitem></varlistentry>
+<varlistentry><term><menuchoice><guimenu>Options</guimenu><guimenuitem>Show Depictions With Guidance</guimenuitem></menuchoice></term><listitem><para>
+To show depiction fields along with the guidance fields.
+</para></listitem></varlistentry>
+</variablelist>
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<sect1 id='updating_issue_times_for_guidance'> <title>Updating issue times for guidance</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>updating</secondary></indexterm>
+A yellow box around the issue time for a guidance field in the guidance field list indicates that there is a more current issue time available.
+<!--A red flag
+<inlinemediaobject><imageobject><imagedata scale='75' fileref='png/red-flag.png'/></imageobject></inlinemediaobject>
+in the top right-hand corner of the window indicates that there is a more current issue time available.-->
+</para>
+<para>
+<orderedlist> <title>To load the latest available issue time:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Select...</guimenuitem></menuchoice>
+or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Guidance Selection</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/guidance-select.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Guidance Field List</guilabel> dialog box appears.
+(see <xref linkend='guidance_field_list_display'/>)
+</para></listitem>
+
+<listitem><para>
+Click the <guilabel>Display</guilabel> tab.
+</para></listitem>
+
+<listitem><para>
+Select an <guilabel>Active List</guilabel>.
+</para> <para>
+Note: the issue time is <guilabel>Previous</guilabel> or <guilabel>Current </guilabel>you can check the actual time by clicking and holding the <guilabel>Issue</guilabel> display.
+</para></listitem>
+
+<listitem><para>
+Choose:
+<variablelist>
+<varlistentry><term>
+<menuchoice><guimenu>Actions</guimenu><guimenuitem>Refresh Selected Fields</guimenuitem></menuchoice>
+</term><listitem><para>
+To redraw the selected fields
+</para></listitem></varlistentry>
+<varlistentry><term>
+<menuchoice><guimenu>Actions</guimenu><guimenuitem>Set Selected to Current Issue Time</guimenuitem></menuchoice>
+</term><listitem><para>
+Allow &FPA; to switch the display to the most current issue time when new guidance arrives.
+</para></listitem></varlistentry>
+</variablelist>
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='removing_fields_from_guidance_field_lists'> <title>Removing fields from guidance field lists</title>
+<para>
+Note: You cannot remove a field from a predefined list.
+<indexterm><primary>guidance</primary><secondary>lists</secondary></indexterm>
+</para> <para>
+<orderedlist> <title>To remove a field from a guidance field list:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Select...</guimenuitem></menuchoice>
+or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Guidance Selection</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/guidance-select.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Guidance Field List</guilabel> dialog box appears.
+(see <xref linkend='guidance_field_list_display'/>)
+</para></listitem>
+
+<listitem><para>
+In the <guilabel>Guidance Field List</guilabel> dialog box, select <menuchoice><guimenu>Fields</guimenu><guimenuitem>Remove...</guimenuitem></menuchoice>.
+</para> <para>
+The <guilabel>Remove Fields From List</guilabel> dialog box appears.
+(see <xref linkend='remove_fields'/>)
+<figure id='remove_fields' pgwide='0' float='1'><title>Remove Field From Guidance</title>
+<mediaobject><imageobject><imagedata fileref='png/remove_field_from_guidance.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select one or more fields to remove.
+Click once to select a field click again to deselect it.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Remove</guibutton>.
+</para></listitem>
+</orderedlist></para>
+</sect1>
+<sect1 id='changing_the_appearance_of_a_field'> <title>Changing or restoring the appearance of a field</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>appearance</secondary></indexterm>
+You can define how you want the selected fields to appear in the map display area.
+</para> <para>
+<orderedlist> <title>To change the appearance of a field:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Select...</guimenuitem></menuchoice>
+or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Guidance Selection</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/guidance-select.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Guidance Field List</guilabel> dialog box appears.
+(see <xref linkend='guidance_field_list_display'/>)
+</para></listitem>
+
+<listitem><para>
+On the <guilabel>Display</guilabel> tab, click <guibutton>Change Fields Appearance</guibutton>.
+</para> <para>
+The <guilabel>Guidance Field Appearance</guilabel> dialog box appears.
+(see <xref linkend='change_field_appearance'/>)
+<figure id='change_field_appearance' pgwide='0' float='1'><title>Guidance Field Appearance</title>
+<mediaobject><imageobject><imagedata fileref='png/change_field_appearance.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Field</guilabel> list, select the field for which you want to set the appearance.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Colour and Style</guilabel> area, select a colour and line style for the appearance of the guidance field.
+</para> <para>
+As you modify the colour or line style, the map automatically changes.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para> <para>
+<orderedlist>
+<title>To restore an altered field to its default line style and colour:</title>
+<listitem><para>
+On the <guilabel>Display</guilabel> tab, click <guibutton>Change Fields Appearance</guibutton>.
+</para> <para>
+The <guilabel>Guidance Field Appearance</guilabel> dialog box appears.
+(see <xref linkend='change_field_appearance'/>)
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Field</guilabel> list, select the field for which you want to restore the appearance.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Restore Default Appearance</guibutton>.
+</para> <para>
+The field is restored to its default style and colour.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='animating_guidance'> <title>Animating Guidance</title>
+<para>
+<indexterm><primary>animation</primary><secondary>guidance</secondary></indexterm>
+<orderedlist> <title>To animate guidance fields:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Select...</guimenuitem></menuchoice>
+or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Guidance Selection</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/guidance-select.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Guidance Field List</guilabel> dialog box appears.
+(see <xref linkend='guidance_field_list_display'/>)
+</para></listitem>
+<listitem><para>
+Select the guidance fields for the animation set. (see <xref linkend='selecting_guidance_fields'/>)
+</para></listitem>
+<listitem><para>
+Click the <guilabel>Animate</guilabel> tab.
+<figure pgwide='0' float='1'><title>Guidance Field List - Animate</title>
+<mediaobject><imageobject><imagedata fileref='png/guidance_field_list_animateb.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+<listitem><para>
+Select a <guilabel>Time Interval</guilabel>. 
+<variablelist>
+	<varlistentry><term>Show all fields together</term><listitem><para>
+	Only display times that are common to all fields in the animation set.
+	</para></listitem></varlistentry>
+	<varlistentry><term>All times</term><listitem><para>
+	Display all times available. Each animation frame will contain at least one field in the animation set.
+	</para></listitem></varlistentry>
+	<varlistentry><term><replaceable>Predefined interval</replaceable></term><listitem><para>
+	The System Administrator may define time intervals that are convenient for the office.
+	</para></listitem></varlistentry>
+</variablelist>
+The number of frames in the animation set is calculated based on the <guilabel>Time Interval</guilabel>, and displayed.
+</para></listitem>
+<listitem><para>
+Set the <guilabel>Animation Window</guilabel> (see <xref linkend='guidance_animation_window'/>)
+</para></listitem>
+<listitem><para>
+Set the <guilabel>Speed</guilabel> (see <xref linkend='guidance_animation_speed'/>)
+</para></listitem>
+<listitem><para>Click <guilabel>Start</guilabel>.</para></listitem>
+</orderedlist>
+<orderedlist><title>To end the animation</title>
+<listitem><para>Click <guilabel>Stop</guilabel>.</para></listitem>
+</orderedlist>
+</para>
+<sect2 id='guidance_animation_window'><title>Animation Window</title><para>
+You may wish to limit the range of time frames in the animation set. This can be done using the <guilabel>Animation Window</guilabel> slider-bar.
+<orderedlist><title>To limit the animation to a subset of available guidance:</title>
+<listitem><para>Move the left-hand slider to the desired start time. (see <xref linkend='slider_bar'/>)</para></listitem>
+<listitem><para>Move the right-hand slider to the desired end time. (see <xref linkend='slider_bar'/>)</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='guidance_animation_speed'><title>Animation Speed</title><para>
+You may adjust the speed of the animation by moving the slider in the <guilabel>Speed</guilabel> slider-bar left to slow the animation and right to speed it up.  (see <xref linkend='slider_bar'/>)
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='sampling_a_field'> <title>Sampling a field</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>sampling</secondary></indexterm>
+<orderedlist> <title>To sample a guidance field:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Select...</guimenuitem></menuchoice>
+or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Guidance Selection</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/guidance-select.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Guidance Field List</guilabel> dialog box appears.
+(see <xref linkend='guidance_field_list_display'/>)
+</para></listitem>
+
+<listitem><para>
+Click the <guilabel>Sample</guilabel> tab.
+<figure pgwide='0' float='1'><title>Guidance Field List - Sample</title>
+<mediaobject><imageobject><imagedata fileref='png/guidance_field_list_sample.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the field you want to sample.
+</para> <para>
+The <guilabel>Display</guilabel> list fills with appropriate values.
+</para></listitem>
+
+<listitem><para>
+Select a type of sample from the <guilabel>Display</guilabel> list.
+</para></listitem>
+
+<listitem><para>
+Select a time from the <guilabel>Time</guilabel> list.
+</para> <para>
+Note: If the time in the <guilabel>Time</guilabel> list is not the same as the depiction time, a yellow box will appear around the <guilabel>Time</guilabel> selection.
+</para></listitem>
+
+<listitem><para>
+Select the display attributes: the colour, size and font of the sample(s).
+</para> <para>
+Note: Size is relative and not in actual points; if you resize the display, the font sizes re-scale accordingly.
+</para></listitem>
+
+<listitem><para>
+Click in the desired map area.
+</para> <para>
+The sampled value appears.
+</para></listitem>
+
+<listitem><para>
+Repeat as desired.
+</para></listitem>
+</orderedlist>
+</para>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='grid_sample.xml'/>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='preset_sample_list.xml'/>
+
+<para>
+Note: You cannot sample from guidance at the same time as editing or sampling fields in the interface.
+To temporarily suspend guidance sampling click <guibutton>OFF</guibutton> in the <guilabel>Guidance Sampling</guilabel> area.
+Clicking the <guibutton>ON</guibutton> will restore guidance sampling.
+<orderedlist continuation='continues'>
+<listitem><para>
+Click <guibutton>Clear</guibutton> in the <guilabel>Guidance Sampling</guilabel> area to remove all samples.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<sect1 id='showing_or_hiding_the_guidance_fields'> <title>Showing or hiding the guidance fields</title>
+<para>
+<indexterm><primary>guidance</primary><secondary>hiding</secondary></indexterm>
+<orderedlist>
+<title>To display the fields you selected in the guidance list in the active map area:</title>
+<listitem><para>
+Select the guidance fields from a guidance field list.
+</para></listitem>
+
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Show Selected Fields</guimenuitem></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para> <para>
+<orderedlist> <title>To turn off the display:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Hide Fields</guimenuitem></menuchoice>.
+</para></listitem>
+</orderedlist>
+There is also an option in the <guilabel>Field Display Control</guilabel> to turn guidance on and off.
+(see <xref linkend='displaying_fields'/>)
+</para>
+</sect1>
+</chapter>

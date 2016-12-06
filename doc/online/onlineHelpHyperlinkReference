@@ -1,0 +1,52 @@
+* Keys used in identifying the help documentation hypertext links in 
+* the online documentation.  The first entry is the key as coded int
+* the program and the second is the hypertext link as defined in the
+* online help. The link is file#<link> where file is the actualy html
+* file name and <link> is the link within that file.
+
+* These first entries are the table of contents and the index.
+
+toc                  index.html
+index                
+
+* The rest are the help button - hyperlink associations.
+
+alliedModelImport    ch16s03.html
+alliedModelSelect    ch16s03.html
+alliedModelStatus    ch05s04.html
+animation            ch15s04s01.html
+bkgndWind            ch12s02s04.html 
+changeCursor         ch04s07s02.html
+createField          ch05s02.html
+copyDaily            ch05s01s03.html 
+copyHourly           ch05s01s01.html
+copyStatic           ch05s01s04.html
+deleteFields         ch05s06.html
+depictStatus         ch05s08.html
+dialogLocation       ch04s07s03.html
+editAreas            ch12.html
+editLines            ch13.html
+editSfc              ch10.html
+fieldDisplayControl  ch04s03s01.html
+fieldDisplayState    ch03s03.html
+gfaEntry             ch12s01.html
+graphicProducts      ch16s01s02.html
+guid                 ch06.html
+guidAvail            ch06s02.html
+guidListAdd          ch06s03.html
+guidFieldAdd         ch06s03s03.html
+guidFieldAppearance  ch06s08.html
+guidFieldDelete      ch06s07.html
+guidFieldSample      ch06s09.html
+guidStatus           ch06s01.html
+main                 ch01.html
+mapOverlays          ch04s03s02.html
+optGeneral           ch04s07.html
+optMap               ch04s07.html
+productStatus        ch16s02.html
+quickRef             ch02.html
+scratchpad           ch08.html
+timelink             ch15s01.html
+updateField          ch05s03.html
+windEntry            ch12s02s01.html
+weatherEntry         ch12s01s01.html

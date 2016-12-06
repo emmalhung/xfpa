@@ -1,0 +1,78 @@
+##################################################################
+#
+# Guidance Field List definition file.
+#
+# This file contains the definitions of pre-defined lists of
+# guidance fields as seen under the <Guidance><Select> pulldown
+# menu.  Any lists incorporated into the guidance selection via
+# this mechanism are fixed and cannot be deleted or have fields
+# added to or removed from the list. This list can, however,
+# be copied and the copy modified. The list files to incorporate
+# into the guidance selection are specified in the setup file.
+#
+# NOTE: There is only one file of this type per FPA setup.
+#
+#
+#  The lists are separated by list keys in square backets as:
+#
+#     [list_1_key]  list_label
+#        field
+#        field
+#     [list_2_key] list_label
+#        field
+#
+#  and so on. The contents of the list key  separator can be
+#  anything that make sense as they are not used at the moment.
+#
+#  The list label is what the user will see to identify this
+#  particular list.
+#
+#  The field lines consist of:
+#
+#     element level source <sub-source> <"previous">
+#
+# Where element, level, source and sub-source are as specified
+# in the configuration files.
+# The <sub-source> entry is optional. A source may not have a sub-source.
+# A dash character ("-") may be used to indicate no <sub-source>. Note
+# that a <sub-source> entry must be set to use the <"previous"> entry.
+# The <"previous"> entry is optional. If the source is a "Depiction"
+# type source (such as "depict" or "interp"), then setting the last
+# parameter to "previous" will choose a field at the previous valid time.
+# If the source is a "Guidance" or "Allied" type source, then setting the
+# last parameter to "previous" will choose a field at the same valid time,
+# but from the previous issue time of that model.
+#
+# If the label is only required to be in one language then the
+# label is taken as presented. If multi-language labels are
+# required then the label line must be specified as:
+#
+#   <*default*> "a b c" <*language*> "a ä µ" <*language*> "...
+#
+# Where: <*default*>  specifies the label to use if none of the
+#                     other specifiers are valid.
+#        <*language*> is the required language as specified in 
+#                     the LANG environment variable.
+#
+# Example: <*default*> "Msl Pressure"  <*c-french*> "Pression MSL"
+#
+#          If LANG=c-french the label would be "Pression MSL"
+#          otherwise it would be "Msl Pressure".
+#
+#          Note that the quotes around the label are important!
+#
+# List definition examples:
+#
+#      [list1]  500Mb Fields
+#        height         500 GEM
+#        height         500 GEM - previous
+#        height_change  500 GEM
+#        vertical_vel   500 GEM
+#
+#      [list2] <*default*>"700 Mb Fields"  <*c-french*>"Champs de 700 Mb"
+#        height         700 GEM
+#        height         700 GEM - previous
+#        height_change  700 GEM
+#        vertical_vel   700 GEM
+#
+##################################################################

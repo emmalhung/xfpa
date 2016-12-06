@@ -1,0 +1,55 @@
+##################################################################
+#
+# Weather Memory Preset File
+#
+# This file contains the definitions of pre-defined lists of
+# weather memory items. These items will always be placed before
+# those defined by the users.
+#
+# Each block of data must be proceeded by the keyword "memory".
+# After this are attribute - value pairs which define the memory
+# contents. Any attribute not listed will be assigned its default
+# value.
+#
+# Note that there is one special attribute named "FPA_user_label"
+# which is used to set the label of the area and of the memory
+# button as it appears in the interface.
+#
+# EXAMPLE:
+#
+#      memory
+#			cloub_base = 25
+#           precip     = RW-
+#           vis        = 6+
+#
+#      memory
+#           sky        = BKN
+#           vis        = 1-3
+#      ...
+#
+#
+##################################################################
+
+memory
+FPA_user_label  = Rain
+cloud_base      = 30
+cloud_amount    = BKN LYRS
+cloud_top       = 150
+visibility      = 3-5
+weather         = -RA
+icing_base      = 50
+icing_intensity = LGT
+icing_type      = RIME
+icing_top       = 150
+
+memory
+FPA_user_label  = Snow
+cloud_base      = 20
+cloud_amount    = OVC
+cloud_top       = 120
+visibility      = 1-3
+weather         = -SN
+icing_base      = 20
+icing_intensity = LGT
+icing_type      = RIME
+icing_top       = 120

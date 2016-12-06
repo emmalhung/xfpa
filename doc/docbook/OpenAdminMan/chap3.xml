@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<chapter id='installation'><title>Preparing to Install &FPA; Source Code</title>
+
+<sect1 id='compilation'><title>Preparing to Compile &FPA; Source Code</title>
+<indexterm><primary>compilation</primary></indexterm>
+<para> </para>
+
+<sect2><title>Operating System</title> <para>
+This version of &FPA; has been successfully compiled and run on Ubuntu 16.04 and Centos 7.
+</para>
+</sect2>
+
+<sect2><title>Source Code</title> <para>
+Copy the &FPA; master directory (<filename class='directory'>fpav8</filename>) to your preferred working directory. 
+<note><para>We suggest you create a dedicated user account for &FPA; development (i.e. fpadev); create your master directory in the home directory of this user account (/home/fpadev/fpav8); and point your &FPA; user accounts there. (See <xref linkend='user_profile'/>.)
+</para></note>
+The source code is available on <ulink url='http://github.com'>http://github.com</ulink>. To install the source code use the following commands:
+<screen>
+apt-get install git-core  (for Ubuntu or Debian)
+	or
+yum install git-all  (for Centos or RedHat or Fedora)
+
+git clone https://github.com/emmalhung/xfpa.git fpav8
+</screen>
+<note><para>Users who would like to contribute to the &FPA; project are encouraged to get a github account and create a fork of the &FPA; source code.
+</para></note>
+All &FPA; software and scripts depend on the existence of the environment variable, <envar>FPA</envar> which contains the full path of the &FPA; master directory. Edit the environment profile file that corresponds with the normal login shell for the current account, and add one exported environment variable called <envar>FPA</envar>, which has a value equal to the full path of the &FPA; master directory. Then add <filename class='directory'><envar>$FPA</envar>/bin</filename> and <filename class='directory'><envar>$FPA</envar>/sbin</filename> to the <envar>$PATH</envar> variable.
+</para> <para>
+The profile file name will depend on the flavour of Linux shell you are using.  Some examples are <filename>.profile</filename>, <filename>.csh.login</filename>, <filename>.vueprofile</filename>, <filename>.bash_profile</filename>.
+<example><title>Sample (bourne shell) development profile file</title>
+<screen>FPA="/home/fpadev/fpav8"
+PATH="$FPA/bin:$FPA/sbin:$PATH"
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+fi
+export FPA PATH</screen></example>
+<note><para>You should log out and back in again in order for these changes to take effect.</para></note>
+</para>
+<para>There are several scripts (ones that are expected to run outside of a user's shell) that set <envar>FPA</envar> to <filename class='directory'>/home/fpadev/fpav8</filename> you should edit these files and set <envar>FPA</envar>  to your preferred master directory.</para>
+<para>
+<itemizedlist>
+<listitem><para>$FPA/etc/d.fpaingestrc </para></listitem>
+<listitem><para>$FPA/etc/d.fpalaunch </para></listitem>
+<listitem><para>$FPA/etc/d.fpaschedrc </para></listitem>
+</itemizedlist>
+Other scripts hardcode the fonts directory:
+<itemizedlist>
+<listitem><para>$FPA/etc/d.fparc </para></listitem>
+<listitem><para>$FPA/bin/putfonts </para></listitem>
+<listitem><para>$FPA/bin/truetypefonts_[on|off] </para></listitem>
+</itemizedlist>
+</para>
+</sect2>
+
+<beginpage/>
+<sect2 id='dependencies'><title>Dependencies</title> 
+<sect3><title>Required packages for Ubuntu or Debian Linux</title> <para>
+Use <command>apt-get install</command> to install each package and its dependencies
+<itemizedlist>
+<listitem><para> libxml2-dev </para></listitem>
+<listitem><para> libmotif-dev </para></listitem>
+<listitem><para> gfortran </para></listitem>
+<listitem><para> libpng-dev </para></listitem>
+<listitem><para> libjpeg-dev </para></listitem>
+<listitem><para> libtiff-dev </para></listitem>
+<listitem><para> libX11-dev </para></listitem>
+<listitem><para> libxt-dev </para></listitem>
+<listitem><para> libxft-dev </para></listitem>
+<listitem><para> libxpm-dev </para></listitem>
+<listitem><para> libxmu-dev </para></listitem>
+<listitem><para> libgrib2c-dev (optional to run GRIB ingest)</para></listitem>
+<listitem><para> libjasper-dev (optional to run GRIB ingest)</para></listitem>
+<listitem><para> dblatex (optional to compile documentation)</para></listitem>
+</itemizedlist>
+<note><para>You must be logged in as root in order to run the apt-get package manager</para></note>
+<example><title>Using 'apt-get install'</title><para><screen>~# apt-get install gcc</screen></para></example>
+<example><title>How to track down missing libraries using 'apt-file'</title>
+<screen>~# apt-get install apt-file # Install apt-file
+ ...
+~# apt-file update # Update the database
+ ...
+~# apt-file search /usr/lib32/libpng.so
+ia32-libs-dev: /usr/lib32/libpng.so
+</screen></example>
+</para></sect3>
+
+<sect3><title>Required packages for Centos or RedHat or Fedora Linux</title> <para>
+Use <command>yum install</command> to install each package and its dependencies
+<itemizedlist>
+<listitem><para> libxml2-devel </para></listitem>
+<listitem><para> openmotif-devel </para></listitem>
+<listitem><para> gcc-gfortran </para></listitem>
+<listitem><para> libpng-devel </para></listitem>
+<listitem><para> libjpeg-devel </para></listitem>
+<listitem><para> libtiff-devel </para></listitem>
+<listitem><para> libX11-devel </para></listitem>
+<listitem><para> libXt-devel </para></listitem>
+<listitem><para> libXft-devel </para></listitem>
+<listitem><para> libXpm-devel </para></listitem>
+<listitem><para> libXmu-devel </para></listitem>
+<listitem><para> epel-release (optional to run GRIB ingest)</para></listitem>
+<listitem><para> g2clib-devel (optional to run GRIB ingest)</para></listitem>
+<listitem><para> dblatex (optional to compile documentation)</para></listitem>
+</itemizedlist>
+<note><para>You must be logged in as root in order to run the yum package manager</para></note>
+<example><title>Using 'yum install'</title><para><screen>~# yum install gcc</screen></para></example>
+<example><title>How to track down missing libraries using 'yum whatprovides'</title>
+<screen>~# yum whatprovides /usr/lib32/libpng.so
+ia32-libs-dev: /usr/lib32/libpng.so
+</screen></example>
+</para></sect3>
+</sect2>
+
+<sect2><title>Compiling Source Code</title><para>
+Compiling &FPA; source code involves an intricate web of Makefiles.
+The customary <command> configure; make </command> sequence is replaced by a script called <command>fpamake</command>.
+This script will start from the current working directory and recurse to any subdirectories.
+<command>fpamake - all</command> will start from the master directory and recurse through all subdirectories.
+The file <command>fpamake</command> is located in <filename>$FPA/sbin</filename>.
+Watch the output from the compile closely to ensure that all components are compiled correctly. 
+You will want to check the log file for any errors. It will be located in the master directory <filename class='directory'><envar>$FPA</envar></filename>, and the name will start with the word <userinput>log</userinput> and end with the value returned by <command>platform</command>.
+</para>
+<para>Ensure that all the <xref linkend='dependencies'/> are installed.</para>
+<para>From the <filename class='directory'><envar>$FPA</envar></filename> directory run <command>fpamake all</command>.</para>
+<para>After the initial build you can use the command <command>fpamake - all</command> to compile after making changes to the source code.</para>
+</sect2>
+<sect2><title>Trouble Shooting Compilation</title><para>
+There is a script called <command>platform</command> that tries to determine what platform you are running. If you run it and do not get something appropriate, then you may need to edit the script to correct its behaviour. The <command>platform</command> script is located in <filename class='directory'>$FPA/bin</filename>.
+</para><para>
+</para> </sect2>
+
+<sect2><title>The codeword</title> <para>
+The open source version of &FPA; contains an unlimited license codeword located in <filename>$FPA/license/Codes</filename>. This codeword is not compatible with older versions of &FPA;
+</para> </sect2>
+
+<sect2><title>Test the &FPA; software</title> <para>
+<indexterm><primary>installation</primary><secondary>testing software installation</secondary></indexterm>
+To test the &FPA; software, Run the &FPA; depiction editor, as in: <command>xfpa</command> or <command>xfpa -s <replaceable>setup_file</replaceable></command>.
+Where <replaceable>setup_file</replaceable> is the name of the setup file to be used.
+If omitted, the default setup file is used (<link linkend='defaultsetup'>see .fparc below</link>).
+</para> <para>
+If you do not have a database, you can use a demo database located in <filename class='directory'><envar>$FPA</envar>/demo/</filename>. 
+<example><title>Using a demo database to test &FPA;</title>
+<screen>&gt;cd $HOME
+&gt;tar -xzf $FPA/demo.tgz
+&gt;xfpa -s av_atlantic
+</screen>
+</example>
+You should see the &FPA; window appear.
+To exit from the &FPA; depiction editor: select <menuchoice><guimenu>Field</guimenu><guimenuitem>Quit</guimenuitem></menuchoice> on the menu bar, near the upper left; a confirmation requester will then appear;  select <guibutton>Yes</guibutton> and the &FPA; depiction editor will terminate.
+</para> </sect2>
+</sect1>
+
+<sect1 id='install_database'><title>Installation/update of &FPA; databases</title> <para>
+<indexterm><primary>installation</primary><secondary>databases</secondary></indexterm>
+You may wish to update your existing &FPA; databases and/or install one or more new databases.
+It is intended that an &FPA; database should be administered from a single user account.
+However, one user can administer several databases.
+</para> <para>
+The &FPA; master directory must be accessible (i.e. has been installed or remote mounted).
+Repeat the following steps for each &FPA; database you wish to install or update.
+<orderedlist numeration="arabic">
+<listitem><para>
+If necessary, create the administrator account for this &FPA; database.
+</para></listitem>
+<listitem><para>
+Log in to the administrator account for this &FPA; database.
+</para></listitem>
+<listitem><para>
+If necessary, update the local environment profile file.
+All &FPA; software depends on the existence of the environment variable, <envar>FPA</envar>, which contains the full path of the &FPA; master directory.
+Edit the environment profile file (<filename>.profile</filename>, <filename>.csh.login</filename>, <filename>.vueprofile</filename>, <filename>.bash_profile</filename>, etc) that corresponds with the normal login shell for the administrator account, and add an exported environment variable called &FPA;, which has a value equal to the full path of the &FPA; master directory. If you created a user account for &FPA; development and the source code is located in a directory called <filename class='directory'>fpav8</filename> then you might edit your profile file as follows:
+<example id='user_profile'><title>Sample (bourne shell) user profile file</title>
+<screen>FPA="/home/fpadev/fpav8"
+PATH="$FPA/bin:$PATH"
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+fi
+export FPA PATH </screen></example>
+</para></listitem>
+<listitem><para>
+When done, re-invoke the new profile by "sourcing" (dotting) it or by logging out and back in.
+</para></listitem>
+<listitem><para>
+For each database controlled by this administrator account, build or update the database and setup file.
+<orderedlist numeration="lowerroman">
+<listitem><para>
+Execute the <command>mkfpadb</command> script.
+This script first builds or updates the &FPA; environment "dot" file, <filename>$HOME/.fparc</filename>.
+If this file already exists, and has not yet been updated, <command>mkfpadb</command> attempts to preserve all your customizations.
+The old version is saved for comparison.
+</para></listitem>
+<listitem><para>
+Next, <command>mkfpadb</command> asks for the setup directory and the name of a setup file.
+A new setup file is created, using the template setup file as a model.
+If the given setup file exists, the map projection information and database directory are preserved, and a copy of the original is made for comparison.
+</para></listitem>
+<listitem><para>
+This script asks you for the data directory name, or allows you to redefine the data directory if the setup file already exists.
+It then builds or updates the database, creating various data subdirectories if needed.
+</para></listitem>
+<listitem><para>
+You must obtain a <filename>base_map.fpa</filename> file and place it in the <filename class='directory'>$HOME/your_database/Maps</filename> directory to display a background map in the field editor.
+<!--
+You may create one using the <application>ArcGIS/FPA export tool</application>.
+(See <link linkend='thirdparty'>Third Party Software</link> at the end of this chapter).
+-->
+<note><para>
+You can find a number of example &FPA; map files in the directory <filename class='directory'>$FPA/data/common/Examples</filename>.
+</para>
+<para>TODO: There was a tool that would translate ESRI Shapefiles into FPA map metafiles, it is now out of date. Somebody with ArcGIS programming experience might want to try replace it.</para></note>
+If you chose to name your background map something other than <filename>base_map.fpa</filename> you will need to edit your setup file (the "[map.base]" section in the 'interface' block) to reflect this.
+</para></listitem>
+<listitem><para>
+Customize the setup file that was built for you.
+The new setup file contains instructions for customizing.
+Lines beginning with "#!" describe sections that will generally have to be modified.
+If you updated an existing setup file, there is no guarantee that all your settings will be preserved reliably.
+Use the retained copy of the original for comparison.
+</para></listitem>
+<listitem><para>
+Follow the customization instructions in the file <filename>$HOME/.fparc</filename>.
+This file is sourced ("dotted") by all &FPA; applications, to set a number of environment variables to control such things as where to search for the setup file, where to send log output and where to send printer output.
+If updating several databases, this file is modified only the first time, and all existing variable settings will have been preserved.
+In particular, you may wish to supply the name of the <anchor id='defaultsetup'/>default setup file (<envar>FPA_SETUP_FILE</envar>).
+This should probably be the name of one of the setup files that was built in the previous steps.
+The local destination for &GRIB; files can also be specified (<envar>FPA_LOCAL_GRIB</envar>).
+This specifies the default directory where the &GRIB; files are to be found by the ingest process.
+</para></listitem>
+</orderedlist>
+</para></listitem>
+</orderedlist>
+</para>
+
+<sect2><title>Test the &FPA; database</title> <para>
+<indexterm><primary>installation</primary><secondary>testing database</secondary></indexterm>
+To test your new &FPA; database: run the &FPA; depiction editor, <command>xfpa <optional>-s <replaceable>setup_file</replaceable></optional></command>.
+Where <replaceable>setup_file</replaceable> is the name of the setup file for the database you just created.
+If omitted, the default setup file is used (<link linkend='defaultsetup'>see .fparc above</link>).
+</para> <para>
+You should see the &FPA; window appear. It will hopefully be displaying the correct map background. If you just installed this database, there will be no depictions in the sequence.
+To exit from the &FPA; depiction editor: select <menuchoice><guimenu>Field</guimenu><guimenuitem>Quit</guimenuitem></menuchoice> on the menu bar, near the upper left; a confirmation requester will then appear;  select <guibutton>Yes</guibutton> and the &FPA; depiction editor will terminate.
+</para> </sect2>
+</sect1>
+
+<sect1><title>Setting up the automatic ingest</title> <para>
+<indexterm><primary>ingest</primary><secondary>automatic</secondary></indexterm>
+Follow these steps to set up global control of the automatic &FPA; ingest daemon.
+This daemon can be used if you are receiving an automatic download of &GRIB; fields from a supplier of your choice.
+Even if you are not receiving an automatic download, you may still set up the automatic ingest daemon to trigger whenever you manually download the &GRIB; files.
+The ingest daemon monitors the modification times of a predefined set of &GRIB; files in a given directory.
+If any of these files is "updated", then the appropriate ingest is launched.
+If you do not setup the automatic ingest, you will have to manually launch the ingest program itself (<link linkend='manuallaunch'>see below</link>), each time new data arrives.
+<note><para> An automatic ingest is not needed if you plan to run &FPA; applications only in a demonstration mode, on "pre-canned" data.  </para></note>
+<note><para> The following approach was developed many years ago, and modern Linux distributions have helper functions that could be used to automate much of the following process.</para>
+<para>For Ubuntu or Debian ... man update-rc.d</para>
+<para>For Centos or RedHat or Fedora ... man chkconfig</para>
+</note>
+</para>
+<orderedlist numeration="arabic">
+<listitem><para>
+Login as the user who owns the <filename class='directory'>$FPA</filename> directory.
+</para></listitem>
+<listitem><para>
+Next set up the ingest control for each &FPA; database.
+Repeat the following steps for each &FPA; database administrator account that will require an automatic ingest.
+<orderedlist numeration="lowerroman">
+<listitem><para> 
+Log in (using <application>su(1)</application>) to the administrator account for this &FPA; database, as in: <command>su - <replaceable>user</replaceable></command>
+</para></listitem>
+<listitem><para>
+As delivered, the environment "dot" file <filename>$HOME/.fparc</filename> defines a variable, <envar>$FPA_LOCAL_GRIB</envar>, which defines the directory where &GRIB; data is found.
+As delivered, your setup files define the "ingest.src" directory to refer to <envar>$FPA_LOCAL_GRIB</envar>.
+This arrangement will work fine if all your &GRIB; data is in the same directory.
+If this is not the case, then you can define a new directory tag in the "directories" block and set it as you need.
+(<xref linkend='dir_block'/>.)
+</para></listitem>
+<listitem><para>
+Copy and rename the ingest control "dot" file into the home directory as in:                 
+<screen>&gt;cp $FPA/etc/d.fpaingestrc $HOME/.fpaingestrc</screen>
+This file is normally sourced ("dotted") on boot-up, by the file <filename><envar>$FPA</envar>/etc/fpaschedrc</filename>, to restart the ingest daemon for this database.
+Edit the file <filename>$HOME/.fpaingestrc</filename> and add a line to start up the ingest daemon for each database setup file name.
+Customization instructions are found inside the file itself.
+Note that each ingest requires a different setup file name.
+However, it is possible that more than one setup file could access the same &FPA; database.
+In this case, care must be taken that the file names for the "log" and "states" files in the "ingest" block of each setup file are not the same!</para></listitem>
+<listitem><para>
+Log out (you should then still be logged in as the fpa administrator).
+</para></listitem>
+</orderedlist>
+</para></listitem>
+<listitem><para>
+Edit the ingest schedule file <filename><envar>$FPA</envar>/etc/fpaschedrc</filename> to provide a startup line for each &FPA; administrator account that requires an automatic ingest.
+Instructions are found inside the file itself.
+</para></listitem>
+<listitem><para>
+The ingest schedule file <filename><envar>$FPA</envar>/etc/fpaschedrc</filename> should normally be invoked on boot-up, so that the automatic ingest(s) will be restarted.
+To do this, first login as root then copy the file <filename>d.fpalaunch</filename> to <application>fpalaunch</application> in the appropriate directory.
+The copy should be owned by root:root and should have read and execute permission for all.
+The file should be copied to the directory <filename class='directory'> /etc/init.d </filename> , for example:
+<screen>&gt;cp $FPA/etc/d.fpalaunch /etc/init.d/fpalaunch
+&gt;cd /etc/init.d
+&gt;chown root:root fpalaunch
+&gt;chmod 755 fpalaunch</screen>
+</para></listitem>
+<listitem><para>
+Edit the copied file, <filename>fpalaunch</filename>, as appropriate for your site.
+Find further instructions in the file itself.
+</para></listitem>
+<listitem><para>
+Next you must add symbolic links to the <filename class='directory'>/etc/rc[0123456].d</filename> directories.
+<screen>&gt;ln -s /etc/init.d/fpalaunch /etc/rc0.d/K050fpalaunch
+&gt;ln -s /etc/init.d/fpalaunch /etc/rc1.d/K050fpalaunch
+&gt;ln -s /etc/init.d/fpalaunch /etc/rc2.d/S950fpalaunch
+&gt;ln -s /etc/init.d/fpalaunch /etc/rc3.d/S950fpalaunch
+&gt;ln -s /etc/init.d/fpalaunch /etc/rc4.d/S950fpalaunch
+&gt;ln -s /etc/init.d/fpalaunch /etc/rc5.d/S950fpalaunch
+&gt;ln -s /etc/init.d/fpalaunch /etc/rc6.d/K050fpalaunch </screen>
+
+To start the ingest for the first time, execute <application>fpalaunch</application> as root.
+<screen>&gt;/etc/init.d/fpalaunch start</screen> or reboot the computer to make sure fpalaunch starts automatically.
+</para></listitem>
+</orderedlist>
+</sect1>
+
+<sect1><title>Adding another automatic ingest</title> <para>
+<indexterm><primary>ingest</primary><secondary>automatic</secondary></indexterm>
+You can add another ingest without stopping the ingest scheduler.
+However, you should add the new ingest to the ingest control "dot" file so that the new ingest will start on re-boot.
+<orderedlist numeration="arabic">
+<listitem><para>
+Edit the file <filename>$HOME/.fpaingestrc</filename> and add a line for the new setup file name.
+</para></listitem>
+<listitem><para>
+Start up the new ingest
+<screen>&gt;fpaingest start <replaceable>setup_file</replaceable></screen>
+where <replaceable>setup_file</replaceable> is the name of your setup file.
+</para></listitem>
+<listitem><para>
+Check the ingest status
+<screen>&gt;fpaingest status</screen>
+</para></listitem>
+</orderedlist>
+</para> </sect1>
+
+<sect1><title>Modifying setup files for automatic ingests</title> <para>
+<indexterm><primary>ingest</primary><secondary>automatic</secondary></indexterm>
+It is important to realize that the setup file for an ingest is read only once, the first time an ingest for an &FPA; database is started.
+Any subsequent changes to the setup file that could effect an automatic ingest will not take effect, until the ingest is stopped and restarted, as in:
+<screen>&gt;fpaingest stop <replaceable>setup_file</replaceable>
+&gt;fpaingest start <replaceable>setup_file</replaceable></screen>
+where <replaceable>setup_file</replaceable> is the name of your setup file
+</para> </sect1>
+
+<sect1 id='manuallaunch'><title>Manual Ingest</title> <para>
+<indexterm><primary>ingest</primary><secondary>manual</secondary></indexterm>
+If, for some reason, you do not wish to use the automatic ingest, you will need to perform ingests manually.
+Although some fields may be drawn from scratch, the true power of &FPA; comes from its ability to start with existing model-based fields.
+At present, fields from an external model can only be accessed in &GRIB; format.
+</para> <para>
+Use <command>gribin</command> or <command>gribin2</command> to ingest the new &GRIB; files.
+These are is the same programs that can be invoked by the automatic ingest.
+The run strings for these programs are:
+<screen>gribin <replaceable>setup_file</replaceable> <replaceable>GRIB_file</replaceable> <optional><replaceable>GRIB_file</replaceable>...</optional></screen>
+<screen>gribin2 <replaceable>setup_file</replaceable> <replaceable>GRIB_file</replaceable> <optional><replaceable>GRIB_file</replaceable>...</optional></screen>
+where <replaceable>setup_file</replaceable> is the name of your setup file and <replaceable>GRIB_file</replaceable> is the name of a &GRIB; file to be ingested.
+You may supply one or more &GRIB; files.
+</para> <para>
+The fields from the given &GRIB; files will then be re-formatted for use by the &FPA;, and deposited in the appropriate &FPA; guidance directories.
+At this point the &FPA; depiction editor (<command>xfpa</command>) may be used to examine this new guidance, and the new fields may be imported.
+<note><para>If you do not provide a absolute path to the &GRIB; file then it is assumed that it is in the directory pointed to by the directory tag "ingest.src".
+(See <xref linkend='dir_block'/>.) </para></note>
+</para> </sect1>
+
+<sect1><title>Documentation</title> <para>
+<indexterm><primary>installation</primary><secondary>documentation</secondary></indexterm>
+The &FPA; Administration Manual, Graphics Product Generator Manual, &FPA; Users Manual, and Graphics Metafile Standard are available in PDF format in the directory <filename class='directory'><envar>$FPA</envar>/doc/pdf</filename>.
+The following documents are available:
+<informaltable rowsep='0' colsep='0' frame='none'><tgroup cols='2'>&colwidth2;<tbody>
+<row valign='top'><entry>OpenAdminManV&version;.pdf</entry><entry>This document, formatted for double sided printing.</entry></row>
+<row valign='top'><entry>GPGenManV&version;.pdf</entry><entry>GPGen users manual, formatted for double sided printing.</entry></row>
+<row valign='top'><entry>GPGenAppendicesV&version;.pdf</entry><entry>GPGen manual appendices, formatted for single sided colour printing.</entry></row>
+<row valign='top'><entry>UserManV&version;.pdf</entry><entry>&FPA; users manual, formatted for double sided colour printing.</entry></row>
+<row valign='top'><entry>Metafile2.0.pdf</entry><entry>&FPA; Graphics Metafile Standard, formatted for double sided printing.</entry></row>
+</tbody></tgroup></informaltable>
+</para> <para>This documentation is generated using <ulink url='http://wiki.docbook.org/'>DocBook XML format</ulink>. The source code can be found in <filename> <envar>$FPA</envar>/doc/docbook </filename> and it's subdirectories. The xsltproc tool should be easy to find using yum or apt-get and will allow you to produce documentation in html format. If you wish to produce pdf files, you can download and install <ulink url='http://dblatex.sourceforge.net/'>dblatex</ulink>. In theory xsltproc can also generate pdf files, but it does not work with the current configuration so you may have to spend some time fixing that first.
+</para> 
+<note><para>You may need to adjust the include paths in your *.xsl files. Try <filename class='directory'>/usr/share/sgml/docbook/stylesheet/xsl/nwalsh/xhtml</filename> </para></note>
+</sect1>
+
+<sect1 id='thirdparty'><title>Third Party Software</title> <para>
+<indexterm><primary>installation</primary><secondary>third party software</secondary></indexterm>
+There are several third party software packages which complement the &FPA; suite.
+These are:
+</para>
+
+<sect2><title>Adobe Illustrator</title><para>
+Adobe Illustrator is a vector graphics editor. It is capable of reading and exporting SVG images. It can be used to edit <application>SVGMet</application> output or to create symbols for <application>SVGMet</application> products.
+</para></sect2>
+
+<sect2><title>ArcGIS (with &FPA; Export Tool)</title>
+
+<note><para>This tool is out of date and no longer distributed with the &FPA;. TODO:Somebody with ArcGIS programming experience might want to try replace it.</para></note>
+<para>
+&FPA; base maps and overlays can be created using the custom &FPA; tool developed by <acronym>ESRI</acronym>.
+See the <application>ArcGIS</application> to &FPA; Export Tool User Manual for more details.
+</para><para>
+Any map set that can be read by ArcGIS and converted to a shape file can be exported using the &FPA; Export tool.
+</para> </sect2>
+
+<sect2><title>ImageMagick</title><para>
+ImageMagick is a software suite that, among many other things,  allows you to convert the output from <application>PSMet</application> to other graphics formats. 
+It also includes the command <command>display</command>, which can be used to view these output products in what ever format they end up in.
+</para></sect2>
+
+<sect2><title>Evince (<command>evince</command>)</title> <para>
+PostScript products generated by <application>PSMet</application> (<application>FpaGPGen</application> in PostScript mode) can be conveniently viewed using any viewer program that can support raw PostScript format.
+<application>Evince</application> "Simply a document viewer" (<command>evince</command>) can display both PostScript (.ps) and Portable Document Format (.pdf).
+</para> </sect2>
+
+</sect1>
+</chapter>

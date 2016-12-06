@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_format_of_location_look_up_tables'> <title>Format of Location Look Up Tables</title> <titleabbrev>location look up</titleabbrev>
+<para>
+Location look up tables allow for fixed or moving locations to be identified
+in tabular form, for easy access by the &PSMet; or SVGMet; directives. They
+are accessed by the <userinput>location_look_up</userinput> keyword in the 
+<link linkend='ps_add'>@add</link> 
+<link linkend='ps_anchor'>@anchor</link>
+<link linkend='ps_box'>@box</link> 
+<link linkend='ps_cross_section_areas'>@cross_section_areas</link> 
+<link linkend='ps_cross_section_axis_labels'>@cross_section_axis_labels</link>
+<link linkend='ps_cross_section_contours'>@cross_section_contours</link> 
+<link linkend='ps_cross_section_curves'>@cross_section_curves</link> 
+<link linkend='ps_define_cross_section'>@define_cross_section</link>
+<link linkend='ps_draw_cross_section_line'>@draw_cross_section_line</link> 
+<link linkend='ps_ellipse'>@ellipse</link> 
+<link linkend='ps_sample_field'>@sample_field</link> 
+<link linkend='ps_sample_wind'>@sample_wind</link>
+<link linkend='ps_text'>@text</link> directives. 
+Files containing location look up tables have a ".ltab" suffix.
+</para><para>Location look up tables contain lines with the following format:
+<programlisting>
+    <replaceable>ident</replaceable>   <replaceable>lat</replaceable> <replaceable>lon</replaceable>    [<replaceable>valid_time</replaceable>]    [<replaceable>text_string</replaceable>]
+    <replaceable>ident</replaceable>   <replaceable>lat</replaceable> <replaceable>lon</replaceable>    [<replaceable>valid_time</replaceable>]    [<replaceable>text_string</replaceable>]
+    <replaceable>...</replaceable></programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>ident</replaceable></entry><entry>is the location identifier (in string format)</entry></row>
+<row valign='top'><entry><replaceable>lat</replaceable></entry><entry>is the location latitude (in latlon format)</entry></row>
+<row valign='top'><entry><replaceable>lon</replaceable></entry><entry>is the location longitude (in latlon format)</entry></row>
+<row valign='top'><entry><replaceable>valid_time</replaceable></entry><entry>is an optional valid time (in vtime format)</entry></row>
+<row valign='top'><entry><replaceable>text_string</replaceable></entry><entry>is an optional text description (in string format)</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+Note that the <userinput>-</userinput> character can be used as a placeholder for any "missing" parameters.
+</para><para>
+Note that all parameters that follow the <userinput>!</userinput> or <userinput>#</userinput> characters in a line are considered comments.
+</para><para>
+The <userinput>location_ident</userinput> keyword from the directive is matched with the
+<replaceable>ident</replaceable> from a line of the location look up table to set the appropriate latitude and longitude for display or sampling.
+The optional <replaceable>valid_time</replaceable> is used to specify a moving location. If valid_time is
+included, then the line in the location look up table must also match the
+current valid time set by the <userinput>valid_time</userinput> keyword in the directive, or
+the valid time previously set in the <link linkend='ps_set_source'>@set_source</link> directive.
+One "special" ident value is allowed. The ident <userinput>*default*</userinput> will match against
+any location identifier not found in the look up table.
+</para></sect2>

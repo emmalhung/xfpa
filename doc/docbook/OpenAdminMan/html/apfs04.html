@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>F.4. Point Lists</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apf.html" title="Appendix F.  Predefined GUI Selection Lists " /><link rel="prev" href="apfs03.html" title="F.3. Guidance Field List" /><link rel="next" href="apfs05.html" title="F.5. Field Update Office Default" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">F.4. Point Lists</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apfs03.html">Prev</a> </td><th width="60%" align="center">Appendix F.  Predefined GUI Selection Lists </th><td width="20%" align="right"> <a accesskey="n" href="apfs05.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2054001"></a>F.4. Point Lists</h2></div></div></div><p>
+<a id="id2054007" class="indexterm"></a>
+This file must be named <code class="filename">point_lists</code>.
+This file contains the definitions of predefined lists of points which will be used under both the sample and label edit functions.
+There is only one instance of this file permitted.
+The lists are separated by list keys in square brackets as:
+</p><pre class="programlisting">[<span xmlns="" class="replaceable">list_1_key</span>] <span xmlns="" class="replaceable">list_label</span>
+    <span xmlns="" class="replaceable">latitude longitude [<span xmlns="http://www.w3.org/1999/xhtml" class="optional">comments</span>]</span>
+    <span xmlns="" class="replaceable">latitude longitude [<span xmlns="http://www.w3.org/1999/xhtml" class="optional">comments</span>]</span>
+[<span xmlns="" class="replaceable">list_2_key</span>] <span xmlns="" class="replaceable">list_label</span>
+    <span xmlns="" class="replaceable">latitude longitude [<span xmlns="http://www.w3.org/1999/xhtml" class="optional">comments</span>]</span>
+</pre><p>
+and so on.
+The contents of the list key separator can be anything that make sense.
+</p><p>
+The list_label is what the user will see to identify the list.
+</p><p>
+The format of the latitude and longitude must be given as one of
+</p><div class="itemizedlist"><ul type="disc"><li><p>[<span class="optional">+|-</span>]DDD[<span class="optional">N|E|W|S</span>]            = whole degrees</p></li><li><p>[<span class="optional">+|-</span>]DDD.ddd[<span class="optional">N|E|W|S</span>]        = decimal degrees</p></li><li><p>[<span class="optional">+|-</span>]DDD:MM[<span class="optional">:SS</span>][<span class="optional">N|E|W|S</span>]    = degrees, minutes, seconds</p></li><li><p>[<span class="optional">+|-</span>]DDD°MM[<span class="optional">'SS[<span class="optional">"</span>]</span>][<span class="optional">N|E|W|S</span>] = degrees, minutes, seconds</p></li></ul></div><p>														 
+If the direction is given as one of N|E|W|S then the leading sign is not required.
+Remember west and south are negative!
+</p><p>
+A comment may follow the position if it is proceeded by a pound sign "#".
+This is for file maintenance only and has no other purpose.
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2054125"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example F.5. Point lists</b></p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">[main_cities] Main Cities
+    43:70N 79:60W    # Toronto
+    42:35N 83:00W    # Winsor
+    46:40N 84:50W    # Sault St Marie
+</pre></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apfs03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apf.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apfs05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">F.3. Guidance Field List </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> F.5. Field Update Office Default</td></tr></table></div></body></html>

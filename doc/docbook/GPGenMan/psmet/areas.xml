@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_areas'> <title>@areas</title> <titleabbrev>@areas</titleabbrev>
+<para>
+Display outlines from a "discrete" field (or from more than one "discrete" field)
+on the current map.
+</para> <para>
+The <userinput>category_attribute</userinput> and <userinput>category</userinput> keywords can be used one or more times to display only selected areas.
+</para> <para>
+The <userinput>attribute</userinput> and <userinput>look_up</userinput> keywords can be used to choose different presentations for areas with different attributes.
+</para> <para>
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>element</userinput> and <userinput>level</userinput> can be specified more than once in this directive.</para></entry></row>
+<row valign='top'><entry spanname='tblnote'><para>Note that if a single element name is matched with a list of level names, or vice versa, the single name must be given first. Multiple element and level name lists should have the same number.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element_list.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level_list.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute.xml'/>
+<row><entry colname='desc'><para>(default is <userinput>FPA_auto_label</userinput>)</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/look_up.xml'/>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>area_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>One of:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>
+<colspec colwidth='1*'/>
+<colspec colwidth='2*'/><tbody>
+<row valign='top'><entry><userinput>subareas</userinput></entry><entry>Draw each subarea of a divided area as a separate area with defined outline and fill (default)</entry></row>
+<row valign='top'><entry><userinput>boundary</userinput></entry><entry>Draw the entire area with a single outline and fill</entry></row>
+<row valign='top'><entry><userinput>divides</userinput></entry><entry>Draw only dividing lines</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/interior_fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/symbol_fill_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_length.xml'/>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>line_width</userinput>, <userinput>line_style</userinput>, <userinput>outline</userinput> and <userinput>fill</userinput> can be specified more than once in this directive, for drawing multi-coloured boundaries!</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@areas
+{
+  element            = weather_system;
+  level              = surface;
+  category_attribute = FPA_category;
+  category           = cloud freezing frozen precip vis;
+  attribute          = clds_and_wx;
+  look_up            = weather_day;
+}</programlisting>
+Display all areas with a value in attribute FPA_category of cloud, freezing, frozen, precip, or vis
+from the "discrete" field surface system_weather, with a presentation for each category determined
+by matching the value in attribute clds_and_wx with values in the look up table "<filename>weather_day.tab</filename>".
+</para></example>
+</para></sect2>

@@ -1,0 +1,59 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa -lfpauser \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	metadiff
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "metafile comparison"
+
+
+# Rules for building metafile comparison programs:
+METADIFF     = $(BINDIR)/$(PLATFORM)/metadiff
+METADIFF_OBJ = metadiff.o
+metadiff:	Pobjects $(METADIFF)
+			@	echo "FPA $(PLATFORM) metadiff ready"
+			@	echo 
+$(METADIFF):	$(METADIFF_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) metadiff"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(METADIFF_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/metadiff ]; \
+					then cd $(BINDIR); ln -s fpa.exec metadiff; fi
+
+
+# Rules for building object modules:
+metadiff.o:	$(FPAHDR)
+
+
+# Rules for keeping header files up to date:
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) metafile comparison module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

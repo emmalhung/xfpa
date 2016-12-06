@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE appendix PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<appendix id='setting_command_line_parameters_in_the_fpa'> <title>Setting command line parameters in the &FPA;</title>
+<para>
+<indexterm><primary>xfpa</primary></indexterm>
+To run the &FPA; depiction editor use the <command>xfpa</command> command.
+<cmdsynopsis>
+<command>xfpa</command>
+<arg choice='opt' rep='norepeat'>-askForTimes</arg>
+<arg choice='opt' rep='norepeat'>-profile <replaceable>name</replaceable></arg>
+<arg choice='opt' rep='norepeat'>-s[etup] <replaceable>filename</replaceable></arg>
+<arg choice='opt' rep='norepeat'>-stateDir <replaceable>directory</replaceable></arg>
+<arg choice='opt' rep='norepeat'>-t0 <replaceable>YYYY:JJJ:HH</replaceable></arg>
+<arg choice='opt' rep='norepeat'>-v[isible] <replaceable>key</replaceable></arg>
+<arg choice='opt' rep='norepeat'>+viewerMode</arg>
+</cmdsynopsis>
+<table frame='topbot' rowsep='1'>
+<title>Explanation of <command>xfpa</command> optional arguments</title><tgroup cols='2'>&colwidth2;
+<thead> <row rowsep='1'><entry>arg...</entry><entry>meaning...</entry></row></thead>
+<tbody>
+<row valign='top'><entry>-askForTimes</entry>
+<entry>Puts up a dialog box asking which range of depiction times are to be read into the &FPA;</entry></row>
+
+<row valign='top'><entry>-profile <replaceable>key</replaceable></entry>
+<entry>Start using the specified profile instead of putting up a dialog asking the user for a profile.
+"none" is a valid input.</entry></row>
+
+<row valign='top'><entry>-s<optional>etup</optional> <replaceable>filename</replaceable></entry>
+<entry>Specifies the name of the file to use as the setup file.
+This may be an absolute path name or relative to the default setup directories.</entry></row>
+
+<row valign='top'><entry>-stateDir <replaceable>directory</replaceable></entry>
+<entry>The directory to use to store the state store file.
+This is only used if in viewer mode.</entry></row>
+
+<row valign='top'><entry>-t0 <replaceable>YYYY:JJJ:HH</replaceable></entry>
+<entry>Specifies the time to use as T0 for the depiction sequence.
+<replaceable>YYYY</replaceable> = 4 digit year,
+<replaceable>JJJ</replaceable> = julian day of the year,
+<replaceable>HH</replaceable> = hour of the day</entry></row>
+
+<row valign='top'><entry>-v<optional>isible</optional><replaceable>key</replaceable></entry>
+<entry>Bring up &FPA;  with fields visible as specified by the block of data indicated by the <replaceable>key</replaceable> in the preset field visibility config file.</entry></row>
+
+<row valign='top'><entry>+viewerMode</entry>
+<entry>Runs the &FPA; in viewer mode.
+All loading, deletion, saving and editing commands are not available so that only sequence viewing is possible.</entry></row>
+</tbody></tgroup></table>
+</para>
+</appendix>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_presentation'> <title>@presentation</title> <titleabbrev>@presentation</titleabbrev>
+<para>
+Set the appearance of text for the output file.
+</para><para>
+Note that the <link linkend='tx_presentation'>@presentation</link> directive with no "name" keyword sets the
+default appearance of all text for all subsequent directives.
+</para><para>
+Note that presentation keywords can also be included in other directives, where
+their effect is to change the appearance of the text for that directive only.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Name for a special presentation</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@presentation { justification = left; }</programlisting>
+Set a presentation, to be used for all subsequent directives, with text displayed left justified.
+</para></example>
+</para></sect2>

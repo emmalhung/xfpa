@@ -1,0 +1,13 @@
+ KBOS 42:22N 71:02W 00:00 # Boston/Logan USA
+ KBOS 42:22N 71:02W 01:00 # Boston/Logan USA
+  air 42:41N 69:44W 02:00 #  on route
+  air 43:29N 67:18W 03:00 #  on route
+  air 44:32N 64:23W 04:00 #  on route
+ CYHZ 44:53N 63:31W 05:00 # Halifax NS
+  air 45:29N 61:45W 06:00 #  on route
+  air 47:20N 59:15W 07:00 #  on route
+ CYDF 49:13N 57:24W 08:00 # Deer Lake NFLD
+ CYQX 48:57N 54:34W 09:00 # Gander NFLD
+  air 48:31N 53:56W 10:00 #  on route
+ CYYT 47:37N 52:44W 11:00 # St John's NFLD
+ CYYT 47:37N 52:44W 12:00 # St John's NFLD

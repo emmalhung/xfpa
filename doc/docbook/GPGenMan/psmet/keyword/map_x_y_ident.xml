@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>map_x_y_ident</userinput></para></entry>
+<entry colname='type'><para>r r <optional>s</optional></para></entry> 
+<entry colname='desc'><para>Position on x-axis and y-axis of map, and optional label for sample location
+</para><para>(Note: positions are measured from <userinput>xmin</userinput> and <userinput>ymin</userinput> from <link linkend='ps_mapdef'>@mapdef</link> directive, in units of <userinput>map_units</userinput> below)</para></entry></row>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>axis_for_display</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Axis of the cross section for display
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><tbody>
+<row><entry><userinput>lower</userinput></entry><entry>lower x axis</entry></row>
+<row><entry><userinput>upper</userinput></entry><entry>upper x axis</entry></row>
+<row><entry><userinput>left</userinput></entry><entry>left y axis</entry></row>
+<row><entry><userinput>right</userinput></entry><entry>right y axis</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>

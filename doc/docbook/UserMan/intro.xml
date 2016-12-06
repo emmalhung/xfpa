@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='what_is_the_fpa'> <title>What is the Forecast Production Assistant (&FPA;)?</title>
+<sect1 id='fpa_the_meteorologists_tool'> <title>&FPA;: A Productivity Tool for Meteorologists</title><para>
+There is an ongoing discussion regarding automation of weather forecasting, and whether automation can replace human forecasters. It is true that the tools available to a meteorologist certainly influence what happens during a forecasting shift. It is equally true that some automated processes are relatively inaccessible to human intervention.
+However, the &FPA; was designed to enhance the role of the human forecaster, not decrease it. It is very difficult to program sufficient contextual information into a computer, and so far humans routinely outperform pure automation if the weather information needs of end users are relatively specialized.
+Humans can adapt in the face of uncertainty and synthesize highly variable compact messages depending on what is happening and what end users need to know.
+There are many economic cases where human decisions are valued, and it is in those scenarios that the &FPA; will be of most interest.
+</para><para>
+The &FPA; is a "representation" tool, and so it is similar to but different from visualization and drawing tools.
+It has a graphical interface and users can interact with meteorological "objects".
+The "objects" exist as discrete or continuous fields within the system and can be "queried" as to their state, essentially making it possible to think of any collection of "objects" as a "database".
+Once forecasters are satisfied with their "database" (or "depiction" set) automated processes can be invoked to generate products.
+</para><para>
+It is important to note that the &FPA; is not a monolithic program that all forecast processes must feed through.
+There are certainly visualization and analysis tasks that can and possibly need to be performed by other software.
+The question is, "What happens <emphasis>after</emphasis> visualization and analysis?"
+Hopefully the results of visualization and analysis lead to an improved mental model of current weather conditions as they relate to the needs of end users.
+Before &FPA;, this mental or conceptual model was inaccessible to computerized processes.
+Now with &FPA;, forecasters can construct their own (or shared) representation of what needs to be communicated to end users as products.
+</para><para>
+The object representation technique in &FPA; is not somehow anti-numeric-model, nor does it necessarily imply model "modification".
+The choice of models available is a weather office policy decision.
+The &FPA; philosophy simply reflects the reality that not all models come up with the same result, and forecasters may have extra information inaccessible to numeric models.
+The optimal mix of human-machine interaction is still a subject of debate, and the debate will continue to evolve as technology progresses.
+Meanwhile, there are real end users of forecast information that need reasonably-priced, high quality, expert advice <emphasis>now</emphasis>.
+&FPA; is best used when communication goals are kept in mind.
+</para><para>
+Design choices in the &FPA; are frequently the result of feedback from operational forecasters, and so further and ongoing feedback is encouraged.
+It is hoped that over time, &FPA; technology will simply be seen as a way to get things done.
+</para></sect1>
+<sect1 id='the_fpa_philosophy'> <title>The &FPA; philosophy</title>
+<para>
+The Forecast Production Assistant (&FPA;) puts numerical weather <glossterm linkend='g_elements'>element</glossterm>
+<indexterm><primary>elements</primary></indexterm>
+prediction products directly in the hands of forecasters in a graphical format on computers.
+</para> <para>
+<itemizedlist> <title>The &FPA; gives you tools to:</title>
+<listitem><para>overlay and compare fields</para></listitem>
+<listitem><para>prepare typical subjective prognoses in a graphical format</para></listitem>
+<listitem><para>prepare animation loops</para></listitem>
+<listitem><para>generate end-user products like public, aviation, and marine forecasts directly from the graphical prognoses.</para></listitem>
+</itemizedlist>
+</para> <para>
+One of the goals of the &FPA; is to separate the forecasting function (the meteorology) from the product generation function.
+Product generation applications include systems to produce graphical and tabular forecast products (
+<indexterm><primary>SVGMet</primary></indexterm><glossterm linkend='g_svgmet'>SVGMet</glossterm>,
+<indexterm><primary>PSMet</primary></indexterm><glossterm linkend='g_psmet'>PSMet</glossterm> and
+<indexterm><primary>TexMet</primary></indexterm><glossterm linkend='g_texmet'>TexMet</glossterm>).
+</para> <para>
+<indexterm><primary>object database</primary></indexterm>
+A strong advantage to using the &FPA; to produce forecasts is the ability to generate a variety of products in different formats from one common working medium: the meteorological object database.
+This ensures consistent products for a variety of users.
+</para> <para>
+The &FPA; is a popular platform for running local models (<glossterm linkend='g_allied_models'>Allied Models</glossterm>).
+<indexterm><primary>allied model</primary></indexterm>
+You can view and edit the input fields used by the model; then, after the model has run, you can import the results back into the &FPA; for visualization.
+The &FPA;-Allied Model interface is designed to be a generic black box.
+The &FPA; System Administrators Manual gives instructions for users who wish to implement their own Allied Models into the &FPA;.
+</para>
+</sect1>
+</chapter>

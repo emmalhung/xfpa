@@ -1,0 +1,37 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$(SYSDIR)
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR)
+
+
+
+
+
+# Here is the list of include files to go into the master header file:
+HEADERS  = $(TYPES) $(MACROS) $(GETMEM) \
+		   $(TOOLS) $(OBJECTS) $(ENVIRON) $(EXTRACT) $(SUPPORT)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this:
+.PRECIOUS:		$(FPAHDR) $(HEADERS)
+
+
+# Rules for building everything:
+all ALL:	$(FPAHDR)
+
+
+# Rules for building object modules:
+modules MODULES:
+
+
+# Rules for building the master header file:
+header:		HEADER
+HEADER:		$(FPAHDR)
+
+$(FPAHDR):		$(HEADERS)
+				@echo "Updating FPA Library header"
+				@sleep 1; touch $@; sleep 1

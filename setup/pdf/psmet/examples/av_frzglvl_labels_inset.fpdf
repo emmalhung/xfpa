@@ -1,0 +1,26 @@
+! Set the default presentation for red text bordered with black ...
+@presentation
+	{
+	line_width    = 0.01;
+	outline       = CMYK 0   0   0 100;
+	fill          = CMYK 0 100 100  30;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	justification = centre;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Display freezing level labels ...
+@label
+	{
+	element       = freezing_level;
+	level         = surface;
+	attribute     = frzg_lvl_label;
+	format        = direct;
+	text_size     =  0.20;
+	x_off         =  0.00;
+	y_off         = -0.10;
+	}

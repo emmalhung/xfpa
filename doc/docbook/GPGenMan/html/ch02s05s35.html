@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.5.35. @group</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s05.html" title="2.5. Complete Description of All PSMet/SVGMet Directives" /><link rel="prev" href="ch02s05s34.html" title="2.5.34. @gpgen_insert" /><link rel="next" href="ch02s05s36.html" title="2.5.36. @images" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5.35. @group</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s05s34.html">Prev</a> </td><th width="60%" align="center">2.5. Complete Description of All PSMet/SVGMet Directives</th><td width="20%" align="right"> <a accesskey="n" href="ch02s05s36.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ps_group"></a>2.5.35. @group</h3></div></div></div><p>
+Set a list of keywords to be included as a "macro".
+</p><p>
+Note that the keywords are included in another directive by using the format:
+<strong class="userinput"><code>&lt;<span xmlns="" class="replaceable">group_name</span></code></strong> in the keyword list.
+</p><div class="informaltable"><table border="0"><colgroup><col align="right" /><col align="center" /><col align="left" /><col /></colgroup><thead><tr valign="top"><th align="right" valign="top"><p>KEYWORD</p></th><th align="center" valign="top"><p>TYPE</p></th><th align="left" valign="top"><p>DESCRIPTION</p></th><td class="auto-generated"> </td></tr></thead><tbody><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>group_name</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p>Group name for keyword list</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code><span xmlns="" class="replaceable">acceptable_keywords</span></code></strong></p></td><td align="center" valign="top"><p></p></td><td align="left" valign="top"><p>Any keywords that are acceptable in the directives that this "macro" is included within can be set here</p></td><td class="auto-generated"> </td></tr></tbody></table></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3481375"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.54.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">@group 
+{
+  group_name       = MaxTempAreas;
+  element          = max_temp;
+  level            = surface;
+  units            = degreesC;
+  display_as_areas = yes;
+  outline          = none;
+  fill             = none;
+}</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Set a "macro" called "MaxTempAreas" containing keywords used in the <a href="ch02s05s08.html" title="2.5.8. @contours">@contours</a> directive, given in the example above.
+</p></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s05s34.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s05s36.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.5.34. @gpgen_insert </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.5.36. @images</td></tr></table></div></body></html>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>rotate_to_latitude</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry> 
+<entry colname='desc'><para>Rotate parallel to latitude. <userinput>rotation</userinput> is appended. (Default is no).</para></entry></row>
+<!-- You may only specify one of <userinput>rotate_to_latitude</userinput>, <userinput>rotate_to_longitude</userinput> or <userinput>rotation_attribute</userinput>.  -->

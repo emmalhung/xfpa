@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_text'> <title>@text</title> <titleabbrev>@text</titleabbrev>
+<para>
+Display text (including text from a file) on the current map or in a table or at a given location.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>text_file</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Full path for file containing text to display</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>string</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Text to display
+</para><para>(Note: use <userinput>\</userinput> before all control characters)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>"Magic" attribute containing value to display</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Format of "magic" attribute to display
+</para><para>Must use: <userinput>direct &cform;</userinput>
+</para><para>(Note: &cform; is an optional string which contains a <command>printf</command> conversion format for the "magic" attribute. See <xref linkend='magic_attributes'/> for conversion formats for each attribute.)</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/text_size.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>rotation</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Text angle of rotation (in counter-clockwise decimal degrees)</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotate_to_latitude.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotate_to_longitude.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset of text wrt current anchor position (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset of text wrt current anchor position (in display units)</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For map display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lat.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lon.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_x.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_y.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_units.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_ident.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For table display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/table_name_obj.xml'/>
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For grid display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/grid_name.xml'/>
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For list display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/list_name.xml'/>
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For map, table or list display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/valid_time.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline_first.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font_weight.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/italics.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/char_space.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/word_spacing.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_space.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@text { string = Tonight; 
+  y_off = 1.7; x_off = -0.1; justification = centre; }</programlisting>
+Display the text string "Tonight" 1.7 "units" above and 0.1 "units" to the left of the current "anchor position" and centre justified.
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@text { text_file = $FPA/setup/pdf/psmet/examples/example_file;
+  font = "Times-Italic"; italics = yes; }</programlisting>
+Display text from the file <filename><envar>$FPA</envar>/setup/pdf/psmet/examples/example_file</filename> at the current
+"anchor position". The text font will be set to "Times-Italic" style using italics.
+(Note that <userinput>units</userinput> is set by <link linkend='ps_display_units'>@display_units</link>, and "anchor position" is set by <link linkend='ps_anchor'>@anchor</link>.)
+
+</para></example>
+</para></sect2>

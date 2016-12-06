@@ -1,0 +1,52 @@
+# Entry menu description file for Coast Watch Points
+
+menu_title             = Coast Watch Buoys Modify
+geometry               =  -650 -200 700 400
+label_display_height   =  0
+value_display_height   =  0
+category_display_width = 20
+
+panel "Points"
+{
+	# Point name
+	display_attribute
+	{
+		attribute_id  = name
+		label         = "Name"
+		position      = 20 20
+		ncolumns      = 35
+		nrows         = 1
+	}
+	display_attribute
+	{
+		attribute_id  = ID
+		label         = "ID"
+		position      = 30 60
+		ncolumns      = 10
+		nrows         = 1
+	}
+	display_attribute
+	{
+		attribute_id  = type
+		label         = "Type"
+		position      = 250 60
+		ncolumns      = 10
+		nrows         = 1
+	}
+	text
+	{
+		attribute_id  = press
+		label         = "Pressure"
+		position      = 30 100
+		ncolumns      = 7
+		nrows         = 1
+	}
+	text
+	{
+		attribute_id  = tair
+		label         = "Air Temp"
+		position      = 250 100
+		ncolumns      = 7
+		nrows         = 1
+	}
+}

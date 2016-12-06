@@ -1,0 +1,58 @@
+! Reset presentations for contours (independent of element) ...
+@reset_contour_presentation { }
+
+! Set up presentations for wave_height contours ...
+@contour_presentation
+	{
+	range      = [1 : 3);
+	units      = m;
+	line_width = 0.05;
+	line_style = 2 5 5;
+	outline    = X11 Yellow;
+	fill       = none;
+	}
+@contour_presentation
+	{
+	range      = [3 : 5);
+	units      = m;
+	line_width = 0.05;
+	line_style = solid;
+	outline    = X11 Yellow;
+	fill       = none;
+	} 
+@contour_presentation
+	{
+	range      = [5 : 9);
+	units      = m;
+	line_width = 0.05;
+	line_style = solid;
+	outline    = X11 OrangeRed;
+	fill       = none;
+	} 
+@contour_presentation
+	{
+	range      = [9 : *];
+	units      = m;
+	line_width = 0.05;
+	line_style = solid;
+	outline    = X11 Firebrick;
+	fill       = none;
+	} 
+
+! Default presentation (for other contours) ...
+@contour_presentation
+	{
+	range      = [* : *];
+	units      = m;
+	outline    = none;
+	fill       = none;
+	}
+
+! Display the wave height contours at irregular intervals ...
+@contours
+	{
+	element  = wave_height;
+	level    = surface;
+	units    = m;
+	values   = 2 4 5 7 9 11 13 15;
+	}

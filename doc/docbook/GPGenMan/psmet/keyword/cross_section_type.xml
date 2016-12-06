@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Type of cross section
+</para><para>One of:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><tbody>
+<row><entry><userinput>space</userinput></entry><entry>constant time</entry></row>
+<row><entry><userinput>time</userinput></entry><entry>constant location</entry></row>
+<row><entry><userinput>space_route</userinput></entry><entry>scale wrt space</entry></row>
+<row><entry><userinput>time_route</userinput></entry><entry>scale wrt time</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>

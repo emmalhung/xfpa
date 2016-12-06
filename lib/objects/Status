@@ -1,0 +1,87 @@
+Status of 4.0 re-development:
+
+
+File			Null	Global	Params	Logical
+
+
+objects.h		-		-		-		-
+
+
+
+dispnode.h		y		-				y
+dispnode.c		y		y				y
+
+metafile.h		y		-				y
+metafile.c		y		y				y
+
+menu.h			y		-				y
+menu.c			y		y				y
+
+surface.h		y		-				y
+surface.c		y		y				y
+surfop.c		y		-				y
+
+set.h			y		-				y
+set.c			y		y				y
+
+plot.h			y		-				y
+plot.c			y		y				y
+
+
+
+curve.h			y		-				y
+curve.c			y		y				y
+curvop.c		y		-				y
+
+newarea.h		y		-		y		y
+newarea.c		y		y		y		y
+newareaop.c		y		-		y		y
+
+label.h			y		-				y
+label.c			y		y				y
+labop.c			y		-				y
+
+mark.h			y		-				y
+mark.c			y		y				y
+markop.c		y		-				y
+
+barb.h			y		-				y
+barb.c			y		y				y
+barbop.c		y		-				y
+
+button.h		y		-				y
+button.c		y		y				y
+buttop.c		y		-				y
+
+
+
+projection.h	y		y		y		y
+projection.c	y		y		y		y
+
+polynomial.h	-		-		y		y
+polynomial.c	-		y		y		y
+
+spline.h		-		-		y		y
+spline.c		-		y		y		y
+
+segment.h		y		-		y		y
+segment.c		y		y		y		y
+
+bound.h			y		-		y		y
+bound.c			y		y		y		y
+boundop.c		y		-		y		y
+
+line.h			y		-		y		y
+line.c			y		y		y		y
+lineop.c		y		-		y		y
+
+pspec.h			y		-		y		y
+pspec.c			y		y		y		y
+uspec.c			y		-		y		y
+
+misc.h			y		y		y		y
+misc.c			y		y		y		y
+
+
+
+count.c			-		-		-		-

@@ -1,0 +1,101 @@
+# Make what?
+null:
+
+
+# Make everything:
+all:		libs apps
+
+# Make the libraries:
+lib libs:	plib slib
+plib:		clean
+			@cd lib;	    	$(MAKE) all
+fpalib:		clean
+			@cd lib;	    	$(MAKE) fpalib
+usrlib:		clean
+			@cd lib;	    	$(MAKE) usrlib
+slib:		clean
+			@cd slib;	    	$(MAKE) all
+
+# Make the applications:
+app apps:	ready_apps
+
+ready_apps:	xfpa \
+			fpagpgen \
+			dates \
+			fpashuffle \
+			fpacheck \
+			fpadir \
+			getmap \
+			hostinfo \
+			llmeta \
+			metadiff \
+			rankweight \
+			gribin2 \
+			fpaingest \
+			fpacreate \
+			fpawarp
+
+all_apps:	xfpa \
+			fpagpgen \
+			dates \
+			fpashuffle \
+			fpacheck \
+			fpadir \
+			getmap \
+			hostinfo \
+			llmeta \
+			metadiff \
+			rankweight \
+			gribin \
+			gribin2 \
+			fpaingest \
+			fpacreate \
+			fpawarp
+
+# Make the standard applications:
+xfpa: 		clean
+			@cd sapp/xfpa;				$(MAKE) all
+
+# Make the graphical/tabular product generator(s):
+fpagpgen:	clean
+			@cd sapp/fpagpgen;			$(MAKE)	all
+
+# Make assorted applications:
+dates:		clean
+			@cd sapp/misc/dates;		$(MAKE)	all
+fpashuffle:	clean
+			@cd sapp/misc/fpashuffle;	$(MAKE)	all
+fpacheck:	clean
+			@cd sapp/misc/fpacheck;		$(MAKE)	all
+fpadir:		clean
+			@cd sapp/misc/fpadir;		$(MAKE)	all
+getmap:		clean
+			@cd sapp/misc/getmap;		$(MAKE)	all
+hostinfo:	clean
+			@cd sapp/misc/hostinfo;		$(MAKE)	all
+llmeta:		clean
+			@cd sapp/misc/llmeta;		$(MAKE)	all
+metadiff:	clean
+			@cd sapp/misc/metadiff;		$(MAKE)	all
+rankweight:	clean
+			@cd sapp/misc/rankweight;	$(MAKE)	all
+
+# Make the ingest scheduler and ingester modules:
+fpaingest:	clean
+			@cd sapp/ingest/fpaingest;	$(MAKE)	all
+gribin:		clean
+			@cd sapp/ingest/grib_v1;	$(MAKE)	all
+gribin2:	clean
+			@cd sapp/ingest/grib_v2;	$(MAKE)	all
+
+# Make the allied model interface modules:
+fpacreate:	clean
+			@cd sapp/allied/FpaCreate;	$(MAKE)	all
+fpawarp:	clean
+			@cd sapp/allied/FpaWarp;	$(MAKE)	all
+
+
+clean:
+	@rm -f core
+	@touch core
+	@chmod 0 core

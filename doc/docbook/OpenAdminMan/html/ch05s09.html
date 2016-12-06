@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.9. Ingest Setup</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch05.html" title="Chapter 5. Defining Your Local Setup" /><link rel="prev" href="ch05s08.html" title="5.8. Depiction Setup" /><link rel="next" href="ch05s10.html" title="5.10. Diagnostic Control Setup" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.9. Ingest Setup</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s08.html">Prev</a> </td><th width="60%" align="center">Chapter 5. Defining Your Local Setup</th><td width="20%" align="right"> <a accesskey="n" href="ch05s10.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2085842"></a>5.9. Ingest Setup</h2></div></div></div><p>
+<a id="id2085849" class="indexterm"></a>
+The ingest block controls the ingest of <span class="acronym">CMC</span> model output (<span class="acronym">GRIB</span> files).
+The following keywords are recognized:
+
+</p><div class="variablelist"><dl><dt><span class="term">wait</span></dt><dd><p>
+Defines the time (in seconds) that the ingest Daemon will go to sleep before checking for new data again.
+If this line is omitted, a default (300) will be used
+</p></dd><dt><span class="term">log</span></dt><dd><p>
+Identifies the log file name and backup log file name to be used.
+At a specified time each day, the log file is renamed to the backup file name and a new log is started.
+This prevents unreasonable growth.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>log file name (default <code class="filename">ingest.log</code>)</p></li><li><p>backup log file name (default <code class="filename">ingest.old</code>)</p></li><li><p>backup time (GMT) (default 0000)</p></li></ul></div><p>
+The log file and backup log file will be placed in the 'ingest.log' directory, as defined in the <a href="ch05s05.html" title="5.5. Directories Setup">directories</a> block, unless an absolute path is given.
+</p></dd><dt><span class="term">status</span></dt><dd><p>Identifies the status file to be used (default <code class="filename">ingest.stat</code>).
+The status file will be placed in the 'ingest.stat' directory, as defined in the <a href="ch05s05.html" title="5.5. Directories Setup">directories</a> block, unless an absolute path is given.</p></dd><dt><span class="term">monitor_in</span></dt><dd><p>
+Identifies a set of data files to be monitored by the Ingest Daemon.
+Files are assumed to be in the 'ingest.src' directory, as defined in the <a href="ch05s05.html" title="5.5. Directories Setup">directories</a> block, unless an absolute path is given.
+File names here can use the <span><strong class="command">sed(1)</strong></span> style regular expressions.
+If one or more of the specified files arrives, its new modification time is detected, and the ingest program is started up to process it.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>directory tag (usually <span><strong class="command">ingest.src</strong></span>) </p></li><li><p>type (<span><strong class="command">grib</strong></span> or <span><strong class="command">grib2</strong></span>) or application (<span class="application">gribin</span>, <span class="application">gribin2</span> or your own ingest program)</p></li><li><p>pattern for matching file names</p></li></ul></div><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+You may use one of the included ingest programs, or supply your own ingest program. The command line parameters of your program must match those of the included ingest programs:
+</p><pre class="screen"><span xmlns="" class="replaceable">ingest_prog</span> <span xmlns="" class="replaceable">setup_file</span> <span xmlns="" class="replaceable">data_file</span> [ <span xmlns="" class="replaceable">data_file</span> ... ]</pre><p>
+</p></div></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s08.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s10.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.8. Depiction Setup </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 5.10. Diagnostic Control Setup</td></tr></table></div></body></html>

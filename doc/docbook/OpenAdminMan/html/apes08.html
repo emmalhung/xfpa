@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.8. FPA Create Area (Creating Discrete Areas From Objects)</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ape.html" title="Appendix E. Adding New Allied Models" /><link rel="prev" href="apes07.html" title="E.7. FPAWarp (Fitting Point Data to a Field)" /><link rel="next" href="apes09.html" title="E.9. FPA Create Contour (Creating Discrete Areas From Contours)" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">E.8. FPA Create Area (Creating Discrete Areas From Objects)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apes07.html">Prev</a> </td><th width="60%" align="center">Appendix E. Adding New Allied Models</th><td width="20%" align="right"> <a accesskey="n" href="apes09.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2075894"></a>E.8. FPA Create Area (Creating Discrete Areas From Objects)</h2></div></div></div><p>
+<a id="id2075899" class="indexterm"></a>
+The <span class="acronym">FPA</span> <span class="application">Create Area</span> model is an internal Allied Model designed to allow users to generate Discrete type fields from features in Line, Link Chain or Scattered type fields.
+The <span class="acronym">FPA</span> <span class="application">Create Area</span> model accomplishes this by using attributes from each source object to calculate the boundary of a discrete object.
+The user can access the <span class="acronym">FPA</span> <span class="application">Create Area</span> model without the need to develop special code, by simply adding lines in the Local Setup file and the Local Configuration file.
+</p><div class="itemizedlist"><ul type="disc"><li><p>Edit the Local Setup file and add a line to the "[allied.model]" section of the 'interface' block as in: </p><pre class="programlisting">NewFPACreateArea</pre></li><li><p>Edit the Local Configuration file and add another 'Sources' block, as in:</p></li></ul></div><p>
+</p><pre class="programlisting">
+Sources
+  {
+  NewFpaCreateArea
+    {
+    label             = "<span xmlns="" class="replaceable">New FPA Create Area</span>"
+    short_label       = "<span xmlns="" class="replaceable">New FpaArea</span>"
+    source_type       = Allied
+    directory_tag     = AModels.Data
+    directory_path    = FpaCreateArea
+    directory_layers  = 1
+    subsources        = None
+    allied_model      =
+      {
+      time_matching   = True
+      source_info     = interp or depict
+      process         = fpacreate_area &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; \
+	                     &lt;RTIME&gt; &lt;VTIME&gt;  <span xmlns="" class="replaceable">smoothing</span> \
+                         [<span class="optional"><span xmlns="" class="replaceable">( start_time  end_time  lchain_type  node_type )</span></span>]
+      programs        = None
+      files           = None
+</pre><p>
+ </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The <span xmlns="" class="replaceable">smoothing</span> parameter is used by the <span class="acronym">FPA</span> <span class="application">Create Area</span> model to control the amount of detail in the discrete areas being created.</p></div><p>
+ The <span xmlns="" class="replaceable">smoothing</span> parameter is used to control the detail in the discrete areas being created, with a larger values creating smoother discrete areas.  The default <span xmlns="" class="replaceable">smoothing</span> value is 500, and the minimum allowed is 10.
+ </p><p>
+ The <span class="acronym">FPA</span> <span class="application">Create Area</span> model is run with data from the current depiction time, as given by the &lt;VTIME&gt; parameter.
+ </p><p>
+ The optional <span xmlns="" class="replaceable">start_time</span> and <span xmlns="" class="replaceable">end_time</span> parameters can be used with Link Chain type fields to set a subset of the track or nodes to use. 
+ The format for the times is given by hh or hh:mm where hh is hours and mm is minutes from the current depiction time, as given by the &lt;VTIME&gt; parameter.
+ </p><p>
+ The optional <span xmlns="" class="replaceable">lchain_type</span> parameter can be used with Link Chain type fields. A value of 'track' (the default) will create one area based on all the nodes of the link chain, while a value of 'nodes' will create one area for each node of the link chain. 
+ </p><p>
+ The optional <span xmlns="" class="replaceable">node_type</span> parameter can be used with Link Chain type fields. A value of 'normal' (the default) will create areas based on the normal link chain nodes, while a value of 'interp' will create areas based on the interpolated link chain nodes.
+ </p><p>
+ The 'required_fields' section below is used to identify the field and attributes used to create the discrete areas.
+ The location of these data files will default to the 'source_info' declaration given at the start of the 'allied_model' section unless it is reset here.
+ </p><p>
+ The <span xmlns="" class="replaceable">required_field_alias</span> (which can be any name) will be used in the <span class="acronym">FPA</span> <span class="application">Create Area</span> model code to identify all required data.
+ </p><p>
+ Note that the <span xmlns="" class="replaceable">element</span>, <span xmlns="" class="replaceable">level</span> and <span xmlns="" class="replaceable">source</span> names in the 'field_info' declarations, must be declared in the 'Elements' or 'Levels' or 'Sources' blocks of a Configuration file!
+ The user will have to include declarations in the Local Configuration file for any <span xmlns="" class="replaceable">element</span>, <span xmlns="" class="replaceable">level</span> or <span xmlns="" class="replaceable">source</span> data which is required by a new <span class="acronym">FPA</span> <span class="application">Create Area</span> model but is not already declared.
+ The user can refer to <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>, as well as the examples given in the <code class="filename">Config.<span xmlns="" class="replaceable">name</span></code> files in <code class="filename"><code class="envar">$FPA</code>/config</code>.
+ </p><p>
+ The <span xmlns="" class="replaceable">field_type</span> can be set to <strong class="userinput"><code>Scattered</code></strong> for field labels or left blank to use the field itself.
+</p><pre class="programlisting">
+	  required_fields = 
+        {
+        <span xmlns="" class="replaceable">required_field_alias</span>
+          {
+          field_info                = <span xmlns="" class="replaceable">element  level</span> [ <span xmlns="" class="replaceable">field_type</span> ]
+          sub_field_info            = <span xmlns="" class="replaceable">sub_field</span>
+          source_info               = <span xmlns="" class="replaceable">source</span>
+          attribute_info            = <span xmlns="" class="replaceable">tag_label  attrib_name  attrib_units</span>
+          <span xmlns="" class="replaceable">...</span>
+          node_attribute_info       = <span xmlns="" class="replaceable">tag_label  attrib_name  attrib_units</span>
+          <span xmlns="" class="replaceable">...</span>
+          }
+        } # End of required_fields Block
+      required_wind_crossrefs  = None
+      required_value_crossrefs = None
+</pre><p>
+ </p><p>
+ The 'attribute_info' and 'node_attribute_info' keywords are used to specify attribute information for the <span class="acronym">FPA</span> <span class="application">Create Area</span> model identified by specific <span xmlns="" class="replaceable">tag_label</span> names.
+ You may also specify a <span xmlns="" class="replaceable">tag_label</span> name which can be referred to in the 'metafiles' section in order to pass attributes from the source field down to the output field.
+ </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Unrecognized <span xmlns="" class="replaceable">tag_label</span> names in 'required_fields' that do not match <span xmlns="" class="replaceable">tag_label</span> names in 'metafiles' generate warnings.</p></div><p>
+ Recognized <span xmlns="" class="replaceable">tag_label</span> names are listed below.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p> The following listing shows recognized <span xmlns="" class="replaceable">tag_label</span> names for Scattered type fields, with areas created around each point location in the field</p></div><p>
+</p><pre class="programlisting">
+          # If area is to be calculated based on distances from the
+          # point location in various directions (as noted below),
+          # then the <span xmlns="" class="replaceable">tag_label</span> names must be in cw or ccw order
+            attribute_info          = point_n   <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_nne <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_ne  <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_ene <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_e   <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_ese <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_se  <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_sse <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_s   <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_ssw <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_sw  <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_wsw <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_w   <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_wnw <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_nw  <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_nnw <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = point_nnw <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+        
+          # If area is circular, the radius or diameter <span xmlns="" class="replaceable">tag_label</span> names can be used
+            attribute_info          = radius    <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+          # or
+            attribute_info          = diameter  <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+</pre><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p> The following listing shows recognized <span xmlns="" class="replaceable">tag_label</span> names for Line type fields, with areas created around each line in the field</p></div><p>
+</p><pre class="programlisting">
+          # <span xmlns="" class="replaceable">tag_label</span> names are distances 90 degrees left or right
+          # wrt AttribLineDirection at each point
+            attribute_info          = radius   <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+          # or
+            attribute_info          = diameter <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+          # or
+            attribute_info          = left     <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            attribute_info          = right    <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+</pre><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p> The following listing shows recognized <span xmlns="" class="replaceable">tag_label</span> names for Link Chain type fields, with areas created around each link chain in the field, or around each node of each link chain in the field</p></div><p>
+</p><pre class="programlisting">
+          # <span xmlns="" class="replaceable">tag_label</span> names are distances wrt an orientation (if given)
+          # or 90 degrees left or right wrt AttribLnodeDirection
+            node_attribute_info     = orientation <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+          # or
+            node_attribute_info     = radius      <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+          # or
+            node_attribute_info     = diameter    <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+          # or
+            node_attribute_info     = left        <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+            node_attribute_info     = right       <span xmlns="" class="replaceable">attrib_name attrib_units</span>
+ </pre><p>
+
+ The 'metafiles' section below is used to identify the output <span class="acronym">FPA</span> data produced by the new <span class="acronym">FPA</span> <span class="application">Create Area</span> model.
+ The location of the file will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data).
+ The <span xmlns="" class="replaceable">metafile_alias</span> (which can be any name) will be used in the <span class="acronym">FPA</span> <span class="application">Create Area</span> model code to identify the output data.
+ Note that the <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span> names in the 'field_info' declarations must be declared in the 'Elements' or 'Levels' blocks of a Configuration file!
+ The user will have to include declarations in the Local Configuration file for any <span xmlns="" class="replaceable">element</span> or <span xmlns="" class="replaceable">level</span> data which is required by a new <span class="acronym">FPA</span> <span class="application">Create Area</span> model but is not already declared.
+ The user can refer to <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>, as well as the examples given in the <code class="filename">Config.<span xmlns="" class="replaceable">name</span></code> files in <code class="filename"><code class="envar">$FPA</code>/config</code>.
+</p><pre class="programlisting">
+      metafiles      =
+        {
+        <span xmlns="" class="replaceable">metafile_alias</span>
+          {
+          # output field identified by element and level
+          field_info          = <span xmlns="" class="replaceable">element  level</span>
+          # list of attributes for output field
+          attribute_info      = <span xmlns="" class="replaceable">tag_label  attrib_name  attrib_units</span>
+          <span xmlns="" class="replaceable">...</span>
+          # list of default attributes for output field.
+          default_attrib_info = <span xmlns="" class="replaceable">attrib_name  attrib_value</span>
+          <span xmlns="" class="replaceable">...</span>
+          }
+        } # End of metafiles Block
+      } # End of allied_model Block
+    } # End of NewFPACreateArea Block
+  } # End of Sources Block
+</pre><p>
+ Each 'attribute_info' line specifies an attribute to include in each new discrete area.
+ The <span xmlns="" class="replaceable">tag_label</span> names listed here must also be listed in the 'required_fields' section.
+ </p><p>
+ Each 'default_attrib_info' line specifies an <span xmlns="" class="replaceable">attrib_name</span> and a default <span xmlns="" class="replaceable">attrib_value</span> to include in each new discrete area.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apes07.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ape.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apes09.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.7. FPAWarp (Fitting Point Data to a Field) </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.9. FPA Create Contour (Creating Discrete Areas From Contours)</td></tr></table></div></body></html>

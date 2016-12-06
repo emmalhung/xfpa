@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE appendix PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<appendix id='appendd'><title>Product Definition File Formats</title>
+<para><indexterm><primary>product definition</primary></indexterm></para>
+
+<sect1><title>Graphics Product Generator (GPGen)</title><para>
+<indexterm><primary>product definition</primary><secondary>gpgen</secondary></indexterm>
+The Graphics Product Generator application allows users to create tailored graphical products or simpler ASCII products from the &FPA; database.  The two graphical product applications are <application>PSMet</application> (producing output in PostScript format) and <application>SVGMet</application> (producing output in SVG format, an open XML format).  The ASCII application is <application>TexMet</application>.  All three applications use a command language in product generation files to sample the &FPA; database and display the results in a number of different formats.  Please refer to the <userinput>Graphics Product Generator Reference Manual</userinput> for details on the functionality of the applications and their product definition files.
+</para></sect1>
+
+<sect1><title>FPA Metafile Copy</title><para>
+<indexterm><primary>product definition</primary><secondary>metafile</secondary></indexterm>
+This file defines the &FPA; metafiles to be copied.
+The usual use of this facility is to send a set of &FPA; metafiles to another location where they can be used as initial fields or as guidance.
+The parameters are:
+<variablelist>
+<varlistentry><term>source</term><listitem><para>
+The source of the metafiles.
+This is normally <userinput>depict</userinput> or <userinput>interp</userinput>.</para></listitem></varlistentry>
+<varlistentry><term>time</term><listitem><para>
+The time of the depictions.
+This is either <userinput>ALL</userinput> or the time of the depictions with respect to T0.
+This can be one of two formats: the time offset from T0 or the day relative to T0 and an absolute hour.
+For example, 0 6 12 24 would be taken as T0, T+6, T+12 and T+24.
+0/12 1/0 1/6 would be taken as 12Z on the same day as T0, and 00Z and 06Z on the day after T0.</para></listitem></varlistentry>
+<varlistentry><term>fields</term><listitem><para>
+One of <userinput>ALL</userinput> or a list of <userinput>element  level</userinput> pairs defining the required fields.
+For example: pressure msl temperature sfc ...</para></listitem></varlistentry>
+<varlistentry><term>send_link_data</term><listitem><para>
+<userinput>True</userinput> or <userinput>False</userinput>.
+Send the time link data.
+Default False.</para></listitem></varlistentry>
+<varlistentry><term>target_directory</term><listitem><para>
+The directory into which to copy the metafiles.
+If the directory does not exist it is created.
+If target_directory is not specified a temporary directory is created.
+This temporary directory and all of its contents is removed after the post process procedure is executed.</para></listitem></varlistentry>
+<varlistentry><term>post_process</term><listitem><para>
+Shell commands which will be executed once the metafiles are copied to the target directory.
+This can be used, for example, to ftp the files to another location.
+If a target directory was not specified above, then the temporary directory into which the requested depictions are placed is referenced by the macro '$METADIR' in the post process lines.
+Long commands can be broken up into multiple lines by terminating a line with a backslash '\'.</para></listitem></varlistentry>
+</variablelist>
+<example><title>Graphics Metafile copy example</title><para>
+The following example would send all fields from four depictions to a remote site using the script ftp_script (your script):
+<programlisting>source       = depict
+time         = 0/12 0/18/ 1/0 1/12
+fields       = ALL
+post_process = tar -cf /tmp/meta.tar $METADIR; compress /tmp/meta.tar; \
+                ftp_script office1 /tmp/meta.tar; rm /tmp/meta.tar
+</programlisting></para></example>
+</para></sect1></appendix>

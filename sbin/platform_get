@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Retrieve hardware dependent files from the directory indicated by the platform
+# script, to the current directory.  Retrieval is done by linking, and is only
+# done if the existing files in the current directory are linked elsewhere.
+# The most recent retrieval is recorded in the file .platform in the current
+# directory.
+
+# See where the files were most recently retrieved from.
+if [ -r .platform ]
+then	olddir=`cat .platform`
+else	olddir=
+fi
+
+# See where the files should be retrieved from and make sure that directory
+# exists.
+bindir=`dirname $0`
+PATH=$PATH:$FPA/bin:$FPA/sbin:$bindir
+export PATH
+platform=`platform`
+if [ ! -d $platform ]
+then	mkdir $platform
+fi
+
+# We are ready if both of these directories agree.
+if [ "$olddir" = "$platform" ]
+then	exit 0;
+fi
+
+# The first argument should indicate the type of files.
+type=$1
+if [ "$type" = "" ]
+then	echo "Usage: $0 <type> [message]"
+		echo "       where type = object | lib | shlib | exec | any"
+		exit 1;
+fi
+shift
+case $type in
+	object)	files='*.o';	ftype='object';;
+	lib)	files='*.a';	ftype='library';;
+	shlib)	files='*.sl';	ftype='shared library';;
+	exec)	files='*';		ftype='executable';;
+	any)	files='*';		ftype='hardware dependent';;
+esac
+
+# Remove files from platform if necessary.
+flist=`echo $files`
+case $type in
+	object | lib | shlib)	rm -f $flist;;
+esac
+
+# Link in the correct files.
+if [ "$*" = "" ]
+then	echo "Retrieving $platform $ftype files"
+else	echo "Retrieving $platform $ftype files for $*"
+fi
+target=`pwd`
+cd $platform
+flist=`echo $files`
+if [ "$flist" != "$files" ]
+then	ln $flist $target
+fi
+cd $target
+
+# Record this retrieval.
+echo $platform > .platform
+exit 0

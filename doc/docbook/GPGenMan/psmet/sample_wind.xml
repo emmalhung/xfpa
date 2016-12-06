@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_sample_wind'> <title>@sample_wind</title> <titleabbrev>@sample_wind</titleabbrev>
+<para>
+Display cross-referenced winds from &FPA; fields on the current map or in a table.
+</para><para>
+Note that the cross-reference "Fpa_Wind" refers to the &FPA; wind field.
+</para><para>
+Note that every sample requires a <userinput>format</userinput> keyword.
+A <userinput>wind_barb</userinput> format displays winds using the presentation from the directive
+<link linkend='ps_wind_barb_presentation'>@wind_barb_presentation</link>, while a <userinput>wind_text</userinput> or <userinput>wind_symbol</userinput> format displays
+winds using the presentation from the directive <link linkend='ps_wind_presentation'>@wind_presentation</link>.
+
+</para><para>
+Note that <userinput>space_route</userinput> or <userinput>time_route</userinput> cross sections also allow <userinput>format</userinput> styles
+of <userinput>tail_wind_barb</userinput>
+<userinput>tail_wind_text tail_wind_symbol</userinput> or styles of <userinput>cross_wind_barb cross_wind_text</userinput>
+<userinput>cross_wind_symbol</userinput>.
+These will display the tail wind or cross wind component of the sampled wind with respect to the motion along the cross section at the sampled location.
+
+</para><para>
+Note that for cross section samples, entries in <userinput>location_look_up</userinput> table MUST
+be entries from the location look up table in directive <link linkend='ps_define_cross_section'>@define_cross_section</link>.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/wind_crossref.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for wind speeds or gusts to display</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Format of attribute to display
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><tbody>
+<row><entry><userinput>wind_barb</userinput></entry><entry>for wind values</entry></row>
+<row><entry><userinput>wind_text</userinput></entry><entry>for wind values</entry></row>
+<row><entry><userinput>wind_symbol</userinput></entry><entry>for wind values</entry></row>
+</tbody></tgroup></informaltable>
+
+</para><para>or additionally for <userinput>route</userinput> cross sections: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><tbody>
+<row><entry><userinput>tail_wind_barb</userinput></entry><entry>for tail wind values</entry></row>
+<row><entry><userinput>tail_wind_text</userinput></entry><entry>for tail wind values</entry></row>
+<row><entry><userinput>tail_wind_symbol</userinput></entry><entry></entry></row>
+<row><entry></entry><entry>for tail wind values</entry></row>
+<row><entry><userinput>cross_wind_barb</userinput></entry><entry>for cross wind values</entry></row>
+<row><entry><userinput>cross_wind_text</userinput></entry><entry>for cross wind values</entry></row>
+<row><entry><userinput>cross_wind_symbol</userinput></entry><entry></entry></row>
+<row><entry></entry><entry>for cross wind values</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/mark.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/mark_scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/display_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/display_type.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/width_scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/height_scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotation.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotate_to_latitude.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotate_to_longitude.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_display_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_display_off.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset of wind text or barb wrt current sample position</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical  offset of wind text or barb wrt current sample position</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/source.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/valid_time.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For map or point samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fit_to_map.xml'/>
+</tbody></tgroup></informaltable>
+</para><beginpage/><para>
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For point samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lat.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lon.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_x.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_y.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_units.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_ident.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/grid_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/list_name.xml'/>
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For point or table samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_look_up.xml'/>
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For table samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/table_name_obj.xml'/>
+</tbody></tgroup></informaltable>
+</para><beginpage/><para>
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For cross section samples ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/cross_section_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_location_look_up.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_distances.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_units.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_times.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_fractions.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_level.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_equation.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_units.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_attribute_upper.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_attribute_lower.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline_first.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font_weight.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/italics.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/char_space.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/word_spacing.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@sample_wind { wind_crossref = Fpa_Wind;
+  lat = 44:40N; lon = 63:35W;
+   units = knots; format = wind_barb;
+  outline = X11 Red; fill = X11 Red; line_width = 0.05; }</programlisting>
+Sample the Fpa_Wind wind cross-reference at latitude 44 degrees and 40 minutes North and
+longitude 63 degrees and 35 minutes West. The wind will be displayed as a <userinput>wind_barb</userinput> scaled in
+units of knots at the given location on the current map. The wind barb will be drawn with Red line
+0.05 "units" wide, and with a barb presentation given by a <link linkend='ps_wind_barb_presentation'>@wind_barb_presentation</link> directive.
+Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@sample_wind { wind_crossref = Fpa_Wind;
+  table_name = T1; units = knots; format = wind_text;
+  source = depict; valid_time = 12;
+  x_off = 3.0; y_off = 0; }</programlisting>
+Sample the Fpa_Wind wind cross-reference from the depict source 12 hours after the current time
+for each site (from the <link linkend='ps_table_site'>@table_site</link> directive) of a table called "T1" 
+(from the <link linkend='ps_define_table'>@define_table</link> directive).
+Display the sampled wind scaled in units of knots, and with a presentation given by a
+<link linkend='ps_wind_presentation'>@wind_presentation</link> directive. The sampled wind will be displayed 3.000 "units" to the right of
+the current location in the table. (Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>)
+
+		</para></example>
+</para></sect2>

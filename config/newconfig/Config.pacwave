@@ -1,0 +1,199 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Config-type files in the $FPA/config directory can and will be updated #
+#   with any new release, update, or patch of the FPA software suite.          #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Config file that refers to this file through an     #
+#   #include statement.  Refer to the file Config, or d.Config for further     #
+#   instructions.                                                              #
+#                                                                              #
+################################################################################
+
+################################################################################
+#
+# "Config.pacwave" Configuration File for North Pacific Ocean Wave Model
+#
+################################################################################
+
+revision 6.0
+
+################################################################################
+#
+# "Sources" block - Descriptions of each data source
+#
+# Each source in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each source may optionally be identified by an alias name.
+# These aliases are used to match the source names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each source by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+################################################################################
+
+Sources
+	{
+
+	Pacwave
+		{
+		label			= <*default*> "North Pacific Waves"
+		short_label		= <*default*> "Pacwave"
+		source_type		= Allied
+		alias			= pac  ODGP_Pacwave
+
+		directory_tag	= AModels.Data
+		directory_path	= Pacwave
+		directory_layers	= 2
+
+		subsources		= None
+
+		allied_model	=
+			{
+			time_matching	= True
+			source_info		= interp
+			pre_process		= odgp_prep <SETUP> <SOURCE> <SUBSOURCE> <RTIME>
+			process			= odgp_exec <SETUP> <SOURCE> <SUBSOURCE> <RTIME>
+			post_process	= odgp_post <SETUP> <SOURCE> <SUBSOURCE> <RTIME>
+
+			programs		=
+				{
+				Program
+					{
+					directory_tag	= AModels.Exec
+					program_path	= bin/wave_model
+					}
+				}
+
+			files			=
+				{
+				aliases
+					{
+					file_path		= Aliases
+					}
+				sites
+					{
+					directory_tag	= AModels.Exec
+					file_path		= CFiles/ODGP_Sites
+					}
+				runfile
+					{
+					directory_tag	= AModels.Exec
+					file_path		= CFiles/ODGP_Run
+					}
+				grid
+					{
+					directory_tag	= AModels.Exec
+					file_path		= CFiles/GRID.FILE
+					}
+				propagation
+					{
+					directory_tag	= AModels.Exec
+					file_path		= CFiles/WAVE.PROP
+					}
+				nullspectra
+					{
+					directory_tag	= AModels.Exec
+					file_path		= CFiles/NULLSPEC.DAT
+					}
+				originalctrl
+					{
+					directory_tag	= AModels.Exec
+					file_path		= CFiles/Control.orig
+					}
+				control
+					{
+					file_path		= Control
+					}
+				icepoints
+					{
+					file_path		= IcePoints
+					}
+				inputwinds
+					{
+					file_path		= ModelInputData
+					}
+				checklist
+					{
+					file_path		= CheckList
+					}
+				summaries
+					{
+					file_path		= Summaries
+					}
+				waves
+					{
+					file_path		= ModelOutputWaves
+					}
+				T00spectra
+					{
+					file_path		= T00Spectra
+					}
+				finalspectra
+					{
+					file_path		= FinalSpectra
+					}
+				arch1point
+					{
+					file_path		= PointSpectra1
+					}
+				arch2point
+					{
+					file_path		= PointSpectra2
+					}
+				}
+
+			required_fields				= None
+
+			required_wind_crossrefs		=
+				{
+				FpaWind
+					{
+					crossref_info			= Fpa_Wind
+					}
+				}
+
+			required_value_crossrefs	= None
+
+			metafiles		=
+				{
+				waveheight
+					{
+					file_alias		= waves
+					field_info		= wave_height	surface
+					}
+				uv_wavehgt
+					{
+					file_alias		= waves
+					field_info		= uv_wave_hgt	surface
+					}
+				waveperiod
+					{
+					file_alias		= waves
+					field_info		= wave_period	surface
+					}
+				waveplot
+					{
+					file_alias		= waves
+					field_info		= wave_plot		surface
+					}
+				windplot
+					{
+					file_alias		= inputwinds
+					field_info		= wind_plot		surface
+					}
+				}
+			}
+		}
+
+	}

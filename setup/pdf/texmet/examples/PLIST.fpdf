@@ -1,0 +1,127 @@
+! Set version number ... must be the first line!
+@version { texmet7.0 }
+
+! Set verbose mode for diagnostic output
+@verbose { no }
+
+! Set output file name ...
+@file_name
+	{
+	dir  = <default>;							! Directory
+				! Options <default> <home>
+	name = <pdf>_<year>:<month>:<day>:<hour>;	! Filename
+				! Options <pdf> <year> <month> <day> <julian> <hour>
+	}
+
+! Set the size of the output file ...
+@size
+	{
+	columns = 80;
+	rows    = 30;
+	}
+
+! Set the source and valid time ...
+@set_source
+	{
+	source     = depict;
+	valid_time = 1/00
+	}
+
+! Write some header information ...
+@write_time
+	{
+	type          = issue;
+	time          = GMT;
+	format        = Pressure (in mb) forecast on %a, %b %d, %y;
+	x_off         = 0;
+	y_off         = 0;
+	justification = left;
+	}
+@write_time
+	{
+	type          = valid;
+	time          = GMT;
+	format        = Data Valid %A, %B %d, %Y  Time\=%H:00;
+	x_off         = 0;
+	y_off         = 1;
+	justification = left;
+	}
+
+! Define the map ....
+@include { pgrid_map_setup }
+
+! Set the default presentation ...
+@presentation
+	{
+	justification = left
+	}
+
+! Define a list for sampling data ...
+@define_sample_list
+	{
+	list_name           = sample_list
+	lat_lon_ident       = 50:00N 90:30W "This is first\!"
+	map_x_y_ident       = 3500 1000 2nd
+	map_x_y_ident       = 4000 1000 3rd
+	map_x_y_ident       = 3500 1600 4th
+	map_x_y_ident       = 4000 1600 5th
+	map_x_y_ident       = 4750 3000
+	location_ident      = CYSJ
+	location_ident_list = CWSA CYYT CYQB KBOS
+	lat_lon_ident       = 55:00N 90:30W "This is last\!"
+	map_units           = 1000
+	x_shift             =    0
+	y_shift             =    1
+	}
+
+! Display pressure sampled from a list ...
+@sample_field
+	{
+	element          = pressure;
+	level            = msl;
+	units            = mb;
+	format           = direct %6.1f;
+	source           = depict;
+	valid_time       = 1/00;
+	justification    = left;
+	list_name        = sample_list;
+	location_look_up = aerodromes;
+	x_off            = 2;
+	y_off            = 5;
+	attribute        = GPGEN_default_attribute;
+	attribute        = GPGEN_ident;
+	attribute_format = direct %s;
+	attribute_x_off  = 14;
+	attribute_y_off  =  0;
+	}
+
+! Display winds sampled from a list ...
+@wind_presentation
+	{
+	wind_look_up            = hourly_wind;
+	calm_type               = text;
+	calm_justification      = centre;
+	x_calm                  = 2;
+	y_calm                  = 0;
+	direction_type          = value;
+	direction_justification = right;
+	x_dir                   = 1;
+	y_dir                   = 0;
+	speed_type              = value;
+	speed_justification     = left;
+	x_spd                   = 2;
+	y_spd                   = 0;
+	gust_type               = none;
+	}
+@sample_wind
+	{
+	wind_crossref    = Fpa_Wind;
+	units            = knots;
+	format           = wind_text;
+	source           = depict;
+	valid_time       = 1/00;
+	list_name        = sample_list;
+	location_look_up = aerodromes;
+	x_off            = 10;
+	y_off            =  5;
+	}

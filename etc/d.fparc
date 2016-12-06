@@ -1,0 +1,113 @@
+# Startup file for FPA users
+
+# This file defines a number of optional environment variables which control
+# the behaviour of FPA applications.
+
+# NOTE: This file cannot be used in its original form (as found in $FPA/etc)
+#       because it contains constructs that are meant to be interpretted by the
+#       mkfpaenv script.  A modified copy of this file is placed in $HOME/.fparc
+#       by the mkfpaenv script (or by mkfpadb, which calls mkfpaenv).  You may
+#       customise your local copy.
+
+# NOTE: This is not a script - it is automatically sourced (dotted) by the
+#       command file .fpaenvrc, which in turn is sourced (dotted) by all FPA
+#       applications.  The command file .fpaenvrc contains default values for
+#       most of the variables discussed here, but values specified here take
+#       precedence.
+
+
+
+# Define the optional directory to search for setup files.  Setup files are
+# searched for in the standard list of directories:
+#       $HOME
+#       $HOME/setup
+#       $FPA_SETUP_DIR (if defined here)
+#       $FPA/setup
+#       $FPA/config
+#       $FPA/config/setup
+<<FPA_SETUP_DIR="$HOME/setup">>
+
+# Define the standard setup file name to use when no setup file is specified.
+# The default name is "fpa.setup".
+<<FPA_SETUP_FILE=fpa.setup>>
+
+# Define an optional log file for standard output from FPA applications.  The
+# default log file is defined in the command file .fpaenvrc, which sources this
+# command file.  You may specify the log file in one of four ways:
+#       "-" . . . . . . . causes output to go to standard out
+#       "/dev/null" . . . causes output to be discarded
+#       "!FPA_AUTO_LOG" . causes a log filename based on the setup filename to
+#                         be used
+#       anything else is interpretted directly as a filename
+<<FPA_LOG_FILE="$HOME/fpa.log">>
+
+# Define the printer(s) for producing raster dumps of the screen in PCL and/or
+# PostScript format.  The default printer for each format is defined in the
+# command file .fpaenvrc, but a names defined here take precedence.  Each must
+# be a PCL or PostScript printer with raster capability, such as a laserjet.
+<<FPA_PCL_PRINTER=laser>>
+<<FPA_PS_PRINTER=laser>>
+
+# Define the printer for printing forecast bulletin text.  The default is
+# defined in the command file .fpaenvrc, but a name defined here takes
+# precedence.
+<<FPA_TEXT_PRINTER=laser>>
+
+# Define the command to be executed to edit any text product which is not
+# handled by a specific graphical editor.  The default is defined in the
+# command file .fpaenvrc, but a command specified here takes precedence.
+# The editor should be run in an hpterm window.  The file name to edit will be
+# added to the end of the command at the time the editor is run.
+<<FPA_TEXT_EDITOR="/usr/bin/X11/hpterm -e vi">>
+
+# Define a local resource file to override any user controlable behaviour.
+# To build a resource override file the file $FPA/etc/d.XFpa
+# should be copied to your home directory and renamed to the name specified
+# here.  Instructions given inside the supplied file explain how it may be
+# customized.
+<<FPA_RESOURCE="$HOME/.XFpa">>
+
+# Define the usual source of GRIB data files for the ingest procedure.  The
+# default is defined in the command file .fpaenvrc, but a directory defined here
+# takes precedence.  You may also override this directory in the setup file (see
+# ingest.src in the "directories" block of the setup file).
+<<FPA_LOCAL_GRIB="$HOME/data/remote">>
+
+# Define the location of resource files for the interface.  The resource files
+# have been provided in English, in the directory $FPA/app-defaults/english,
+# and in French, in the directory $FPA/app-defaults/c-french.
+# The default files in $FPA/app-defaults are simply linked to the English ones.
+# If you have resource files for another language, for example, the directory
+# $FPA/app-defaults/<language>, you may run the interface in that language by
+# setting this variable to <language>.
+<<FPA_LANG="english">>
+
+# Define the X font directories and font servers that hold the FPA fonts.  The
+# default is defined in the command file .fpaenvrc, but a value defined here
+# takes precedence.  This may be a list of directories and/or font servers,
+# separated by white-space.  A font server takes the form "tcp/<host>:7000",
+# where <host> is the remote host where the font server is running.
+<<FPA_FONT_PATH="$FPA/fonts">>
+
+# The X11 RGB colour table is usually located here.
+# However, different operating systems may require a different location.
+<<RGB_TXT_FILE="/usr/share/X11/rgb.txt">>
+
+# The following variables are used in various custom configurations to allow
+# such things as sharing guidance and product generation amongst several FPA
+# databases.
+<<FPA_OFFICE=>>
+<<FPA_DATA=>>
+<<FPA_GUID=>>
+
+# FPA software normally accesses a shared library, which contains local
+# functions.  This library is searched for in a standard set of locations
+# set in the FPA_SHLIB_PATH variable in the command file .fpaenvrc.  You may
+# set additional directories here to be searched ahead of the standard set.
+<<FPA_SHLIB_PATH=>>
+
+# FPA software can access python scripts for implementing type and entry rules,
+# These scripts are searched for in the standard locations for executables
+# set in the FPA_EXEC_PATH variable in the command file .fpaenvrc.  You may
+# set additional directories here to be searched ahead of the standard set.
+<<FPA_EXEC_PATH=>>

@@ -1,0 +1,56 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	dates
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "Date Converter"
+
+
+# Rules for building Date Converter program:
+DATES      = $(BINDIR)/$(PLATFORM)/dates
+DATES_OBJ  = dates.o
+dates:		Pobjects $(DATES)
+			@	echo "FPA $(PLATFORM) dates ready"
+			@	echo 
+$(DATES):	$(DATES_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) dates"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(DATES_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/dates ]; \
+					then cd $(BINDIR); ln -s fpa.exec dates; fi
+
+
+# Rules for building object modules:
+dates.o:	$(FPAHDR)
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) Date Converter module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

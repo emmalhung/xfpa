@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.5.5. DataFiles Block</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch06s05.html" title="6.5. Ingest and Ingest.name" /><link rel="prev" href="ch06s05s04.html" title="6.5.4. Fields Block" /><link rel="next" href="ch06s06.html" title="6.6. Memory Preset Configuration File Format" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.5.5. DataFiles Block</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s05s04.html">Prev</a> </td><th width="60%" align="center">6.5. Ingest and Ingest.<span xmlns="" class="replaceable">name</span></th><td width="20%" align="right"> <a accesskey="n" href="ch06s06.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2063496"></a>6.5.5. DataFiles Block</h3></div></div></div><p>
+<a id="id2063503" class="indexterm"></a>
+The <strong class="userinput"><code>Datafiles</code></strong> block specifies a list of fields to process or skip when generating <span class="acronym">FPA</span> datafiles.
+</p><pre class="programlisting">DataFiles
+  {
+  process  = <span xmlns="" class="replaceable">source element level</span>
+  skip     = <span xmlns="" class="replaceable">source element level</span>
+  redirect = <span xmlns="" class="replaceable">original destination</span>
+  rescale  = <span xmlns="" class="replaceable">element level scale offset</span>
+  }</pre><p>
+</p><div class="informaltable"><table border="1"><colgroup><col /><col /></colgroup><thead><tr><th>command</th><th>purpose</th></tr></thead><tbody><tr valign="top"><td valign="top">process</td><td valign="top">Convert only selected fields into <span class="acronym">FPA</span> data files</td></tr><tr valign="top"><td valign="top">skip</td><td valign="top">Convert all but the selected fields into <span class="acronym">FPA</span> data files.
+You cannot combine process and skip directives.
+If a process directive exists then all skip directives are ignored.</td></tr><tr valign="top"><td valign="top">redirect</td><td valign="top">Redirect from origin source to destination source for processed fields.
+This allows us to separate metafiles and datafiles generated from the same <span class="acronym">GRIB</span> field into different directories.
+Here the destination source must be defined in a <code class="filename">Config</code> file.</td></tr><tr valign="top"><td valign="top">rescale</td><td valign="top"><p>A datafile is a binary file which contains a simple grid of data.
+Each datum is stored as a signed short integer (2 bytes).
+If any of the data being stored falls outside the range of signed shorts, information will be lost.
+Rescale the data by scale and offset:
+<strong class="userinput"><code> short_val = (short int) ((float_val - offset)*scale)</code></strong> to avoid losing information.
+The '*' character may be used to match all possible choices of element or level.
+Scale and offset may be floating point numbers.
+example: rescale = temperature * 0.1 0.0 </p>
+</td></tr></tbody></table></div><p>
+The '*' character may be used to match all possible choices for source, element or level.
+</p><div class="informalexample"><pre class="programlisting">process = GFS * surface</pre></div><p>
+will process all surface fields from the <span class="acronym">GFS</span> source.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s05s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.5.4. Fields Block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.6. Memory Preset Configuration File Format</td></tr></table></div></body></html>

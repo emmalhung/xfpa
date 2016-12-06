@@ -1,0 +1,80 @@
+! Reset presentations for geographic features ...
+@reset_geo_presentation { }
+
+! Define presentation for oceans ...
+! These will be displayed as filled areas ...
+@geo_presentation
+	{
+	geo_name      = water;
+	line_width    = 0.02;
+	outline       = CMYK 100 100 0 0;
+	interior_fill = CMYK 100 100 0 0;
+	}
+@geo_presentation
+	{
+	geo_name      = ice_major;
+	line_width    = 0.02;
+	outline       = CMYK 100 100 0 0;
+	interior_fill = CMYK 100 100 0 0;
+	}
+
+! Display oceans ... for DCW maps
+@geography
+	{
+	geo_file           = oceans.fpa;		!EDIT!
+	element            = land_water;
+	level              = geography;
+	category_attribute = FPA_category;
+	category           = water  ice_major
+	attribute          = FPA_category;
+	}
+
+! Reset presentations for geographic features ...
+@reset_geo_presentation { }
+
+! Define presentation for geographic features we may wish to see ...
+! These will be displayed as outlines ...
+@geo_presentation
+	{
+	geo_name      = coast_major;
+	line_width    = 0.01;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	}
+@geo_presentation
+	{
+	geo_name      = border;
+	line_width    = 0.01;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	}
+@geo_presentation
+	{
+	geo_name      = border_major;
+	line_width    = 0.01;
+	outline       = CMYK 0 0 0 80;
+	interior_fill = none;
+	}
+
+! Display coastlines ... for DCW maps
+! Note that coastlines were saved as lines!
+@geography
+	{
+	geo_file           = coasts.fpa;		!EDIT!
+	element            = land_water;
+	level              = geography;
+	category_attribute = FPA_category;
+	category           = coast_major
+	attribute          = FPA_category;
+	}
+
+! Display political boundaries ... for DCW maps
+@geography
+	{
+	geo_file           = base_map.fpa;		!EDIT!
+	element            = boundaries;
+	level              = geography;
+	category_attribute = FPA_category;
+	category           = border_major  border
+	attribute          = FPA_category;
+	}

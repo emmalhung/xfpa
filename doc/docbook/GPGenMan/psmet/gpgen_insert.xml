@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_gpgen_insert'> <title>@gpgen_insert</title> <titleabbrev>@gpgen_insert</titleabbrev>
+<para>
+Insert format specific commands directly into the output file. This directive can interpret an number of special codewords that are replaced by appropriate values when the product is generated.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&valuehead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>commands</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>valid output format specific code.
+</para><para>(The command can include any of the codewords based on the name of the graphics product, the <command>T0</command> time when the product is run, the current "valid time" (<command>Tv</command>), or the actual "clock time" (<command>Tc</command>) for sampling. See <xref linkend='ps_namecode'/>)</para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<table id='ps_gpgen_codewords' frame='all' rowsep='1' colsep='1'><title>Codewords</title><tgroup cols='2'>
+<colspec colwidth='1*' align='right'/><colspec colwidth='3*'/><tbody>
+<row valign='top'><entry><userinput>&lt;GPGEN_default&gt;</userinput></entry><entry>path to <replaceable>sub_directory</replaceable> in the <replaceable>output_directory</replaceable></entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_svgout&gt;</userinput></entry><entry>for &SVGMet; output directory</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_home&gt;</userinput></entry><entry>for "home" directory defined in local setup file</entry></row>
+
+<row valign='top'><entry><userinput>&lt;GPGEN_year&gt;</userinput></entry><entry>for <command>T0</command> year (such as 2008 )</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_month&gt;</userinput></entry><entry>for <command>T0</command> month (01-12)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_day&gt;</userinput></entry><entry>for <command>T0</command> day (01-31)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_julian&gt;</userinput></entry><entry>for <command>T0</command> day of the year (001-366)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_hour&gt;</userinput></entry><entry>for <command>T0</command> hour of the day (00-23)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_minute&gt;</userinput></entry><entry>for <command>T0</command> minute in  hour (00-59)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_local&gt;</userinput></entry><entry>L if <command>T0</command> time is a local time</entry></row>
+
+<row valign='top'><entry><userinput>&lt;GPGEN_v_year&gt;</userinput></entry><entry>for <command>Tv</command> year (such as 2008 )</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_v_month&gt;</userinput></entry><entry>for <command>Tv</command> month (01-12)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_v_day&gt;</userinput></entry><entry>for <command>Tv</command> day (01-31)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_v_julian&gt;</userinput></entry><entry>for <command>Tv</command> day of the year (001-366)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_v_hour&gt;</userinput></entry><entry>for <command>Tv</command> hour of the day (00-23)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_v_minute&gt;</userinput></entry><entry>for <command>Tv</command> minute in  hour (00-59)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_v_local&gt;</userinput></entry><entry>L if <command>Tv</command> time is a local time</entry></row>
+
+<row valign='top'><entry><userinput>&lt;GPGEN_c_year&gt;</userinput></entry><entry>for <command>Tc</command> year (such as 2008 )</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_c_month&gt;</userinput></entry><entry>for <command>Tc</command> month (01-12)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_c_day&gt;</userinput></entry><entry>for <command>Tc</command> day (01-31)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_c_julian&gt;</userinput></entry><entry>for <command>Tc</command> day of the year (001-366)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_c_hour&gt;</userinput></entry><entry>for <command>Tc</command> hour of the day (00-23)</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_c_minute&gt;</userinput></entry><entry>for <command>Tc</command> minute in  hour (00-59)</entry></row>
+
+<row valign='top'><entry><userinput>&lt;GPGEN_p_hour&gt;</userinput></entry><entry>for <command>Tv-T0</command> in hours</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_p_minute&gt;</userinput></entry><entry>for <command>Tv-T0</command> in minutes</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_p_hr_min&gt;</userinput></entry><entry>for <command>Tv-T0</command> in hours and minutes (xx:tt)</entry></row>
+
+<row valign='top'><entry><userinput>&lt;GPGEN_iteration&gt;</userinput></entry><entry>for a <link linkend='ps_loop_begin'>@loop_begin</link> iteration value.</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_iteration _attribute&gt;</userinput></entry><entry>for the value of the attribute in a <link linkend='ps_loop_begin'>@loop_begin</link> iteration.</entry></row>
+<!-- These aren't included but maybe in the future?
+<row valign='top'><entry><userinput>&lt;GPGEN_SETUP&gt;</userinput></entry><entry>for name of local setup</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_RTIME&gt;</userinput></entry><entry>for <command>T0</command> timestamp</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_VTIME&gt;</userinput></entry><entry>for <command>Tv</command> timestamp</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_psmet&gt;</userinput></entry><entry>for &PSMet; directory</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_psout&gt;</userinput></entry><entry>for &PSMet; output directory</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_svgmet&gt;</userinput></entry><entry>for &SVGMet; directory</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_texmet&gt;</userinput></entry><entry>for &TexMet; directory</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_texout&gt;</userinput></entry><entry>for &TexMet; output directory</entry></row>
+<row valign='top'><entry><userinput>&lt;GPGEN_pdf&gt;</userinput></entry><entry>for the <replaceable>product_name</replaceable> of the controlling product definition file ( without trailing ".fpdf")</entry></row>
+-->
+
+</tbody></tgroup></table>
+<example><title> SVG Product </title><para>
+<programlisting>@gpgen_insert { &lt;use xlink:href="map.jpg" x="0" y="0"&gt; }</programlisting>
+Insert a JPEG background map into the SVG image.
+</para></example>
+</para></sect2>

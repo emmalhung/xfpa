@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>B.1. Components of Equations</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apb.html" title="Appendix B. Equation Evaluator" /><link rel="prev" href="apb.html" title="Appendix B. Equation Evaluator" /><link rel="next" href="apbs02.html" title="B.2.  Mathematical Operators and Their Precedence" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">B.1. Components of Equations</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apb.html">Prev</a> </td><th width="60%" align="center">Appendix B. Equation Evaluator</th><td width="20%" align="right"> <a accesskey="n" href="apbs02.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2013735"></a>B.1. Components of Equations</h2></div></div></div><p>
+<a id="id2009164" class="indexterm"></a>
+Equations are created from mathematical constants, functions, named constants or field names (and their modifiers) combined with each other by mathematical operators.
+</p><p>
+Mathematical constants are integer or real numbers in decimal or scientific notation, such as 535, -4.56, 89.7E5 or 1.22e-12.
+Functions are identified as a string followed by square brackets, that is, function[].
+A function may or may not contain other fields within the square brackets.
+Fields within the brackets are separated by commas (,).
+Functions recognized within the <span class="acronym">FPA</span> are described in the Equation Functions section below.
+</p><p>
+Named constants are strings found in the "Constants" section of the configuration files (as described in <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>).
+For example, the value of PI is defined in the <code class="filename">Config.master</code> configuration file as having a value of 3.1415926536.
+(Note that named constants are case sensitive, so that pi or Pi will not be recognized by the equation evaluator.
+Note also that named constants are evaluated before fields, so that if a configuration file uses the same name in the "Constants" section and the "Elements" section, then the equation evaluator will only recognize the "Constants" definition.)
+</p><p>
+Fields are usually defined by element names, which are strings found in the "Elements" section of the configuration files (as described in <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>).
+(Fields may also be defined by the combination of the element file identifier and the level file identifier used in the file naming convention in the <span class="acronym">FPA</span> Data Directory structure. (See <a href="ch04s03.html" title="4.3. File Naming Conventions">File Naming Conventions, (Section 4.3)</a>)
+Element and level file identifiers can be found in the "Elements" and "Levels" sections of the configuration files.)
+</p><p>
+A field in the <span class="acronym">FPA</span> is defined as an element at a given level for a given valid time that comes from a given source at a given run time.
+(A field in the <span class="acronym">FPA</span> configuration files has a generalized definition given only by element and level.)
+</p><p>
+For example, the 850 mb dewpoint temperature for 12Z February 2, 2003 taken from the Canadian Global Environment Multiscale (GEM) model run at 00Z February 1, 2003 is a field.
+In the <span class="acronym">FPA</span> parlance, the element is dewpoint, the level is 850mb, the valid time is 2003:033:12 (in <span class="acronym">FPA</span> timestamp format of year: julian day: hour), the source is GEM, and the run time is 2003:032:00.
+All of this field information is required by the <span class="acronym">FPA</span> to be able to find and display this field.
+</p><p>
+All equations in the <span class="acronym">FPA</span> are defined for a given element (or occasionally a given element and level).
+This means that all other information about the field in the equation is implied.
+For example, the equation for dewpoint temperature in the <code class="filename">Config.master</code> configuration file is given as <code class="computeroutput">temp - es</code>, or temperature minus dewpoint depression, which are both also <span class="acronym">FPA</span> fields.
+Thus, when one requests the <span class="acronym">FPA</span> to display the 850 mb dewpoint temperature for 12Z February 2, 2003 taken from the Canadian GEM Model run at 00Z February 1, 2003, the field is calculated from the temperature and dewpoint depression at 850 mb for 12Z February 2, 2003 taken from the Canadian GEM Model run at 00Z February 1, 2003.
+Information about the level, valid_time, source, and run_time is assumed to be the same as for the field that is being calculated, unless the equation explicitly modifies the information.
+</p><p>
+Modifiers for fields are identified by the field name followed by angle brackets, that is, name&lt;modifier(s)&gt; Modifiers within the brackets are strings separated by commas (,).
+The usage of field modifiers is discussed in the Field Modifiers section below.
+</p><p>
+ Any field can have an equation which depends on fields that can also have equations.
+ There is no limit to the number of equations which may be necessary to access to evaluate a given field.
+ There is an internal check, however, to ensure that an infinite loop does not occur.
+ (An example can be found in the <code class="filename">Config.master</code> configuration file, where dewpoint temperature has an equation requiring dewpoint depression which has an equation requiring dewpoint temperature! One of these fields would have to be present for the equation to succeed.)
+ </p><p>
+ The components of equations are summarized below:
+ </p><div class="informaltable"><table border="1"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">numeric</span></td><td valign="top">constant value</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">name</span>[]</td><td valign="top">function name</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">name</span></td><td valign="top">named constant (if found)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">name</span></td><td valign="top">field name</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">name</span>&lt;<span xmlns="" class="replaceable">modifier(s)</span>&gt;</td><td valign="top">field name with modifiers</td></tr></tbody></table></div><p>
+ The mathematical operators that can be used within the <span class="acronym">FPA</span> equation evaluator are described in the Mathematical Operators section below.
+ </p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apb.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apbs02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix B. Equation Evaluator </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> B.2.  Mathematical Operators and Their Precedence</td></tr></table></div></body></html>

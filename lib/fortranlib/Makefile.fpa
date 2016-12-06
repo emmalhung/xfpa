@@ -1,0 +1,49 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM}
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+
+
+# Here is the list of object files to go into the shared library:
+MODULES  =	alias_F77.o
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:		$(FORTLIB)
+
+
+# Make the library:
+all lib libs:	fortlib
+			@	echo "FPA $${PLATFORM} fortran library ready"
+			@	echo 
+
+
+# Build the library:
+fortlib:		modules $(FORTLIB)
+$(FORTLIB):		$(MODULES)
+		@	echo "Re-building FPA $${PLATFORM} fortran library"
+		@	if [ ! -d $(LIBDIR)/$${PLATFORM} ]; then \
+				mkdir $(LIBDIR)/$${PLATFORM}; fi
+		@	if [ -f $(FORTLIB) ]; then rm -f $(FORTLIB); fi
+		@	sleep 1
+		@	$${LIB_SHARED} -o $(FORTLIB) $(MODULES)
+
+
+# Rules for building object modules for the library:
+modules:	Pmodules $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA $${PLATFORM} fortran library"
+
+alias_F77.o:
+
+
+# Built-in rules:
+.f.o:
+	@	echo "Compiling (FORTRAN 77) FPA $${PLATFORM} fortran modules $<"
+	@	$${FTN_COMP_SHARED} -c $(FTN_OPTIONS) $< 2>/dev/null
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

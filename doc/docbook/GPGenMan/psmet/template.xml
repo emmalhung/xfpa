@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_template'> <title>@template</title> <titleabbrev>@template</titleabbrev>
+<para>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>element</userinput> and <userinput>level</userinput> can be specified more than once in this directive.</para></entry></row>
+<row valign='top'><entry spanname='tblnote'><para>Note that if a single element name is matched with a list of level names, or vice versa, the single name must be given first. Multiple element and level name lists should have the same number.</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>line_width</userinput>, <userinput>line_style</userinput>, <userinput>outline</userinput> and <userinput>fill</userinput> can be specified more than once in this directive, for drawing multi-coloured curves!</para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>
+</programlisting>
+</para></example>
+</para></sect2>

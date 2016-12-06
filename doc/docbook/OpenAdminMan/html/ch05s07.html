@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.7. Interface Setup</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch05.html" title="Chapter 5. Defining Your Local Setup" /><link rel="prev" href="ch05s06.html" title="5.6. Configuration Files Setup" /><link rel="next" href="ch05s08.html" title="5.8. Depiction Setup" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.7. Interface Setup</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s06.html">Prev</a> </td><th width="60%" align="center">Chapter 5. Defining Your Local Setup</th><td width="20%" align="right"> <a accesskey="n" href="ch05s08.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2085404"></a>5.7. Interface Setup</h2></div></div></div><p>
+<a id="id2085411" class="indexterm"></a>
+The <strong class="userinput"><code>interface</code></strong> block defines a number of customizable features in the user interface.
+The keywords are enclosed in square brackets and must be on a separate line from the following data.
+For example:
+</p><pre class="programlisting">[map.overlay]
+"FPCN20 Areas" qx_20
+"FPCN21 Areas" qx_21
+</pre><p>
+</p><p>
+The following keywords are recognized:
+</p><div class="variablelist"><dl><dt><span class="term">allied.model</span></dt><dd><p>
+If given, specifies a list of models which may be run.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>model source (and sub-source if required) as <span xmlns="" class="replaceable">source</span>:<span xmlns="" class="replaceable">sub-source</span></p></li><li><p>optional keyword either <strong class="userinput"><code>notify</code></strong> or <strong class="userinput"><code>no_notify</code></strong>. Specifies if the source update indicator (the book shelf) should flash when new data arrives. Default is <strong class="userinput"><code>notify</code></strong></p></li><li><p>optional time interval (in minutes). Any source that updates again before this time interval expires will not flash the update indicator. Default is 0.</p></li></ul></div><p>
+</p></dd><dt><span class="term">demo.date</span></dt><dd><p>
+Set  an imaginary clock if you have a "canned" database.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>YYYY/MM/DD/HH or YYYY/MM/DD HH</p></li></ul></div><p>
+where YYYY is the four digit year, MM is the two digit month, DD is the two digit day of the month and HH is the two digit GMT hour of the day.
+</p></dd><dt><span class="term">depiction.coview</span></dt><dd><p>
+Specifies the depictions to appear in the CoView depiction list. Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the selection button</p></li><li><p>setup file to use to view the foreign depiction</p></li><li><p>command line options for the spawned <span class="acronym">FPA</span> (see <a href="ch02s02.html" title="2.2. The Depiction Editor">The Depiction Editor, (Section 2.2)</a>)</p></li><li><p>a list of standard X options (i.e., <code class="option">-geometry</code>, <code class="option">-display</code>)</p></li></ul></div><p>
+</p></dd><dt></dt><dd></dd><dt></dt><dd></dd><dt><span class="term">depiction.external</span></dt><dd><p>
+Specifies depiction databases which can be imported into or merged into the existing depiction sequence.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p> source identifier for the required database. This must have already been defined in the configuration file as a source.</p></li><li><p>optional keyword either <strong class="userinput"><code>notify</code></strong> or <strong class="userinput"><code>no_notify</code></strong>. Specifies if the source update indicator (the book shelf) should flash when new data arrives. Default is <strong class="userinput"><code>notify</code></strong></p></li><li><p>optional time interval (in minutes). Any source that updates again before this time interval expires will not flash the update indicator. Default is 0.</p></li></ul></div><p>
+</p></dd><dt><span class="term">depiction.savetime</span></dt><dd><p>
+Specifies the number of days to allow saved depictions to remain in the <code class="filename">Backup</code> directory.
+The default is 7 days.
+An entry of 0 or less will allow depictions to remain in the <code class="filename">Backup</code> directory indefinitely.
+</p></dd><dt><span class="term">depiction.timeSteps</span></dt><dd><p>
+Optional time steps for the depiction sequence, using time increments rather than the normal depiction by depiction.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the option selection list</p></li><li><p>label to appear between the depiction time stepping arrows</p></li><li><p>minimum time step between depictions in minutes</p></li></ul></div><p>
+</p></dd><dt><span class="term">field.autoimport</span></dt><dd><p>
+Lists autoimport sources and specifies options. An autoimport source is a directory where valid metafiles may be put where <span class="acronym">FPA</span> will automatically detect their presence and then import the file into the depiction sequence with actions that depend on the specified options. 
+</p><div class="itemizedlist"><ul type="disc"><li><p>the autoimport source identifier as defined in a configuration file.</p></li><li><p>import the field into  the <span class="acronym">FPA</span> without asking the user for permission. (<strong class="userinput"><code>true</code></strong> or <strong class="userinput"><code>false</code></strong>) Default is <strong class="userinput"><code>false</code></strong>.</p></li><li><p>if importing the field would create a depiction, create the depiction without asking the user for permission. (<strong class="userinput"><code>true</code></strong> or <strong class="userinput"><code>false</code></strong>) Default is <strong class="userinput"><code>false</code></strong>.</p></li></ul></div></dd><dt><span class="term">field.smoothing</span></dt><dd><p>Specifies the maximum smoothing factor for the continuous and vector fields. This is a float value with a default of 5.0.</p></dd><dt><span class="term">guidance.animationTimeSteps</span></dt><dd><p>
+Optional time steps for guidance animation frames, using time increments relative to the T0 depiction time rather than the normal frame by frame.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the selection list</p></li><li><p>minimum time step between animation frames in minutes</p></li></ul></div><p>
+</p></dd><dt></dt><dd></dd><dt><span class="term">guidance.model</span></dt><dd><p>
+Specifies guidance models to be made available for selection by the user.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>model source (and sub-source if required) as <span xmlns="" class="replaceable">source</span>:<span xmlns="" class="replaceable">sub-source</span></p></li><li><p>optional keyword either <strong class="userinput"><code>notify</code></strong> or <strong class="userinput"><code>no_notify</code></strong>. Specifies if the source update indicator (the book shelf) should flash when new data arrives. Default is <strong class="userinput"><code>notify</code></strong></p></li><li><p>optional time interval (in minutes). Any source that updates again before this time interval expires will not flash the update indicator. Default is 0.</p></li></ul></div><p>
+</p></dd><dt><span class="term">imagery.blend</span></dt><dd><p>
+Set the lower limit of the radar-satellite image blending amount in percent. 
+For example, a value of 40 will limit the blending to 40% radar and 60% satellite. 
+The upper limit is always 100% radar meaning that the radar blocks out all of the satellite.
+</p><div class="itemizedlist"><ul type="disc"><li><p>minimum amount of radar blended in percent.</p></li></ul></div><p>
+</p></dd><dt><span class="term">imagery.brightness</span></dt><dd><p>
+Sets the range of brightness adjustment, in percent, allowed for the various image types.
+</p><div class="itemizedlist"><ul type="disc"><li><p>One of <strong class="userinput"><code>overlay</code></strong>, <strong class="userinput"><code>radar</code></strong>, <strong class="userinput"><code>satellite</code></strong> or <strong class="userinput"><code>underlay</code></strong>.</p></li><li><p>Minimum brightness. No less than 0%.</p></li><li><p>Maximum brightness. Can exceed 100% which will make the image brighter than the original source.</p></li></ul></div><p>
+For example:
+</p><pre class="programlisting">[imagery.brightness]
+overlay     30  100
+radar       50  100
+satellite   50  100
+underlay    30  100
+</pre><p>
+</p></dd><dt><span class="term">interpolation.delta</span></dt><dd><p>
+Specifies the time step between interpolated depictions in hours, or in hours:minutes.
+The default is 1 hour.
+</p></dd><dt><span class="term">map.base</span></dt><dd><p>
+Specifies the main background map.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the background selection button</p></li><li><p>metafile name (relative to <code class="filename">Maps</code> directory)</p></li></ul></div><p>
+There must be one entry.</p><p>
+Note: A '+' prefixed to the map metafile name indicates a map which is found in the "maps.common" directory as opposed to the "maps" directory.
+</p></dd><dt></dt><dd></dd><dt><span class="term">map.overlay</span></dt><dd><p>
+Specifies the available map overlays.
+There is no limit as to the number of overlays allowed.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the background selection button</p></li><li><p>metafile name (relative to <code class="filename">Maps</code> directory)</p></li></ul></div><p>
+Note: A '+' prefixed to the map metafile name indicates a map which is found in the "maps.common" directory as opposed to the "maps" directory.
+</p></dd><dt><span class="term">map.editor</span></dt><dd><p>Specifies a map containing an outline used in the field editor.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the editor selection button</p></li><li><p>metafile name (relative to "maps" directory)</p></li></ul></div><p>
+Note: A '+' prefixed to the map metafile name indicates a map which is found in the "maps.common" directory as opposed to the "maps" directory.
+</p></dd><dt><span class="term">map.holes</span></dt><dd><p>Specifies a map containing an outline used in the field editor for drawing holes in area fields.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the editor selection button</p></li><li><p>metafile name (relative to <code class="filename">Maps</code> directory)</p></li></ul></div><p>
+Note: A '+' prefixed to the map metafile name indicates a map which is found in the "maps.common" directory as opposed to the "maps" directory.
+</p></dd><dt><span class="term">map.palette</span></dt><dd><p>
+Specifies the available map colouring schemes.
+All colours are to be given as X colour names or in X hexadecimal notation.
+A dash ("-") in place of any given colour means to use the default.
+There must be at least one entry.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the map palette selection button</p></li><li><p>land colour</p></li><li><p>water colour</p></li><li><p>coast colour</p></li><li><p>border colour</p></li><li><p>latitude/longitude colour</p></li><li><p>forecast area colour</p></li><li><p>forecast area border colour</p></li></ul></div><p> </p></dd><dt><span class="term">link.palette</span></dt><dd><p> Lists the available link chain colouring schemes.
+All colours must be given in standard X colour names.
+A dash ("-") in place of any given colour means to use the default.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the link palette selection button</p></li><li><p>colour for link nodes and chains</p></li><li><p>colour for labels</p></li><li><p>colour of link node that is not attached to a feature</p></li></ul></div><p> </p></dd><dt><span class="term">product.graphic</span></dt><dd><p>
+Specifies graphic output products. Note that the format of product definition files is discussed in <a href="apd.html" title="Appendix D. Product Definition File Formats">Product Definition File Formats, (Appendix D)</a>. Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>label to appear in the graphic product list</p></li><li><p>type of graphic product one of:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr><td><strong class="userinput"><code>psmet</code></strong></td><td>produce graphics using <span class="application">PSMet</span></td></tr><tr><td><strong class="userinput"><code>svgmet</code></strong></td><td>produce graphics using <span class="application">SVGMet</span></td></tr><tr><td><strong class="userinput"><code>texmet</code></strong></td><td>produce text file using <span class="application">TexMet</span></td></tr><tr><td><strong class="userinput"><code>metafiles</code></strong></td><td>package up the <span class="acronym">FPA</span> database for transmission to another location</td></tr></tbody></table></div></li><li><p>parameters specific to type:</p><p>
+</p><div class="variablelist"><dl><dt><span class="term">psmet, </span><span class="term">svgmet, </span><span class="term">texmet</span></dt><dd><p>
+</p><div class="itemizedlist"><ul type="circle"><li><p>directory relative to "psmet", "svgmet" or "texmet" setup directory</p></li><li><p>product definition file in the above directory</p></li></ul></div><p>
+</p></dd><dt><span class="term">metafiles</span></dt><dd><div class="itemizedlist"><ul type="circle"><li><p>product definition file. If an absolute path is not specified, then this is taken relative to the "metafiles" setup directory.</p></li></ul></div></dd></dl></div></li></ul></div></dd><dt><span class="term">title</span></dt><dd><p>
+If given, specifies a title to be used in the program window.
+The default is the name of the <span class="acronym">FPA</span> database.
+</p></dd><dt><span class="term">T0.roundOff</span></dt><dd><p>Set the time roundoff for setting T0 in hours. This will roundoff T0 to the nearest time boundary defined by the setting. For example, 6 will result in a T0 to the nearest 6 hour interval. If the current time was 16:36 GMT then T0 would be set to 12 GMT.
+</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s08.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.6. Configuration Files Setup </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 5.8. Depiction Setup</td></tr></table></div></body></html>

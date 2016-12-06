@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_define_table'> <title>@define_table</title> <titleabbrev>@define_table</titleabbrev>
+<para>
+Set the type and location for a table to be displayed.
+</para><para>
+Note that both column and row type tables are allowed.
+A column type table arranges the table data by columns, and each call to the
+<link linkend='tx_table_site'>@table_site</link> directive will create another row of data in the table.
+A row type table arranges the table data by rows, and each call to the
+<link linkend='tx_table_site'>@table_site</link> directive will create another column of data in the table.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>table_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Table name</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>One of: <userinput>column</userinput> or <userinput>row</userinput></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_off.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@define_table
+{ 
+  table_name = T1;
+  type       = column;
+  x_off      = 0;
+  y_off      = 4;
+}</programlisting>
+Set the location of a table called "T1" to 4 rows below the current "anchor position". The table
+will arrange data by column, so that one row (line) of data will be created for each call to the <link linkend='tx_table_site'>@table_site</link>
+directive. (Note that "anchor position" is set by <link linkend='tx_anchor'>@anchor</link>.)
+</para></example>
+</para></sect2>

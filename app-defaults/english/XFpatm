@@ -1,0 +1,25 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!                                                                         !!!
+!!!   Resources for the Forecast Production Assistant Training Manager      !!!
+!!!                                                                         !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! Set size of the window
+
+!xfpatm.geometry: 800x500
+
+!  Set the list of databases to be avaliable. The entries are in pairs. The
+!  first item is the name of the database to be seen in the Training Manager
+!  and the second is the setup file name.
+
+!xfpatm.databases: "Arctic" arctic_training
+
+! Set the number of stages in the training modules.
+
+!xfpatm.introductionStageCount:  5
+!xfpatm.intermediateStageCount:  4
+!xfpatm.advancedStageCount:      3
+
+! This is the shell script to run and pass the parameters to.
+
+!xfpatm.commandShellScript: fpatm.sh

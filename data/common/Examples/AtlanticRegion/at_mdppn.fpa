@@ -1,0 +1,1249 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dalhousie"
+	FPA_user_label "Dalhousie"
+ spot 48.066N -66.375E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grand Bay-Westfield"
+	FPA_user_label "Grand Bay-Westfield"
+ spot 45.361N -66.242E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grand Falls"
+	FPA_user_label "Grand Falls"
+ spot 47.046N -67.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hampton"
+	FPA_user_label "Hampton"
+ spot 45.515N -65.834E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hartland"
+	FPA_user_label "Hartland"
+ spot 46.297N -67.527E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Nackawic"
+	FPA_user_label "Nackawic"
+ spot 46.005N -67.236E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Oromocto"
+	FPA_user_label "Oromocto"
+ spot 45.849N -66.479E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Quispamsis"
+	FPA_user_label "Quispamsis"
+ spot 45.432N -65.946E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rothesay"
+	FPA_user_label "Rothesay"
+ spot 45.389N -65.994E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint Andrews"
+	FPA_user_label "Saint Andrews"
+ spot 45.074N -67.052E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. George"
+	FPA_user_label "St. George"
+ spot 45.129N -66.819E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Leonard"
+	FPA_user_label "St. Leonard"
+ spot 47.163N -67.926E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saint-Quentin"
+	FPA_user_label "Saint-Quentin"
+ spot 47.512N -67.39E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Stephen"
+	FPA_user_label "St. Stephen"
+ spot 45.192N -67.277E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sussex"
+	FPA_user_label "Sussex"
+ spot 45.724N -65.511E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Woodstock"
+	FPA_user_label "Woodstock"
+ spot 46.162N -67.587E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bouctouche"
+	FPA_user_label "Bouctouche"
+ spot 46.465N -64.733E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Caraquet"
+	FPA_user_label "Caraquet"
+ spot 47.794N -64.939E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dieppe"
+	FPA_user_label "Dieppe"
+ spot 46.094N -64.748E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lamèque"
+	FPA_user_label "Lamèque"
+ spot 47.792N -64.653E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Richibucto"
+	FPA_user_label "Richibucto"
+ spot 46.672N -64.869E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Riverview"
+	FPA_user_label "Riverview"
+ spot 46.061N -64.805E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sackville"
+	FPA_user_label "Sackville"
+ spot 45.898N -64.368E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shediac"
+	FPA_user_label "Shediac"
+ spot 46.22N -64.544E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shippagan"
+	FPA_user_label "Shippagan"
+ spot 47.73N -64.732E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tracadie-Sheila"
+	FPA_user_label "Tracadie-Sheila"
+ spot 47.512N -64.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Beresford"
+	FPA_user_label "Beresford"
+ spot 47.699N -65.704E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Appleton"
+	FPA_user_label "Appleton"
+ spot 48.995N -54.862E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Arnold's Cove"
+	FPA_user_label "Arnold's Cove"
+ spot 47.765N -53.983E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Avondale"
+	FPA_user_label "Avondale"
+ spot 47.421N -53.195E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Badger"
+	FPA_user_label "Badger"
+ spot 48.981N -56.038E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Baie Verte"
+	FPA_user_label "Baie Verte"
+ spot 49.942N -56.189E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bauline"
+	FPA_user_label "Bauline"
+ spot 47.71N -52.818E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bay Bulls"
+	FPA_user_label "Bay Bulls"
+ spot 47.317N -52.818E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bay de Verde"
+	FPA_user_label "Bay de Verde"
+ spot 48.085N -52.896E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bay L'Argent"
+	FPA_user_label "Bay L'Argent"
+ spot 47.546N -54.883E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bay Roberts"
+	FPA_user_label "Bay Roberts"
+ spot 47.596N -53.257E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Belleoram"
+	FPA_user_label "Belleoram"
+ spot 47.524N -55.412E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Birchy Bay"
+	FPA_user_label "Birchy Bay"
+ spot 49.352N -54.743E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bishop's Falls"
+	FPA_user_label "Bishop's Falls"
+ spot 49.014N -55.488E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bonavista"
+	FPA_user_label "Bonavista"
+ spot 48.658N -53.112E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Botwood"
+	FPA_user_label "Botwood"
+ spot 49.142N -55.342E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Brigus"
+	FPA_user_label "Brigus"
+ spot 47.533N -53.221E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Buchans"
+	FPA_user_label "Buchans"
+ spot 48.826N -56.852E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Burgeo"
+	FPA_user_label "Burgeo"
+ spot 47.613N -57.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Burin"
+	FPA_user_label "Burin"
+ spot 47.04N -55.168E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Burnt Islands"
+	FPA_user_label "Burnt Islands"
+ spot 47.599N -58.884E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Campbellton"
+	FPA_user_label "Campbellton"
+ spot 49.282N -54.935E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carmanville"
+	FPA_user_label "Carmanville"
+ spot 49.404N -54.287E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Catalina"
+	FPA_user_label "Catalina"
+ spot 48.517N -53.079E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Centreville-Wareham-Trinity"
+	FPA_user_label "Centreville-Wareham-Trinity"
+ spot 48.988N -53.907E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chance Cove"
+	FPA_user_label "Chance Cove"
+ spot 47.684N -53.822E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Change Islands"
+	FPA_user_label "Change Islands"
+ spot 49.672N -54.408E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Channel-Port aux Basques"
+	FPA_user_label "Channel-Port aux Basques"
+ spot 47.572N -59.136E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chapel Arm"
+	FPA_user_label "Chapel Arm"
+ spot 47.521N -53.674E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Clarenville-Shoal Harbour"
+	FPA_user_label "Clarenville-Shoal Harbour"
+ spot 48.16N -53.969E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Clarke's Beach"
+	FPA_user_label "Clarke's Beach"
+ spot 47.548N -53.282E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Colliers"
+	FPA_user_label "Colliers"
+ spot 47.461N -53.233E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Come By Chance"
+	FPA_user_label "Come By Chance"
+ spot 47.846N -53.981E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Conception Bay South"
+	FPA_user_label "Conception Bay South"
+ spot 47.497N -53.006E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Conception Harbour"
+	FPA_user_label "Conception Harbour"
+ spot 47.441N -53.219E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cook's Harbour"
+	FPA_user_label "Cook's Harbour"
+ spot 51.6N -55.866E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cottlesville"
+	FPA_user_label "Cottlesville"
+ spot 49.503N -54.849E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cow Head"
+	FPA_user_label "Cow Head"
+ spot 49.913N -57.794E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cupids"
+	FPA_user_label "Cupids"
+ spot 47.549N -53.224E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Deer Lake"
+	FPA_user_label "Deer Lake"
+ spot 49.173N -57.434E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dover"
+	FPA_user_label "Dover"
+ spot 48.868N -53.966E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Eastport"
+	FPA_user_label "Eastport"
+ spot 48.651N -53.749E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elliston"
+	FPA_user_label "Elliston"
+ spot 48.635N -53.048E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Embree"
+	FPA_user_label "Embree"
+ spot 49.311N -55.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Englee"
+	FPA_user_label "Englee"
+ spot 50.733N -56.104E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Flatrock"
+	FPA_user_label "Flatrock"
+ spot 47.707N -52.713E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fleur de Lys"
+	FPA_user_label "Fleur de Lys"
+ spot 50.122N -56.132E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Flower's Cove"
+	FPA_user_label "Flower's Cove"
+ spot 51.3N -56.728E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fogo"
+	FPA_user_label "Fogo"
+ spot 49.713N -54.275E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fortune"
+	FPA_user_label "Fortune"
+ spot 47.073N -55.828E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fox Cove-Mortier"
+	FPA_user_label "Fox Cove-Mortier"
+ spot 47.103N -55.101E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gambo"
+	FPA_user_label "Gambo"
+ spot 48.786N -54.214E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gander"
+	FPA_user_label "Gander"
+ spot 48.954N -54.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Garnish"
+	FPA_user_label "Garnish"
+ spot 47.235N -55.362E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gaultois"
+	FPA_user_label "Gaultois"
+ spot 47.605N -55.908E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glenwood"
+	FPA_user_label "Glenwood"
+ spot 48.997N -54.869E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glovertown"
+	FPA_user_label "Glovertown"
+ spot 48.674N -54.036E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grand Bank"
+	FPA_user_label "Grand Bank"
+ spot 47.097N -55.754E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grand Falls-Windsor"
+	FPA_user_label "Grand Falls-Windsor"
+ spot 48.927N -55.657E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Greenspond"
+	FPA_user_label "Greenspond"
+ spot 49.068N -53.567E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hant's Harbour"
+	FPA_user_label "Hant's Harbour"
+ spot 48.016N -53.267E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Happy Valley-Goose Bay"
+	FPA_user_label "Happy Valley-Goose Bay"
+ spot 53.299N -60.333E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Harbour Breton"
+	FPA_user_label "Harbour Breton"
+ spot 47.481N -55.829E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Harbour Grace"
+	FPA_user_label "Harbour Grace"
+ spot 47.695N -53.212E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Harbour Main-Chapel Cove-Lakeview"
+	FPA_user_label "Harbour Main-Chapel Cove-Lakeview"
+ spot 47.432N -53.16E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hare Bay"
+	FPA_user_label "Hare Bay"
+ spot 48.854N -54.017E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hawke's Bay"
+	FPA_user_label "Hawke's Bay"
+ spot 50.616N -57.151E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Heart's Content"
+	FPA_user_label "Heart's Content"
+ spot 47.869N -53.364E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Heart's Delight-Islington"
+	FPA_user_label "Heart's Delight-Islington"
+ spot 47.763N -53.478E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Heart's Desire"
+	FPA_user_label "Heart's Desire"
+ spot 47.812N -53.441E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Holyrood"
+	FPA_user_label "Holyrood"
+ spot 47.385N -53.124E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Howley"
+	FPA_user_label "Howley"
+ spot 49.168N -57.118E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Humber Arm South"
+	FPA_user_label "Humber Arm South"
+ spot 49.015N -58.149E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Irishtown-Summerside"
+	FPA_user_label "Irishtown-Summerside"
+ spot 48.987N -57.957E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Isle aux Morts"
+	FPA_user_label "Isle aux Morts"
+ spot 47.587N -58.974E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Joe Batt's Arm-Barr'd Islands-Shoal Bay"
+	FPA_user_label "Joe Batt's Arm-Barr'd Islands-Shoal Bay"
+ spot 49.715N -54.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "King's Point"
+	FPA_user_label "King's Point"
+ spot 49.581N -56.184E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kippens"
+	FPA_user_label "Kippens"
+ spot 48.551N -58.625E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Labrador City"
+	FPA_user_label "Labrador City"
+ spot 52.946N -66.907E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lamaline"
+	FPA_user_label "Lamaline"
+ spot 46.861N -55.811E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "La Scie"
+	FPA_user_label "La Scie"
+ spot 49.956N -55.596E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lawn"
+	FPA_user_label "Lawn"
+ spot 46.947N -55.545E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lewisporte"
+	FPA_user_label "Lewisporte"
+ spot 49.245N -55.059E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Little Burnt Bay"
+	FPA_user_label "Little Burnt Bay"
+ spot 49.357N -55.082E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Little Catalina"
+	FPA_user_label "Little Catalina"
+ spot 48.537N -53.065E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Logy Bay-Middle Cove-Outer Cove"
+	FPA_user_label "Logy Bay-Middle Cove-Outer Cove"
+ spot 47.64N -52.686E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Long Harbour-Mount Arlington Heights"
+	FPA_user_label "Long Harbour-Mount Arlington Heights"
+ spot 47.449N -53.763E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lumsden"
+	FPA_user_label "Lumsden"
+ spot 49.295N -53.599E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Main Brook"
+	FPA_user_label "Main Brook"
+ spot 51.183N -56.016E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Marystown"
+	FPA_user_label "Marystown"
+ spot 47.167N -55.153E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Massey Drive"
+	FPA_user_label "Massey Drive"
+ spot 48.936N -57.898E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Meadows"
+	FPA_user_label "Meadows"
+ spot 48.995N -58.044E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Milltown-Head of Bay D'Espoir"
+	FPA_user_label "Milltown-Head of Bay D'Espoir"
+ spot 47.929N -55.748E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mount Carmel-Mitchells Brook-St. Catherines"
+	FPA_user_label "Mount Carmel-Mitchells Brook-St. Catherines"
+ spot 47.183N -53.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mount Moriah"
+	FPA_user_label "Mount Moriah"
+ spot 48.968N -58.042E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Musgrave Harbour"
+	FPA_user_label "Musgrave Harbour"
+ spot 49.447N -53.964E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Musgravetown"
+	FPA_user_label "Musgravetown"
+ spot 48.399N -53.894E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Nain"
+	FPA_user_label "Nain"
+ spot 56.534N -61.746E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "New Perlican"
+	FPA_user_label "New Perlican"
+ spot 47.908N -53.359E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Norman's Cove-Long Cove"
+	FPA_user_label "Norman's Cove-Long Cove"
+ spot 47.571N -53.685E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Norris Arm"
+	FPA_user_label "Norris Arm"
+ spot 49.088N -55.267E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Northern Arm"
+	FPA_user_label "Northern Arm"
+ spot 49.169N -55.385E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "North West River"
+	FPA_user_label "North West River"
+ spot 53.526N -60.143E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Old Perlican"
+	FPA_user_label "Old Perlican"
+ spot 48.086N -53.003E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Paradise"
+	FPA_user_label "Paradise"
+ spot 47.527N -52.877E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pasadena"
+	FPA_user_label "Pasadena"
+ spot 49.015N -57.604E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Peterview"
+	FPA_user_label "Peterview"
+ spot 49.122N -55.345E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Petty Harbour-Maddox Cove"
+	FPA_user_label "Petty Harbour-Maddox Cove"
+ spot 47.47N -52.707E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Placentia"
+	FPA_user_label "Placentia"
+ spot 47.23N -53.969E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Point Leamington"
+	FPA_user_label "Point Leamington"
+ spot 49.337N -55.399E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port au Choix"
+	FPA_user_label "Port au Choix"
+ spot 50.704N -57.347E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port au Port West-Aguathuna-Felix Cove"
+	FPA_user_label "Port au Port West-Aguathuna-Felix Cove"
+ spot 48.539N -58.777E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port Blandford"
+	FPA_user_label "Port Blandford"
+ spot 48.35N -54.172E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port Saunders"
+	FPA_user_label "Port Saunders"
+ spot 50.658N -57.261E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Portugal Cove-St. Philip's"
+	FPA_user_label "Portugal Cove-St. Philip's"
+ spot 47.574N -52.859E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port Union"
+	FPA_user_label "Port Union"
+ spot 48.498N -53.086E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pouch Cove"
+	FPA_user_label "Pouch Cove"
+ spot 47.764N -52.764E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ramea"
+	FPA_user_label "Ramea"
+ spot 47.52N -57.394E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Robert's Arm"
+	FPA_user_label "Robert's Arm"
+ spot 49.486N -55.821E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Roddickton"
+	FPA_user_label "Roddickton"
+ spot 50.871N -56.122E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rose Blanche-Harbour Le Cou"
+	FPA_user_label "Rose Blanche-Harbour Le Cou"
+ spot 47.618N -58.687E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Alban's"
+	FPA_user_label "St. Alban's"
+ spot 47.862N -55.838E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Anthony"
+	FPA_user_label "St. Anthony"
+ spot 51.368N -55.593E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Bernard's-Jacques Fontaine"
+	FPA_user_label "St. Bernard's-Jacques Fontaine"
+ spot 47.524N -54.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. George's"
+	FPA_user_label "St. George's"
+ spot 48.428N -58.481E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Jacques-Coomb's Cove"
+	FPA_user_label "St. Jacques-Coomb's Cove"
+ spot 47.449N -55.547E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Lawrence"
+	FPA_user_label "St. Lawrence"
+ spot 46.925N -55.395E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Lunaire-Griquet"
+	FPA_user_label "St. Lunaire-Griquet"
+ spot 51.517N -55.474E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Vincent's-St. Stephen's-Peter's River"
+	FPA_user_label "St. Vincent's-St. Stephen's-Peter's River"
+ spot 46.765N -53.592E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Salmon Cove"
+	FPA_user_label "Salmon Cove"
+ spot 47.783N -53.174E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Salvage"
+	FPA_user_label "Salvage"
+ spot 48.689N -53.635E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Seal Cove"
+	FPA_user_label "Seal Cove"
+ spot 49.936N -56.387E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Seldom-Little Seldom"
+	FPA_user_label "Seldom-Little Seldom"
+ spot 49.6N -54.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Small Point-Broad Cove-Blackhead-Adams Cove"
+	FPA_user_label "Small Point-Broad Cove-Blackhead-Adams Cove"
+ spot 47.835N -53.099E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "South Brook"
+	FPA_user_label "South Brook"
+ spot 49.429N -56.085E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Southern Harbour"
+	FPA_user_label "Southern Harbour"
+ spot 47.714N -53.969E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "South River"
+	FPA_user_label "South River"
+ spot 47.539N -53.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Spaniard's Bay"
+	FPA_user_label "Spaniard's Bay"
+ spot 47.616N -53.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Springdale"
+	FPA_user_label "Springdale"
+ spot 49.497N -56.073E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Steady Brook"
+	FPA_user_label "Steady Brook"
+ spot 48.951N -57.834E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stephenville"
+	FPA_user_label "Stephenville"
+ spot 48.551N -58.559E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stephenville Crossing"
+	FPA_user_label "Stephenville Crossing"
+ spot 48.508N -58.434E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Summerford"
+	FPA_user_label "Summerford"
+ spot 49.484N -54.781E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sunnyside"
+	FPA_user_label "Sunnyside"
+ spot 47.859N -53.924E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Terrenceville"
+	FPA_user_label "Terrenceville"
+ spot 47.663N -54.72E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Torbay"
+	FPA_user_label "Torbay"
+ spot 47.657N -52.729E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Trepassey"
+	FPA_user_label "Trepassey"
+ spot 46.736N -53.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Triton"
+	FPA_user_label "Triton"
+ spot 49.521N -55.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Twillingate"
+	FPA_user_label "Twillingate"
+ spot 49.649N -54.763E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Upper Island Cove"
+	FPA_user_label "Upper Island Cove"
+ spot 47.648N -53.212E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Victoria"
+	FPA_user_label "Victoria"
+ spot 47.769N -53.245E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wabana"
+	FPA_user_label "Wabana"
+ spot 47.644N -52.947E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wabush"
+	FPA_user_label "Wabush"
+ spot 52.908N -66.869E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Whitbourne"
+	FPA_user_label "Whitbourne"
+ spot 47.419N -53.533E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Winterton"
+	FPA_user_label "Winterton"
+ spot 47.954N -53.331E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Witless Bay"
+	FPA_user_label "Witless Bay"
+ spot 47.283N -52.832E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Annapolis Royal"
+	FPA_user_label "Annapolis Royal"
+ spot 44.742N -65.516E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Berwick"
+	FPA_user_label "Berwick"
+ spot 45.051N -64.738E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bridgetown"
+	FPA_user_label "Bridgetown"
+ spot 44.841N -65.289E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Canso"
+	FPA_user_label "Canso"
+ spot 45.337N -60.994E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Clark's Harbour"
+	FPA_user_label "Clark's Harbour"
+ spot 43.432N -65.617E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Digby"
+	FPA_user_label "Digby"
+ spot 44.624N -65.757E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hantsport"
+	FPA_user_label "Hantsport"
+ spot 45.064N -64.181E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lockeport"
+	FPA_user_label "Lockeport"
+ spot 43.7N -65.114E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lunenburg"
+	FPA_user_label "Lunenburg"
+ spot 44.378N -64.31E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mahone Bay"
+	FPA_user_label "Mahone Bay"
+ spot 44.449N -64.382E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Middleton"
+	FPA_user_label "Middleton"
+ spot 44.943N -65.068E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mulgrave"
+	FPA_user_label "Mulgrave"
+ spot 45.614N -61.392E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Oxford"
+	FPA_user_label "Oxford"
+ spot 45.736N -63.867E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Parrsboro"
+	FPA_user_label "Parrsboro"
+ spot 45.406N -64.326E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pictou"
+	FPA_user_label "Pictou"
+ spot 45.679N -62.721E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port Hawkesbury"
+	FPA_user_label "Port Hawkesbury"
+ spot 45.612N -61.345E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shelburne"
+	FPA_user_label "Shelburne"
+ spot 43.763N -65.324E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Springhill"
+	FPA_user_label "Springhill"
+ spot 45.648N -64.06E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stewiacke"
+	FPA_user_label "Stewiacke"
+ spot 45.138N -63.349E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Trenton"
+	FPA_user_label "Trenton"
+ spot 45.617N -62.638E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Westville"
+	FPA_user_label "Westville"
+ spot 45.562N -62.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Windsor"
+	FPA_user_label "Windsor"
+ spot 44.99N -64.131E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wolfville"
+	FPA_user_label "Wolfville"
+ spot 45.091N -64.359E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Baddeck"
+	FPA_user_label "Baddeck"
+ spot 46.1N -60.754E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bible Hill"
+	FPA_user_label "Bible Hill"
+ spot 45.372N -63.271E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Canning"
+	FPA_user_label "Canning"
+ spot 45.158N -64.428E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chester"
+	FPA_user_label "Chester"
+ spot 44.546N -64.241E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cornwallis Square"
+	FPA_user_label "Cornwallis Square"
+ spot 45.089N -64.675E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dover"
+	FPA_user_label "Dover"
+ spot 45.286N -61.047E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Freeport"
+	FPA_user_label "Freeport"
+ spot 44.28N -66.322E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Greenwood"
+	FPA_user_label "Greenwood"
+ spot 44.972N -64.934E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Havre Boucher"
+	FPA_user_label "Havre Boucher"
+ spot 45.681N -61.539E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hebbville"
+	FPA_user_label "Hebbville"
+ spot 44.351N -64.539E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kingston"
+	FPA_user_label "Kingston"
+ spot 44.987N -64.95E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lawrencetown"
+	FPA_user_label "Lawrencetown"
+ spot 44.882N -65.164E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "New Minas"
+	FPA_user_label "New Minas"
+ spot 45.069N -64.469E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port Williams"
+	FPA_user_label "Port Williams"
+ spot 45.098N -64.41E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pugwash"
+	FPA_user_label "Pugwash"
+ spot 45.85N -63.661E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "River Hebert"
+	FPA_user_label "River Hebert"
+ spot 45.69N -64.378E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Peter's"
+	FPA_user_label "St. Peter's"
+ spot 45.656N -60.875E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tatamagouche"
+	FPA_user_label "Tatamagouche"
+ spot 45.712N -63.291E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tiverton"
+	FPA_user_label "Tiverton"
+ spot 44.383N -66.219E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Westport"
+	FPA_user_label "Westport"
+ spot 44.261N -66.352E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Weymouth"
+	FPA_user_label "Weymouth"
+ spot 44.405N -65.999E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Aylesford"
+	FPA_user_label "Aylesford"
+ spot 45.028N -64.836E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glace Bay"
+	FPA_user_label "Glace Bay"
+ spot 46.197N -59.957E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Liverpool"
+	FPA_user_label "Liverpool"
+ spot 44.033N -64.718E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Louisbourg"
+	FPA_user_label "Louisbourg"
+ spot 45.923N -59.964E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sherwood Park"
+	FPA_user_label "Sherwood Park"
+ spot 44.679N -63.662E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dominion"
+	FPA_user_label "Dominion"
+ spot 46.21N -60.025E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Antigonish"
+	FPA_user_label "Antigonish"
+ spot 45.623N -61.992E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bridgewater"
+	FPA_user_label "Bridgewater"
+ spot 44.376N -64.518E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kentville"
+	FPA_user_label "Kentville"
+ spot 45.077N -64.495E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "New Glasgow"
+	FPA_user_label "New Glasgow"
+ spot 45.584N -62.645E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stellarton"
+	FPA_user_label "Stellarton"
+ spot 45.557N -62.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Truro"
+	FPA_user_label "Truro"
+ spot 45.366N -63.287E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Yarmouth"
+	FPA_user_label "Yarmouth"
+ spot 43.838N -66.121E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Amherst"
+	FPA_user_label "Amherst"
+ spot 45.832N -64.209E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cornwall"
+	FPA_user_label "Cornwall"
+ spot 46.231N -63.217E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Georgetown"
+	FPA_user_label "Georgetown"
+ spot 46.185N -62.534E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kensington"
+	FPA_user_label "Kensington"
+ spot 46.438N -63.636E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Montague"
+	FPA_user_label "Montague"
+ spot 46.17N -62.654E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Souris"
+	FPA_user_label "Souris"
+ spot 46.355N -62.254E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stratford"
+	FPA_user_label "Stratford"
+ spot 46.235N -63.087E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alberton"
+	FPA_user_label "Alberton"
+ spot 46.814N -64.067E location none
+
+* 
+* End
+

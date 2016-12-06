@@ -1,0 +1,59 @@
+! Set presentation for winds ...
+@wind_presentation
+	{
+	wind_look_up            = winds;
+	calm_type               = none;
+	direction_type          = value;
+	direction_justification = left;
+	direction_size          =  0.20;
+	direction_scale         =    80;
+	x_dir                   =  0.05;
+	y_dir                   =  0.05;
+	speed_type              = value;
+	speed_justification     = left;
+	speed_size              =  0.20;
+	speed_scale             =    80;
+	x_spd                   =  0.05;
+	y_spd                   = -0.20;
+	gust_type               = value;
+	gust_justification      = left;
+	gust_above              =   5.0;
+	gust_size               =  0.20;
+	gust_scale              =    80;
+	x_gust                  =  0.10;
+	y_gust                  = -0.40;
+	}
+
+! Set a named presentation to draw a surrounding box ...
+@label_display
+	{
+	display_name  = label1;
+	margin_left   =  0.00;
+	margin_right  =  0.02;
+	margin_top    =  0.01;
+	margin_bottom =  0.05;
+	line_width    =  0.02;
+	outline       = X11 FireBrick;
+	interior_fill = none;
+	}
+
+! Display labelled winds ....
+@label
+	{
+	element        = actual_wind;
+	level          = surface;
+	units          = knots;
+	attribute      = EVAL_wind;
+	format         = wind_text;
+	mark           = triangle_left;
+	mark_scale     = 100.0;
+	display_name   = label1;
+	display_type   = sized_box;
+	fit_to_map     = yes;
+	fit_to_map_ref = left;
+	line_width     = 0.05;
+	outline        = none;
+	fill           = X11 FireBrick;
+	x_off          = 0.00;
+	y_off          = 0.00;
+	}

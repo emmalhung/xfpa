@@ -1,0 +1,45 @@
+# Entry menu description file for Fronts - Training
+
+menu_title             = Fronts and Lines
+geometry               =  -650 -200 700 300
+label_display_height   =  0
+value_display_height   =  0
+category_display_width = 20
+
+panel "Fronts"
+{
+	# Front name
+	text
+	{
+		attribute_id  = front_name
+		label         = "Name"
+		position      = 20 20
+		ncolumns      = 25
+		nrows         = 1
+	}
+
+	# Front intensity
+	scrolled_list
+	{
+		attribute_id = front_intensity
+		label        = "Intensity"
+		position     = 20 70
+		default      = 50
+		limit_type   = string
+		ncolumns     = 25
+		none_sub     = ""
+		items        =	"weak" \
+						"moderate" \
+						"strong"
+	}
+
+	# Front speed
+	text
+	{
+		attribute_id  = front_speed
+		label         = "Speed"
+		position      = 20 100
+		ncolumns      = 25
+		nrows         = 1
+	}
+}

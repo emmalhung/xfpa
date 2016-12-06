@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE appendix PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<appendix id='appendg'><title>Setup File Directory Override Options</title>
+<para><indexterm><primary>directory override</primary></indexterm></para>
+
+<sect1 id='directories_block'><title>Directories Block</title><para>
+<indexterm><primary>directory override</primary></indexterm>
+The directories block of the setup file defines the locations of the data directories used by &FPA;.
+Each entry consists of a keyword recognized by the system to identify the directory, followed by the directory path.
+The path may contain <acronym>UNIX</acronym> environment variables, the most common of which are <envar>$HOME</envar> and <envar>$FPA</envar>.
+<example><title>Location of &FPA; database associated with this setup file</title>
+<programlisting>directories
+{
+  home    <envar>$HOME</envar>/MARITIMES
+}</programlisting></example>
+Normally the directories block of the setup file will contain only one entry.
+This being the home directory to which all relative paths will be interpreted as being relative to.
+The library software which reads this file does a <function>chdir()</function> to the home directory automatically.
+</para><para>
+If home is omitted from this block, no <function>chdir()</function> will be done.
+Instead, all relative paths will be interpreted as being relative to the directory defined by the <envar>$FPA</envar> environment variable (or <envar>$HOME</envar> if <envar>$FPA</envar> is not defined), and will be converted to absolute paths by concatenating this directory.
+</para><para>
+There are many other directories which can be specified but which are normally defaulted.
+The following list provides the default directory information.
+If any one of these is to be set to something other than the default then an entry is made in the directories block after the home directory entry.
+</para><para>
+The first column in the list is the key used by the system software to identify the directory.
+The second column provides a description of what the directory is used for and the default path(s) of the directory is given as a bulleted item.
+</para><para>
+Including a directory keyword and its associated directory can have one of two consequences:
+<itemizedlist>
+<listitem><para>The setup file entry replaces the default directory path.
+The keywords associated with this action are shown in <xref linkend='tablea'/>.
+</para></listitem>
+<listitem><para>The setup file entry becomes the first member of a list of directories which are searched in order.
+The first instance of a required file found is used.
+This allows local versions or temporary test versions of some files to be used by the system while allowing others to default.
+Note that there is more than one default directory which are searched in the order given in the bulleted list.
+The keywords associated with this action are shown in <xref linkend='tableb'/>.</para></listitem>
+</itemizedlist>
+<table frame='topbot' id='tablea'><title>Directories Replaced by Setup File Entry</title>
+<tgroup cols='2'>&colwidth;
+<thead>
+<row valign='top'><entry>Keyword</entry><entry>Directory description and defaults</entry></row>
+</thead>
+<tbody>
+<row valign='top'><entry>AModels.Data</entry><entry>Allied Model data<itemizedlist>
+<listitem><para><filename class='directory'>AModels.DATA</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>AModels.Exec</entry><entry>Allied Model executables<itemizedlist>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/AModel.EXEC</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>config</entry><entry>Base directory for all configuration files.<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/config</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>ctables</entry><entry>Base directory for all colour tables for imagery config files.<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/config/ctables</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>Data</entry><entry>Base directory for all datafiles.<itemizedlist>
+<listitem><para><filename class='directory'>Data</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>ExternalDepictions</entry><entry>Base directory for all external depiction databases.<itemizedlist>
+<listitem><para><filename class='directory'>EXTERNAL</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>Guidance</entry><entry>Base directory for NWP guidance.<itemizedlist>
+<listitem><para><filename class='directory'>Guidance</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>help.source</entry><entry>Location of all of the online help files.<itemizedlist>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/doc/online</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>images</entry><entry>Base directory for all image files.<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/images</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>ingest.src</entry><entry>Location of &GRIB; data files required by the ingest process.<itemizedlist>
+<listitem><para><envar>$FPA_LOCAL_GRIB</envar></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>ingest.stat</entry><entry>Location of the ingest status file.<itemizedlist>
+<listitem><para><filename class='directory'>Guidance</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>ingest.log</entry><entry>Location of the ingest log file.<itemizedlist>
+<listitem><para><filename class='directory'>Guidance</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>Maps</entry><entry>Location for map background files and overlays<itemizedlist>
+<listitem><para><filename class='directory'>Maps</filename></para></listitem>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/data/common/CommonMaps</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>psmet</entry><entry>PostScript graphical product generator (<application>PSMet</application>) root directory<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/setup/pdf/psmet</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>psout</entry><entry>Location of output files created by <application>PSMet</application><itemizedlist>
+<listitem><para><filename class='directory'>PSOut</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>setup</entry><entry>Location of &FPA; database setup files<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/setup</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>svgmet</entry><entry>SVG graphical product generator (<application>SVGMet</application>) root directory<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/setup/pdf/svgmet</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>svgout</entry><entry>Location of output files created by <application>SVGMet</application><itemizedlist>
+<listitem><para><filename class='directory'>SVGOut</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>texmet</entry><entry>Root directory of the <application>TexMet</application> program.<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/setup/pdf/texmet</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>texout</entry><entry>Location of <application>TexMet</application> output files.<itemizedlist>
+<listitem><para><filename class='directory'>TexOut</filename></para></listitem>
+</itemizedlist></entry></row>
+</tbody>
+</tgroup></table>
+<table frame='topbot' id='tableb'><title>Setup File Entry Searched in Addition to Default Directory</title>
+<tgroup cols='2'>&colwidth;<thead><row><entry>Keyword</entry><entry>Directory Description and Default</entry></row></thead>
+<tbody>
+<row valign='top'><entry>memory.cfg</entry><entry>Location of area editor preset memory files.<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/config/Memory</filename></para></listitem>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/config/Memory</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>menus.cfg</entry><entry>Location of entry menu configuration files<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/config/Menus</filename></para></listitem>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/config/Menus</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>metafiles</entry><entry>Location of product definition files for the transmission of metafiles as a graphical product.<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/setup/pdf/metafiles</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>patterns</entry><entry>Location of pattern files.<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/config/patterns</filename></para></listitem>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/config/patterns</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>preset_lists</entry><entry>Location of files which define preset lists of information as used in the Graphical User Interface.<itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/setup/preset_lists</filename></para></listitem>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/setup/preset_lists</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>psmet_symbols</entry><entry>Location of symbol files used by <application>PSMet</application><itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/setup/pdf/psmet/common/ps</filename></para></listitem>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/setup/pdf/psmet/common/ps</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>svgmet_symbols</entry><entry>Location of symbol files used by <application>SVGMet</application><itemizedlist>
+<listitem><para><filename class='directory'><envar>$HOME</envar>/setup/pdf/svgmet/common/svg</filename></para></listitem>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/setup/pdf/svgmet/common/svg</filename></para></listitem>
+</itemizedlist></entry></row>
+</tbody></tgroup></table>
+</para></sect1>
+
+<sect1 id='configuration_files_block'><title>Configuration Files Block</title><para>
+<indexterm><primary>directory override</primary></indexterm>
+This block specifies the names of the configuration files used by various processes.
+Relative paths are taken with respect to the directory defined by the config keyword above while absolute paths are just that.
+<table frame='topbot'><title>Configuration file names</title>
+<tgroup cols='2'>&colwidth;
+<thead>
+<row valign='top'><entry>Keyword</entry><entry>File description and default name</entry></row>
+</thead>
+<tbody>
+<row valign='top'><entry>config</entry><entry>File used to configure &FPA;<itemizedlist>
+<listitem><para><filename class='directory'>Config</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>gribs</entry><entry>Configuration used by the <command>gribin</command> ingest program (&GRIB; edition 0&amp;1)<itemizedlist>
+<listitem><para><filename class='directory'><envar>$FPA</envar>/config/Gribs</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>image</entry><entry>File used to configure imagery for &FPA;<itemizedlist>
+<listitem><para><filename class='directory'>Image</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>ingest</entry><entry>Configuration used by <command>gribin2</command> ingest program (&GRIB; editions 0,1&amp;2)<itemizedlist>
+<listitem><para><filename class='directory'>Ingest</filename></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>presentation</entry><entry>The presentation specification file<itemizedlist>
+<listitem><para><filename class='directory'>Presentation</filename></para></listitem>
+</itemizedlist></entry></row>
+</tbody>
+</tgroup></table>
+</para></sect1></appendix>

@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- 
+USER: For those things that the user sees in the display interface.
+
+	timeFormat:          How the user sees the valid time of the SCIT table in strftime
+	                     format.
+
+	labelAlignment:      The alignment of the column labels. One of "beginning","center",or "end"
+
+	dataOffString:       What to display when the data in a cell is turned 'off'
+
+	minTrendTime:        Minimum amount of time displayed on x-axis of the trend graph
+	                     (not including forecasts).
+
+	rankWeightHeight:    Height of the rank weight trend graph in pixels. Default 200.
+
+	rankWeightMinMax:    The smallest maximum value that will be shown on the trend
+	                     graph for rank weight. Default 10.
+
+	rankWeightEditColor: The colour to display the forecast rank weight trend line when
+	                     it is able to be edited.
+
+	timeDisplayCompress: In the storm rank weight trend graph display dialog, time ranges
+	                     above this value will reduce increase the distance between time
+						 labels and introduce intermediate unlabeled grid lines. This is
+						 to avoid overlapping axis numbers. Default 180.
+
+FILEINFO: Information associated with searching for and displaying statistic files.
+
+	fileNameMask:  How to do a generic search and get a list of SCIT files.
+	               A dot '.' means accept any character. Anything else is taken as literal.
+
+	fileTimeMask:  How to construct the file name with the time. The time is specified as
+	               per the requirements of the strftime function (man strftime).
+
+	fileTime:      The format of the valid time in the file (as per strftime)
+
+	maxTimeDiff:   The maximum difference, in minutes, between the current file and the
+	               previous file used to determine if a storm is new.
+
+	timeInterval:  How many minutes between SCIT files. Default 10.
+
+	numForecasts:  How many forecast times to create. Default 3.
+
+	numDataPoints: How many data points to use to create the forecasts. Default 3.
+	
+	rankWeightElementId: The element identifier for the rank weight element.
+	                     Default "RankWeight".
+
+	rankElementId: If there is a "Rank" element defined the identifier is specified
+	               here. If not then enter "None". If specified the rank will
+				   be modified if the rank weight is changed. Default is none.
+
+	trendProgram:  Optional. An external program that is used to calculate forecast trend
+	               values for storm elements and for storm rank weight. The default is to
+				   use the internal forecast trend functions. The specification is:
+				   
+				   program [infile] [outfile] [logfile]
+
+				   where: program   = the name of the external program. It can also be
+				                      "default" (without the quotes), and this will use the
+								      internal functions.
+				          [infile]  = is the input data file to the program
+						  [outfile] = is the output file from the program
+						  [logfile] = a file that can be used for log output. This is set to
+						              dash "-" by aurora when in interactive mode meaning
+									  use stdout (or the program can use it own log file).
+
+				   The order of the keywords does not matter and the program
+				   can include run time keys if required, for example:
+
+				       "trend_forecast -l [logfile] -i [infile] -o [outfile]"
+
+	trendProgramTimeout: After this time, in decimal seconds, if the trendProgram has not
+	                     produced output it will have been considered to have failed and
+						 the calling program will continue on.
+
+THRESHOLD: Sets the colours used to identify the various thresholds.
+
+	newStorm: The foreground and background colours to use to identify when a
+	          new storm has appeared in the table.
+
+	level<n>: The foreground and background colours to use for the specified
+	          threshold level as in <level1>yellow</level1>.
+
+ENVIRONMENTS: Defines a set of storm environments which define severe thresholds for
+              various storm types. The environment identifier is used as the first xml
+			  key under ENVIRONMENTS.  This identifier is appended to a "thresholds" id
+		      in a element definition. If the identifier is "supercell" then there should
+			  be a <thresholds.supercell> entry for each element. See the description
+			  under ELEMENTS.
+
+		 label: This is what the forecaster will see as the storm environment in the
+		        viewer.
+
+
+ELEMENTS: Sets configuration information on a per-element basis. The element identifier
+          is used as the first xml key under ELEMENTS. See the configuration below.
+
+    label:       This is what the user will see as column headers. Use "\n" to indicate
+	             a new line.  This will create a multi-line label.
+
+	dataAlign:   The alignment of the data within the cell. One of "beginning","center"
+	             or "end"
+
+	dataType:    one of "ignore","string",or "number". "ignore" means do not
+	             display the element.
+
+	numDecimals: Optional. The number of decimals to show in the STAT table spreadsheet
+	             display and write into the STAT file. Default is 1.
+	
+	sortOrder:   Optional. The sort order of the data element in the storm spreadsheet.
+	             One of "ascending" or "descending". Default "descending".
+
+	trendLine:   The colour and line style of the line that is displayed in the element
+	             trend graph as a comma separated triple of colour, data line style,
+				 forecast line style. The colour must be a valid X colour name and the
+				 line style one of: SOLID, DOTTED or WIDEDOT. As an example:
+				 "red,SOLID,DOTTED". The elements can be left unspecified and the default
+				 will be "white,SOLID,SOLID".
+
+    thresholds:  Optional. This sets the default environment. There are two possible forms:
+				 1. The name of another element whose thresholds are to be used. This is
+				 normally used for synthetic elements like forecast rank weights.
+				 2. Threshold levels (maximum 4) for the element used to override
+	             threshold settings in the data file. The entry is a comma separated list
+				 of values starting with level 1. The entry <thresholds>5,10,20</thresholds>
+				 would set the level1 threshold at 5, level2 at 10 and level3 at 20 with no
+				 level4 specified.
+
+	thresholds.<identifier>: Optional. This sets thresholds identified with a specific
+	                         environment. The threshold levels (maximum 4) are entered
+							 as a comma separated list of values starting with level 1.
+                             The entry <thresholds.NOS>5,10,20,30</thresholds.NOS>
+				             would set the level1 threshold for the NOS environment at 5,
+							 level2 at 10, level3 at 20 and level4 at 30. 
+
+	flagSevere:  Optional. Show if the trend of the element will reach the severe level.
+	             Value of 'yes' or 'no'. Does not apply to elements of dataType "string".
+				 Default is yes for all others.
+
+	rankWeightCalc: Optional. If this element is used for rank weight calculation this
+		         entry must be a series of 3 to 6 comma separated numbers, a,b,c,d,m,f
+				 to satisfy the equation (a*(m*x)^4 + b*(m*x)^3 + c*(m*x)^2 + d*(m*x)) * f 
+				 If the list is 5 numbers then the equation is assumed to start at the
+				 third power and if the list is 4 numbers the equation is assumed to start
+				 at the second power and if 3 numbers it is assumed to start at d*(m*x).
+
+	Note that there is a special element not found in the actual SCIT files with the key
+	word <rankWeightElementId>xx, where xx is the T+ time of a forecast rank weight value. These
+	values are calculated by the rankweightDaemon and inserted into the files.
+
+VIEWS: These are lists of elements that will be shown. Usually used to reduce the number
+       of elements being dispayed.
+	   
+	   Each view has the key <VIEW label="<label>">, where <label> is whatever is shown to
+	   the user in the menu pulldown for the view selection, and <element>elem_id</element>
+	   identifies each element in the list to be shown where elem_id is the element key word.
+
+	   The default view is normally the entire list of elements in the order defined in this
+	   configuration file. This can be overriden by defining a view with label="default".
+
+MONITOR: Information used to monitor directories into which files from URP are put.
+         When files with the same valid time arrive in all of the directories a
+		 program is run. The property "program" holds the name of the program to 
+		 run. It may contain time macros as per the strftime function which will be
+		 replaced by the appropriate times. It may also contain the special key word
+		 "%log" which will be replaced by the path of the logfile used by the monitor
+		 program. It must be opened in append mode, written to and then closed.
+
+	DIR: The directory to monitor with the directory indirectly given by the "keyword"
+	     property. The key property must be a directory key word that is set in the
+		 setup file directories block and associated with the directory to be monitored.
+		   
+		FILE: Masking information that defines the file monitored and how the time
+		      is encoded into the file name. Note that more than one file per directory
+			  can be monitored.
+
+			nameMask: How to do a search and get a list of the files of interest.
+					  A dot '.' means accept any character. Anything else is taken as literal.
+
+			timeMask: How to construct the file name with the time. The time is specified as
+					  per the requirements of the strftime function (man strftime).
+-->
+<STATCONFIG version="1">
+	<USER>
+		<timeFormat>%Y/%m/%d  %H:%M</timeFormat>
+		<labelAlignment>center</labelAlignment>
+		<dataOffString>***</dataOffString>
+		<minTrendTime>80</minTrendTime>
+		<rankWeightHeight>150</rankWeightHeight>
+		<rankWeightMinMax>10</rankWeightMinMax>
+		<rankWeightEditColor>magenta</rankWeightEditColor>
+		<timeDisplayCompress>180</timeDisplayCompress>
+	</USER>
+	<FILEINFO>
+		<nameMask>............:SCIT,VIEW_CONV:</nameMask>
+		<timeMask>%Y%m%d%H%M:SCIT,VIEW_CONV:</timeMask>
+		<fileTime>%Y%m%d%H%M</fileTime>
+		<maxTimeDiff>30</maxTimeDiff>
+		<numForecasts>3</numForecasts>
+		<timeInterval>10</timeInterval>
+		<numDataPoints>3</numDataPoints>
+		<rankWeightElementId>RankWeight</rankWeightElementId>
+		<trendProgram>default [infile] [outfile] [logfile]</trendProgram>
+		<trendProgramTimeout>5</trendProgramTimeout>
+	</FILEINFO>
+	<THRESHOLD>
+		<newStorm>
+			<foreground>black</foreground>
+			<background>white</background>
+		</newStorm>
+		<level1>
+			<foreground>black</foreground>
+			<background>green</background>
+		</level1>
+		<level2>
+			<foreground>black</foreground>
+			<background>yellow</background>
+		</level2>
+		<level3>
+			<foreground>black</foreground>
+			<background>red</background>
+		</level3>
+		<level4>
+			<foreground>black</foreground>
+			<background>magenta</background>
+		</level4>
+	</THRESHOLD>
+	<ENVIRONMENTS>
+		<default>
+			<label>Default</label>
+		</default>
+		<LOT>
+			<label>Low-Top</label>
+		</LOT>
+	</ENVIRONMENTS>
+	<ELEMENTS>
+		<REGION>
+			<label>Region</label>
+			<dataType>ignore</dataType>
+		</REGION>
+		<sNumber>
+			<label>ID</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<flagSevere>no</flagSevere>
+		</sNumber>
+		<sEnviron>
+			<label>Storm\nEnv</label>
+			<dataAlign>beginning</dataAlign>
+			<dataType>string</dataType>
+			<flagSevere>no</flagSevere>
+		</sEnviron>
+		<RankWeight>
+			<label>Rank\nWeight</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>1</numDecimals>
+			<flagSevere>no</flagSevere>
+			<trendLine>white</trendLine>
+			<thresholds.LOT>2,4,6,8</thresholds.LOT>
+		</RankWeight>
+		<RankWeight10>
+			<label>Rank\nT+10</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>1</numDecimals>
+			<thresholds>RankWeight</thresholds>
+			<flagSevere>no</flagSevere>
+		</RankWeight10>
+		<RankWeight20>
+			<label>Rank\nT+20</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>1</numDecimals>
+			<thresholds>RankWeight</thresholds>
+			<flagSevere>no</flagSevere>
+		</RankWeight20>
+		<RankWeight30>
+			<label>Rank\nT+30</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>1</numDecimals>
+			<thresholds>RankWeight</thresholds>
+			<flagSevere>no</flagSevere>
+		</RankWeight30>
+		<Meso_alert>
+			<label>Meso\nAlert</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<rankWeightCalc>0.4,1,0.25</rankWeightCalc>
+			<trendLine>azure,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>3,5,10,15</thresholds.LOT>
+		</Meso_alert>
+		<Meso_max>
+			<label>Meso\nMax</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<rankWeightCalc>0.00009866,-0.011605,0.42981,1,0.25</rankWeightCalc>
+			<trendLine>LightBlue,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>12,16,20,24</thresholds.LOT>
+		</Meso_max>
+		<Meso_ave>
+			<label>Meso\nAve</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<rankWeightCalc>0.00009866,-0.011605,0.42981,1,0.25</rankWeightCalc>
+			<trendLine>LightBlue,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>4,8,12,16</thresholds.LOT>
+		</Meso_ave>
+		<Hail_mm>
+			<label>Hail\n(mm)</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<rankWeightCalc>0.0000015831,-0.00075025,0.11056,1,0.25</rankWeightCalc>
+			<trendLine>magenta,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>13,20,35,50</thresholds.LOT>
+		</Hail_mm>
+		<MESH_mm>
+			<label>MESH\n(mm)</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<rankWeightCalc>0.0000015831,-0.00075025,0.11056,1,0.25</rankWeightCalc>
+			<trendLine>LightSkyBlue,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>13,20,35,50</thresholds.LOT>
+		</MESH_mm>
+		<BWERvol_km3>
+			<label>BWER\nVol</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<rankWeightCalc>-0.000000021797,0.000010658,-0.0018033,0.130907,1,0.25</rankWeightCalc>
+			<trendLine>green,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>0,10,25,50</thresholds.LOT>
+		</BWERvol_km3>
+		<BWERhgt_km>
+			<label>BWER\nHgt</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<rankWeightCalc>0.0000011311,-0.00056254,0.089627,10,0.25</rankWeightCalc>
+			<trendLine>yellow,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>1,2,3,4</thresholds.LOT>
+		</BWERhgt_km>
+		<WDraft_kmh>
+			<label>WDraft\n(km/h)</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<rankWeightCalc>0.000012935,-0.0028382,0.19928,0.28,0.25</rankWeightCalc>
+			<trendLine>white,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>36,54,72,90</thresholds.LOT>
+		</WDraft_kmh>
+		<VILDens>
+			<label>VIL\nDens</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>1</numDecimals>
+			<rankWeightCalc>0.0000013262,-0.00063285,0.098483,10,0.25</rankWeightCalc>
+			<trendLine>red,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>1,2,3,4</thresholds.LOT>
+		</VILDens>
+		<MaxZ>
+			<label>MaxZ</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<rankWeightCalc>-0.000011869,0.001536,0.011393,1,0.25</rankWeightCalc>
+			<trendLine>wheat,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>55,60,65,70</thresholds.LOT>
+		</MaxZ>
+		<ETop45_km>
+			<label>ETop\n45km</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>1</numDecimals>
+			<rankWeightCalc>-0.0000016966,0.00045752,-0.0013906,10,0.25</rankWeightCalc>
+			<trendLine>pink,SOLID,WIDEDOT</trendLine>
+			<thresholds.LOT>7,8.5,10,12.5</thresholds.LOT>
+		</ETop45_km>
+		<Distance>
+			<label>Dist</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<flagSevere>no</flagSevere>
+		</Distance>
+		<Dirn>
+			<label>Dir</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<flagSevere>no</flagSevere>
+		</Dirn>
+		<Location>
+			<label>Location</label>
+			<dataAlign>beginning</dataAlign>
+			<dataType>string</dataType>
+		</Location>
+		<MeanVel_kmh>
+			<label>Mean Vel\n(Km/Hr)</label>
+			<dataAlign>beginning</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<thresholds.LOT>60,75,90,105</thresholds.LOT>
+		</MeanVel_kmh>
+		<Radar>
+			<label>Radar</label>
+			<dataAlign>beginning</dataAlign>
+			<dataType>string</dataType>
+		</Radar>
+		<POSH_pct>
+			<label>POSH\n(%)</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<thresholds.LOT>70,80,90,100</thresholds.LOT>
+		</POSH_pct>
+		<CoreVolume_km3>
+			<label>Core\nVol</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<thresholds.LOT>100,300,500,1000</thresholds.LOT>
+		</CoreVolume_km3>
+		<ColderVolume_km3>
+			<label>Colder\nVol</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<thresholds.LOT>10000,30000,50000,100000</thresholds.LOT>
+		</ColderVolume_km3>
+		<LtgCount>
+			<label>Ltg\nCount</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<thresholds.LOT>10,20,30,40</thresholds.LOT>
+		</LtgCount>
+		<PosCGPct>
+			<label>+CG\n(%)</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<thresholds.LOT>25,50,75,100</thresholds.LOT>
+		</PosCGPct>
+		<MaxPosAmp>
+			<label>MaxAmp\nPos CG</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<thresholds.LOT>|50|,|75|,|100|,|125|</thresholds.LOT>
+		</MaxPosAmp>
+		<MaxNegAmp>
+			<label>MaxAmp\nNeg CG</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>0</numDecimals>
+			<sortOrder>ascending</sortOrder>
+			<thresholds.LOT>|50|,|75|,|100|,|125|</thresholds.LOT>
+		</MaxNegAmp>
+		<FlashDens>
+			<label>Flash\nDens</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>2</numDecimals>
+			<thresholds.LOT>0.1,0.25,0.5,0.75</thresholds.LOT>
+		</FlashDens>
+		<FlashTend>
+			<label>Flash\nTend</label>
+			<dataAlign>end</dataAlign>
+			<dataType>numeric</dataType>
+			<numDecimals>1</numDecimals>
+			<thresholds.LOT>5,10,20,30</thresholds.LOT>
+		</FlashTend>
+	</ELEMENTS>
+	<VIEWS>
+		<VIEW label="Rank Weight Elements">
+			<element>sNumber</element>
+			<element>sEnviron</element>
+			<element>RankWeight</element>
+			<element>RankWeight10</element>
+			<element>RankWeight20</element>
+			<element>RankWeight30</element>
+			<element>Meso_alert</element>
+			<element>Meso_max</element>
+			<element>Meso_ave</element>
+			<element>Hail_mm</element>
+			<element>MESH_mm</element>
+			<element>BWERvol_km3</element>
+			<element>BWERhgt_km</element>
+			<element>WDraft_kmh</element>
+			<element>VilDens</element>
+			<element>MaxZ</element>
+			<element>ETop_45km</element>
+		</VIEW>
+	</VIEWS>
+</STATCONFIG>

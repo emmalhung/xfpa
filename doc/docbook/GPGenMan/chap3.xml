@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM 'gpgen.ent'>
+%gpgent;
+]>
+<chapter id='texmet'><title>TexMet</title><titleabbrev>TexMet</titleabbrev><para>
+The &TexMet; application allows the user to develop ASCII file products
+using data from the &FPA;. The ASCII products can be customized to sample
+various types of data and display them as values, text, or tables. This
+section describes the &TexMet; files and commands in more detail.
+</para>
+<sect1><title>TexMet Input and Output Files</title><para>
+The &TexMet; application uses the following input files:
+<variablelist>
+<varlistentry><term>Product Definition Files (fpdf)</term><listitem><para>
+&TexMet; directives (commands) for sampling and displaying &FPA; data or other information in a tabular format.
+These files end with the suffix .fpdf</para></listitem></varlistentry>
+<varlistentry><term>&FPA; Metafiles</term><listitem><para>containing &FPA; data for sampling or display.
+(Note: these files are accessed automatically by the directives)</para></listitem></varlistentry>
+<varlistentry><term>Look Up Table Files (tab)</term><listitem><para>
+Cross reference tables for display formats for values.
+These files end with the suffix .tab</para></listitem></varlistentry>
+<varlistentry><term>Location Look Up Table Files (ltab)</term><listitem><para>
+Cross reference tables for set locations (with optional times)
+These files end with the suffix .ltab</para></listitem></varlistentry>
+<varlistentry><term>Wind Look Up Table Files (wtab)</term><listitem><para>
+Cross reference tables for display formats for winds
+These files end with the suffix .wtab</para></listitem></varlistentry>
+<varlistentry><term>Vector Look Up Table Files (vtab)</term><listitem><para>
+Cross reference tables for display formats for vector parameters
+These files end with the suffix .vtab</para></listitem></varlistentry>
+</variablelist>
+</para><para>
+The &TexMet; application produces the following output file(s):
+<variablelist>
+<varlistentry><term>ASCII Output File (txt)</term><listitem><para>
+ASCII file containing sampled &FPA; data</para></listitem></varlistentry>
+</variablelist>
+</para></sect1>
+<sect1><title>Special TexMet Directives</title><para>
+The following directives have special locations or usages in the &TexMet;
+product definition files. A complete description of each of these directives
+is given in a following section.
+</para><para>
+The <link linkend='tx_version'>@version</link> directive is always found at the beginning of the main
+&TexMet; product definition file; it must always be the first directive
+encountered! The <link linkend='tx_file_name'>@file_name</link> directive identifies the output file to be
+used. This directive is normally found at the beginning of the main
+product definition file too, though it may also be used later in the product
+definition files to open another output file. The <link linkend='tx_file_close'>@file_close</link> directive is
+used to close an output file.
+<variablelist>
+<varlistentry><term><link linkend='tx_version'>@version</link></term><listitem><para>
+&TexMet; version number. This must be the first directive!</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_file_name'>@file_name</link></term><listitem><para>
+Name and location of &TexMet; output file</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_file_close'>@file_close</link></term><listitem><para>
+Close the &TexMet; output file</para></listitem></varlistentry>
+</variablelist>
+The <link linkend='tx_verbose'>@verbose</link> directive can be used while developing new &TexMet;
+products. It will provide extra diagnostic output to help determine why a
+particular directive does not produce the desired output.
+<variablelist>
+<varlistentry><term><link linkend='tx_verbose'>@verbose</link></term><listitem><para>
+Provide extra diagnostic output during development</para></listitem></varlistentry>
+</variablelist>
+The <link linkend='tx_process'>@process</link> directive can be used to launch an external process from
+within &TexMet;. For example, this directive could be used to display the
+&TexMet; output file.
+<variablelist>
+<varlistentry><term><link linkend='tx_process'>@process</link></term><listitem><para>
+Launch an external process</para></listitem></varlistentry>
+</variablelist>
+The following directives can be used to simplify the directive and
+keyword commands in a set of product definition files. The <link linkend='tx_group'>@group</link>
+<link linkend='tx_include'>@include</link> directives are used to combine keywords or directives. The
+<link linkend='tx_loop_begin'>@loop_begin</link> <link linkend='tx_loop_end'>@loop_end</link> directives allow a given sequence of
+directives to be repeated several times with changing keyword values.
+<variablelist>
+<varlistentry><term><link linkend='tx_group'>@group</link></term><listitem><para>
+Combine a series of repeated keywords</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_include'>@include</link></term><listitem><para>
+Combine a series of directives</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_loop_begin'>@loop_begin </link></term><listitem><para>
+Beginning of loop for repeating directives with changing keyword values</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_loop_end'>@loop_end</link></term><listitem><para>
+End of loop for repeating directives</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_loop_location_look_up'>@loop_location_look_up</link></term><listitem><para>
+Create a temporary location look up table from a point, line or link chain feature.</para></listitem></varlistentry>
+</variablelist>
+The following directives control positioning in the output file. The <link linkend='tx_size'>@size</link>
+directive is used to set the actual size of the output file. The <link linkend='tx_anchor'>@anchor</link>
+directive is used for defining positions in the output file. This directive
+can be reset any number of times.
+<variablelist>
+<varlistentry><term><link linkend='tx_size'>@size</link></term><listitem><para>
+Size of the ASCII output file. This must occur before any display directives.</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_anchor'>@anchor</link></term><listitem><para>
+Define a reference position for displaying parameters</para></listitem></varlistentry>
+</variablelist>
+The <link linkend='tx_projection'>@projection</link> <link linkend='tx_mapdef'>@mapdef</link> <link linkend='tx_resolution'>@resolution</link> directives control the map
+background used for sampling. (Note that any background map should be
+completely contained by the map defined in the &FPA; setup file and the &FPA;
+metafiles, or errors could result when sampling the data. Errors can also
+occur if the locations for sampling data are beyond the limits of the
+background map defined by these directives.) These directives are
+usually found at the beginning of TexMet product definition files.
+<variablelist>
+<varlistentry><term><link linkend='tx_projection'>@projection</link></term><listitem><para>
+Map projection for sampling</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_mapdef'>@mapdef</link></term><listitem><para>
+Map definition for sampling</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_resolution'>@resolution</link></term><listitem><para>
+Spline resolution for sampling</para></listitem></varlistentry>
+</variablelist>
+The <link linkend='tx_presentation'>@presentation</link> directive sets the default display parameters for all
+subsequent directives. Many of the keywords in TexMet have default
+values that are set automatically when the application is run. These
+parameters are reset by keywords in the <link linkend='tx_presentation'>@presentation</link> directive.
+However, many of the keywords found in the <link linkend='tx_presentation'>@presentation</link> directive
+are also found in other directives. The effect of such keywords is to
+override the default display parameters for that directive only; the default
+display parameters will not be changed.
+<variablelist>
+<varlistentry><term><link linkend='tx_presentation'>@presentation</link></term><listitem><para>
+Default display parameters</para></listitem></varlistentry>
+</variablelist>
+</para></sect1>
+<sect1><title>TexMet Display Directives</title><para>
+The following directives control the display of all parameters in &TexMet;.
+A complete description of each of these directives is given in a following section.
+The following directives are used to set special parameters used in display of various ASCII values:
+<variablelist>
+<varlistentry><term><link linkend='tx_set_source'>@set_source</link></term><listitem><para>
+Set a time for extracting &FPA; Metafile data</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_define_table'>@define_table</link></term><listitem><para>
+Define a table for sampling data</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_table_site'>@table_site</link></term><listitem><para>
+Set locations in a table</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_define_sample_grid'>@define_sample_grid</link></term><listitem><para>
+Define a grid of locations for sampling values</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_define_sample_list'>@define_sample_list</link></term><listitem><para>
+Define a list of locations for sampling values</para></listitem></varlistentry>
+</variablelist>
+The following directives are used to set parameters to control the format
+of ASCII values to be displayed:
+<variablelist>
+<varlistentry><term><link linkend='tx_wind_presentation'>@wind_presentation</link></term><listitem><para>
+Set parameters for displaying winds as text</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_vector_presentation'>@vector_presentation</link></term><listitem><para>
+Set parameters for displaying vector field parameters as text strings</para></listitem></varlistentry>
+</variablelist>
+The following directives are used to display ASCII text:
+<variablelist>
+<varlistentry><term><link linkend='tx_text'>@text</link></term><listitem><para>
+Display a text string (or file)</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_write_time'>@write_time</link></term><listitem><para>
+Display a formatted time string</para></listitem></varlistentry>
+</variablelist>
+The following directives are used to display ASCII values extracted from
+&FPA; Metafiles at an arbitrary location or in a table:
+<variablelist>
+<varlistentry><term><link linkend='tx_label'>@label</link></term><listitem><para>
+Display labels from &FPA; fields</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_lchain_nodes'>@lchain_nodes</link></term><listitem><para>
+Display nodes from &FPA; link chain fields.</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_sample_field'>@sample_field</link></term><listitem><para>
+Sample values from &FPA; fields</para></listitem></varlistentry>
+<varlistentry><term><link linkend='tx_sample_wind'>@sample_wind</link></term><listitem><para>
+Sample winds from &FPA; fields</para></listitem></varlistentry>
+</variablelist>
+</para></sect1>
+<sect1><title>Complete Description of All TexMet Directives</title><para>
+The following table consists of an alphabetical listing of all the &TexMet;
+directives, a list of keywords that can be used within each directive, a
+brief description of the directives and keywords, and one or more
+examples of each directive.
+</para><para>
+Note that most examples are found in product definition files in directory 
+<filename><envar>$FPA</envar>/setup/pdf/texmet/examples</filename>,
+and other examples are included to demonstrate additional functionality.
+</para>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/anchor.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/define_sample_grid.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/define_sample_list.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/define_table.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/file_close.xml'/>
+             <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/file_name.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/group.xml'/>
+             <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/include.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/label.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/lchain_nodes.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/loop_begin.xml'/>
+             <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/loop_end.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/loop_location_look_up.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/mapdef.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/presentation.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/process.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/projection.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/resolution.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/sample_field.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/sample_wind.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/set_source.xml'/>
+             <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/size.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/table_site.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/text.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/vector_presentation.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/verbose.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/version.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/wind_presentation.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/write_time.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/format_of_look_up_tables.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/format_of_location_look_up_tables.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/format_of_wind_look_up_tables.xml'/>
+<beginpage/> <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='texmet/format_of_vector_look_up_tables.xml'/>
+<!--
+-->
+</sect1>
+</chapter>

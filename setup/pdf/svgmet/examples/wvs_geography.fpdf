@@ -1,0 +1,61 @@
+! Reset presentations for geographic features ...
+@reset_geo_presentation { }
+
+! Define presentation for geographic features we may wish to see ...
+! Land and water will be displayed as filled outlines ...
+@geo_presentation
+	{
+	geo_name      = land;
+	outline       = none;
+	interior_fill = CMYK 5 40 75 0;
+	}
+@geo_presentation
+	{
+	geo_name      = border;
+	outline       = CMYK 0 0 0 100;
+	}
+@geo_presentation
+	{
+	geo_name      = border_major;
+	outline       = CMYK 0 0 0 80;
+	}
+@geo_presentation
+	{
+	geo_name      = lat_lon_10;
+	line_width    = 0.015;
+	outline       = CMYK 0 10 35 0;
+	interior_fill = none;
+	}
+
+! Display some latitudes and longitudes ...
+@geography
+	{
+	geo_file           = $FPA/data/common/CommonMaps/10_deg_lat_lon;
+	element            = boundaries;
+	level              = geography;
+	category_attribute = FPA_category;
+	category           = lat_lon_10
+	attribute          = FPA_category;
+	}
+
+! Display some geographic features ... for DCW maps
+@geography
+	{
+	geo_file           = base_map.fpa;		!EDIT!
+	element            = land_water;
+	level              = geography;
+	category_attribute = FPA_category;
+	category           = land
+	attribute          = FPA_category;
+	}
+
+! Display political boundaries ... for DCW maps
+@geography
+	{
+	geo_file           = base_map.fpa;		!EDIT!
+	element            = boundaries;
+	level              = geography;
+	category_attribute = FPA_category;
+	category           = border  border_major
+	attribute          = FPA_category;
+	}

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_include'> <title>@include</title> <titleabbrev>@include</titleabbrev>
+<para>
+Process directives from another product definition file.
+</para><para>
+Note that the path for the product definition file should be relative to the directory containing the current product definition file.
+</para><para>
+Note that the ".fpdf" suffix on the file name is optional.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&valuehead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput><replaceable>file_name</replaceable></userinput></para></entry>
+<entry colname='type'><para>(string)</para></entry>
+<entry colname='desc'><para>Path for the product definition file</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@include { av_map_setup2 }</programlisting>
+Process the directives from the file: <filename>av_map_setup2.fpdf</filename>. 
+</para><para>
+Note that this product definition file will be located in the same directory as the product definition file containing the <link linkend='tx_include'>@include</link> directive
+</para></example>
+</para></sect2>

@@ -1,0 +1,70 @@
+#!/usr/bin/python
+
+### DO NOT EDIT
+###-->
+import sys
+import FPALib
+
+fileName = sys.argv[1]
+dict     = FPALib.get_dict(fileName)
+###<--
+
+### INSERT YOUR CODE HERE
+###-->
+if not dict.has_key("weather"):
+	#print FPALib.NO_ATTRIBUTE % ('weather')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+if not dict.has_key("cloud_amount"):
+	#print FPALib.NO_ATTRIBUTE % ('cloud_amount')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+# Set default clds_and_wx value
+cat = "CLR"
+
+# Set weather clds_and_wx value based on 'weather' attribute
+weather = dict["weather"]
+if   FPALib.match(weather, "TSRA"): cat = "TSRA"
+elif FPALib.match(weather, "TS"):   cat = "TS"
+elif FPALib.match(weather, "FZRA"): cat = "FZRA"
+elif FPALib.match(weather, "FZDZ"): cat = "FZDZ"
+elif FPALib.match(weather, "RASN"): cat = "RASN"
+elif FPALib.match(weather, "SHSN"): cat = "SHSN"
+elif FPALib.match(weather, "RA"):   cat = "RA"
+elif FPALib.match(weather, "SN"):   cat = "SN"
+elif FPALib.match(weather, "DZ"):   cat = "DZ"
+elif FPALib.match(weather, "FG"):   cat = "FG"
+elif FPALib.match(weather, "BR"):   cat = "BR"
+elif FPALib.match(weather, "HZ"):   cat = "HZ"
+elif FPALib.match(weather, "FU"):   cat = "FU"
+else:
+	# Set weather category based on 'cloud_amount'
+	clound_amount = dict["cloud_amount"]
+	if   FPALib.match(clound_amount, "CLR"):          cat = "CLR"
+	elif FPALib.match(clound_amount, "SCT OCNL BKN"): cat = "SCT"
+	elif FPALib.match(clound_amount, "SCT OCNL OVC"): cat = "SCT"
+	elif FPALib.match(clound_amount, "SCT VRBL BKN"): cat = "BKN"
+	elif FPALib.match(clound_amount, "SCT VRBL OVC"): cat = "OVC"
+	elif FPALib.match(clound_amount, "BKN OCNL SCT"): cat = "BKN"
+	elif FPALib.match(clound_amount, "BKN OCNL OVC"): cat = "BKN"
+	elif FPALib.match(clound_amount, "BKN VRBL SCT"): cat = "BKN"
+	elif FPALib.match(clound_amount, "BKN VRBL OVC"): cat = "OVC"
+	elif FPALib.match(clound_amount, "OVC OCNL SCT"): cat = "OVC"
+	elif FPALib.match(clound_amount, "OVC OCNL BKN"): cat = "OVC"
+	elif FPALib.match(clound_amount, "OVC VRBL BKN"): cat = "OVC"
+	elif FPALib.match(clound_amount, "OVC VRBL BKN"): cat = "OVC"
+	elif FPALib.match(clound_amount, "SCT"):          cat = "SCT"
+	elif FPALib.match(clound_amount, "BKN"):          cat = "BKN"
+	elif FPALib.match(clound_amount, "OVC"):          cat = "OVC"
+
+# Set weather category 
+dict["clds_and_wx"] = cat
+###<--
+
+### ALL DONE! 
+###-->
+FPALib.print_dict(fileName, dict)
+sys.exit()
+###<--

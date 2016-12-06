@@ -1,0 +1,77 @@
+! Display stationary fronts ...
+@lines
+	{
+	element            = fronts
+	level              = surface
+	category_attribute = FPA_category
+	category           = stationary
+	attribute          = FPA_category
+	pattern            = front.sfc.stationary
+	pattern_width      = .150
+	pattern_length     = .750
+	outline            = none
+	fill               = CMYK 100 100   0 0
+	fill               = CMYK   0 100 100 0
+	}
+
+! Display cold fronts ...
+@lines
+	{
+	element            = fronts
+	level              = surface
+	category_attribute = FPA_category
+	category           = cold
+	attribute          = FPA_category
+	pattern            = front.sfc.cold
+	pattern_width      = .150
+	pattern_length     = .750
+	outline            = none
+	fill               = CMYK 100 100 0 0
+	}
+
+! Display occluded fronts ...
+@lines
+	{
+	element            = fronts
+	level              = surface
+	category_attribute = FPA_category
+	category           = occluded
+	attribute          = FPA_category
+	pattern            = front.sfc.occluded
+	pattern_width      = .150
+	pattern_length     = .750
+	outline            = none
+	fill               = CMYK 100 100 0 0
+	fill               = CMYK 0 100 100 0
+	}
+
+! Display warm fronts ...
+@lines
+	{
+	element            = fronts
+	level              = surface
+	category_attribute = FPA_category
+	category           = warm
+	attribute          = FPA_category
+	pattern            = front.sfc.warm
+	pattern_width      = .150
+	pattern_length     = .750
+	outline            = none
+	fill               = CMYK 0 100 100 0
+	}
+
+! Display trowals ...
+@lines
+	{
+	element            = fronts
+	level              = surface
+	category_attribute = FPA_category
+	category           = trowal
+	attribute          = FPA_category
+	pattern            = trowal
+	pattern_width      = .150
+	pattern_length     = .750
+	outline            = none
+	fill               = CMYK 100 100 0 0
+	fill               = CMYK 0 100 100 0
+	}

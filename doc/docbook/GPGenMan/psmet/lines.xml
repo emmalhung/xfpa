@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_lines'> <title>@lines</title> <titleabbrev>@lines</titleabbrev>
+<para>
+Display lines from a "line" field (or from more than one "line" field) on the current map.
+Note that the <userinput>category_attribute</userinput> and <userinput>category</userinput> keywords can be used one or more times to display only selected lines.
+Note that the <userinput>attribute</userinput> and <userinput>look_up</userinput> keywords can be used to choose different presentations for lines with different attributes.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>element</userinput> and <userinput>level</userinput> can be specified more than once in this directive.</para></entry></row>
+<row valign='top'><entry spanname='tblnote'><para>Note that if a single element name is matched with a list of level names, or vice versa, the single name must be given first. Multiple element and level name lists should have the same number.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element_list.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level_list.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/arrow_name.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_length.xml'/>
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>line_width</userinput>, <userinput>line_style</userinput>, <userinput>outline</userinput> and <userinput>fill</userinput> can be specified more than once in this directive, for drawing multi-coloured curves!</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@lines
+{
+  element            = fronts;
+  level              = surface;
+  category_attribute = FPA_category;
+  category           = stationary;
+  attribute          = FPA_category;
+  pattern            = front.sfc.stationary;
+  pattern_width      = 0.150;
+  pattern_length     = 0.750;
+  outline            = none;
+  fill               = CMYK 100 100 0 0;
+  fill               = CMYK 0 100 100 0;
+}
+</programlisting>
+Display all lines with a value in attribute <userinput>FPA_category</userinput> of stationary from the "line" field surface
+fronts, using the pattern from file "front.sfc.stationary". The pattern will be 0.150 "units" wide and
+0.750 "units" long, and will then repeat. The pattern will be drawn as a filled line with a colour in the
+first segment composed of 100% Cyan and 100% Magenta, and a colour in the second segment composed of 100% Magenta and 100% Yellow. 
+(Note that the default pattern file would be <filename><envar>$FPA</envar>/config/patterns/front.sfc.stationary</filename>.
+Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+
+</para></example>
+</para></sect2>

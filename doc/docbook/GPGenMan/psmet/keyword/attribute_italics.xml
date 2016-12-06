@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>attribute_italics</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry> 
+<entry colname='desc'><para>Text in italics?  
+</para><para> (default is <userinput>italics</userinput> set above)</para></entry></row>

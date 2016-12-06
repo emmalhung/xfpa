@@ -1,0 +1,776 @@
+#########################################################
+#                                                       #
+#   NEVER MODIFY THIS FILE!                             #
+#                                                       #
+#   All Config-type files in the $FPA/config directory  #
+#   can and will be updated with any new release,       #
+#   update or patch of the FPA software suite.          #
+#                                                       #
+#   You should only introduce changes and additions to  #
+#   the information in this file by using a local       #
+#   Ingest config file that refers to this file through #
+#   an #include statement. Refer to the file d.Ingest   #
+#   or Ingest.template for further instructions.        #
+#                                                       #
+#########################################################
+
+#########################################################
+#
+#  "Ingest.master" Master Ingest Configuration File     
+#
+#	This configuration file contains default information
+#	for model, element, and level identifiers from GRIB.
+#
+#	There is also a mechanism for choosing which fields
+#	to process (or not) into metafiles or datafiles.
+#
+#	The file is similar in format to the Config files.
+#	The basic structure is:
+#
+#   revision 6.0
+#
+#	include $FPA/config/Ingest.master
+#
+#	Grib <edition>
+#		{
+#
+#		Sources
+#			{
+#			<source_name>
+#				{
+#				parameters	=	<p1> <p2> ...
+#				...
+#				}
+#			}
+#		Elements
+#			{
+#			<source_list> or default
+#				{
+#				<element> <units>
+#					{
+#					parameters	=	<p1> <p2> ...
+#					...
+#					}
+#				}
+#			}
+#		Levels
+#			{
+#			<source_list> or default
+#				{
+#				<level_tag> 
+#					{
+#					parameters	=	<p1> <p2> ...
+#					...
+#					}
+#				}
+#			}
+#		Fields
+#			{
+#			process		= <source> <element> <level>
+#			skip		= <source> <element> <level>
+#			redirect	= <source> <source alias> 
+#			...
+#			}
+#		DataFiles
+#			{
+#			process		= <source> <element> <level>
+#			skip		= <source> <element> <level>
+#			redirect	= <source> <source alias> 
+#			rescale		= <element> <level> <scale> <offset>
+#			...
+#			}
+#		}
+#		...
+#
+#########################################################
+revision 6.0
+
+###########################################################
+#	Grib Edition 1
+###########################################################
+Grib	1
+	{
+	Sources
+		{
+		GEM_Analysis
+			{
+			parameters = 54 30
+			parameters = 54 31
+			parameters = 54 32
+			parameters = 54 33
+			parameters = 54 34
+			}
+		GEM
+			{
+			parameters = 54 35
+			parameters = 54 36
+			parameters = 54 37
+			parameters = 54 38
+			parameters = 54 39
+			}
+		Spectral_Analysis
+			{
+			parameters = 54 40
+			parameters = 54 41
+			parameters = 54 42
+			parameters = 54 43
+			parameters = 54 44
+			}
+		Spectral
+			{
+			parameters = 54 45
+			parameters = 54 46
+			parameters = 54 47
+			parameters = 54 48
+			parameters = 54 49
+			}
+		NMC
+			{
+			parameters = 7 *
+			}
+		ECMWF
+			{
+			parameters = 98 *
+			}
+		}
+
+	Elements
+		{
+		default
+			{
+			real_pressure              Pa 
+				{	
+				parameters = 2	1
+				}
+			pressure                   Pa 
+				{
+				parameters = 2	2
+				}
+			pressure_tendency          Pa/s 
+				{
+				parameters = 2	3
+				}
+			geopotential               m2/s/s 
+				{
+				parameters = 2	6
+				}
+			height                     m 
+				{
+				parameters = 2	7
+				}
+			temperature                degreesK 
+				{
+				parameters = 2	11
+				}
+			virtual_temperature        degreesK 
+				{
+				parameters = 2	12
+				}
+			potential_temperature      degreesK 
+				{
+				parameters = 2	13
+				}
+			maximum_temperature_gmt    degreesK 
+				{
+				parameters = 2	15
+				}
+			minimum_temperature_gmt    degreesK 
+				{
+				parameters = 2	16
+				}
+			dewpoint                   degreesK 
+				{
+				parameters = 2	17
+				}
+			dewpoint_depression        Kdegrees 
+				{
+				parameters = 2	18
+				}
+			lapse_rate                 Kdegrees/m 
+				{
+				parameters = 2	19
+				}
+			wind_direction             degrees_true 
+				{
+				parameters = 2	31
+				}
+			wind_speed                 m/s 
+				{
+				parameters = 2	32
+				}
+			uu_wind                    m/s 
+				{
+				parameters = 2	33
+				}
+			vv_wind                    m/s 
+				{
+				parameters = 2	34
+				}
+			vertical_velocity          Pa/s 
+				{
+				parameters = 2	39
+				}
+			real_vertical_velocity     m/s 
+				{
+				parameters = 2	40
+				}
+			vorticity                  1/s 
+				{
+				parameters = 2	41
+				}
+			divergence                 1/s 
+				{
+				parameters = 2	42
+				}
+			relative_vorticity         1/s 
+				{
+				parameters = 2	43
+				}
+			relative_divergence        1/s 
+				{
+				parameters = 2	44
+				}
+			specific_humidity          kg/kg 
+				{
+				parameters = 2	51
+				}
+			relative_humidity          percent 
+				{
+				parameters = 2	52
+				}
+			rainfall_rate              kg/m2/s 
+				{
+				parameters = 2	59
+				}
+			precipitation              kg/m2 
+				{
+				parameters = 2	61
+				}
+			convective_precip          kg/m2 
+				{
+				parameters = 2	63
+				}
+			total_cloud                percent 
+				{
+				parameters = 2	71
+				}
+			convective_cloud           percent 
+				{
+				parameters = 2	72
+				}
+			low_cloud                  percent 
+				{
+				parameters = 2	73
+				}
+			mid_cloud                  percent 
+				{
+				parameters = 2	74
+				}
+			high_cloud                 percent 
+				{
+				parameters = 2	75
+				}
+			sea_temperature            degreesK 
+				{
+				parameters = 2	80
+				}
+			ice_cover                  ratio 
+				{
+				parameters = 2	91
+				}
+			convective_precip_rate     kg/m2/s 
+				{
+				parameters = 2	214
+				}
+			pressure_eta               Pa
+				{
+				parameters = 2	130
+				}
+			soil_temp                  degreesK
+				{
+				parameters = 2	85
+				}
+			soil_moisture_content      ratio
+				{
+				parameters = 2	144
+				}
+			land_cover                 ratio
+				{
+				parameters = 2	81
+				}
+			drag_coeff                 none
+				{
+				parameters = 2	252
+				}
+			frictional_velocity        m/s
+				{
+				parameters = 2	253
+				}
+			lifted_index               degreesK
+				{
+				parameters = 2	24
+				}
+			best4lyr_lifted_index      degreesK
+				{
+				parameters = 2	132
+				}
+			cape                       J/kg
+				{ 
+				parameters = 2	157
+				}
+			}
+		}
+
+	Levels
+		{
+		default
+			{
+			surface
+				{
+				parameters = 0   1 0   0   0   0 
+				}
+			cloud_base
+				{
+				parameters = 0   2 0   0   0   0 
+				}
+			cloud_top
+				{
+				parameters = 0   3 0   0   0   0 
+				}
+			zero_degree
+				{
+				parameters = 0   4 0   0   0   0 
+				}
+			lifted_cond
+				{
+				parameters = 0   5 0   0   0   0 
+				}
+			max_wind
+				{
+				parameters = 0   6 0   0   0   0 
+				}
+			tropopause
+				{
+				parameters = 0   7 0   0   0   0 
+				}
+			atm_top
+				{
+				parameters = 0   8 0   0   0   0 
+				}
+			sea_bottom
+				{
+				parameters = 0   9 0   0   0   0 
+				}
+			isothermal
+				{
+				parameters = 1  20 .01   0   0   0 
+				}
+			mb
+				{
+				parameters = 1 100 1   0   0   0 
+				parameters = 2 101 10   0  10   0 
+				}
+			msl
+				{
+				parameters = 0 102 0   0   0   0 
+				}
+			altitude
+				{
+				parameters = 1 103 1   0   0   0 
+				parameters = 2 104 100   0 100   0 
+				}
+			height
+				{
+				parameters = 1 105 1   0   0   0 
+				parameters = 2 106 100   0 100   0 
+				}
+			sigma
+				{
+				parameters = 1 107 .01   0   0   0 
+				parameters = 2 108 1   0   1   0 
+				}
+			hybrid
+				{
+				parameters = 1 109 1   0   0   0 
+				parameters = 2 110 1   0   1   0 
+				}
+			cm_below_sfc
+				{
+				parameters = 1 111 1   0   0   0 
+				parameters = 2 112 1   0   1   0 
+				}
+			theta
+				{
+				parameters = 1 113 1   0   0   0 
+				parameters = 2 114 -1 475  -1 475 
+				}
+			mb_agl
+				{
+				parameters = 1 115 1   0   0   0 
+				parameters = 2 116 1   0   1   0 
+				}
+			PV
+				{
+				parameters = 1 117 1   0   0   0 
+				}
+			ETA
+				{
+				parameters = 1 119 .01   0   0   0 
+				parameters = 2 120 1   0   1   0 
+				}
+			mb
+				{
+				parameters = 2 121 -1 1100  -1 1100 
+				}
+			height
+				{
+				parameters = 1 125 .01   0   0   0 
+				}
+			sigma
+				{
+				parameters = 2 128 -.1  11 -.1  11 
+				}
+			mb
+				{
+				parameters = 2 141 1   0  -1 1100 
+				}
+			below_sea_level
+				{
+				parameters = 1 160 1   0   0   0 
+				}
+			entire_atmosphere
+				{
+				parameters = 0 200 0   0   0   0 
+				}
+			entire_ocean
+				{
+				parameters = 0 201 0   0   0   0 
+				}
+			}
+		}
+
+	Fields
+		{
+		}
+
+	DataFiles
+		{
+		}
+	}
+
+###########################################################
+#	Grib Edition 2
+###########################################################
+Grib	2
+	{
+
+	Sources
+		{
+		GEM
+			{
+			parameters = 54 * * * * *
+			}
+		NMC
+			{
+			parameters =  7 * * * * *
+			}
+		ECMWF
+			{
+			parameters = 98 * * * * *
+			}
+		}
+
+	Elements
+		{
+		default
+			{
+			real_pressure              Pa
+				{	
+				parameters = 0 *  3   0
+				}
+			pressure                   Pa
+				{  
+				parameters = 0 *  3   1
+				}
+			pressure_tendency          Pa/s
+				{  
+				parameters = 0 *  3   2
+				}
+			geopotential               m2/s/s
+				{
+				parameters = 0 *  3   4
+				}
+			height                     m
+				{
+				parameters = 0 *  3   5
+				}
+			temperature                degreesK
+				{
+				parameters = 0 *  0   0
+				}
+			virtual_temperature        degreesK
+				{
+				parameters = 0 *  0   1
+				}
+			potential_temperature      degreesK
+				{
+				parameters = 0 *  0   2
+				}
+			maximum_temperature_gmt    degreesK
+				{
+				parameters = 0 *  0   4
+				}	 
+			minimum_temperature_gmt    degreesK
+				{
+				parameters = 0 *  0   5
+				}	 
+			dewpoint                   degreesK
+				{
+				parameters = 0 *  0   6
+				}
+			dewpoint_depression        Kdegrees
+				{
+				parameters = 0 *  0   7
+				}	 
+			lapse_rate                 Kdegrees/m
+				{
+				parameters = 0 *  0   8
+				} 
+			wind_direction             degrees_true
+				{
+				parameters = 0 *  2   0
+				}
+			wind_speed                 m/s
+				{
+				parameters = 0 *  2   1
+				}	 
+			uu_wind                    m/s
+				{
+				parameters = 0 *  2   2
+				}	 
+			vv_wind                    m/s
+				{
+				parameters = 0 *  2   3
+				}	
+			vertical_velocity          Pa/s
+				{
+				parameters = 0 *  2   8
+				}
+			real_vertical_velocity     m/s
+				{
+				parameters = 0 *  2   9
+				}	 
+			vorticity                  1/s
+				{
+				parameters = 0 *  2  10
+				}	 
+			divergence                 1/s
+				{
+				parameters = 0 *  2  11
+				}	 
+			relative_vorticity         1/s
+				{
+				parameters = 0 *  2  12
+				}
+			relative_divergence        1/s
+				{
+				parameters = 0 *  2  13
+				}	 
+			specific_humidity          kg/kg
+				{
+				parameters = 0 *  1   0
+				}	 
+			relative_humidity          percent
+				{
+				parameters = 0 *  1   1
+				}
+			rainfall_rate              kg/m2/s
+				{
+				parameters = 0 *  1   7
+				}
+			precipitation              kg/m2
+				{
+				parameters = 0 *  1   8
+				}
+			convective_precip          kg/m2
+				{
+				parameters = 0 *  1  10
+				}
+			total_cloud                percent
+				{
+				parameters = 0 *  6   1
+				}	 
+			convective_cloud           percent
+				{
+				parameters = 0 *  6   2
+				}	 
+			low_cloud                  percent
+				{
+				parameters = 0 *  6   3
+				}	 
+			mid_cloud                  percent
+				{
+				parameters = 0 *  6   4
+				}
+			high_cloud                 percent
+				{
+				parameters = 0 *  6   5
+				}
+			sea_temperature            degreesK
+				{
+				parameters = 10 *  3   0
+				}	 
+			ice_cover                  ratio
+				{
+				parameters = 10 *  2   0
+				}	 
+			convective_precip_rate     kg/m2/s
+				{
+				parameters = 0 *  1 37
+				parameters = 0 *  1 196
+				}
+			pressure_eta               Pa
+				{
+				parameters = 0 *  3 192
+				}	 
+			soil_temp                  degreesK
+				{
+				parameters = 2 *  0   2
+				}
+			soil_moisture_content      ratio
+				{
+				parameters = 2 *  0 192
+				}	 
+			land_cover                 ratio
+				{
+				parameters = 2 *  0   1
+				}
+			drag_coeff                 none
+				{
+				parameters = 0 *  2 29
+				parameters = 0 *  2 196
+				}
+			frictional_velocity        m/s
+				{
+				parameters = 0 *  2 30
+				parameters = 0 *  2 197
+				}
+			lifted_index               degreesK
+				{
+				parameters = 0 *  7   0
+				}
+			best4lyr_lifted_index      degreesK
+				{
+				parameters = 0 *  7 11
+				parameters = 0 *  7 193
+				}
+			cape                       J/kg
+				{
+				parameters = 0 *  7   6
+				}
+			}
+		}
+
+	Levels
+		{
+		default
+			{
+			surface
+				{
+				parameters = 0   1	0	0 
+				}
+			cloud_base
+				{
+				parameters = 0   2	0	0 
+				}
+			cloud_top
+				{
+				parameters = 0   3	0	0 
+				}
+			zero_degree
+				{
+				parameters = 0   4	0	0 
+				}
+			lifted_cond
+				{
+				parameters = 0   5	0	0 
+				}
+			max_wind
+				{
+				parameters = 0   6	0	0 
+				}
+			tropopause
+				{
+				parameters = 0   7	0	0 
+				}
+			atm_top
+				{
+				parameters = 0   8	0	0 
+				}
+			sea_bottom
+				{
+				parameters = 0   9	0	0 
+				}
+			isothermal
+				{
+				parameters = 1  20	0	0 
+				}
+			mb
+				{
+				parameters = 1 100	0.01    0 
+				}
+			msl
+				{
+				parameters = 0 101	0	0 
+				}
+			altitude
+				{
+				parameters = 1 102	1    0 
+				}
+			height
+				{
+				parameters = 1 103	1    0 
+				}
+			sigma
+				{
+				parameters = 1 104	100    0 
+				}
+			hybrid
+				{
+				parameters = 1 105	1    0 
+				}
+			cm_below_sfc
+				{
+				parameters = 1 106	100	0 
+				}
+			theta
+				{
+				parameters = 1 107	1	0 
+				}
+			mb_agl
+				{
+				parameters = 1 108	0.01	0 
+				}
+			PV
+				{
+				parameters = 1 109	1e9	0 
+				}
+			ETA
+				{
+				parameters = 1 111	1	0 
+				}
+			below_sea_level
+				{
+				parameters = 1 160	1	0 
+				}
+			}
+		}
+
+		Fields
+		{
+		}
+
+		DataFiles
+		{
+		}
+	}

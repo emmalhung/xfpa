@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>A.2.1. Other Languages in the Configurable Menus</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apas02.html" title="A.2. Support for Other Languages" /><link rel="prev" href="apas02.html" title="A.2. Support for Other Languages" /><link rel="next" href="apas03.html" title="A.3. Common Keywords" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">A.2.1. Other Languages in the Configurable Menus</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apas02.html">Prev</a> </td><th width="60%" align="center">A.2. Support for Other Languages</th><td width="20%" align="right"> <a accesskey="n" href="apas03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2003528"></a>A.2.1. Other Languages in the Configurable Menus</h3></div></div></div><p>
+A language specifier is allowed in all lines with the format <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">label</span> in the <span class="acronym">FPA</span> configuration files (for example, label = <span xmlns="" class="replaceable">label</span> or short_label = <span xmlns="" class="replaceable">label</span>).
+The format of language dependent labels is given by:
+</p><pre class="programlisting">
+<span xmlns="" class="replaceable">keyword</span> = &lt;*default*&gt; "default label" \
+    &lt;*second_language*&gt; "second language label" \
+    &lt;*third_language*&gt;  "third language label"
+#     OR
+<span xmlns="" class="replaceable">keyword</span> = &lt;*default*&gt;         "default label"
+<span xmlns="" class="replaceable">keyword</span> = &lt;*second_language*&gt; "second language label"
+<span xmlns="" class="replaceable">keyword</span> = &lt;*third_language*&gt;  "third language label"
+</pre><p>
+For example, labels for mean sea level pressure in English and Canadian French (indicated by c-french in UNIX) could be entered as:
+</p><pre class="programlisting">label = &lt;*default*&gt; "MSL Pressure" &lt;*c-french*&gt; "Pression MSL"</pre><p>
+In this example, if the <code class="envar">FPA_LANG</code> environment variable is set to c-french, "Pression MSL" would be displayed in the <span class="acronym">FPA</span> interface.
+</p><p>
+As noted above, keywords can appear several times in different config files, but the final entry in the configuration files normally takes precedence.
+However, keywords that allow a language specifier are special cases, and only lines containing the language set by the <code class="envar">FPA_LANG</code> environment variable are recognized.
+This allows keywords for different languages to be contained in separate configuration files.
+The default value for each label is used if no "language" specific value is encountered!</p><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apas02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apas02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apas03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">A.2. Support for Other Languages </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> A.3. Common Keywords</td></tr></table></div></body></html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>A.1. Overview</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apa.html" title="Appendix A. Config and Config.name File Format" /><link rel="prev" href="apa.html" title="Appendix A. Config and Config.name File Format" /><link rel="next" href="apas02.html" title="A.2. Support for Other Languages" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">A.1. Overview</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apa.html">Prev</a> </td><th width="60%" align="center">Appendix A. Config and Config.<span xmlns="" class="replaceable">name</span> File Format</th><td width="20%" align="right"> <a accesskey="n" href="apas02.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2018302"></a>A.1. Overview</h2></div></div></div><p>
+The <code class="filename">Config</code> and <code class="filename">Config.<span xmlns="" class="replaceable">name</span></code> files (see <a href="ch06.html" title="Chapter 6. Configuration Files">Configuration Files, (Chapter 6)</a>, "Configuration Files") contain information used to identify all directories, files, and fields used by the <span class="acronym">FPA</span>.
+</p><p>
+This Appendix identifies all presently recognized keywords for information in the primary blocks of these types of configuration file.
+The general format of the <code class="filename">Config</code> files is:
+</p><pre class="programlisting">revision    <span xmlns="" class="replaceable">revision_number</span>
+
+include   <span xmlns="" class="replaceable">filename1</span>
+include   <span xmlns="" class="replaceable">filename2</span>
+
+<span xmlns="" class="replaceable">block_name</span>
+  {
+  <span xmlns="" class="replaceable">member_name</span>
+    {
+    <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value(s)</span>
+#     OR
+    <span xmlns="" class="replaceable">keyword</span> =
+      {
+      <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value(s)</span>
+      }
+    }
+  }
+</pre><p>
+
+In some cases, there are also <span xmlns="" class="replaceable">sub_block_name</span> or <span xmlns="" class="replaceable">sub_member_name</span> sections, but this general format is seen throughout.</p><p>
+The revision line must be the first uncommented line in each configuration file.
+(The <span xmlns="" class="replaceable">revision_number</span> is 8.0)</p><p>
+The include lines allow several configuration files to be used at the same time.
+The configuration file reader merges the information from the included configuration files with the information in the current configuration file to determine all parameters used by the <span class="acronym">FPA</span>.</p><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p> Keyword information for any particular <span xmlns="" class="replaceable">block_name</span> or <span xmlns="" class="replaceable">member_name</span> may be included in any of the configuration files, any number of times.
+The information from each occurrence is merged with information already encountered to provide a full set of configuration parameters.</p></div><p>
+The general format does not allow line concatenation; for example, </p><pre class="programlisting">block_name {</pre><p> on the same line would not be recognized.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>In order to make this appendix easier to read the following conventions were adopted:</p><div class="itemizedlist"><ul type="disc"><li><p>when a word is being used as a place holder it is formatted to indicate it should be <span xmlns="" class="replaceable">replaced</span> by an appropriate value.</p></li><li><p>if a keyword only accepts values from a predefined list, the list is separated with '|' to indicate "or" or '&amp;|' to indicate "and/or".</p></li><li><p>Sub-blocks are indented</p></li><li><p>The values for some keywords can only be specified once.
+If such a keyword has additional specifications, only the first one is accepted.
+The rest are ignored.
+(Those keywords are preceded by a '!' in the following sections.)</p></li></ul></div></div><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The format of the actual configuration files is important as the parsing program can be rather unforgiving.</p><div class="itemizedlist"><ul type="disc"><li><p>Line continuations (where necessary) are indicated by ending the line with '\'.</p></li><li><p>Comment lines begin with '#', but the format also allows for appended comments on most lines.</p><p></p></li><li><p>The values given for keywords can usually be specified as often as desired, with each new value replacing the previous specification.
+(Note that "language" specific keywords are a special case, described in more detail below.) In those cases where the keyword defines a list of values, each new value is added to the present list; there is usually a "reset_" keyword to allow the user to remove all previous specifications.</p></li><li><p>The values for some keywords refer to members of other blocks.
+These members must therefore be defined in one of the <code class="filename">Config</code> files used.
+</p></li><li><p>There are several "magic" values for keywords (examples are Default or None), which have a special meaning to the programs.
+These magic values should not be used as members in any block in the <code class="filename">Config</code> files.</p></li><li><p>All '{' or '}' characters must be located on their own lines.</p></li><li><p>The '=' must be separated from the rest of the line by white space.</p></li></ul></div></div><p>
+Some changes to the <code class="filename">Config</code> files are not allowed, or not presently supported.
+Attempts to make such changes will result in a warning message in the log file, but should not affect the running of the <span class="acronym">FPA</span>.
+Errors in a line of a <code class="filename">Config</code> file will cause an error for that member of the block, and will print out an error message in the log file.
+The affected member will no longer be recognized by the <span class="acronym">FPA</span>, and will no longer appear in any list! 
+</p><p>
+</p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3><p> Users should NEVER attempt to edit a <code class="filename">Config</code> file when the <span class="acronym">FPA</span> is running, as this may have a catastrophic effect on the <span class="acronym">FPA</span> and its data files.</p></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apa.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apa.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apas02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix A. Config and Config.<span xmlns="" class="replaceable">name</span> File Format </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> A.2. Support for Other Languages</td></tr></table></div></body></html>

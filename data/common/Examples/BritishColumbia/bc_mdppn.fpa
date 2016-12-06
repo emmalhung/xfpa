@@ -1,0 +1,349 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Creston"
+	FPA_user_label "Creston"
+ spot 49.095N -116.51E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fort Nelson"
+	FPA_user_label "Fort Nelson"
+ spot 58.806N -122.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gibsons"
+	FPA_user_label "Gibsons"
+ spot 49.401N -123.51E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Golden"
+	FPA_user_label "Golden"
+ spot 51.302N -116.97E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ladysmith"
+	FPA_user_label "Ladysmith"
+ spot 48.995N -123.82E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lake Cowichan"
+	FPA_user_label "Lake Cowichan"
+ spot 48.826N -124.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Oliver"
+	FPA_user_label "Oliver"
+ spot 49.183N -119.55E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Osoyoos"
+	FPA_user_label "Osoyoos"
+ spot 49.032N -119.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port McNeill"
+	FPA_user_label "Port McNeill"
+ spot 50.59N -127.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Princeton"
+	FPA_user_label "Princeton"
+ spot 49.459N -120.51E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Qualicum Beach"
+	FPA_user_label "Qualicum Beach"
+ spot 49.348N -124.44E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sidney"
+	FPA_user_label "Sidney"
+ spot 48.651N -123.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Smithers"
+	FPA_user_label "Smithers"
+ spot 54.782N -127.17E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "View Royal"
+	FPA_user_label "View Royal"
+ spot 48.452N -123.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Comox"
+	FPA_user_label "Comox"
+ spot 49.673N -124.93E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chetwynd"
+	FPA_user_label "Chetwynd"
+ spot 55.698N -121.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hudson's Hope"
+	FPA_user_label "Hudson's Hope"
+ spot 56.032N -121.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "New Hazelton"
+	FPA_user_label "New Hazelton"
+ spot 55.248N -127.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "100 Mile House"
+	FPA_user_label "100 Mile House"
+ spot 51.642N -121.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Peachland"
+	FPA_user_label "Peachland"
+ spot 49.77N -119.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port Edward"
+	FPA_user_label "Port Edward"
+ spot 54.228N -130.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port Hardy"
+	FPA_user_label "Port Hardy"
+ spot 50.695N -127.42E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Salmon Arm"
+	FPA_user_label "Salmon Arm"
+ spot 50.7N -119.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sechelt"
+	FPA_user_label "Sechelt"
+ spot 49.474N -123.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Summerland"
+	FPA_user_label "Summerland"
+ spot 49.607N -119.68E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Taylor"
+	FPA_user_label "Taylor"
+ spot 56.159N -120.69E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Aldergrove"
+	FPA_user_label "Aldergrove"
+ spot 49.058N -122.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Anmore"
+	FPA_user_label "Anmore"
+ spot 49.315N -122.86E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ashcroft"
+	FPA_user_label "Ashcroft"
+ spot 50.728N -121.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Belcarra"
+	FPA_user_label "Belcarra"
+ spot 49.319N -122.93E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Burns Lake"
+	FPA_user_label "Burns Lake"
+ spot 54.229N -125.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cache Creek"
+	FPA_user_label "Cache Creek"
+ spot 50.815N -121.33E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chase"
+	FPA_user_label "Chase"
+ spot 50.819N -119.68E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Clinton"
+	FPA_user_label "Clinton"
+ spot 51.09N -121.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cumberland"
+	FPA_user_label "Cumberland"
+ spot 49.619N -125.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fraser Lake"
+	FPA_user_label "Fraser Lake"
+ spot 54.055N -124.85E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fruitvale"
+	FPA_user_label "Fruitvale"
+ spot 49.116N -117.55E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gold River"
+	FPA_user_label "Gold River"
+ spot 49.734N -126.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Granisle"
+	FPA_user_label "Granisle"
+ spot 54.887N -126.21E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Harrison Hot Springs"
+	FPA_user_label "Harrison Hot Springs"
+ spot 49.3N -121.79E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hazelton"
+	FPA_user_label "Hazelton"
+ spot 55.26N -127.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kaslo"
+	FPA_user_label "Kaslo"
+ spot 49.915N -116.92E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Keremeos"
+	FPA_user_label "Keremeos"
+ spot 49.202N -119.83E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lions Bay"
+	FPA_user_label "Lions Bay"
+ spot 49.459N -123.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lumby"
+	FPA_user_label "Lumby"
+ spot 50.247N -118.97E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lytton"
+	FPA_user_label "Lytton"
+ spot 50.224N -121.58E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Masset"
+	FPA_user_label "Masset"
+ spot 54.023N -132.1E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "McBride"
+	FPA_user_label "McBride"
+ spot 53.301N -120.17E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Midway"
+	FPA_user_label "Midway"
+ spot 49.01N -118.77E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Montrose"
+	FPA_user_label "Montrose"
+ spot 49.079N -117.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Nakusp"
+	FPA_user_label "Nakusp"
+ spot 50.243N -117.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "New Denver"
+	FPA_user_label "New Denver"
+ spot 49.991N -117.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pemberton"
+	FPA_user_label "Pemberton"
+ spot 50.318N -122.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port Alice"
+	FPA_user_label "Port Alice"
+ spot 50.412N -127.48E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Port Clements"
+	FPA_user_label "Port Clements"
+ spot 53.688N -132.17E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pouce Coupe"
+	FPA_user_label "Pouce Coupe"
+ spot 55.716N -120.13E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Radium Hot Springs"
+	FPA_user_label "Radium Hot Springs"
+ spot 50.618N -116.07E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Salmo"
+	FPA_user_label "Salmo"
+ spot 49.194N -117.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sayward"
+	FPA_user_label "Sayward"
+ spot 50.384N -125.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Silverton"
+	FPA_user_label "Silverton"
+ spot 49.951N -117.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Slocan"
+	FPA_user_label "Slocan"
+ spot 49.766N -117.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tahsis"
+	FPA_user_label "Tahsis"
+ spot 49.928N -126.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Telkwa"
+	FPA_user_label "Telkwa"
+ spot 54.695N -127.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Valemount"
+	FPA_user_label "Valemount"
+ spot 52.831N -119.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Warfield"
+	FPA_user_label "Warfield"
+ spot 49.092N -117.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Zeballos"
+	FPA_user_label "Zeballos"
+ spot 49.984N -126.85E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alert Bay"
+	FPA_user_label "Alert Bay"
+ spot 50.583N -126.93E location none
+
+* 
+* End
+

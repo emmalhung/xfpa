@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.5.69. Format of Location Look Up Tables</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s05.html" title="2.5. Complete Description of All PSMet/SVGMet Directives" /><link rel="prev" href="ch02s05s68.html" title="2.5.68. Format of Look Up Tables" /><link rel="next" href="ch02s05s70.html" title="2.5.70. Format of Vertical Look Up Tables" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5.69. Format of Location Look Up Tables</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s05s68.html">Prev</a> </td><th width="60%" align="center">2.5. Complete Description of All PSMet/SVGMet Directives</th><td width="20%" align="right"> <a accesskey="n" href="ch02s05s70.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ps_format_of_location_look_up_tables"></a>2.5.69. Format of Location Look Up Tables</h3></div></div></div><p>
+Location look up tables allow for fixed or moving locations to be identified
+in tabular form, for easy access by the <span class="application">PSMet</span> or SVGMet; directives. They
+are accessed by the <strong class="userinput"><code>location_look_up</code></strong> keyword in the 
+<a href="ch02s05s01.html" title="2.5.1. @add">@add</a> 
+<a href="ch02s05s02.html" title="2.5.2. @anchor">@anchor</a>
+<a href="ch02s05s06.html" title="2.5.6. @box">@box</a> 
+<a href="ch02s05s09.html" title="2.5.9. @cross_section_areas">@cross_section_areas</a> 
+<a href="ch02s05s10.html" title="2.5.10. @cross_section_axis_labels">@cross_section_axis_labels</a>
+<a href="ch02s05s11.html" title="2.5.11. @cross_section_contours">@cross_section_contours</a> 
+<a href="ch02s05s12.html" title="2.5.12. @cross_section_curves">@cross_section_curves</a> 
+<a href="ch02s05s13.html" title="2.5.13. @define_cross_section">@define_cross_section</a>
+<a href="ch02s05s22.html" title="2.5.22. @draw_cross_section_line">@draw_cross_section_line</a> 
+<a href="ch02s05s26.html" title="2.5.26. @ellipse">@ellipse</a> 
+<a href="ch02s05s55.html" title="2.5.55. @sample_field">@sample_field</a> 
+<a href="ch02s05s56.html" title="2.5.56. @sample_wind">@sample_wind</a>
+<a href="ch02s05s61.html" title="2.5.61. @text">@text</a> directives. 
+Files containing location look up tables have a ".ltab" suffix.
+</p><p>Location look up tables contain lines with the following format:
+</p><pre class="programlisting">
+    <span xmlns="" class="replaceable">ident</span>   <span xmlns="" class="replaceable">lat</span> <span xmlns="" class="replaceable">lon</span>    [<span xmlns="" class="replaceable">valid_time</span>]    [<span xmlns="" class="replaceable">text_string</span>]
+    <span xmlns="" class="replaceable">ident</span>   <span xmlns="" class="replaceable">lat</span> <span xmlns="" class="replaceable">lon</span>    [<span xmlns="" class="replaceable">valid_time</span>]    [<span xmlns="" class="replaceable">text_string</span>]
+    <span xmlns="" class="replaceable">...</span></pre><p>
+where:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">ident</span></td><td valign="top">is the location identifier (in string format)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">lat</span></td><td valign="top">is the location latitude (in latlon format)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">lon</span></td><td valign="top">is the location longitude (in latlon format)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">valid_time</span></td><td valign="top">is an optional valid time (in vtime format)</td></tr><tr valign="top"><td valign="top"><span xmlns="" class="replaceable">text_string</span></td><td valign="top">is an optional text description (in string format)</td></tr></tbody></table></div><p>
+</p><p>
+Note that the <strong class="userinput"><code>-</code></strong> character can be used as a placeholder for any "missing" parameters.
+</p><p>
+Note that all parameters that follow the <strong class="userinput"><code>!</code></strong> or <strong class="userinput"><code>#</code></strong> characters in a line are considered comments.
+</p><p>
+The <strong class="userinput"><code>location_ident</code></strong> keyword from the directive is matched with the
+<span xmlns="" class="replaceable">ident</span> from a line of the location look up table to set the appropriate latitude and longitude for display or sampling.
+The optional <span xmlns="" class="replaceable">valid_time</span> is used to specify a moving location. If valid_time is
+included, then the line in the location look up table must also match the
+current valid time set by the <strong class="userinput"><code>valid_time</code></strong> keyword in the directive, or
+the valid time previously set in the <a href="ch02s05s57.html" title="2.5.57. @set_source">@set_source</a> directive.
+One "special" ident value is allowed. The ident <strong class="userinput"><code>*default*</code></strong> will match against
+any location identifier not found in the look up table.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s05s68.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s05s70.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.5.68. Format of Look Up Tables </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.5.70. Format of Vertical Look Up Tables</td></tr></table></div></body></html>

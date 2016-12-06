@@ -1,0 +1,27 @@
+! Define a projection ...
+@projection
+	{
+	type = polar_stereographic;		!EDIT!
+	ref1 = north;					!EDIT!
+	ref2 = 60N;						!EDIT!
+	}
+
+! Define a map ... centered on Halifax
+@mapdef
+	{
+	olat      = 45:00N;				!EDIT!
+	olon      = 65:00W;				!EDIT!
+	rlon      = 85:00W;				!EDIT!
+	xmin      = -1400;				!EDIT!
+	ymin      = -1125;				!EDIT!
+	xmax      =  1700;				!EDIT!
+	ymax      =  1200;				!EDIT!
+	map_units =  1000;				!EDIT!
+	}
+
+! Define a spline resolution ...
+@resolution
+	{
+	res       = 100;				!EDIT!
+	map_units = 1000;				!EDIT!
+	}

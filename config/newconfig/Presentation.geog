@@ -1,0 +1,807 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Presentation-type files in the $FPA/config directory can and will be   #
+#   updated with any new release, update, or patch of the FPA software suite.  #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Presentation file that refers to this file through  #
+#   an #include statement.  Refer to the file Presentation, or d.Presentation  #
+#   for further instructions.                                                  #
+#                                                                              #
+################################################################################
+
+# Presentation Configuration File
+
+# This file defines the appearance of all fields that FPA applications can
+# potentially display.  This refers to both guidance fields and editable
+# depiction fields.
+
+# Omitted attributes resort to default values established in the software
+# which reads this file (for example: colour=Black, style=solid, font=simplex,
+# etc).
+
+revision 6.0
+
+
+# The following descriptions are used for representing the geography:
+# Note: Colours given as =value specify a direct pixel (0=black, 255=white)
+#       value for hardcopy
+
+field	land_water	geography	hardcopy
+
+	member	discrete	land_water_areas
+		category	water
+			colour	=230
+			style	solid
+			fill	solid_fill =230
+		category	water_minor
+			colour	=240
+			style	solid
+			fill	solid_fill =240
+		category	land
+			colour	=180
+			style	solid
+			fill	solid_fill =200
+		category	ice_major
+			colour	=230
+			style	solid
+			fill	solid_fill =230
+		category	ice_minor
+			colour	=240
+			style	solid
+			fill	solid_fill =240
+
+ 	member	curve		land_water_lines
+		category	coast_major
+			colour	=50
+			style	wide
+		category	coast
+			colour	=50
+			style	solid
+		category	coast_minor
+			colour	=50
+			style	dash
+		category	river
+			colour	=50
+			style	wide
+		category	river_minor
+			colour	=50
+			style	solid
+		category	canal
+			colour  =50
+			style	dash
+
+	member	mark		land_water_points
+		category	land
+			colour  =0
+			marker	circle
+		category	water_minor
+			colour	=0
+			marker	circle
+
+	member	label		land_water_labels
+		category	land
+			colour	=0
+			size	medium
+		category	water
+			colour	=0
+			size	medium
+
+
+ field	boundaries	geography	hardcopy
+
+	member	curve		boundary_lines
+		category	border_major
+			colour	=50
+			width	medium
+			style	wide
+		category	border
+			colour	=50
+			style	solid
+		category	border_minor
+			colour	=50
+			style	dash
+		category	lat_lon_10
+			colour	=150
+			width	2
+		category	lat_lon_05
+			colour	=150
+			style	solid
+		category	lat_lon_01
+			colour	=150
+			style	dotted
+
+
+ field	cities		geography	hardcopy
+
+	member	discrete	cities_areas
+		category	pop_major
+			colour	=150
+			style 	solid
+			fill	solid_fill =150
+		category	pop
+			colour	=150
+			style 	solid
+			fill	solid_fill =150
+
+	member	mark		cities_points
+		category	pop
+			colour  =150
+			marker	circle
+		category	pop_minor
+			colour  =150
+			marker	circle
+
+	member	label		cities_labels
+		category	pop
+			size	small
+			colour	=150
+
+
+ field	road		geography	hardcopy
+
+	member	curve		road_curves
+		category	road_major
+			colour	=50
+			width	medium
+			style	wide
+		category	road
+			colour	=50
+			style	solid
+		category	road_minor
+			colour	=50
+			style	dash
+		category	bridge
+			colour	=50
+			width	medium
+			style	wide
+		category	causeway
+			colour	=50
+			style	solid
+		category	tunnel
+			colour	=50
+			style	solid
+		category	ferry
+			colour  =50
+			style	dash_dot
+
+	member	mark		road_points
+		category	bridge
+			colour	=50
+			symbol	=
+		category	tunnel
+			colour	=50
+			symbol	-
+
+	member	label		road_labels
+		category	road
+			colour	=50
+		category	structures
+			colour	=50
+
+
+ field  rail            geography       hardcopy
+
+	member  curve           rail_curves
+		category        rr_major
+			colour	=50
+			style	wide
+		category        rr
+			colour	=50
+			style	solid
+		category        rr_minor
+			colour  =50
+			style	dash
+		category        bridge
+			colour	=50
+			style	wide
+		category        causeway
+			colour	=50
+			style	solid
+		category        tunnel
+			colour	=50
+			style	solid
+
+	member  mark            rail_points
+		category        bridge
+			colour	=50
+			symbol	=
+		category        tunnel
+			colour  =50
+			symbol	-
+		category	station
+			colour	=50
+			marker	square
+
+	member  label           rail_labels
+		category        rr
+			colour	=50
+
+ field  hypsography	geography	hardcopy
+
+	member	discrete	hypsography_areas
+		category	ocean
+			colour	=230
+			style 	solid
+			fill	=230
+		category	under0
+			colour	=220
+			style 	solid
+			fill	solid_fill =220
+		category	0-1000
+			colour	=210
+			style 	solid
+			fill	solid_fill =210
+		category	1000-3000
+			colour	=200
+			style 	solid
+			fill	solid_fill =200
+		category	3000-7000
+			colour	=190
+			style 	solid
+			fill	solid_fill =190
+		category	7000-11000
+			colour	=180
+			style 	solid
+			fill	solid_fill =180
+		category	over11000
+			colour	=170
+			style 	solid
+			fill	solid_fill =170
+		category	nodata
+			colour 	=50
+			style	solid
+			fill	solid_fill =50
+
+	member  curve           hypsography_curves
+		category        closed
+			colour	=50
+			style	solid
+		category        depression
+			colour	=50
+			style	dashed
+		category        carrying
+			colour	=50
+			style	dashed
+		category        under0
+			colour  =230
+			style	solid
+		category        0-1000
+			colour  =220
+			style	solid
+		category        1000-3000
+			colour	=210
+			style	solid
+		category        3000-7000
+			colour	=200
+			style	solid
+		category        7000-11000
+			colour	=190
+			style	solid
+		category        over11000
+			colour	=180
+			style	solid
+
+	member  mark            hypsography_points
+		category        elev
+			colour	=50
+			marker	asterisk
+		category        elev_minor
+			colour	=50
+			marker	cross
+		category        elev_hydro
+			colour	=50
+			marker	asterisk
+
+
+field	land_water	geography	ALL
+
+	member	discrete	land_water_areas
+		category	water
+			colour	SteelBlue
+			style	solid
+			fill	solid_fill SteelBlue
+		category	water_minor
+			colour	LightSteelBlue
+			style	solid
+			fill	solid_fill LightSteelBlue
+		category	land
+			colour	MediumAquamarine
+			style	solid
+			fill	solid_fill MediumAquamarine
+		category	ice_major
+			colour	SteelBlue
+			style	solid
+			fill	solid_fill SteelBlue
+		category	ice_minor
+			colour	LightSteelBlue 
+			style	solid
+			fill	solid_fill LightSteelBlue
+
+ 	member	curve		land_water_lines
+		category	coast_major
+			colour	blue
+			style	wide
+		category	coast
+			colour	blue
+			style	solid
+		category	coast_minor
+			colour	blue
+			style	dash
+		category	river
+			colour	SteelBlue
+			style	wide
+		category	river_minor
+			colour	LightSteelBlue
+			style	solid
+		category	canal
+			colour  LightSteelBlue
+			style	dash
+
+	member	mark		land_water_points
+		category	land
+			colour  blue
+			marker	circle
+		category	water_minor
+			colour	blue
+			marker	circle
+
+	member	label		land_water_labels
+		category	land
+			colour	brown4
+			size	medium
+		category	water
+			colour	brown4
+			size	medium
+
+
+ field	boundaries	geography	ALL
+
+	member	curve		boundary_lines
+		category	border_major
+			colour	purple
+			width	medium
+			style	wide
+		category	border
+			colour	purple
+			style	solid
+		category	border_minor
+			colour	Gold
+			style	dash
+		category	lat_lon_10
+			colour	MediumAquamarine
+			width	2
+		category	lat_lon_05
+			colour	MediumAquamarine
+			style 	solid
+		category	lat_lon_01
+			colour	MediumAquamarine
+			style	dotted
+
+
+ field	cities		geography	ALL
+
+	member	discrete	cities_areas
+		category	pop_major
+			colour	salmon
+			style 	solid
+			fill	solid_fill salmon
+		category	pop
+			colour	yellow
+			style 	solid
+			fill	solid_fill yellow
+	member	mark		cities_points
+		category	pop
+			colour  salmon
+			marker	circle
+		category	pop_minor
+			colour  salmon
+			marker	circle
+
+	member	label		cities_labels
+		category	pop
+			size	small
+			colour	burlywood
+
+
+ field	road		geography	ALL
+
+	member	curve		road_curves
+		category	road_major
+			colour	IndianRed4
+			width	medium
+			style	wide
+		category	road
+			colour	IndianRed4
+			style	solid
+		category	road_minor
+			colour	IndianRed4
+			style	dash
+		category	bridge
+			colour	Maroon
+			width	medium
+			style	wide
+		category	causeway
+			colour	Maroon
+			style	solid
+		category	tunnel
+			colour	Maroon
+			style	solid
+		category	ferry
+			colour  Maroon
+			style	dash_dot
+
+	member	mark		road_points
+		category	bridge
+			colour	Maroon
+			symbol	=
+		category	tunnel
+			colour	Maroon
+			symbol	-
+
+	member	label		road_labels
+		category	road
+			colour	Maroon
+		category	structures
+			colour	Maroon
+
+
+ field  rail            geography       ALL
+
+	member  curve           rail_curves
+		category        rr_major
+			colour	burlywood
+			style	wide
+		category        rr
+			colour	burlywood
+			style	solid
+		category        rr_minor
+			colour  burlywood
+			style	dash
+		category        bridge
+			colour	bisque4
+			style	wide
+		category        causeway
+			colour	bisque4
+			style	solid
+		category        tunnel
+			colour	bisque4
+			style	solid
+
+	member  mark            rail_points
+		category        bridge
+			colour	bisque4
+			symbol	=
+		category        tunnel
+			colour  bisque4
+			symbol	-
+		category	station
+			colour	bisque4
+			marker	square
+
+	member  label           rail_labels
+		category        rr
+			colour	bisque4
+
+ field  hypsography	geography	ALL
+
+	member	discrete	hypsography_areas
+		category	ocean
+			colour	SteelBlue
+			style 	solid
+			fill	SteelBlue
+		category	under0
+			colour	Moccasin
+			style 	solid
+			fill	solid_fill Moccasin
+		category	0-1000
+			colour	DarkGoldenrod3
+			style 	solid
+			fill	solid_fill DarkGoldenrod3
+		category	1000-3000
+			colour	DarkGoldenrod
+			style 	solid
+			fill	solid_fill DarkGoldenrod
+		category	3000-7000
+			colour	Brown
+			style 	solid
+			fill	solid_fill Brown
+		category	7000-11000
+			colour	Sienna
+			style 	solid
+			fill	solid_fill Sienna
+		category	over11000
+			colour	IndianRed
+			style 	solid
+			fill	solid_fill IndianRed
+		category	nodata
+			colour 	grey92
+			style	solid
+			fill	solid_fill grey92
+
+	member  curve           hypsography_curves
+		category        closed
+			colour	#7F7F55550001
+			style	solid
+		category        depression
+			colour	#7F7F55550001
+			style	dashed
+		category        carrying
+			colour	#7F7F55550001
+			style	dashed
+		category        under0
+			colour  Moccasin
+			style	solid
+		category        0-1000
+			colour  DarkGoldenrod3
+			style	solid
+		category        1000-3000
+			colour	DarkGoldenrod
+			style	solid
+		category        3000-7000
+			colour	Brown
+			style	solid
+		category        7000-11000
+			colour	Sienna
+			style	solid
+		category        over11000
+			colour	IndianRed
+			style	solid
+
+	member  mark            hypsography_points
+		category        elev
+			colour	#7F7F55550001
+			marker	asterisk
+		category        elev_minor
+			colour	#7F7F55550001
+			marker	cross
+		category        elev_hydro
+			colour	LightSteelBlue
+			marker	asterisk
+
+
+# Old geography for compatibility
+
+field	geography	ALL	hardcopy
+	
+	member	discrete	geography_areas
+		category	water
+			colour	=50
+			style	solid
+			fill	solid_fill =230
+		category	land
+			colour	=50
+			style	solid
+			fill	solid_fill =200
+
+	member	curve	geography_lines
+		category	river
+			colour	=50
+			style	solid
+		category	border
+			colour	=50
+			style	dot
+		category	border_major
+			colour	=50
+			width	2
+		category	latlon
+			colour	=50
+			style	dot
+		category	latlon_major
+			colour	=50
+			style	solid
+	
+	member	label	geography_labels
+		category	latlon
+			colour	=255
+			shadow	=50 =50
+			font	simplex
+			size	175
+			scale	geog
+
+
+field	geography	ALL	ALL
+	
+	member	discrete	geography_areas
+		category	water
+			colour	burlywood
+			style	solid
+			fill	solid_fill MediumAquamarine
+		category	land
+			colour	burlywood
+			style	solid
+			fill	solid_fill #7F7F55550000
+
+	member	curve	geography_lines
+		category	river
+			colour	burlywood
+			style	solid
+		category	border
+			colour	Gold
+			style	solid
+		category	border_major
+			colour	Gold
+			width	2
+		category	latlon
+			colour	#7F7F55550001
+			style	dot
+		category	latlon_major
+			colour	#7F7F55550001
+			style	solid
+	
+	member	label	geography_labels
+		category	latlon
+			colour	SeaGreen
+			shadow	LightSeaGreen DarkSeaGreen
+			font	simplex
+			size	175
+			scale	geog
+
+
+# The following descriptions are used for representing forecast areas:
+# Note: Colours given as =value specify a direct pixel (0=black, 255=white)
+#       value for hardcopy
+
+field	forecast_areas	ALL	hardcopy
+
+	member	discrete	areas
+		category	marine_hole
+			colour	=50
+			style	solid
+			fill	solid_fill =200
+		category	marine_area
+			colour	=50
+			style	solid
+			fill	solid_fill =255
+		category	public_area
+			colour	=50
+			width	medium
+			fill	hatch_fill =50
+			hatch	cross_hatch small 45
+		category	wso_area
+			colour	=50
+			width	medium
+
+	member	label	labels
+		category	marine_area
+			colour	=0
+			font	simplex
+			size	125
+			scale	geog
+
+
+field	forecast_areas	ALL	ALL
+
+	member	discrete	areas
+		category	marine_hole
+			colour	DarkGoldenrod
+			style	solid
+			fill	solid_fill #7F7F55550000
+		category	marine_area
+			colour	DarkGoldenrod
+			style	solid
+			fill	solid_fill Goldenrod
+		category	public_area
+			colour	Goldenrod
+			width	medium
+			fill	hatch_fill Goldenrod
+			hatch	cross_hatch small 45
+		category	wso_area
+			colour	Goldenrod
+			width	medium
+
+	member	label	labels
+		category	marine_area
+			colour	DarkGoldenrod
+			font	simplex
+			size	125
+			scale	geog
+
+
+# The following descriptions are used for annotating graphical products:
+# Note: Colours given as =value specify a direct pixel (0=black, 255=white)
+#       value for hardcopy
+
+field	legend	ALL	hardcopy
+
+	member	discrete	areas
+		category	legend_box
+			colour	=50
+			style	solid
+			fill	solid_fill =255
+
+	member	curve	lines
+		category	legend_divider
+			colour	=0
+			width	3
+		category	legend_line
+			colour	=0
+			style	solid
+
+	member	label	labels
+		category	legend_title
+			colour	=0
+			font	simplex
+			size	legend
+			hjust   left
+			vjust   bottom
+		category	legend_text
+			colour	=0
+			font	simplex
+			size	label
+			hjust   left
+			vjust   bottom
+		category	legend_small
+			colour	=0
+			font	simplex
+			size	small
+			hjust   left
+			vjust   bottom
+
+field	legend	ALL	ALL
+
+	member	discrete	areas
+		category	legend_box
+			colour	Navy
+			style	solid
+			fill	solid_fill Goldenrod
+
+	member	curve	lines
+		category	legend_divider
+			colour	Navy
+			width	3
+		category	legend_line
+			colour	Navy
+			style	solid
+
+	member	label	labels
+		category	legend_title
+			colour	Navy
+			font	triplex
+			size	legend
+			hjust   left
+			vjust   bottom
+		category	legend_text
+			colour	Navy
+			font	simplex
+			size	label
+			hjust   left
+			vjust   bottom
+		category	legend_small
+			colour	Navy
+			font	simplex
+			size	small
+			hjust   left
+			vjust   bottom
+
+
+# The following descriptions are used for assorted user interfaces:
+
+field	app_menu	ALL	ALL
+
+	member	button	menu
+		category	action
+			colour	Goldenrod
+			fill	solid_fill Coral
+			font	bold
+		category	toggle_on
+			colour	Firebrick
+			fill	solid_fill Goldenrod
+		category	toggle_off
+			colour	Goldenrod
+			fill	solid_fill Firebrick
+		category	radio_on
+			colour	Firebrick
+			fill	solid_fill Goldenrod
+		category	radio_off
+			colour	Goldenrod
+			fill	solid_fill Firebrick

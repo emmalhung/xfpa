@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>attribute_ref</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Starting position for displaying attribute (a position on the "attribute_anchor" label) 
+</para><para>One of: <userinput>lower_left</userinput> <userinput>centre_left</userinput> <userinput>upper_left</userinput> <userinput>lower_centre</userinput> <userinput>centre</userinput> <userinput>upper_centre</userinput> <userinput>lower_right</userinput> <userinput>centre_right</userinput> <userinput>upper_right</userinput>
+</para><para>(default is <userinput>lower_centre</userinput>)</para></entry></row>

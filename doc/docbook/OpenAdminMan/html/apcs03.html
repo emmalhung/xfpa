@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>C.3. Display Options</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apc.html" title="Appendix C. Presentation and Presentation.name" /><link rel="prev" href="apcs02.html" title="C.2. Format Explanation" /><link rel="next" href="apcs04.html" title="C.4. Examples" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">C.3. Display Options</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apcs02.html">Prev</a> </td><th width="60%" align="center">Appendix C. Presentation and Presentation.<span xmlns="" class="replaceable">name</span></th><td width="20%" align="right"> <a accesskey="n" href="apcs04.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2094227"></a>C.3. Display Options</h2></div></div></div><p>
+<a id="id2094233" class="indexterm"></a>
+The following keywords refer to the objects selected from the current field member, spot class member, or plot subfield, specified by one or more of the above keyword specifications, and describe specifically how those objects are to be displayed:
+</p><div xmlns="" class="table"><a xmlns="http://www.w3.org/1999/xhtml" id="id2094244"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Table C.1. Display option descriptions</b></p><table xmlns="http://www.w3.org/1999/xhtml" summary="Display option descriptions" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>Option</th><th>Explanation</th></tr></thead><tbody><tr valign="top"><td valign="top">angle</td><td valign="top"> Defines the orientation of a label or mark.The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>floating point angle of rotation in degrees.</p></li></ul></div>
+</td></tr><tr valign="top"><td valign="top">btype</td><td valign="top">
+Defines the type of wind or vector field display.
+The parameters are:
+<div class="itemizedlist"><ul type="disc"><li><p>type: This can be one of wind (normal wind barb), arrow (draw as an arrow) or none (do not display).</p></li><li><p>tofrom: This can be one of dirto (direction defines where flow is going), or dirfrom (direction define where the flow comes from).
+The parameters to, dir_to, from and dir_from are also valid.</p></li><li><p>doval: This can be either showval (include the magnitude as a label).
+or noval (no label).
+The parameters showvalue or novalue are also valid.</p></li><li><p>units for wind or vector field (as defined in Config)</p></li></ul></div></td></tr><tr valign="top"><td valign="top">bvaloff</td><td valign="top">
+Defines the offset of a wind/wave magnitude label from the given position (see also btype).
+The parameters are:
+<div class="itemizedlist"><ul type="disc"><li><p>x offset: Horizontal offset in map or screen units.
+(see scale)</p></li><li><p>y offset: Vertical offset in map or screen units.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">bcolour</td><td valign="top">
+Defines the colour for a wind/wave vector and its optional magnitude label (see also btype).
+The parameters are:
+<div class="itemizedlist"><ul type="disc"><li><p>barb colour: See colour for supported values.</p></li><li><p>label colour: See colour for supported values.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">colour</td><td valign="top">
+Defines text, mark or line colour.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>colour - Colours may be identified by one of:
+</p><div class="itemizedlist"><ul type="circle"><li><p> X colour name (e.g.
+SlateBlue),</p></li><li><p>X hexadecimal RGB colour notation (#rrrgggbbb) or</p></li><li><p>a direct pixel value (=0 through =255)</p></li></ul></div></li></ul></div></td></tr><tr valign="top"><td valign="top">fill</td><td valign="top">
+Defines the appearance of filled objects.
+The parameters are:
+<div class="itemizedlist"><ul type="disc"><li><p>fill colour: See colour for supported values.
+(Fill type defaults to solid_fill)</p></li></ul></div>
+or
+<div class="itemizedlist"><ul type="disc"><li><p>fill type: Supported fill types are: hollow_fill, solid_fill, hatch_fill</p></li><li><p>fill colour: See colour for supported values</p></li></ul></div></td></tr><tr valign="top"><td valign="top">font</td><td valign="top">
+Defines the font for text.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>font name: Supported font names are: simplex, bold, helvetica, helvetica_bold, times or serif, times_bold or bold_serif, fpasymbol-24.
+The default is simplex.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">hatch</td><td valign="top">
+Defines hatch fill attributes when fill has been set to hatch_fill.
+The parameters are:
+<div class="itemizedlist"><ul type="disc"><li><p>hatch type: Supported hatch types are: parallel_hatch and cross_hatch.
+The default is parallel_hatch.</p></li><li><p>hatch space: See size for supported values</p></li><li><p>hatch angle: This is a real angle between 0 and 360 degrees.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">hjust</td><td valign="top">
+Defines the horizontal justification for labels.
+The parameters are:
+<div class="itemizedlist"><ul type="disc"><li><p>mode: This may be one of right(r), centre(c) or left(l).
+The default is centre(c)</p></li></ul></div></td></tr><tr valign="top"><td valign="top">vjust</td><td valign="top">
+Defines the vertical justification for labels.
+The parameters are:
+<div class="itemizedlist"><ul type="disc"><li><p>mode: This may be one of Top (top of character cell), top(t), centre(c), bottom(b) or Bottom (bottom of character cell).The default is centre(c)</p></li></ul></div></td></tr><tr valign="top"><td valign="top">length</td><td valign="top">
+Defines the length of certain objects (e.g.
+wind barb) or a pattern repeat length.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>item length: Length in map or screen units (see scale).</p></li></ul></div></td></tr><tr valign="top"><td valign="top">marker</td><td valign="top">
+Defines the marker type to be used for mark objects.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>marker type: Supported marker types are: dot, plus, asterisk, circle, ellipse, cross, triangle, square, rectangle, diamond, circle_cross, square_cross, circle_fill, square_fill, rectangle_fill, triangle_fill, diamond_fill, circle_target.
+The default is dot.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">offset</td><td valign="top">
+Defines the offset of a plot sub-field or spot member from the plot centre.
+The parameters are:
+<div class="itemizedlist"><ul type="disc"><li><p>x offset: Horizontal offset in map or screen units (see scale)</p></li><li><p>y offset: Vertical offset in map or screen units.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">pattern </td><td valign="top">
+Defines patterned lines.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>pattern file: This is the name of a pattern file which must exist in the patterns directory.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">scale</td><td valign="top">
+Defines the interpretation of various sizes and dimensions.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>mode: Supported scale modes are: window or device or vdc (0) for units with respect to the screen or map or geog or geography (1) for units with respect to the FPA map.
+The default is map.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">shadow</td><td valign="top">
+Defines top and bottom shadow colours for text or marks.
+The parameters are:
+<div class="itemizedlist"><ul type="disc"><li><p>top colour: See colour for supported values.</p></li><li><p>bottom colour: See colour for supported values.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">size</td><td valign="top">
+Defines the size of text or marks.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>item size: Height in map or screen units (see scale) or one of: tiny(5), small(10), label (usual label size is 20), legend (usual legend size is 25), medium(30), hilo(usual high/low symbol size is 40), large(50), huge(70), giant or gigantic or enormous or humongous(90).</p></li></ul></div></td></tr><tr valign="top"><td valign="top">style</td><td valign="top">
+Defines the line style for curves and area boundaries.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>line style: Supported line styles are: solid, wide (default with width parameter set), dash, dashed, dot, dotted, dash_dot.
+The default is solid.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">symbol</td><td valign="top">
+Defines a text symbol to be used for marks rather than a marker type.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>string: This can be any printable ASCII string including extended ASCII.</p></li></ul></div></td></tr><tr valign="top"><td valign="top">width</td><td valign="top">
+Defines line width or pattern amplitude.
+The parameter is:
+<div class="itemizedlist"><ul type="disc"><li><p>line width: real dimension in map or screen units (see scale) or one of zero or normal or thin(0), medium(3), thick(6), fat(9).</p></li></ul></div></td></tr></tbody></table></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apcs02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apc.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apcs04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">C.2. Format Explanation </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> C.4. Examples</td></tr></table></div></body></html>

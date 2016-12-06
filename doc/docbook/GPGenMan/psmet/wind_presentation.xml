@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_wind_presentation'> <title>@wind_presentation</title> <titleabbrev>@wind_presentation</titleabbrev>
+<para>
+Set the appearance of wind direction, wind speed  and wind gust components displayed as text or symbols on the current map or in a table.
+</para><para>
+Note that each wind component requires a "<userinput>..._type</userinput>" keyword to indicate the appropriate section in the <userinput>wind_look_up</userinput> file to use in formatting the wind component to be displayed.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>wind_look_up</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>File name for the wind look up table
+</para><para>(Note: ".wtab" suffix is optional)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for "calm" winds
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+<row valign='top'><entry><userinput>symbol</userinput></entry><entry>display matching symbol</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_size</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Text height for "calm" wind (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Scale factor wrt original symbol for "calm" wind (in percent)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for "calm" wind
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_calm</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset for "calm" wind (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_calm</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset for "calm" wind (in display units)</para></entry></row>
+
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for wind direction
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+<row valign='top'><entry><userinput>uniform</userinput></entry><entry>display uniform symbol</entry></row>
+<row valign='top'><entry><userinput>proportional</userinput></entry><entry>display scaled symbol</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_size</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Text height for wind direction (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Scale factor wrt original symbol for wind direction (in percent)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for wind direction
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_dir</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset for wind direction (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_dir</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset for wind direction (in display units)</para></entry></row>
+
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for wind speed
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+<row valign='top'><entry><userinput>symbol</userinput></entry><entry>display matching symbol</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_size</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Text height for wind speed (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Scale factor wrt original symbol for wind speed (in percent)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for wind speed
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_spd</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset for wind speed (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_spd</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset for wind speed (in display units)</para></entry></row>
+
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for wind gust
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+<row valign='top'><entry><userinput>symbol</userinput></entry><entry>display matching symbol</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_above</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Gust speed must be larger than wind speed by this amount to be displayed (in units of wind speed)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_size</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Text height for wind gust (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Scale factor wrt original symbol for wind gust (in percent)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for wind gust
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>gust_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_gust</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset for wind gust (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_gust</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset for wind gust (in display units)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@wind_presentation 
+{ 
+  wind_look_up            = winds;
+  calm_type               = none;
+  gust_type               = none;
+  direction_type          = value;
+  direction_justification = left;
+  direction_size          = 0.20;
+  direction_scale         = 80;
+  x_dir                   = 0.05;
+  y_dir                   = 0.05;
+  speed_type              = value;
+  speed_justification     = left;
+  speed_size              = 0.20;
+  speed_scale             = 80;
+  x_spd                   = 0.05;
+  y_spd                   = -0.20;
+}</programlisting>
+Display winds according to the formats in the wind look up table <filename>winds.wtab</filename>. Calm winds and
+wind gusts will not be displayed. Wind directions will be formatted according to the section
+"direction value", with text characters 0.20 "units" high, offset 0.05 "units" to the right of and 0.05
+"units" above the current location, and left justified. Wind speeds will be formatted according to the
+section "speed value", with text characters 0.20 "units" high, offset 0.05 "units" to the right of and
+0.20 "units" below the current location, and left justified.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

@@ -1,0 +1,5 @@
+The keyword area_type has been added to the @areas directive.  The default area_type is subareas, which will display each subarea of a divided area as a separate area with the defined outline and fill.  This is how divided areas are currently displayed.  However, area_type can also be set to boundary which will display the entire area with a single outline and fill, or area_type can be set to divides which will display only the dividing lines.  Displaying an area more than once allows the user to display the area boundary and the divided subareas with different patterns, for example, with a scalloped boundary and coloured subareas based on precipitation type.
+
+The magic attribute GPGEN_bearing can be used to display the direction (in degrees True) from the sample location to a discrete area or a line feature or a scattered point sampled with the @sample_field directive. 
+
+The magic attribute GPGEN_line_length can be used to display the length of a line feature (in km) in the @label directive, or sampled in the @sample_field directive

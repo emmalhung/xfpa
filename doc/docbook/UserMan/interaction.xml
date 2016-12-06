@@ -1,0 +1,468 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='interacting_with_the_fpa'> <title>Interacting with the &FPA;</title>
+<sect1 id='tour_of_fpa'><title>Tour of &FPA; interface</title>
+<para>
+<figure pgwide='0' float='1'><title>&FPA; Graphical Editor interface</title>
+<mediaobject><imageobject><imagedata fileref='png/annotated_FPA.png'/></imageobject><caption><para></para></caption></mediaobject>
+</figure>
+<orderedlist numeration='upperalpha'><title>Elements of the &FPA; Graphical Editor interface</title>
+<listitem><para> Main Menu. </para></listitem>
+<listitem><para> Lat/Lon co-ordinates of cursor on map.  (see <xref linkend='general_preferences'/>) </para></listitem>
+<listitem><para> The command icon bar are short-cut buttons to frequently used menu items. Hover the mouse over an icon to see which menu item it launches.  (see <xref linkend='general_preferences'/>) </para></listitem>
+<listitem><para> <glossterm linkend='g_depiction_sequence'> Depiction Sequence </glossterm> select time of working depiction. Part of the time selection bar (see <xref linkend='general_preferences'/>).  (see <xref linkend='defining_t0_depiction'/> and <xref linkend='limiting_the_start_and_end_time_in_the_time_sequence'/>), </para></listitem>
+<listitem><para> Forward/backward arrows step through the depictions. Part of the time selection bar (see <xref linkend='general_preferences'/>).
+</para></listitem>
+<listitem><para> Date and time of the currently selected depiction. Part of the time selection bar (see <xref linkend='general_preferences'/>).</para></listitem>
+<listitem><para> Message bar displays context sensitive information.  (see <xref linkend='general_preferences'/>) </para></listitem>
+<listitem><para> Graphical <glossterm linkend='g_depiction'> depiction </glossterm> editing window.</para></listitem>
+<listitem><para> Side panel provides access to database editing tools.  (see chapters 8 through 16.) </para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<sect1 id='using_pointer_and_keyboard_devices'> <title>Using pointer and keyboard devices </title>
+<para>
+Selecting and picking can be done equally well with any pointing device, such as a mouse or stylus.
+However, a tablet with stylus is recommended for drawing.
+The tablet does not require you to pick up your hand while moving the cursor.
+Therefore, both tracing and freehand drawing are more accurate.
+</para><para>
+The &left; mouse button is used to pick, select and draw features.
+The &right; mouse button is used to open context sensitive menus that change functions, make choices and end or cancel actions.
+</para>
+<sect2 id='using_the_tablet_with_stylus'> <title>Using the tablet with stylus</title>
+<para>
+Touching the stylus to the tablet is equivalent to the &left; mouse button and pressing the button closest to the tip of the stylus is equivalent to the &right; mouse button.
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='interacting_with_the_interface'> <title>Interacting with the interface</title>
+<sect2 id='selecting_menu_items'> <title>Selecting menu items</title>
+<para>
+<orderedlist><title>To select menu items:</title>
+<listitem><para>
+Position the cursor on a menu title (such as <menuchoice><guimenu>Guidance</guimenu></menuchoice>).
+</para></listitem>
+
+<listitem><para>
+Click the &left; mouse button.
+</para> <para>
+A list drops down.
+</para></listitem>
+
+<listitem><para>
+Position the highlight on the menu item to select.
+</para></listitem>
+
+<listitem><para>
+Click with the &left; mouse button to select.
+</para> <para>
+When you release the mouse button, the menu item is selected.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='selecting_from_a_list'> <title>Selecting from a list </title>
+<para>
+<variablelist> <title>Using the &left; mouse button:</title>
+<varlistentry><term>Single select</term><listitem><para>
+Click the item.
+</para></listitem></varlistentry>
+<varlistentry><term> Block select</term><listitem><para>
+Click and drag over the range, or ...
+</para> <para>
+Hold the <keycap>SHIFT</keycap> key down.
+Select the first item in the block.
+Select the last item in the block.
+Everything in between is selected as well.
+</para></listitem></varlistentry>
+<varlistentry><term>Multiple select or deselect</term><listitem><para>
+Hold the <keycap>CTRL</keycap> key down and select each item. If you click on an item that is already selected it will be deselected.
+This option is useful when you want to select a number of items but not every item in a block.
+</para></listitem></varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2 id='editing_text'> <title>Editing text</title>
+<para>
+You can edit text in a number of areas in the &FPA; such as the weather entry menu or the problem report area.
+<variablelist>
+<varlistentry><term>Position the cursor</term>
+<listitem><para>Click in the desired spot.
+</para></listitem></varlistentry>
+<varlistentry><term>Select a word</term>
+<listitem><para>Double-click in the word.
+The word is highlighted.
+</para></listitem></varlistentry>
+<varlistentry><term>Select a line</term>
+<listitem><para>Triple-click in the line.
+The line is selected.
+</para></listitem></varlistentry>
+<varlistentry><term>Select a block</term>
+<listitem><para>Click four times in the block (paragraph).
+The block is selected.
+</para></listitem></varlistentry>
+<varlistentry><term>Replace text</term>
+<listitem><para>Click and hold to highlight the text to replace.
+Start typing and the text is replaced.
+</para></listitem></varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2 id='using_tear_off_menus'> <title>Using tear off menus</title>
+<para>
+Some menus can be turned into a separate window which can be repositioned as desired.
+Menus of this type have a dashed line across the top of the menu.
+Clicking on the dashed line turns the menu into a separate window.
+<figure pgwide='0' float='1'><title>Example tear-off menu</title>
+<mediaobject><imageobject><imagedata fileref='png/zoom_tear_off_before.png'/></imageobject><caption><para>Before</para></caption></mediaobject>
+<mediaobject><imageobject><imagedata fileref='png/zoom_tear_off.png'/></imageobject><caption><para>After</para></caption></mediaobject>
+</figure>
+</para>
+</sect2>
+
+<sect2 id='slider_bar'><title>Using slider-bars</title><para>
+Slider-bars serve two functions in the &FPA; the first is to allow finely tuned value selection, as in the stomp and poke tools (see <xref linkend='slider_figure1'/>), 
+<figure pgwide='0' float='1' id='slider_figure1'><title>Example Slider-bar for finely tuned value selection</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_continuous_poke.png'/></imageobject></mediaobject>
+</figure>
+the second is to select a subset of depictions to loop through, as on the Animation panel (see <xref linkend='slider_figure2'/>). 
+<figure pgwide='0' float='1' id='slider_figure2'><title>Example Slider-bar for selecting subset of depictions</title>
+<mediaobject><imageobject><imagedata fileref='png/animation_sliderbar.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+<itemizedlist><title>To position the slider on a slider-bar:</title>
+<listitem><para>Click and hold the &left; mouse button on the slider. Drag the slider to the desired value.</para></listitem>
+<listitem><para>If the slider-bar has arrow buttons associated with it, click the &left; mouse button on an arrow button to move the slider in the direction indicated.</para></listitem>
+<listitem><para>Click the &left; mouse button inside the slider-bar. The slider will move towards the position of the mouse click in constant increments.</para></listitem>
+</itemizedlist>
+</para>
+</sect2>
+
+<sect2 id='radio_button'><title>Using radio buttons</title><para>
+There are two types of radio button used in the &FPA;:
+<figure pgwide='0' float='1' id='radio_figure2'><title>Example radio buttons</title>
+<mediaobject><imageobject><imagedata fileref='png/radio_buttons.png'/></imageobject></mediaobject>
+<mediaobject><imageobject><imagedata fileref='png/radio_buttons2.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+The first type of radio button can be used in groups of one or more. None, some or all buttons may be selected in a group. Click the &left; mouse button on a radio button to turn it on or off. 
+</para><para>
+The second type of radio button must be used in groups of two or more. Exactly one button is selected in a group. Click the &left; mouse button on a radio button to turn it on. The previously selected button will be turned off.
+</para><para>
+When a radio button is on it is green and appears depressed, when it is off it is gray and appears raised.
+</para>
+</sect2>
+
+<sect2 id='dropdown_list'><title>Using drop-down and pop-up lists</title><para>
+Drop-down (<xref linkend='dropdown_figure'/>) and pop-up (<xref linkend='popup_figure'/>) lists allow you to chose from a preset list of options.
+<figure pgwide='0' float='1' id='dropdown_figure'><title>Example drop-down list</title>
+<mediaobject><imageobject><imagedata fileref='png/dropdown1.png'/></imageobject></mediaobject>
+<mediaobject><imageobject><imagedata fileref='png/dropdown2.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+<orderedlist><title>To use a drop-down list:</title>
+<listitem><para>Click the &left; mouse button on the icon to the right-hand side of the list button. The list appears.</para></listitem>
+<listitem><para>Click the &left; mouse button on the item you wish to select.</para></listitem>
+</orderedlist>
+You may also click on the list button, then hold and drag the mouse. Release the mouse button while over the item you wish to select. If the mouse is not over the list when you release the mouse button, then no selection is made.
+<figure pgwide='0' float='1' id='popup_figure'><title>Example pop-up list</title>
+<mediaobject><imageobject><imagedata fileref='png/top_of_stack.png'/></imageobject></mediaobject>
+<mediaobject><imageobject><imagedata fileref='png/stacking_draw.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+<orderedlist><title>To use a pop-up list:</title>
+<listitem><para>Click the &left; mouse button anywhere on the list button. The list appears.</para></listitem>
+<listitem><para>Click the &left; mouse button on the item you wish to select.</para></listitem>
+</orderedlist>
+You may also click on the list button, then hold and drag the mouse. Release the mouse button while over the item you wish to select. If the mouse is not over the list when you release the mouse button, then no selection is made.
+</para>
+</sect2>
+
+<sect2><title>Using spin-boxes</title>
+<para>
+Spin-boxes allow you to specify a real or integer number. (see <xref linkend='spinbox_figure'/>)
+<figure pgwide='0' float='1' id='spinbox_figure'><title>Example spin-box</title>
+<mediaobject><imageobject><imagedata fileref='png/spinbox.png'/></imageobject></mediaobject>
+</figure>
+Set the value of a spin-box by clicking the &left; mouse button on the up arrow to increase the value or on the down arrow to decrease the value. 
+You may click and hold on the up or down arrow to move through the spin values quickly.
+You may also click on the text and type in a new value.
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='interactin_with_depictions'> <title>Interacting with depictions</title>
+<sect2 id='picking_a_point_on_a_depiction'> <title>Picking a point on a depiction</title>
+<para>
+When you are editing a depiction, the &left; mouse button is usually used to pick a point or weather object.
+</para> <para>
+The &right; mouse button opens a context sensitive menu.
+<warning><para>
+Previous versions of &FPA; have used the &right; mouse button for functions such as deleting objects, ending selection of a list of features, or initiating an action.
+Though such functionality still exists, the functions are now part of a context sensitive menu that appears when the &right; mouse button is clicked.
+(Click and hold with the &right; mouse button can also be used.) The context menu when in <guilabel>Field Edit</guilabel> allows the user to change tools (or even the current edit field) without having to move to the right panel.
+The menu changes if the user chooses functionality (such as point-by-point drawing) that requires a response to complete the action, or functionality (such as choosing objects to move) that requires a choice of what to do (such as translate or rotate or remove the chosen objects).
+</para></warning>
+</para> <para>
+Some edit functions (for example, the move function) require <emphasis>click and drag</emphasis> interaction:
+</para> <para>
+<orderedlist> <title>To perform a "click and drag" operation:</title>
+<listitem><para>
+Click with the &left; mouse button at the first location and continue to hold down the mouse button.
+</para></listitem>
+
+<listitem><para>
+Drag (while still holding the mouse button down) to the new location.
+</para></listitem>
+
+<listitem><para>
+Release the mouse button.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='drawing_with_the_freehand_tool'> <title>Drawing with the "Freehand" tool</title>
+<para>
+The "Freehand" drawing tool
+<guiicon><inlinemediaobject>
+<imageobject><imagedata scale='50' fileref='png/freehand_draw.png'/></imageobject>
+</inlinemediaobject></guiicon>
+draws a smooth line along the path you trace with the pointer.
+</para> <para>
+<orderedlist> <title>To draw with the "Freehand" tool:</title>
+<listitem><para>
+Move the pointer to the beginning of the curve and press and hold the &left; button.
+
+The cursor appears as a pencil while the button is held down.
+</para></listitem>
+
+<listitem><para>
+Move the pointer along the path you want the curve to follow.
+As you move, a dotted line appears.
+</para></listitem>
+
+<listitem><para>
+When you wish to end the curve, release the &left; button.
+The line is then shown in the appropriate colour and line style.
+</para><para>
+Note: When drawing a closed area, stop drawing a short distance before closing the gap.
+The &FPA; automatically closes the curve for you when appropriate.
+If you try to draw right up to the start point, you may introduce an extraneous loop on the closed outline.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='drawing_with_the_curve_tool'> <title>Drawing with the "Curve" tool</title>
+<para>
+The "Curve" drawing tool
+<guiicon><inlinemediaobject>
+<imageobject><imagedata scale='50' fileref='png/point_by_point_draw.png'/></imageobject>
+</inlinemediaobject></guiicon>
+interpolates a smooth line through points that you click with the pointer or draws straight line segments between the points if the smoothing parameter is set to "sharp".
+
+</para> <para>
+To draw with the "Curve" tool:
+<orderedlist>
+<listitem><para>
+Choose a smoothing mode.
+<inlinemediaobject>
+<imageobject><imagedata scale='50' fileref='png/smooth_size.png'/></imageobject>
+</inlinemediaobject>
+</para></listitem>
+<listitem><para>
+Move the pointer to the beginning of the curve and click the &left; button at the beginning of the path.
+</para></listitem>
+
+<listitem><para>
+Move the pointer along the path you want the curve to follow and click at points.
+The points that you click appear.
+</para></listitem>
+
+<listitem><para>
+When you wish to end the curve, click the &right; mouse button and select <menuchoice><guimenu>Done</guimenu></menuchoice>.
+The line is then smoothed and shown in the appropriate colour and line style.
+</para><para>
+Note: When drawing a closed area, stop drawing a short distance before closing the gap.
+The &FPA; automatically closes the curve for you when appropriate.
+If you try to duplicate the last point at the location of the first point, you may introduce an extraneous loop on the closed outline.
+</para><para>
+Note: The smoothing parameter controls the extent of smoothing which occurs when the "Curve" tool is used.
+The "sharp" mode will result in straight line segments drawn between the chosen points.
+The "smooth" mode fits a smooth curve through the chosen points.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='modifying_with_the_sculpt_tool'> <title>Modifying with the "Sculpt" tool</title>
+<para>
+The "Sculpt" tool allows you to modify a line or outline interactively.
+<orderedlist>
+<listitem><para>
+<indexterm><primary>editor</primary><secondary>puck</secondary></indexterm>
+Choose the size of the sculpting tool (the "<glossterm linkend='g_puck'>puck</glossterm>" size).
+<inlinemediaobject>
+<imageobject><imagedata scale='50' fileref='png/puck_size.png'/></imageobject>
+</inlinemediaobject>
+</para> <para>
+The cursor appears as concentric circles while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Choose a smoothing mode.
+<inlinemediaobject>
+<imageobject><imagedata scale='50' fileref='png/smooth_size.png'/></imageobject>
+</inlinemediaobject>
+</para></listitem>
+
+<listitem><para>
+Press and hold the &left; mouse button.
+</para></listitem>
+
+<listitem><para>
+As you move the puck along the line or outline, the shape changes to fit the edge of the puck.
+</para></listitem>
+<listitem><para>
+Release the &left; button when you have finished, or when the puck loses contact with the line or outline.
+</para> <para>
+The modified shape is displayed.
+</para> <para>
+Note: The smoothing parameter controls the extent of smoothing which occurs when the "Sculpt" tool is used.
+The smoothing is indicated by a second circle around the sculpting puck.
+The area between the circle and the puck is where smoothing occurs.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id='using_the_zoom_feature'> <title>Using the Zoom feature</title>
+<!-- <warning><para>You should avoid interpolating while zoomed, as the resulting process can be slow.</para></warning> -->
+<sect2 id='magnifying_a_depiction'> <title>Magnifying (zooming into) a depiction</title>
+<para>
+<indexterm><primary>zoom</primary><secondary>in</secondary></indexterm>
+Use <guibutton>Zoom In</guibutton> to magnify the depiction for fine-tuning.
+</para> <para>
+Note: You can tear off the zoom menu, but be careful not to overlap (obscure) the map area with the tear off Zoom palette.
+</para> <para>
+To magnify (zoom into) a depiction:
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Actions</guimenu><guisubmenu>Zoom</guisubmenu><guimenuitem>Zoom In</guimenuitem></menuchoice> or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Zoom In</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/zoom-in.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon from the "Command Icon Bar".
+</para><para>
+The cursor changes to a magnifying glass.
+</para></listitem>
+
+<listitem><para>
+Click and drag the &left; mouse button and outline the area that you want to magnify.
+</para> <para>
+After you click and you hold down the mouse button, the cursor changes to a pointing finger and a box outlines the area that you've selected.
+When you release the mouse button, the map is magnified.
+</para> <para>
+Note: The beginning corner of the zooming box must be inside the map area, but the ending corner can extend outside the map area.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='moving_around_in_a_depiction'> <title>Moving around (panning) in a depiction</title>
+<para>
+<indexterm><primary>zoom</primary><secondary>panning</secondary></indexterm>
+After you magnify an image, use the Pan Mode of the Zoom function to move around (pan) magnified areas of a zoom.
+When you <emphasis>pan</emphasis> a map, you choose the centre of a window that slides around the magnified image.
+</para> <para>
+To move around in a magnified depiction:
+<orderedlist>
+<listitem><para>
+After you have used the Zoom In function, choose <menuchoice><guimenu>Actions</guimenu><guisubmenu>Zoom</guisubmenu><guimenuitem>Pan Mode</guimenuitem></menuchoice> or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Pan Mode</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/zoom-pan.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon from the "Command Icon Bar".
+</para><para>
+The cursor changes to an arrow cross.
+</para></listitem>
+
+<listitem><para>
+Click in the centre of your new viewing window.
+</para> <para>
+The display moves in the direction that you chose.
+The point that you selected becomes the centre.
+</para></listitem>
+
+<listitem><para>
+Use the scroll bars to pan around a zoomed depiction image.
+</para></listitem>
+
+<listitem><para>
+When you are finished panning, click the &right; mouse button and select <menuchoice><guimenu>End Pan Mode</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='expanding_a_magnified_depiction'> <title>Expanding (zooming out from) a magnified depiction</title>
+<para>
+<indexterm><primary>zoom</primary><secondary>out</secondary></indexterm>
+If you have already magnified a depiction, you can zoom out from it.
+</para> <para>
+To expand (zoom out) a depiction:
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Actions</guimenu><guisubmenu>Zoom</guisubmenu><guimenuitem>Zoom Out</guimenuitem></menuchoice>  or click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Zoom Out</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/zoom-out.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon from the "Command Icon Bar".
+</para><para>
+The map resizes in the display.
+</para></listitem>
+
+<listitem><para>
+Repeat the previous step until you are at the magnification you want to view.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='exiting_the_zoom_feature'> <title>Exiting the Zoom feature</title>
+<para>
+<indexterm><primary>zoom</primary><secondary>exit</secondary></indexterm>
+When you have finished viewing your magnified depiction, you can exit from the Zoom function and return to your original view.
+</para> <para>
+To exit the zoom feature:
+<orderedlist>
+
+<listitem><para>
+Choose <menuchoice><guimenu>Actions</guimenu><guisubmenu>Zoom</guisubmenu><guimenuitem>Exit Zoom</guimenuitem></menuchoice>.
+</para><para>
+Your original depiction view appears.
+</para><para>
+or 
+</para><para>
+Click the
+<guiicon><inlinemediaobject>
+<textobject><phrase>Zoom Out</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/zoom-out.png'/></imageobject>
+</inlinemediaobject></guiicon>
+icon from the "Command Icon Bar" until you reach your original view.
+The icon will become inactive when you are no longer in Zoom mode.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+</chapter>

@@ -1,0 +1,38 @@
+! Set the default presentation parameters ...
+@presentation
+	{
+	line_width  = 0.05;
+	font        = "Times-Roman";
+	font_weight = normal;
+	italics     = no;
+	char_space  =  0;
+	word_space  = 75;
+	}
+
+! Display the wave height contour labels ... must be labelled in FPA to appear!
+@label_display
+	{
+	display_name  = WvHgtLabel;
+	margin_bottom =  0.10;
+	line_width    =  0.02;
+	outline       = X11 Black;
+	interior_fill = X11 Yellow;
+	}
+@label
+	{
+	element                 = wave_height;
+	level                   = surface;
+	category_attribute      = FPA_label_type;
+	category                = contour;
+	attribute               = EVAL_contour;
+	attribute_justification = centre;
+	attribute_vertical_just = centre;
+	attribute_format        = direct %s;
+	attribute_text_size     =  0.40;
+	attribute_display_name  = WvHgtLabel;
+	attribute_display_type  = sized_ellipse;
+	attribute_width_scale   = 85;
+	attribute_height_scale  = 100;
+	outline                 = none;
+	fill                    = X11 Black;
+	}

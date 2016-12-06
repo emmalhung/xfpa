@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect1 PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+<sect1><title>Automatically Importing Metafiles</title>
+<para>
+Autoimport enables you to automatically import fields generated from an external source into the &FPA;.
+This is accomplished by putting the metafiles into a special source directory. 
+The <userinput>autoimport</userinput> directory is set in the Sources block of the Config file.
+The default location is set in the master config file (<filename><envar>$FPA</envar>/config/Config.master</filename>), but it can be reset in your local config file.
+When &FPA; detects metafiles in the import directory it asks you for permission to import the field. 
+If, while importing a <emphasis>Normal</emphasis> field, a new depiction is required, &FPA; will ask for permission to create it.
+</para><para>
+Additional Autoimport directories can also be defined in the Sources block of the Config file, and set in the "[field.auto.import]" section of the 'interface' block of the setup file. They behave the same as the special <userinput>autoimport</userinput> directory.
+<programlisting>
+Sources
+  {
+  ...
+  autoimport
+    {
+	label          = &lt;*default*&gt; "Auto Import Directory"
+	short_label    = &lt;*default*&gt; "Auto Import"
+	source_type    = Depiction
+	alias          = FPA_AutoImport
+	directory_tag  = Data
+	directory_path = AutoImport
+	subsources     = None
+	}
+  ...
+}</programlisting>
+</para>
+</sect1>

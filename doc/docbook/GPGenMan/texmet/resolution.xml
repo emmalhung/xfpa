@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_resolution'> <title>@resolution</title> <titleabbrev>@resolution</titleabbrev>
+<para>
+Set the spline resolution for "continuous" or "vector" fields for sampling.
+</para><para>
+Note that <userinput>map_units</userinput> is automatically reset to the value of <userinput>map_units</userinput> in the
+<link linkend='tx_mapdef'>@mapdef</link> directive, and <userinput>res</userinput> is scaled accordingly.
+</para><para>
+Note that values determined by <userinput>xmax</userinput> - <userinput>xmin</userinput> and 
+<userinput>ymax</userinput> - <userinput>ymin</userinput>
+keywords in the <link linkend='tx_mapdef'>@mapdef</link> directive should be multiples of the the value of the
+<userinput>res</userinput> keyword, given below.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>res</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Spline resolution (in units of <userinput>map_units</userinput> keyword below)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_units.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@resolution { res = 200; map_units = 1000; }</programlisting>
+Set a spline resolution for "continuous" or "vector" fields to 200 distance units, where all distance
+units are expressed in 1000 m, or km.
+</para></example>
+</para></sect2>

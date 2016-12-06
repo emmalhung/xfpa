@@ -1,0 +1,130 @@
+#!/bin/bash
+#
+# d.fpalaunch - Script to start/stop the FPA GRIB ingest scheduler.
+#------------------------------------------------------------------------#
+
+
+#------------------------------------------------------------------------#
+# Instructions:
+#
+# 1. Copy the file d.fpalaunch to fpalaunch in the appropriate directory.
+#    The copy should be owned by bin:bin and should have read and execute
+#    permission for all.
+#
+#    For HP and SUN systems, the file should be copied to the directory
+#    /sbin/init.d, for example:
+#    
+#      cp d.fpalaunch /sbin/init.d/fpalaunch
+#
+#      cd /sbin/init.d
+#      chown bin:bin fpalaunch
+#      chmod 755 fpalaunch
+#
+#    For Linux systems, the file should be copied to the directory
+#    /etc/init.d, for example:
+#    
+#      cp d.fpalaunch /etc/init.d/fpalaunch
+#
+#      cd /etc/init.d
+#      chown bin:bin fpalaunch
+#      chmod 755 fpalaunch
+#
+# 2. Edit the copied file, fpalaunch, changing the following lines as
+#    appropriate for your site.
+#
+
+	FPA=$HOME/fpav8
+	FPA_SCHED=$FPA/etc/fpaschedrc
+	FPA_SCHED_LOG=$FPA/etc/fpaschedrc.log
+
+#
+# 3. Determine the default run-level of your machine (see the initdefault
+#    line in /etc/inittab).  Then construct links to start and stop the
+#    ingest at the appropriate run-levels.
+#
+#    For recent releases of HP and SUN systems, the standard run-level is 3,
+#    and the following links would be constructed for a run-level of 3:
+#
+#      # Start on entering run-level 3:
+#      cd /sbin/rc3.d
+#      ln -s /sbin/init.d/fpalaunch S950fpalaunch
+#
+#      # Kill on entering run-level 2:
+#      cd /sbin/rc2.d
+#      ln -s /sbin/init.d/fpalaunch K050fpalaunch
+#
+#    For recent releases of Linux systems, the standard run-level is 5,
+#    and the following links would be constructed for a run-level of 5:
+#
+#      # Start on entering run-level 5:
+#      cd /etc/rc5.d
+#      ln -s /etc/init.d/fpalaunch S950fpalaunch
+#
+#      # Kill on entering run-level 4:
+#      cd /etc/rc4.d
+#      ln -s /etc/init.d/fpalaunch K050fpalaunch
+#
+# 4. To start the ingest for the first time, execute fpalaunch as root.
+#
+#    For HP and SUN systems:
+#
+#      /sbin/init.d/fpalaunch start
+#
+#    For Linux systems:
+#
+#      /etc/init.d/fpalaunch start
+#
+#------------------------------------------------------------------------#
+
+
+#------------------------------------------------------------------------#
+# Make no changes beyond this point!
+#------------------------------------------------------------------------#
+
+SCRIPT=$0
+export FPA
+
+# Make sure we really have the location of the daemon.
+if [ ! -f $FPA_SCHED ]
+then
+	echo "$SCRIPT: Can't find the FPA ingest scheduler: $FPA_SCHED"
+	exit 1
+elif [ ! -x $FPA_SCHED ]
+then
+	echo "$SCRIPT: Can't execute the FPA ingest scheduler: $FPA_SCHED"
+	exit 1
+fi
+
+# Take the desired action
+case $1 in
+'start_msg')
+		echo "Start FPA ingest scheduler daemon"
+		;;
+
+'stop_msg')
+		echo "Stop FPA ingest scheduler daemon"
+		;;
+
+'start')
+		if [ -r $FPA_SCHED_LOG ]
+		then mv $FPA_SCHED_LOG $FPA_SCHED_LOG.old
+		fi
+		$FPA_SCHED >$FPA_SCHED_LOG 2>&1
+		if [ -x /usr/bin/sleep ]
+		then
+			/usr/bin/sleep 5
+		else
+			/bin/sleep 5
+		fi
+		;;
+
+'stop')
+		$FPA_SCHED shutdown >$FPA_SCHED_LOG.ctl 2>&1
+		;;
+
+    *)
+		echo "$SCRIPT: Unknown option: $1"
+		echo "Usage: $SCRIPT { start | stop }"
+		exit 1
+		;;
+esac

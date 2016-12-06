@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE appendix PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<appendix id='appendf'><title> Predefined GUI Selection Lists </title><para>
+<indexterm><primary>predefined selection lists</primary></indexterm>
+ Predefined GUI selection lists are lists which appear in the graphical user interface but are preset by the system manager and cannot be modified by the user from within &FPA;.
+ The selection of a particular list is controlled by the setup file for the particular instance of &FPA;.
+  <note><para>If a label in any of the following files is only required to be in one language then the label is taken as presented.
+  If multi-language labels are required then the label line must be specified as:
+  <programlisting>&lt;*default*&gt; "a b c" &lt;*<replaceable>language</replaceable>*&gt; "a &auml; u" &lt;*<replaceable>language</replaceable>*&gt; "...</programlisting>
+  Where: &lt;*default*&gt; specifies the label to use if none of the other specifiers are valid.
+  &lt;*<replaceable>language</replaceable>*&gt; is the required language as specified in the <envar>LANG</envar> environment variable.
+  </para></note>
+  </para><para>
+  Selection lists are located in <filename class='directory'><envar>$FPA</envar>/setup/preset_lists/TEMPLATE</filename> and should be copied to a user's local setup directory by typing:
+  <programlisting>cp <filename class='directory'><envar>$FPA</envar>/setup/preset_lists/TEMPLATE/</filename>* <filename class='directory'><envar>$HOME</envar>/setup/preset_lists/</filename></programlisting>
+  You may then customize the list for that user according to the formats described below.
+<warning><para>It is common practice in technical writing to encase optional arguments within square brackets (<optional></optional>).
+In the following list formats square brackets are used to encase a list key.
+The reader may find this confusing.
+Assume the traditional meaning unless the text indicates otherwise.</para></warning>
+</para>
+  
+<sect1><title>Area Sample Filter Lists</title><para>
+<indexterm><primary>predefined selection lists</primary><secondary>area sample filter</secondary></indexterm>
+The file must be named <filename>area_sample_filters</filename> When sampling areas the list of attributes associated with a particular area can be quite large.
+The purpose of this file is to:
+<itemizedlist>
+<listitem><para>provide a mechanism to filter the attribute display to show only those attributes of interest.</para></listitem>
+<listitem><para>set the display order of the attributes to something other than that in the configuration files.</para></listitem>
+</itemizedlist>
+The order that the attributes will appear in the list is that of the filter list and not that of the attribute order in the configuration file.
+The lists are separated by list keys (element-level pairs) in square brackets as:
+<programlisting>[<replaceable>element</replaceable>.<replaceable>level</replaceable>] <replaceable>filter_label</replaceable>
+    <replaceable>attribute</replaceable>
+    <replaceable>attribute</replaceable>
+    ...
+[<replaceable>element</replaceable>.<replaceable>level</replaceable>] <replaceable>filter_label</replaceable>
+    <replaceable>attribute</replaceable>
+    ...
+</programlisting>
+The element-level pairs specify that the filter is for a specific field.
+The element and level names are those defined in the configuration files.
+If the filter is to be used in every field, then the element-level pair identifier is replaced with the keyword "ALL_FIELDS".
+Don't forget the period between the element and level!
+<example><title>Resetting "ALL_FIELDS"</title><para>
+The filter label is whatever you want it to be.
+So to always show a list of certain attributes the file might, for example, contain:
+<programlisting>[ALL_FIELDS] "Main Values"
+    cloud_base_1
+    cloud_base_2
+    visibility
+</programlisting></para></example>
+<example><title>Sample Filter</title><para>
+To associate a particular filter list with just one field we would have something like the following:
+<programlisting>[weather_synoptic.surface] "Weather Values"
+another list
+</programlisting></para></example>
+There is a special filter group which is always included in the display called "All Attributes" which will display all of the attributes.
+You may want to still limit which attributes are displayed with this filter and so you can override this by including the group "ALL_ATTRIBUTES" in this file.
+A label is not required for this group as the default name is used, but if you want to change the label you may.
+</para><para>
+This list is different in that it contains all attributes which are NOT to be displayed.
+For Example:
+<programlisting>[ALL_ATTRIBUTES] "Show Everything"
+    <replaceable>attributes not to display</replaceable>
+</programlisting>
+Will change the label from "All Attributes" to "Show Everything" and remove from display the given list of attributes.
+</para></sect1>
+
+<sect1><title>Depiction Field Visibility</title><para>
+<indexterm><primary>predefined selection lists</primary><secondary>field visibility</secondary></indexterm>
+The file must be named <filename>field_visibility</filename>.
+This file contains the definitions of predefined lists of depiction field visibility states.
+The lists are separated by list keys in square brackets as:
+<programlisting>[<replaceable>list_1_key</replaceable>] <replaceable>list_label</replaceable>
+    <replaceable>field_group_id</replaceable> <optional>always on</optional>
+    <replaceable>element level</replaceable> <optional>always on</optional>
+    <replaceable>element level</replaceable> <optional>always on</optional>
+[<replaceable>list_2_key</replaceable>] <replaceable>list_label</replaceable>
+    <replaceable>element level</replaceable>
+</programlisting>
+and so on.
+The list keys should be something that makes sense, as <command>xfpa</command>, if run with the <option>-v</option> option will come up with that visibility list.
+i.e. <computeroutput>xfpa -v <replaceable>list_2_key</replaceable></computeroutput> would come up with the second list selected already.
+</para><para>
+The <replaceable>list_label</replaceable> is what the user will see as the selection in the pulldown list of predefined visibility states.
+</para><para>
+The remaining lines are either the identifiers, as recognized in the configuration files, of the field groups or the fields themselves.
+Any field not listed in the group will be set to off.
+The default state is for the field to be visible when the associated group is visible.
+If the field is to be visible always no matter what, then the element and level are followed by the optional key words "always on".
+<example><title>Depiction field visibility</title>
+<programlisting>[marine] Marine Fields
+    pressure msl always on
+    weather sfc
+    wind sfc
+</programlisting></example>
+</para></sect1>
+
+<sect1><title>Guidance Field List</title><para>
+<indexterm><primary>predefined selection lists</primary><secondary>guidance lists</secondary></indexterm>
+This file must be named <filename>guidance</filename>.
+This file contains the definitions of predefined lists of guidance fields as seen under the <menuchoice><guimenu>Guidance</guimenu><guimenuitem>Select</guimenuitem></menuchoice> pulldown menu.
+Any lists incorporated into the guidance selection via this mechanism are fixed and cannot be deleted or have fields added to or removed from the list.
+This list can, however, be copied and the copy modified.
+The list files to incorporate into the guidance selection are specified in the setup file.
+</para><para>
+The lists are separated by list keys in square brackets as:
+<programlisting>[<replaceable>list_1_key</replaceable>] <replaceable>list_label</replaceable>
+    <replaceable>field</replaceable>
+    <replaceable>field</replaceable>
+[<replaceable>list_2_key</replaceable>] <replaceable>list_label</replaceable>
+    <replaceable>field</replaceable>
+</programlisting>
+and so on.
+The contents of the list key separator can be anything that make sense as they are not used at the moment.
+</para><para>
+The list label is what the user will see to identify this particular list.
+The field lines consist of:
+<programlisting><replaceable>element level source <optional>sub-source</optional></replaceable> <optional>previous</optional></programlisting>
+Where <replaceable>element</replaceable>, <replaceable>level</replaceable>, <replaceable>source</replaceable> and <replaceable>sub-source</replaceable> are as specified in the configuration files.
+Previous, which only has meaning when the source is depict or interp, indicates that the depiction previous to the currently selected one is required.
+If previous is specified then sub-source must be set to be dash "-".
+Note that not all sources have sub-sources.
+<example><title>Guidance field list</title>
+<programlisting>[list1] 500Mb Fields
+    height        500 FEM
+    height_change 500 FEM
+    vertical_vel  500 FEM
+</programlisting></example>
+</para></sect1>
+
+<sect1><title>Point Lists</title><para>
+<indexterm><primary>predefined selection lists</primary><secondary>sample points</secondary></indexterm>
+This file must be named <filename>point_lists</filename>.
+This file contains the definitions of predefined lists of points which will be used under both the sample and label edit functions.
+There is only one instance of this file permitted.
+The lists are separated by list keys in square brackets as:
+<programlisting>[<replaceable>list_1_key</replaceable>] <replaceable>list_label</replaceable>
+    <replaceable>latitude longitude <optional>comments</optional></replaceable>
+    <replaceable>latitude longitude <optional>comments</optional></replaceable>
+[<replaceable>list_2_key</replaceable>] <replaceable>list_label</replaceable>
+    <replaceable>latitude longitude <optional>comments</optional></replaceable>
+</programlisting>
+and so on.
+The contents of the list key separator can be anything that make sense.
+</para><para>
+The list_label is what the user will see to identify the list.
+</para><para>
+The format of the latitude and longitude must be given as one of
+<itemizedlist>
+<listitem><para><optional>+|-</optional>DDD<optional>N|E|W|S</optional>            = whole degrees</para></listitem>
+<listitem><para><optional>+|-</optional>DDD.ddd<optional>N|E|W|S</optional>        = decimal degrees</para></listitem>
+<listitem><para><optional>+|-</optional>DDD:MM<optional>:SS</optional><optional>N|E|W|S</optional>    = degrees, minutes, seconds</para></listitem>
+<listitem><para><optional>+|-</optional>DDD&deg;MM<optional>'SS<optional>"</optional></optional><optional>N|E|W|S</optional> = degrees, minutes, seconds</para></listitem>
+</itemizedlist>														 
+If the direction is given as one of N|E|W|S then the leading sign is not required.
+Remember west and south are negative!
+</para><para>
+A comment may follow the position if it is proceeded by a pound sign "#".
+This is for file maintenance only and has no other purpose.
+<example><title>Point lists</title>
+<programlisting>[main_cities] Main Cities
+    43:70N 79:60W    # Toronto
+    42:35N 83:00W    # Winsor
+    46:40N 84:50W    # Sault St Marie
+</programlisting></example>
+</para></sect1>
+
+<sect1><title>Field Update Office Default</title><para>
+<indexterm><primary>predefined selection lists</primary><secondary>field update office default</secondary></indexterm>
+This file must be named <filename>field_update_office_default</filename>.
+Only one instance of this file is permitted.
+It lists the fields and times that an office loads by default from a particular source.
+This does not mean that these depictions will be updated automatically, it simply sets the default selection.
+The user still has the opportunity to fine tune the default selection.
+The lists are separated by source keys in square brackets as:
+<programlisting>[<replaceable>source</replaceable>]
+    <replaceable>element level</replaceable> (list of valid times relative to run time of the source)
+	...
+[<replaceable>source</replaceable>]
+    <replaceable>element level</replaceable> (list of valid times relative to run time of the source)
+	...
+</programlisting>
+and so on.
+The sources must be defined in a configuration file, as do the element and level identifiers.
+<example><title>Field update office default</title>
+<programlisting>[GEM_REG]
+    temperature  surface 00 06 12 18 24 36 48
+    rel_humidity surface 18 42
+[GEM_GLB]
+    pressure     msl     00 06 12 18 24 30 36 42 48 54 60 66 72
+    temperature  surface 54 60 66 72
+    rel_humidity surface 66
+</programlisting></example>
+</para></sect1></appendix>

@@ -1,0 +1,600 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<chapter id='local_setup'><title>Defining Your Local Setup</title>
+
+<sect1><title>Customization: Setup vs. Config</title><para>
+<indexterm><primary>setup file</primary></indexterm>
+Many aspects of the behaviour of &FPA; applications can be controlled by means of setup and configuration files.
+</para><para>
+Configuration files describe information which is relatively static.
+Most configuration files contain a full enumeration of available cases for a group of related parameters.
+Selection of desired cases is usually made in the setup files.
+</para><para>
+Setup files control the more arbitrary aspects of application behaviour.
+Each &FPA; application makes use of a setup file.
+When the application is started, it is provided with the name of the setup file.
+</para><para>
+The setup file must contain certain information for which no default is provided.
+It may also contain information defining personal preferences, which override the corresponding defaults.
+</para><para>
+Each application may concern itself with only some of this information.
+The information in the setup file is organized into logical blocks.
+The actual blocks and what they contain is to some extent arbitrary.
+As applications evolve new blocks may be defined or existing blocks may be altered.
+</para> </sect1>
+
+<sect1><title>Description of Setup File Contents</title><para>
+<indexterm><primary>setup file</primary><secondary>description of contents</secondary></indexterm>
+The setup file has a very simple format.
+Each block has the following structure:
+<programlisting>block_name
+{
+	keyword value1 value2...
+	keyword value1 value2...
+	... and so on
+} </programlisting>
+<itemizedlist>
+<listitem><para>The brackets delimiting a setup block must be on their own line.</para></listitem>
+<listitem><para>Lines starting with a # or * are comments.
+</para></listitem>
+<listitem><para>Quotes must be used to maintain embedded spaces.</para></listitem>
+</itemizedlist>
+</para> </sect1>
+
+<sect1><title>Setup Blocks</title> <para>
+The setup file contains the following setup blocks:
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;<tbody>
+<row valign='top'><entry><userinput>target_map</userinput></entry><entry>Defines the map projection information for displaying and building depictions and maps</entry></row>
+<row valign='top'><entry><userinput>directories</userinput></entry><entry>Provides the full name of important directories related to  the specific &FPA; database referred to by this setup file</entry></row>
+<row valign='top'><entry><userinput>config_files</userinput></entry><entry>Provides the names of configuration files</entry></row>
+<row valign='top'><entry><userinput>interface</userinput></entry><entry>Defines the behaviour of the user interface for the depiction editor</entry></row>
+<row valign='top'><entry><userinput>depiction</userinput></entry><entry>Identifies the default set of fields which make up a weather depiction</entry></row>
+<row valign='top'><entry><userinput>ingest</userinput></entry><entry>Controls the behaviour of the optional automatic ingest for the &FPA; database referred to by this setup file</entry></row>
+<row valign='top'><entry><userinput>diag_control</userinput></entry><entry>Controls the diagnostic output for numerous modules in the &FPA; software</entry></row>
+<row valign='top'><entry><userinput>advanced_features</userinput></entry><entry>This block controls the behaviour of certain features in the &FPA; software</entry></row>
+</tbody></tgroup></informaltable>
+</para></sect1>
+
+<sect1><title>Target Map Setup</title> <para>
+<indexterm><primary>setup file</primary><secondary>target map block</secondary></indexterm>
+The <userinput>target_map</userinput> block specifies the map projection information for displaying and building depiction charts.
+The following key words are recognized: 
+
+<note id='lat-long-format'><para>
+Latitude and Longitude values may be specified in any of the following formats.
+<informaltable frame='none' rowsep='none' colsep='none'><tgroup cols='2'><tbody>
+<row valign='top'>
+<entry>Whole degrees</entry>
+<entry><optional> +/- </optional> <replaceable>DDD</replaceable> <optional> N/S/E/W </optional></entry></row>
+<row valign='top'>
+<entry>Decimal degrees</entry>
+<entry><optional> +/- </optional> <replaceable>DDD</replaceable>.<replaceable>DDD</replaceable> <optional> N/S/E/W </optional></entry></row>
+<row valign='top'>
+<entry>Degrees, minutes, (seconds)</entry>
+<entry><para><optional> +/- </optional> <replaceable>DDD</replaceable>:<replaceable>MM</replaceable> <optional> :SS </optional> <optional> N/S/E/W </optional></para>
+	<para><optional> +/- </optional> <replaceable>DDD</replaceable>˚<replaceable>MM</replaceable>' <optional> SS" </optional> <optional> N/S/E/W </optional></para></entry></row>
+</tbody></tgroup></informaltable>
+The default directions, with no signs present, are in degrees North for latitudes and in degrees East for longitudes.
+</para></note>
+
+<variablelist>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='projection.xml'/>
+
+<varlistentry><term>mapdef</term>
+<listitem><para>
+Defines the location, orientation and extent of the area of interest.
+<itemizedlist>
+<listitem><para>origin latitude</para></listitem>
+<listitem><para>origin longitude</para></listitem>
+<listitem><para>reference longitude (vertical)</para> </listitem>
+<listitem><para>x minimum (in map units given below)</para></listitem>
+<listitem><para>y minimum (in map units given below)</para></listitem>
+<listitem><para>x maximum (in map units given below)</para></listitem>
+<listitem><para>y maximum (in map units given below)</para></listitem>
+<listitem><para>metres per map unit, or degrees per map unit for latitude_longitude projections</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+<varlistentry><term>resolution</term>
+<listitem><para>
+Defines the spline resolution for calculating continuous charts.
+<itemizedlist>
+<listitem><para>grid spacing (in units given below)</para></listitem>
+<listitem><para>metres per map unit, or degrees per map unit for latitude_longitude projections</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+</variablelist>
+</para> </sect1>
+
+<sect1 id='dir_block'><title>Directories Setup</title> <para>
+<indexterm><primary>setup file</primary><secondary>directories block</secondary></indexterm>
+The <userinput>directories</userinput> block provides the full name of important directories related to a specific database.
+Each line in this block defines a directory.
+The first parameter is a key word used by the &FPA; software to identify the directory.
+The second parameter is the actual path of that directory.
+</para> <para>
+In the default installation there will be only one entry in this block with the keyword of <userinput>home</userinput>.
+The software which reads this setup block will automatically change its current directory to the home directory and all relative paths will be interpreted as being relative to its path.
+</para> <para>
+There are many other directory keywords, but unless there is a reason to change the directory structure from the default they do not have to be included in this block.
+If modification is necessary see <xref linkend='directories_block'/>, for the list of directories and their default values.
+</para> </sect1>
+
+<sect1><title>Configuration Files Setup</title> <para>
+<indexterm><primary>setup file</primary><secondary>configuration file</secondary></indexterm>
+<indexterm><primary>configuration</primary></indexterm>
+The <userinput>config_files</userinput> block defines the important configuration files used by various &FPA; applications.
+No entries are required in this block unless there is a reason to change the directory structure from the default.
+If modification is necessary see <xref linkend='configuration_files_block'/>, for the list of files and their default values.
+</para> </sect1>
+
+<sect1><title>Interface Setup</title> <para>
+<indexterm><primary>setup file</primary><secondary>interface block</secondary></indexterm>
+The <userinput>interface</userinput> block defines a number of customizable features in the user interface.
+The keywords are enclosed in square brackets and must be on a separate line from the following data.
+For example:
+<programlisting>[map.overlay]
+"FPCN20 Areas" qx_20
+"FPCN21 Areas" qx_21
+</programlisting>
+</para> <para>
+The following keywords are recognized:
+<variablelist>
+
+<varlistentry><term>allied.model</term>
+<listitem><para>
+If given, specifies a list of models which may be run.
+Parameters are:
+<itemizedlist>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='source-subsource.xml'/>
+<listitem><para>optional keyword either <userinput>notify</userinput> or <userinput>no_notify</userinput>. Specifies if the source update indicator (the book shelf) should flash when new data arrives. Default is <userinput>notify</userinput></para></listitem>
+<listitem><para>optional time interval (in minutes). Any source that updates again before this time interval expires will not flash the update indicator. Default is 0.</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term>demo.date</term>
+<listitem><para>
+Set  an imaginary clock if you have a "canned" database.
+Parameters are:
+<itemizedlist><listitem><para>YYYY/MM/DD/HH or YYYY/MM/DD HH</para></listitem></itemizedlist>
+where YYYY is the four digit year, MM is the two digit month, DD is the two digit day of the month and HH is the two digit GMT hour of the day.
+</para></listitem></varlistentry>
+
+<varlistentry><term>depiction.coview</term>
+<listitem><para>
+Specifies the depictions to appear in the CoView depiction list. Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the selection button</para></listitem>
+<listitem><para>setup file to use to view the foreign depiction</para></listitem>
+<listitem><para>command line options for the spawned &FPA; (see <xref linkend='depiction_editor_options'/>)</para></listitem>
+<listitem><para>a list of standard X options (i.e., <option>-geometry</option>, <option>-display</option>)</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry/>
+<varlistentry/>
+
+<varlistentry><term>depiction.external</term>
+<listitem><para>
+Specifies depiction databases which can be imported into or merged into the existing depiction sequence.
+Parameters are:
+<itemizedlist><listitem><para> source identifier for the required database. This must have already been defined in the configuration file as a source.</para></listitem>
+<listitem><para>optional keyword either <userinput>notify</userinput> or <userinput>no_notify</userinput>. Specifies if the source update indicator (the book shelf) should flash when new data arrives. Default is <userinput>notify</userinput></para></listitem>
+<listitem><para>optional time interval (in minutes). Any source that updates again before this time interval expires will not flash the update indicator. Default is 0.</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term>depiction.savetime</term>
+<listitem><para>
+Specifies the number of days to allow saved depictions to remain in the <filename class='directory'>Backup</filename> directory.
+The default is 7 days.
+An entry of 0 or less will allow depictions to remain in the <filename class='directory'>Backup</filename> directory indefinitely.
+</para></listitem></varlistentry>
+
+<varlistentry><term>depiction.timeSteps</term>
+<listitem><para>
+Optional time steps for the depiction sequence, using time increments rather than the normal depiction by depiction.
+Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the option selection list</para></listitem>
+<listitem><para>label to appear between the depiction time stepping arrows</para></listitem>
+<listitem><para>minimum time step between depictions in minutes</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term>field.autoimport</term>
+<listitem><para>
+Lists autoimport sources and specifies options. An autoimport source is a directory where valid metafiles may be put where &FPA; will automatically detect their presence and then import the file into the depiction sequence with actions that depend on the specified options. 
+<itemizedlist>
+<listitem><para>the autoimport source identifier as defined in a configuration file.</para></listitem>
+<listitem><para>import the field into  the &FPA; without asking the user for permission. (<userinput>true</userinput> or <userinput>false</userinput>) Default is <userinput>false</userinput>.</para></listitem>
+<listitem><para>if importing the field would create a depiction, create the depiction without asking the user for permission. (<userinput>true</userinput> or <userinput>false</userinput>) Default is <userinput>false</userinput>.</para></listitem>
+</itemizedlist></para></listitem></varlistentry>
+
+<varlistentry><term>field.smoothing</term>
+<listitem><para>Specifies the maximum smoothing factor for the continuous and vector fields. This is a float value with a default of 5.0.</para></listitem></varlistentry>
+
+<varlistentry><term>guidance.animationTimeSteps</term>
+<listitem><para>
+Optional time steps for guidance animation frames, using time increments relative to the T0 depiction time rather than the normal frame by frame.
+Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the selection list</para></listitem>
+<listitem><para>minimum time step between animation frames in minutes</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry/>
+
+<varlistentry><term>guidance.model</term>
+<listitem><para>
+Specifies guidance models to be made available for selection by the user.
+Parameters are:
+<itemizedlist>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='source-subsource.xml'/>
+<listitem><para>optional keyword either <userinput>notify</userinput> or <userinput>no_notify</userinput>. Specifies if the source update indicator (the book shelf) should flash when new data arrives. Default is <userinput>notify</userinput></para></listitem>
+<listitem><para>optional time interval (in minutes). Any source that updates again before this time interval expires will not flash the update indicator. Default is 0.</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term>imagery.blend</term>
+<listitem><para>
+Set the lower limit of the radar-satellite image blending amount in percent. 
+For example, a value of 40 will limit the blending to 40% radar and 60% satellite. 
+The upper limit is always 100% radar meaning that the radar blocks out all of the satellite.
+<itemizedlist>
+<listitem><para>minimum amount of radar blended in percent.</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term>imagery.brightness</term>
+<listitem><para>
+Sets the range of brightness adjustment, in percent, allowed for the various image types.
+<itemizedlist>
+<listitem><para>One of <userinput>overlay</userinput>, <userinput>radar</userinput>, <userinput>satellite</userinput> or <userinput>underlay</userinput>.</para></listitem>
+<listitem><para>Minimum brightness. No less than 0%.</para></listitem>
+<listitem><para>Maximum brightness. Can exceed 100% which will make the image brighter than the original source.</para></listitem>
+</itemizedlist>
+For example:
+<programlisting>[imagery.brightness]
+overlay     30  100
+radar       50  100
+satellite   50  100
+underlay    30  100
+</programlisting>
+</para></listitem></varlistentry>
+
+<varlistentry><term>interpolation.delta</term>
+<listitem><para>
+Specifies the time step between interpolated depictions in hours, or in hours:minutes.
+The default is 1 hour.
+</para></listitem></varlistentry>
+
+<varlistentry><term>map.base</term>
+<listitem><para>
+Specifies the main background map.
+Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the background selection button</para></listitem>
+<listitem><para>metafile name (relative to <filename class='directory'>Maps</filename> directory)</para></listitem>
+</itemizedlist>
+There must be one entry.</para><para>
+Note: A '+' prefixed to the map metafile name indicates a map which is found in the "maps.common" directory as opposed to the "maps" directory.
+</para></listitem></varlistentry>
+
+<varlistentry/>
+
+<varlistentry><term>map.overlay</term>
+<listitem><para>
+Specifies the available map overlays.
+There is no limit as to the number of overlays allowed.
+Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the background selection button</para></listitem>
+<listitem><para>metafile name (relative to <filename class='directory'>Maps</filename> directory)</para></listitem>
+</itemizedlist>
+Note: A '+' prefixed to the map metafile name indicates a map which is found in the "maps.common" directory as opposed to the "maps" directory.
+</para></listitem></varlistentry>
+
+<varlistentry><term>map.editor</term>
+<listitem><para>Specifies a map containing an outline used in the field editor.
+Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the editor selection button</para></listitem>
+<listitem><para>metafile name (relative to "maps" directory)</para></listitem>
+</itemizedlist>
+Note: A '+' prefixed to the map metafile name indicates a map which is found in the "maps.common" directory as opposed to the "maps" directory.
+</para></listitem></varlistentry>
+
+<varlistentry><term>map.holes</term>
+<listitem><para>Specifies a map containing an outline used in the field editor for drawing holes in area fields.
+Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the editor selection button</para></listitem>
+<listitem><para>metafile name (relative to <filename class='directory'>Maps</filename> directory)</para></listitem>
+</itemizedlist>
+Note: A '+' prefixed to the map metafile name indicates a map which is found in the "maps.common" directory as opposed to the "maps" directory.
+</para></listitem></varlistentry>
+
+<varlistentry><term>map.palette</term>
+<listitem><para>
+Specifies the available map colouring schemes.
+All colours are to be given as X colour names or in X hexadecimal notation.
+A dash ("-") in place of any given colour means to use the default.
+There must be at least one entry.
+Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the map palette selection button</para></listitem>
+<listitem><para>land colour</para></listitem>
+<listitem><para>water colour</para></listitem>
+<listitem><para>coast colour</para></listitem>
+<listitem><para>border colour</para></listitem>
+<listitem><para>latitude/longitude colour</para></listitem>
+<listitem><para>forecast area colour</para></listitem>
+<listitem><para>forecast area border colour</para></listitem>
+</itemizedlist> </para></listitem></varlistentry>
+
+<varlistentry><term>link.palette</term>
+<listitem><para> Lists the available link chain colouring schemes.
+All colours must be given in standard X colour names.
+A dash ("-") in place of any given colour means to use the default.
+Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the link palette selection button</para></listitem>
+<listitem><para>colour for link nodes and chains</para></listitem>
+<listitem><para>colour for labels</para></listitem>
+<listitem><para>colour of link node that is not attached to a feature</para></listitem>
+</itemizedlist> </para></listitem></varlistentry>
+
+<varlistentry><term>product.graphic</term>
+<listitem><para>
+Specifies graphic output products. Note that the format of product definition files is discussed in <xref linkend='appendd'/>. Parameters are:
+<itemizedlist>
+<listitem><para>label to appear in the graphic product list</para></listitem>
+<listitem><para>type of graphic product one of:
+<informaltable frame='none' rowsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry><userinput>psmet</userinput></entry><entry>produce graphics using &PSMet;</entry></row>
+<row><entry><userinput>svgmet</userinput></entry><entry>produce graphics using &SVGMet;</entry></row>
+<row><entry><userinput>texmet</userinput></entry><entry>produce text file using &TexMet;</entry></row>
+<row><entry><userinput>metafiles</userinput></entry><entry>package up the &FPA; database for transmission to another location</entry></row>
+</tbody></tgroup></informaltable></para></listitem>
+
+<listitem><para>parameters specific to type:</para>
+<para>
+<variablelist>
+<varlistentry><term>psmet</term><term>svgmet</term><term>texmet</term>
+<listitem><para>
+<itemizedlist><listitem><para>directory relative to "psmet", "svgmet" or "texmet" setup directory</para></listitem>
+<listitem><para>product definition file in the above directory</para></listitem></itemizedlist>
+</para></listitem> </varlistentry>
+
+<varlistentry><term>metafiles</term>
+<listitem><para><itemizedlist><listitem><para>product definition file. If an absolute path is not specified, then this is taken relative to the "metafiles" setup directory.</para></listitem></itemizedlist></para></listitem></varlistentry>
+
+</variablelist></para></listitem>
+</itemizedlist></para></listitem></varlistentry>
+
+<varlistentry><term>title</term>
+<listitem><para>
+If given, specifies a title to be used in the program window.
+The default is the name of the &FPA; database.
+</para></listitem></varlistentry>
+
+<varlistentry><term>T0.roundOff</term>
+<listitem><para>Set the time roundoff for setting T0 in hours. This will roundoff T0 to the nearest time boundary defined by the setting. For example, 6 will result in a T0 to the nearest 6 hour interval. If the current time was 16:36 GMT then T0 would be set to 12 GMT.
+</para></listitem></varlistentry>
+</variablelist>
+</para> </sect1>
+
+<sect1><title>Depiction Setup</title> <para>
+<indexterm><primary>setup file</primary><secondary>depiction block</secondary></indexterm>
+The depiction block defines the list of fields that make up a depiction and may be edited using the depiction editor application (<command>xfpa</command>).
+</para>
+<variablelist>
+<varlistentry><term>field</term>
+<listitem><para>
+Identifies a field in the depiction.
+Parameters are:
+<itemizedlist>
+<listitem><para>element name</para></listitem>
+<listitem><para>level name</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+</variablelist>
+<para>
+Elements and levels mentioned in this block must already be defined in the Config file (refer to <xref linkend='config_files'/>).
+</para> </sect1>
+
+<sect1><title>Ingest Setup</title> <para>
+<indexterm><primary>setup file</primary><secondary>ingest block</secondary></indexterm>
+The ingest block controls the ingest of &CMC; model output (&GRIB; files).
+The following keywords are recognized:
+
+<variablelist>
+<varlistentry><term>wait</term>
+<listitem><para>
+Defines the time (in seconds) that the ingest Daemon will go to sleep before checking for new data again.
+If this line is omitted, a default (300) will be used
+</para></listitem></varlistentry>
+<varlistentry><term>log</term>
+<listitem><para>
+Identifies the log file name and backup log file name to be used.
+At a specified time each day, the log file is renamed to the backup file name and a new log is started.
+This prevents unreasonable growth.
+Parameters are:
+<itemizedlist>
+<listitem><para>log file name (default <filename>ingest.log</filename>)</para></listitem>
+<listitem><para>backup log file name (default <filename>ingest.old</filename>)</para></listitem>
+<listitem><para>backup time (GMT) (default 0000)</para></listitem>
+</itemizedlist>
+The log file and backup log file will be placed in the 'ingest.log' directory, as defined in the <link linkend='dir_block'>directories</link> block, unless an absolute path is given.
+</para></listitem></varlistentry>
+<varlistentry><term>status</term>
+<listitem><para>Identifies the status file to be used (default <filename>ingest.stat</filename>).
+The status file will be placed in the 'ingest.stat' directory, as defined in the <link linkend='dir_block'>directories</link> block, unless an absolute path is given.</para></listitem></varlistentry>
+<varlistentry><term>monitor_in</term>
+<listitem><para>
+Identifies a set of data files to be monitored by the Ingest Daemon.
+Files are assumed to be in the 'ingest.src' directory, as defined in the <link linkend='dir_block'>directories</link> block, unless an absolute path is given.
+File names here can use the <command>sed(1)</command> style regular expressions.
+If one or more of the specified files arrives, its new modification time is detected, and the ingest program is started up to process it.
+Parameters are:
+<itemizedlist>
+<listitem><para>directory tag (usually <command>ingest.src</command>) </para></listitem>
+<listitem><para>type (<command>grib</command> or <command>grib2</command>) or application (<application>gribin</application>, <application>gribin2</application> or your own ingest program)</para></listitem>
+<listitem><para>pattern for matching file names</para></listitem>
+</itemizedlist>
+</para>
+<note><para>
+You may use one of the included ingest programs, or supply your own ingest program. The command line parameters of your program must match those of the included ingest programs:
+<screen><replaceable>ingest_prog</replaceable> <replaceable>setup_file</replaceable> <replaceable>data_file</replaceable> [ <replaceable>data_file</replaceable> ... ]</screen>
+</para></note>
+</listitem></varlistentry>
+</variablelist>
+</para> </sect1>
+
+<beginpage/>
+<sect1><title>Diagnostic Control Setup</title> <para>
+<indexterm><primary>setup file</primary><secondary>diagnostic block</secondary></indexterm>
+This block controls the diagnostic output from numerous modules if the &FPA; software.
+</para> <para>
+Behaviour of diagnostic output may also be determined or altered by external influences, such as run-string arguments.
+E.g. the <option>-debug</option> argument in <command>xfpa</command> causes the information in this block to be used, otherwise a default level is used and this block is ignored.
+</para> <para>
+The following key words are recognized:
+<variablelist>
+<varlistentry><term>default</term>
+<listitem><para>
+defines the default output options for all modules
+<itemizedlist>
+<listitem><para>level</para></listitem>
+<listitem><para>message</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+<varlistentry><term>module</term>
+<listitem><para>
+defines the output options for the given module
+<itemizedlist>
+<listitem><para>Module name</para></listitem>
+<listitem><para>level</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+</variablelist>
+</para> <para>
+<table frame='topbot'><title>Output levels</title>
+<tgroup cols='2'>&colwidth;
+<thead><row> <entry>level</entry><entry>meaning</entry></row></thead>
+<tbody>
+<row valign='top'><entry>0</entry><entry>No output</entry></row>
+<row valign='top'><entry>1</entry><entry>Errors only</entry></row>
+<row valign='top'><entry>2</entry><entry>Include warnings</entry></row>
+<row valign='top'><entry>3</entry><entry>Include status messages</entry></row>
+<row valign='top'><entry>4</entry><entry>Include information messages</entry></row>
+<row valign='top'><entry>5</entry><entry>Include diagnostic messages</entry></row>
+</tbody></tgroup></table>
+
+<table frame='topbot'><title>Message styles</title>
+<tgroup cols='2'>&colwidth;
+<thead><row> <entry>level</entry><entry>meaning</entry></row></thead>
+<tbody>
+<row valign='top'><entry>0</entry><entry>Module name does not appear with message</entry></row>
+<row valign='top'><entry>1</entry><entry>Module name followed by ':'</entry></row>
+<row valign='top'><entry>2</entry><entry>Module name in '[ ]'</entry></row>
+</tbody></tgroup></table>
+</para> <para>
+Module names are completely arbitrary, and already exist within the &FPA; library code.
+It is necessary to know about given modules in advance, in order to make effective use of this block.
+<table frame='topbot'><title>Module names accessible by users</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>module</entry><entry>meaning</entry></row></thead>
+<tbody>
+<row valign='top'><entry>Editor</entry><entry>General &FPA; interface</entry></row>
+<row valign='top'><entry>Editor.Events</entry><entry>&FPA; window</entry></row>
+<row valign='top'><entry>Editor.Feedback</entry><entry>from &FPA; libraries to <acronym>GUI</acronym></entry></row>
+<row valign='top'><entry>Editor.API</entry><entry>from <acronym>GUI</acronym> to &FPA; libraries</entry></row>
+<row valign='top'><entry>LogMsg</entry><entry>general &FPA; log messages</entry></row>
+<row valign='top'><entry>Config</entry><entry>Config files</entry></row>
+<row valign='top'><entry>Environ</entry><entry>files and directories</entry></row>
+<row valign='top'><entry>Fields</entry><entry>depiction fields</entry></row>
+<row valign='top'><entry>Metafile</entry><entry>reading &amp; writing metafiles</entry></row>
+<row valign='top'><entry>Presentation</entry><entry>Presentation files</entry></row>
+<row valign='top'><entry>Show.Patches</entry><entry>show the &FPA; 'grid' based on Bspline patches</entry></row>
+<row valign='top'><entry>Advanced.Features</entry><entry>Advanced Features block</entry></row>
+<row valign='top'><entry>Diag.Control</entry><entry>Diagnostic Control block</entry></row>
+<row valign='top'><entry>Limits</entry><entry>specialized limit boxes</entry></row>
+<row valign='top'><entry>Contouring</entry><entry>problems with contouring</entry></row>
+<row valign='top'><entry>MMM</entry><entry>memory management</entry></row>
+<row valign='top'><entry>Patch.Control</entry><entry>spline patch tracking</entry></row>
+<row valign='top'><entry>Tracker</entry><entry>contour tracking</entry></row>
+<row valign='top'><entry>Area</entry><entry>problems with area objects</entry></row>
+<row valign='top'><entry>Area.Divide</entry><entry>problems with dividing lines</entry></row>
+<row valign='top'><entry>Line</entry><entry>problems with line objects</entry></row>
+<row valign='top'><entry>Line.Walk</entry><entry>distances along boundaries or lines</entry></row>
+<row valign='top'><entry>Sculpt</entry><entry>sculpting areas or lines</entry></row>
+<row valign='top'><entry>Spots</entry><entry>problems with spot objects</entry></row>
+<row valign='top'><entry>Timelink</entry><entry>related to time linking</entry></row>
+<row valign='top'><entry>Interp</entry><entry>general interpolation</entry></row>
+<row valign='top'><entry>Interp.Areas</entry><entry>interpolating area objects</entry></row>
+<row valign='top'><entry>Interp.Curves</entry><entry>interpolating line objects</entry></row>
+<row valign='top'><entry>Image</entry><entry>imagery</entry></row>
+<row valign='top'><entry>Rules</entry><entry>attribute rules</entry></row>
+<row valign='top'><entry>FPA_mod100_spval</entry><entry>Evaluate last 2 digits of pressure rule</entry></row>
+<row valign='top'><entry>FPA_wx_label</entry><entry>Evaluate weather label rule</entry></row>
+<row valign='top'><entry>FPA_wx_category</entry><entry>Evaluate weather category rule</entry></row>
+<row valign='top'><entry>FPA_clds_and_wx</entry><entry>Evaluate clouds and weather rule</entry></row>
+<row valign='top'><entry>FPA_full_weather</entry><entry>Evaluate full weather rule</entry></row>
+<row valign='top'><entry>user_clds_and_wx</entry><entry>Evaluate user-defined clouds and weather rule</entry></row>
+<row valign='top'><entry>user_full_weather</entry><entry>Evaluate user-defined full weather rule</entry></row>
+<row valign='top'><entry>user_full_cloud</entry><entry>Evaluate user-defined full cloud rule</entry></row>
+</tbody></tgroup></table>
+</para> </sect1>
+
+<sect1><title>Advanced Features Setup</title> <para>
+<indexterm><primary>setup file</primary><secondary>advanced features block</secondary></indexterm>
+This block controls the behaviour of certain advanced features in the &FPA; software.
+<variablelist>
+<varlistentry><term>feature</term>
+<listitem><para>
+defines the module to be used for a given feature.
+Parameters are:
+<itemizedlist>
+<listitem><para>feature name</para></listitem>
+<listitem><para>mode</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+</variablelist>
+</para> <para>
+Feature names are completely arbitrary, and already exist within the &FPA; library code.
+It is necessary to know about given features in advance, in order to make effective use of this block.
+</para> </sect1>
+
+<sect1><title>Resource File <filename>.XFpa</filename></title> <para>
+<indexterm><primary>resource file</primary></indexterm>
+A template of this file is located in <filename>$FPA/etc/d.XFpa</filename>.
+To override resource settings for &FPA; copy this file to your home directory, rename it to <filename>.XFpa</filename> and customize it.
+<programlisting>cp $FPA/etc/d.XFpa $HOME/.XFpa
+vi .XFpa
+</programlisting>
+This file is useful if you wish to override any display characteristics of the depiction editor.
+The file is internally documented. The following is a listing of some of the more useful characteristics that can be set using the <filename>.XFpa</filename> file.
+<variablelist>
+<varlistentry><term>xfpa.confirmExit</term>
+	<listitem><para>The usual exit from &FPA; brings up a confirmation window. The window can be bypassed by setting this to <userinput>no</userinput>. Default is <userinput>yes</userinput></para></listitem></varlistentry>
+<varlistentry><term>xfpa.sequenceIncrements</term>
+	<listitem><para>The usual behaviour of the forward/backward arrows to the right of the time sequence is to step through the depictions one by one, regardless of the time between depictions. It is possible to allow for fixed time steps here.
+	This list consists of groups of three comma separated items:
+	<itemizedlist>
+	<listitem><para>the label to appear in the selection list,</para></listitem>
+	<listitem><para>the label to appear between the arrows,</para></listitem>
+	<listitem><para>and the minimum time step between depictions in minutes.</para></listitem>
+	</itemizedlist> these three parameters may be repeated to add several fixed time step options.</para></listitem></varlistentry>
+<varlistentry><term>xfpa.sourceUpdating.FlashTime</term>
+	<listitem><para>Set the length of time, (in minutes) after a source has finished updating, that the indicator light will flash.</para></listitem></varlistentry>
+<varlistentry><term>xfpa.sourceUpdating.IndicatorDelay</term>
+	<listitem><para>Set the length of time, (in minutes) after the user has checked the source status with the <guilabel>Guidance Status ...</guilabel> dialog, that the indicator light will not flash even if the source is updating.</para></listitem></varlistentry>
+</variablelist>
+</para> </sect1>
+</chapter>

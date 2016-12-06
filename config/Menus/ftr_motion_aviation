@@ -1,0 +1,22 @@
+# Entry menu description file for Aviation Feature Motion
+
+menu_title           = Aviation Freezing Level Entry Menu
+geometry             =  -650 -300 700 500
+label_display_height =  1
+value_display_height =  3
+
+panel "Feature Motion"
+{
+	# Feature Motion - speed
+	scrolled_list
+	{
+		attribute_id = ftr_motion_speed
+		label        = Feature Speed
+		position     = 20 30
+		default      = 0
+		ncolumns     = 3
+		nvisible     = 9
+		none_sub     = ""
+		items        = 0 5 10 15 20 25 30 35 40
+	}
+}

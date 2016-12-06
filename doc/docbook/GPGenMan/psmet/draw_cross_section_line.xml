@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_draw_cross_section_line'> <title>@draw_cross_section_line</title> <titleabbrev>@draw_cross_section_line</titleabbrev>
+<para>
+Display an axis, tick marks, or horizontal or vertical lines in a cross section.
+</para><para>
+An axis parameter will display either the lower or upper horizontal axis using the
+location look up table <userinput>location_look_up</userinput>, or the left or right vertical axis using
+the vertical look up table <userinput>vertical_look_up</userinput>.
+</para><para>
+A <userinput>ticks</userinput> parameter will display tick marks along the lower or upper horizontal
+axis, displaying one tick mark for each location in the location look up table
+<userinput>location_look_up</userinput>, or along the left or right vertical axis, displaying one tick
+mark for each location in the vertical look up table <userinput>vertical_look_up</userinput>. The tick
+marks are drawn with a line set in the <link linkend='ps_define_line'>@define_line</link> directive.
+</para><para>
+A <userinput>horizontal_lines</userinput> parameter will display a horizontal line for each location in
+the vertical look up table "vertical_look_up", while a vertical_lines parameter
+will display vertical lines for each location in the location look up table
+<userinput>location_look_up</userinput>.
+</para><para>
+Note that entries in <userinput>location_look_up</userinput> table MUST be entries from the location
+look up table in directive <link linkend='ps_define_cross_section'>@define_cross_section</link>.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/cross_section_name.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>line_to_draw</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Parameter for cross section line to draw
+</para><para>One of: 
+<userinput>axis</userinput> <userinput>ticks</userinput>
+<userinput>horizontal_lines</userinput> <userinput>vertical_lines</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>axis_for_display</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Axis of cross section to display
+</para><para>One of: 
+<userinput>lower</userinput> <userinput>upper</userinput> <userinput>left</userinput> <userinput>right</userinput></para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_location_look_up.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_distances.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_units.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_times.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_fractions.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/vertical_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/arrow_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/cross_section_x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/cross_section_y_off.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_length.xml'/>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>line_width</userinput>, <userinput>line_style</userinput>, <userinput>outline</userinput> and <userinput>fill</userinput> can be specified more than once in this directive, for drawing multi-coloured lines!</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@draw_cross_section_line
+{
+  cross_section_name = route_cross_section;
+  line_to_draw       = axis;
+  axis_for_display   = lower;
+}</programlisting>
+Display the lower axis of a cross section called "route_cross_section"
+(using the default location look up table from the <link linkend='ps_define_cross_section'>@define_cross_section</link> directive)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@draw_cross_section_line
+{
+  cross_section_name = route_cross_section;
+  line_to_draw       = ticks;
+  axis_for_display   = lower;
+  location_look_up   = route_sub;
+  line_name          = vertical_ticks;
+}</programlisting>
+Display tick marks along the lower axis of a cross section called "route_cross_section". The tick
+marks will use a line called <userinput>vertical_ticks</userinput> (from the <link linkend='ps_define_line'>@define_line</link> directive), displayed once for
+each location in the location look up table <filename>route_sub.ltab</filename> 
+(whose locations must be a subset of the default location look up table set in the <link linkend='ps_define_cross_section'>@define_cross_section</link> directive).
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@draw_cross_section_line
+{
+  cross_section_name = route_cross_section;
+  line_to_draw       = vertical_lines;
+  location_look_up   = route_sub;
+} </programlisting>
+Display vertical lines across a cross section called "route_cross_section". One vertical line will be
+displayed for each location in the location look up table <filename>route_sub.ltab</filename> 
+(whose locations must be a subset of the default location look up table set in the <link linkend='ps_define_cross_section'>@define_cross_section</link> directive).
+</para></example>
+
+</para></sect2>

@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='editing_fields'> <title>Editing Fields</title>
+<para>
+<figure id='annotated_field_edit' pgwide='0' float='1'><title>Edit tools</title>
+<mediaobject><imageobject><imagedata fileref='png/annotated_field_edit.png'/></imageobject></mediaobject>
+</figure>
+<!-- (see <xref linkend='annotated_field_edit'/>)-->
+<orderedlist numeration='upperalpha'><title>Elements of the Field Edit interface</title>
+<listitem><para><glossterm linkend='g_field_group'>Field Group</glossterm> drop-down list.  
+</para></listitem>
+<listitem><para> <glossterm linkend='g_fields'>Field</glossterm> drop-down list.</para></listitem>
+<listitem><para> Field editor radio buttons. Allows you to select an edit function.</para></listitem>
+<listitem><para> These interface elements are context sensitive. The content changes depending on the type of the active field, the selected edit function and even on what stage of the current edit function you are on.</para></listitem>
+</orderedlist>
+</para> <para>
+There are six different types of editors which you can use to change your depiction: continuous, area, link chain, line, vector, and point.
+Each editor has unique features as well as sharing a number of similar features with the other editors.
+</para> <para>
+All the field editors share some common procedures.
+These include:
+</para>
+<sect1 id='accepting_undoing_and_cancelling_an_action'> <title>Accepting, undoing and canceling an action</title>
+<para>
+<indexterm><primary>accept action</primary></indexterm>
+<indexterm><primary>undo action</primary></indexterm>
+<indexterm><primary>cancel action</primary></indexterm>
+When you perform an edit, <guibutton>Accept</guibutton> and <guibutton>Undo</guibutton> become available.
+At this point, you may undo the last edit by clicking <guibutton>Undo</guibutton> or accept the last edit by clicking <guibutton>Accept</guibutton>.
+Once accepted, this edit cannot be undone.
+</para><para>
+Otherwise, if you proceed with some other action (another edit, change fields, change time, exit, etc.) the last edit is automatically accepted.
+</para><para>
+Some edits are performed in several steps (e.g., the <emphasis>Drag</emphasis> tool).
+In these cases, <guibutton>Cancel</guibutton> becomes available after the first step.
+This gives you the chance to cancel the current operation.
+Depending on the type of edit, <guibutton>Cancel</guibutton> causes the &FPA; to go back to the previous step, rather than canceling the edit entirely.
+</para>
+</sect1>
+<sect1 id='clearing_the_active_editing_field'> <title>Clearing the active editing field</title>
+<para>
+<indexterm><primary>clearing labels</primary></indexterm>
+<guibutton>Clear</guibutton> allows you to remove labels or samples from the currently active editing field.
+</para>
+<para>
+For example, if you click <guibutton>Clear</guibutton> in <emphasis>Label</emphasis> mode, all of the labels disappear.
+</para>
+</sect1>
+
+<sect1 id='select_surface'> <title>Select a portion of a continuous or vector field</title>
+<para>
+Some edit tools for continuous or vector fields require you to "Select" a portion of the field.
+</para><para>
+<indexterm><primary>continuous field editor</primary><secondary>select</secondary></indexterm>
+<orderedlist><title>To select a portion of a surface:</title>
+<listitem><para>
+Click the &right; mouse button and select:
+<variablelist>
+<varlistentry><term><menuchoice><guimenu>Select by</guimenu><guimenuitem>Draw an outline</guimenuitem></menuchoice></term>
+<listitem><para> Use a drawing tool to draw the outline.
+(see <xref linkend='drawing_with_the_freehand_tool'/> or
+<xref linkend='drawing_with_the_curve_tool'/>)
+</para></listitem></varlistentry>
+<varlistentry><term><menuchoice><guimenu>Select by</guimenu><guimenuitem>Use last drawn outline</guimenuitem></menuchoice></term>
+<listitem><para> Reuse the last drawn outline.</para></listitem></varlistentry>
+<varlistentry><term><menuchoice><guimenu>Select by</guimenu><guimenuitem>Last moved outline</guimenuitem></menuchoice></term>
+<listitem><para> Reuse the last moved outline.</para></listitem></varlistentry>
+<varlistentry><term><menuchoice><guimenu>Select by</guimenu><guimenuitem><replaceable>Predefined outline</replaceable></guimenuitem></menuchoice></term>
+<listitem><para> Your System Administrator may configure some predefined outlines.</para></listitem></varlistentry>
+</variablelist>
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='picking_an_object'> <title>Picking an object for area, line or point fields</title>
+<para>
+<indexterm><primary>object</primary><secondary>picking</secondary></indexterm>
+Some edit tools for area, line or point fields require you to "Pick" an object.
+Sometimes you can select only one object other times you may select multiple objects.
+</para>
+<sect2 id='pick_object'> <title>Pick an object</title>
+<para>
+<orderedlist><title>To select an object:</title>
+<listitem><para>
+Position the mouse near to the object.
+</para><para>
+For discrete objects, position the mouse near the edge of the object.
+</para></listitem>
+
+<listitem><para>
+Click the &left; mouse button.
+</para><para>
+The picked object turns yellow.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='unpick_object'> <title>Unpick an object</title>
+<para>
+<indexterm><primary>object</primary><secondary>unpicking</secondary></indexterm>
+<orderedlist>
+<title>To deselect an object:</title>
+<listitem><para>
+Position the mouse near the selected object.
+</para><para>
+For discrete objects, position the mouse near the edge of the object.
+</para></listitem>
+
+<listitem><para>
+Click the &left; mouse button.
+</para><para>
+The object is no longer yellow.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='select_all'> <title>Select all objects in a depiction</title>
+<para>
+<indexterm><primary>object</primary><secondary>picking all</secondary></indexterm>
+<orderedlist>
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Select all</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='select_all_objects_in_outline'> <title>Select all objects in an outline</title>
+<para>
+<indexterm><primary>object</primary><secondary>picking with outline</secondary></indexterm>
+<orderedlist>
+<listitem><para>Click the &right; mouse button and select:
+<variablelist>
+<varlistentry><term><menuchoice><guimenu>Select by</guimenu><guimenuitem>Draw an outline</guimenuitem></menuchoice></term>
+<listitem><para> Use a drawing tool to draw an outline around the objects to be selected.
+(see <xref linkend='drawing_with_the_freehand_tool'/> or
+<xref linkend='drawing_with_the_curve_tool'/>)
+</para></listitem></varlistentry>
+<varlistentry><term><menuchoice><guimenu>Select by</guimenu><guimenuitem>Use last drawn outline</guimenuitem></menuchoice></term>
+<listitem><para> Reuse the last drawn outline to select objects.</para></listitem></varlistentry>
+<varlistentry><term><menuchoice><guimenu>Select by</guimenu><guimenuitem><replaceable>Predefined outline</replaceable></guimenuitem></menuchoice></term>
+<listitem><para> Your System Administrator may configure some predefined outlines.</para></listitem></varlistentry>
+</variablelist>
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+</chapter>

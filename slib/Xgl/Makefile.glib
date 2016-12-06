@@ -1,0 +1,71 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM}
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+
+
+# Here is the list of object files to go into the library:
+MODULES =	glib_gif.o \
+			glib_image.o \
+			glib_image_config.o \
+			glib_image_lut_config.o \
+			glib_init.o \
+			glib_lib_fcns.o \
+			glib_lzf.o \
+			glib_matrix.o \
+			glib_misc_fcns.o \
+			glib_png.o \
+			glib_read_files.o \
+			glib_reproject.o \
+			glib_tiff.o \
+			glib_urp.o \
+			glib_xwd.o
+
+
+# Here is the list of include files to go into the master header file:
+HEADER   =	glib.h
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(MODULES) $(HEADER)
+
+
+# Rules for building everything:
+all ALL:	modules
+
+
+# Rules for building object modules:
+modules:	Pmodules $(HEADER) $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA glib modules"
+
+$(MODULES):					glib_private.h
+glib_gif.o:					$(TOOLS)
+glib_init.o:				$(TOOLS)
+glib_misc_fcns.o:			$(TOOLS)
+glib_image.o:				$(TYPES) $(TOOLS)
+glib_xwd.o:					$(TOOLS)
+glib_image_config.o:		$(ENVIRON)
+glib_matrix.o:				$(TOOLS)
+
+
+# Rules for building the master header file:
+header:			$(HEADER)
+			@	echo "Updating FPA glib module header"
+			@	sleep 1; touch $@; sleep 1
+glib.h:			$(OBJECTS)
+			@	sleep 1; touch $@
+glib_private.h:	$(GETMEM) $(OBJECTS) $(TOOLS) glib.h
+			@	sleep 1; touch $@
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} glib module $<"
+	@	$${C_COMP_SHARED} -c $(C_OPTIONS) $(INCPATH) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

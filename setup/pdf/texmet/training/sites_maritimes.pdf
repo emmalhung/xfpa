@@ -1,0 +1,52 @@
+! Set table sites ...
+@table_site
+	{
+	table_name    = T1;
+	site_label    = WHF;			!EDIT! (Halifax)
+	lat           = 44:40N;			!EDIT!
+	lon           = 63:35W;			!EDIT!
+	x_off         = 20;
+	y_off         =  1;
+	justification = centre;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = YYT;			!EDIT! (St John's Nfld)
+	lat           = 47:37N;			!EDIT!
+	lon           = 52:45W;			!EDIT!
+	x_off         = 35;
+	y_off         =  1;
+	justification = centre;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = YQB;			!EDIT! (Quebec City)
+	lat           = 46:48N;			!EDIT!
+	lon           = 71:24W;			!EDIT!
+	x_off         = 50;
+	y_off         =  1;
+	justification = centre;
+	}
+@table_site
+	{
+	table_name    = T1;
+	site_label    = BOS;			!EDIT! (Boston)
+	lat           = 42:22N;			!EDIT!
+	lon           = 71:02W;			!EDIT!
+	x_off         = 65;
+	y_off         =  1;
+	justification = centre;
+	}
+
+! Display table header information ...
+@text
+	{
+! name line  Halifax      Quebec City   St John's Nfld    Boston            
+! ids line     WHF            YYT            YQB            BOS             
+! wind lines  ddss           ddss           ddss           ddss             
+	string = Halifax      Quebec City   St John's Nfld    Boston
+	x_off  = 17;
+	y_off  =  0;
+	}

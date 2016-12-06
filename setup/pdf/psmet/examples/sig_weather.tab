@@ -1,0 +1,13 @@
+Look-up   | Symbol file          | Text String   | Presentation
+TSRA      : thunder              : Thunderstorms : trw1
+TS        : thunder              : Thunderstorms : trw1
+FZRA      : r_frz                : Freezing Rain : cloud1
+FZDZ      : r_frz                : Freezing Rain : cloud1
+RASN      : rs_mix               : Rain and Snow : cloud1
+SHRA      : rain                 : Showers       : cloud1
+SHSN      : snow                 : Snow Flurries : cloud1
+RA        : rain                 : Rain          : cloud1
+SN        : snow                 : Snow          : cloud1
+DZ        : rain                 : Drizzle       : cloud1
+OVC       : cldy                 : Cloudy        : cloud1
+BKN       : cldy                 : Cloudy        : cloud1

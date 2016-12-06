@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.4. Differences Between PSMet and SVGMet</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02.html" title="Chapter 2. PSMet/SVGMet" /><link rel="prev" href="ch02s03.html" title="2.3. PSMet/SVGMet Display Directives" /><link rel="next" href="ch02s05.html" title="2.5. Complete Description of All PSMet/SVGMet Directives" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.4. Differences Between PSMet and SVGMet</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s03.html">Prev</a> </td><th width="60%" align="center">Chapter 2. PSMet/SVGMet</th><td width="20%" align="right"> <a accesskey="n" href="ch02s05.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id3488794"></a>2.4. Differences Between PSMet and SVGMet</h2></div></div></div><p>
+The directives and keywords used by the PSMet and SVGMet
+applications are virtually identical.
+</p><p>
+One difference in the two applications is in the definition of the origin for
+displaying graphics. PostScript sets the origin to the lower left corner of
+the output display, while the SVG format sets the origin to the
+upper left corner of the output display. All directives and keywords set the
+origin as the centre of the page, and so both applications require the
+<a href="ch02s05s58.html" title="2.5.58. @size">@size</a> directive to set the output display size (the paper size) so that the
+output will be properly located.
+</p><p>
+Another difference is that the SVG format allows for grouping
+of display objects, which can be useful for moving a complex label, for
+example, in a graphics post processor such as Adobe Illustrator. The two
+directives used for SVGMet grouping are <a href="ch02s05s32.html" title="2.5.32. @gpgen_group_begin">@gpgen_group_begin</a> (to begin
+grouping of display objects) and <a href="ch02s05s33.html" title="2.5.33. @gpgen_group_end">@gpgen_group_end</a> (to end a grouping).
+</p><p>
+The SVG format has a number of powerful features, not all of which could be incorporated into SVGMet.
+The <a href="ch02s05s34.html" title="2.5.34. @gpgen_insert">@gpgen_insert</a> directive can be used to insert such features directly into the output SVG format file.
+</p><p>
+All other directives behave similarly, and generate similar graphical
+results in both applications.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.3. PSMet/SVGMet Display Directives </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.5. Complete Description of All PSMet/SVGMet Directives</td></tr></table></div></body></html>

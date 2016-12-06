@@ -1,0 +1,17 @@
+! Display area labels as symbols according to a look up table ...
+@label
+	{
+	element            = weather_system;
+	level              = surface;
+	category_attribute = wx_label_type;
+	category           = public;
+	attribute          = clds_and_wx;
+	format             = symbol;
+	look_up            = weather_day;
+	case               = night;
+	case_look_up       = weather_ngt;
+	symbol_scale       = 40;
+	x_off              = 0.0;
+	y_off              = 0.0;
+	justification      = centre;
+	}

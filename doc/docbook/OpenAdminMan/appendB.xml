@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE appendix PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<appendix id='appendb'><title>Equation Evaluator</title><para>
+<indexterm><primary>equations</primary></indexterm>
+The &FPA; contains an equation evaluator (or field calculator) to allow the user to create fields or sample point values based on equations that operate on fields within the FPA.
+</para><para>
+The equation evaluator is field based, that is, all variables in the equations must be fields that exist in the &FPA; data directories, or fields that can be calculated from fields that exist in the &FPA; data directories.
+Equations can be found in the "equation" blocks of the "Elements" section of the configuration files (as described in <xref linkend='appenda'/>).
+</para>
+
+<sect1><title>Components of Equations</title><para>
+<indexterm><primary>equations</primary></indexterm>
+Equations are created from mathematical constants, functions, named constants or field names (and their modifiers) combined with each other by mathematical operators.
+</para><para>
+Mathematical constants are integer or real numbers in decimal or scientific notation, such as 535, -4.56, 89.7E5 or 1.22e-12.
+Functions are identified as a string followed by square brackets, that is, function[].
+A function may or may not contain other fields within the square brackets.
+Fields within the brackets are separated by commas (,).
+Functions recognized within the &FPA; are described in the Equation Functions section below.
+</para><para>
+Named constants are strings found in the "Constants" section of the configuration files (as described in <xref linkend='appenda'/>).
+For example, the value of PI is defined in the <filename>Config.master</filename> configuration file as having a value of 3.1415926536.
+(Note that named constants are case sensitive, so that pi or Pi will not be recognized by the equation evaluator.
+Note also that named constants are evaluated before fields, so that if a configuration file uses the same name in the "Constants" section and the "Elements" section, then the equation evaluator will only recognize the "Constants" definition.)
+</para><para>
+Fields are usually defined by element names, which are strings found in the "Elements" section of the configuration files (as described in <xref linkend='appenda'/>).
+(Fields may also be defined by the combination of the element file identifier and the level file identifier used in the file naming convention in the &FPA; Data Directory structure. (See <xref linkend='file_naming_conventions'/>)
+Element and level file identifiers can be found in the "Elements" and "Levels" sections of the configuration files.)
+</para><para>
+A field in the &FPA; is defined as an element at a given level for a given valid time that comes from a given source at a given run time.
+(A field in the &FPA; configuration files has a generalized definition given only by element and level.)
+</para><para>
+For example, the 850 mb dewpoint temperature for 12Z February 2, 2003 taken from the Canadian Global Environment Multiscale (GEM) model run at 00Z February 1, 2003 is a field.
+In the &FPA; parlance, the element is dewpoint, the level is 850mb, the valid time is 2003:033:12 (in &FPA; timestamp format of year: julian day: hour), the source is GEM, and the run time is 2003:032:00.
+All of this field information is required by the &FPA; to be able to find and display this field.
+</para><para>
+All equations in the &FPA; are defined for a given element (or occasionally a given element and level).
+This means that all other information about the field in the equation is implied.
+For example, the equation for dewpoint temperature in the <filename>Config.master</filename> configuration file is given as <computeroutput>temp - es</computeroutput>, or temperature minus dewpoint depression, which are both also &FPA; fields.
+Thus, when one requests the &FPA; to display the 850 mb dewpoint temperature for 12Z February 2, 2003 taken from the Canadian GEM Model run at 00Z February 1, 2003, the field is calculated from the temperature and dewpoint depression at 850 mb for 12Z February 2, 2003 taken from the Canadian GEM Model run at 00Z February 1, 2003.
+Information about the level, valid_time, source, and run_time is assumed to be the same as for the field that is being calculated, unless the equation explicitly modifies the information.
+</para><para>
+Modifiers for fields are identified by the field name followed by angle brackets, that is, name&lt;modifier(s)&gt; Modifiers within the brackets are strings separated by commas (,).
+The usage of field modifiers is discussed in the Field Modifiers section below.
+</para><para>
+ Any field can have an equation which depends on fields that can also have equations.
+ There is no limit to the number of equations which may be necessary to access to evaluate a given field.
+ There is an internal check, however, to ensure that an infinite loop does not occur.
+ (An example can be found in the <filename>Config.master</filename> configuration file, where dewpoint temperature has an equation requiring dewpoint depression which has an equation requiring dewpoint temperature! One of these fields would have to be present for the equation to succeed.)
+ </para><para>
+ The components of equations are summarized below:
+ <informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+<tbody>
+<row valign='top'><entry><replaceable>numeric</replaceable></entry><entry>constant value</entry></row>
+<row valign='top'><entry><replaceable>name</replaceable>[]</entry><entry>function name</entry></row>
+<row valign='top'><entry><replaceable>name</replaceable></entry><entry>named constant (if found)</entry></row>
+<row valign='top'><entry><replaceable>name</replaceable></entry><entry>field name</entry></row>
+<row valign='top'><entry><replaceable>name</replaceable>&lt;<replaceable>modifier(s)</replaceable>&gt;</entry><entry>field name with modifiers</entry></row>
+</tbody></tgroup></informaltable>
+ The mathematical operators that can be used within the &FPA; equation evaluator are described in the Mathematical Operators section below.
+ </para>
+ </sect1>
+ 
+ <sect1><title> Mathematical Operators and Their Precedence</title><para>
+<indexterm><primary>equations</primary><secondary>order of operations</secondary></indexterm>
+ Mathematical operators used inside &FPA; equations are a subset of HP C standard mathematical operators, with a few special additions.
+ </para><para>
+ The backslash character, that is <command>\</command>, is used for continuing a long equation onto another line.
+ The effect of the backslash character in an equation string is to simply concatenate the two lines into one.
+ </para><para>
+ The <command>@</command> and <command>!</command> characters are "magic" field or modifier substitution characters described in the Generic Equations section below.</para><para>
+ The <command>$upper</command> and <command>$lower</command> strings are also "magic" layer to level modifiers described in the Field Modifiers section below.</para><para>
+ The <acronym>HP</acronym> C standard left to right grouping of parameters is used, according to the operator precedence as given in the table below.
+ Round brackets, that is <command>()</command>, can be used for grouping of parameters in equations for clarity, or to force evaluation of equations in the desired order.</para><para>
+ The <command>^</command> character is used as a shorthand form of the power function.
+ For example,   <command>field <superscript>2</superscript></command> would take the square of all values in field.</para><para>
+ Note that the <command>+</command> and <command>-</command> signs used with mathematical constants can also be used as unary operators with functions, named constants, or fields.
+ For example, <command>-field</command> would give the negative of field.</para><para>
+ The mathematical operators used in equations are summarized below, in order of descending precedence:
+ <informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+ <thead><row><entry>operation</entry><entry>meaning</entry></row></thead>
+ <tbody>
+ <row><entry>\</entry><entry>line continuation</entry></row>
+ <row><entry>@ !</entry><entry>"magic" for substitution in Generic Equations</entry></row>
+ <row><entry>$upper $lower</entry><entry>"magic" for layer levels in Field Modifiers</entry></row>
+ <row><entry>()</entry><entry>grouping for evaluation</entry></row>
+ <row><entry>+ -</entry><entry>unary plus or minus</entry></row>
+ <row><entry>^</entry><entry>power</entry></row>
+ <row><entry>* /</entry><entry>multiplication or division</entry></row>
+ <row><entry>+ -</entry><entry>addition or subtraction</entry></row>
+ </tbody></tgroup></informaltable></para><para>
+ The left to right grouping of parameters and the precedence of operators will affect the evaluation of any equation.
+ <example><title>Order of operations</title><para>
+ For example, the equation:
+ <programlisting>a + - b * c / d ^ e - f</programlisting>
+ would be evaluated as:
+ <programlisting>( a + ( ( ( -b ) * c ) / ( d ^ e ) ) ) - f</programlisting>
+ The user would have to use round brackets to force a different order of evaluation, as in:
+ <programlisting>a + ( ( -b ) * ( ( c  /  d )  ^  ( e  -  f ) ) )</programlisting>
+ </para></example>
+</para><para>
+ Brackets can be nested for as many layers as is necessary to force the desired evaluation of the equation, or to clarify the order of evaluation.
+ Long equations can be extended to additional lines with as many backslash characters as may be desired.
+ The maximum length of an &FPA; equation in the configuration files is presently 1024 characters, including blank spaces.
+ </para></sect1>
+ 
+ <sect1><title>Equation Functions</title><para>
+<indexterm><primary>equations</primary><secondary>functions</secondary></indexterm>
+ Mathematical functions within &FPA; equations are identified by a name followed by square brackets, as in <command>name[]</command>.
+ The function may contain mathematical constants, other functions, named constants or field names (and their modifiers) within the square brackets, with each parameter separated by the next by commas ','.
+ The number of parameters within the square brackets must match the number of parameters required by the given function.
+ As well, the type of parameters, whether they are fields or values or either, is also important for some functions.
+ For example, the x and y derivative functions must have a field as the parameter, since the derivative of a constant value is by definition, 0.
+ </para><para>
+ A number of <acronym>HP</acronym> C standard mathematical functions are also available.
+ These functions are defined in the same format as functions defined within the &FPA; routines.</para><para>
+ A list of functions for equations is summarized below, with the number and type of parameters required by each function (field, value, or either): 
+<table frame='topbot'><title>&FPA; equation editor functions</title>
+<tgroup cols='3'>
+<colspec colwidth='2*'/>
+<colspec colwidth='3*'/>
+<colspec colwidth='2*'/>
+<thead><row><entry>Function Name</entry><entry>Description</entry><entry>Type of each parameter</entry></row></thead>
+<tbody>
+<row valign='top'><entry>sin[&fld;]</entry><entry>sine of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>cos[&fld;]</entry><entry>cosine of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>tan[&fld;]</entry><entry>tangent of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>asin[&fld;]</entry><entry>inverse sine  of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>acos[&fld;]</entry><entry>inverse cosine of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>atan[&fld;]</entry><entry>inverse tangent of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>atan2[&fld1;,&fld2;]</entry><entry>inverse tangent of (&fld1;/&fld2;)</entry><entry>either either</entry></row>
+<row valign='top'><entry>sinh[&fld;]</entry><entry>hyperbolic sine of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>cosh[&fld;]</entry><entry>hyperbolic consine of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>tanh[&fld;]</entry><entry>hyperbolic tangent of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>exp[&fld;]</entry><entry>exponential function e^&fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>log[&fld;]</entry><entry>natural logarithm ln(&fld;)</entry><entry>either</entry></row>
+<row valign='top'><entry>log10[&fld;]</entry><entry>base 10 logarithm log(&fld;)</entry><entry>either</entry></row>
+<row valign='top'><entry>sqrt[&fld;]</entry><entry>square root of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>ceil[&fld;]</entry><entry>smallest integer not less than &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>floor[&fld;]</entry><entry>largest integer not greater than &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry><simpara>fabs[&fld;] or</simpara><simpara>abs[&fld;]</simpara></entry><entry>absolute value of &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry><simpara>fmod[&fld1;,&fld2;] or</simpara><simpara>mod[&fld;,&fld2;]</simpara></entry><entry>floating point remainder of (&fld1;/&fld2;) with sign of &fld1;</entry><entry>either either</entry></row>
+<row valign='top'><entry>copysign[&fld;]</entry><entry>sets sign of &fld1; from sign of &fld2;</entry><entry>either either</entry></row>
+<row valign='top'><entry>hypot[&fld1;,&fld2;]</entry><entry>hypotenuse of &fld1; and &fld2; using sqrt(&fld1;*&fld1; + &fld2;*&fld2;)</entry><entry>either either</entry></row>
+<row valign='top'><entry>pow[&fld1;,&fld2;]</entry><entry>power by (&fld1;^&fld2;)</entry><entry>either either</entry></row>
+<row valign='top'><entry>plus[&fld1;,&fld2;]</entry><entry>addition by (&fld1; + &fld2;)</entry><entry>either either</entry></row>
+<row valign='top'><entry>minus[&fld1;,&fld2;]</entry><entry>subtraction by (&fld1; - &fld2;)</entry><entry>either either</entry></row>
+<row valign='top'><entry>mult[&fld1;,&fld2;]</entry><entry>multiplication by (&fld1; * &fld2;)</entry><entry>either either</entry></row>
+<row valign='top'><entry>divn[&fld1;,&fld2;]</entry><entry>division by (&fld1; / &fld2;)</entry><entry>either either</entry></row>
+<row valign='top'><entry>max[&fld1;,&fld2;]</entry><entry>maximum of &fld1; and &fld2;</entry><entry>either either</entry></row>
+<row valign='top'><entry>min[&fld1;,&fld2;]</entry><entry>minimum of &fld1; and &fld2;</entry><entry>either either</entry></row>
+<row valign='top'><entry>between[&fld;,&fld1;,&fld2;]</entry><entry>limit &fld; between &fld1; and &fld2;</entry><entry><simpara>value value value or</simpara><simpara>field either either</simpara></entry></row>
+<row valign='top'><entry>outside[&fld;,&fld1;,&fld2;]</entry><entry>limit &fld; outside &fld1; and &fld2;</entry><entry><simpara>value value value or</simpara><simpara>field either either</simpara></entry></row>
+<row valign='top'><entry>lat[]</entry><entry>latitude</entry><entry></entry></row>
+<row valign='top'><entry>lon[]</entry><entry>longitude</entry><entry></entry></row>
+<row valign='top'><entry>ddx[&fld;]</entry><entry>derivative with respect to x of &fld;</entry><entry>field</entry></row>
+<row valign='top'><entry>ddy[&fld;]</entry><entry>derivative with respect to y of &fld;</entry><entry>field</entry></row>
+<row valign='top'><entry>curv[&fld;]</entry><entry>curvature of &fld;</entry><entry>field</entry></row>
+<row valign='top'><entry>ddt[&fld;]</entry><entry>derivative with respect to time from &fld; at 2 to 5 sequential times</entry><entry>either</entry></row>
+<row valign='top'><entry>laplc[&fld;]</entry><entry>laplacian of &fld; using ddx(ddx(&fld;))+ddy(ddy(&fld;))</entry><entry>field</entry></row>
+<row valign='top'><entry>advct[&fld;,&fld1;,&fld2;]</entry><entry>advection of &fld; by u (&fld1;) and v (&fld2;) components of wind using -(&fld1;*ddx(&fld;)+&fld2;*ddy(&fld;))</entry><entry>field either either</entry></row>
+<row valign='top'><entry>divrg[&fld1;, &fld2;]</entry><entry>divergence of u (&fld1;) and v (&fld2;) components of wind using ddx(&fld1;)+ddy(&fld2;) </entry><entry>field field</entry></row>
+<row valign='top'><entry>svprs[&fld;]</entry><entry>saturation vapour pressure from temperature &fld;</entry><entry>either</entry></row>
+<row valign='top'><entry>lvlprs[]</entry><entry>pressure of a field level</entry><entry></entry></row>
+<row valign='top'><entry>uprprs[]</entry><entry>pressure of the upper level of a field layer</entry><entry></entry></row>
+<row valign='top'><entry>lwrprs[]</entry><entry>pressure of the lower level of a field layer</entry><entry></entry></row>
+<row valign='top'><entry>sunang[]</entry><entry>solar zenith angle</entry><entry></entry></row>
+<row valign='top'><entry>sundist[]</entry><entry>Earth to Sun distance</entry><entry></entry></row>
+</tbody></tgroup></table></para>
+ </sect1>
+ 
+ <sect1><title>Field Modifiers</title><para>
+<indexterm><primary>equations</primary><secondary>modifiers</secondary></indexterm>
+ A field in the &FPA; is defined as an element at a given level for a given valid time that comes from a given source at a given run time.
+ If a given field has an equation, then the level, valid time, source, and run time for all fields in the equation are assumed to be the same as for field that is being calculated, unless these parameters are explicitly modified.
+ </para><para>
+ Modifiers for fields are identified by the field name followed by angle brackets, that is, name&lt;<replaceable>modifier(s)</replaceable>&gt;  Modifiers within the brackets are strings separated by commas ','.
+ </para><para>
+ The  <command>$upper</command>  and  <command>$lower</command>  modifiers are "magic" modifiers, to set the level of a field from the upper or lower levels of a layer.
+
+ <example><title>field level modifier from a layer type field</title><para>
+ An equation for an 850 to 1000 mb field containing the field  <command>height&lt;$upper&gt;</command>  would use the 850 mb height to evaluate the equation.
+ </para></example>
+ </para><para>
+ Modifiers which begin with  <command>@</command>  or  <command>!</command>  are "magic" field or modifier substitutions described in the Generic Equations section below.
+ </para><para>
+ Modifiers are first checked against the list of known levels. If the modifier matches a level in the &FPA; configuration files, then the equation evaluator resets the level.
+ </para> <para>
+ For all other modifiers, the first letter of the modifier string identifies the parameter that will be modified.
+ </para> <para>
+ Modifiers which begin with  <command>v</command>  are used to reset valid time.</para><para>
+ Modifiers which begin with  <command>m</command>  are used to reset source.</para><para>
+ Modifiers which begin with  <command>r</command>  are used to reset run time.</para><para>
+ Modifiers which begin with  <command>u</command>  or  <command>l</command>  are used to reset the upper or lower level for a layer type field.</para><para>
+ <example><title>level modifier with model and valid time</title><para>The modifier <command>height&lt;850,mGEM,v-06&gt;</command> resets level to 850mb, the source to the GEM model, and the valid time to 6 hours before the current valid time.</para></example>
+ Values can also be extracted from the attribute of a discrete, wind, line or scattered field, as long as the attribute can be converted to a numeric value or use a lookup table to convert the attribute to a numeric value. The <command>a</command> modifier must be used to identify the attribute to be evaluated. The following are the modifiers that are used by attributes.
+ </para><para>
+ Modifiers which begin with  <command>a</command> are used to set the field attribute.</para><para>
+ Modifiers which begin with  <command>b</command> are used to set the units for the field attribute (default is MKS).</para><para>
+ Modifiers which begin with  <command>x</command> are used to set the name of a lookup table for converting the field attribute value to a numeric value. The default directory for a lookup file is in <filename>config/lookups</filename>. The lookup file contains lines with a keyword to match against the extracted field attribute, and a numeric value to use if the match is successful. A line containing the keyword <command>*missing*</command> can be used to identify a numeric value to use if the field attribute is not found. A line containing the keyword <command>*default*</command> can be used to identify a numeric value to use if the field attribute does not match any of the keywords.</para><para>
+ Modifiers that begin with  <command>d</command> are used to set the default field attribute value (default 0.0).</para><para>
+ Modifiers that begin with  <command>p</command> are used to set the proximity to a feature for using the attribute value (default 0.0).</para><para>
+ Modifiers that begin with  <command>q</command> are used to set the units for proximity (default is km).</para>
+ 
+ <table frame='topbot'><title>Field modifiers</title><tgroup cols='2'>&colwidth2;
+ <thead> <row><entry>Modifier</entry><entry>Meaning</entry></row> </thead>
+ <tbody>
+ <row><entry>@ !</entry><entry>"magic" for substitution in Generic Equations</entry></row>
+ <row><entry>&level;</entry><entry>reset level to &level;</entry></row>
+ <row><entry>$upper or $lower</entry><entry>reset level from the upper or lower levels of a layer</entry></row>
+ <row><entry>u &level;</entry><entry>reset upper level of a layer to &level;</entry></row>
+ <row><entry>l &level;</entry><entry>reset lower level of a layer to &level;</entry></row>
+ <row><entry>v &hrs;</entry><entry>reset valid time to run time plus number of &hrs;</entry></row>
+ <row><entry>v+&hrs; or v-&hrs;</entry><entry>reset valid time by plus or minus number of &hrs;</entry></row>
+ <row><entry>v previous</entry><entry>reset valid time to next earliest time (if it exists)</entry></row>
+ <row><entry>v &timestamp;</entry><entry>reset valid time to &timestamp; (in FPA timestamp format of year:julian day:hour or year:julian day:hour:minutes)</entry></row>
+ <row><entry><para>m &source;</para>
+ <para>or</para>
+ <para>m &source; &subsource;</para></entry>
+ <entry>reset source or source and subsource to &source; or &source; and &subsource;</entry></row>
+ <row><entry>r+&hrs; or r-&hrs;</entry><entry>reset run time by plus or minus number of &hrs;</entry></row>
+ <row><entry>r current</entry><entry>reset run time to most recent run time of model</entry></row>
+ <row><entry>r previous</entry><entry>reset run time to next most recent run time of model</entry></row>
+ <row><entry>r &timestamp;</entry><entry>reset run time to &timestamp; (in FPA timestamp format of year:julian day:hour or year:julian day:hour:minutes)</entry></row>
+ <row><entry>a &fieldatt;</entry><entry>set field attribute</entry></row>
+ <row><entry>b &units;</entry><entry>set units for field attribute</entry></row>
+ <row><entry>x &lookup;</entry><entry>set lookup table for field attribute conversion to numeric value</entry></row>
+ <row><entry>d &value;</entry><entry>set default value for field attribute</entry></row>
+ <row><entry>p &value;</entry><entry>set proximity value for field attribute to use</entry></row>
+ <row><entry>q &units;</entry><entry>set units for proximity</entry></row>
+ </tbody>
+ </tgroup></table>
+</sect1>
+
+<sect1><title>Generic Equations</title><para>
+<indexterm><primary>equations</primary><secondary>generic</secondary></indexterm>
+ All equations in the &FPA; are "generic" in the sense that they can apply to more than one level, valid time, source, or run time.
+ However, many fields have equations that are similar to those of other fields.
+ For example, the geostrophic wind from a height field has the same equation as the thermal wind from a thickness field.
+ Generic equations are used in the &FPA; equation handler to allow the same equation to be used for a number of similar fields.
+ The &FPA; configuration files contain special fields for these generic equations which are strictly for calculation of other fields; they are not meant to be displayed or sampled.
+ A special element group, Generic_Equation, has been defined in the Elements subblock of the Groups block of the <filename>Config.master</filename> configuration file (as described in <xref linkend='appenda'/>) for use with generic equations.
+ Fields in this special group will not be displayed in any of the on-screen lists within the &FPA;.
+ </para><para>
+ Generic equations use special substitution characters to allow the equation to be used with more than one field.
+ Field substitution is accomplished with the use of the  <command>@</command>  character, and field modifier substitution with the use of the  <command>!</command>  character.
+ The format of an equation using a generic equation is given by:
+<programlisting>generic_equation &lt; @&fld;,  !<replaceable>modf</replaceable> &gt;</programlisting>
+ where  &fld;  is the field and  <replaceable>modf</replaceable>  the modifier to be substituted.
+ The generic equation will refer to the field or modifier in its equation string by the characters  <command>@</command>  and  <command>!</command>.
+ For example, the equation for GENERIC_difference, given by the equation 
+<programlisting>@  -  @ &lt; ! &gt;</programlisting>
+would expand to  
+<programlisting>p - p &lt;r-12&gt;</programlisting>
+if  accessed by the generic equation string  
+<programlisting>GENERIC_difference &lt; @p, !r-12 &gt;</programlisting>
+</para><para>
+<table frame='topbot'><title> Generic equation substitution parameters</title><tgroup cols='2'>&colwidth2;
+<thead> <row><entry>Substitution parameter</entry><entry>Meaning</entry></row> </thead>
+<tbody>
+<row valign='top'><entry>@&fld;</entry><entry>substitute &fld; for @ in generic equations</entry></row>
+<row valign='top'><entry>@</entry><entry>use &fld; from @&fld; in place of @ in equation</entry></row>
+<row valign='top'><entry>!<replaceable>modf</replaceable></entry><entry>substitute <replaceable>modf</replaceable> for ! in generic equations</entry></row>
+<row valign='top'><entry>!</entry><entry>use <replaceable>modf</replaceable> from !<replaceable>modf</replaceable>  in place of ! in equation</entry></row>
+</tbody></tgroup></table>
+</para></sect1>
+
+<sect1><title>Units of Equations</title><para>
+<indexterm><primary>equations</primary><secondary>units</secondary></indexterm>
+ An equation in the &FPA; configuration files may be written in any convenient units, by simply setting the units in the "equation" block of the "Elements" section of the configuration file (as described in <xref linkend='appenda'/>).
+ </para><para>
+ However, it is important to remember that fields within &FPA; equations are ALWAYS evaluated in &MKS; units, as given by the &MKS; equivalent units corresponding to the units defined for the field in the "precision" line in the "Elements" section of the configuration file.
+ For example, the msl pressure field is ALWAYS evaluated in units of Pa (Pascals), even though the units in the "precision" line are given as mb (millibars).
+ Therefore, an equation containing the string   pressure - 1000   will not give the difference between the msl pressure and 1000 mb; the string would have to be written as  ( pressure / 100 ) - 1000   to produce the desired result.
+ </para></sect1></appendix>

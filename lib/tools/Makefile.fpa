@@ -1,0 +1,312 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM}
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+
+
+# Here is the list of object files to go into the library:
+MODULES  =	cdrom.o \
+			clock.o \
+			getmem_ext.o \
+			horner.o \
+			info_file.o \
+			ipc.o \
+			language.o \
+			lat_lon.o \
+			license.o \
+			lock.o \
+			math_ext.o \
+			matrix.o \
+			message.o \
+			mmm.o \
+			parse.o \
+			png_stream.o \
+			solar.o \
+			string_ext.o \
+			time.o \
+			trap.o \
+			tstamp.o \
+			tween.o \
+			twixt.o \
+			under.o \
+			unix.o
+
+
+# Here is the list of include files to go into the master header file:
+HEADER   =	tools.h
+HEADERS  =	cdrom.h \
+			clock.h \
+			getmem_ext.h \
+			horner.h \
+			info_file.h \
+			ipc.h \
+			language.h \
+			lat_lon.h \
+			license.h \
+			lock.h \
+			math_ext.h \
+			matrix.h \
+			message.h \
+			mmm.h \
+			parse.h \
+			png_stream.h \
+			solar.h \
+			string_ext.h \
+			time.h \
+			trap.h \
+			tstamp.h \
+			tween.h \
+			twixt.h \
+			under.h \
+			unix.h
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(MODULES) $(HEADER) $(HEADERS)
+
+
+# Rules for building everything:
+all ALL:	modules
+
+
+# Rules for building object modules:
+modules:	Pmodules $(HEADER) $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA tools modules"
+
+cdrom.o:		cdrom.h parse.h unix.h string_ext.h $(TYPES) $(MACROS) $(GETMEM)
+clock.o:		clock.h time.h
+getmem_ext.o:	getmem_ext.h
+horner.o:		horner.h
+info_file.o:	info_file.h language.h parse.h $(TYPES) $(GETMEM)
+ipc.o:			ipc.h unix.h parse.h $(TYPES) $(GETMEM)
+language.o:		language.h message.h parse.h string_ext.h $(TYPES) $(GETMEM)
+lat_lon.o:		lat_lon.h parse.h $(MATH) $(TYPES)
+license.o:		license.h unix.h time.h parse.h $(TYPES) $(MATH)
+lock.o:			lock.h parse.h $(TYPES)
+math_ext.o:		math_ext.h
+matrix.o:		matrix.h $(MATH) $(TYPES) $(GETMEM)
+message.o:		message.h parse.h $(TYPES) $(MACROS) $(GETMEM)
+mmm.o:			mmm.h parse.h message.h $(TYPES)
+parse.o:		parse.h unix.h $(MATH) $(TYPES) $(MACROS) $(GETMEM)
+png_stream.o:   png_stream.h $(TYPES) $(GETMEM)
+solar.o:		solar.h time.h $(MATH)
+string_ext.o:	string_ext.h $(TYPES)
+time.o:			time.h $(MATH) $(TYPES)
+trap.o:			trap.h $(TYPES)
+tstamp.o:		tstamp.h time.h solar.h string_ext.h $(MATH) $(TYPES)
+tween.o:		tween.h $(MATH) $(GETMEM)
+twixt.o:		twixt.h $(GETMEM)
+under.o:		under.h $(MATH) $(TYPES) $(GETMEM)
+unix.o:			unix.h parse.h string_ext.h $(MATH) $(TYPES) $(MACROS) $(GETMEM)
+
+
+# Rules for building the master header file:
+header:		$(HEADER)
+
+$(HEADER):		$(HEADERS)
+			@	echo "Updating FPA tools module header"
+			@	sleep 1; touch $@; sleep 1
+cdrom.h:		$(TYPES)
+			@	sleep 1; touch $@
+clock.h:		$(TYPES)
+			@	sleep 1; touch $@
+getmem_ext.h:	$(GETMEM)
+			@	sleep 1; touch $@
+math_ext.h:		$(MATH)
+			@	sleep 1; touch $@
+string_ext.h:	$(STRING) $(TYPES)
+			@	sleep 1; touch $@
+horner.h:
+			@	sleep 1; touch $@
+info_file.h:	$(TYPES)
+			@	sleep 1; touch $@
+ipc.h:			$(TYPES)
+			@	sleep 1; touch $@
+language.h:		$(TYPES)
+			@	sleep 1; touch $@
+lat_lon.h:		$(TYPES)
+			@	sleep 1; touch $@
+license.h:		$(TYPES)
+			@	sleep 1; touch $@
+lock.h:			$(TYPES)
+			@	sleep 1; touch $@
+matrix.h:		$(TYPES)
+			@	sleep 1; touch $@
+message.h:		$(TYPES)
+			@	sleep 1; touch $@
+mmm.h:			$(TYPES)
+			@	sleep 1; touch $@
+parse.h:		$(TYPES)
+			@	sleep 1; touch $@
+png_stream.h:	$(TYPES)
+			@	sleep 1; touch $@
+solar.h:
+			@	sleep 1; touch $@
+time.h:			$(TYPES)
+			@	sleep 1; touch $@
+trap.h:			$(TYPES)
+			@	sleep 1; touch $@
+tstamp.h:		$(TYPES) $(MACROS)
+			@	sleep 1; touch $@
+tween.h:
+			@	sleep 1; touch $@
+twixt.h:
+			@	sleep 1; touch $@
+under.h:		$(TYPES)
+			@	sleep 1; touch $@
+unix.h:			$(TYPES)
+			@	sleep 1; touch $@
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} tools module $<"
+	@	$${C_COMP_SHARED} -c $(INCPATH) $(C_OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}
+
+
+
+# Rules for building stand-alone test programs:
+test tests:	hostinfo time latlon solar message hex
+
+HOSTINFO     = $(PLATFORM)/hostinfo
+HOSTINFO_OBJ = unix.c parse.o getmem_ext.o
+hostinfo:	Phostinfo $(HOSTINFO)
+		@	echo "FPA $${PLATFORM} hostinfo test ready"
+		@	echo 
+Phostinfo:
+		@	$(SBINDIR)/platform_get object "FPA hostinfo"
+$(HOSTINFO):	$(TYPES) $(HOSTINFO_OBJ)
+		@	echo Building stand-alone test program for hostinfo
+		@	rm -f unix.o
+		@	$${C_COMPILER} -o $@ -D STANDALONE $(INCPATH) \
+			$(C_OPTIONS) $(HOSTINFO_OBJ) $(EXTRA_LIBS)
+		@	rm -f unix.o
+		@	if [ -f $${PLATFORM}/unix.o ]; then \
+				ln $${PLATFORM}/unix.o .; \
+			fi
+
+TIME     = $(PLATFORM)/time
+TIME_OBJ = time.c parse.o unix.o getmem_ext.o
+time:	Ptime $(TIME)
+		@	echo "FPA $${PLATFORM} time test ready"
+		@	echo 
+Ptime:
+		@	$(SBINDIR)/platform_get object "FPA time"
+$(TIME):	$(MATH) $(TYPES) $(TIME_OBJ)
+		@	echo Building stand-alone test program for time
+		@	rm -f time.o
+		@	$${C_COMPILER} -o $@ -D STANDALONE $(INCPATH) \
+			$(C_OPTIONS) $(TIME_OBJ) $(EXTRA_LIBS)
+		@	rm -f time.o
+		@	if [ -f $${PLATFORM}/time.o ]; then \
+				ln $${PLATFORM}/time.o .; \
+			fi
+
+LATLON       = $(PLATFORM)/lat_lon
+LATLON_OBJ   = lat_lon.c parse.o unix.o getmem_ext.o
+latlon lat_lon:		Plat_lon $(LATLON)
+		@	echo "FPA $${PLATFORM} lat_lon test ready"
+		@	echo 
+Plat_lon:
+		@	$(SBINDIR)/platform_get object "FPA lat_lon"
+$(LATLON):	$(TYPES) $(LATLON_OBJ)
+		@	echo Building stand-alone test program for lat_lon
+		@	rm -f lat_lon.o
+		@	$${C_COMPILER} -o $@ -D STANDALONE $(INCPATH) \
+			$(C_OPTIONS) $(LATLON_OBJ) $(EXTRA_LIBS)
+		@	rm -f lat_lon.o
+		@	if [ -f $${PLATFORM}/lat_lon.o ]; then \
+				ln $${PLATFORM}/lat_lon.o .; \
+			fi
+
+SOLAR        = $(PLATFORM)/solar
+SOLAR_OBJ    = solar.c time.o
+solar:		Psolar $(SOLAR)
+		@	echo "FPA $${PLATFORM} solar test ready"
+		@	echo 
+Psolar:
+		@	$(SBINDIR)/platform_get object "FPA solar"
+$(SOLAR):	$(SOLAR_OBJ)
+		@	echo Building stand-alone test program for solar
+		@	rm -f solar.o
+		@	$${C_COMPILER} -o $@ -D STANDALONE $(INCPATH) \
+			$(C_OPTIONS) $(SOLAR_OBJ) $(EXTRA_LIBS)
+		@	rm -f solar.o
+		@	if [ -f $${PLATFORM}/solar.o ]; then \
+				ln $${PLATFORM}/solar.o .; \
+			fi
+
+MESSAGE      = $(PLATFORM)/message
+MESSAGE_OBJ  = message.c parse.o unix.o
+message:	Pmessage $(MESSAGE)
+		@	echo "FPA $${PLATFORM} message test ready"
+		@	echo 
+Pmessage:
+		@	$(SBINDIR)/platform_get object "FPA message"
+$(MESSAGE):	$(TYPES) $(MESSAGE_OBJ)
+		@	echo Building stand-alone test program for message
+		@	rm -f message.o
+		@	$${C_COMPILER} -o $@ -D STANDALONE $(INCPATH) \
+			$(C_OPTIONS) $(MESSAGE_OBJ) $(EXTRA_LIBS)
+		@	rm -f message.o
+		@	if [ -f $${PLATFORM}/message.o ]; then \
+				ln $${PLATFORM}/message.o .; \
+			fi
+
+STL      = $(PLATFORM)/stl
+STL_OBJ  = string_ext.c
+stl:	Pstl $(STL)
+		@	echo "FPA $${PLATFORM} stl test ready"
+		@	echo 
+Pstl:
+		@	$(SBINDIR)/platform_get object "FPA stl"
+$(STL):	$(TYPES) $(STL_OBJ)
+		@	echo Building stand-alone test program for stl
+		@	rm -f string_ext.o
+		@	$${C_COMPILER} -o $@ -D STANDALONE $(INCPATH) \
+			$(C_OPTIONS) $(STL_OBJ) $(EXTRA_LIBS)
+		@	rm -f string_ext.o
+		@	if [ -f $${PLATFORM}/string_ext.o ]; then \
+				ln $${PLATFORM}/string_ext.o .; \
+			fi
+
+HEX      = $(PLATFORM)/hex
+HEX_OBJ  = parse.c string_ext.o unix.o getmem_ext.o
+hex:	Phex $(HEX)
+		@	echo "FPA $${PLATFORM} hex test ready"
+		@	echo 
+Phex:
+		@	$(SBINDIR)/platform_get object "FPA hex"
+$(HEX):	$(TYPES) $(HEX_OBJ)
+		@	echo Building stand-alone test program for hex
+		@	rm -f parse.o
+		@	$${C_COMPILER} -o $@ -D STANDALONE $(INCPATH) \
+			$(C_OPTIONS) $(HEX_OBJ) $(EXTRA_LIBS)
+		@	rm -f parse.o
+		@	if [ -f $${PLATFORM}/parse.o ]; then \
+				ln $${PLATFORM}/parse.o .; \
+			fi
+
+LICENSE      = $(PLATFORM)/license
+LICENSE_OBJ  = license.c time.o parse.o unix.o string_ext.o getmem_ext.o
+license:	Plicense $(LICENSE)
+		@	echo "FPA $${PLATFORM} license test ready"
+		@	echo 
+Plicense:
+		@	$(SBINDIR)/platform_get object "FPA license"
+$(LICENSE):	$(TYPES) $(LICENSE_OBJ)
+		@	echo Building stand-alone test program for license
+		@	rm -f license.o
+		@	$${C_COMPILER} -o $@ -D STANDALONE $(INCPATH) \
+			$(C_OPTIONS) $(LICENSE_OBJ) $(EXTRA_LIBS)
+		@	rm -f license.o
+		@	if [ -f $${PLATFORM}/license.o ]; then \
+				ln $${PLATFORM}/license.o .; \
+			fi

@@ -1,0 +1,74 @@
+! Set barb presentation for winds ...
+@wind_barb_presentation
+	{
+	shaft_length       = 0.30;
+	barb_length        = 0.50;
+	barb_width         = 0.25;
+	barb_space         = 0.20;
+	barb_angle         =   60;
+	gust_above         =   10;
+	gust_size          = 0.10;
+	gust_distance      = 0.50;
+	gust_angle         =   90;
+	gust_justification = Centre;
+	gust_format        = G%.0f;
+	calm_max           =    5;
+	calm_symbol        = circle_mark;
+	calm_scale         =   25;
+	huge_min           =  100;
+	huge_symbol        = circle_mark;
+	huge_scale         =  100;
+	}
+
+! Set up a grid for sampling winds ...
+@define_sample_grid
+	{
+	grid_name      = grid_1;
+	map_x_begin    =  200;
+	map_x_end      = 3200;
+	map_x_interval =  250;
+	map_y_begin    =  200;
+	map_y_end      = 2500;
+	map_y_interval =  200;
+	map_units      = 1000;
+	}
+
+! Set up another grid for sampling winds ...
+@define_sample_grid
+	{
+	grid_name      = grid_2;
+	map_x_begin    =  500;
+	map_x_end      = 3500;
+	map_x_interval =  500;
+	map_y_begin    =  500;
+	map_y_end      = 3000;
+	map_y_interval =  600;
+	map_units      = 1000;
+	}
+
+! Set up another grid for sampling winds ...
+@define_sample_grid
+	{
+	grid_name      = grid_3;
+	lat_begin      = 20S;
+	lat_end        = 60N;
+	lat_interval   =  5N;
+	lon_begin      = 90W;
+	lon_end        = 30W;
+	lon_interval   =  5E;
+	}
+
+! Display sampled winds ....
+@sample_wind
+	{
+	wind_crossref = Fpa_Wind;
+	units         = knots;
+	format        = wind_barb;
+	grid_name     = grid_3;
+	fit_to_map    = yes;
+	x_off         = 0.00;
+	y_off         = 0.00;
+	outline       = X11 Red;
+	fill          = X11 Red;
+	line_width    = 0.02;
+	}

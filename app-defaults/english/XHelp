@@ -1,0 +1,441 @@
+!
+! XmHTML Examples resource file.
+! See the XmHTML Reference guide for a full list and description of all
+! available resources.
+!
+! To use this file, copy it to your home directory and rename it to HTMLDemos
+
+! The direction in which text should be rendered. R_TO_L renders text from
+! right to left (inverting the contents), while L_TO_R renders from left to
+! right.
+!
+! *stringDirection: XmSTRING_DIRECTION_R_TO_L
+
+! The default alignment to be used for rendering. Possible values:
+! XmALIGNMENT_BEGINNING
+!	align against left window border (default)
+! XmALIGNMENT_CENTER
+!	center everyting;
+! XmALIGNMENT_END
+!	align against right window border.
+!
+!*alignment: XmALIGNMENT_END
+
+! This resource informs XmHTML if it should do anchor highlighting or not.
+! When true, an anchor will be highlighted when the pointer is moved over it.
+!
+*highlightOnEnter: True
+
+! This resource determines how many colors each image may take. With the 
+! default value of 0, XmHTML will try to allocate as many colors as it can
+! (with a maximum of 256 colors). Setting this resource to a small value
+! without selecting dithering will cause a considerable delay on image-heavy
+! pages.
+!
+! If you have set the imageMapToPalette (see below) resource without providing
+! a palette yourself, XmHTML will attempt to allocate a palette with at most
+! this many colors (the algorithm used depends on how XmHTML was compiled).
+!
+*maxImageColors:	0
+
+! This resource allows you to enable/disable animations.
+!
+!*freezeAnimations: False
+
+! This resource determines the conversion XmHTML should use when it's
+! converting 24bit PNG images to 8bit ones.
+!
+! Possible values are:
+!	quick:	first a very quick check is made to see if an image contains
+!			less than maxImageColors colors. If not, 24->8 bit conversion
+!			is done using a fixed palette.
+!	best:	first a very quick check is made to see if an image contains
+!			less than maxImageColors colors. If not, 24->8 bit conversion
+!			is done using a histogram of the 24bit image. This offers
+!			the best 24 to 8 bit conversion as 24bit RGB images on web
+!			pages often have less than 256 colors in them (keeps the size
+!			small). This is the default.
+!	fast:	dithers to a fixed palette right away. This is the fastest way
+!			to do 24->8 bit conversion;
+!	slow:	skips the check and does 24->8 bit conversion using a histogram
+!			right away.
+!
+*imageRGBConversion: best
+
+! perfectColors: controls the final dithering pass on progressively loaded
+! image. This is a significantly time-consuming operation and does not always
+! produce a visible quality increase of the image. Initial color selection
+! of progressively loaded images is done using a simple ordered dithering on
+! the colormap of the image in question. This resource affects all images
+! containing more than maxImageColors (always True for JPEG and RGB PNG
+! images, even with maxImageColors set to 0). Possible values for this
+! resource are:
+!
+! never
+!	No final dithering pass is performed;
+! always
+!	A final dithering pass is always performed;
+! automatic
+!	XmHTML decides whether or not a final pass will significantly increase
+!	the quality of the image (its decision is based on the number of colors
+!	matched in a fixed colormap: when about a third is matched, no dithering
+!	is done). This is the default behaviour
+!
+*perfectColors:		automatic
+
+! imageMapToPalette: determines if XmHTML should perform dithering and if so,
+! which type it should use.
+!
+! Possible Values:
+! quick
+!	Use closest distance algorithm to map colors to the palette. No
+!	error correction is performed. Fast, but quality heavily depends on the
+!	distribution of the colors in the image.
+! best
+!	Ordered dither using predefined error matrices. Reasonably fast and
+!	quite good results;
+! fast
+!	Simple ordered dithering without error correction. Fastest but poorest
+!	results (relatively spoken, that is :-).
+! slow
+!	closest distance algorithm to map image colors to the palette and 
+!	dynamic error correction. Slowest but best results;
+! disabled (default)
+!	Disable palette mapping;
+!
+! See also the imagePalette resource below.
+!
+*imageMapToPalette: disabled
+
+! imagePalette: fixed palette against which the images should be dithered.
+!
+! This is a string consisting of (hexadecimal) RGB triplets. The values of
+! each color component in a triplet must be in the range 0-255 (inclusive).
+! Each triplet is separated from the next by (an amount of) whitespace. If
+! the XmNmaxColors resource isn't set or differs from the number of colors
+! in the specified palette, it will be set to the size of this palette (with
+! a maximum of 256 colors).
+!
+! Note: If the imageMapToPalette resource has been set but no palette has been 
+! specified, XmHTML will allocate one for you. The size of this palette is
+! given by the value of the maxImageColors resource.
+!
+! WARNING: the value of this resource can only be set on CREATION time.
+!
+! Example specification of a (rather good) palette with 48 colors (note the
+! newlines & continuation chars):
+!
+!*imagePalette: 0x00 0x00 0x00 0xff 0xff 0xff 0xdd 0xdd 0xdd \n\
+! 0xbb 0xbb 0xbb 0x99 0x99 0x99 0x77 0x77 0x77 0x55 0x55 0x55 \n\
+! 0x33 0x33 0x33 0x88 0x00 0x00 0xcc 0x00 0x00 0xff 0x00 0x00 \n\
+! 0xff 0x44 0x00 0xff 0x88 0x00 0xff 0xcc 0x00 0xff 0xff 0x00 \n\
+! 0xcc 0xcc 0x00 0x88 0x88 0x00 0x44 0x44 0x00 0x00 0x44 0x00 \n\
+! 0x00 0x88 0x00 0x00 0xcc 0x00 0x00 0xff 0x00 0x00 0x44 0x44 \n\
+! 0x00 0x88 0x88 0x00 0xff 0xff 0x00 0x00 0x44 0x00 0x00 0x88 \n\
+! 0x00 0x00 0xff 0x88 0x00 0x88 0xff 0xcc 0x99 0xcc 0xaa 0x77 \n\
+! 0xaa 0x88 0x55 0x88 0x66 0x33 0x66 0x44 0x11 0x44 0x22 0x00 \n\
+! 0x22 0x00 0x00 0x00 0x44 0x88 0x44 0x88 0xcc 0x88 0xcc 0xff \n\
+! 0x00 0xcc 0x44 0x44 0x88 0x44 0x88 0xcc 0x00 0x22 0x44 0x11 \n\
+! 0x33 0x66 0x22 0x44 0x55 0x33 0x66 0x88 0x44 0x33 0x66 0x22 \n\
+! 0x22 0x44 0x11
+
+! Progressive Loading resources
+!
+! The three resources below define the boundaries of the polling interval 
+! XmHTML should use when walking the list of images that are to be loaded
+! progressively.
+!
+! *progressiveInitialDelay: specifies the initial delay XmHTML should use
+!                           before starting to walk all PLC's, default is 250ms.
+! *progressiveMinimumDelay: the minimum delay that can be used. Default is 5ms;
+! *progressiveMaximumDelay: the maximum delay that can be used. Default is
+!                           1000ms (e.i. 1 second).
+!
+! The latter two resources define the boundaries of the interval XmHTML can
+! use when calculating the time to expire before the next PLC is activated.
+!
+! The internal algorithm dynamically adjusts the polling interval depending on
+! the state of each PLC: when the number of suspended PLC's is increasing, the
+! polling interval is increased (up to progressiveMaximumDelay), and when it is
+! decreasing, the polling interval is decreased (down to
+! progressiveMinimumDelay).
+!
+! The reason behind this dynamic adjustment of the polling interval is that
+! it's useless quering your application every 5ms when XmHTML can see that this
+! application has a slow connection, and, the other way round, that it's
+! annoying to have XmHTML ignore the fact that this application has a fast
+! connection by polling the application every second or so.
+
+*progressiveInitialDelay:	250
+*progressiveMinimumDelay:	100
+*progressiveMaximumDelay:	1000
+
+! Uncompress command to use when using the built-in GIF decoder. 
+! The uncompresser you tell XmHTML to use must be *fully* compatible with
+! standard Unix compress, *and* this compress must be capable of handling
+! at least 13 bit codes (-b compress command line option).
+!
+! *uncompressCommand: gzip -d
+
+! Your screen's gamma value. This value is used to do gamma correction on
+! JPEG and PNG images. Note that this is a floating point value.
+! For most displays, the default value of 2.2 will be pretty OK.
+! For Silicon Graphics display, a gamma value of 1.8 is suggested.
+! For the brave souls running MkLinux, a gamma value of 1.4 is suggested.
+! Just experiment with different values and see what it does.
+!
+*screenGamma:		2.2
+
+! Enable text outlining.
+!
+*enableOutlining: True
+
+! Placement of the scrollbars. Possible values are:
+! top_left:	horizontal (hsb) on top, vertical scrollbar (vsb) on left;
+! top_right: hsb on top, vsb on right;
+! bottom_left: hsb on bottom, vsb on left;
+! bottom_right: hsb on bottom, vsb on left (default).
+!
+!*XmHTML*scrollBarPlacement: bottom_right
+
+! Default background image. Only used when no text/background colors have
+! been set in the loaded document.
+!
+!*bodyImage: /home/newt/public-html/RSD/textures/wheat.gif
+!
+! The other alternative is to set the default background color. This will
+! always be used, even if text colors have been specified in the <BODY>
+! element.
+!
+! *XmHTML.background: white
+!
+! Use the dot (``.'') to set the default background on the area in which the
+! text is displayed.
+! Using a wildcard (``*'') will also set the default background color of the
+! scrollbars. You could fine-tune it in the following way (for example, see
+! the XmScrollBar manual page for other resources):
+!
+! *XmHTML.background: white
+! *XmHTML.horizontalScrollBar.background: gray66
+! *XmHTML.verticalScrollBar.background: gray66
+! *XmHTML.workWindow.background: white
+!
+! (the workWindow component is the render area. Setting the background color
+! for this widget will assure that it uses the correct background when the
+! widget is empty.)
+!
+! If you are setting the above resources, you should also balance the default
+! foreground color against the default background setting:
+!
+! *XmHTML.foreground: black 
+
+! Set to False to make the HTML parser a bit more forgiving. Can lead to
+! wierd results as this *can* interfere with the document verification and
+! repair routines.
+!
+*strictHTMLChecking: False
+
+! Specify what types of warnings you want to get when the parser detects
+! bad HTML constructs in the input document.
+!
+! Possible values (the html_ prefix is optional while you can also use the
+! full resource names: XmHTML_NONE, ...):
+!
+! html_none:            no warnings at all, exclusive value;
+! html_all :            all warnings, exclusive value;
+! html_unknown_element: unknown HTML element;
+! html_bad:             very badly placed element;
+! html_open_block:      block still open while new block started;
+! html_close_block:     block closed but was never opened;
+! html_open_element:    unbalanced terminator;
+! html_nested:          improperly nested element;
+! html_violation:       bad content for current block/element;
+!
+! You can specify multiple warning types for this resource as follows:
+! *enableBadHTMLWarnings: unknown_element, bad, open_block
+!
+! (the value of the separator character doesn't matter)
+!
+*enableBadHTMLWarnings: all
+
+! Set to False if you don't want the anchors to appear as buttons.
+! *anchorButtons: True
+
+! Various Anchor underline styles
+! *anchorUnderlineType: single_line
+! *anchorVisitedUnderlineType: double_line
+! *anchorTargetUnderlineType: single_dashed_line
+
+! Various Anchor colors
+! *anchorActivatedBackground: white
+! *anchorForeground: red
+! *anchorVisitedForeground: blue1
+! *anchorTargetForeground: green
+
+! This is how you specify a different anchor cursor:
+! *anchorCursor: hand2
+
+! Set to False if you don't want to honor the color attribute of the
+! <FONT>, <CODE>, <SAMP>, <KBD>, <TT>, <STRONG>, <B>, <EM>, <VAR>, <CITE>,
+| <I>, <ADDRESS>, <H1> thru <H6>, <BLOCKQUOTE>, <PRE>, <P>, <DIV>,
+! <CENTER> and <HR>  HTML tags.
+!
+*enableDocumentColors: True
+
+! Set to False if you want to ignore the size and face attributes of the
+! <FONT> tag. Note that setting both this resource and the previous one
+! to False effectively disables support for the <FONT></FONT> tag.
+!
+*enableDocumentFonts: True
+
+! This resource determines whether or not a XmHTML widget should use the
+! current document background & foreground colors for any widgets in a
+! HTML Form. If False, the default colors are used (whatever that may
+! be). Please note that in the latter case, the natural look of the document
+! is broken.
+*enableFormColors: True
+
+! Support for W3C icon entities. Default is False
+*enableIconEntities: True
+
+! Vertical alignment for the W3C icon entities.
+! Resource class is XmCVerticalAlignment.
+! Possible values are alignment_baseline_top, alignment_center (default) and
+! alignment_baseline_bottom
+! *iconAlignment: alignment_baseline_top
+
+! When set to True, XmHTML will draw a bounding box around all areas in images
+! serving as an imagemap.
+!
+! *imagemapDrawBoundingBoxes: True
+
+! color to use when drawing a bounding box.
+!
+! *imagemapBoundingBoxForeground: red
+
+! The number of milliseconds a key must be pressed before scrolling continues.
+! This is a value which requires some experimenting. Setting it to a value
+! smaller than 10ms will probably cause improper screen updating while
+! scrolling. Setting it to a value higher than, say 100ms, will *definitly*
+! cause annoyance since scrolling will appear to be very slow. The default 
+! value of 25 should give you good performance in both screen update and 
+! scrolling speed.
+!
+*repeatDelay: 15
+
+! The default scrolling behavior of XmHTML is to respond immediatly to
+! scrolling events and paint the region that has been scrolled into view.
+! On fast X servers, this always yields a very smooth scrolling. However,
+! fast scrolling on slow servers (or on heavily loaded systems), causes XmHTML
+! to miss some events, leading to portions of the document not being rendered
+! correctly or not at all. Setting smoothScrolling to False will cause XmHTML
+! to wait until all scrolling events have arrived and then render the
+! resulting region. This will cause XmHTML to always render the document
+! but has the downside that scrolling may seem a *little* jumpy.
+! The default for this resource is True.
+*smoothScrolling: False
+
+! Size of a horizontal tab.
+! This resource is used when rendering preformatted text (anything inside
+! <pre></pre>). This must be a positive, non-zero value. The default is 8
+*tabWidth: 4
+
+! Size of the default font for normal, sup and subscript, H1 thru H6 headers.
+!
+*charset: iso8859-1
+*fontSizeList: 12,8,24,18,14,12,10,8
+
+! Font selection resources. The set below instructs XmHTML to use the koi8
+! cyrillic font (if it is installed on your system).
+!
+! *charset: koi8-*
+! *fontFamily: cronyx-times-*-*
+! *fontFamilyFixed: cronyx-fixed-*-*
+
+! Widget size. Note that this resource is explicitly set on the widget directly
+! and not using a wildcard. This is *very* important as a XmHTML widget creates
+! three childs: a work area and two scrollbars. Upon creation time, a XmHTML
+! widget sets the size of the workArea explicitly and uses default values when
+! creating the scrollbars. The latter is the reason why a . should be used
+! instead of a *. Not doing this would lead to scrollbars with the same
+! dimension as the widget itself, which can lead to strange results whenever
+! the scrollBars are managed. XmHTML will reset the dimensions of the
+! scrollbars to 15 for the width of the vertical scrollbar and 15 for the
+! height of the horizontal scrollbar.
+! The same problem arises with any widgets created when XmHTML needs to create
+! a HTML form.
+!
+*frame.width: 1000
+*frame.height: 600
+
+! *XmHTML.width: 575
+! *XmHTML.height: 600
+
+! If you want to specify the dimensions of the ScrollBar children of a XmHTML
+! widget you need to do this as follows:
+!
+! *XmHTML*verticalScrollBar.width: 25
+! *XmHTML*horizontalScrollBar.height: 25
+
+
+! non-XmHTML resources.
+!
+! default font list
+*fontList:               *-adobe-helvetica-bold-r-*-*-*-120-*-*-p-*-*-*
+
+! The following resources only apply to example_2.c
+!
+! Set to True if you want to use a private colormap.
+!
+!*usePrivateColormap: True
+!
+! These resources are for selection of a visual if your display supports
+! multiple visuals on the same screen. 
+! For visualClass, the following mapping applies:
+!
+!	StaticGray  -> 0
+!	GrayScale   -> 1
+!	StaticColor -> 2
+!	PseudoColor -> 3
+!	TrueColor   -> 4
+!	DirectColor -> 5
+!
+!*visualID:
+!*applicationDepth: 16
+!*visualClass: 5
+
+
+! XmHTML Debug resources. Always present but only active when XmHTML has been
+! compiled with DEBUG defined.
+!
+! When set, no warnings will be generated
+!
+*debugDisableWarnings: False
+
+! When set, output from event handlers and thelike will be enabled if the
+! corresponding source files have been marked for debug output.
+! Warning: this will generate a *huge* amount of output.
+!
+*debugEnableFullOutput: True
+
+! When set, parser output is sent to a file with this prefix. The suffix
+! is a number starting from zero for the first document loaded, and increasing
+! by one for every new document that is loaded.
+!
+!*debugFilePrefix: parsed_output
+
+! When set, the clipmasks for every image will be saved as an X11 bitmap in the
+! current directory.
+!
+*debugSaveClipmasks: False
+
+! When set, all animations will loop forever; any loopcount specification in
+! the NETSCAPE2.0 extension is ignored then.
+!
+*debugNoAnimationLoopCount: False
+
+!*debugLevels: 1
+
+!
+! XmBalloon
+!*XmBalloon*background:  LemonChiffon

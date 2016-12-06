@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE preface PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % ingred SYSTEM 'ingred.ent'>
+%ingred;
+]>
+<preface id="intro"> <title>Introduction</title> <para>
+This manual is intended to help programmers integrate Ingred into application programs and thus gain access to its meteorological field editing power. It is not intended to 
+act as a programmer's manual as no details are given as to the internal workings of the program itself.
+</para><para>
+Ingred is a series of library functions and has no user interface within itself. In order 
+to maintain flexibility Ingred is configured through the use of configuration and set up files. 
+Configuration files contain information on all possible states and set up files contain information on the configuration specific to the particular application and is a subset of the configuration files.
+</para>
+</preface>

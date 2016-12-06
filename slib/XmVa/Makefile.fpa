@@ -1,0 +1,57 @@
+# Define all the usual places to look for things:
+LIBPATH = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(SLIBDIR)/$${PLATFORM}
+INCPATH = $${INCLUDE_PATH} $${X_INCLUDE} -I$(INCDIR) -I$(LIBDIR) -I$(SINCDIR) -I$(SLIBDIR)
+
+LDIR    = $(SLIBDIR)/$(PLATFORM)
+LIB     = $(LDIR)/libXmVa.a
+HEADER  = $(SINCDIR)/Xm/XmVaCreate.h
+MODULES = XmVaCreate.o
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(LIB) $(MODULES) $(HEADER)
+
+
+# Rules for building the library:
+all lib:	$(HEADER) Pmodules $(LIB)
+		@	echo FPA $${PLATFORM} XmVa library ready
+		@	echo
+
+$(LIB):		$(MODULES) vararg.c
+		@	echo Re-building FPA $${PLATFORM} XmVa library
+		@   if [ ! -d $(LDIR) ]; then mkdir -p $(LDIR); fi
+		@	if [ -f $(LIB) ]; then rm -f $(LIB); fi
+		@	sleep 1
+		@	$${LIB_ARCHIVE} $(LIB) $(MODULES) 2>/dev/null
+
+
+# Rules for building the object modules:
+modules:	$(HEADER) Pmodules $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA XmVa library"
+
+$(MODULES):		XmVaCreate.h		
+
+defs header:	$(HEADER)
+$(HEADER):	XmVaCreate.h
+		@	echo Updating XmVa library header
+		@	cp -f XmVaCreate.h $(HEADER)
+		@	sleep 1
+XmVaCreate.h:	vararg.c
+		@	$${C_COMPILER} $(INCPATH) $(C_OPTIONS) -o vararg vararg.c
+		@	sleep 1
+		@	./vararg
+		@	sleep 1
+		@	rm -f vararg
+		@	$${C_COMPILER} -c $(INCPATH) $(C_OPTIONS) XmVaCreate.c
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} XmVa module $<"
+	@	$${C_COMPILER} -c $(INCPATH) $(C_OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

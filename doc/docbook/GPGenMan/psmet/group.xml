@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_group'> <title>@group</title> <titleabbrev>@group</titleabbrev>
+<para>
+Set a list of keywords to be included as a "macro".
+</para><para>
+Note that the keywords are included in another directive by using the format:
+<userinput>&lt;<replaceable>group_name</replaceable></userinput> in the keyword list.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>group_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Group name for keyword list</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput><replaceable>acceptable_keywords</replaceable></userinput></para></entry>
+<entry colname='type'><para></para></entry>
+<entry colname='desc'><para>Any keywords that are acceptable in the directives that this "macro" is included within can be set here</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@group 
+{
+  group_name       = MaxTempAreas;
+  element          = max_temp;
+  level            = surface;
+  units            = degreesC;
+  display_as_areas = yes;
+  outline          = none;
+  fill             = none;
+}</programlisting>
+Set a "macro" called "MaxTempAreas" containing keywords used in the <link linkend='ps_contours'>@contours</link> directive, given in the example above.
+</para></example>
+</para></sect2>

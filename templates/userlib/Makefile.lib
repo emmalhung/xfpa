@@ -1,0 +1,94 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM}
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+LIB      = libfpauser.${SHLIB_EXT}
+
+
+# Here is the list of object files to go into the shared library:
+MODULES  =	user_confirm.o \
+			user_rules.o \
+			user_winds.o \
+			user_values.o
+
+
+# Make what?
+null:
+
+
+# Make the library:
+all lib libs:	usrlib
+			@	echo "FPA $${PLATFORM} user-defined library ready"
+			@	echo 
+
+
+# Build the library:
+.PRECIOUS:						$(LIB)
+usrlib:							modules $(LIB)
+libfpauser.sl libfpauser.so:	$(MODULES)
+		@	echo "Re-building FPA $${PLATFORM} user-defined library"
+		@	if [ -f $(LIB) ]; then rm -f $(LIB); fi
+		@	sleep 1
+		@	$${LIB_SHARED} -o $(LIB) $(MODULES)
+
+
+# Rules for building object modules for the library:
+modules:		$(MODULES)
+user_confirm.o:	$(FPAHDR)
+user_rules.o:	$(FPAHDR)
+user_values.o:	$(FPAHDR)
+user_winds.o:	$(FPAHDR)
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling FPA $${PLATFORM} user-defined library module $<"
+	@	$${C_COMP_SHARED} -c $(C_OPTIONS) $(INCPATH) $<
+
+.f.o:
+	@	echo "Compiling FPA $${PLATFORM} user-defined library module $<"
+	@	$${FTN_COMP_SHARED} -c $(FTN_OPTIONS) $< 2>/dev/null
+
+
+# Rules for building stand-alone test programs:
+test tests:	value_test wind_test
+
+# Building stand-alone test program for user_values:
+USER_VALUES		= user_values
+USER_VALUES_OBJ	= user_values.c user_winds.o user_rules.o user_confirm.o
+value_test:		$(USER_VALUES)
+			@	echo "FPA $${PLATFORM} (local) user_values test ready"
+			@	echo 
+$(USER_VALUES):	$(USER_VALUES_OBJ) $(FPAHDR) $(FPALIB)
+			@	echo "Building (local) stand-alone test program for user_values"
+			@	rm -f user_values.o_bk
+			@	if [ -r user_values.o ]; then \
+					mv user_values.o user_values.o_bk; fi
+			@	$${C_COMPLOAD} -o $@ \
+					-D USER_VALUES_STANDALONE \
+					$(INCPATH) $(C_OPTIONS) \
+					$(USER_VALUES_OBJ) $(FPALIB) \
+					$(EXTRA_FTN_LIBS) $(EXTRA_LIBS)
+			@	rm -f user_values.o
+			@	if [ -r user_values.o_bk ]; then \
+					mv user_values.o_bk user_values.o; fi
+
+# Building stand-alone test program for user_winds:
+USER_WINDS		= user_winds
+USER_WINDS_OBJ	= user_winds.c user_values.o user_rules.o user_confirm.o
+wind_test:		$(USER_WINDS)
+			@	echo "FPA $${PLATFORM} (local) user_winds test ready"
+			@	echo 
+$(USER_WINDS):	$(USER_WINDS_OBJ) $(FPAHDR) $(FPALIB)
+			@	echo "Building (local) stand-alone test program for user_winds"
+			@	rm -f user_winds.o_bk
+			@	if [ -r user_winds.o ]; then \
+					mv user_winds.o user_winds.o_bk; fi
+			@	$${C_COMPLOAD} -o $@ \
+					-D USER_WINDS_STANDALONE \
+					$(INCPATH) $(C_OPTIONS) \
+					$(USER_WINDS_OBJ) $(FPALIB) \
+					$(EXTRA_FTN_LIBS) $(EXTRA_LIBS)
+			@	rm -f user_winds.o
+			@	if [ -r user_winds.o_bk ]; then \
+					mv user_winds.o_bk user_winds.o; fi

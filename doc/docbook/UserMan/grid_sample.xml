@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE para PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<para>
+Instead of sampling multiple individual locations, you can select a grid of sampling locations.
+<orderedlist continuation='continues'><title>To select a set of grid sample locations:</title>
+<listitem><para>
+Enter the <guilabel>X</guilabel> and <guilabel>Y</guilabel> parameters in the <guilabel>Sample Grid</guilabel> area and click <guibutton>Display</guibutton>
+</para><para>
+Note: If you select <guilabel>Match</guilabel>, the <guilabel>X</guilabel> and <guilabel>Y</guilabel> parameters change together.
+</para></listitem>
+</orderedlist>
+</para>

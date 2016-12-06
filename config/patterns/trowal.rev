@@ -1,0 +1,20 @@
+* MSRB Metafile Standard
+ rev 1.2
+* 
+ mapdef 0 0 0 100 100 1
+ units xy
+*
+*
+ info pattern repeat 1
+ info pattern baseline bottom
+ info pattern symmetric no
+* 
+* areas
+ entity-b NULL NULL FSPEC "[colour=CornflowerBlue style=solid_fill]"
+ curve r 5
+ 0 -10 20 10 80 10 80 -10 0 -10
+ entity-b NULL NULL FSPEC "[colour=Red style=solid_fill]"
+ curve r 5
+ 0 -10 20 10 50 100 40 100 0 -10
+* 
+* End

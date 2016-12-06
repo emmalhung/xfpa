@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>1.15. Graphics Colours for Text, Lines, and Areas</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch01.html" title="Chapter 1. Introduction to the Graphics Product Generator" /><link rel="prev" href="ch01s14.html" title="1.14. Graphics Fonts and Spacing for Text" /><link rel="next" href="ch01s16.html" title="1.16. Graphics Arrow Heads and Tails" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.15. Graphics Colours for Text, Lines, and Areas</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s14.html">Prev</a> </td><th width="60%" align="center">Chapter 1. Introduction to the Graphics Product Generator</th><td width="20%" align="right"> <a accesskey="n" href="ch01s16.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id3417105"></a>1.15. Graphics Colours for Text, Lines, and Areas</h2></div></div></div><p>
+The <span class="application">PSMet</span> and <span class="application">SVGMet</span> applications use various keywords to control
+colours for display of text, lines, and areas. 
+(Note that the values for these keywords default to the current presentation if they are not present in a particular directive.)
+</p><p>
+The characters for text fonts are described by an outline that can be drawn,
+as well as the interior of the outline that can be filled with colour. The
+following keywords can be used:
+</p><div class="variablelist"><dl><dt><span class="term">line_width</span></dt><dd><p>
+the thickness of the character outlines</p></dd><dt><span class="term">outline</span></dt><dd><p>
+the colour of the character outlines</p></dd><dt><span class="term">fill</span></dt><dd><p>
+the colour of the interior of the character outlines</p></dd><dt><span class="term">outline_first</span></dt><dd><p>
+display the character outlines first (with a value of <strong class="userinput"><code>yes</code></strong>) or last (with a value of <strong class="userinput"><code>no</code></strong>).
+</p><p>
+Note that outlines for text fonts are usually drawn last, that is, after the interior of the outlines are filled with colour
+</p></dd></dl></div><p>
+Lines can be displayed as a continuous curve, or as a sequence of filled
+areas, depending on the pattern file used for displaying the line.
+Multicoloured lines require specification of the line colours more than once.
+</p><p>
+Lines drawn as a continuous curve use the following keywords:
+</p><div class="variablelist"><dl><dt><span class="term">line_width</span></dt><dd><p>
+the thickness of the curve</p></dd><dt><span class="term">outline</span></dt><dd><p>
+the colour (or colours) of the curve</p></dd></dl></div><p>
+Lines drawn as a sequence of filled areas use the following keywords:
+</p><div class="variablelist"><dl><dt><span class="term">line_width</span></dt><dd><p>
+the thickness of the outlines for the sequence of areas</p></dd><dt><span class="term">outline</span></dt><dd><p>
+the colour (or colours) of the outlines for the sequence</p></dd><dt><span class="term">fill</span></dt><dd><p>
+the colour of the interior of the outlines for the sequence</p></dd></dl></div><p>
+Areas can be displayed with a line for the boundary (using any of the
+keywords given above for lines) as well as with the interior area filled
+with colour or symbols. The following keywords are used for the
+displaying the interior of areas:
+</p><div class="variablelist"><dl><dt><span class="term">interior_fill</span></dt><dd><p>
+the colour of the interior of the area</p></dd><dt><span class="term">symbol_fill_name</span></dt><dd><p>
+the display for symbols within the interior of the area
+(defined in the directive <span><strong class="command">@symbol_fill_display</strong></span>)</p></dd></dl></div><p>
+Examples of predefined X11 colour names for the <span class="application">PSMet</span> and <span class="application">SVGMet</span>
+applications are shown in Appendix D.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s14.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s16.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.14. Graphics Fonts and Spacing for Text </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.16. Graphics Arrow Heads and Tails</td></tr></table></div></body></html>

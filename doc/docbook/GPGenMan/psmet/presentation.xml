@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_presentation'> <title>@presentation</title> <titleabbrev>@presentation</titleabbrev>
+<para>
+Set the appearance of graphical objects and text for the current map.
+</para><para>
+Note that the <link linkend='ps_presentation'>@presentation</link> directive with no "name" keyword sets the
+default appearance of all graphical objects and text for all subsequent directives.
+</para><para>
+Note that presentation keywords can also be included in other directives, where
+their effect is to change the appearance of the graphical object or text for that
+directive only.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Name for a special presentation</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>line_width</userinput>, <userinput>line_style</userinput>, <userinput>outline</userinput> and <userinput>fill</userinput> can be specified more than once for named presentations.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>line_width</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Line width (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>line_style</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Line style
+</para><para>One of: <userinput>solid</userinput> or 
+<userinput><replaceable>n dl sl dl sl ...</replaceable></userinput> where <replaceable>n</replaceable> is the number of <replaceable>dl</replaceable>s and <replaceable>sl</replaceable>s (2 or 4 or ...), <replaceable>dl</replaceable> is the length of the dashes (as a multiple of the <userinput>line_width</userinput> value), and <replaceable>sl</replaceable> is the distance between dashes (as a multiple of the <userinput>line_width</userinput> value)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>outline</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Line outline colour
+</para><para>One of: 
+<simplelist>
+<member><userinput>none</userinput></member>
+<member><userinput>CMYK <replaceable>c m y k</replaceable></userinput></member>
+<member><userinput>RGB <replaceable>r g b</replaceable></userinput></member>
+<member><userinput>X11 <replaceable>name</replaceable></userinput></member>
+</simplelist>
+where <replaceable>c,m,y,k</replaceable> and <replaceable>r,g,b</replaceable> are 0-100, and <replaceable>name</replaceable> is a valid X11 colour name</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>fill</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Line fill colour
+</para><para>One of: 
+<simplelist>
+<member><userinput>none</userinput></member>
+<member><userinput>CMYK <replaceable>c m y k</replaceable></userinput></member>
+<member><userinput>RGB <replaceable>r g b</replaceable></userinput></member>
+<member><userinput>X11 <replaceable>name</replaceable></userinput></member>
+</simplelist>
+where <replaceable>c,m,y,k</replaceable> and <replaceable>r,g,b</replaceable> are 0-100, and <replaceable>name</replaceable> is a valid X11 colour name</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>outline_first</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry>
+<entry colname='desc'><para>Display outline before fill? 
+</para><para>(default is <userinput>no</userinput>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>interior_fill</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Interior fill colour
+</para><para>One of: 
+<simplelist>
+<member><userinput>none</userinput></member>
+<member><userinput>CMYK <replaceable>c m y k</replaceable></userinput></member>
+<member><userinput>RGB <replaceable>r g b</replaceable></userinput></member>
+<member><userinput>X11 <replaceable>name</replaceable></userinput></member>
+</simplelist>
+where <replaceable>c,m,y,k</replaceable> and <replaceable>r,g,b</replaceable> are 0-100, and <replaceable>name</replaceable> is a valid X11 colour name</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>symbol_fill_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Symbol fill name for area interior
+</para><para>One of: <userinput>none</userinput> or a symbol fill  name (set in <link linkend='ps_symbol_fill_display'>@symbol_fill_display</link>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>pattern</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Line pattern
+</para><para>One of: <userinput>simple</userinput> or &FPA; Metafile containing pattern
+</para><para>
+(Note that full path names are allowed. See <xref linkend='graphics_patter_files_for_drawing_lines'/> for default pattern file locations.)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_length.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font_weight.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/italics.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/text_size.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/char_space.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/word_spacing.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_space.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@presentation { outline = CMYK 0 0 0 100; fill = CMYK 0 60 25 10;
+  font = "Times-Roman"; font_weight = normal;
+  italics = no; text_size = 0.500; justification = left;
+  char_space = 0; word_space = 100; line_space = 100; }</programlisting>
+Set a presentation, to be used for all subsequent directives, with an outline colour composed of
+100% Black and a fill colour composed of 60% Magenta, 25% Yellow, and 10% Grey.
+The text font is set to normal "Times-Roman" style with no italics.
+The text size is set to 0.500 "units" high and left justified.
+Text will be displayed with no spacing between characters, 100% of the character width
+between words, and 100% of the character height between lines.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+
+</para></example>
+</para></sect2>

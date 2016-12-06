@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_group'> <title>@group</title> <titleabbrev>@group</titleabbrev>
+<para>
+Set a list of keywords to be included as a "macro".
+</para><para>
+Note that the keywords are included in another directive by using the format:
+<userinput>&lt;<replaceable>group_name</replaceable></userinput> in the keyword list.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>group_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Group name for keyword list</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput><replaceable>acceptable_keywords</replaceable></userinput></para></entry>
+<entry colname='type'><para></para></entry>
+<entry colname='desc'><para>Any keywords that are acceptable in the directives that this "macro" is included within can be set here</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@group 
+{
+  group_name       = sample_winds;
+  wind_crossref    = Fpa_Wind;
+  units            = knots;
+  format           = wind_text;
+  table_name       = T1;
+  x_off            = 1;
+}</programlisting>
+Set a "macro" called "sample_winds" containing keywords used in the <link linkend='tx_sample_wind'>@sample_wind</link> directive, given in the example below.
+</para></example>
+</para></sect2>

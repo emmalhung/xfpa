@@ -1,0 +1,31 @@
+# FPA GRIB Ingest Scheduler startup file for FPA users
+
+# NOTE: This file should be copied to the HOME directory and renamed to
+#       .fpaingestrc
+
+# NOTE: We cannot assume that this file will be invoked from the local
+#       environment, so we must be careful to set up a workable environment.
+
+# Do we want to start up or shut down?
+mode=${1:-"startup"}
+
+# Make sure the FPA directory is defined
+export FPA;		FPA=${FPA:-"$HOME/fpav8"}
+export PATH;	PATH=$PATH:$FPA/bin
+
+# Now we set up certain FPA specific environment variables.
+# You may need to edit the file .fpaenvrc if your FPA directories are not the
+# usual ones.
+. $FPA/bin/.fpaenvrc
+
+# The following command(s) start up or shut down the ingest daemon.
+# Note, the former name of the ingest daemon was "newgrib".
+# It is now "fpaingest".
+# Unfortunately, the "fpaingest" program cannot deal with absolute paths for
+# setup files here, so it is necessary to place the setup files that are to be
+# used for ingest control in one of the standard locations (e.g. $HOME/setup),
+# and refer to it by name only.
+# One command of the following form is needed for each required ingest, each
+# using a different setup file.  Note that setup files that access the same FPA
+# database MUST use different "stat" and "log" files in their "ingest" block.
+#	$FPA/bin/fpaingest $mode <setup_file>

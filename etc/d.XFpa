@@ -1,0 +1,714 @@
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!                                                                         !!!
+!!!   Override resource settings for the Forecast Production Assistant V7.x !!!
+!!!                                                                         !!!
+!!!   This will override the initial settings in the default resource file: !!!
+!!!    $FPA/app-defaults/$LANG/XFpa                                         !!!
+!!!                                                                         !!!
+!!!   Copy this file to your home directory, rename to .XFpa and            !!!
+!!!   customize it.                                                         !!!
+!!!                                                                         !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! Begin User Section
+
+!*****************************************************************************
+!
+! Note on colours:
+!
+! There are some differences in the colour tables on various UNIX and Linux
+! platforms. To ensure that a similar set of default colours is displayed, an
+! RGB colour format is used in some locations. Affected colours and their RGB
+! equivalents (hexadecimal) under HPUX include:
+!
+!   MediumForestGreen  RGB:32/81/48
+!   SlateBlue          RGB:7E/88/AB
+!   MediumSlateBlue    RGB:6A/6A/8D
+!
+!*****************************************************************************
+
+!*****************************************************************************
+!
+! Do we want a yes/no confirmation on exit? Allowed values are yes and no.
+! The default is yes.
+!
+!*****************************************************************************
+
+!xfpa.confirmExit: no
+
+!*****************************************************************************
+!
+! The program to use to display the online help can be set by the resource
+! xfpa.onlineHelp.program. If not set the program fpahelp will be used, but
+! this requires gtk-1.2 or below. Any Mozilla project type of browser such as
+! firefox can be used.
+!
+! If the browsers settings do not open the help information in a new tab and
+! this action is desired, set xfpa.onlineHelp.newTab to True.
+!
+!*****************************************************************************
+
+xfpa.onlineHelp.program: firefox
+!xfpa.onlineHelp.newTab: True
+
+!*****************************************************************************
+!
+!  Set how colour is handled. We have five options, each, except for the
+!  default and visualID, with two possible parameters. Only one of the 5
+!  options may be used at any one time.
+!
+!  NOTE: Given that almost all new computers run in 24 bit truecolor this
+!        section is now really not needed but is kept just in case. FPA
+!        should be run in 24 or 32 bit truecolor so the default determination
+!        will work most of the time.
+!
+!  If none of these is specified, or if the specified option is not available
+!  then the program will find the "best" visual that it can to run in. This is
+!  normally the one with the greatest depth.
+!
+!  For those of you with multiple displays (multi-head setups) the
+!  applicationDepth, visualClass and visualID resources can have multiple
+!  entries, one for each screen. The entries are in the form
+!
+!    <screen number>:<value>
+!
+!  Thus we could have for visualID
+!
+!    .visualID:  0:0x21  1:0x25
+!
+!  When run on screen 0, FPA would use the visual with an ID of 0x21 and
+!  when run on screen 1 would use the visual with an ID of 0x25.
+!
+!  The options are:
+!
+!  1. Don't set any of these resource options and FPA will use the "best"
+!     depth, visual and colormap. This is the recommended option.
+!
+!  2. Set FPA to run in a non-default visual and depth. For this we use
+!
+!       .visualClass:      - one of PseudoColor or TrueColor. I strongly
+!                            suggest using PseudoColor only at 8 bit depths.
+!       .applicationDepth: - this depends on the computer that the application
+!                            is running. On HP workstations it is usually one
+!                            of 8, 12 or 24. On PC's running Linux it is usually
+!                            8, 16 or 24. Given present day graphic power there
+!                            is no good reason to not run at 24 bit depth.
+!
+!     The visualClass only needs to be set if there is more than one of these
+!     for the specified depth.
+!
+!  3. Set a specific visual id. For this we use
+!
+!       .visualID: - the visual id number (ie. 0x20).
+!
+!       Information as to the number and identifiers of the visuals available
+!       on any given machine can be obtained by running the program xdpyinfo.
+!
+!  4. Instruct FPA to use a private colormap. Only valid for pseudocolor
+!     visuals (normally 8 bits).
+!
+!       .usePrivateColormap: - either True or False
+!       .ncopyColors:        - this will copy the given number of colours
+!                              from the default colormap to minimize flashing.
+!
+!     Note that there are some older computers with a main screen at 24 bit
+!     truecolor and the second screen 8 bit pseudocolor. In this case the
+!     automatic selection may give the application a private colormap on the
+!     second screen. If this happens seting .ncopyColors to some non-zero
+!     value like 50 will copy the colours on the second screen to reduce
+!     colour flashing.
+!
+!*****************************************************************************
+
+!xfpa.visualID:           0x21
+!xfpa.visualClass:        TrueColor
+!xfpa.applicationDepth:   24
+!xfpa.usePrivateColormap: True
+!xfpa.ncopyColors:        56
+
+!*****************************************************************************
+!
+! Some of the dialogs can be made to appear on a different monitor from the
+! main program when there is more than one screen defined on the system.
+! (Note that one screen can have multiple monitors assigned to it).
+! The following entry defines the order the screens will appear in in the
+! dialog. Without this entry the screens will appear in the order 0.0, 0.1
+! and so on. In order to keep things simple the monitors are assumed
+! to be arranged in order from left to right across the desk. These entries
+! thus define the screens (or X server) assigned to each monitor in the order
+! from left to right. There can be any number of entries, so that three+
+! monitor setups can be accomodated. For example:
+!
+!    .screenList: 0.1 0.0
+!
+! If the system used multiple X servers instead of screens we could have
+!
+!    .screenList: candy:0.0 candy:1.0
+!
+! IMPORTANT: In systems that use multiple X servers they MUST be specified
+!            in this resource file as the program will NOT auto-detect them.
+!
+! If there is only one screen or the default order is ok then just leave
+! this entry commented out.
+!
+!*****************************************************************************
+
+!xfpa.screenList: 0.0 0.1
+
+!*****************************************************************************
+!
+! This sets the size and location of the FPA window when it first appears.
+!
+!*****************************************************************************
+
+xfpa.geometry: 875x982-0+0
+
+!*****************************************************************************
+!
+! Set the icon position. If "iconic" is True then FPA will only appear
+! in its iconified state when it is first run.
+!
+!*****************************************************************************
+
+!xfpa.iconX: -1
+!xfpa.iconY: -1
+!xfpa.iconic: False
+
+!*****************************************************************************
+!
+! The sequence stepping options. The increment choices other than the normal
+! step by step sequence. This list consists of groups of three comma separated
+! items: the label to appear in the selection list, the label to appear between
+! the arrows, and the minimum time step between depictions in minutes.
+!
+!*****************************************************************************
+
+!xfpa.sequenceIncrements: 10 Minutes,10,10,30 Minutes,30,30,1 Hour,1H,60,3 Hours,3H,180
+
+!*****************************************************************************
+!
+! The time interval between guidance animations relative to the T0 depiction
+! time. The list consists of groups of two comma separated items: the label
+! to appear in the selection list and the time interval between animation
+! frames in minutes.
+!
+!*****************************************************************************
+
+!xfpa.guidanceAnimationSteps: 10 Minutes,10,15 Minutes,15,30 Minutes,30,1 Hour,60,3 Hours,180
+
+!*****************************************************************************
+!
+! Attributes for areas, lines and points are displayed in the "right" mouse
+! button context menu as well as in the editor panel. This setting determines
+! the maximum number of attributes that can be in the context menu before it
+! uses more than one column to display the attributes.
+!*****************************************************************************
+
+!xfpa.maxContextMenuColumnLength: 15
+
+!*********** BEGIN TEMP SECTION *********************************************
+!
+!  The following sections are temporary until moved into the Config and/or
+!  presentation files.
+!
+! Set the speed limits and units for displaying all calculated winds.
+! Defaults are 0.5, 200 and "knots"
+
+!xfpa.wind.speedMinimum: 0.5
+!xfpa.wind.speedMaximum: 200
+!xfpa.wind.speedUnits:   knots
+
+! Set the units and label to be used for speed of motion for timelink nodes.
+! Default "knots" and "kt"
+
+!xfpa.tl.speedUnits: knots
+!xfpa.tl.speedLabel: kt
+
+!
+!*********** END TEMP SECTION ************************************************
+
+!*****************************************************************************
+!
+! Set the format in which the date is shown to the user. The formats for
+! hourly and daily fields can be set as well as for those displays which
+! require minutes in the time display. The format string is in the form
+! used by strftime() (see the man page).
+!
+!*****************************************************************************
+
+!xfpa.dailyDateDisplay:  %a, %b %e, %Y
+!xfpa.hourlyDateDisplay: %e %b %H
+!xfpa.minuteDateDisplay: %e %b %H:%M
+
+!*****************************************************************************
+!
+! The following gives the size and location of the window which appears when
+! the user selects the "Preview" option in the Graphic Products Dialog.
+!
+!*****************************************************************************
+
+xfpa*.graphicPreview.geometry: 512x512+0+0
+
+!*****************************************************************************
+!
+! The order of the image types in the imagery dialog can be set here. There
+! are 4 types: radar, satellite, overlay and underlay. The types list must
+! be space separated.
+!
+! imagerySelectionOrder - Sets the left to right order of the image types in
+!                         the selection panel.
+! imagerySettingsOrder  - Sets the top to bottom order of the image types in
+!                         the settings panel.
+!
+!*****************************************************************************
+
+!xfpa.imagerySelectionOrder: overlay radar satellite underlay
+!xfpa.imagerySettingsOrder: overlay radar satellite underlay
+
+!*****************************************************************************
+!
+! Give the name of the program or script that runs the graphics editor
+! used by the graphics products. The form of this entry is:
+!
+!    .<type>Editor: editor <infile>
+!
+! where <type>   is the graphic product type as recognized in the setup file.
+!       editor   is the editor program for the given product and
+!       <infile> is the literal string which indicates that the output file
+!                is to be passed to the editor. Note that some editors cannot
+!                take the available file format as a command line argument.
+!
+! For example, for the type texmet, if the ascii editor gvim was desired,
+! the line could be:
+!
+!    .texmetEditor: gvim <infile>
+!
+!*****************************************************************************
+
+xfpa.texmetEditor: gvim <infile>
+
+!*****************************************************************************
+!
+! Set the time roundoff for the setting of T0. This will roundoff T0 to the
+! nearest time boundary defined by this setting. For example, 6 will result
+! in a T0 to the nearest 6 hour interval. If the current time was 14:36 GMT
+! then T0 would be 12 GMT. Default is 12.
+!
+! Note: This setting should no longer be used as this should be in the
+!       setup file. It is kept for backwards compatability.
+!
+!*****************************************************************************
+
+!xfpa.T0.roundOff: 12
+
+!*****************************************************************************
+!
+!  Set the interval between checks on various data sources in minutes. The
+!  entries may be decimal values (0.5 for one half minute).
+!
+!   viewerUpdateInterval     = Viewer mode updates of the depiction sequence.
+!   guidanceCheckInterval    = Guidance dialog data checks.
+!
+!*****************************************************************************
+
+xfpa.viewerUpdateInterval:  0.5
+xfpa.guidanceCheckInterval: 1
+
+!*****************************************************************************
+!
+! Set 1. The maximum delay between animation frames (milliseconds)
+!     2. The delay between animation loops (milliseconds)
+!
+!*****************************************************************************
+
+xfpa.animationMaxDelay: 1000
+xfpa.animationLoopDelay: 2000
+
+!*****************************************************************************
+!
+! The colours to use in the animation time range limiting widget. This is the
+! selector with two sliders on the same line. The space between the sliders
+! is withinLimitsColor and outside of the sliders is the outsideLimitsColor.
+!
+!*****************************************************************************
+
+xfpa*.timeWindow*.withinLimitsColor:  PaleGreen
+xfpa*.timeWindow*.outsideLimitsColor: IndianRed1
+
+!*****************************************************************************
+!
+! Determines if the visibility state of the fields is saved or not and in
+! what state the visibilities come up. Some sites prefer if they are not so
+! that all fields come up visible. The alowable values are:
+!
+!    ALL_ON          - All fields and groups are turned on when FPA starts.
+!    GROUPS_OFF      - All fields turned on but all groups turned off. (Only
+!                      the fields in the active group will be visible).
+!    USE_SAVED_STATE - Use the last saved state of the visibilities.
+!
+!*****************************************************************************
+
+xfpa.saveFieldVisibilityState: USE_SAVED_STATE
+
+!*****************************************************************************
+!
+!  Ask the user before importing fields from allied models into FPA?
+!
+!*****************************************************************************
+
+xfpa.askBeforeImportingAllied: False
+
+!*****************************************************************************
+!
+!  Set the values to be used in setting the radius of influence of edits
+!  on continuous fields. These must be integer values between 1 and 100. This
+!  corresponds to the minimum radius possible and about one quarter of the
+!  map area respectively. The default setting must be one of the members of
+!  the list in order to work correctly.
+!
+!*****************************************************************************
+
+xfpa.radiusOfInfluenceList:    1 5 10 15 25 50 75 100
+xfpa.radiusOfInfluenceDefault: 25
+
+!*****************************************************************************
+!
+!  Se the values to be used as the size of the "puck" used in modify to
+!  change lines. The puck is the circle which pushes lines around when it
+!  touches them. The size is given as a percentage of from 1 to 100%
+!
+!*****************************************************************************
+
+xfpa.puckSizeList: 5 25 50 75 100
+
+!*****************************************************************************
+!
+!  Set the line smoothing amount list values. These go from 0 to 100. We have
+!  found that 3 is normally enough.
+!
+!*****************************************************************************
+
+xfpa.lineSmoothingAmountList: 0 50 100
+xfpa.lineSmoothingAmountDefault: 50
+
+!*****************************************************************************
+!
+!  How many items can be in the sample item list before showing the 
+!  selection in combo box format rather that a toggle button list.
+!
+!*****************************************************************************
+xfpa.maxSampleItemListLength: 2
+
+!*****************************************************************************
+!
+! These are the default widget colours.
+!
+!*****************************************************************************
+
+! SlateBlue replaced by RGB:7E/88/AB
+xfpa*background: RGB:7E/88/AB
+xfpa*foreground: White
+xfpa*armColorBg: MidnightBlue
+xfpa*armColorFg: White
+xfpa*insensitiveColor: Grey78
+xfpa*borderColor: MidnightBlue
+xfpa*highlightColor: Green
+xfpa*selectBgColor: Green
+xfpa*selectFgColor: Black
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa*XmText.background: RGB:6A/6A/8D
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa*XmTextField.background: RGB:6A/6A/8D
+xfpa.noneditableTextField.background: Grey80
+xfpa*XmToggleButton.selectColor: Green
+xfpa*XmToggleButtonGadget.selectColor: Green
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa*XmComboBox.displayBackground: RGB:6A/6A/8D
+!
+! In order for the unselected tabs to be a different colour
+! from the selected tab we must set the tabSelectColor to
+! the program background and the tabStack background to the
+! required unselected colour.
+!
+! SlateBlue replaced by RGB:7E/88/AB
+xfpa*XmTabStack.tabSelectColor: RGB:7E/88/AB
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa*XmTabStack.background: RGB:6A/6A/8D
+
+! NOTE: There was an error introduced into Motif version 2.3.3 or thereabouts
+!       that causes an Xlib Bad Match error if the tabSelectColor is set if
+!       the tabs are on the right or left hand side. The above must therefore
+!       be set to the default for the main window tab. The bug also means
+!       that the labels can be any colour you want as long as it is black ;-)
+
+xfpa*.mainManager*.tabs.tabSelectColor: COLOR_DYNAMIC
+xfpa*.mainManager*.tabs.background: RGB:7E/88/AB
+
+!*****************************************************************************
+!
+! The following blocks set the colours which will appear in various colour
+! selectors. The names must be those of standard X colour names.
+!
+!*****************************************************************************
+
+! Colours which appear in the colour selector of the guidance edit panel.
+
+xfpa.guidanceColours: Black  Brown SandyBrown ForestGreen RoyalBlue Plum \
+                      Grey50 Red   Goldenrod  PaleGreen   SkyBlue   Magenta \
+                      White  Pink  Yellow     LawnGreen   Cyan      Thistle
+
+! Colours that are found in the scratchpad panel.
+
+xfpa.scratchpadLineColours: Black  Brown SandyBrown ForestGreen RoyalBlue Plum \
+                            Grey50 Red   Goldenrod  PaleGreen   SkyBlue   Magenta \
+                            White  Pink  Bisque     LawnGreen   Cyan      Thistle
+
+xfpa.scratchpadTextColours: Bisque SandyBrown Thistle Magenta Red    Green \
+                            Cyan   SkyBlue    Blue    Black   Grey50 White
+
+!*****************************************************************************
+!
+! Colours which can be selected to define the foreground and background of
+! the default cursor. The names must not have any embedded white space.
+!
+!*****************************************************************************
+
+xfpa.cursorColors: black white red green blue yellow
+
+!*****************************************************************************
+!
+! Set the colour the sample button in the edit panel will turn when selected
+! and set the list of colours which are available as font colours when
+! sampling.
+!
+!*****************************************************************************
+
+xfpa.sampleButtonColor: Red
+xfpa.sampleFontColors:  Yellow SandyBrown Thistle Magenta Red    Green \
+                        Cyan   SkyBlue    Blue    Black   Grey50 White
+
+!*****************************************************************************
+!
+! When allied models are running there is an indicator "clock" which is
+! on the right of the sequence selection bar. These resources set the size
+! (diameter) of the circle in pixels and the colour of the circle and the
+! colour to use to fill in the clock. Note that the special colour keyword
+! "background" can be used for the default background colour.
+!
+!*****************************************************************************
+
+xfpa.productRunningIndicator.size: 18
+xfpa.productRunningIndicator.foreground: white
+xfpa.productRunningIndicator.background: background
+
+!*****************************************************************************
+!
+! When any guidance source is updating there is an indicator light which
+! flashes next to the model running indicator. These set values.
+!
+! .sourceUpdating.FlashTime = The length of time in minutes after a source
+! has finished updating that the indicator light will flash.
+!
+! .sourceUpdating.IndicatorDelay = The length of time in minutes after the
+! user has checked the source status with the "guidance Status..." dialog that
+! the indicator light will not flash even if the source is updating.
+!
+! .sourceUpdating.FlashColour = Colour to flash with.
+!
+!*****************************************************************************
+
+xfpa.sourceUpdating.FlashTime: 10
+xfpa.sourceUpdating.IndicatorDelay: 15
+xfpa.sourceUpdating.FlashColour: Green
+
+!*****************************************************************************
+!
+! These set the colours of the time of arrival display in the guidance
+! status dialog.
+!
+!*****************************************************************************
+
+xfpa.guidanceJustArrived.foreground: black
+xfpa.guidanceJustArrived.background: green
+xfpa.guidanceRecentlyArrived.foreground: black
+xfpa.guidanceRecentlyArrived.background: yellow
+
+!*****************************************************************************
+!
+! Set the color the buttons in some of the dialogs will turn upon
+! certain actions. The editorPanel is for the edit sample button and
+! the rest are used while product generation is proceeding.
+!
+!*****************************************************************************
+
+xfpa.fcstText.generateColor: Red
+xfpa.fcstText.updateColor: Red
+xfpa.pointFcst.generateColor: Red
+xfpa.graphicProducts.generateColor: Red
+
+!*****************************************************************************
+!
+! These define the colors of the matrix of field update buttons in the
+! depiction field update dialog. (The on which appears when the
+! "Update Field ..." selection is made in the "Depiction" pulldown menu)
+!
+!*****************************************************************************
+
+xfpa.fieldUpdate.update: Yellow
+xfpa.fieldUpdate.exists: ForestGreen
+xfpa.fieldUpdate.noField: Red
+
+!*****************************************************************************
+!
+! These define the colors of the matrix of field deletion buttons in the
+! depiction field deletion dialog. (The on which appears when the
+! "Delete ..." selection is made in the "Depiction" pulldown menu)
+!
+!*****************************************************************************
+
+xfpa.deleteFields.keep: ForestGreen
+xfpa.deleteFields.delete: Red
+
+!*****************************************************************************
+!
+! These define the border colors as used by the Depiction Status Dialog to
+! indicate if the Daily and Static fields are older or more recent than the
+! first depiction in the sequence. FScolor0 is more recent, FScolor1 older.
+!
+!*****************************************************************************
+
+xfpa.depictionStatus.FScolor0: white
+xfpa.depictionStatus.FScolor1: yellow
+
+!*****************************************************************************
+!
+! Define the colours to use to indicate that a field does or does not exist
+! at a particular time in the depiction sequence.
+!
+! keys are: noField -> no field exists in the depiction
+!           isField -> the field exists in the depiction
+!           mnField -> the field exists and has a time not on the hour (that
+!                      is the field time contains minutes)
+!
+! The ending ".fg" means foreground and ".bg" means the background colour
+! of the buttons respectively. The strings "foreground" and "background" are
+! valid as colours and set the colour to the default interface foreground and
+! background.
+!
+!*****************************************************************************
+
+xfpa.sequence.noField.bg: background
+xfpa.sequence.noField.fg: Grey30
+! MediumForestGreen replaced by RGB:32/81/48
+xfpa.sequence.isField.bg: RGB:32/81/48
+xfpa.sequence.isField.fg: White
+xfpa.sequence.mnField.bg: SpringGreen
+xfpa.sequence.mnField.fg: Black
+
+! The colour of the buttons that show that the sequence has been time limited
+! by the right mouse button popup menu that appears over the sequence buttons.
+
+xfpa*.seqStartLimitIndicator.background: Red
+xfpa*.seqEndLimitIndicator.background:   Red
+
+!*****************************************************************************
+!
+! Colour coding for daily and static field selection buttons. The lines ending
+! with .fg are for the foreground colour and those ending with a .bg are for
+! the background colour.
+!
+! If these lines are commented out (line starts with !) the buttons
+! will default to the standard foreground and background colours.
+!
+!*****************************************************************************
+
+! The colour of the daily or static field button that is selected.
+
+xfpa.dailyFieldTimeSelect.fg: black
+xfpa.dailyFieldTimeSelect.bg: Yellow
+
+!  The button colour of the daily or static field selection button which
+!  matches the currently selected hourly field. Note that this may not be
+!  the same as the daily or static field selected button. If it is the same
+!  then these colours override the selection colour.
+
+xfpa.dailyFieldTimeMatch.fg: black
+xfpa.dailyFieldTimeMatch.bg: ForestGreen
+
+!*****************************************************************************
+!
+! Colours which show the validity of the guidance field run times.
+!   Ok = The given special time (ie. Current) agrees with the actual run time.
+!   Caution = The field is not current but has been superceeded by a new
+!             more recent run time.
+!   NA = The field is not available anymore.
+!
+!*****************************************************************************
+
+xfpa.guidanceRunOk: green
+xfpa.guidanceRunCaution: yellow
+xfpa.guidanceRunNA: red
+xfpa.guidanceFieldMissing: IndianRed
+
+!*****************************************************************************
+!
+! Colors used by the timelink panel to indicate:
+!
+!    notLinkableColor - field is not linkable
+!    noLinkColor      - field is neither linked or interpolated
+!    partialColor     - field has links but not enough to be interpolated
+!    almostColor      - field is linked but not interpolated
+!    fieldInterpColor - field is linked and interpolated, but not labels
+!    allSetColor      - field is linked and interpolated
+!
+! The ending ".bg" is for the background and ".fg" for the foreground
+! colours respectively.
+!
+!*****************************************************************************
+
+xfpa.noLinkColor.bg: CadetBlue1
+xfpa.noLinkColor.fg: Black
+xfpa.partialColor.bg: RoyalBlue
+xfpa.partialColor.fg: Black
+xfpa.almostColor.bg: GoldenRod
+xfpa.almostColor.fg: Black
+xfpa.fieldInterpColor.bg: Green
+xfpa.fieldInterpColor.fg: Black
+xfpa.allSetColor.bg: ForestGreen
+xfpa.allSetColor.fg: Black
+xfpa.notLinkableColor.bg: IndianRed
+xfpa.notLinkableColor.fg: black
+
+!*****************************************************************************
+!
+! Edit action messages. The format is:
+!
+!   .ingredMessage.<type>.fg: <colour> for foreground colour.
+!   .ingredMessage.<type>.bg: <colour> for background colour.
+!
+! If the foreground or background is not specified then the default
+! colours will be used. If a different font is required then add the line:
+!
+!   *.messageBar.renderTable.fontName: <required font goes here>
+!   *.messageBar.renderTable.fontType: <depends on font>
+!   *.messageBar.renderTable.fontSize: <requirement depends on font>
+!
+!*****************************************************************************
+
+xfpa.ingredMessage.status.fg: Goldenrod
+xfpa.ingredMessage.status.bg: ForestGreen
+xfpa.ingredMessage.prompt.fg: Cyan
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa.ingredMessage.prompt.bg: RGB:6A/6A/8D
+xfpa.ingredMessage.warning.fg: Yellow
+xfpa.ingredMessage.warning.bg: Brown
+xfpa.ingredMessage.error.fg: Yellow
+xfpa.ingredMessage.error.bg: Coral
+xfpa.ingredMessage.system.fg: White
+xfpa.ingredMessage.system.bg: Coral
+
+! End User Section
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+

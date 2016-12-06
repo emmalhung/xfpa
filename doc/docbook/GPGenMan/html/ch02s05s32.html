@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.5.32. @gpgen_group_begin</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s05.html" title="2.5. Complete Description of All PSMet/SVGMet Directives" /><link rel="prev" href="ch02s05s31.html" title="2.5.31. @geography" /><link rel="next" href="ch02s05s33.html" title="2.5.33. @gpgen_group_end" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5.32. @gpgen_group_begin</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s05s31.html">Prev</a> </td><th width="60%" align="center">2.5. Complete Description of All PSMet/SVGMet Directives</th><td width="20%" align="right"> <a accesskey="n" href="ch02s05s33.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ps_gpgen_group_begin"></a>2.5.32. @gpgen_group_begin</h3></div></div></div><p>
+Force grouping of objects for an output graphics file.
+</p><p>
+Note that this directive is not used by PSMet!
+</p><p>
+This directive does not require keywords. You may include format specific keywords that will be added to the grouping tag of the output format.
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3452695"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.51. SVG keywords </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">@gpgen_group_begin { &lt;keyGroup; visibility = 'visible'; }</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Groups all subsequent graphic displays up to next <a href="ch02s05s33.html" title="2.5.33. @gpgen_group_end">@gpgen_group_end</a> directive, and assigns the 'keyword = value' pairs from a group directive (defined in a @loop_begin or @group directives) and 'visibility' value to the grouped elements.
+</p><p xmlns="http://www.w3.org/1999/xhtml">
+keywords in &lt;keyGroup; and 'visibility' will not be valid GPGEN keywords, but they should be valid SVG keywords.
+</p></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s05s31.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s05s33.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.5.31. @geography </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.5.33. @gpgen_group_end</td></tr></table></div></body></html>

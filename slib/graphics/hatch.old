@@ -1,0 +1,85 @@
+	{
+	double	ax, ay, x, y, xo, yo, s, so, xc, yc, sc;
+	int		ipo, no, ip, n, ipc, nc, r;
+
+	if (np <= 0) return;
+
+	/* Equation of family of lines is:  x.sin(a) - y.cos(a) = n.d */
+	ax =  Hsang / Hsize;
+	ay = -Hcang / Hsize;
+
+	/* Start at first point */
+	ipo = 0;
+
+	while (ipo < np)
+		{
+		/* See which band we are in */
+		xo  = (double) plist[ipo][X];
+		yo  = (double) plist[ipo][Y];
+		so  = xo*ax + yo*ay;
+		no  = floor(so);
+
+		/* Search until we cross into another band */
+		for (ip=ipo+1; ip<np; ip++)
+			{
+			x = (double) plist[ip][X];
+			y = (double) plist[ip][Y];
+			s = x*ax + y*ay;
+			n = floor(s);
+
+			/* Only do one where n increases, to avoid drawing twice */
+			if (n > no) break;
+
+			xo = x;
+			yo = y;
+			so = s;
+			}
+
+		/* If we used up all the points, there are no more crossovers */
+		if (ip >= np) break;
+
+		/* Maybe we crossed over more than one */
+		ipc = ip;
+		xc  = x;
+		yc  = y;
+		sc  = s;
+		for (nc=no+1; nc<=n; nc++)
+			{
+
+			/* Find the actual crossover and move */
+			r = (nc-so) / (s-so);
+			x = xo + (x-xo)*r;
+			y = yo + (y-yo)*r;
+			glMove((float)x, (float)y);
+
+			/* Now search until we get back to the original band (no) */
+			xo = xc;
+			yo = yc;
+			so = sc;
+			for (ip=ipc+1; ip<np; ip++)
+				{
+				x = (double) plist[ip][X];
+				y = (double) plist[ip][Y];
+				s = x*ax + y*ay;
+				n = floor(s);
+
+				if (n < nc) break;
+
+				xo = x;
+				yo = y;
+				so = s;
+				}
+
+			/* Find the actual crossover and draw now */
+			r = (nc-so) / (s-so);
+			x = xo + (x-xo)*r;
+			y = yo + (y-yo)*r;
+			/* If there are holes - break this line up here */
+			glDraw((float)x, (float)y);
+			}
+
+		/* Search for the next one */
+		ipo = ipc;
+		}
+	}
+

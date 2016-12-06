@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.1. Config and Config.name</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch06.html" title="Chapter 6. Configuration Files" /><link rel="prev" href="ch06.html" title="Chapter 6. Configuration Files" /><link rel="next" href="ch06s02.html" title="6.2. Presentation and Presentation.name" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.1. Config and Config.<span xmlns="" class="replaceable">name</span></th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Configuration Files</th><td width="20%" align="right"> <a accesskey="n" href="ch06s02.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2053770"></a>6.1. Config and Config.<span xmlns="" class="replaceable">name</span></h2></div></div></div><p>
+<a id="id2053779" class="indexterm"></a>
+The <code class="filename">Config</code> and <code class="filename">Config</code>.<span xmlns="" class="replaceable">name</span> configuration files define information about all files and fields recognized by the <span class="acronym">FPA</span>.
+The <code class="filename">Config</code>.<span xmlns="" class="replaceable">name</span> files are global configuration files containing standard <span class="acronym">FPA</span> information as well as information for specific <span class="acronym">FPA</span> applications.
+The <code class="filename">Config</code> file is a local configuration file which will include one or more of the <code class="filename">Config</code>.<span xmlns="" class="replaceable">name</span> files, as well as contain user-defined changes or additions to these files.
+</p><p>
+A complete description of the format and contents of Config files is given in <a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>.
+Information in the Config files is arranged in blocks.
+The primary blocks are:
+</p><div xmlns="" class="table"><a xmlns="http://www.w3.org/1999/xhtml" id="id2053878"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Table 6.1. Primary blocks of config files.</b></p><table xmlns="http://www.w3.org/1999/xhtml" summary="Primary blocks of config files." border="1"><colgroup><col /><col /></colgroup><thead><tr><th>name</th><th>usage</th></tr></thead><tbody><tr valign="top"><td valign="top">Elements</td><td valign="top">any meteorological parameter</td></tr><tr valign="top"><td valign="top">Levels</td><td valign="top">levels of the atmosphere</td></tr><tr valign="top"><td valign="top">Fields</td><td valign="top">an element at a specific level</td></tr><tr valign="top"><td valign="top">Groups</td><td valign="top">grouping for lists of Fields or Elements</td></tr><tr valign="top"><td valign="top">CrossRefs</td><td valign="top">identifying special methods to calculate Values or Winds</td></tr><tr valign="top"><td valign="top">Samples</td><td valign="top">identifying special methods to sample Values or Winds</td></tr><tr valign="top"><td valign="top">Sources</td><td valign="top">sources of input or output data</td></tr><tr valign="top"><td valign="top">Constants</td><td valign="top">meteorological values used in equations</td></tr><tr valign="top"><td valign="top">Units</td><td valign="top">units and conversions to <span class="acronym">MKS</span></td></tr></tbody></table></div><p>
+</p><p>
+The <code class="filename">Config</code> file may contain as many blocks as desired, and blocks can be repeated if required.
+Each block contains a number of members, and information for those members is identified by keywords.
+The first reference to a member of a block controls the order of that member in any lists for that block, and the last reference to a member controls the values for any given keyword.
+Placing information later in a <code class="filename">Config</code> file therefore overrides any information that has been identified earlier.
+</p><p>
+The general format of the <code class="filename">Config</code> files is:
+</p><pre class="programlisting">revision <span xmlns="" class="replaceable">revision_number</span>
+include <span xmlns="" class="replaceable">filename</span>
+include <span xmlns="" class="replaceable">filename</span>
+<span xmlns="" class="replaceable">block_name</span>
+  {
+  <span xmlns="" class="replaceable">member_name</span>
+    {
+    <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value(s)</span>
+      OR
+    <span xmlns="" class="replaceable">keyword</span> =
+      {
+      <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value(s)</span>
+      }
+    }
+  }
+</pre><p>
+</p><p>
+In some cases, there are also <span xmlns="" class="replaceable">sub_block_name</span> or <span xmlns="" class="replaceable">sub_member_name</span> sections, but this general format is seen throughout.
+<a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a> identifies the recognized keywords for all Config file information.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>that the code for reading the Config files is fairly simplistic, and that the format is important.
+For example,
+</p><div class="itemizedlist"><ul type="disc"><li><p>all '{' or '}' characters must be located on their own lines, </p></li><li><p>the '=' must be separated from the rest of the line by white space, and</p></li><li><p>line continuations '\' must be used if the <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value(s)</span> format will not fit on one line.</p></li></ul></div><p>
+</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 6. Configuration Files </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.2. Presentation and Presentation.<span xmlns="" class="replaceable">name</span></td></tr></table></div></body></html>

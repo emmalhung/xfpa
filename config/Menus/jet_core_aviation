@@ -1,0 +1,29 @@
+# Entry menu description file for Aviation Jet Core
+
+menu_title           = Aviation Jet Core Speed Entry Menu
+geometry             =  -650 -300 700 500
+label_display_height =  1
+value_display_height =  3
+
+panel "Jet Core Speed"
+{
+	# Jet Core Speed - label
+	spinbox
+	{
+		attribute_id = jet_core_speed
+		label        = Jet Core Speed
+		position     = 20 30
+		value_max    = 350
+		value_min    =  50
+		increment    =  10
+		default      = 100
+		ncolumns     = 5
+		nrows        = 1
+	}
+	clear_btn
+	{
+		label             = << Reset
+		position          = 355 33
+		attribute_id_list = jet_core_speed
+	}
+}

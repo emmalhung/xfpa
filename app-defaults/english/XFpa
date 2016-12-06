@@ -1,0 +1,2394 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!                                                                         !!!
+!!!   Main resource settings for the Forecast Production Assistant V8.x     !!!
+!!!   using Motif 2.3.0 and above.                                          !!!
+!!!                                                                         !!!
+!!!   Everything from here on down to where it says the user should not     !!!
+!!!   modify anything else could be put in the users .profile and put       !!!
+!!!   into the X resource database with xrdb.  If there are users with      !!!
+!!!   colour blindness problems the entire interface could be set to their  !!!
+!!!   individual needs.  Colours within the map window will need to be set  !!!
+!!!   by use of the Presentation file to be found within the FPA config     !!!
+!!!   directory (See System Manager's Manual).                              !!!
+!!!                                                                         !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! The following line is required by the script which extracts the user
+! modifable portion of this resource file and creates the d.XFpa file.
+! Note that the end user section terminates the block.
+
+! Begin User Section
+
+!*****************************************************************************
+!
+! Note on colours:
+!
+! There are some differences in the colour tables on various UNIX and Linux
+! platforms. To ensure that a similar set of default colours is displayed, an
+! RGB colour format is used in some locations. Affected colours and their RGB
+! equivalents (hexadecimal) under HPUX include:
+!
+!   MediumForestGreen  RGB:32/81/48
+!   SlateBlue          RGB:7E/88/AB
+!   MediumSlateBlue    RGB:6A/6A/8D
+!
+!*****************************************************************************
+
+!*****************************************************************************
+!
+! Do we want a yes/no confirmation on exit? Allowed values are yes and no.
+! The default is yes.
+!
+!*****************************************************************************
+
+!xfpa.confirmExit: no
+
+!*****************************************************************************
+!
+! The program to use to display the online help can be set by the resource
+! xfpa.onlineHelp.program. If not set the program fpahelp will be used, but
+! this requires gtk-1.2 or below. Any Mozilla project type of browser such as
+! firefox can be used.
+!
+! If the browsers settings do not open the help information in a new tab and
+! this action is desired, set xfpa.onlineHelp.newTab to True.
+!
+!*****************************************************************************
+
+xfpa.onlineHelp.program: firefox
+!xfpa.onlineHelp.newTab: True
+
+!*****************************************************************************
+!
+!  Set how colour is handled. We have five options, each, except for the
+!  default and visualID, with two possible parameters. Only one of the 5
+!  options may be used at any one time.
+!
+!  NOTE: Given that almost all new computers run in 24 bit truecolor this
+!        section is now really not needed but is kept just in case. FPA
+!        should be run in 24 or 32 bit truecolor so the default determination
+!        will work most of the time.
+!
+!  If none of these is specified, or if the specified option is not available
+!  then the program will find the "best" visual that it can to run in. This is
+!  normally the one with the greatest depth.
+!
+!  For those of you with multiple displays (multi-head setups) the
+!  applicationDepth, visualClass and visualID resources can have multiple
+!  entries, one for each screen. The entries are in the form
+!
+!    <screen number>:<value>
+!
+!  Thus we could have for visualID
+!
+!    .visualID:  0:0x21  1:0x25
+!
+!  When run on screen 0, FPA would use the visual with an ID of 0x21 and
+!  when run on screen 1 would use the visual with an ID of 0x25.
+!
+!  The options are:
+!
+!  1. Don't set any of these resource options and FPA will use the "best"
+!     depth, visual and colormap. This is the recommended option.
+!
+!  2. Set FPA to run in a non-default visual and depth. For this we use
+!
+!       .visualClass:      - one of PseudoColor or TrueColor. I strongly
+!                            suggest using PseudoColor only at 8 bit depths.
+!       .applicationDepth: - this depends on the computer that the application
+!                            is running. On HP workstations it is usually one
+!                            of 8, 12 or 24. On PC's running Linux it is usually
+!                            8, 16 or 24. Given present day graphic power there
+!                            is no good reason to not run at 24 bit depth.
+!
+!     The visualClass only needs to be set if there is more than one of these
+!     for the specified depth.
+!
+!  3. Set a specific visual id. For this we use
+!
+!       .visualID: - the visual id number (ie. 0x20).
+!
+!       Information as to the number and identifiers of the visuals available
+!       on any given machine can be obtained by running the program xdpyinfo.
+!
+!  4. Instruct FPA to use a private colormap. Only valid for pseudocolor
+!     visuals (normally 8 bits).
+!
+!       .usePrivateColormap: - either True or False
+!       .ncopyColors:        - this will copy the given number of colours
+!                              from the default colormap to minimize flashing.
+!
+!     Note that there are some older computers with a main screen at 24 bit
+!     truecolor and the second screen 8 bit pseudocolor. In this case the
+!     automatic selection may give the application a private colormap on the
+!     second screen. If this happens seting .ncopyColors to some non-zero
+!     value like 50 will copy the colours on the second screen to reduce
+!     colour flashing.
+!
+!*****************************************************************************
+
+!xfpa.visualID:           0x21
+!xfpa.visualClass:        TrueColor
+!xfpa.applicationDepth:   24
+!xfpa.usePrivateColormap: True
+!xfpa.ncopyColors:        56
+
+!*****************************************************************************
+!
+! Some of the dialogs can be made to appear on a different monitor from the
+! main program when there is more than one screen defined on the system.
+! (Note that one screen can have multiple monitors assigned to it).
+! The following entry defines the order the screens will appear in in the
+! dialog. Without this entry the screens will appear in the order 0.0, 0.1
+! and so on. In order to keep things simple the monitors are assumed
+! to be arranged in order from left to right across the desk. These entries
+! thus define the screens (or X server) assigned to each monitor in the order
+! from left to right. There can be any number of entries, so that three+
+! monitor setups can be accomodated. For example:
+!
+!    .screenList: 0.1 0.0
+!
+! If the system used multiple X servers instead of screens we could have
+!
+!    .screenList: candy:0.0 candy:1.0
+!
+! IMPORTANT: In systems that use multiple X servers they MUST be specified
+!            in this resource file as the program will NOT auto-detect them.
+!
+! If there is only one screen or the default order is ok then just leave
+! this entry commented out.
+!
+!*****************************************************************************
+
+!xfpa.screenList: 0.0 0.1
+
+!*****************************************************************************
+!
+! This sets the size and location of the FPA window when it first appears.
+!
+!*****************************************************************************
+
+xfpa.geometry: 875x982-0+0
+
+!*****************************************************************************
+!
+! Set the icon position. If "iconic" is True then FPA will only appear
+! in its iconified state when it is first run.
+!
+!*****************************************************************************
+
+!xfpa.iconX: -1
+!xfpa.iconY: -1
+!xfpa.iconic: False
+
+!*****************************************************************************
+!
+! The sequence stepping options. The increment choices other than the normal
+! step by step sequence. This list consists of groups of three comma separated
+! items: the label to appear in the selection list, the label to appear between
+! the arrows, and the minimum time step between depictions in minutes.
+!
+!*****************************************************************************
+
+!xfpa.sequenceIncrements: 10 Minutes,10,10,30 Minutes,30,30,1 Hour,1H,60,3 Hours,3H,180
+
+!*****************************************************************************
+!
+! The time interval between guidance animations relative to the T0 depiction
+! time. The list consists of groups of two comma separated items: the label
+! to appear in the selection list and the time interval between animation
+! frames in minutes.
+!
+!*****************************************************************************
+
+!xfpa.guidanceAnimationSteps: 10 Minutes,10,15 Minutes,15,30 Minutes,30,1 Hour,60,3 Hours,180
+
+!*****************************************************************************
+!
+! Attributes for areas, lines and points are displayed in the "right" mouse
+! button context menu as well as in the editor panel. This setting determines
+! the maximum number of attributes that can be in the context menu before it
+! uses more than one column to display the attributes.
+!*****************************************************************************
+
+!xfpa.maxContextMenuColumnLength: 15
+
+!*********** BEGIN TEMP SECTION *********************************************
+!
+!  The following sections are temporary until moved into the Config and/or
+!  presentation files.
+!
+! Set the speed limits and units for displaying all calculated winds.
+! Defaults are 0.5, 200 and "knots"
+
+!xfpa.wind.speedMinimum: 0.5
+!xfpa.wind.speedMaximum: 200
+!xfpa.wind.speedUnits:   knots
+
+! Set the units and label to be used for speed of motion for timelink nodes.
+! Default "knots" and "kt"
+
+!xfpa.tl.speedUnits: knots
+!xfpa.tl.speedLabel: kt
+
+!
+!*********** END TEMP SECTION ************************************************
+
+!*****************************************************************************
+!
+! Set the format in which the date is shown to the user. The formats for
+! hourly and daily fields can be set as well as for those displays which
+! require minutes in the time display. The format string is in the form
+! used by strftime() (see the man page).
+!
+!*****************************************************************************
+
+!xfpa.dailyDateDisplay:  %a, %b %e, %Y
+!xfpa.hourlyDateDisplay: %e %b %H
+!xfpa.minuteDateDisplay: %e %b %H:%M
+
+!*****************************************************************************
+!
+! The following gives the size and location of the window which appears when
+! the user selects the "Preview" option in the Graphic Products Dialog.
+!
+!*****************************************************************************
+
+xfpa*.graphicPreview.geometry: 512x512+0+0
+
+!*****************************************************************************
+!
+! The order of the image types in the imagery dialog can be set here. There
+! are 4 types: radar, satellite, overlay and underlay. The types list must
+! be space separated.
+!
+! imagerySelectionOrder - Sets the left to right order of the image types in
+!                         the selection panel.
+! imagerySettingsOrder  - Sets the top to bottom order of the image types in
+!                         the settings panel.
+!
+!*****************************************************************************
+
+!xfpa.imagerySelectionOrder: overlay radar satellite underlay
+!xfpa.imagerySettingsOrder: overlay radar satellite underlay
+
+!*****************************************************************************
+!
+! Give the name of the program or script that runs the graphics editor
+! used by the graphics products. The form of this entry is:
+!
+!    .<type>Editor: editor <infile>
+!
+! where <type>   is the graphic product type as recognized in the setup file.
+!       editor   is the editor program for the given product and
+!       <infile> is the literal string which indicates that the output file
+!                is to be passed to the editor. Note that some editors cannot
+!                take the available file format as a command line argument.
+!
+! For example, for the type texmet, if the ascii editor gvim was desired,
+! the line could be:
+!
+!    .texmetEditor: gvim <infile>
+!
+!*****************************************************************************
+
+xfpa.texmetEditor: gvim <infile>
+
+!*****************************************************************************
+!
+! Set the time roundoff for the setting of T0. This will roundoff T0 to the
+! nearest time boundary defined by this setting. For example, 6 will result
+! in a T0 to the nearest 6 hour interval. If the current time was 14:36 GMT
+! then T0 would be 12 GMT. Default is 12.
+!
+! Note: This setting should no longer be used as this should be in the
+!       setup file. It is kept for backwards compatability.
+!
+!*****************************************************************************
+
+!xfpa.T0.roundOff: 12
+
+!*****************************************************************************
+!
+!  Set the interval between checks on various data sources in minutes. The
+!  entries may be decimal values (0.5 for one half minute).
+!
+!   viewerUpdateInterval     = Viewer mode updates of the depiction sequence.
+!   guidanceCheckInterval    = Guidance dialog data checks.
+!
+!*****************************************************************************
+
+xfpa.viewerUpdateInterval:  0.5
+xfpa.guidanceCheckInterval: 1
+
+!*****************************************************************************
+!
+! Set 1. The maximum delay between animation frames (milliseconds)
+!     2. The delay between animation loops (milliseconds)
+!
+!*****************************************************************************
+
+xfpa.animationMaxDelay: 1000
+xfpa.animationLoopDelay: 2000
+
+!*****************************************************************************
+!
+! The colours to use in the animation time range limiting widget. This is the
+! selector with two sliders on the same line. The space between the sliders
+! is withinLimitsColor and outside of the sliders is the outsideLimitsColor.
+!
+!*****************************************************************************
+
+xfpa*.timeWindow*.withinLimitsColor:  PaleGreen
+xfpa*.timeWindow*.outsideLimitsColor: IndianRed1
+
+!*****************************************************************************
+!
+! Determines if the visibility state of the fields is saved or not and in
+! what state the visibilities come up. Some sites prefer if they are not so
+! that all fields come up visible. The alowable values are:
+!
+!    ALL_ON          - All fields and groups are turned on when FPA starts.
+!    GROUPS_OFF      - All fields turned on but all groups turned off. (Only
+!                      the fields in the active group will be visible).
+!    USE_SAVED_STATE - Use the last saved state of the visibilities.
+!
+!*****************************************************************************
+
+xfpa.saveFieldVisibilityState: USE_SAVED_STATE
+
+!*****************************************************************************
+!
+!  Ask the user before importing fields from allied models into FPA?
+!
+!*****************************************************************************
+
+xfpa.askBeforeImportingAllied: False
+
+!*****************************************************************************
+!
+!  Set the values to be used in setting the radius of influence of edits
+!  on continuous fields. These must be integer values between 1 and 100. This
+!  corresponds to the minimum radius possible and about one quarter of the
+!  map area respectively. The default setting must be one of the members of
+!  the list in order to work correctly.
+!
+!*****************************************************************************
+
+xfpa.radiusOfInfluenceList:    1 5 10 15 25 50 75 100
+xfpa.radiusOfInfluenceDefault: 25
+
+!*****************************************************************************
+!
+!  Se the values to be used as the size of the "puck" used in modify to
+!  change lines. The puck is the circle which pushes lines around when it
+!  touches them. The size is given as a percentage of from 1 to 100%
+!
+!*****************************************************************************
+
+xfpa.puckSizeList: 5 25 50 75 100
+
+!*****************************************************************************
+!
+!  Set the line smoothing amount list values. These go from 0 to 100. We have
+!  found that 3 is normally enough.
+!
+!*****************************************************************************
+
+xfpa.lineSmoothingAmountList: 0 50 100
+xfpa.lineSmoothingAmountDefault: 50
+
+!*****************************************************************************
+!
+!  How many items can be in the sample item list before showing the 
+!  selection in combo box format rather that a toggle button list.
+!
+!*****************************************************************************
+xfpa.maxSampleItemListLength: 2
+
+!*****************************************************************************
+!
+! These are the default widget colours.
+!
+!*****************************************************************************
+
+! SlateBlue replaced by RGB:7E/88/AB
+xfpa*background: RGB:7E/88/AB
+xfpa*foreground: White
+xfpa*armColorBg: MidnightBlue
+xfpa*armColorFg: White
+xfpa*insensitiveColor: Grey78
+xfpa*borderColor: MidnightBlue
+xfpa*highlightColor: Green
+xfpa*selectBgColor: Green
+xfpa*selectFgColor: Black
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa*XmText.background: RGB:6A/6A/8D
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa*XmTextField.background: RGB:6A/6A/8D
+xfpa.noneditableTextField.background: Grey80
+xfpa*XmToggleButton.selectColor: Green
+xfpa*XmToggleButtonGadget.selectColor: Green
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa*XmComboBox.displayBackground: RGB:6A/6A/8D
+!
+! In order for the unselected tabs to be a different colour
+! from the selected tab we must set the tabSelectColor to
+! the program background and the tabStack background to the
+! required unselected colour.
+!
+! SlateBlue replaced by RGB:7E/88/AB
+xfpa*XmTabStack.tabSelectColor: RGB:7E/88/AB
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa*XmTabStack.background: RGB:6A/6A/8D
+
+! NOTE: There was an error introduced into Motif version 2.3.3 or thereabouts
+!       that causes an Xlib Bad Match error if the tabSelectColor is set if
+!       the tabs are on the right or left hand side. The above must therefore
+!       be set to the default for the main window tab. The bug also means
+!       that the labels can be any colour you want as long as it is black ;-)
+
+xfpa*.mainManager*.tabs.tabSelectColor: COLOR_DYNAMIC
+xfpa*.mainManager*.tabs.background: RGB:7E/88/AB
+
+!*****************************************************************************
+!
+! The following blocks set the colours which will appear in various colour
+! selectors. The names must be those of standard X colour names.
+!
+!*****************************************************************************
+
+! Colours which appear in the colour selector of the guidance edit panel.
+
+xfpa.guidanceColours: Black  Brown SandyBrown ForestGreen RoyalBlue Plum \
+                      Grey50 Red   Goldenrod  PaleGreen   SkyBlue   Magenta \
+                      White  Pink  Yellow     LawnGreen   Cyan      Thistle
+
+! Colours that are found in the scratchpad panel.
+
+xfpa.scratchpadLineColours: Black  Brown SandyBrown ForestGreen RoyalBlue Plum \
+                            Grey50 Red   Goldenrod  PaleGreen   SkyBlue   Magenta \
+                            White  Pink  Bisque     LawnGreen   Cyan      Thistle
+
+xfpa.scratchpadTextColours: Bisque SandyBrown Thistle Magenta Red    Green \
+                            Cyan   SkyBlue    Blue    Black   Grey50 White
+
+!*****************************************************************************
+!
+! Colours which can be selected to define the foreground and background of
+! the default cursor. The names must not have any embedded white space.
+!
+!*****************************************************************************
+
+xfpa.cursorColors: black white red green blue yellow
+
+!*****************************************************************************
+!
+! Set the colour the sample button in the edit panel will turn when selected
+! and set the list of colours which are available as font colours when
+! sampling.
+!
+!*****************************************************************************
+
+xfpa.sampleButtonColor: Red
+xfpa.sampleFontColors:  Yellow SandyBrown Thistle Magenta Red    Green \
+                        Cyan   SkyBlue    Blue    Black   Grey50 White
+
+!*****************************************************************************
+!
+! When allied models are running there is an indicator "clock" which is
+! on the right of the sequence selection bar. These resources set the size
+! (diameter) of the circle in pixels and the colour of the circle and the
+! colour to use to fill in the clock. Note that the special colour keyword
+! "background" can be used for the default background colour.
+!
+!*****************************************************************************
+
+xfpa.productRunningIndicator.size: 18
+xfpa.productRunningIndicator.foreground: white
+xfpa.productRunningIndicator.background: background
+
+!*****************************************************************************
+!
+! When any guidance source is updating there is an indicator light which
+! flashes next to the model running indicator. These set values.
+!
+! .sourceUpdating.FlashTime = The length of time in minutes after a source
+! has finished updating that the indicator light will flash.
+!
+! .sourceUpdating.IndicatorDelay = The length of time in minutes after the
+! user has checked the source status with the "guidance Status..." dialog that
+! the indicator light will not flash even if the source is updating.
+!
+! .sourceUpdating.FlashColour = Colour to flash with.
+!
+!*****************************************************************************
+
+xfpa.sourceUpdating.FlashTime: 10
+xfpa.sourceUpdating.IndicatorDelay: 15
+xfpa.sourceUpdating.FlashColour: Green
+
+!*****************************************************************************
+!
+! These set the colours of the time of arrival display in the guidance
+! status dialog.
+!
+!*****************************************************************************
+
+xfpa.guidanceJustArrived.foreground: black
+xfpa.guidanceJustArrived.background: green
+xfpa.guidanceRecentlyArrived.foreground: black
+xfpa.guidanceRecentlyArrived.background: yellow
+
+!*****************************************************************************
+!
+! Set the color the buttons in some of the dialogs will turn upon
+! certain actions. The editorPanel is for the edit sample button and
+! the rest are used while product generation is proceeding.
+!
+!*****************************************************************************
+
+xfpa.fcstText.generateColor: Red
+xfpa.fcstText.updateColor: Red
+xfpa.pointFcst.generateColor: Red
+xfpa.graphicProducts.generateColor: Red
+
+!*****************************************************************************
+!
+! These define the colors of the matrix of field update buttons in the
+! depiction field update dialog. (The on which appears when the
+! "Update Field ..." selection is made in the "Depiction" pulldown menu)
+!
+!*****************************************************************************
+
+xfpa.fieldUpdate.update: Yellow
+xfpa.fieldUpdate.exists: ForestGreen
+xfpa.fieldUpdate.noField: Red
+
+!*****************************************************************************
+!
+! These define the colors of the matrix of field deletion buttons in the
+! depiction field deletion dialog. (The on which appears when the
+! "Delete ..." selection is made in the "Depiction" pulldown menu)
+!
+!*****************************************************************************
+
+xfpa.deleteFields.keep: ForestGreen
+xfpa.deleteFields.delete: Red
+
+!*****************************************************************************
+!
+! These define the border colors as used by the Depiction Status Dialog to
+! indicate if the Daily and Static fields are older or more recent than the
+! first depiction in the sequence. FScolor0 is more recent, FScolor1 older.
+!
+!*****************************************************************************
+
+xfpa.depictionStatus.FScolor0: white
+xfpa.depictionStatus.FScolor1: yellow
+
+!*****************************************************************************
+!
+! Define the colours to use to indicate that a field does or does not exist
+! at a particular time in the depiction sequence.
+!
+! keys are: noField -> no field exists in the depiction
+!           isField -> the field exists in the depiction
+!           mnField -> the field exists and has a time not on the hour (that
+!                      is the field time contains minutes)
+!
+! The ending ".fg" means foreground and ".bg" means the background colour
+! of the buttons respectively. The strings "foreground" and "background" are
+! valid as colours and set the colour to the default interface foreground and
+! background.
+!
+!*****************************************************************************
+
+xfpa.sequence.noField.bg: background
+xfpa.sequence.noField.fg: Grey30
+! MediumForestGreen replaced by RGB:32/81/48
+xfpa.sequence.isField.bg: RGB:32/81/48
+xfpa.sequence.isField.fg: White
+xfpa.sequence.mnField.bg: SpringGreen
+xfpa.sequence.mnField.fg: Black
+
+! The colour of the buttons that show that the sequence has been time limited
+! by the right mouse button popup menu that appears over the sequence buttons.
+
+xfpa*.seqStartLimitIndicator.background: Red
+xfpa*.seqEndLimitIndicator.background:   Red
+
+!*****************************************************************************
+!
+! Colour coding for daily and static field selection buttons. The lines ending
+! with .fg are for the foreground colour and those ending with a .bg are for
+! the background colour.
+!
+! If these lines are commented out (line starts with !) the buttons
+! will default to the standard foreground and background colours.
+!
+!*****************************************************************************
+
+! The colour of the daily or static field button that is selected.
+
+xfpa.dailyFieldTimeSelect.fg: black
+xfpa.dailyFieldTimeSelect.bg: Yellow
+
+!  The button colour of the daily or static field selection button which
+!  matches the currently selected hourly field. Note that this may not be
+!  the same as the daily or static field selected button. If it is the same
+!  then these colours override the selection colour.
+
+xfpa.dailyFieldTimeMatch.fg: black
+xfpa.dailyFieldTimeMatch.bg: ForestGreen
+
+!*****************************************************************************
+!
+! Colours which show the validity of the guidance field run times.
+!   Ok = The given special time (ie. Current) agrees with the actual run time.
+!   Caution = The field is not current but has been superceeded by a new
+!             more recent run time.
+!   NA = The field is not available anymore.
+!
+!*****************************************************************************
+
+xfpa.guidanceRunOk: green
+xfpa.guidanceRunCaution: yellow
+xfpa.guidanceRunNA: red
+xfpa.guidanceFieldMissing: IndianRed
+
+!*****************************************************************************
+!
+! Colors used by the timelink panel to indicate:
+!
+!    notLinkableColor - field is not linkable
+!    noLinkColor      - field is neither linked or interpolated
+!    partialColor     - field has links but not enough to be interpolated
+!    almostColor      - field is linked but not interpolated
+!    fieldInterpColor - field is linked and interpolated, but not labels
+!    allSetColor      - field is linked and interpolated
+!
+! The ending ".bg" is for the background and ".fg" for the foreground
+! colours respectively.
+!
+!*****************************************************************************
+
+xfpa.noLinkColor.bg: CadetBlue1
+xfpa.noLinkColor.fg: Black
+xfpa.partialColor.bg: RoyalBlue
+xfpa.partialColor.fg: Black
+xfpa.almostColor.bg: GoldenRod
+xfpa.almostColor.fg: Black
+xfpa.fieldInterpColor.bg: Green
+xfpa.fieldInterpColor.fg: Black
+xfpa.allSetColor.bg: ForestGreen
+xfpa.allSetColor.fg: Black
+xfpa.notLinkableColor.bg: IndianRed
+xfpa.notLinkableColor.fg: black
+
+!*****************************************************************************
+!
+! Edit action messages. The format is:
+!
+!   .ingredMessage.<type>.fg: <colour> for foreground colour.
+!   .ingredMessage.<type>.bg: <colour> for background colour.
+!
+! If the foreground or background is not specified then the default
+! colours will be used. If a different font is required then add the line:
+!
+!   *.messageBar.renderTable.fontName: <required font goes here>
+!   *.messageBar.renderTable.fontType: <depends on font>
+!   *.messageBar.renderTable.fontSize: <requirement depends on font>
+!
+!*****************************************************************************
+
+xfpa.ingredMessage.status.fg: Goldenrod
+xfpa.ingredMessage.status.bg: ForestGreen
+xfpa.ingredMessage.prompt.fg: Cyan
+! MediumSlateBlue replaced by RGB:6A/6A/8D
+xfpa.ingredMessage.prompt.bg: RGB:6A/6A/8D
+xfpa.ingredMessage.warning.fg: Yellow
+xfpa.ingredMessage.warning.bg: Brown
+xfpa.ingredMessage.error.fg: Yellow
+xfpa.ingredMessage.error.bg: Coral
+xfpa.ingredMessage.system.fg: White
+xfpa.ingredMessage.system.bg: Coral
+
+! End User Section
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!    Everything else following this comment should NOT be modified by the
+!    user unless they are VERY sure of what they are doing! We take no
+!    responsibility for the results if you do!
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!  The following is the list of languages available. These key words are NOT to be
+!  translated. There must be a resource file associated with the language and the
+!  resource file is expected to be found in a directory app-defaults/<language>.
+!
+!  NOTE: The first language in the list is taken as the default so this will vary
+!  with the resource file.
+
+xfpa.languages: english french
+
+!  This gives the labels for the above languages.
+
+xfpa*.english.labelString: English
+xfpa*.french.labelString:  French
+
+! Conserve memory in the target machine?
+
+xfpa.conserveMemory: True
+
+!  Set the mail address to which to send bug reports and change requests from
+!  within FPA.  If this address is not given then the pulldown menu items
+!  for the mailer will not appear in the main menu.
+
+xfpa.mailAddress: fpa@ec.gc.ca
+
+! GENERAL NOTE ON FONTS
+!
+!  Unlike the font specifications for motif which use a render table, fonts here
+!  are used by the graphics library
+
+! The default font if any specified font cannot be found
+
+xfpa.defaultFont: XFT:DejaVu sans
+
+!  Default fonts used in the map area (where all of the graphics are displayed).
+!  The program has a hard codes set of defaults but these can be overriden here.
+!  The syntax is key=description, key=description, ... The key names of the fonts
+!  that can be redefined are:
+!
+!     fixed, fixed_bold,
+!     sans_serif, sans_serif_bold, sans_serif_italic, sans_serif_bold_italic,
+!     serif, serif_bold, serif_italic and serif_bold_italic.
+
+xfpa.defaultMapFonts: fixed = XFT:DejaVu sans mono,\
+                      fixed_bold = XFT:DejaVu sans mono:Bold,\
+                      sans_serif = XFT:DejaVu sans,\
+                      sans_serif_bold = XFT:DejaVu sans:Bold,\
+                      sans_serif_italic = XFT:DejaVu sans:Italic,\
+                      sans_serif_bold_italic = XFT:DejaVu sans:Bold:Italic,\
+                      serif = XFT:DejaVu Serif,\
+                      serif_bold = XFT:DejaVu Serif:Bold,\
+                      serif_italic = XFT:DejaVu Serif:Italic,\
+                      serif_bold_italic = XFT:DejaVu Serif:Bold:Italic
+
+
+!  Fonts selectable by the user for on map text that are provided in the
+!  scratchpad and sampling panels.
+!
+!  The first line is a list of "tags", defined above, which are used internally
+!  to list and recognize the fonts. 
+!
+!  The second line specifies a list of font descriptions that correspond to the
+!  font tags listed on the first line. 
+!
+!  The third line gives the list of font sizes which are available and the
+!  fourth line gives the labels to use for the font sizes for display to the
+!  user. The font sizes are a percentage of the visible map size and the
+!  fontSizeLabels should be something that the user can relate to. Make sure
+!  that there are as many size labels as there are sizes.
+!
+!  The following lines provide a user label for each of the font tags. 
+
+xfpa.fontsAvailable: sansSerif, sansSerifBold
+xfpa.fontsDescription: DejaVu Sans, DejaVu Sans:Bold
+xfpa.fontSizesAvailable: 1.5 ,1.75 ,  2  ,2.25 ,  2.5 , 2.75 ,  3.0 ,  3.25
+xfpa.fontSizeLabels:    " 2 "," 4 "," 6 "," 8 "," 10 "," 12 "," 14 "," 16 "
+! Font selection labels to show to the user that correspond to fontsAvalilable
+xfpa*.sansSerif.labelString: Normal
+xfpa*.sansSerifBold.labelString: Bold
+
+
+!  Fonts used in the motif interface.
+
+xfpa*.renderTable: italic,large,large_bold,small,small_bold,small_italic,very_small,hour_font,minute_font				
+
+xfpa*.renderTable.italic.fontName: DejaVu Sans
+xfpa*.renderTable.italic.fontType: FONT_IS_XFT
+xfpa*.renderTable.italic.fontSize: 10
+xfpa*.renderTable.italic.fontStyle: italic
+xfpa*.renderTable.italic.loadModel: LOAD_DEFERRED
+
+xfpa*.renderTable.large.fontName: DejaVu Sans
+xfpa*.renderTable.large.fontType: FONT_IS_XFT
+xfpa*.renderTable.large.fontSize: 12
+xfpa*.renderTable.large.loadModel: LOAD_DEFERRED
+
+xfpa*.renderTable.large_bold.fontName: DejaVu Sans
+xfpa*.renderTable.large_bold.fontType: FONT_IS_XFT
+xfpa*.renderTable.large_bold.fontSize: 12
+xfpa*.renderTable.large_bold.fontStyle: Bold
+xfpa*.renderTable.large_bold.loadModel: LOAD_DEFERRED
+
+xfpa*.renderTable.small.fontName: DejaVu Sans
+xfpa*.renderTable.small.fontType: FONT_IS_XFT
+xfpa*.renderTable.small.fontSize: 9
+xfpa*.renderTable.small.loadModel: LOAD_DEFERRED
+
+xfpa*.renderTable.small_bold.fontName: DejaVu Sans
+xfpa*.renderTable.small_bold.fontType: FONT_IS_XFT
+xfpa*.renderTable.small_bold.fontSize: 9
+xfpa*.renderTable.small_bold.fontStyle: Bold
+xfpa*.renderTable.small_bold.loadModel: LOAD_DEFERRED
+
+xfpa*.renderTable.small_italic.fontName: DejaVu Sans
+xfpa*.renderTable.small_italic.fontType: FONT_IS_XFT
+xfpa*.renderTable.small_italic.fontSize: 9
+xfpa*.renderTable.small_italic.fontStyle: Italic
+xfpa*.renderTable.small_italic.loadModel: LOAD_DEFERRED
+
+xfpa*.renderTable.very_small.fontName: DejaVu Sans
+xfpa*.renderTable.very_small.fontType: FONT_IS_XFT
+xfpa*.renderTable.very_small.fontSize: 8
+xfpa*.renderTable.very_small.loadModel: LOAD_DEFERRED
+
+xfpa*.renderTable.hour_font.fontName: DejaVu Sans
+xfpa*.renderTable.hour_font.fontType: FONT_IS_XFT
+xfpa*.renderTable.hour_font.fontSize: 10
+xfpa*.renderTable.hour_font.loadModel: LOAD_DEFERRED
+
+xfpa*.renderTable.minute_font.fontName: DejaVu Sans
+xfpa*.renderTable.minute_font.fontType: FONT_IS_XFT
+xfpa*.renderTable.minute_font.fontSize: 8
+xfpa*.renderTable.minute_font.loadModel: LOAD_DEFERRED
+
+xfpa*.renderTable.fontName: DejaVu Sans
+xfpa*.renderTable.fontType: FONT_IS_XFT
+xfpa*.renderTable.fontSize: 10
+
+xfpa*XbaeMatrix.renderTable: labels,hour_font,minute_font
+xfpa*XbaeMatrix.renderTable.labels.fontName: DejaVu Sans
+xfpa*XbaeMatrix.renderTable.labels.fontType: FONT_IS_XFT
+xfpa*XbaeMatrix.renderTable.labels.fontSize: 9
+xfpa*XbaeMatrix.renderTable.labels.loadModel: LOAD_DEFERRED
+xfpa*XbaeMatrix.renderTable.hour_font.fontName: DejaVu Sans
+xfpa*XbaeMatrix.renderTable.hour_font.fontType: FONT_IS_XFT
+xfpa*XbaeMatrix.renderTable.hour_font.fontSize: 10
+xfpa*XbaeMatrix.renderTable.hour_font.loadModel: LOAD_DEFERRED
+xfpa*XbaeMatrix.renderTable.minute_font.fontName: DejaVu Sans
+xfpa*XbaeMatrix.renderTable.minute_font.fontType: FONT_IS_XFT
+xfpa*XbaeMatrix.renderTable.minute_font.fontSize: 8
+xfpa*XbaeMatrix.renderTable.minute_font.loadModel: LOAD_DEFERRED
+xfpa*XbaeMatrix.renderTable.fontName: DejaVu Sans Mono
+xfpa*XbaeMatrix.renderTable.fontType: FONT_IS_XFT
+xfpa*XbaeMatrix.renderTable.fontSize: 8
+xfpa*XbaeMatrix.renderTable.loadModel: LOAD_DEFERRED
+
+xfpa*XbaeMatrix.textBackground: white 
+
+!-------------------------------------------------------------------
+
+xfpa*.onlineHelp.dialogTitle: Online Help
+
+!-------------------------------------------------------------------
+!
+!  Welcome screen fonts
+!
+xfpa*.ul*.renderTable.fontName: DejaVu Sans
+xfpa*.ul*.renderTable.fontType: FONT_IS_XFT
+xfpa*.ul*.renderTable.fontSize: 12
+xfpa*.ul*.welcome.renderTable.fontName: DejaVu Sans
+xfpa*.ul*.welcome.renderTable.fontType: FONT_IS_XFT
+xfpa*.ul*.welcome.renderTable.fontSize: 18
+xfpa*.ul*.cr.renderTable.fontName: DejaVu Sans
+xfpa*.ul*.cr.renderTable.fontType: FONT_IS_XFT
+xfpa*.ul*.cr.renderTable.fontSize: 8
+!
+!-------------------------------------------------------------------
+
+!  Labels for commonly used buttons throughout the application
+
+xfpa*.actions.labelString: Actions
+xfpa*.absBtn.labelString: Absolute
+xfpa*.acceptBtn.labelString: Accept
+xfpa*.addBtn.labelString: Add
+xfpa*.addAfterBtn.labelString: Add After
+xfpa*.addBeforeBtn.labelString: Add Before
+xfpa*.addToListBtn.labelString: Add To List
+xfpa*.allOnBtn.labelString: All On
+xfpa*.allOffBtn.labelString: All Off
+xfpa*.animation.labelString: Animation
+xfpa*.applyBtn.labelString: Apply
+xfpa*.backupBtn.labelString: Backup
+xfpa*.breakBtn.labelString: Break
+xfpa*.cancelBtn.labelString: Cancel
+xfpa*.chooseLinkChainBtn.labelString: Choose Link Chain
+xfpa*.clearBtn.labelString: Clear
+xfpa*.closeBtn.labelString: Close
+xfpa*.confirmBtn.labelString: Confirm
+xfpa*.connect.labelString: Connect
+xfpa*.copyBtn.labelString: Copy
+xfpa*.createBtn.labelString: Create
+xfpa*.curBtn.labelString: Current
+xfpa*.cutBtn.labelString: Cut
+xfpa*.dailyFields.labelString: Daily Fields
+xfpa*.deleteBtn.labelString: Delete
+xfpa*.deleteAreaBtn.labelString: Delete Area
+xfpa*.deleteHoleBtn.labelString: Delete Hole
+xfpa*.deleteLineBtn.labelString: Delete Line
+xfpa*.deletePointBtn.labelString: Delete Point
+xfpa*.depictBtn.labelString: Depictions
+xfpa*.deselectAll.labelString: Deselect All
+xfpa*.doneBtn.labelString: Done
+xfpa*.editBtn.labelString: Edit ...
+xfpa*.endChainBtn.labelString: End Chain
+xfpa*.enterBtn.labelString: Enter
+xfpa*.exit.labelString: Exit
+xfpa*.exitBtn.labelString: Exit
+xfpa*.fetchBtn.labelString: Fetch
+xfpa*.fieldEdit.labelString: Field Edit
+xfpa*.fieldHeader.labelString: Field
+xfpa*.fieldLabel.labelString: Fields
+xfpa*.flipBtn.labelString: Flip
+xfpa*.flipReverseBtn.labelString: Flip & Reverse
+xfpa*.generateBtn.labelString: Generate
+xfpa*.group.labelString: Group
+xfpa*.guidBtn.labelString: Guidance
+xfpa*.helpBtn.labelString: Help
+xfpa*.hourBtn.labelString: Hour
+xfpa*.hoursBtn.labelString: Hours
+xfpa*.imagery.labelString: Imagery
+xfpa*.interpBtn.labelString: Interpolations
+xfpa*.interpolate.labelString: Interpolate
+xfpa*.issueHeader.labelString: Issue Time
+xfpa*.joinBtn.labelString: Join
+xfpa*.leaveAsIsBtn.labelString: Leave As Is
+xfpa*.legendBtn.labelString: Show Legend
+xfpa*.levelHeader.labelString: Level
+xfpa*.linkChain.labelString: Chain
+xfpa*.linkNode.labelString: Node
+xfpa*.linkType.labelString: Link Type
+xfpa*.loadBtn.labelString: Load
+xfpa*.matchBtn.labelString: Match
+xfpa*.mergeBtn.labelString: Merge
+xfpa*.minutesBtn.labelString: Minutes
+xfpa*.modBtn.labelString: Modify
+xfpa*.modelLabel.labelString: Model
+xfpa*.moveBtn.labelString: Move
+xfpa*.moveUpBtn.labelString: Move Up
+xfpa*.moveDownBtn.labelString: Move Down
+xfpa*.newBtn.labelString: New
+xfpa*.newChainBtn.labelString: New Chain
+xfpa*.nextBtn.labelString: Next
+xfpa*.ngmBtn.labelString: NWP
+xfpa*.none.labelString: None
+xfpa*.normalFields.labelString: Normal Fields
+xfpa*.noBtn.labelString: No
+xfpa*.okBtn.labelString: OK
+xfpa*.onBtn.labelString: ON
+xfpa*.offBtn.labelString: OFF
+xfpa*.overlay.labelString: Overlay
+xfpa*.pasteBtn.labelString: Paste
+xfpa*.predefPoints.labelString: Preset Points
+xfpa*.printBtn.labelString: Print
+xfpa*.prevBtn.labelString: Previous
+xfpa*.proceedBtn.labelString: Proceed
+xfpa*.radar.labelString: Radar
+xfpa*.rejoinBtn.labelString: Rejoin
+xfpa*.releaseBtn.labelString: Release
+xfpa*.replaceBtn.labelString: Replace
+xfpa*.resetBtn.labelString: Reset
+xfpa*.resetMenuBtn.labelString: Reset Menu
+xfpa*.reverseBtn.labelString: Reverse
+xfpa*.rotateBtn.labelString: Rotate
+xfpa*.satellite.labelString: Satellite
+xfpa*.saveBtn.labelString: Save
+xfpa*.saveAsBtn.labelString: Save As...
+xfpa*.selectAll.labelString: Select All
+xfpa*.selectAllBtn.labelString: Select All
+xfpa*.selectItemsBtn.labelString: Select Items
+xfpa*.sendBtn.labelString: Send
+xfpa*.setBkgndBtn.labelString: Set
+xfpa*.setBtn.labelString: Set
+xfpa*.seqBtn.labelString: Sequence
+xfpa*.scratchpad.labelString: Scratchpad
+xfpa*.showBtn.labelString: Show
+xfpa*.siteBtn.labelString: Site
+xfpa*.sourceHeader.labelString: Source
+xfpa*.speedLabel.labelString: Speed
+xfpa*.startBtn.labelString: Start
+xfpa*.staticFields.labelString: Static Fields
+xfpa*.stopBtn.labelString: Stop
+xfpa*.submitBtn.labelString: Submit
+xfpa*.synoProgBtn.labelString: External Depictions
+xfpa*.timelink.labelString: Timelink
+xfpa*.translateBtn.labelString: Translate
+xfpa*.underlay.labelString: Underlay
+xfpa*.undoBtn.labelString: Undo
+xfpa*.updateBtn.labelString: Update
+xfpa*.valueBtn.labelString: Value
+xfpa*.viewBtn.labelString: View
+xfpa*.yesBtn.labelString: Yes
+xfpa*.yesAllBtn.labelString: Yes To All
+xfpa*.zoom.labelString: Zoom
+xfpa*.zoomIn.labelString: Zoom In
+xfpa*.zoomOut.labelString: Zoom Out
+xfpa*.zoomPan.labelString: Pan Mode
+xfpa*.zoomPanEnd.labelString: End Pan Mode
+xfpa*.zoomExit.labelString: Exit Zoom
+
+xfpa*.minLabel.labelString: Min
+xfpa*.maxLabel.labelString: Max
+xfpa*.sourceLabel.labelString: Source
+xfpa*.validHeader.labelString: Valid Time
+xfpa*.validTimeLabel.labelString: From Valid Time
+
+! Labels for sampling grid display and font and colour selection.
+
+xfpa*.gridHeader.labelString: Sample Grid
+!xfpa*.layout*.fontList: -schumacher-clean-bold-r-normal--14-*
+xfpa*.gridBtn.labelString: Display
+xfpa*.setSampleFont.labelString: Attributes
+!xfpa*.fontColor*XmPushButtonGadget.fontList: -schumacher-clean-bold-r-normal--14-*
+!xfpa*.colorPulldown*XmPushButton.fontList: -schumacher-clean-bold-r-normal--14-*
+
+!------------------------------------------------------------------
+
+xfpa*.missionStatement.labelString: \
+Dedicated to enhancing forecaster productivity.
+!xfpa*.missionStatement.fontList: -schumacher-clean-medium-r-normal--16-*
+
+!-------------------------------------------------------------------
+
+xfpa*.menuBar*XmToggleButtonGadget.visibleWhenOff: True
+xfpa*.menuBar*XmToggleButtonGadget.marginHeight: 2
+
+xfpa*.menuBar*depiction.labelString: Fields
+xfpa*.menuBar*.create.labelString: Create ...
+xfpa*.menuBar*.load.labelString: Load ...
+xfpa*.menuBar*.update.labelString: Update ...
+xfpa*.menuBar*.import.labelString: Import ...
+xfpa*.menuBar*.save.labelString: Save Active
+xfpa*.menuBar*.saveAll.labelString: Save All
+xfpa*.menuBar*.delete.labelString: Delete ...
+xfpa*.menuBar*.print.labelString: Print Active
+xfpa*.menuBar*.printTitle.labelString: Destination
+xfpa*.menuBar*.sepDbl.separatorType: XmDOUBLE_LINE
+xfpa*.menuBar*.quit.labelString: Quit
+
+xfpa*.menuBar*.options.labelString: Options
+xfpa*.menuBar*.mapOverlay.labelString: Map Overlays
+xfpa*.menuBar*.t0.labelString: T0 Depiction
+xfpa*.menuBar*.to_active.labelString: Set to Active Depiction
+xfpa*.menuBar*.nearest_to_clock.labelString: Nearest to System Clock
+xfpa*.menuBar*.to_clock.labelString: Set to System Clock
+xfpa*.menuBar*.to_new_depiction.labelString: New depiction sets T0
+xfpa*.menuBar*.timeStep.labelString: Minimum Time Step
+xfpa*.menuBar*.preferences.labelString: Preferences ...
+xfpa*.menuBar*.saveProfile.labelString: Save Profile ...
+xfpa*.menuBar*.manageProfile.labelString: Manage Profiles ...
+
+xfpa*.menuBar*.products.labelString: Products
+xfpa*.menuBar*.textFcsts.labelString: Forecast Text ...
+xfpa*.menuBar*.graphic.labelString: Graphics ...
+xfpa*.menuBar*.pointFcsts.labelString: Point Forecasts ...
+xfpa*.menuBar*.alliedModels.labelString: Allied Models ...
+
+xfpa*.menuBar*.guidance.labelString: Guidance
+xfpa*.menuBar*.status.labelString: Status ...
+xfpa*.menuBar*.availability.labelString: Availability ...
+xfpa*.menuBar*.guidanceDisplayed.labelString: Field Legend ...
+xfpa*.menuBar*.guidanceSelect.labelString: Select ...
+xfpa*.menuBar*.guidanceShow.labelString: Show Selected Fields
+xfpa*.menuBar*.guidanceHide.labelString: Hide Fields
+
+xfpa*.menuBar*.imagerySelect.labelString: Select ...
+xfpa*.menuBar*.imageryShow.labelString: Show Selected Images
+xfpa*.menuBar*.imageryHide.labelString: Hide Images
+
+xfpa*.menuBar*.view.labelString: View
+xfpa*.menuBar*.scratchpadShow.labelString: Show Scratchpad
+xfpa*.menuBar*.fieldShowAll.set: True
+xfpa*.menuBar*.presetFieldDisplay.labelString: Preset Field Visibilities
+xfpa*.menuBar*.activeOnlyBtn.labelString: Active Field Only
+xfpa*.menuBar*.defaultBtn.labelString: Default
+xfpa*.menuBar*.setFieldDisplay.labelString: Custom Field Visibility ...
+xfpa*.menuBar*.fieldOnOff.labelString: Field Display Control ...
+xfpa*.menuBar*.mapOverlays.labelString: Map Overlay Control ...
+xfpa*.menuBar*.scitTable.labelString: SCIT Table ...
+
+xfpa*.menuBar*.animation.labelString: Animation ...
+xfpa*.menuBar*.coview.labelString: CoView
+
+xfpa*.menuBar*.help.labelString: Help
+xfpa*.menuBar*.helpHelp.labelString: General
+xfpa*.menuBar*.helpAnimation.labelString: On Animation
+xfpa*.menuBar*.helpEditAreas.labelString: On Area Editor
+xfpa*.menuBar*.helpEditLines.labelString: On Line Editor
+xfpa*.menuBar*.helpEditSfc.labelString: On Surface Editor
+xfpa*.menuBar*.helpScratchpad.labelString: On Scratch Pad
+xfpa*.menuBar*.helpTimelink.labelString: On Time Linking
+xfpa*.menuBar*.helpNotices.labelString: User Notices
+xfpa*.menuBar*.helpProblems.labelString: Problem Reporting
+xfpa*.menuBar*.helpChanges.labelString: Change Request
+xfpa*.menuBar*.helpAbout.labelString: About FPA
+
+!-------------------------------------------------------------------
+
+xfpa*.buttonBar*.depictionTimeDisplay.renderTable.fontName: DejaVu Sans Mono
+xfpa*.buttonBar*.depictionTimeDisplay.renderTable.fontType: FONT_IS_XFT
+xfpa*.buttonBar*.depictionTimeDisplay.renderTable.fontSize: 10
+xfpa*.buttonBar*.XmToggleButton.marginHeight: 4
+xfpa*.buttonBar*.XmToggleButton.marginWidth: 4
+
+! This is for the popup menu that sets and clears the start and
+! end of the visible depiction sequence buttons.
+
+xfpa*.setToT0.labelString:         Set as T0
+xfpa*.seqLimitStart.labelString:   Set as Sequence Start
+xfpa*.seqLimitEnd.labelString:     Set as Sequence End
+xfpa*.clearLimitStart.labelString: Remove Start Limit
+xfpa*.clearLimitEnd.labelString:   Remove End Limit
+
+! The symbols of the indicator buttons showing that the depiction
+! sequence has been time limited. The colours are here to keep things
+! together but are duplicated in the user colour section above.
+
+xfpa*.seqStartLimitIndicator.labelString: <
+xfpa*.seqEndLimitIndicator.labelString:   >
+!xfpa*.seqStartLimitIndicator.background:  red
+!xfpa*.seqEndLimitIndicator.background:    red
+
+!-------------------------------------------------------------------
+! Cursor position display
+
+xfpa*.latLongDisplay*.renderTable.fontName: DejaVu Sans Mono
+xfpa*.latLongDisplay*.renderTable.fontType: FONT_IS_XFT
+xfpa*.latLongDisplay*.renderTable.fontSize: 9
+
+!-------------------------------------------------------------------
+! For the step selection dialog between the two depiction step arrows.
+
+xfpa*.arrowIncrementDialog.dialogTitle: Step Size
+xfpa*.arrowIncrementDialog.retainGeometry: NONE
+
+! The label of the first choice to appear in the above list. This is a
+! two element comma separated list with the first element the list label
+! and the second the label that will appear between the arrows.
+
+xfpa.normalIncrementLabel: Step Through All,-
+
+!-------------------------------------------------------------------
+
+xfpa*.messageBar.labelString: Initializing ... Please Wait
+
+!-------------------------------------------------------------------
+
+xfpa*.alliedModelSelect.dialogTitle: Allied Model Run Select
+xfpa*.alliedModelSelect.geometry: 280x270+534+148
+xfpa*.alliedModelSelect*.modelList.visibleItemCount: 10
+xfpa*.alliedModelSelect*.runBtn.labelString: Run
+
+!-------------------------------------------------------------------
+
+xfpa*.alliedModelImport.dialogTitle: Model Field Import Request
+xfpa*.alliedModelImport.x: 225
+xfpa*.alliedModelImport.y: 150
+xfpa*.alliedModelImport*.text.labelString: \
+The following models have finished.\n\
+Do you wish to import the fields?
+xfpa*.alliedModelImport*.timeBarManager.background: Blue
+xfpa*.alliedModelImport*.timeBar.background: MidnightBlue
+
+!-------------------------------------------------------------------
+
+xfpa*.animationPanel.tabLabelString: Animation
+xfpa*.animationPanel*.fieldSelectSW.height: 450
+xfpa*.animationPanel*.timeWindowLabel.labelString: Animation Window
+xfpa*.animationScale.topOffset: 15
+
+!-------------------------------------------------------------------
+
+xfpa*.autoImport.dialogTitle:  Field Import
+xfpa*.autoImport.geometry: 300x200+527+170
+xfpa*.autoImport.x: 130
+xfpa*.autoImport.y: 150
+xfpa*.autoImport*.msgTop.labelString: The following fields are ready for import:
+xfpa*.autoImport*.msgNone.labelString: There are no fields ready for import.
+
+!-------------------------------------------------------------------
+
+xfpa*.createFields.dialogTitle: Create Fields
+xfpa*.createFields.geometry: 275x400+430+90
+xfpa*.createFields*.typeLabel.labelString: Field Type
+xfpa*.createFields*.fieldSelect.labelString: Field Select
+xfpa*.createFields*.targetTimeSpinbox.entryLabelString: Time:
+xfpa*.createFields*.targetTimeSpinbox.columns: 25
+
+!-------------------------------------------------------------------
+
+xfpa*.loadFields.dialogTitle: Load Fields
+xfpa*.loadFields.geometry: 450x800+439+90
+xfpa*.loadFields*.loadHourlyFields.tabLabelString: Normal
+xfpa*.loadFields*.loadDailyFields.tabLabelString: Daily
+xfpa*.loadFields*.loadStaticFields.tabLabelString: Static
+
+! NOTE: These labels are common for all of the load dialogs.
+
+xfpa*.loadFields*.targetTimeSpinbox.entryLabelString: Target Time: 
+xfpa*.loadFields*.prefsLabel.labelString: Preferences
+xfpa*.loadFields*.selectAllFields.labelString: Automatically select all fields in list
+xfpa*.loadFields*.createAsk.labelString: Ask permission before creating depiction
+xfpa*.loadFields*.overwriteAsk.labelString: Ask permission before overwriting fields
+xfpa*.loadFields*.showTargetTime.labelString: Show target time selection block
+!xfpa*.loadFields*.validTime.fontList: -schumacher-clean-bold-r-normal--14-*
+
+!-------------------------------------------------------------------
+
+xfpa*.loadHourlyFields*.guidBtn.labelString:  Guidance
+xfpa*.loadHourlyFields*.alliedBtn.labelString: Allied Models
+xfpa*.loadHourlyFields*.modelSelectTitle.labelString: Model Select
+xfpa*.loadHourlyFields*.modelSelect.visibleItemCount: 4
+!xfpa*.loadHourlyFields*.issueTime.visibleItemCount: 2
+xfpa*.loadHourlyFields*.validTime.visibleItemCount: 6
+xfpa*.loadHourlyFields*.targetLabel.labelString: Target Time
+xfpa*.loadHourlyFields*.existingDepict.labelString: Existing\nDepictions:
+xfpa*.loadHourlyFields*.or.labelString: Or
+xfpa*.loadHourlyFields*.targetTimeLabel.labelString: Depiction Time:
+xfpa*.loadHourlyFields*.targetTimeSpinbox.columns: 25
+
+!-------------------------------------------------------------------
+
+!xfpa*.loadDailyFields*.dailyFields.fontList: -helvetica-medium-r-normal--20-*
+xfpa*.loadDailyFields*.guidBtn.labelString: Guidance
+xfpa*.loadDailyFields*.alliedBtn.labelString: Allied Models
+xfpa*.loadDailyFields*.modelSelectTitle.labelString: Model Select
+xfpa*.loadDailyFields*.modelSelect.visibleItemCount: 4
+xfpa*.loadDailyFields*.issueTime.visibleItemCount: 3
+xfpa*.loadDailyFields*.validTime.visibleItemCount: 3
+xfpa*.loadDailyFields*.targetTimeSpinbox.columns: 25
+
+!-------------------------------------------------------------------
+
+!xfpa*.loadStaticFields*.staticFields.fontList: -helvetica-medium-r-normal--20-*
+xfpa*.loadStaticFields*.guidBtn.labelString: Guidance
+xfpa*.loadStaticFields*.alliedBtn.labelString: Allied Models
+xfpa*.loadStaticFields*.modelSelectTitle.labelString: Model Select
+xfpa*.loadStaticFields*.modelSelect.visibleItemCount: 4
+xfpa*.loadStaticFields*.issueTime.visibleItemCount: 3
+xfpa*.loadStaticFields*.validTime.visibleItemCount: 3
+xfpa*.loadStaticFields*.targetTimeSpinbox.columns: 25
+
+!-------------------------------------------------------------------
+
+xfpa*.fieldUpdate.dialogTitle: Depiction Field Update
+xfpa*.fieldUpdate.geometry: 560x500+434+200
+xfpa*.fieldUpdate.retainGeometry: ALL
+xfpa*.fieldUpdate*.sourceSelect.labelString: Field Source:
+xfpa*.fieldUpdate*.synoProgBtn.labelString: 1)  Synoptic Prog
+xfpa*.fieldUpdate*.depictOnlyBtn.labelString: Show Existing Depictions Only
+xfpa*.fieldUpdate*.selectPresetList.labelString: Select Office Standard
+! Character to indicate that the selected fields have been updated in the depiction.
+xfpa*.fieldUpdate.doneChar: U
+
+! Resources for the popup legend display.
+
+xfpa*.fieldUpdateLegend.dialogTitle: Field Update Legend
+xfpa*.fieldUpdateLegend.relativePosition: True
+xfpa*.fieldUpdateLegend.x: -40
+xfpa*.fieldUpdateLegend.y: -230
+xfpa*.fieldUpdateLegend*.depict.labelString: Depiction Times
+xfpa*.fieldUpdateLegend*.depExists.labelString: = Depiction exists
+xfpa*.fieldUpdateLegend*.depNone.labelString: = No depiction at this time
+xfpa*.fieldUpdateLegend*.fields.labelString: Field Select Buttons
+xfpa*.fieldUpdateLegend*.existsTxt.labelString: = The field exists in the depiction already
+xfpa*.fieldUpdateLegend*.noFieldTxt.labelString: = The field does not exist in the depiction
+xfpa*.fieldUpdateLegend*.updateTxt.labelString: = Field selected for update
+xfpa*.fieldUpdateLegend*.noneTxt.labelString: = Field not available from selected source
+
+!-------------------------------------------------------------------
+
+xfpa*.textSelect*.textLabel.labelString: Text
+
+!-------------------------------------------------------------------
+
+xfpa*.deleteFields.dialogTitle: Delete Selection
+xfpa*.deleteFields.geometry: 400x550+404+134
+xfpa*.deleteFields.retainGeometry: ALL
+xfpa*.deleteFields*.normalFields.tabLabelString: Normal Fields
+xfpa*.deleteFields*.otherFields.tabLabelString: Daily/Static Fields
+xfpa*.deleteFields*.fieldMatrix_staticFields.visibleRows: 3
+xfpa*.deleteFields*.fieldMatrix_dailyFields.visibleRows: 4
+!xfpa*.deleteFields*.noFieldsLabel.labelString: No fields of this type defined
+
+!-------------------------------------------------------------------
+
+xfpa*.mapOverlayDialog.dialogTitle: Map Overlay Control
+xfpa*.mapOverlayDialog.geometry: 188x227
+
+!-------------------------------------------------------------------
+
+xfpa*.depictionSelectDialog.dialogTitle: Depiction Select
+
+!-------------------------------------------------------------------
+
+xfpa*.depictionStatus.dialogTitle: Status of Depiction Fields
+xfpa*.depictionStatus.geometry: 600x825+340+120
+xfpa*.depictionStatus*.scrolledWindow.width: 700
+xfpa*.depictionStatus*.scrolledWindow.height: 550
+xfpa*.depictionStatus*.scrolledWindow.scrollBarDisplayPolicy: static
+xfpa*.depictionStatus*.fieldStatus.labelString: Normal Field Status
+!xfpa*.depictionStatus*.fieldStatus.fontList: -helvetica-medium-r-normal--20-*
+xfpa*.depictionStatus*.fieldTitle.labelString: Fields  \\  Time
+!xfpa*.depictionStatus*.staticFields.fontList: -helvetica-medium-r-normal--20-*
+!xfpa*.depictionStatus*.dailyFields.fontList: -helvetica-medium-r-normal--20-*
+
+! Resources for the popup legend display.
+
+xfpa*.statusLegend.dialogTitle: Status Display Legend
+xfpa*.statusLegend.relativePosition: True
+xfpa*.statusLegend.x: -100
+xfpa*.statusLegend.y: 0
+xfpa*.statusLegend*.index1.labelString: = No field at this time
+xfpa*.statusLegend*.index2.labelString: = Field has no links
+xfpa*.statusLegend*.index3.labelString: = Not enough links for interpolation
+xfpa*.statusLegend*.index4.labelString: = Field is linked
+xfpa*.statusLegend*.index5.labelString: = Field interpolated but need to redo labels
+xfpa*.statusLegend*.index6.labelString: = Field and labels interpolated
+xfpa*.statusLegend*.index7.labelString: = Field is not linkable
+
+!-------------------------------------------------------------------
+
+xfpa*.fieldDisplayState.dialogTitle: Field Display Control
+xfpa*.fieldDisplayState.geometry: 250x700+235+40
+xfpa*.fieldDisplayState*.activeOnlyBtn.labelString: Active Field Only
+xfpa*.fieldDisplayState*.defaultBtn.labelString: Default
+xfpa*.fieldDisplayState*.setAsDefault.labelString: Save As Default
+xfpa*.fieldDisplayState*.resetBtn.labelString: Reset to Default
+xfpa*.fieldDisplayState*.presetVis.labelString: Visibility 
+xfpa*.fieldDisplayState*.alwaysOn.labelString: Show\nAlways 
+
+!-------------------------------------------------------------------
+
+xfpa*.continuousFieldPanel*.scaleTitle.labelString: Delta (%s)
+xfpa*.continuousFieldPanel*.deltaScale.height: 185
+xfpa*.continuousFieldPanel*.spreadTitle.labelString: Spread (%)
+xfpa*.continuousFieldPanel*.flatnessTitle.labelString: Taper
+!xfpa*.continuousFieldPanel*.spreadBtns*.XmPushButtonGadget.fontList: -schumacher-clean-medium-r-normal--12-*
+xfpa*.smoothingScaleTitle.labelString: Smoothing Factor
+
+!-------------------------------------------------------------------
+
+xfpa*.vectorFieldPanel.selectColor: green
+!xfpa*.vectorFieldPanel*.fontList: -schumacher-clean-medium-r-normal--12-*
+xfpa*.vectorFieldPanel*.deltaScale.height: 185
+xfpa*.vectorFieldPanel*.deltaScale.scaleWidth: 10
+xfpa*.vectorFieldPanel*.magSelect.labelString: Magnitude
+xfpa*.vectorFieldPanel*.dirSelect.labelString: Direction
+xfpa*.vectorFieldPanel*.flatnessTitle.labelString: Taper
+
+!-------------------------------------------------------------------
+
+xfpa*.linePanel.lineBackground: Grey40
+xfpa*.linePanel*.modifySelectWindow.leftOffset: 24
+xfpa*.linePanel*.lineLabel.labelString: Line
+xfpa*.linePanel*.lineTypeLabel.labelString: Line Type
+
+!-------------------------------------------------------------------
+
+xfpa*.linkChainPanel*.lchainCalDisplay.labelString: Track Attributes
+xfpa*.linkChainPanel*.lnodeCalDisplay.labelString: Node Attributes
+xfpa*.linkChainPanel*.timeSettings.labelString: Time Settings
+xfpa*.linkChainPanel*.refTime.labelString: Reference Time
+xfpa*.linkChainPanel*.reference.labelString: Reference
+xfpa*.linkChainPanel*.startTime.labelString: Start
+xfpa*.linkChainPanel*.endTime.labelString: End
+xfpa*.linkChainPanel*.nodeType.labelString: Node Type
+xfpa*.linkChainPanel*.nodeEdit.labelString: Node Edit
+xfpa*.linkChainPanel*.timeDelta.labelString: Time Delta
+xfpa*.linkChainPanel*.memory.labelString: Predefined
+!xfpa*.linkChainPanel.lchainAdd.setBtn.fontList: -schumacher-clean-medium-r-normal--12-*
+!xfpa*.linkChainPanel.lchainMod.setBtn.fontList: -schumacher-clean-medium-r-normal--12-*
+!xfpa*.linkChainPanel*.lnodeClassForm*.setBtn.fontList: -schumacher-clean-medium-r-normal--12-*
+!xfpa*.linkChainPanel.lchainAdd*.showBtn.fontList: -schumacher-clean-medium-r-normal--12-*
+!xfpa*.linkChainPanel.lchainMod*.showBtn.fontList: -schumacher-clean-medium-r-normal--12-*
+!xfpa*.linkChainPanel*.lnodeClassForm*.showBtn.fontList: -schumacher-clean-medium-r-normal--12-*
+! These are used in the panel and in the context menus
+xfpa*.classNormal.labelString: Normal
+xfpa*.classControl.labelString: Control
+xfpa*.classFloating.labelString: Floating
+xfpa*.classInterp.labelString: Interpolated
+
+!-------------------------------------------------------------------
+
+xfpa*.discreteFieldPanel*.bkgndLabel.labelString: Background
+xfpa*.discreteFieldPanel*.bkgndDisplay.rows: 1
+!xfpa*.discreteFieldPanel*.setBkgndBtn.fontList: -schumacher-clean-medium-r-normal--12-*
+!xfpa*.discreteFieldPanel*.showBtn.fontList: -schumacher-clean-medium-r-normal--12-*
+xfpa*.discreteFieldPanel*.valueLabel.labelString: Area
+xfpa*.discreteFieldPanel*.labelDisplay.rows: 2
+xfpa*.discreteFieldPanel*.valueBtn.labelString: Show
+xfpa*.discreteFieldPanel*.memoryManagerLabel.labelString: Memory
+!xfpa*.discreteFieldPanel*.memoryManager*.fontList: -schumacher-clean-medium-r-normal--14-*
+!
+! This is for the attribute display which appears when the show button is pressed.
+!
+xfpa*.attribDisplayPopup*.marginHeight: 0
+!
+! This is for the delete memory dialog
+!
+xfpa*.deleteMemDialog.dialogTitle: Delete Memory
+xfpa*.deleteMemDialog.retainGeometry: ALL
+xfpa*.deleteMemDialog.x: -130
+xfpa*.deleteMemDialog.y: -150
+xfpa*.deleteMemDialog.width: 200
+xfpa*.deleteMemDialog.height: 200
+
+!-------------------------------------------------------------------
+
+xfpa*.windFieldPanel*.valueDisplay.renderTable.fontName: DejaVu Sans Mono
+xfpa*.windFieldPanel*.valueDisplay.renderTable.fontType: FONT_IS_XFT
+xfpa*.windFieldPanel*.valueDisplay.renderTable.fontSize: 9
+xfpa*.windFieldPanel*.bkgndDisplay.renderTable.fontName: DejaVu Sans Mono
+xfpa*.windFieldPanel*.bkgndDisplay.renderTable.fontType: FONT_IS_XFT
+xfpa*.windFieldPanel*.bkgndDisplay.renderTable.fontSize: 8
+xfpa*.windFieldPanel*.bkgndLabel.labelString: Background Value
+xfpa*.windFieldPanel*.valueLabel.labelString: Area Value
+xfpa*.windFieldPanel*.memoryManagerLabel.labelString: Memory
+xfpa*.windFieldPanel*.memoryManager*.renderTable.fontName: DejaVu Sans Mono
+xfpa*.windFieldPanel*.memoryManager*.renderTable.fontType: FONT_IS_XFT
+xfpa*.windFieldPanel*.memoryManager*.renderTable.fontSize: 8
+xfpa*.windFieldPanel*.labelType.labelString: Label Type
+xfpa*.windFieldPanel*.windValue.labelString: Value
+xfpa*.windFieldPanel*.windBarb.labelString: Barb
+
+!-------------------------------------------------------------------
+
+xfpa*.copyPanel*.moveLabels.labelString: Include Labels
+
+!-------------------------------------------------------------------
+
+xfpa*.mergePanel*.mergeTitle.labelString: Merge Fields
+xfpa*.mergePanel*.mergeLabels.labelString: Include Labels
+
+!-------------------------------------------------------------------
+
+xfpa*.labelPanel*.labelSelectTitle.labelString: Label Type
+xfpa*.labelPanel*.labelActionTitle.labelString: Label Action
+xfpa*.labelPanel*.predefBtn.labelString: Set Labels
+
+!-------------------------------------------------------------------
+
+xfpa*.editorPanel.tabLabelString: Field Edit
+xfpa*.editorPanel*.cmdBtnManager.width: 80
+xfpa*.tf2f.samplingInEffect.labelString: In sampling mode\n\nEditing not allowed
+!xfpa*.editorPanel*.drawModeOption*.fontList: -schumacher-clean-medium-r-normal--12-*
+!xfpa*.editorPanel*.modifyModeOption*.fontList: -schumacher-clean-medium-r-normal--12-*
+!xfpa*.editorPanel*.smoothModeOption*.fontList: -schumacher-clean-medium-r-normal--12-*
+
+!-------------------------------------------------------------------
+
+xfpa*.sampleFieldPanel*.itemListTitle.labelString: Sample Item
+xfpa*.sampleFieldPanel*.itemList.width: 153
+xfpa*.sampleFieldPanel*.predefList.width: 153
+xfpa*.sampleFieldPanel*.areaLabel.labelString: Area Label
+xfpa*.sampleFieldPanel*.areaValue.labelString: Area Value
+xfpa*.sampleFieldPanel*.windValue.labelString: Adjustment
+xfpa*.sampleFieldPanel*.windModel.labelString: Model Barb
+xfpa*.sampleFieldPanel*.fontType*.OptionButton.marginWidth: 0
+
+!-------------------------------------------------------------------
+
+xfpa*.editAttributeSampleDisplay.dialogTitle: Field Attribute Sample
+xfpa*.guidAttributeSampleDisplay.dialogTitle: Guidance Attribute Sample
+
+xfpa*.default_filter.labelString: Show All Attributes
+xfpa*.filter.labelString: Display Filter: 
+
+!-------------------------------------------------------------------
+
+xfpa*.fcstText.dialogTitle: Regular Issue Forecast Manager
+xfpa*.fcstText.x: 70
+xfpa*.fcstText.y: 70
+xfpa*.fcstText.width: 800
+xfpa*.fcstText.height: 600
+xfpa*.fcstText.retainGeometry: ALL
+xfpa*.fcstText*.workVer.labelString: Working Version:
+xfpa*.fcstText*.relVer.labelString: Last Released:
+xfpa*.fcstText*.amend.labelString: Amendments:
+xfpa*.fcstText*.fcstLabel.labelString: Forecasts
+!xfpa*.fcstText*.text.fontList: -schumacher-clean-medium-r-normal--16-*
+xfpa*.fcstText*.genBtn.labelString: Generate\nNew Issue
+xfpa*.fcstText*.amdBtn.labelString: Generate\nAmendment
+xfpa*.fcstText*.updateBtn.labelString: Update From\nPrevious
+xfpa*.fcstText*.activeAreaBtn.labelString: Areas ...
+xfpa*.fcstText*.languageLabel.labelString: Language
+xfpa*.fcstText*.workBtn.labelString: Working Version
+xfpa*.fcstText*.releasedBtn.labelString: Official Release
+xfpa*.fcstText*.mergedBtn.labelString: Forecast Rollup
+xfpa*.fcstText*.elementOrderBtn.labelString: Element Priority ...
+xfpa*.fcstText*.areaBtn.labelString: Active Areas ...
+
+!-------------------------------------------------------------------
+
+xfpa*.fcstTextPriority.dialogTitle: Text Forecast Element Priority
+xfpa*.fcstTextPriority.x: -360
+xfpa*.fcstTextPriority.y: -135
+xfpa*.fcstTextPriority*.fcstListLabel.labelString: Forecast
+xfpa*.fcstTextPriority*.overrideLabel.labelString: Override Priority
+xfpa*.fcstTextPriority*.defaultLabel.labelString: Default Priority
+!xfpa*.fcstTextPriority*.overrideList.fontList: -schumacher-clean-medium-r-normal--16-*
+xfpa*.fcstTextPriority*.areaLabel.labelString: Active Areas
+xfpa*.fcstTextPriority*.defaultBtn.labelString: Set To\nDefault 
+xfpa*.fcstTextPriority*.lastBtn.labelString: Use Last\nSetting
+xfpa*.fcstTextPriority*.areaMsg.labelString: Area Selection Not Allowed
+
+!-------------------------------------------------------------------
+
+xfpa*.fcstTextSetAreas.dialogTitle: Active Area Selection
+xfpa*.fcstTextSetAreas.x: -300
+xfpa*.fcstTextSetAreas.y: -260
+xfpa*.fcstTextSetAreas.height: 420
+
+!-------------------------------------------------------------------
+
+xfpa*.bulletinEdit.dialogTitle: Bulletin Editor Target Forecast
+xfpa*.bulletinEdit.x: 145
+xfpa*.bulletinEdit.y: 300
+xfpa*.bulletinEdit*.sourceTitle.labelString: Source:
+xfpa*.bulletinEdit*.regularForecast.labelString: Regular
+xfpa*.bulletinEdit*.amendedForecast.labelString: Amendment
+xfpa*.bulletinEdit*.correctedForecast.labelString: Correction
+xfpa*.bulletinEdit*.cancelBtn.labelString: Cancel Edit
+
+!-------------------------------------------------------------------
+
+xfpa*.freezingSprayEntry.dialogTitle: Freezing Spray
+xfpa*.freezingSprayEntry.x: -230
+xfpa*.freezingSprayEntry.y: -90
+xfpa*.freezingSprayEntry*.lightBtn.labelString: Light
+xfpa*.freezingSprayEntry*.moderateBtn.labelString: Moderate
+xfpa*.freezingSprayEntry*.severeBtn.labelString: Severe
+xfpa*.freezingSprayEntry*.intensityLabel.labelString: Intensity
+xfpa*.freezingSprayEntry*.occasionalBtn.labelString: Occasional
+xfpa*.freezingSprayEntry*.overOpenWaterBtn.labelString: Over Open Water
+xfpa*.freezingSprayEntry*.modLabel.labelString: Modifiers
+
+!-------------------------------------------------------------------
+
+xfpa*.getDepictionRange.dialogTitle: Select Depiction Time Range
+xfpa*.getDepictionRange.retainGeometry: NONE
+xfpa*.getDepictionRange*.header.labelString: \
+Click and drag to select range.
+xfpa*.getDepictionRange*.noteLabel.labelString: Note
+xfpa*.getDepictionRange*.note.labelString: \
+Any depictions not selected\n\
+will be deleted from disc. 
+xfpa*.getDepictionRange*.selectList.visibleItemCount: 10
+!xfpa*.getDepictionRange*.selectList.fontList: -schumacher-clean-medium-r-normal--16-*
+xfpa*.getDepictionRange*.saveBtn.labelString: Save Before Deleting
+xfpa*.getDepictionRange*.allBtn.labelString: Select\nAll
+xfpa*.getDepictionRange*.listBtn.labelString: Select\nFrom List
+xfpa*.getDepictionRange*.noneBtn.labelString: Select\nNone
+
+!-------------------------------------------------------------------
+! This group are common to several guidance dialogs.
+
+xfpa*.originLabel.labelString: Origin
+xfpa*.srcNumericalModel.labelString: Numerical Model
+xfpa*.srcAlliedModel.labelString: Allied Model
+
+!-------------------------------------------------------------------
+
+xfpa*.guidSelect.dialogTitle: Guidance Field List
+xfpa*.guidSelect.iconName: Guidance
+xfpa*.guidSelect.x: 414
+xfpa*.guidSelect.y: 161
+xfpa*.guidSelect.width: 680
+xfpa*.guidSelect.height: 700
+xfpa*.guidSelect.minDialogSize: 580x580
+xfpa*.guidSelect.retainGeometry: ALL
+xfpa*.guidSelect*.menuBar*XmToggleButtonGadget.visibleWhenOff: True
+xfpa*.guidSelect*.menuBar*XmToggleButtonGadget.marginHeight: 2
+xfpa*.guidSelect*.menuBar*.lists.labelString: Lists
+xfpa*.guidSelect*.menuBar*.listAdd.labelString: New ...
+xfpa*.guidSelect*.menuBar*.saveAs.labelString: Save As ...
+xfpa*.guidSelect*.menuBar*.listDel.labelString: Delete
+xfpa*.guidSelect*.menuBar*.fields.labelString: Fields
+xfpa*.guidSelect*.menuBar*.fieldAdd.labelString: Add ...
+xfpa*.guidSelect*.menuBar*.fieldDel.labelString: Remove  ...
+xfpa*.guidSelect*.menuBar*.options.labelString: Options
+xfpa*.guidSelect*.menuBar*.change.labelString: Synchronize With Depictions
+xfpa*.guidSelect*.menuBar*.nearest.labelString: Show Field Nearest Depiction Time
+xfpa*.guidSelect*.menuBar*.fullDisp.labelString: Display Long Form Description
+xfpa*.guidSelect*.menuBar*.showDepict.labelString: Show Depictions With Guidance
+xfpa*.guidSelect*.menuBar*.sample.labelString: Sample ...
+xfpa*.guidSelect*.menuBar*.refreshFields.labelString: Refresh Selected Fields
+xfpa*.guidSelect*.menuBar*.update.labelString: Set Selected to Current Issue Time
+xfpa*.guidSelect*.menuBar*.forceCheck.labelString: Force Availability Check
+xfpa*.guidSelect*.menuBar*.clear.labelString: Turn All Fields Off  
+xfpa*.guidSelect*.menuBar*.show.labelString: Show
+xfpa*.guidSelect*.menuBar*.help.labelString: Help
+xfpa*.guidSelect*.menuBar*.mainHelp.labelString: Main Help
+xfpa*.guidSelect*.menuBar*.listAddHelp.labelString: Add List
+xfpa*.guidSelect*.menuBar*.fieldAddHelp.labelString: Add Field
+xfpa*.guidSelect*.menuBar*.fieldAppHelp.labelString: Field Appearance
+xfpa*.guidSelect*.menuBar*.fieldDelHelp.labelString: Field Delete
+xfpa*.guidSelect*.menuBar*.fieldSampHelp.labelString: Sampling
+
+xfpa*.guidSelect*.btnBarSW.height: 36
+xfpa*.guidSelect*.comboLabel.labelString: Active List:  
+xfpa*.guidSelect*.validSelect.visibleItemCount: 10
+xfpa*.guidSelect*.legend.labelString: Legend ...
+
+xfpa*.guidSelect*.displayTab.tabLabelString: Display
+xfpa*.guidSelect*.displayTab*.sourceHeader.labelString: Src
+xfpa*.guidSelect*.displayTab*.issueHeader.labelString: Issue
+xfpa*.guidSelect*.displayTab*.fieldApp.labelString: Change Field Appearance ...
+
+xfpa*.guidSelect*.sampleTab.tabLabelString: Sample
+xfpa*.guidSelect*.sampleTab*.header.labelString: Field Selection
+xfpa*.guidSelect*.sampleTab*.fieldList.visibleItemCount: 10
+xfpa*.guidSelect*.sampleTab*.whatList.entryLabelString: Display: 
+xfpa*.guidSelect*.sampleTab*.whatList.columns: 23
+xfpa*.guidSelect*.sampleTab*.whenList.entryLabelString: Time: 
+xfpa*.guidSelect*.sampleTab*.whenList.columns: 23
+xfpa*.guidSelect*.sampleTab*.gridForm.horizontalSpacing: 20
+xfpa*.guidSelect*.sampleTab*.gridForm.verticalSpacing: 9
+xfpa*.guidSelect*.sampleTab*.predefList.columns: 15
+xfpa*.guidSelect*.sampleTab*.displayAttrib.labelString: Display Attributes
+xfpa*.guidSelect*.sampleTab*.displayForm.horizontalSpacing: 9
+xfpa*.guidSelect*.sampleTab*.displayForm.verticalSpacing: 8
+xfpa*.guidSelect*.sampleTab*.verticalSpacing: 8
+xfpa*.guidSelect*.sampleTab*.onOffGroup*.label.labelString: Guidance Sampling
+
+xfpa*.guidSelect*.animateTab.tabLabelString: Animate
+xfpa*.guidSelect*.animateTab*.timeInterval.labelString: Time Interval
+xfpa*.guidSelect*.animateTab*.allFields.labelString: Show all fields together
+xfpa*.guidSelect*.animateTab*.allTimes.labelString: All times
+xfpa*.guidSelect*.timeWindowLabel.labelString: Animation Window
+xfpa*.animationFrameCountLabel: Animation times available
+
+xfpa*.guidSelect*.animateForm*.speedLabel.labelString: Loop Speed (%)
+xfpa*.guidSelect*.animateForm*.speedControl.width: 300
+
+xfpa*.guidSelectLegend.dialogTitle: Guidance Field List
+xfpa*.guidSelectLegend.relativePosition: True
+xfpa*.guidSelectLegend.x: 0
+xfpa*.guidSelectLegend.y: 0
+xfpa*.guidSelectLegend*field1.labelString: Field available from Source.
+xfpa*.guidSelectLegend*field2.labelString: Field not available from Source.
+xfpa*.guidSelectLegend*issue1.labelString: Issue Time is most current available.
+xfpa*.guidSelectLegend*issue2.labelString: Issue Time is not most recent.
+xfpa*.guidSelectLegend*issue3.labelString: Issue Time is unavailable.
+xfpa*.guidSelectLegend*valid1.labelString: Time is same as that of the active depiction.
+xfpa*.guidSelectLegend*valid2.labelString: Time is different from the active depiction.
+
+xfpa*.guidanceLegendDialog.dialogTitle: Guidance Field Legend
+xfpa*.guidanceLegendDialog.*display*.columnLabels: Level,Field,Source,Issue Time, Valid
+xfpa*.guidanceLegendDialog.retainGeometry: ALL
+
+!-------------------------------------------------------------------
+
+xfpa*.guidanceListAddItem.dialogTitle: Create List
+xfpa*.guidanceListAddItem.x: 50
+xfpa*.guidanceListAddItem.y: 100
+xfpa*.guidanceListAddItem.retainGeometry: NONE
+xfpa*.guidanceListAddItem*.textLabel.labelString: List Name:
+xfpa*.guidanceListAddItem*.text.columns: 25
+xfpa*.guidanceListAddItem*.text.rows: 1
+
+!-------------------------------------------------------------------
+
+xfpa*.guidanceFieldSelect.dialogTitle: Add Field To Guidance List
+xfpa*.guidanceFieldSelect.x: 50
+xfpa*.guidanceFieldSelect.y: 100
+xfpa*.guidanceFieldSelect*.XmList.listSpacing: 3
+xfpa*.guidanceFieldSelect*.addToList.labelString: Add To List
+xfpa*.guidanceFieldSelect*.sample.labelString: Sample
+xfpa*.guidanceFieldSelect*.fieldSelect.labelString: Field Definition
+xfpa*.guidanceFieldSelect*.fieldForm*.visibleItemCount: 12
+xfpa*.guidanceFieldSelect*.elementGroup.labelString: Element Group
+xfpa*.guidanceFieldSelect*.element.labelString: Element
+xfpa*.guidanceFieldSelect*.level.labelString: Level
+xfpa*.guidanceFieldSelect*.sourceSelect.labelString: Field Source
+xfpa*.guidanceFieldSelect*.sourceForm*.visibleItemCount: 6
+xfpa*.guidanceFieldSelect*.absRunList.columns: 12
+
+!-------------------------------------------------------------------
+
+xfpa*.guidanceFieldRemove.dialogTitle: Remove Fields From List:  %s
+xfpa*.guidanceFieldRemove.y: geometry 248x180+50+100
+xfpa*.guidanceFieldRemove*.list.visibleItemCount: 20
+xfpa*.guidanceFieldRemove*.removeBtn.labelString: Remove
+
+!-------------------------------------------------------------------
+
+xfpa*.guidanceFieldAppearance.dialogTitle: Field Appearance
+xfpa*.guidanceFieldAppearance.x: 50
+xfpa*.guidanceFieldAppearance.y: 100
+xfpa*.guidanceFieldAppearance*.list.visibleItemCount: 10
+xfpa*.guidanceFieldAppearance*.labelStyle.labelString: Label Type
+xfpa*.guidanceFieldAppearance*.labelContour.labelString: Contour Value
+xfpa*.guidanceFieldAppearance*.labelBarb.labelString: Wind Barb
+xfpa*.guidanceFieldAppearance*.colorSelect.label.labelString: Colour & Style
+xfpa*.guidanceFieldAppearance*.restore.labelString: Restore Default\nAppearance
+
+!-------------------------------------------------------------------
+
+xfpa*.guidanceAvailability.dialogTitle: Guidance Availability
+xfpa*.guidanceAvailability.geometry: 550x700+500+75
+xfpa*.guidanceAvailability*.levelFilterLabel.labelString: Level Filter 
+xfpa*.guidanceAvailability*.fieldDisplayLabel.labelString: Fields Available
+
+!-------------------------------------------------------------------
+
+xfpa*.guidanceStatus.dialogTitle: Guidance Status
+xfpa*.guidanceStatus.geometry: 380x300+215+50
+xfpa*.guidanceStatus*.lastModTime.labelString: Last Update Time
+
+!-------------------------------------------------------------------
+
+xfpa*.graphicPreview.dialogTitle: Graphic Image Preview
+xfpa*.graphicPreview.retainGeometry: ALL
+xfpa*.graphicPreview*.prevBtn.labelString: << Previous
+xfpa*.graphicPreview*.nextBtn.labelString: Next >>
+
+xfpa*.graphicProducts.dialogTitle: Graphic Products
+xfpa*.graphicProducts.geometry: 382x327+324+70
+xfpa*.graphicProducts*.display.labelString: List Display 
+xfpa*.graphicProducts*.productList.visibleItemCount: 10
+xfpa*.graphicProducts*.previewBtn.labelString: Preview
+xfpa*.graphicProducts*.graphicEditorBtn.labelString: Launch Editor
+
+xfpa*.graphicProducts*.all.labelString: All Types
+xfpa*.graphicProducts*.graphics.labelString: Graphic Files
+xfpa*.graphicProducts*.metafiles.labelString: Depiction Files
+
+! These labels correspond to the products generated by the fpagpgen program.
+! This includes psmet, texmet and whatever else comes along. There must
+! be an entry here of the form *graphicProducts*.key.labelString:
+! where key is the product key as set in the setup file. If there is no
+! entry here the key will not be recognized from the setup file by FPA.
+
+xfpa*.graphicProducts*.texmet.labelString:   TexMet
+xfpa*.graphicProducts*.psmet.labelString:    PSMet
+xfpa*.graphicProducts*.svgmet.labelString:   SVGMet
+
+! If one of the above can be previewed, the following entries control the
+! conversion of the output to the viewer format. The general entry form:
+!
+! .psmetPreview: ghostview <options> <infile>
+!
+! UNDER CONSTRUCTION: DO NOT USE!!!
+
+!-------------------------------------------------------------------
+
+xfpa*.pointFcst.dialogTitle: Point Forecast Selection
+xfpa*.pointFcst.x: 20
+xfpa*.pointFcst.y: 110
+xfpa*.pointFcst.width: 800
+xfpa*.pointFcst.height: 450
+xfpa*.pointFcst.retainGeometry: ALL
+xfpa*.pointFcst*.typeSelect.width: 150
+xfpa*.pointFcst*.typeSelect*.marine.labelString: Marine
+xfpa*.pointFcst*.typeSelect*.public.labelString: Public
+xfpa*.pointFcst*.typeSelect*.forest.labelString: Forestry
+xfpa*.pointFcst*.modifyListBtn.labelString: Modify List ...
+!xfpa*.pointFcst*.fcstText.fontList: -schumacher-clean-medium-r-normal--16-*
+
+!-------------------------------------------------------------------
+
+xfpa*.pointFcstEdit*.dialogTitle: Point Forecast List Editor
+xfpa*.pointFcstEdit.x: 140
+xfpa*.pointFcstEdit.y: -73
+xfpa*.pointFcstEdit.width: 478
+xfpa*.pointFcstEdit.height: 487
+xfpa*.pointFcstEdit*.fcstList.visibleItemCount: 10
+xfpa*.pointFcstEdit*.labelEntryLabel.labelString: Assigned Label
+xfpa*.pointFcstEdit*.timeParmLabel.labelString: Time Parameters
+!xfpa*.pointFcstEdit*.issueTimeEntry.fontList: -schumacher-clean-bold-r-normal--14-*
+xfpa*.pointFcstEdit*.validTimeLabel.labelString: Valid
+!xfpa*.pointFcstEdit*.validTimeEntry.fontList: -schumacher-clean-bold-r-normal--14-*
+xfpa*.pointFcstEdit*.outlookTimeLabel.labelString: Outlook
+!xfpa*.pointFcstEdit*.outlookTimeEntry.fontList: -schumacher-clean-bold-r-normal--14-*
+xfpa*.pointFcstEdit*.latLabel.labelString: Latitude
+!xfpa*.pointFcstEdit*.latEntry.fontList: -schumacher-clean-bold-r-normal--14-*
+xfpa*.pointFcstEdit*.N.labelString: N
+xfpa*.pointFcstEdit*.S.labelString: S
+xfpa*.pointFcstEdit*.longLabel.labelString: Longitude
+!xfpa*.pointFcstEdit*.longEntry.fontList: -schumacher-clean-bold-r-normal--14-*
+xfpa*.pointFcstEdit*.W.labelString: W
+xfpa*.pointFcstEdit*.E.labelString: E
+xfpa*.pointFcstEdit*.positionLabel.labelString: Position
+xfpa*.pointFcstEdit*.classLabel.labelString: Type
+xfpa*.pointFcstEdit*.tzOptions.labelString: Time Zone
+xfpa*.pointFcstEdit*.langOptions.labelString: Language
+
+!-------------------------------------------------------------------
+! Radar STAT Table Dialog
+
+xfpa*.radarStatDialog.dialogTitle: Storm STAT Table
+xfpa*.radarStatDialog.*undo.labelString: Undo Changes
+xfpa*.radarStatDialog.*recover.labelString: Recover Table
+xfpa*.radarStatDialog.*saveFile.labelString: Save Table
+xfpa*.radarStatDialog.*views.labelString: Views
+xfpa*.radarStatDialog.*default.labelString: Show All
+xfpa*.radarStatDialog.*userMessage.foreground: yellow
+xfpa*.radarStatDialog.*userMessage.borderWidth: 2
+xfpa*.radarStatDialog.*statMatrix.textBackground: white
+xfpa*.radarStatDialog.*statMatrix.renderTable.fontName: DejaVu Sans
+xfpa*.radarStatDialog.*statMatrix.renderTable.fontType: FONT_IS_XFT
+xfpa*.radarStatDialog.*statMatrix.renderTable.fontSize: 9
+xfpa*.radarStatDialog.*statMatrix.renderTable.loadModel: LOAD_DEFERRED
+
+xfpa*.stormTrendDialog.dialogTitle: Storm STAT Graph
+xfpa*.stormTrendDialog*.plot.background: grey30
+xfpa*.stormTrendDialog*.plot.foreground: grey80
+xfpa*.stormTrendDialog*.plotFrame.background: grey30
+xfpa*.stormTrendDialog*.plot.axisFontTag: very_small
+xfpa*.stormTrendDialog*.plot.titleFontTag: large
+
+
+!-------------------------------------------------------------------
+
+xfpa*.preferences.dialogTitle: Preferences
+xfpa*.preferences.geometry: 670x390+462+100
+xfpa*.preferences.retainGeometry: ALL
+xfpa*.preferences*.General.tabLabelString: General
+xfpa*.preferences*.MapSettings.labelString: Map Colours
+xfpa*.preferences*.GUI.tabLabelString: User Interface
+xfpa*.preferences*.AlliedModel.tabLabelString: Allied Model
+xfpa*.preferences*.DialogLocation.tabLabelString: Dialog Location
+xfpa*.preferences*.XmRowColumn.spacing: 3
+
+xfpa*.preferences*.cursorLabel.labelString: Cursor Style
+xfpa*.preferences*.cursorSelect.entryLabelString: Pointer Type
+xfpa*.preferences*.bgSelect.entryLabelString: Border Colour
+xfpa*.preferences*.fgSelect.entryLabelString: Body Colour
+xfpa*.preferences*.default.labelString: Default
+xfpa*.preferences*.im.labelString: Outline Arrow
+xfpa*.preferences*.ularrow.labelString: Filled Arrow
+xfpa*.preferences*.bookshelfOptionsLabel.labelString: New Guidance Arriving Indicator ( Bookshelf )
+xfpa*.preferences*.beginFlashTime.labelString: How long after the guidance status was last checked by the forecaster\nshould the bookshelf start flashing when new data arrives?
+xfpa*.preferences*.endFlashTime.labelString: How long should the bookshelf flash for after new data stops arriving?
+
+xfpa*.preferences*.locations.labelString: Component Location
+xfpa*.preferences*.iconbarPos.entryLabelString: Command Icon Bar
+xfpa*.preferences*.timebarLabel.labelString: Time Selection Bar
+xfpa*.preferences*.timebarPos.entryLabelString: Time Selection Bar
+xfpa*.preferences*.messagePos.entryLabelString: Message Bar
+xfpa*.preferences*.top.labelString: Top
+xfpa*.preferences*.bottom.labelString: Bottom
+
+xfpa*.preferences*.alliedModelList.height: 200
+xfpa*.preferences*.alliedModelLabel.labelString: Models
+xfpa*.preferences*.alliedModelFieldLabel.labelString: Fields To Import
+xfpa*.preferences*.alliedModelAskToImport.labelString: Ask permission before importing Allied Model fields
+
+xfpa*.preferences*.overlays.labelString: Overlays
+xfpa*.preferences*.colorLabel.labelString: Colour Scheme
+
+xfpa*.preferences*.location.labelString: Screen
+xfpa*.preferences*.dlogName.labelString: |  Dialog Name
+
+xfpa*.preferences*.programExit.labelString: Confirm program exit
+xfpa*.preferences*.editStateSave.labelString: Restore edit state upon resart
+xfpa*.preferences*.deleteDepict.labelString: Show delete all depictions button on exit
+xfpa*.preferences*.dailyTimeOption.labelString: Show day name in daily field time button
+xfpa*.preferences*.guidInWindow.labelString: Show active guidance information in separate window
+
+xfpa*.preferences*.optTimelink.labelString: Timelink Display
+xfpa*.preferences*.optControl.labelString: Show time of control nodes
+xfpa*.preferences*.optEarlyLate.labelString: Show early/late start/end times
+xfpa*.preferences*.optSpeed.labelString: Show speed above link nodes
+xfpa*.preferences*.optTime.labelString: Show time below link nodes
+xfpa*.preferences*.linkColor.labelString: Link Colour
+
+xfpa*.preferences*.latLongDisplayStyle.labelString: Lat-Long Display
+xfpa*.preferences*.decimalDegrees.labelString: Decimal Degrees
+xfpa*.preferences*.degreesMinutes.labelString: Degrees & Minutes
+
+!-------------------------------------------------------------------
+
+xfpa*.startupSelectProfile.dialogTitle: Startup Profile Selection
+xfpa*.startupSelectProfile*.label.labelString: Select Profile
+xfpa*.startupSelectProfile*.defaultProfile.labelString: Default Profile
+
+xfpa*.saveProfile.dialogTitle: Save Profile
+xfpa*.saveProfile.geometry: 300x150+0+0
+xfpa*.saveProfile*.autoSave.labelString: Automatically update profile\non exit from program
+xfpa*.saveProfile*.currentProfile.labelString: Current Profile:
+
+xfpa*.addProfile.dialogTitle: Save As Profile
+xfpa*.addProfile*.textLabel.labelString: New Profile Name
+
+xfpa*.manageProfile.dialogTitle: Manage Profiles
+xfpa*.manageProfile.geometry: 200x300+0+0
+
+!-------------------------------------------------------------------
+
+xfpa*.productStatus.dialogTitle: Product Status
+xfpa*.productStatus.retainGeometry: ALL
+xfpa*.productStatus.geometry: 450x550+34+80
+!xfpa*.productStatus*.header.fontList: *-helvetica-bold-r-normal--20-*
+xfpa*.productStatus*.scrolledWindow.width: 450
+xfpa*.productStatus*.scrolledWindow.height: 500
+xfpa*.productStatus*.scrolledWindow.scrollBarDisplayPolicy: static
+
+xfpa*.productStatusLegend.dialogTitle: Product Status Legend
+xfpa*.productStatusLegend.relativePosition: True
+xfpa*.productStatusLegend.x: -40
+xfpa*.productStatusLegend.y: -200
+xfpa*.productStatusLegend*.info.labelString: \
+The columns under each product type consist of the following:\n\n\
+\    1. The product name.\n\
+\    2. The last time the product was generated.\n\
+\    3. Release status for those products which are released.\n\
+
+!-------------------------------------------------------------------
+
+xfpa*.userReport.dialogTitle: Problem Reporter
+xfpa*.userReport.retainGeometry: ALL
+xfpa*.userReport.x: -740
+xfpa*.userReport.y: 0
+xfpa*.userReport*.problemHeader.labelString: Problem Report
+!xfpa*.userReport*.problemHeader.fontList: *-helvetica-medium-r-normal--20-*
+xfpa*.userReport*.userNameLabel.labelString: Submitted by:
+xfpa*.userReport*.userName.columns: 24
+xfpa*.userReport*.phoneLabel.labelString: Phone:
+xfpa*.userReport*.phoneNumber.columns: 14
+xfpa*.userReport*.refLabel.labelString: Reference:
+xfpa*.userReport*.synopsisLabel.labelString: Synopsis
+xfpa*.userReport*.classSelect.labelString: Class 
+xfpa*.userReport*.sw_bug.labelString: Program Bug
+xfpa*.userReport*.doc_bug.labelString: Documentation Bug
+xfpa*.userReport*.change_request.labelString: Change Request
+xfpa*.userReport*.support.labelString: Question
+xfpa*.userReport*.prioritySelect.labelString: Priority 
+xfpa*.userReport*.high.labelString: High 
+xfpa*.userReport*.medium.labelString: Medium 
+xfpa*.userReport*.low.labelString: Low 
+xfpa*.userReport*.problemLabel.labelString: Description
+xfpa*.userReport*.problem.columns: 70
+xfpa*.userReport*.problem.rows:  10
+xfpa*.userReport*.viewLog.labelString: View Log ...
+
+!-------------------------------------------------------------------
+
+xfpa*.pointPanel*.typeList.labelString: Point Types
+
+!-------------------------------------------------------------------
+
+xfpa*.scratchpadPanel.tabLabelString: Scratchpad
+xfpa*.scratchpadPanel*.drawBtn.labelString: Draw Line
+xfpa*.scratchpadPanel*.textBtn.labelString: Place Text
+xfpa*.scratchpadPanel*.measureBtn.labelString: Measure Distance
+xfpa*.scratchpadPanel*.distanceBtn.labelString: Preset Distance
+xfpa*.scratchpadPanel*.setDist.entryLabelString: Distance\n(Km)
+xfpa*.scratchpadPanel*.drawMode.labelString: Mode 
+xfpa*.scratchpadPanel*.editLabel.labelString: Function
+xfpa*.scratchpadPanel*.clearBtn.labelString: Clear All
+xfpa*.scratchpadPanel*.colorSelect.label.labelString: Line Colour & Style
+xfpa*.scratchpadPanel*.setSampleFont.labelString: Distance Value
+xfpa*.textEnterDialog.x: -70
+
+!-------------------------------------------------------------------
+
+xfpa*.connectPanel.tabLabelString: Connect
+
+!-------------------------------------------------------------------
+
+! This resource sets the number of buttons which are to be
+! visible in the group scrolled window in the timelink panel.
+!
+xfpa*.timelinkPanel.maxGroupBtns: 3
+
+xfpa*.timelinkPanel.tabLabelString: Timelink
+xfpa*.timelinkPanel*.masterLink.labelString: Group Master
+xfpa*.timelinkPanel*.linkToLabel.labelString: Use Links From:
+xfpa*.timelinkPanel*.self.labelString: Self
+xfpa*.timelinkPanel*.linkSep.width: 128
+xfpa*.timelinkPanel*.controlLabel.labelString: Link
+xfpa*.timelinkPanel*.selectInterLink.labelString: Add Control Node
+
+!-------------------------------------------------------------------
+
+! The following two resources set the number of buttons which are
+! to be visible in the group and field scrolled windows in the
+! interpolation panel.
+!
+xfpa*.interpPanel.maxGroupBtns: 3
+xfpa*.interpPanel.minFieldBtns: 8
+
+xfpa*.interpPanel.tabLabelString: Interpolate
+xfpa*.interpPanel*.doInterp.labelString: Do Interpolation
+xfpa*.interpPanel*.frameLabel.labelString: Interpolate
+xfpa*.interpPanel*.selectInterp.labelString: Selected Fields
+xfpa*.interpPanel*.allInterp.labelString: All Fields
+
+xfpa*.interpSelectDialog.dialogTitle: Field Selection
+xfpa*.interpSelectDialog.x: -100
+xfpa*.interpSelectDialog.y: -100
+xfpa*.interpSelectDialog.width: 275
+xfpa*.interpSelectDialog.height: 350
+xfpa*.interpSelectDialog.*fieldToInterp.labelString: Field to Interpolate
+xfpa*.interpSelectDialog.*labelToInterp.labelString: Label to Interpolate
+
+xfpa*.interpStatus.dialogTitle: Interpolation Status
+xfpa*.interpStatus.width: 350
+xfpa*.interpStatus*.totalProgressLabel.labelString: Total Completed
+
+!-------------------------------------------------------------------
+
+xfpa*.imageryControlDialog.dialogTitle: Image Control
+xfpa*.imageryControlDialog.retainGeometry: ALL
+xfpa*.imageryControlDialog*.selectTab.tabLabelString: Select
+xfpa*.imageryControlDialog*.animateTab.tabLabelString: Animate
+xfpa*.imageryControlDialog*.sampleTab.tabLabelString: Sample
+xfpa*.imageryControlDialog*.optionsTab.tabLabelString: Settings
+xfpa*.imageryControlDialog*.enhancement.labelString: Enhancement
+xfpa*.imageryControlDialog*.options.labelString: Options
+xfpa*.imageryControlDialog*.showLegend.labelString: Show Colour Table
+xfpa*.imageryControlDialog*.showRadarStatTable.labelString: Show Radar STAT Table
+xfpa*.imageryControlDialog*.sync.labelString: Depiction Sync
+xfpa*.imageryControlDialog*.blendBtn.labelString: Blend Images
+xfpa*.imageryControlDialog*.brightBtn.labelString: Apply Brightness
+xfpa*.imageryControlDialog*.useTimeWindow.labelString: Use Time Window
+xfpa*.imageryControlDialog*.timeWindowLabel.labelString: Animation Window
+!xfpa*.imageryControlDialog*.timeSelect.fontList: -schumacher-clean-bold-r-normal--14-*
+xfpa*.imageryControlDialog*.timeSelect.columns: 30
+xfpa*.imageryControlDialog*.animateSpeed.labelString: Speed
+xfpa*.imageryControlDialog*.sampleSelect.labelString: Site
+xfpa*.imageryControlDialog*.onOffGroup.label.labelString: Data Sample
+xfpa*.imageryControlDialog*.sampleItemLabel.labelString: Value
+xfpa*.imageryControlDialog*.blendLabel.labelString: Blending Ratio
+xfpa*.imageryControlDialog*.radarEnhance.labelString: Radar Display Options
+xfpa*.imageryControlDialog*.holdTime.labelString: Time Window
+xfpa*.imageryControlDialog*.radarOptions.labelString: Radar Data View
+xfpa*.imageryControlDialog*.noRings.labelString: No Range Rings
+xfpa*.imageryControlDialog*.showLimitRingOnly.labelString: Limit Ring Only
+xfpa*.imageryControlDialog*.showRings.labelString: All Rings
+xfpa*.imageryControlDialog*.ringDelta.labelString: Spacing (Km)
+xfpa*.imageryControlDialog*.imageBrightness.labelString: Brightness
+xfpa*.imageryControlDialog*.shortRad.labelString: Rad
+xfpa*.imageryControlDialog*.shortSat.labelString: Sat
+!xfpa*.imageryControlDialog*.selectAll.fontList: -schumacher-clean-medium-r-normal--12-*
+!xfpa*.imageryControlDialog*.deselectAll.fontList: -schumacher-clean-medium-r-normal--12-*
+
+!-------------------------------------------------------------------
+!
+! resources for the colour map legend for images. These are generated
+! in dialogs with no self control elements. The resources are:
+!
+! label          - What appears above the colormap
+! fontList       - The font to use for all elements of the legend
+! scaleLength    - how long the visible colour scale should be
+! maxBlockHeight - maximum height of a block of colour
+! blockWidth     - width of the colour blocks
+! minLabelSpace  - the minimum space between value labels in units
+!                  of font height (may be fractional).
+
+xfpa*.radarLegend.dialogTitle: Radar
+xfpa*.radarLegend.label: Radar Colourmap
+!xfpa*.radarLegend*.font.fontList: -schumacher-clean-medium-r-normal--12-*
+xfpa*.radarLegend.scaleLength: 225
+xfpa*.radarLegend.maxBlockHeight: 15
+xfpa*.radarLegend.blockWidth: 20
+xfpa*.radarLegend.minLabelSpace: 2.5
+
+xfpa*.satelliteLegend.dialogTitle: Satellite
+xfpa*.satelliteLegend.label: Satellite Colourmap
+!xfpa*.satelliteLegend*.font.fontList: -schumacher-clean-medium-r-normal--12-*
+xfpa*.satelliteLegend.scaleLength: 225
+xfpa*.satelliteLegend.maxBlockHeight: 10
+xfpa*.satelliteLegend.blockWidth: 10
+xfpa*.satelliteLegend.minLabelSpace: 2.5
+
+xfpa*.overlayLegend.dialogTitle: Overlay
+xfpa*.overlayLegend.label: Overlay Colourmap
+!xfpa*.overlayLegend*.font.fontList: -schumacher-clean-medium-r-normal--12-*
+xfpa*.overlayLegend.scaleLength: 225
+xfpa*.overlayLegend.maxBlockHeight: 10
+xfpa*.overlayLegend.blockWidth: 10
+xfpa*.overlayLegend.minLabelSpace: 2.5
+
+xfpa*.underlayLegend.dialogTitle: Underlay
+xfpa*.underlayLegend.label: Underlay Colourmap
+!xfpa*.underlayLegend*.font.fontList: -schumacher-clean-medium-r-normal--12-*
+xfpa*.underlayLegend.scaleLength: 225
+xfpa*.underlayLegend.maxBlockHeight: 10
+xfpa*.underlayLegend.blockWidth: 10
+xfpa*.underlayLegend.minLabelSpace: 2.5
+
+!-------------------------------------------------------------------
+
+xfpa*.userMessage.x:   -100
+xfpa*.userMessage.y:   90
+xfpa*.userMessage.width:   680
+xfpa*.userMessage.height:   330
+xfpa*.userMessage.dialogTitle:  User Notices
+xfpa*.userMessage.closeButton.labelString: Ok
+
+!-------------------------------------------------------------------
+
+xfpa*.weatherEntry.dialogTitle: Weather Entry
+!xfpa*.weatherEntry.x: -285
+!xfpa*.weatherEntry.y: -150
+!xfpa*.weatherEntry*.textDisplay.fontList: -schumacher-clean-medium-r-normal--16-*
+xfpa*.weatherEntry*.textDisplay.rows: 5
+xfpa*.weatherEntry*.displaySelectLabel.labelString: Display:
+xfpa*.weatherEntry*.displayValueBtn.labelString:  Value
+xfpa*.weatherEntry*.displayLabelBtn.labelString:  Label
+xfpa*.weatherEntry*.enterBtn.labelString: Create
+
+xfpa*.acceptAnyway.dialogTitle: Weather Value Entry Error
+xfpa*.acceptAnyway.retainGeometry: NONE
+xfpa*.acceptAnyway.x: -65
+xfpa*.acceptAnyway.y: -165
+xfpa*.acceptAnyway*.title.labelString: Error Description
+xfpa*.acceptAnyway*.text.columns: 35
+xfpa*.acceptAnyway*.msg.labelString: Do you wish to accept the value anyway?
+
+xfpa*.weatherType.dialogTitle: Weather Category Selection
+xfpa*.weatherType.retainGeometry: NONE
+xfpa*.weatherType.x: -90
+xfpa*.weatherType.y: -120
+xfpa*.weatherType*.msg.labelString: Please select the category type of the weather.
+xfpa*.weatherType*.cloud.labelString: Cloud
+xfpa*.weatherType*.vis.labelString: Restriction to\nVisibility
+xfpa*.weatherType*.precip.labelString: Precipitation
+
+!-------------------------------------------------------------------
+
+! These next three are used by the windEntry and bkgndWindEntry
+
+xfpa*.speed.entryLabelString: Speed:
+xfpa*.angle.entryLabelString: Angle:
+xfpa*.gusts.entryLabelString: Gust:
+
+xfpa*.windEntry.dialogTitle: Wind Entry
+xfpa*.windEntry.x: -360
+xfpa*.windEntry.y: -100
+xfpa*.windEntry*.model.entryLabelString: Base Model: 
+xfpa*.windEntry*.type.entryLabelString: Combination: 
+xfpa*.windEntry*.mdms.labelString: Model Direction & Speed
+xfpa*.windEntry*.mdas.labelString: Model Direction - Absolute Speed
+xfpa*.windEntry*.adms.labelString: Absolute Direction - Model Speed
+xfpa*.windEntry*.adas.labelString: Absolute Direction & Speed
+xfpa*.windEntry.renderTable.fontName: DejaVu Sans
+xfpa*.windEntry.renderTable.fontType: FONT_IS_XFT
+xfpa*.windEntry.renderTable.fontSize: 10
+
+!-------------------------------------------------------------------
+
+xfpa*.bkgndWindEntry.dialogTitle: Background Wind
+xfpa*.bkgndWindEntry.x: -270
+xfpa*.bkgndWindEntry.y: -70
+xfpa*.bkgndWindEntry*.baseModelSelectLabel.labelString: Base Model
+xfpa*.bkgndWindEntry*.entryDisplay.renderTable.fontName: DejaVu Sans Mono
+xfpa*.bkgndWindEntry*.entryDisplay.renderTable.fontType: FONT_IS_XFT
+xfpa*.bkgndWindEntry*.entryDisplay.renderTable.fontSize: 10
+xfpa*.bkgndWindEntry*.entryDisplay.renderTable.loadModel: LOAD_DEFERRED
+
+!-------------------------------------------------------------------
+
+xfpa*.attributesEntryMenu.dialogTitle: Attributes Entry Menu
+xfpa*.attributesEntryMenu*.keyboardFocusPolicy: explicit
+xfpa*.attributesEntryMenu*.labelDisplayLabel.labelString: User Set Label
+xfpa*.attributesEntryMenu*.labelDisplayClear.labelString: Clear
+xfpa*.attributesEntryMenu*.labelDisplayClear.marginWidth: 6
+xfpa*.attributesEntryMenu*.labelDisplayClear.marginHeight: 6
+xfpa*.attributesEntryMenu*.category.labelString: Category
+xfpa*.attributesEntryMenu*.valueDisplayLabel.labelString: Auto Generated Label
+xfpa*.attributesEntryMenu*.clearBtn.labelString: << Clear
+xfpa*.attributesEntryMenu*.clearBtn.marginHeight: 4
+xfpa*.attributesEntryMenu*.clearBtn.marginWidth: 5
+xfpa*.attributesEntryMenu*.tabs*.XmTextField.marginHeight: 2
+xfpa*.attributesEntryMenu*.tabs*.XmTextField.marginWidth: 4
+xfpa*.attributesEntryMenu*.originalValues.labelString: Show Original Values
+xfpa*.attributesEntryMenu*.area1.labelString: Area 1
+xfpa*.attributesEntryMenu*.area2.labelString: Area 2
+xfpa*.attributesEntryMenu*.setBtn.labelString: Set Attributes
+xfpa*.attributesEntryMenu*.setDefaultBtn.labelString: Set Default\nAttributes
+xfpa*.attributesEntryMenu*.setLastAreaBtn.labelString: Set Last\nDrawn Area
+xfpa*.attributesEntryMenu*.setLastLineBtn.labelString: Set Last\nDrawn Line
+xfpa*.attributesEntryMenu*.setSelectedAreaBtn.labelString: Set Selected\nArea
+xfpa*.attributesEntryMenu*.setSubAreaBtn.labelString: Set Subarea
+xfpa*.attributesEntryMenu*.setSelectedLineBtn.labelString: Set Selected\nLine
+xfpa*.attributesEntryMenu*.addToListBtn.labelString: Add to\nMemory
+xfpa*.attributesEntryMenu*.resetMenuBtn.labelString: Reset\nMenu
+xfpa*.attributesEntryMenu*.resetBtn.labelString: Reset
+
+! Alternate dialog names
+xfpa*.pointAttributesDialog.dialogTitle: Point Attributes Entry Menu
+xfpa*.labelAttributesDialog.dialogTitle: Label Attributes Entry Menu
+xfpa*.labelAttributesDialog.geometry: 700x500
+xfpa*.lineAttributesDialog.dialogTitle: Line Attributes Entry Menu
+xfpa*.areaAttributesDialog.dialogTitle: Area Attributes Entry Menu
+xfpa*.areaBkgndAttributesDialog.dialogTitle: Area Background Attributes Entry Menu
+
+!-------------------------------------------------------------------
+
+xfpa*.zoomControl.dialogTitle: Zoom
+xfpa*.zoomControl.retainGeometry: POSN_ONLY
+
+!-------------------------------------------------------------------
+! Right button context menu
+
+xfpa*.editContextMenu*.sample.labelString: Sample
+xfpa*.editContextMenu*.label.labelString: Label
+
+xfpa*.editContextMenu*.moveSfc.labelString: Move Area
+xfpa*.editContextMenu*.dragSfc.labelString: Drag Points
+xfpa*.editContextMenu*.pokeSfc.labelString: Poke
+xfpa*.editContextMenu*.smoothSfc.labelString: Smooth
+xfpa*.editContextMenu*.stompSfc.labelString: Stomp
+xfpa*.editContextMenu*.mergeSfc.labelString: Merge
+
+xfpa*.editContextMenu*.moveRgn.labelString: Move
+xfpa*.editContextMenu*.dragRgn.labelString: Drag
+xfpa*.editContextMenu*.pokeRgn.labelString: Poke
+xfpa*.editContextMenu*.smoothRgn.labelString: Smooth
+xfpa*.editContextMenu*.stompRgn.labelString: Stomp
+xfpa*.editContextMenu*.mergeRgn.labelString: Merge
+
+xfpa*.editContextMenu*.drawArea.labelString: Draw
+xfpa*.editContextMenu*.moveArea.labelString: Move
+xfpa*.editContextMenu*.rotateArea.labelString: Rotate
+xfpa*.editContextMenu*.divideArea.labelString: Divide
+xfpa*.editContextMenu*.modifyArea.labelString: Modify
+xfpa*.editContextMenu*.mergeArea.labelString: Merge
+
+xfpa*.editContextMenu*.drawLine.labelString: Draw
+xfpa*.editContextMenu*.flipLine.labelString: Flip
+xfpa*.editContextMenu*.modifyLine.labelString: Modify
+xfpa*.editContextMenu*.moveLine.labelString: Move
+xfpa*.editContextMenu*.rotateLine.labelString: Rotate
+xfpa*.editContextMenu*.mergeLine.labelString: Merge
+xfpa*.editContextMenu*.joinLine.labelString: Join
+
+xfpa*.editContextMenu*.createPoint.labelString: Add Point
+xfpa*.editContextMenu*.movePoint.labelString: Move
+xfpa*.editContextMenu*.modifyPoint.labelString: Modify
+xfpa*.editContextMenu*.mergePoint.labelString: Merge
+
+xfpa*.editContextMenu*.addLink.labelString: Add
+xfpa*.editContextMenu*.moveLink.labelString: Move
+xfpa*.editContextMenu*.modifyLink.labelString: Modify
+xfpa*.editContextMenu*.mergeLink.labelString: Merge
+xfpa*.editContextMenu*.editNode.labelString: Edit Nodes
+
+xfpa*.timelinkContextMenu*.endLink.labelString: End Link
+xfpa*.timelinkContextMenu*.linkBackward.labelString: Link Backward
+xfpa*.timelinkContextMenu*.linkForward.labelString: Link Forward
+xfpa*.timelinkContextMenu*.moveNode.labelString: Move Node
+xfpa*.timelinkContextMenu*.merge.labelString: Merge
+xfpa*.timelinkContextMenu*.deleteNode.labelString: Delete Node
+xfpa*.timelinkContextMenu*.deleteChain.labelString: Delete Chain
+xfpa*.timelinkContextMenu*.newChain.labelString: New Chain
+xfpa*.timelinkContextMenu*.endChain.labelString: End Chain
+xfpa*.timelinkContextMenu*.currentTime.labelString: Current Time
+
+! The following 2 are the different labels for the cascade button
+xfpa*.presetBoundary: Boundary from
+xfpa*.presetSelect: Select by
+xfpa*.holesFrom: Holes From
+xfpa*.drawOutlineBtn.labelString: Draw an Outline
+xfpa*.lastDrawnAreaBtn.labelString: Use Last Drawn Outline
+xfpa*.lastMovedAreaBtn.labelString: Use Last Moved Outline
+xfpa*.lastStompOutlineBtn.labelString: Use Last Stomp Outline
+xfpa*.lastDrawnHole.labelString: Use Last Drawn Hole
+
+!-------------------------------------------------------------------
+!  Widget Tips
+
+xfpa*.topBar*.latLongDisplay.toolTipString: Cursor Latitude & Longitude
+
+xfpa*.iconBar*.loadFieldsIcon.toolTipString: Load Fields
+xfpa*.iconBar*.updateFieldsIcon.toolTipString: Update Fields
+xfpa*.iconBar*.importFieldsIcon.toolTipString: Import Fields
+xfpa*.iconBar*.deleteFieldsIcon.toolTipString: Delete Fields
+xfpa*.iconBar*.setT0Icon.toolTipString: Set Active Depiction as T0
+xfpa*.iconBar*.graphicProdIcon.toolTipString: Graphic Products
+xfpa*.iconBar*.alliedModelsIcon.toolTipString: Allied Models
+xfpa*.iconBar*.productStatusIcon.toolTipString: Product Status
+xfpa*.iconBar*.guidSelectIcon.toolTipString: Guidance
+xfpa*.iconBar*.guidStatusIcon.toolTipString: Guidance Status
+xfpa*.iconBar*.guidSelectStatusIcon.toolTipString: Selected Guidance Status
+xfpa*.iconBar*.imageSelectIcon.toolTipString: Imagery
+xfpa*.iconBar*.mapOverlaysIcon.toolTipString: Map Overlay Control
+xfpa*.iconBar*.fieldDisplayIcon.toolTipString: Field Display Control
+xfpa*.iconBar*.zoomIn.toolTipString: Zoom In
+xfpa*.iconBar*.zoomOut.toolTipString: Zoom Out
+xfpa*.iconBar*.zoomPan.toolTipString: Enter Pan Mode
+
+xfpa*.buttonBar.depictionTimeDisplay.toolTipString: Depiction Valid Time
+xfpa*.buttonBar.arrowPlus.toolTipString: Next Depiction
+xfpa*.buttonBar.arrowMinus.toolTipString: Previous Depiction
+xfpa*.buttonBar.arrowDelta.toolTipString: Minimum Time Step
+
+xfpa*.editorPanel*.SAMPLE.toolTipString: Sample
+xfpa*.editorPanel*.LABEL.toolTipString: Place labels
+
+xfpa*.editorPanel*.continuousManager.AREA.toolTipString: Move Surface Area
+xfpa*.editorPanel*.continuousManager.DRAG.toolTipString: Drag Points
+xfpa*.editorPanel*.continuousManager.POKE.toolTipString: Poke Surface
+xfpa*.editorPanel*.continuousManager.STOMP.toolTipString: Stomp Surface
+xfpa*.editorPanel*.continuousManager.MERGE.toolTipString: Merge Surfaces
+xfpa*.editorPanel*.continuousManager.SMOOTH.toolTipString: Smooth Surface
+
+xfpa*.editorPanel*.vectorManager.AREA.toolTipString: Move Surface Region
+xfpa*.editorPanel*.vectorManager.DRAG.toolTipString: Drag Points
+xfpa*.editorPanel*.vectorManager.POKE.toolTipString: Poke Region
+xfpa*.editorPanel*.vectorManager.STOMP.toolTipString: Stomp Region
+xfpa*.editorPanel*.vectorManager.MERGE.toolTipString: Merge Region
+xfpa*.editorPanel*.vectorManager.SMOOTH.toolTipString: Smooth Region
+
+xfpa*.editorPanel*.discreteManager.DRAW.toolTipString: Draw Area
+xfpa*.editorPanel*.discreteManager.DRAW_HOLE.toolTipString: Draw Holes
+xfpa*.editorPanel*.discreteManager.MOVE.toolTipString: Move Area
+xfpa*.editorPanel*.discreteManager.ROTATE.toolTipString: Rotate Area
+xfpa*.editorPanel*.discreteManager.DIVIDE.toolTipString: Divide Area
+xfpa*.editorPanel*.discreteManager.MODIFY.toolTipString: Modify Area
+xfpa*.editorPanel*.discreteManager.MERGE.toolTipString: Merge External Areas
+
+xfpa*.editorPanel*.lineManager.DRAW.toolTipString: Draw Line
+xfpa*.editorPanel*.lineManager.FLIP.toolTipString: Flip Line
+xfpa*.editorPanel*.lineManager.MODIFY.toolTipString: Modify Line
+xfpa*.editorPanel*.lineManager.MOVE.toolTipString: Move Line
+xfpa*.editorPanel*.lineManager.ROTATE.toolTipString: Rotate Line
+xfpa*.editorPanel*.lineManager.MERGE.toolTipString: Merge External Lines
+xfpa*.editorPanel*.lineManager.JOIN.toolTipString: Join Lines
+
+xfpa*.editorPanel*.pointManager.DRAW.toolTipString: Add Point
+xfpa*.editorPanel*.pointManager.MOVE.toolTipString: Move Point
+xfpa*.editorPanel*.pointManager.MODIFY.toolTipString: Modify Point
+xfpa*.editorPanel*.pointManager.MERGE.toolTipString: Merge External Points
+
+xfpa*.editorPanel*.linkChainManager.ADD.toolTipString: Add Track
+xfpa*.editorPanel*.linkChainManager.MOVE.toolTipString: Move Track
+xfpa*.editorPanel*.linkChainManager.MODIFY.toolTipString: Modify Track
+xfpa*.editorPanel*.linkChainManager.MERGE.toolTipString: Merge External Tracks
+xfpa*.editorPanel*.linkChainManager.NODES.toolTipString: Edit Nodes
+
+xfpa*.editorPanel*.drawModeOption.toolTipString: Drawing Style
+xfpa*.editorPanel*.modifyModeOption.toolTipString: Modify Method
+xfpa*.editorPanel*.smoothModeOption.toolTipString: Line Smoothing Amount
+xfpa*.editorPanel*.stackMode.toolTipString: Area Stacking Order
+xfpa*.editorPanel*.stackTransient.toolTipString: Modify Stacking Order
+xfpa*.editorPanel*.spreadSelect.toolTipString: Radius of Influence
+
+xfpa*.guidSelect*.sampleTab*.onOffBtn.toolTipString: Guidance Sampling ON/OFF
+
+xfpa*.timelinkPanel*.linkBackward.toolTipString: Link backward
+xfpa*.timelinkPanel*.linkForward.toolTipString: Link forward
+xfpa*.timelinkPanel*.moveNode.toolTipString: Move node
+xfpa*.timelinkPanel*.merge.toolTipString: Merge link chains
+xfpa*.timelinkPanel*.deleteNode.toolTipString: Delete node
+xfpa*.timelinkPanel*.deleteChain.toolTipString: Delete link chain
+xfpa*.timelinkPanel*.undoBtn.toolTipString: Undo last operation
+xfpa*.timelinkPanel*.cancelBtn.toolTipString: Cancel pending operation
+xfpa*.timelinkPanel*.clearBtn.toolTipString: Delete all link chains
+
+xfpa*.imageSelect.toolTipString: Image Selection
+xfpa*.imageAnimate.toolTipString: Image Animation
+xfpa*.imageSample.toolTipString: Image Sampling
+xfpa*.imageOptions.toolTipString: Image Options
+
+xfpa*.imageryControlDialog*.syncStatus.toolTipString: Depiction Sync State

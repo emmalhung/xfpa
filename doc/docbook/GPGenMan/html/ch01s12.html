@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>1.12. Graphics Symbol Files</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch01.html" title="Chapter 1. Introduction to the Graphics Product Generator" /><link rel="prev" href="ch01s11.html" title="1.11. Graphics Geography Files" /><link rel="next" href="ch01s13.html" title="1.13. Graphics Pattern Files for Drawing Lines" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.12. Graphics Symbol Files</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s11.html">Prev</a> </td><th width="60%" align="center">Chapter 1. Introduction to the Graphics Product Generator</th><td width="20%" align="right"> <a accesskey="n" href="ch01s13.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="graphics_symbol_files"></a>1.12. Graphics Symbol Files</h2></div></div></div><p>
+The <span class="acronym">FPA</span> directories contain a number of predefined symbols that can be
+displayed by the <span class="application">PSMet</span> and <span class="application">SVGMet</span> applications. The symbols are created
+as a set size, but can be scaled as desired. Each symbol is created as a set of
+drawing instructions, based on a centre location of (0,0). This centre
+location does not necessarily have to be at the physical centre of the symbol
+itself, but the symbol is always displayed relative to this centre location.
+The symbol location can, however, be modified by an absolute value , or
+relative to the size of the symbol. The following keywords can be used:
+</p><div class="variablelist"><dl><dt><span class="term">symbol, </span><span class="term">mark</span></dt><dd><p>the name of the symbol file</p></dd><dt><span class="term">symbol_scale, </span><span class="term">mark_scale</span></dt><dd><p>
+scale the symbol by a certain percentage</p></dd><dt><span class="term">x_off, </span><span class="term">attribute_x_off</span></dt><dd><p>
+shift symbol horizontally by a set amount</p></dd><dt><span class="term">y_off, </span><span class="term">attribute_y_off</span></dt><dd><p>
+shift symbol vertically by a set amount</p></dd><dt><span class="term">justification, </span><span class="term">attribute_justification</span></dt><dd><p>
+horizontal justification based on left or right edge of symbol</p></dd><dt><span class="term">attribute_vertical_just</span></dt><dd><p>
+vertical justification based on top or bottom edge of symbol</p></dd></dl></div><p>
+Examples of predefined symbols for the <span class="application">PSMet</span> and <span class="application">SVGMet</span> applications
+are shown in Appendix A. The default colour for these symbols is Blue,
+and the default size is also shown.
+</p><p>
+The <span class="application">PSMet</span> and <span class="application">SVGMet</span> applications also allow the user to create and use
+their own symbols in the output graphics products. The applications search
+for symbol files from default directories, but the user can add another
+directory to search first, if desired.
+</p><p>
+The <strong class="userinput"><code>directories</code></strong> block of the <span class="acronym">FPA</span> setup file may contain the following
+entries identifying directory locations for symbol files:
+</p><pre class="programlisting">directories
+  {
+  <span xmlns="" class="replaceable">...</span>
+  psmet_symbols            <span xmlns="" class="replaceable">symbol_directory</span>
+  svgmet_symbols           <span xmlns="" class="replaceable">symbol_directory</span>
+  <span xmlns="" class="replaceable">...</span>
+  }</pre><p>
+</p><p>
+The <span class="application">PSMet</span> application will search for a named symbol file from the
+following directories in the order given:
+</p><table class="simplelist" border="0" summary="Simple list"><tr><td><span xmlns="" class="replaceable">symbol_directory</span> (if entered)</td></tr><tr><td><code class="filename"><code class="envar">$HOME</code>/setup/pdf/psmet/common/ps</code></td></tr><tr><td><code class="filename"><code class="envar">$FPA</code>/setup/pdf/psmet/common/ps</code></td></tr></table><p>
+</p><p>
+The <span class="application">SVGMet</span> application will search from the following directories in the order given:
+</p><table class="simplelist" border="0" summary="Simple list"><tr><td><span xmlns="" class="replaceable">symbol_directory</span> (if entered)</td></tr><tr><td><code class="filename"><code class="envar">$HOME</code>/setup/pdf/svgmet/common/svg</code></td></tr><tr><td><code class="filename"><code class="envar">$FPA</code>/setup/pdf/svgmet/common/svg</code></td></tr></table><p>
+</p><p>
+Predefined symbol files can be found in the directories:
+</p><table class="simplelist" border="0" summary="Simple list"><tr><td><code class="filename"><code class="envar">$FPA</code>/setup/pdf/psmet/common/ps</code></td></tr><tr><td><code class="filename"><code class="envar">$FPA</code>/setup/pdf/svgmet/common/svg</code></td></tr></table><p>
+</p><p>
+Descriptions of the symbols in these directories can be found in the files:
+</p><table class="simplelist" border="0" summary="Simple list"><tr><td><code class="filename"><code class="envar">$FPA</code>/setup/pdf/psmet/common/ps_symbol_list</code></td></tr><tr><td><code class="filename"><code class="envar">$FPA</code>/setup/pdf/svgmet/common/svg_symbol_list</code></td></tr></table><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s11.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s13.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.11. Graphics Geography Files </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.13. Graphics Pattern Files for Drawing Lines</td></tr></table></div></body></html>

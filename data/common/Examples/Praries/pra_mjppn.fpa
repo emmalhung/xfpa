@@ -1,0 +1,179 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Calgary"
+	FPA_user_label "Calgary"
+ spot 51.045N -114.06E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Camrose"
+	FPA_user_label "Camrose"
+ spot 53.023N -112.83E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Edmonton"
+	FPA_user_label "Edmonton"
+ spot 53.546N -113.49E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Fort Saskatchewan"
+	FPA_user_label "Fort Saskatchewan"
+ spot 53.713N -113.21E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Grande Prairie"
+	FPA_user_label "Grande Prairie"
+ spot 55.17N -118.8E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Leduc"
+	FPA_user_label "Leduc"
+ spot 53.259N -113.55E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Lethbridge"
+	FPA_user_label "Lethbridge"
+ spot 49.694N -112.83E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Lloydminster"
+	FPA_user_label "Lloydminster"
+ spot 53.284N -110.01E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Medicine Hat"
+	FPA_user_label "Medicine Hat"
+ spot 50.042N -110.68E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Red Deer"
+	FPA_user_label "Red Deer"
+ spot 52.268N -113.81E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "St. Albert"
+	FPA_user_label "St. Albert"
+ spot 53.63N -113.63E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Spruce Grove"
+	FPA_user_label "Spruce Grove"
+ spot 53.545N -113.9E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Wetaskiwin"
+	FPA_user_label "Wetaskiwin"
+ spot 52.969N -113.38E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Airdrie"
+	FPA_user_label "Airdrie"
+ spot 51.292N -114.01E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Drumheller"
+	FPA_user_label "Drumheller"
+ spot 51.464N -112.72E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Cold Lake"
+	FPA_user_label "Cold Lake"
+ spot 54.411N -110.2E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Flin Flon"
+	FPA_user_label "Flin Flon"
+ spot 54.768N -101.88E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Portage la Prairie"
+	FPA_user_label "Portage la Prairie"
+ spot 49.973N -98.29E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Thompson"
+	FPA_user_label "Thompson"
+ spot 55.746N -97.85E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Winnipeg"
+	FPA_user_label "Winnipeg"
+ spot 49.899N -97.126E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Brandon"
+	FPA_user_label "Brandon"
+ spot 49.843N -99.95E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Estevan"
+	FPA_user_label "Estevan"
+ spot 49.139N -102.99E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Lloydminster"
+	FPA_user_label "Lloydminster"
+ spot 53.284N -110E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Melfort"
+	FPA_user_label "Melfort"
+ spot 52.861N -104.61E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Melville"
+	FPA_user_label "Melville"
+ spot 50.929N -102.8E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Moose Jaw"
+	FPA_user_label "Moose Jaw"
+ spot 50.392N -105.54E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "North Battleford"
+	FPA_user_label "North Battleford"
+ spot 52.776N -108.3E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Prince Albert"
+	FPA_user_label "Prince Albert"
+ spot 53.203N -105.75E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Regina"
+	FPA_user_label "Regina"
+ spot 50.448N -104.62E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Saskatoon"
+	FPA_user_label "Saskatoon"
+ spot 52.131N -106.66E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Swift Current"
+	FPA_user_label "Swift Current"
+ spot 50.285N -107.8E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Weyburn"
+	FPA_user_label "Weyburn"
+ spot 49.663N -103.85E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Yorkton"
+	FPA_user_label "Yorkton"
+ spot 51.211N -102.46E location none
+
+* 
+* End
+

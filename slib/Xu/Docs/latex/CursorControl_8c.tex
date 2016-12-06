@@ -1,0 +1,169 @@
+\hypertarget{CursorControl_8c}{
+\subsection{Cursor\-Control.c File Reference}
+\label{CursorControl_8c}\index{CursorControl.c@{CursorControl.c}}
+}
+Functions for handling application cursor change requests. 
+
+{\tt \#include \char`\"{}Xu\-P.h\char`\"{}}\par
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{CursorControl_8c_XuSetDefaultCursor_28XuCursorDataStruct_20_2Anew_29}{Xu\-Set\-Default\-Cursor} (Xu\-Cursor\-Data\-Struct $\ast$new)
+\begin{CompactList}\small\item\em Set the default cursor for the entire application. \item\end{CompactList}\item 
+void \hyperlink{CursorControl_8c_XuSetDefaultMenuCursor_28XuCursorDataStruct_20_2Anew_29}{Xu\-Set\-Default\-Menu\-Cursor} (Xu\-Cursor\-Data\-Struct $\ast$new)
+\begin{CompactList}\small\item\em Set the default menu cursor for the entire application. \item\end{CompactList}\item 
+void \hyperlink{CursorControl_8c_XuSetBusyCursor_28const_20Boolean_20set_29}{Xu\-Set\-Busy\-Cursor} (const Boolean set)
+\begin{CompactList}\small\item\em Show or hide a bufy cursor in every active window in the application. \item\end{CompactList}\item 
+\hypertarget{CursorControl_8c_XuClearBusyCursor_28void_29}{
+void \hyperlink{CursorControl_8c_XuClearBusyCursor_28void_29}{Xu\-Clear\-Busy\-Cursor} (void)}
+\label{CursorControl_8c_XuClearBusyCursor_28void_29}
+
+\begin{CompactList}\small\item\em Turns off the busy cursor no matter how many times it has been set on. \item\end{CompactList}\item 
+void \hyperlink{CursorControl_8c_XuSetDialogCursor_28Widget_20w_2C_20XuCURSOR_5FTYPE_20cursor_5Fid_2C_20const_20Boolean_20state_29}{Xu\-Set\-Dialog\-Cursor} (Widget w, Xu\-CURSOR\_\-TYPE cursor\_\-id, const Boolean state)
+\begin{CompactList}\small\item\em Set the cursor to the requested type for the diaog which contains the given widget. \item\end{CompactList}\item 
+void \hyperlink{CursorControl_8c_XuSetDialogCursorDirect_28Widget_20w_2C_20Cursor_20cursor_29}{Xu\-Set\-Dialog\-Cursor\-Direct} (Widget w, Cursor cursor)
+\begin{CompactList}\small\item\em Set the given dialog cursor directly to the given cursor. \item\end{CompactList}\item 
+void \hyperlink{CursorControl_8c_XuSetCursor_28Widget_20w_2C_20XuCURSOR_5FTYPE_20cursor_5Fid_2C_20const_20Boolean_20state_29}{Xu\-Set\-Cursor} (Widget w, Xu\-CURSOR\_\-TYPE cursor\_\-id, const Boolean state)
+\begin{CompactList}\small\item\em Set the cursor for the given widget to the requested type. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Detailed Description}
+Functions for handling application cursor change requests. 
+
+The widget making the request is added to a list and a destroy callback added. When the calling widget is destroyed it is removed from the internal list. Xu\-WINDOW\_\-OBSCURED\_\-CURSOR is a special case in that the obscured cursor will override every other cursor request while set except for the busy cursor.
+
+\begin{Desc}
+\item[Author:]R.D.Paterson\end{Desc}
+\begin{Desc}
+\item[Date:]1994/01/26 Created 1995/06/12 RP: Busy cursor functions added. \end{Desc}
+
+
+\subsubsection{Function Documentation}
+\hypertarget{CursorControl_8c_XuSetBusyCursor_28const_20Boolean_20set_29}{
+\index{CursorControl.c@{Cursor\-Control.c}!XuSetBusyCursor@{XuSetBusyCursor}}
+\index{XuSetBusyCursor@{XuSetBusyCursor}!CursorControl.c@{Cursor\-Control.c}}
+\paragraph[XuSetBusyCursor]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Set\-Busy\-Cursor (const Boolean {\em set})}\hfill}
+\label{CursorControl_8c_XuSetBusyCursor_28const_20Boolean_20set_29}
+
+
+Show or hide a bufy cursor in every active window in the application. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em set}]True or False\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Attention:]If the busy cursor is set x times then it must be turned off x times before the cursor is reset to the non-busy state. \end{Desc}
+\hypertarget{CursorControl_8c_XuSetCursor_28Widget_20w_2C_20XuCURSOR_5FTYPE_20cursor_5Fid_2C_20const_20Boolean_20state_29}{
+\index{CursorControl.c@{Cursor\-Control.c}!XuSetCursor@{XuSetCursor}}
+\index{XuSetCursor@{XuSetCursor}!CursorControl.c@{Cursor\-Control.c}}
+\paragraph[XuSetCursor]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Set\-Cursor (Widget {\em w}, Xu\-CURSOR\_\-TYPE {\em cursor\_\-id}, const Boolean {\em state})}\hfill}
+\label{CursorControl_8c_XuSetCursor_28Widget_20w_2C_20XuCURSOR_5FTYPE_20cursor_5Fid_2C_20const_20Boolean_20state_29}
+
+
+Set the cursor for the given widget to the requested type. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em w}]The widget to set the cursor for \item[\mbox{$\leftarrow$} {\em cursor\_\-id}]The cursor selecton \item[\mbox{$\leftarrow$} {\em state}]True or False\end{description}
+\end{Desc}
+{\bf Cursor Types:}
+
+\begin{itemize}
+\item {\tt Xu\-BUSY\_\-CURSOR} An hourglass \item {\tt Xu\-WINDOW\_\-OBSCURED\_\-CURSOR} A red no go circle \item {\tt Xu\-STOP\_\-CURSOR} Stopsign \item {\tt Xu\-FINGER\_\-CURSOR} Pointing finger \item {\tt Xu\-KNIFE\_\-CURSOR} Cutting knife \item {\tt Xu\-MAGNIFY\_\-CURSOR} Magnifying glass \item {\tt Xu\-PAN\_\-CURSOR} Cross hair \item {\tt Xu\-PENCIL\_\-CURSOR} Drawing pencil \item {\tt Xu\-SAMPLE\_\-CURSOR} Sample cross hairs \item {\tt Xu\-VALUEMOD\_\-CURSOR} Modification indication \item {\tt Xu\-DEFAULT\_\-CURSOR} As set by Xu\-Set\-Default\-Cursor \item {\tt Xu\-MENU\_\-CURSOR} As set by Xu\-Set\-Default\-Menu\-Cursor\end{itemize}
+\begin{Desc}
+\item[Note:]The state parameter controls the action to be taken with the cursor. If True, the given cursor\_\-id is to be set as the active cursor. If False, the given cursor\_\-id is to be removed as the active cursor and the cursor returned to the cursor previously set by a call to this function. Note that the specified cursor\_\-id will be removed even if it is not actually showing as the cursor in the application (ie. the busy cursor or obscured cursor are active). \end{Desc}
+\hypertarget{CursorControl_8c_XuSetDefaultCursor_28XuCursorDataStruct_20_2Anew_29}{
+\index{CursorControl.c@{Cursor\-Control.c}!XuSetDefaultCursor@{XuSetDefaultCursor}}
+\index{XuSetDefaultCursor@{XuSetDefaultCursor}!CursorControl.c@{Cursor\-Control.c}}
+\paragraph[XuSetDefaultCursor]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Set\-Default\-Cursor (Xu\-Cursor\-Data\-Struct $\ast$ {\em new})}\hfill}
+\label{CursorControl_8c_XuSetDefaultCursor_28XuCursorDataStruct_20_2Anew_29}
+
+
+Set the default cursor for the entire application. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em new}]A structure that defines the cursor.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Attention:]The cursor definition stored in the location pointed in by new must remain static in the calling program while the cursor is in effect.\end{Desc}
+{\bf Cursor Structure}
+
+
+
+\footnotesize\begin{verbatim} unsigned int  width, height;   cursor width and height
+ unsigned char *bits;           cursor definition
+ unsigned char *mask;           masking bits
+ unsigned int  x_hot, y_hot;    the cursor hot spot location
+ char          *fg, *bg;        foreground and background colour names
+ \end{verbatim}
+\normalsize
+
+
+The bits and mask variables are arrays which define the cursor and are of a form that must conform to the requirements of the Xlib XCreate\-Bitmap\-From\-Data function. \hypertarget{CursorControl_8c_XuSetDefaultMenuCursor_28XuCursorDataStruct_20_2Anew_29}{
+\index{CursorControl.c@{Cursor\-Control.c}!XuSetDefaultMenuCursor@{XuSetDefaultMenuCursor}}
+\index{XuSetDefaultMenuCursor@{XuSetDefaultMenuCursor}!CursorControl.c@{Cursor\-Control.c}}
+\paragraph[XuSetDefaultMenuCursor]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Set\-Default\-Menu\-Cursor (Xu\-Cursor\-Data\-Struct $\ast$ {\em new})}\hfill}
+\label{CursorControl_8c_XuSetDefaultMenuCursor_28XuCursorDataStruct_20_2Anew_29}
+
+
+Set the default menu cursor for the entire application. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em new}]A structure that defines the menu cursor.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Attention:]The cursor definition stored in the location pointed in by new must remain static in the calling program while the cursor is in effect.\end{Desc}
+{\bf Cursor Structure}
+
+
+
+\footnotesize\begin{verbatim} unsigned int  width, height;   cursor width and height
+ unsigned char *bits;           cursor definition
+ unsigned char *mask;           masking bits
+ unsigned int  x_hot, y_hot;    the cursor hot spot location
+ char          *fg, *bg;        foreground and background colour names
+ \end{verbatim}
+\normalsize
+
+
+The bits and mask variables are arrays which define the cursor and are of a form that must conform to the requirements of the Xlib XCreate\-Bitmap\-From\-Data function. \hypertarget{CursorControl_8c_XuSetDialogCursor_28Widget_20w_2C_20XuCURSOR_5FTYPE_20cursor_5Fid_2C_20const_20Boolean_20state_29}{
+\index{CursorControl.c@{Cursor\-Control.c}!XuSetDialogCursor@{XuSetDialogCursor}}
+\index{XuSetDialogCursor@{XuSetDialogCursor}!CursorControl.c@{Cursor\-Control.c}}
+\paragraph[XuSetDialogCursor]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Set\-Dialog\-Cursor (Widget {\em w}, Xu\-CURSOR\_\-TYPE {\em cursor\_\-id}, const Boolean {\em state})}\hfill}
+\label{CursorControl_8c_XuSetDialogCursor_28Widget_20w_2C_20XuCURSOR_5FTYPE_20cursor_5Fid_2C_20const_20Boolean_20state_29}
+
+
+Set the cursor to the requested type for the diaog which contains the given widget. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em w}]A widget belonging to the dialog \item[\mbox{$\leftarrow$} {\em cursor\_\-id}]The requested cursor \item[\mbox{$\leftarrow$} {\em state}]If the cursor is on or off (True or False)\end{description}
+\end{Desc}
+{\bf Cursor Types:}
+
+\begin{itemize}
+\item {\tt Xu\-BUSY\_\-CURSOR} An hourglass \item {\tt Xu\-WINDOW\_\-OBSCURED\_\-CURSOR} A red no go circle \item {\tt Xu\-STOP\_\-CURSOR} Stopsign \item {\tt Xu\-FINGER\_\-CURSOR} Pointing finger \item {\tt Xu\-KNIFE\_\-CURSOR} Cutting knife \item {\tt Xu\-MAGNIFY\_\-CURSOR} Magnifying glass \item {\tt Xu\-PAN\_\-CURSOR} Cross hair \item {\tt Xu\-PENCIL\_\-CURSOR} Drawing pencil \item {\tt Xu\-SAMPLE\_\-CURSOR} Sample cross hairs \item {\tt Xu\-VALUEMOD\_\-CURSOR} Modification indication \item {\tt Xu\-DEFAULT\_\-CURSOR} As set by Xu\-Set\-Default\-Cursor \item {\tt Xu\-MENU\_\-CURSOR} As set by Xu\-Set\-Default\-Menu\-Cursor \end{itemize}
+\hypertarget{CursorControl_8c_XuSetDialogCursorDirect_28Widget_20w_2C_20Cursor_20cursor_29}{
+\index{CursorControl.c@{Cursor\-Control.c}!XuSetDialogCursorDirect@{XuSetDialogCursorDirect}}
+\index{XuSetDialogCursorDirect@{XuSetDialogCursorDirect}!CursorControl.c@{Cursor\-Control.c}}
+\paragraph[XuSetDialogCursorDirect]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Set\-Dialog\-Cursor\-Direct (Widget {\em w}, Cursor {\em cursor})}\hfill}
+\label{CursorControl_8c_XuSetDialogCursorDirect_28Widget_20w_2C_20Cursor_20cursor_29}
+
+
+Set the given dialog cursor directly to the given cursor. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em w}]A widget in the dialog \item[\mbox{$\leftarrow$} {\em cursor}]The cursor use in the dialog\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Attention:]If the cursor is not valid for the display the dialog is on the function will result in a fatal error. \end{Desc}

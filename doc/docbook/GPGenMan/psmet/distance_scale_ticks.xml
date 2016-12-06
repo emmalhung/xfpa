@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_distance_scale_ticks'> <title>@distance_scale_ticks</title> <titleabbrev>@distance_scale_ticks</titleabbrev>
+<para>
+Display tick marks on a named distance scale.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/scale_name.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>tick_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units (default is <userinput>scale_units</userinput> from <link linkend='ps_draw_distance_scale'>@draw_distance_scale</link>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>tick_length</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>length of tick in <userinput>tick_units</userinput></para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>tick_location</userinput> can be specified more than once in this directive!</para></entry></row>
+<row valign='top'>
+<entry colname='key'><para><userinput>tick_location</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>distance along the scale to place tick line in <userinput>tick_units</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>tick_rotation</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Angle of rotation (in counter-clockwise decimal degrees)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>tick_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Tick justification
+</para><para>One of:<userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@distance_scale_ticks
+{
+scale_name          = distance_scale1;
+tick_location       = 100;
+tick_location       = 200;
+tick_location       = 300;
+tick_location       = 400;
+tick_length         = 15;
+tick_units          = km;
+tick_justification  = left;
+tick_rotation       = 90.0;
+outline             = X11 Black;
+line_width          = 0.03;
+}</programlisting>
+Add tick lines 100km, 200km, 300km and 400km along the scale. The tick length is 15km relative to the length of the scale. They are left justified on the scale and rotated to be perpendicular to the scale.
+</para></example>
+</para></sect2>

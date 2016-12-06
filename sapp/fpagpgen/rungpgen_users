@@ -1,0 +1,59 @@
+#!/bin/bash
+#  Bourne script to run fpagpgen routines
+
+# Check FPA variable
+if [ "${FPA:-}" = "" ]
+then
+	echo "FPA variable is not set!"
+	echo "It must be set in your profile and exported before executing"
+	echo "this application."
+	exit 1
+fi
+
+# Set diagnostic output file
+if [ $# -eq 1 ]
+then
+	outfile=${1}
+else
+	outfile=diaggpgen
+fi
+if [ -f ${outfile} ]
+then
+	echo "*** File ${outfile} already exists ***"
+	echo "     Type:  go    to overwrite it"
+	echo "     Type:  stop  to stop now"
+	read ans
+	if [ "$ans" != go ]
+	then
+		echo "*** ...fpagpgen aborted ***"
+		exit 1
+	fi
+	rm -f ${outfile}
+fi
+echo "*** Output to file ${outfile} ***"
+
+# Define the FPA environment
+. $FPA/bin/.fpaenvrc
+
+# Examples of fpagpgen ... for psmet (or svgmet)
+#
+# time psmet av_atlantic examples PUBLIC 1997:326:12 1>${outfile} 2>&1
+# time psmet av_atlantic examples PUBLIC_PERSPECTIVE 1997:326:12 1>${outfile} 2>&1
+# time psmet av_atlantic examples TABLE 1997:326:12 1>${outfile} 2>&1
+# time psmet av_atlantic examples FTABLE 1997:326:12 1>${outfile} 2>&1
+# time psmet av_atlantic examples MAXBANDS 1997:326:12 1>${outfile} 2>&1
+# time psmet av_atlantic examples WAVES 1997:326:12 1>${outfile} 2>&1
+# time psmet av_atlantic examples AVIATION_2 1997:326:12 1>${outfile} 2>&1
+# time psmet av_atlantic examples AVIATION_2_GEOGRAPHY 1997:326:12 1>${outfile} 2>&1
+# time psmet av_atlantic examples AVIATION_ROUTES 1997:326:12 1>${outfile} 2>&1
+#
+# Examples of fpagpgen ... for texmet
+#
+# time texmet av_atlantic examples HOURLYWINDS 1997:326:12 1>${outfile} 2>&1
+# time texmet av_atlantic examples HOURLYWX 1997:326:12 1>${outfile} 2>&1
+# time texmet av_atlantic examples PLIST 1997:326:12 1>${outfile} 2>&1
+# time texmet av_atlantic examples PGRID 1997:326:12 1>${outfile} 2>&1
+# time texmet av_atlantic examples PGRID_TABLE 1997:326:12 1>${outfile} 2>&1
+# time texmet av_atlantic examples COMMENTS_AVIATION_2 1997:326:12 1>${outfile} 2>&1
+
+# Run fpagpgen ... for psmet or svgmet or texmet

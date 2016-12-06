@@ -1,0 +1,255 @@
+! Set the default presentation for black text bordered with white ...
+@presentation
+	{
+	line_width    = 0.05;
+	outline       = X11 White;
+	fill          = X11 Black;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	text_size     = 0.15;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Set a named presentation to draw a surrounding box ...
+@label_display
+	{
+	display_name  = label1;
+	margin_left   =  0.05;
+	margin_right  =  0.00;
+	margin_top    =  0.00;
+	margin_bottom =  0.05;
+	line_width    =  0.02;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	}
+
+! Set named presentations for some underlines ...
+@label_display
+	{
+	display_name  = under1;
+	margin_bottom =  0.02;
+	line_width    =  0.01;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	}
+@label_display
+	{
+	display_name  = over1;
+	margin_bottom = -0.13;
+	line_width    =  0.01;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	}
+
+! Display clear conditions with text string ...
+! (Note that only FPA_category "none" is displayed!)
+@label
+	{
+	element            = weather_system;
+	level              = surface;
+	category_attribute = wx_label_type;
+	category           = NoWx;
+	attribute          = FPA_category;
+	justification      = centre;
+	format             = text;
+	look_up            = nilsigwx;
+	text_size          = 0.20;
+	fit_to_map         = yes;
+	fit_to_map_ref     = none;
+	}
+
+! Display cloud labels for local weather directly ...
+@label
+	{
+	element            = weather_local;
+	level              = surface;
+	format             = direct;
+	fit_to_map         = yes;
+	fit_to_map_ref     = upper;
+	x_off              =  0.00;
+	y_off              =  0.00;
+	outline            = X11 White;
+	fill               = X11 IndianRed;
+
+	attribute               = cloud_amount;
+	attribute_anchor        = none;
+	attribute_justification = left;
+	attribute_vertical_just = centre;
+
+	attribute               = cloud_top;
+	attribute_anchor        = cloud_amount;
+	attribute_ref           = centre_right;
+	attribute_x_off         =  0.05;
+	attribute_display_name  = under1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = left;
+	attribute_vertical_just = bottom;
+
+	attribute               = cloud_base;
+	attribute_anchor        = cloud_top;
+	attribute_ref           = lower_centre;
+	attribute_display_name  = over1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_remarks;
+	attribute_anchor        = cloud_base;
+	attribute_ref           = lower_right;
+	attribute_justification = right;
+	attribute_vertical_just = top;
+	}
+
+! Display cloud, visibility, and weather labels for system weather directly ...
+! (Note that only FPA_category "freezing/frozen/precip/vis/cloud" are displayed!)
+@label
+	{
+	element            = weather_system;
+	level              = surface;
+	category_attribute = wx_label_type;
+	category           = Freezing  Frozen  Precip  Vis  Cloud;
+	format             = direct;
+	mark               = triangle_up;
+	mark_scale         = 100.0;
+	display_name       = label1;
+	display_type       = sized_box;
+	fit_to_map         = yes;
+	fit_to_map_ref     = upper;
+	x_off              =  0.00;
+	y_off              =  0.00;
+
+	attribute               = cloud_top;
+	attribute_anchor        = none;
+	attribute_display_name  = under1;
+	attribute_display_type  = sized_underline;
+	attribute_x_off         = -0.25;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_base;
+	attribute_anchor        = cloud_top;
+	attribute_ref           = lower_centre;
+	attribute_display_name  = over1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_amount;
+	attribute_anchor        = cloud_base;
+	attribute_ref           = upper_left;
+	attribute_x_off         = -0.05;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+
+	attribute               = cloud_top_2;
+	attribute_anchor        = cloud_base;
+	attribute_ref           = lower_centre;
+	attribute_display_name  = under1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_base_2;
+	attribute_anchor        = cloud_top_2;
+	attribute_ref           = lower_centre;
+	attribute_display_name  = over1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_amount_2;
+	attribute_anchor        = cloud_base_2;
+	attribute_ref           = upper_left;
+	attribute_x_off         = -0.05;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+
+	attribute               = cloud_top_3;
+	attribute_anchor        = cloud_base_2;
+	attribute_ref           = lower_centre;
+	attribute_display_name  = under1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_base_3;
+	attribute_anchor        = cloud_top_3;
+	attribute_ref           = lower_centre;
+	attribute_display_name  = over1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_amount_3;
+	attribute_anchor        = cloud_base_3;
+	attribute_ref           = upper_left;
+	attribute_x_off         = -0.05;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+
+	attribute               = cloud_remarks;
+	attribute_anchor        = cloud_base_3;
+	attribute_ref           = lower_centre;
+	attribute_x_off         =  0.25;
+	attribute_justification = right;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_remarks_2;
+	attribute_anchor        = cloud_remarks;
+	attribute_ref           = lower_right;
+	attribute_justification = right;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_remarks_3;
+	attribute_anchor        = cloud_remarks_2;
+	attribute_ref           = lower_right;
+	attribute_justification = right;
+	attribute_vertical_just = top;
+
+	attribute               = visibility;
+	attribute_anchor        = none;
+	attribute_format        = direct %sSM;
+	attribute_x_off         =  0.05;
+	attribute_justification = left;
+	attribute_vertical_just = top;
+
+	attribute               = weather;
+	attribute_anchor        = visibility;
+	attribute_ref           = lower_right;
+	attribute_justification = left;
+
+	attribute               = weather_modifier;
+	attribute_anchor        = visibility;
+	attribute_ref           = lower_left;
+	attribute_x_off         =  0.10;
+	attribute_justification = left;
+	attribute_vertical_just = top;
+
+	attribute               = visibility_secondary;
+	attribute_anchor        = weather_modifier;
+	attribute_ref           = lower_left;
+	attribute_format        = direct %sSM;
+	attribute_x_off         = -0.10;
+	attribute_justification = left;
+	attribute_vertical_just = top;
+
+	attribute               = weather_secondary;
+	attribute_anchor        = visibility_secondary;
+	attribute_ref           = lower_right;
+	attribute_justification = left;
+
+	attribute               = wx_remarks;
+	attribute_anchor        = visibility_secondary;
+	attribute_ref           = lower_left;
+	attribute_justification = left;
+	attribute_vertical_just = top;
+
+	attribute               = wx_remarks_2;
+	attribute_anchor        = wx_remarks;
+	attribute_ref           = lower_left;
+	attribute_justification = left;
+	attribute_vertical_just = top;
+	}

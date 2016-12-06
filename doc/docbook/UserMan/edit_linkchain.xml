@@ -1,0 +1,592 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='editing_linkchains'> <title>Editing link chains</title>
+<para>
+<indexterm><primary>editor</primary><secondary>link chain</secondary></indexterm>
+The link chain editor allows you to draw and manipulate link chain features on your depiction. Link chains can be used for fields with time sequences, such as travel routes or feature motion.
+</para><para>
+TODO: Better describe the concept of a link chain and what it can be used for.
+</para><para>
+TODO: Add explanation of Link Node types.
+<figure pgwide='0' float='1'><title>Link chain edit tools</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_track.png'/></imageobject></mediaobject>
+</figure>
+</para>
+<sect1 id='adding_tracks'> <title>Adding tracks</title>
+<para>
+<indexterm><primary>link chain field editor</primary><secondary>add</secondary></indexterm>
+<orderedlist><title>To add a track:</title>
+<listitem><para>
+Select the <emphasis>Add track</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Add track</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/point_add.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Add track</emphasis> menus appear.
+(see <xref linkend='link_add_tools'/>)
+<figure id='link_add_tools' pgwide='0' float='1'><title>Link chain add menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_track_add.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+The cursor appears as a pencil while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Use the link chain add menus to set the attributes of your new link chain.
+<orderedlist>
+	<listitem><para>
+	Set <guilabel>Track Attributes</guilabel> by clicking the <guibutton>set</guibutton> button. These attributes apply to the whole link chain.
+	</para></listitem>
+
+	<listitem><para>
+	Set <guilabel>Node Attributes</guilabel> by clicking the <guibutton>set</guibutton> button. These attributes apply to the next node to be added. These may be updated as you add more nodes to the track.
+	</para></listitem>
+
+	<listitem><para>
+	Set the <guilabel>Reference Time</guilabel> (time associated with first node in the track) for the link chain using the spin-box.
+	</para></listitem>
+
+	<listitem><para>
+	Set the <guilabel>Node Type</guilabel> from the drop-down menu. This attribute applies to the next node to be added. It may be updated as you add more nodes to the track.
+	</para></listitem>
+
+	<listitem><para>
+	Set the <guilabel>Time Delta</guilabel> (time between nodes) for the link chain using the spin-box. Intermediate values will be represented as interpolation nodes.
+	</para></listitem>
+</orderedlist>
+</para></listitem>
+
+<listitem><para>
+Move the pointer to where you wish to begin the track and click the left button to add the first node of the link chain.
+</para></listitem>
+
+<listitem><para>
+Adjust <guilabel>Node Attributes</guilabel>, <guilabel>Node Type</guilabel> and <guilabel>Time Delta</guilabel> as necessary, then move the pointer to where you wish to place the next node in the track and click the left button to add it.
+</para></listitem>
+
+<listitem><para>
+Repeat the previous step until your link chain is the desired length. 
+Click the &right; mouse button and select <menuchoice><guimenu>End Chain</guimenu></menuchoice>.
+</para></listitem>
+
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='deleting_lines'> <title>Deleting link chains</title>
+<para>
+<indexterm><primary>link chain field editor</primary><secondary>delete</secondary></indexterm>
+<orderedlist><title>To delete a link chain:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the link chain to delete.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Delete</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para><para>
+
+<orderedlist><title>To delete multiple link chains:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/track_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the link chain(s) to delete.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cut</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+To restore the link chain(s), click the &right; mouse button and select
+<menuchoice><guimenu>Undo</guimenu></menuchoice> or
+<menuchoice><guimenu>Paste</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='moving_a_linkchain'> <title>Moving a link chain</title>
+<para>
+<indexterm><primary>link chain field editor</primary><secondary>move</secondary></indexterm>
+To move one or more link chains.
+<orderedlist>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/track_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the link chain(s) to move.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Translate</guimenu></menuchoice>.
+</para><para>
+The picked link chain(s) turn blue.
+</para></listitem>
+
+<listitem><para>
+Pick a reference point on the map and hold the &left; mouse button down.
+</para><para>
+The reference point can be anywhere; however, if you are moving a portion of the link chain(s) off the depiction it is important to pick a point that will remain on the depiction after the move.
+The link chains shimmer indicating you can now move them.
+</para></listitem>
+
+<listitem><para>
+Drag the link chain(s) to the new location and release the button.
+</para><para>
+The &FPA; then recomputes the field and re-displays the new link chain(s) in white.
+</para></listitem>
+</orderedlist>
+Note: The link chains remain selected until you deselect them, so you may continue to use the <emphasis>Move</emphasis> tools.
+(see <xref linkend='unpick_object'/>) 
+</para>
+</sect1>
+
+<sect1 id='rotating_a_linkchain'> <title>Rotating a link chain</title>
+<para>
+<indexterm><primary>link chain field editor</primary><secondary>rotate</secondary></indexterm>
+<orderedlist><title>To rotate a link chain:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/track_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the link chain(s) to rotate.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Rotate</guimenu></menuchoice>.
+</para><para>
+The picked link chain(s) turn blue.
+</para></listitem>
+
+<listitem><para>
+Click the &left; mouse button at the point you want to rotate around (the centre of rotation).
+</para></listitem>
+
+<listitem><para>
+Select a second point to form a <emphasis>handle</emphasis> to rotate the link chain(s) and hold the button down.
+</para><para>
+A line displays between the two chosen points.
+This is your rotation handle (like the handle of a car window).
+</para></listitem>
+
+<listitem><para>
+Turn the handle to a new location.
+</para></listitem>
+
+<listitem><para>
+When you have reached the point where the rotation should end, release the &left; mouse button.
+</para><para>
+The &FPA; displays the rotated link chain(s).
+</para><para>
+Note: You can still restore the field if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+Note: The link chain(s) remain selected until you deselect them, so you may continue to use the <emphasis>Move</emphasis> tools.
+(see <xref linkend='unpick_object'/>) 
+</para>
+</sect1>
+
+<sect1 id='copying_a_linkchain'> <title>Copying a link chain</title>
+<para>
+<indexterm><primary>link chain field editor</primary><secondary>copy</secondary></indexterm>
+You can copy a link chain by using <guibutton>Copy</guibutton> and <guibutton>Paste</guibutton> with the <emphasis>Move</emphasis> tool.
+</para><para>
+<orderedlist><title>To copy a link chain:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/track_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>move</emphasis> menus appear.
+(see <xref linkend='move_tools2'/>)
+</para></listitem>
+
+<listitem><para>
+Pick the link chain(s) to copy.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Copy</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to deselect all link chains, or move to another depiction.
+</para><para>
+<guibutton>Paste</guibutton> is now available.
+</para><para>
+Note: if pasted to the same depiction the link chains will be automatically offset to avoid inadvertent duplication.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Paste</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+The link chain(s) remain selected until you deselect them, thus
+<menuchoice><guimenu>Translate</guimenu></menuchoice> and
+<menuchoice><guimenu>Rotate</guimenu></menuchoice> are available in the &right; mouse button context menu.
+(see <xref linkend='moving_a_linkchain'/> and <xref linkend='rotating_a_linkchain'/>)
+</para><para>
+Note: You can still remove the copied field if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='modifying_a_linkchain'> <title>Modifying a link chain</title>
+<para>
+<indexterm><primary>link chain field editor</primary><secondary>modify</secondary></indexterm>
+Modify allows you to change the attributes of a link chain, change the reference time of a link chain and to extend or shorten a link chain by changing its start or end times. 
+</para>
+
+<sect2 id='change_linkchain_attributes'> <title>Changing a link chain's attributes</title>
+<para>
+<indexterm><primary>link chain field editor</primary><secondary>modify</secondary></indexterm>
+<orderedlist><title>To change a link chain's attributes:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Modify</emphasis> menus appear.
+(see <xref linkend='track_modify_tools'/>)
+<figure id='track_modify_tools' pgwide='0' float='1'><title>Link chain modify menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_track_modify.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Pick the link chain to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The picked link chain turns yellow.
+</para></listitem>
+
+<listitem><para>
+Select the <guibutton>set</guibutton> button, an entry menu appears.
+</para></listitem>
+
+<listitem><para>
+Adjust the attributes as necessary. Choose <guibutton>Set Attributes</guibutton> to accept your changes and close the entry menu. Clicking <guibutton>Reset</guibutton> button will cause the attributes to return to the value they had when the entry menu first opened. Clicking <guibutton>Cancel</guibutton> will abandon your changes and close the entry menu. 
+</para></listitem>
+
+</orderedlist>
+<orderedlist><title>or ...</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Modify</emphasis> menus appear.
+(see <xref linkend='track_modify_tools'/>)
+</para></listitem>
+
+<listitem><para>
+Pick the link chain to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The picked link chain turns yellow.
+</para></listitem>
+
+<listitem><para>
+Chose a <guilabel>Predefined</guilabel> set of attributes from the memory list.
+</para></listitem>
+
+</orderedlist></para>
+</sect2>
+</sect1>
+
+<sect1 id='merging_linkchain_information'> <title>Merging information in a link chain field </title>
+<para>
+<indexterm><primary>link chain field editor</primary><secondary>merge</secondary></indexterm>
+You can bring a field from another source and time and merge it into the depiction using the <emphasis>Merge</emphasis> tool.
+</para><para>
+<orderedlist><title>To merge information:</title>
+<listitem><para>
+Select the <emphasis>Merge</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Merge</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/merge.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Merge</emphasis> menus appear.
+(see <xref linkend='merge_tools'/>)
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Source</guilabel>, <guilabel>Issue Time</guilabel> and <guilabel>Valid Time</guilabel> of the other field you wish to merge with your current depiction.
+</para><para>
+Note: Your System Administrator may configure a field to accept merges from another "compatible" field.
+If this is the case, there will be a <guilabel>Field</guilabel> list in the <guilabel>Merge Fields</guilabel> area.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Fetch</guibutton>.
+</para><para>
+The field information from the other source is laid over top of your depiction.
+</para></listitem>
+
+<listitem><para>
+Pick the link chain(s) to merge.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Finish your selection by pressing the &right; mouse button and select
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><menuchoice><guimenu>Merge</guimenu></menuchoice></entry>
+	<entry>merge information in place </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Translate</guimenu></menuchoice></entry>
+	<entry>move and merge the information </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Rotate</guimenu></menuchoice></entry>
+	<entry>rotate and merge the information </entry></row>
+	</tbody></tgroup>
+</informaltable>
+Note: the picked information remains selected, so you may perform multiple translate and rotate operations.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the merge.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='editing_a_linknode'> <title>Editing a link node</title>
+<indexterm><primary>link chain field editor</primary><secondary>edit link node</secondary></indexterm>
+<para>
+You can move, modify, delete, sample or copy and paste nodes on a link chain using the <emphasis>Edit Node</emphasis> tool.
+</para>
+
+<sect2 id='moving_a_linknode'> <title>Moving a link node</title>
+<indexterm><primary>link chain field editor</primary><secondary>edit link node</secondary><tertiary>move</tertiary></indexterm>
+<orderedlist> <title>To move a link node:</title>
+<listitem><para>
+Select the <emphasis>Edit Node</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Edit Node</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/node_edit.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Edit Node</emphasis> menus appear.
+(see <xref linkend='node_edit_tools'/>)
+<figure id='node_edit_tools' pgwide='0' float='1'><title>Link node edit menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_node_modify.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+<listitem><para> Select the <guilabel>Move</guilabel> option. </para></listitem>
+<listitem><para> Select a link chain to work on. The track turns yellow, and the nodes blue. </para></listitem>
+<listitem><para> 
+Click the &left; mouse button on the node you want to move. Hold the mouse button down and drag the node to a new location. &FPA; will recalculated the field and display the resulting changes.
+</para><para>
+Only <emphasis>Normal</emphasis> and <emphasis>Control</emphasis> type nodes may be moved. The position of <emphasis>Interpolated</emphasis> and <emphasis>Floating</emphasis> type node positions are calculated by &FPA;
+</para></listitem>
+<listitem><para>
+You may repeat the previous step on all <emphasis>Normal</emphasis> and <emphasis>Control</emphasis> type nodes on the selected link chain. Click the &right; mouse button and select  <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the action and deselect the link chain.
+</para><para>
+Note: You can still restore the link chain if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+</sect2>
+
+<sect2 id='modifying_a_linknode'> <title>Modifying a link node</title>
+<indexterm><primary>link chain field editor</primary><secondary>edit link node</secondary><tertiary>modify</tertiary></indexterm>
+<orderedlist> <title>To modify a link node's attributes:</title>
+<listitem><para>
+Select the <emphasis>Edit Node</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Edit Node</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/node_edit.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Edit Node</emphasis> menus appear.
+(see <xref linkend='node_edit_tools'/>)
+</para></listitem>
+<listitem><para> Select the <guilabel>Modify</guilabel> option. </para></listitem>
+<listitem><para> Select a link chain to work on. The selected track turns yellow, and the nodes blue. </para></listitem>
+<listitem><para> Select a link node to work on. The selected node turns yellow and the modify menus are enabled. </para></listitem>
+<listitem><para> 
+You may: change the <guilabel>Node Type</guilabel> by selecting it from the drop-down menu;
+</para><para>
+ <guibutton>set</guibutton> the node attributes using the entry menu;
+</para><para>
+or select a <guilabel>Predefined</guilabel> set of attributes from the memory list.
+</para></listitem>
+<listitem><para>
+Click the &right; mouse button and select  <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the action and deselect the link node.
+</para></listitem>
+<listitem><para>
+You may repeat the previous 3 steps on any of the nodes on the selected link chain. Click the &right; mouse button and select  <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the action and deselect the link chain.
+</para><para>
+Note: You can still restore the link chain if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+</sect2>
+
+<sect2 id='deleting_a_linknode'> <title>Deleting a link node</title>
+<indexterm><primary>link chain field editor</primary><secondary>edit link node</secondary><tertiary>delete</tertiary></indexterm>
+<para>You may delete a node's attributes by using the <guilabel>Delete</guilabel> option. The node itself will not be removed, but it's <emphasis>Node Type</emphasis> and all of it's attributes will be deleted. The node will become an <emphasis>Interpolated</emphasis> type node.</para>
+<orderedlist> <title>To delete a link node's attributes:</title>
+<listitem><para>
+Select the <emphasis>Edit Node</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Edit Node</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/node_edit.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Edit Node</emphasis> menus appear.
+(see <xref linkend='node_edit_tools'/>)
+</para></listitem>
+<listitem><para> Select the <guilabel>Delete</guilabel> option. </para></listitem>
+<listitem><para> Select a link chain to work on. The selected track turns yellow, and the nodes blue. </para></listitem>
+<listitem><para> Click the &left; mouse button over or near the node you wish to delete.</para></listitem>
+<listitem><para>
+You may repeat the previous step on any of the nodes on the selected link chain. Click the &right; mouse button and select  <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the action and deselect the link chain.
+</para><para>
+Note: You can still restore the link chain if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+</sect2>
+
+<sect2 id='sampling_a_linknode'> <title>Sampling a link node</title>
+<indexterm><primary>link chain field editor</primary><secondary>edit link node</secondary><tertiary>sample</tertiary></indexterm>
+<orderedlist> <title>To sample a link node's attributes:</title>
+<listitem><para>
+Select the <emphasis>Edit Node</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Edit Node</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/node_edit.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Edit Node</emphasis> menus appear.
+(see <xref linkend='node_edit_tools'/>)
+</para></listitem>
+<listitem><para> Select the <guilabel>Show</guilabel> option. </para></listitem>
+<listitem><para> Select a link chain to work on. The selected track turns yellow, and the nodes blue. </para></listitem>
+<listitem><para> Click the &left; mouse button over or near the node you wish to sample. A menu listing the link node's attributes appears.</para></listitem>
+<listitem><para>
+You may repeat the previous step on any of the nodes on the selected link chain. Click the &right; mouse button and select  <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the action and deselect the link chain.
+</para></listitem>
+</orderedlist>
+</sect2>
+
+<sect2 id='copying_a_linknode'> <title>Copying a link node</title>
+<indexterm><primary>link chain field editor</primary><secondary>edit link node</secondary><tertiary>copy</tertiary></indexterm>
+<orderedlist> <title>To copy and paste a link node:</title>
+<listitem><para>
+Select the <emphasis>Edit Node</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Edit Node</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/node_edit.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Edit Node</emphasis> menus appear.
+(see <xref linkend='node_edit_tools'/>)
+</para></listitem>
+<listitem><para> Select the <guilabel>Copy</guilabel> option. </para></listitem>
+<listitem><para> Select a link chain to work on. The selected track turns yellow, and the nodes blue. </para></listitem>
+<listitem><para> Select a link node to copy. The selected node turns yellow temporarily and the <guilabel>paste</guilabel> becomes available. </para></listitem>
+<listitem><para> Select the <guilabel>Paste</guilabel> option. </para></listitem>
+<listitem><para> If you wish to paste to a different link chain, click the &right; mouse button and select  <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the action and deselect the link chain. Select a new link chain to work on (possibly in a differnt depiction). The selected track turns yellow, and the nodes blue.
+</para></listitem>
+<listitem><para> Select a link node to paste to. The selected node turns yellow temporarily. The <guilabel>paste</guilabel> option continues to be available. </para></listitem>
+<listitem><para>
+You may repeat the previous step on any of the nodes on the selected link chain. Click the &right; mouse button and select  <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the action and deselect the link chain.
+</para><para>
+Note: You can still restore the link chain if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+<listitem><para> You may repeat the previous 3 steps on any link chain you like.  </para></listitem>
+</orderedlist>
+</sect2>
+</sect1>
+
+<sect1 id='sampling_linkchain_field_values'> <title>Sampling values from a link chain field</title>
+<para>
+<indexterm><primary>link chain field editor</primary><secondary>sample</secondary></indexterm>
+You can add temporary labels to the &FPA; window with the <emphasis>Sample</emphasis> tool.
+</para><para>
+<orderedlist><title>To sample a value:</title>
+<listitem><para>
+Select the <emphasis>Sample</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Sample</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/sample.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Sample</emphasis> menus appear.
+(see <xref linkend='sample_tools2'/>)
+</para><para>
+The cursor appears as cross-hairs while inside the map window.
+</para></listitem>
+
+<listitem><para>
+Select the type of sample you want from the <guilabel>Sample Item</guilabel> area.
+</para><para>
+You can choose to sample <guilabel>Track</guilabel> attributes or <guilabel>Link node</guilabel> attributes from the list.
+</para></listitem>
+
+<listitem><para>
+Select the display attributes: colour, size and font.
+</para></listitem>
+
+<listitem><para>
+Pick a point on the depiction.
+</para><para>
+A dialog box appears displaying all attributes for the nearest track or link node.
+</para><para>
+You can sample as many points as you want.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice> to clear the samples from the depiction.
+</para></listitem>
+</orderedlist>
+</para>
+<para>
+Note: The <guilabel>Preset Points</guilabel> option cannot be used for link chains.
+</para>
+</sect1>
+</chapter>

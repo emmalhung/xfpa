@@ -1,0 +1,35 @@
+ #
+#  Bourne script to run config_info as a stand alone test
+#
+echo "*** Now running config_info as a stand alone test ***"
+if [ $# -eq 1 ]
+then
+	outfile=${1}
+else
+	outfile=diagconfig
+fi
+if [ -f ${outfile} ]
+then
+	echo "*** File ${outfile} already exists ***"
+	echo "     Type:  go    to overwrite it"
+	echo "     Type:  stop  to stop now"
+	read ans
+	if [ "$ans" != go ]
+	then
+		echo "*** ...config_info aborted ***"
+		exit 1
+	fi
+	rm -f ${outfile}
+fi
+echo "*** Output to file ${outfile} ***"
+
+# Define the development environment
+if [ -r $FPA/bin/.fpaenvrc ]
+then
+  . $FPA/bin/.fpaenvrc
+fi
+
+# Run the test program
+time `platform`/config av_atlantic >${outfile} 2>&1
+#time `platform`/config rsd_ont >${outfile} 2>&1
+echo "*** ...config completed ***"

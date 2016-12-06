@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.3.2. Image Block</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch06s03.html" title="6.3. Image" /><link rel="prev" href="ch06s03s01.html" title="6.3.1. Product Block" /><link rel="next" href="ch06s03s03.html" title="6.3.3. XGL image file format" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.3.2. Image Block</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s03s01.html">Prev</a> </td><th width="60%" align="center">6.3. Image</th><td width="20%" align="right"> <a accesskey="n" href="ch06s03s03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="image_block"></a>6.3.2. Image Block</h3></div></div></div><p>
+<a id="id2055146" class="indexterm"></a>
+A particular image is identified by an <span xmlns="" class="replaceable">image_tag</span> and a valid time.
+The <code class="filename">Image</code> file provides other necessary information for processing the image, such as its location and filename, as well as geo-referencing information.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+The order of the images in the configuration file will determine the display order as seen on the screen.
+The first image in the file will be displayed on top of the set of images.
+The second will be displayed "underneath" the first and on top of the third and so on.
+</p></div><p>
+The Image block format is:
+</p><pre class="programlisting"> image <span xmlns="" class="replaceable">image_tag</span>
+  {
+  <span xmlns="" class="replaceable">key_word</span> = <span xmlns="" class="replaceable">item list</span>
+  <span xmlns="" class="replaceable">key_word</span> = <span xmlns="" class="replaceable">item list</span>
+  ...
+  }
+</pre><p>
+Key words are:
+</p><div class="variablelist"><dl><dt><span class="term">site or label</span></dt><dd><p>The name of the radar site (e.g.
+"King") or of the satellite that the image comes from (e.g. "GOES West")</p></dd><dt><span class="term">product_tag</span></dt><dd><p>The product group to which this image belongs.
+See product_tag above.</p></dd><dt><span class="term">ctable</span></dt><dd><p>
+If the product group ctable entry is 'DefinedByImage' then any images that require a colour table must set it here. 
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Unlike the product entry only one ctable can be defined.</p></div><p>
+There are two parameters:
+</p><div class="itemizedlist"><ul type="disc"><li><p> Directory key from setup file. </p></li><li><p> Name of file to read.</p></li></ul></div><p>
+</p></dd><dt><span class="term">encode</span></dt><dd><p>
+How the image is encoded.
+The recognized encoding types are listed in <a href="ch06s03s02.html#image_encoding" title="Table 6.2. Image Encoding">Table 6.2</a>.
+</p><div xmlns="" class="table"><a xmlns="http://www.w3.org/1999/xhtml" id="image_encoding"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Table 6.2. Image Encoding</b></p><table xmlns="http://www.w3.org/1999/xhtml" summary="Image Encoding" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>type</th><th>meaning</th></tr></thead><tbody><tr valign="top"><td valign="top">none</td><td valign="top">The image is an unencoded one byte per pixel grey scale image</td></tr><tr valign="top"><td valign="top">rgb</td><td valign="top">The image is an unencoded three bytes per pixel colour image stored as rgb triples (rgbrgbrgb...)</td></tr><tr valign="top"><td valign="top">any</td><td valign="top">The library attempts to determine the image format from the file extension and file contents.</td></tr><tr valign="top"><td valign="top">gif</td><td valign="top">Stored as a <span class="acronym">GIF</span> file</td></tr><tr valign="top"><td valign="top">tiff</td><td valign="top">Tag Image File Format.</td></tr><tr valign="top"><td valign="top">png</td><td valign="top">Portable Network Graphics file.</td></tr><tr valign="top"><td valign="top">xwd</td><td valign="top">X window dump format</td></tr><tr valign="top"><td valign="top">xgl</td><td valign="top">The format native to this library.</td></tr><tr valign="top"><td valign="top">gridded_data</td><td valign="top">Data is an unencoded array of scaled data values stored as value = pixel * scale + offset.
+See below.</td></tr><tr valign="top"><td valign="top">urp_gridded</td><td valign="top">Stored as universal radar processor data in gridded format.</td></tr><tr valign="top"><td valign="top">urp_polar</td><td valign="top">Stored as URP format in range-theta format.</td></tr><tr valign="top"><td valign="top">FpaMetafile</td><td valign="top">The image or raster of scaled values is in an <span class="acronym">FPA</span> metafile. The actual determination as to which type is done from the meta data in the file.</td></tr></tbody></table></div><p>
+</p></dd><dt><span class="term">force_grayscale</span></dt><dd><p>
+<strong class="userinput"><code>true</code></strong> or <strong class="userinput"><code>false</code></strong> (default).
+If set the image is forced to grey scale.
+This is provided in case the image (especially satellite) had a colour label added.
+This would cause the entire image to be treated as a colour image, which is not usually wanted.
+</p></dd><dt><span class="term">aspect_ratio</span></dt><dd><p>
+<strong class="userinput"><code>adjust</code></strong> or <strong class="userinput"><code>fixed</code></strong> (default).
+The aspect ratio of the image is allowed to change depending on the view port setting or must remained fixed.
+</p></dd></dl></div><p>
+
+</p><p>For all image files (such as gif, png or tiff)
+</p><div class="variablelist"><dl><dt><span class="term">transparent</span></dt><dd><p>Set the given colour to transparent. There are two parameters:
+</p><div class="itemizedlist"><ul type="disc"><li><p> Either the name of a colour or the red, green and blue values of the colour to be taken as transparent. </p></li><li><p> Optional parameter "closest". The optional key is only used for image files with a 256 element colour table, like GIF, and will use the colour closest to the requested transparent colour.  Useful in cases when colours like white are "sort of" white.  (example: transparent = white closest, transparent = 201 76 158).
+</p></li></ul></div><p>
+More than one transparent entry is allowed and all of the designated colours will be taken as transparent.
+</p></dd><dt><span class="term">print_cmaps</span></dt><dd><p>
+For images with 256 element colour tables this will print the tables if in diagnostic mode.
+For temporary use to see what colours are used in a image. There is one parameter:
+</p><div class="itemizedlist"><ul type="disc"><li><p>
+True or False. 
+</p></li></ul></div><p>
+Default False.
+</p></dd></dl></div><p>
+
+</p><p>For all images except geographic types:
+</p><div class="variablelist"><dl><dt><span class="term">directory</span></dt><dd><p>Specifies the location of the <code class="filename">Image</code> files.
+There are two parameters:
+</p><div class="itemizedlist"><ul type="disc"><li><p>The base directory key name of the image directories as found in the setup file.</p></li><li><p>Directory where the images are to be found.</p></li></ul></div><p>
+</p></dd><dt><span class="term">fname_mask</span></dt><dd><p>
+The mask which is used to read the list of files from the above directory.
+</p><div class="informalexample">
+The following will return all files starting with any characters in the first 12 positions followed by the string _WSO_CAPPI (and possibly followed by other unspecified characters).
+<pre class="programlisting">fname_mask = ............_WSO_CAPPI</pre></div><p>
+Note that the mask uses regular expression matching, so that "." matches any single character, "*" matches any string of characters, and "$" indicates the end of the name.
+</p><div class="informalexample">
+Thus the file <code class="filename">200005132130_WSO_CAPPI_RAIN.GIF</code> would be a match for the previous example, but not for:
+<pre class="programlisting">fname_mask = *_WSO_CAPPI$</pre></div><p>
+If not specified the default is all files ("*").
+Filenames cannot be longer than 120 characters.
+</p></dd><dt><span class="term">fname_time </span></dt><dd><p>
+The parsing format for the time contained in the file name in the form of <span xmlns="" class="replaceable">format parse_keys</span>.
+Format is the way to parse the string in the standard c sscanf style notation and parse_keys give the meaning of each of the elements parsed.
+In the above example the file starts with the date, so the entry <strong class="userinput"><code>%4d%2d%2d%2d%2d YYYY MM DD hh mm</code></strong> will parse it.
+If there was a string in front of the date this would need to be included in the format string.
+For example if we had: 
+</p><pre class="programlisting">fname_mask = RT............_WSO_CAPPI</pre><p> then the format would be:
+</p><pre class="programlisting">fname_time = RT%4d%2d%2d%2d%2d YYYY MM DD hh mm</pre><p>
+The default is "<strong class="userinput"><code>%4d%2d%2d%2d%2d YYYY MM DD hh mm</code></strong>". The parse keys are case sensitive.
+The recognized parse keys are listed in <a href="ch06s03s02.html#parse_keys" title="Table 6.3. Parse Keys">Table 6.3</a>.
+</p><div xmlns="" class="table"><a xmlns="http://www.w3.org/1999/xhtml" id="parse_keys"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Table 6.3. Parse Keys</b></p><table xmlns="http://www.w3.org/1999/xhtml" summary="Parse Keys" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>key</th><th>meaning</th></tr></thead><tbody><tr valign="top"><td valign="top">YYYY</td><td valign="top">4 digit year</td></tr><tr valign="top"><td valign="top">YY</td><td valign="top">2 digit year (the last 2 digits of the year)</td></tr><tr valign="top"><td valign="top">JJJ</td><td valign="top">3 digit julian day</td></tr><tr valign="top"><td valign="top">MM</td><td valign="top">2 digit month</td></tr><tr valign="top"><td valign="top">DD</td><td valign="top">2 digit day of month</td></tr><tr valign="top"><td valign="top">hh</td><td valign="top">2 digit hour of the day</td></tr><tr valign="top"><td valign="top">mm</td><td valign="top">2 digit minute of the hour</td></tr></tbody></table></div><p>
+</p></dd><dt><span class="term">time_frequency</span></dt><dd><p>
+The time between images.
+If no time information is to be specified (or if the interval time cannot be specified as is the case for polar orbiting satellites), then enter "none" to avoid complaints from the configuration reader.
+</p><p>
+The time frequency information consists of four entries:
+</p><div class="itemizedlist"><ul type="disc"><li><p>the start time as an offset from 00 GMT</p></li><li><p>the cycle time</p></li><li><p>acceptance window before.</p></li><li><p>acceptance window after.</p></li></ul></div><p>
+All time entries can be specified in minutes (m) or hours and minutes
+in the format h:m (for example 15 or 1:10).
+The acceptance window is a time within which an image can arrive
+and still be considered to be on time.
+Some satellite images that
+normally arrive on the half hour may actually arrive at times like
+10:32, thus an acceptance window of 2 minutes would consider this
+to be the 10:30 image.
+Typical entries might be:
+</p><pre class="programlisting">radar 0:0 10 0 0
+satellite 0:0 15 2 5
+</pre><p>
+If a satellite repeated every half hour starting on the quarter hour,
+plus or minus 2 minutes, the entry would be:
+</p><pre class="programlisting">time_frequency = 15 30 2 2</pre><p>
+</p></dd></dl></div><p>
+</p><p>
+The following are required for radar and satellite images only (like <span class="acronym">GIF</span>) and satellite raw raster data files.
+If projection and mapdef are specified for <span class="acronym">URP</span> or <span class="acronym">TDF</span> files, then the entries in the <code class="filename">Image</code> file will override the information in the data file header.
+If not used, mapdef should be specified as "none" or the configuration reader will complain.
+</p><div class="variablelist"><dl><dt><span class="term">projection</span></dt><dd><p>
+Defines the type of projection and relevant reference information.
+</p><div class="itemizedlist"><ul type="disc"><li><p>type of projection</p></li><li><p>projection parameters</p></li></ul></div><p>
+</p><div class="informaltable"><table border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Projection</th><th>Type</th><th>Parameters</th></tr></thead><tbody><tr valign="top"><td valign="top">Lambert Conformal</td><td valign="top"><strong class="userinput"><code>lambert_conformal</code></strong></td><td valign="top"><p>upper reference latitude</p><p>lower reference latitude</p></td></tr><tr valign="top"><td valign="top">Latitude-Longitude</td><td valign="top"><strong class="userinput"><code>latitude_longitude</code></strong></td><td class="auto-generated"> </td></tr><tr valign="top"><td valign="top">Mercator Equatorial</td><td valign="top"><strong class="userinput"><code>mercator_equatorial</code></strong></td><td class="auto-generated"> </td></tr><tr valign="top"><td valign="top">Oblique Stereographic</td><td valign="top"><strong class="userinput"><code>oblique_stereographic</code></strong></td><td valign="top"><p>central latitude</p><p>central longitude</p><p>secant angle [optional]</p></td></tr><tr valign="top"><td valign="top">Plate-Caree</td><td valign="top"><strong class="userinput"><code>plate_caree</code></strong></td><td class="auto-generated"> </td></tr><tr valign="top"><td valign="top">Polar Stereographic</td><td valign="top"><strong class="userinput"><code>polar_stereographic</code></strong></td><td valign="top"><p><strong class="userinput"><code>north</code></strong> or <strong class="userinput"><code>south</code></strong></p><p>"true" latitude</p></td></tr><tr valign="top"><td valign="top">Rotated Latitude-Longitude</td><td valign="top"><strong class="userinput"><code>rotated_lat_lon</code></strong></td><td valign="top"><p>bottom axis latitude</p><p>bottom axis longitude</p><p>rotation angle [optional]</p></td></tr></tbody></table></div><p>
+</p></dd><dt><span class="term">mapdef</span></dt><dd><p>
+The map definition of the image.
+<span class="acronym">FPA</span> mapdefs are described in the <span class="acronym">FPA</span> Graphics Metafile Standard.
+Entries are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>origin latitude</p></li><li><p>origin longitude</p></li><li><p>reference longitude (vertical)</p></li><li><p>x minimum (in map units given below)</p></li><li><p>y minimum (in map units given below)</p></li><li><p>x maximum (in map units given below)</p></li><li><p>y maximum (in map units given below)</p></li><li><p>metres per map unit, or degrees per map unit for latitude_longitude projections</p></li></ul></div><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>For radar numeric files the mapdef can be set to none and the appropriate map definition information will be read from the data files.</p></div><p>
+</p></dd></dl></div><p>
+</p><p>
+Key words for radar image files only (like <span class="acronym">GIF</span>):
+</p><div class="variablelist"><dl><dt><span class="term">radar_overlay</span></dt><dd><p>If the image has the geography in specific planes in the image this can be used to remove them.
+Parameters are:
+</p><div class="itemizedlist"><ul type="disc"><li><p>either <strong class="userinput"><code>on</code></strong> or <strong class="userinput"><code>off</code></strong></p></li><li><p>an 8-bit mask indicating which bits in the image are to be used or rejected.
+For example 00111111</p></li></ul></div><p>
+</p></dd><dt><span class="term">radar_bgnd</span></dt><dd><p>
+Do we want the image background to be <strong class="userinput"><code>transparent</code></strong> or <strong class="userinput"><code>opaque</code></strong>?
+</p></dd><dt><span class="term">radar_bg_color</span></dt><dd><p>
+The rgb (red, green, blue) values of the colour to be taken as
+transparent if radar_bgnd is set to <strong class="userinput"><code>transparent</code></strong>.
+The values must
+range from 0 to 255 and the default is black (radar_bg_color = 0 0 0)
+</p></dd><dt><span class="term">radar_extent</span></dt><dd><p>
+Display the entire image (<strong class="userinput"><code>full</code></strong>) or just the part where the radar scan is (<strong class="userinput"><code>data</code></strong>)?
+</p></dd><dt><span class="term">radar_centre</span></dt><dd><p>
+Where in the image the centre of the radar scan can be found.
+Entries are width and height in pixels
+</p></dd><dt><span class="term">radar_diameter</span></dt><dd><p>The diameter of the radar scan part of the image in pixels</p></dd><dt><span class="term">range_rings</span></dt><dd><p>If <strong class="userinput"><code>true</code></strong> the library is allowed to overlay range
+rings on the image.
+Many radar images have range rings already in
+the image so normally this key word is either left out or set to <strong class="userinput"><code>false</code></strong>
+</p></dd></dl></div><p>
+
+</p><p>
+For satellite images only:
+</p><div class="variablelist"><dl><dt><span class="term">mapdef_file </span></dt><dd><p>
+Some images, such as those received from polar orbiting satellites have a map definition that changes from one image to another.
+This entry defines the name of the file that contains the map definition and/or projection.
+There are two forms the files can take:
+</p><div class="orderedlist"><ol type="1"><li><p>The file contains the definitions for one image and the file name identifies which image to information is for.
+The file name is in the form of <span xmlns="" class="replaceable">format encode_keys</span>.
+Format is the way to encode the file name in standard C sprintf style notation and encode_keys give the meaning of each of the elements.
+For example: %2.2d%2.2d%2.2d%2.2d%2.2d_WSO_CAPPI.md ef YY MM DD hh mm
+where the time is encoded according to the rules defined above for the fname_time.
+the file must contain the definitions in the format given in the
+discussion of the projection and mapdef above although the equal ("=") sign is not required.</p></li><li><p>The file contains the definitions and/or projections for more than one image.
+In this case the
+item list contains only one entry which is the name of the file.
+For example: <code class="filename">mapdefs</code>
+Each line in the given file must be in the form of:
+</p><pre class="programlisting"><span xmlns="" class="replaceable">image_file_name key parameters</span></pre><p>
+where <span xmlns="" class="replaceable">image_file_name</span> is the name of the image file, <span xmlns="" class="replaceable">key</span> is one of
+<strong class="userinput"><code>mapdef</code></strong> or <strong class="userinput"><code>projection</code></strong>, and the <span xmlns="" class="replaceable">parameters</span> are as described in the discussion
+above.</p></li></ol></div><p>
+The files are assumed to be in the same directory as the images.
+Note that the map definition and projection must still be specified in
+the <code class="filename">Image</code> file for use as the default if the file is not found or if only
+the map definition is specified in the file.
+</p></dd></dl></div><p>
+
+</p><p>
+Key words for the satellite or data with encode key <strong class="userinput"><code>gridded_data</code></strong> only:
+</p><div class="variablelist"><dl><dt><span class="term">element</span></dt><dd><p>The name of the element encoded into the grid (e.g.
+temperature)</p></dd><dt><span class="term">size</span></dt><dd><p>The size of the image grid.
+Entries are width and height in pixels.</p></dd><dt><span class="term">bytes_per_pixel</span></dt><dd><p>The number of bytes (8-bit chunks) per pixel (must be one of 1, 2, or 3)</p></dd><dt><span class="term">byte_order</span></dt><dd><p>
+Either <strong class="userinput"><code>MSBFirst</code></strong> for Most Significant Byte First or <strong class="userinput"><code>LSBFirst</code></strong> for Least Significant Byte First.
+Only valid for bytes_per_pixel &gt;1.
+</p></dd><dt><span class="term">scale and offset</span></dt><dd><p>
+Both scale and offset are used to turn the pixels into values represented by the pixels, and are applied as pixel * scale + offset
+For example if cloud top temperature was encoded as degrees Kelvin*100 and we wanted degrees Celsius then the scale and offset values
+would be
+</p><pre class="programlisting">scale = 0.01
+offset = -273.15</pre><p>
+</p></dd></dl></div><p>
+
+</p><p>
+Key words for encode key <strong class="userinput"><code>none</code></strong> only:
+</p><div class="variablelist"><dl><dt><span class="term">size</span></dt><dd><p>The image dimensions, width and height in pixels</p></dd></dl></div><p>
+
+</p><p>
+For geographic images only:
+</p><div class="variablelist"><dl><dt><span class="term">file</span></dt><dd><p>
+</p><div class="itemizedlist"><ul type="disc"><li><p>The base directory key name of the image directories as found in the setup file, or an absolute pathname of the directory (starts with the character '/').
+</p></li><li><p>The full path name of the file starting from the base directory.</p></li></ul></div><p>
+</p></dd></dl></div><p>
+
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s03s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06s03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.3.1. Product Block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.3.3. XGL image file format</td></tr></table></div></body></html>

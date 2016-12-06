@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_geography'> <title>@geography</title> <titleabbrev>@geography</titleabbrev>
+<para>
+Display geographic features on the current map.
+</para><para>
+Note that the appearance of geographic features is given by matching the value of the "attribute" keyword for each feature with the named presentations set in the <link linkend='ps_geo_presentation'>@geo_presentation</link> directive.
+</para><para>
+Note that the <userinput>category_attribute</userinput> and <userinput>category</userinput> keywords can be used one or more times to display only selected geographic features.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>geo_file</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; Metafile containing geography 
+</para><para>
+(Note: this must be the name of a file in the "Maps" directory or a full path name)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; attribute containing value to match with <userinput>geo_name</userinput> from <link linkend='ps_geo_presentation'>@geo_presentation</link> directive to select a presentation (default is <userinput>FPA_category</userinput>)
+</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@geography
+{
+  geo_file           = base_map.fpa;
+  element            = land_water; 
+  level              = geography;
+  category_attribute = FPA_category; 
+  category           = land;
+  attribute          = FPA_category;
+} </programlisting>
+Display geographic features from the geography <userinput>land_water</userinput> fields in the file <filename>base_map.fpa</filename> in the
+"Maps" directory. Only the features with an attribute value for <userinput>FPA_category</userinput> of land will be chosen.
+The features will be displayed by matching the attribute value for <userinput>FPA_category</userinput> to the named
+presentations previously set by the <link linkend='ps_geo_presentation'>@geo_presentation</link> directive.
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@geography
+{
+  geo_file           = base_map.fpa;
+  element            = boundaries;
+  level              = geography;
+  category_attribute = FPA_category;
+  category           = border border_major;
+  attribute          = FPA_category;
+}</programlisting>
+Display geographic features from the geography <userinput>boundaries</userinput> fields in the file <filename>base_map.fpa</filename> in the
+"Maps" directory. Only the features with an attribute value for <userinput>FPA_category</userinput> of border or
+border_major will be chosen. The features will be displayed by matching the attribute value for
+<userinput>FPA_category</userinput> to the named presentations previously set by the <link linkend='ps_geo_presentation'>@geo_presentation</link> directive.
+</para></example>
+</para></sect2>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<chapter id='requirements'><title>System Requirements</title> <para>
+<indexterm><primary>system requirements</primary></indexterm>
+This section details the hardware and software requirements for 
+running &FPA;.
+</para>
+
+<simplesect><title>Hardware</title> <para>
+<indexterm><primary>system requirements</primary><secondary>hardware</secondary></indexterm>
+</para>
+<itemizedlist>
+<listitem><para>
+A PC workstation capable of running the software below.
+</para></listitem>
+<listitem><para>
+Any graphics card which provides 8 bits of colour and 1280 x 1024 resolution.
+</para></listitem>
+<listitem><para>
+The disk space requirements are: 15Mb per version of the required executable software, up to 10Mb per version for optional software and 5Mb per database.
+Thus the disk space required for a minimal system is 20Mb and for a system with two databases and all optional software installed, 35Mb.
+</para></listitem>
+<listitem><para>
+Recommended minimum of 96 Megabytes RAM.
+</para></listitem>
+<listitem><para>
+A two or three button mouse and/or a graphics tablet with at least a two button stylus and/or puck (tablet with puck is highly recommended for smooth drawing).
+</para></listitem>
+</itemizedlist>
+</simplesect>
+
+<simplesect><title>Software</title><para>
+<indexterm><primary>system requirements</primary><secondary>software</secondary></indexterm>
+</para>
+<itemizedlist>
+<listitem><para>
+Linux (Ubuntu, Debian, RedHat, Centos)
+</para></listitem>
+</itemizedlist>
+</simplesect></chapter>

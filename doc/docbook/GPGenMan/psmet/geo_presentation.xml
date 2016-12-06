@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_geo_presentation'> <title>@geo_presentation</title> <titleabbrev>@geo_presentation</titleabbrev>
+<para>
+Set the appearance of geographic features displayed with the <link linkend='ps_geography'>@geography</link> directive.
+</para><para>
+Note that each geographic feature displayed is checked against the list of
+geographic presentations defined by each <userinput>geo_name</userinput> keyword. Note that each
+subsequent <link linkend='ps_geo_presentation'>@geo_presentation</link> directive will add an additional geographic
+presentation to the list, or modify existing presentations for matching names.
+</para><para>
+Note that the <link linkend='ps_reset_geo_presentation'>@reset_geo_presentation</link> directive resets the list of geographic presentations currently used.
+</para><para>
+Note that patterned lines are not allowed for displaying geographic features.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>geo_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Name for a geographic presentation</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<!-- <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/> -->
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/interior_fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/symbol_fill_name.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@geo_presentation 
+{
+  geo_name      = land;
+  outline       = none;
+  interior_fill = CMYK 0 10 35 0;
+}</programlisting>
+Display geographic features named land without an outline but filled with a colour composed of 10% Magenta and 35% Yellow.
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@geo_presentation
+{
+  geo_name      = border_major;
+  line_width    = 0.001;
+  outline       = CMYK 0 0 0 80; 
+  interior_fill = none;
+}</programlisting>
+Display geographic features named border_major with an outline 0.001 "units" wide in a colour
+composed of 80% Black. (Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

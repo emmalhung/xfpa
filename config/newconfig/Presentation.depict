@@ -1,0 +1,588 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Presentation-type files in the $FPA/config directory can and will be   #
+#   updated with any new release, update, or patch of the FPA software suite.  #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Presentation file that refers to this file through  #
+#   an #include statement.  Refer to the file Presentation, or d.Presentation  #
+#   for further instructions.                                                  #
+#                                                                              #
+################################################################################
+
+# Presentation Configuration File
+
+# This file defines the appearance of all fields that FPA applications can
+# potentially display.  This refers to both guidance fields and editable
+# depiction fields.
+
+# Omitted attributes resort to default values established in the software
+# which reads this file (for example: colour=Black, style=solid, font=simplex,
+# etc).
+
+revision 6.0
+
+
+# The following descriptions refer to editable depiction fields:
+
+field	pressure	msl	FPA
+
+	member	continuous	pressure
+		units	mb
+		contour	range	* * 1000 4
+			colour	Black
+			style	solid
+		# Intermediate dotted contours
+	#	contour	range	* * 1002 4
+	#		colour	Black
+	#		style	dot
+		maxima	* *
+			colour	Black
+			marker	plus
+			size	4
+		minima	* *
+			colour	Black
+			marker	diamond
+			size	4
+		# Additional col markers
+		saddle	* *
+			colour	Black
+			font	times
+			symbol	\244
+			size	20
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Black
+					font	simplex
+		class	hilo
+			class_member	mark	symbol	hilo_type
+				attribute	hilo_type	low
+					offset	0 16
+					size	hilo
+					colour	Red
+					shadow	Pink IndianRed
+					symbol	L
+					font	bold_serif
+				attribute	hilo_type	high
+					offset	0 16
+					size	hilo
+					colour	CadetBlue
+					shadow	SkyBlue Navy
+					symbol	H
+					font	bold_serif
+			class_member	label	value	EVAL_spval
+				default
+					offset	0 -13
+					size	label
+					colour	Black
+					shadow	Grey50 Black
+					font	bold
+			class_member	mark	marker
+				default
+					angle	45
+					size	5
+					colour	Black
+					shadow	Grey50 Black
+					marker	circle_plus
+
+
+field	pres_change	msl	FPA
+
+	member	continuous	pres_change
+		units	mb/3hr
+		contour	list	0
+			colour	Plum
+			width	2
+		contour	range	* -1 0 1
+			colour	Red
+			width	2
+		contour	range	1 * 0 1
+			colour	CornflowerBlue
+			width	2
+		maxima	0 *
+			colour	CornflowerBlue
+			marker	plus
+		minima	* 0
+			colour	Red
+			marker	diamond
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Plum
+					font	simplex
+
+
+field	temperature	ALL	FPA
+
+	member	continuous	temperature
+		units	degreesC
+		contour	range	* -5 0 5
+			colour	Red
+			style	dash
+		# Zero degree line thick solid
+		contour	list	0
+			colour	Red
+			width	2
+		contour	range	5 * 0 5
+			colour	Red
+			style	dash
+		maxima	* *
+			colour	Red
+			marker	plus
+			size	4
+		minima	* *
+			colour	Red
+			marker	diamond
+			size	4
+		# Additional col markers
+		saddle	* *
+			colour	Red
+			symbol	\244
+			size	20
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Red
+					font	simplex
+		class	hilo
+			class_member	mark	symbol	hilo_type
+				attribute	hilo_type	low
+					offset	0 16
+					size	hilo
+					colour	Red
+					shadow	Pink IndianRed
+					symbol	C
+					font	bold_serif
+				attribute	hilo_type	high
+					offset	0 16
+					size	hilo
+					colour	Red
+					shadow	Pink IndianRed
+					symbol	W
+					font	bold_serif
+			class_member	label	value	EVAL_spval
+				default
+					offset	0 -13
+					size	label
+					colour	Red
+					shadow	Pink IndianRed
+					font	bold
+			class_member	mark	marker
+				default
+					angle	45
+					size	5
+					colour	Red
+					shadow	Pink IndianRed
+					marker	circle_plus
+
+
+field	fronts	ALL FPA
+
+	member	curve	front
+		category	cold
+			pattern	front.sfc.cold
+			width	10
+			length	40
+		category	warm
+			pattern	front.sfc.warm
+			width	10
+			length	40
+		category	stationary
+			pattern	front.sfc.stationary
+			width	10
+			length	40
+		category	occluded
+			pattern	front.sfc.occluded
+			width	10
+			length	40
+		category	trowal
+			pattern	trowal		# to draw from the wave to the low
+		#	pattern	trowal.rev	# to draw from the low to the wave
+			width	10
+			length	40
+		category	trof
+			pattern	trof
+			width	10
+			length	40
+		category	ridge
+			pattern	ridge
+			width	10
+			length	40
+		category	upper_cold
+			pattern	front.upr.cold
+			width	10
+			length	40
+		category	upper_warm
+			pattern	front.upr.warm
+			width	10
+			length	40
+		category	upper_stationary
+			pattern	front.upr.stationary
+			width	10
+			length	40
+		category	upper_trof
+			pattern	trof.upr
+			width	10
+			length	40
+
+
+field	weather_system	ALL	FPA
+
+	member	discrete	weather
+		category	none
+			colour	CornflowerBlue
+			style	solid
+			width	1
+			fill	hatch_fill CornflowerBlue
+			hatch	parallel_hatch small 45
+		category	freezing
+			colour	Cyan
+			style	solid
+			width	5
+			fill	hatch_fill Cyan
+			hatch	cross_hatch tiny 135
+		category	frozen
+			colour	SkyBlue
+			style	solid
+			width	3
+			fill	hatch_fill White
+			hatch	parallel_hatch small 135
+		category	precip
+			colour	Green
+			style	solid
+			width	3
+			fill	hatch_fill Green
+			hatch	parallel_hatch small 90
+		category	vis
+			colour	Yellow
+			style	solid
+			width	2
+			fill	hatch_fill Yellow
+			hatch	parallel_hatch small 0
+		category	cloud
+			colour	Firebrick
+			style	solid
+			width	1
+			fill	hatch_fill Firebrick
+			hatch	parallel_hatch small 45
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	frozen
+					size	label
+					colour	Black
+					shadow	SkyBlue SkyBlue
+					font	simplex
+				category	freezing
+					size	label
+					colour	Black
+					shadow	Cyan Cyan
+					font	simplex
+				category	precip
+					size	label
+					colour	Green
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	vis
+					size	label
+					colour	Yellow
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	cloud
+					size	label
+					colour	Goldenrod
+					shadow	Firebrick Firebrick
+					font	simplex
+				default
+					size	label
+					colour	Green
+					font	simplex
+
+
+field	weather_local	ALL	FPA
+
+	member	discrete	weather
+		category	freezing
+			colour	Cyan
+			style	solid
+			width	5
+			fill	hatch_fill Cyan
+			hatch	cross_hatch tiny 135
+		category	frozen
+			colour	SkyBlue
+			style	solid
+			width	3
+			fill	hatch_fill White
+			hatch	parallel_hatch small 135
+		category	precip
+			colour	Green
+			style	solid
+			width	3
+			fill	hatch_fill Green
+			hatch	cross_hatch tiny 30
+		category	vis
+			colour	Yellow
+			style	solid
+			width	2
+			fill	hatch_fill Yellow
+			hatch	cross_hatch tiny -30
+		category	cloud
+			colour	Firebrick
+			style	solid
+			width	1
+			fill	hatch_fill Firebrick
+			hatch	cross_hatch tiny 60
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	frozen
+					size	label
+					colour	Black
+					shadow	SkyBlue SkyBlue
+					font	simplex
+				category	freezing
+					size	label
+					colour	Black
+					shadow	Cyan Cyan
+					font	simplex
+				category	precip
+					size	label
+					colour	Green
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	vis
+					size	label
+					colour	Yellow
+					shadow	Firebrick Firebrick
+					font	simplex
+				category	cloud
+					size	label
+					colour	Goldenrod
+					shadow	Firebrick Firebrick
+					font	simplex
+				default
+					size	label
+					colour	Green
+					font	simplex
+
+
+field	POP		ALL	FPA
+
+	member	discrete	pop
+		category	precip
+			colour	Green
+			style	solid
+		category	None
+			colour	Green
+			style	solid
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+				category	precip
+					size	label
+					colour	Green
+					shadow	Firebrick Firebrick
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Green
+					font	simplex
+					hjust	left
+
+
+field	actual_wind		ALL	FPA
+
+	member	discrete	wind
+		category	default
+			colour	Violet
+			style	dot
+		category	abs
+			colour	Plum
+			width	2
+		category	Vg_Msl
+			colour	Plum
+			width	1
+		category	Vr_Msl
+			colour	Plum
+			width	1
+		category	Vg_850
+			colour	Plum
+			width	1
+	# Move to examples & Presentation.cardone
+	#	category	Cardone_Sfc
+	#		colour	Pink
+	#		width	1
+
+	member	spot	labels
+		class	wind
+			class_member	barb	wind	EVAL_wind
+				default
+					colour	Brown
+					btype	wind dirfrom noval knots
+					width	medium
+					length	40.0
+				# Another way to display a wind
+				#	btype		arrow dirfrom showval knots
+				#	bcolour	Plum Pink
+				#	bvaloff	0 0
+				#	font		simplex
+				#	size		label
+		class	area
+			class_member	label	value
+				default
+					size	label
+					colour	Cyan
+					font	simplex
+
+
+field	sea_ice	ALL	FPA
+
+	member	discrete	sea_ice
+		category	none
+			colour	Green
+			width	2
+			fill	hatch_fill SeaGreen
+			hatch	cross_hatch tiny 0
+		category	ice
+			colour	CornflowerBlue
+			width	2
+			fill	hatch_fill Cyan
+			hatch	cross_hatch tiny 0
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	SeaGreen
+					shadow	Green Green
+					font	simplex
+				category	ice
+					size	label
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+		class	legend
+			class_member	label	value
+				default
+					size	legend
+					colour	Cyan
+					shadow	CornflowerBlue CornflowerBlue
+					font	simplex
+					hjust	left
+
+
+field	freezing_spray	ALL	FPA
+
+	member	discrete	freezing_spray
+		category	none
+			colour	Magenta
+			style	solid
+		category	frz
+			colour	Magenta
+			style	solid
+
+	member	spot	labels
+		class	area
+			class_member	label	value
+				category	none
+					size	label
+					colour	CornflowerBlue
+					font	simplex
+				category	frz
+					size	label
+					colour	Magenta
+					font	simplex
+
+
+field	wave_height	surface	FPA
+
+	member	continuous
+		units	m
+		contour	list	1 2
+			colour	Yellow
+			style	dash
+		contour	list	3 4
+			colour	Yellow
+			style	solid
+			width	1
+		contour	range	5 * 5 2
+			colour	Red
+			style	solid
+			width	1
+		maxima	1 *
+			colour	Yellow
+			marker	plus
+		minima	1 *
+			colour	Yellow
+			marker	diamond
+
+	member	spot	labels
+		class	contour
+			class_member	label	value	EVAL_contour
+				default
+					size	label
+					colour	Red
+					font	simplex
+		class	hilo
+			class_member	mark	symbol	hilo_type
+				attribute	hilo_type	high
+					offset	0 16
+					size	hilo
+					colour	Red
+					shadow	Pink IndianRed
+					symbol	Max
+					font	bold_serif
+			class_member	label	value	EVAL_spval
+				default
+					offset	0 -13
+					size	label
+					colour	Black
+					shadow	Grey50 Black
+					font	bold
+			class_member	mark	marker
+				default
+					angle	45
+					size	5
+					colour	Black
+					shadow	Grey50 Black
+					marker	circle_plus

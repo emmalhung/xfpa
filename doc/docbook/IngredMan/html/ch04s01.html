@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.1. Function Descriptions</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch04.html" title="Chapter 4. Attribute List (CAL) Functions" /><link rel="prev" href="ch04.html" title="Chapter 4. Attribute List (CAL) Functions" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.1. Function Descriptions</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04.html">Prev</a> </td><th width="60%" align="center">Chapter 4. Attribute List (CAL) Functions</th><td width="20%" align="right"> </td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id4164636"></a>4.1. Function Descriptions</h2></div></div></div><p>
+</p><div class="variablelist"><dl><dt><span class="term">void CAL_add_attribute (CAL, STRING name, STRING value)</span></dt><dd><p>
+Add an attribute identified by name with an associated value to the CAL structure.
+</p></dd><dt><span class="term">void CAL_add_location (CAL, MAP_PROJ *mproj, POINT point)</span></dt><dd><p>
+Adds a location point to the CAL structure by converting the location specified by point to a latitude and longitude using the map projection mproj and storing these in CAL using the predefined attributes CALlongitude and CALlatitude.
+</p></dd><dt><span class="term">void CAL_clean (CAL)</span></dt><dd><p>
+Remove all attributes from the CAL structure that do not have a value associated with them.
+</p></dd><dt><span class="term">CAL CAL_create_by_name (STRING element , STRING level)</span></dt><dd><p>
+Create a CAL structure from the element and level names of a field that is populated with the attributes specific to that field.
+</p></dd><dt><span class="term">CAL CAL_create_by_edef (FpaConfigElementStruct *cfg)</span></dt><dd><p>
+Create a CAL structure from the field element definition structure that is populated with the attributes specific to that field.
+</p></dd><dt><span class="term">CAL CAL_create_default (void)</span></dt><dd><p>
+Create a CAL structure that contains the predefined attributes CALautolabel, CALcategory and CALuserlabel.
+</p></dd><dt><span class="term">CAL CAL_create_empty (void)</span></dt><dd><p>
+Create a CAL structure with no attributes.
+</p></dd><dt><span class="term">CAL CAL_destroy (CAL)</span></dt><dd><p>
+Destroy the given CAL structure and return a value of NULL.
+</p></dd><dt><span class="term">CAL CAL_duplicate (const CAL)</span></dt><dd><p>
+Duplicate the given CAL structure.
+</p></dd><dt><span class="term">void CAL_empty (CAL)</span></dt><dd><p>
+Remove all attributes from the CAL structure.
+</p></dd><dt><span class="term">STRING CAL_get_attribute (CAL, STRING name)</span></dt><dd><p>
+Return the value associated with the given attribute.
+</p></dd><dt><span class="term">void CAL_get_attribute_names (CAL, STRING **name, int *number)</span></dt><dd><p>
+Return a list of all sttributes in the CAL structure. The name list is allocated and it is the responsibility of the calling function to free the returned list. Note that the elements the list points to are internal static and must not be freed. (That is, free name but not name[i]).
+</p></dd><dt><span class="term">void CAL_get_defaults (CAL, STRING *category, STRING *auto_label, STRING *user_label)</span></dt><dd><p>
+Returns the values associated with the predefined attributes CALcategory, CALautolabel and CALuserlabel. The returned values point to internal static values and must not be freed.
+</p></dd><dt><span class="term">LOGICAL CAL_has_attribute (CAL, STRING name)</span></dt><dd><p>
+Returns true if the given CAL structure contains the given attribute name.
+</p></dd><dt><span class="term">LOGICAL CAL_is_preset (STRING name)</span></dt><dd><p>
+Returns True if the attribute name is one of the preset magic attributes.
+</p></dd><dt><span class="term">LOGICAL CAL_is_value ( STRING value )</span></dt><dd><p>
+Returns True if the attribute value has a value.
+</p></dd><dt><span class="term">void CAL_merge (CAL dest, CAL source, LOGICAL overwrite)</span></dt><dd><p>
+Merges the given source CAL into the destination CAL. If overwrite is True, then attributes in source will overwrite those in dest. If False, then source attributes will only be written into dest if the attribute does not exist in dest or if the attribute in dest does not have a value.
+</p></dd><dt><span class="term">LOGICAL  CAL_no_value ( STRING value )</span></dt><dd><p>
+Returns True if the attribute value does not have a value.
+</p></dd><dt><span class="term">LOGICAL CAL_same	(CAL a, CAL b)</span></dt><dd><p>
+Returns True if CAL a and CAL b are the same.
+</p></dd><dt><span class="term">void CAL_set_attribute (CAL, STRING name, STRING value)</span></dt><dd><p>
+Set the value of the attribute name to value. If the attribute does not exist in CAL then no action is taken.
+</p></dd><dt><span class="term">void CAL_set_defaults (CAL, STRING cval, STRING alval, STRING ulval)</span></dt><dd><p>
+Set the value of the predefined attributes CALcategory to cval, CALautolabel to alval and CALuserlabel to ulval.
+</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top">Chapter 4. Attribute List (CAL) Functions </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

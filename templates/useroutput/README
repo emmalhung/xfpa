@@ -1,0 +1,137 @@
+User-Defined Template Source-Code Files for ASCII File Output from the FPA
+
+This directory contains template files (ANSI-C source, scripts and makefiles)
+for building local client-written processes to access the FPA database as
+"Allied Models".
+
+    W A R N I N G ! ! !
+
+    Do not modify the original files found in $FPA/templates.  These files
+    will be updated with future releases and patches.  It is intended that
+    you copy them to a convenient directory, and build the library there.
+    The script "copyfiles" has been provided for this purpose.
+
+This directory should contain the following files:
+
+    README ................ this file
+    copyfiles ............. script which copies the template files to a
+                             working directory
+    example_extract.c ..... source template for accessing the FPA database
+    binmake ............... script which builds the processes
+    binput ................ script which places the processes where they
+                             can be accessed by the operational FPA software
+    binrestore ............ script which restores the previous version of the
+                             processes used by the operational FPA software
+    Makefile.bin .......... "make" file used by binmake
+
+Once you have copied the template files to a convenient working directory,
+instructions for writing your own functions are given in the README file
+and inside the individual ".c" files.
+
+To test the processes before installing them with the operational version,
+build the processes using binmake, add the information to the local setup
+file and local Config file (as described below), then set and export the
+FPA_EXEC_PATH variable to the directory in which the processes were just built.
+You may run these processes either directly or through the "Allied Models"
+pulldown in the development FPA interface.
+
+Once tested, you may then install the processes in an operational directory,
+using the binput script.  Unset the FPA_EXEC_PATH variable.  The binrestore
+script provides the ability to go back to the last working version of the
+processes, if they turn out to have been installed prematurely!
+
+
+EXAMPLE_EXTRACT
+
+  The following changes or additions are required to run
+  "example_extract" ...
+
+   - addition of "EX_EXTRACT" to the "[allied.model]" section
+      of the "interface" block of the local setup file
+
+   - addition of the following section to the "Sources" block
+      of the local configuration file
+
+    EX_EXTRACT
+        {
+        label            = <*default*> "Example Data Extraction"
+        short_label      = <*default*> "Example Extract"
+        source_type      = Allied
+
+        directory_tag    = AModels.Data
+        directory_path   = EXAMPLES
+        directory_layers     = 2
+
+        subsources       = None
+
+        allied_model     =
+            {
+            time_matching    = False
+            source_info      = depict
+            process          = ex_extract <SETUP> <SOURCE> <SUBSOURCE> \
+                                            <RTIME> 00 12 24 36 48
+
+            programs         = None
+
+            files            =
+                {
+                OutputSfcTemp
+                    {
+                    file_path        = sfctemp
+                    }
+                OutputWind
+                    {
+                    file_path        = wind
+                    }
+                }
+
+            required_fields  =
+                {
+                SfcTemp
+                    {
+                    field_info       = temperature surface
+                    }
+                }
+
+            required_wind_crossrefs  =
+                {
+                FpaWind
+                    {
+                    crossref_info    = Fpa_Wind
+                    }
+                }
+
+            required_value_crossrefs = None
+
+            metafiles        = None
+            }
+        }
+
+  The routine "example_extract" is designed to be modified and
+  loaded with a command line of:
+
+    binmake  example_extract
+
+  The routine "example_extract" has been set up to run either
+  as an "Allied Model" from within the FPA, or directly with a
+  command line of:
+
+    ex_extract  <local_setup>  EX_EXTRACT  ""  <run_time>  <valid>
+
+  where <local_setup> is the local setup file name,
+  <run_time> is a timestamp in YYYY:JJJ:HH or YYYY:MM:DD:HH
+  format (where YYYY is the 4 digit year, JJJ is the 3 digit
+  day of year, MM is the two digit month, DD is the two digit
+  day of month, and HH is the two digit hour of day), and
+  <valid> is one or more  valid times of the data in XX or
+  RR/HH or YYYY:JJJ:HH or YYYY:MM:DD:HH format (where XX is
+  the number of hours from the "run_time", and RR is the
+  number of days from the "run_time").
+
+  The output files
+
+   "sfctemp_<valid_time>"  and  "wind_<valid_time>"
+
+  will be produced in the "AModels.DATA/EXAMPLES" directory
+  of the data directory of the local setup file (where
+  <valid_time> will be a timestamp in YYYY:JJJ:HH format).

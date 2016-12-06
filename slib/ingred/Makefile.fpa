@@ -1,0 +1,121 @@
+# Define all the usual places to look for things:
+LIBPATH = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(SLIBDIR)/$${PLATFORM}
+INCPATH = $${INCLUDE_PATH} $${X_INCLUDE} \
+			-I$(INCDIR) -I$(LIBDIR) -I$(SINCDIR) -I$(SLIBDIR)
+
+LDIR    = $(SLIBDIR)/$(PLATFORM)
+LIB     = $(LDIR)/ingred.a
+HEADER  = $(SINCDIR)/ingred.h
+GRAFHDR = $(SINCDIR)/graphics.h
+
+MODULES  = ingred.o \
+		   feedback.o \
+		   mouse.o \
+		   layout.o \
+		   sequence.o \
+		   dfield.o \
+		   animation.o \
+		   depiction.o \
+		   scratchpad.o \
+		   imagery.o \
+		   guidance.o \
+		   timelink.o \
+		   zoom.o \
+		   dump.o \
+		   active.o \
+		   labels.o \
+		   samples.o \
+		   edit_spln.o \
+		   edit_area.o \
+		   edit_line.o \
+		   edit_point.o \
+		   edit_lchain.o \
+		   link_master.o \
+		   link_spln.o \
+		   link_area.o \
+		   link_line.o \
+		   interp_spln.o \
+		   interp_area.o \
+		   interp_line.o \
+		   util.o
+
+
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(HEADER) $(MODULES) $(LIB)
+
+
+# Rules for building the library:
+all lib:	$(HEADER) Pmodules $(LIB)
+		@	echo FPA $${PLATFORM} graphical editor library ready
+		@	echo
+$(LIB):		$(MODULES)
+		@	echo Re-building FPA $${PLATFORM} graphical editor library
+		@   if [ ! -d $(LDIR) ]; then mkdir -p $(LDIR); fi
+		@	if [ -f $(LIB) ]; then rm -f $(LIB); fi
+		@	sleep 1
+		@	$${LIB_ARCHIVE} $(LIB) $(MODULES) 2>/dev/null
+
+
+# Rules for building the object modules:
+modules:	$(HEADER) Pmodules $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA graphical editor library"
+
+ingred.o:		ingred_private.h $(HEADER)
+feedback.o:		ingred_private.h
+mouse.o:		ingred_private.h
+layout.o:		ingred_private.h
+sequence.o:		ingred_private.h
+dfield.o:		ingred_private.h
+animation.o:	ingred_private.h
+depiction.o:	ingred_private.h
+scratchpad.o:	ingred_private.h
+imagery.o:		ingred_private.h
+guidance.o:		ingred_private.h
+timelink.o:		ingred_private.h
+zoom.o:			ingred_private.h
+dump.o:			ingred_private.h
+active.o:		ingred_private.h
+labels.o:		ingred_private.h
+samples.o:		ingred_private.h
+edit_spln.o:	ingred_private.h
+edit_area.o:	ingred_private.h
+edit_line.o:	ingred_private.h
+edit_point.o:	ingred_private.h
+edit_lchain.o:	ingred_private.h
+link_master.o:	ingred_private.h
+link_spln.o:	ingred_private.h
+link_area.o:	ingred_private.h
+link_line.o:	ingred_private.h
+interp_spln.o:	ingred_private.h
+interp_area.o:	ingred_private.h
+interp_line.o:	ingred_private.h
+util.o:			ingred_private.h
+
+
+# Rules for building the master header file(s):
+defs header:	$(HEADER)
+$(HEADER):	ingred.h
+		@	echo "Updating Fpa graphical editor library header"
+		@	sleep 1; cp ingred.h $(HEADER)
+		@	sleep 1
+
+# Make sure the FPA header is up to date
+$(FPAHDR):
+			@	cd $(LIBDIR); $(MAKE) header
+
+ingred.h:			$(FPAHDR)
+					@	sleep 1; touch $@
+ingred_private.h:	$(FPAHDR) $(GRAFHDR) $(MATH)
+					@	sleep 1; touch $@
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} graphical editor module $<"
+	@	$${C_COMPILER} -c $(INCPATH) $(C_OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

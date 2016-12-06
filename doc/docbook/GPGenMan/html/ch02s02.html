@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.2. Special PSMet/SVGMet Directives</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02.html" title="Chapter 2. PSMet/SVGMet" /><link rel="prev" href="ch02s01.html" title="2.1. PSMet/SVGMet Input and Output Files" /><link rel="next" href="ch02s02.html#id3557291" title=".1. Special format specific directives available only in SVGMet" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.2. Special PSMet/SVGMet Directives</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s01.html">Prev</a> </td><th width="60%" align="center">Chapter 2. PSMet/SVGMet</th><td width="20%" align="right"> <a accesskey="n" href="ch02s02.html#id3557291">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id3565622"></a>2.2. Special PSMet/SVGMet Directives</h2></div></div></div><p>
+The following directives have special locations or usages in the PSMet and
+SVGMet product definition files. A complete description of each of these
+directives is given in a following section.
+</p><p>
+The <a href="ch02s05s64.html" title="2.5.64. @version">@version</a> directive is always found at the beginning of the main
+PSMet/SVGMet product definition file; it must always be the first
+directive encountered! The <a href="ch02s05s28.html" title="2.5.28. @file_name">@file_name</a> directive identifies the output
+file to be used. This directive is normally found at the beginning of the
+main product definition file too, though it may also be used later in the
+product definition files to open another output file. The <a href="ch02s05s27.html" title="2.5.27. @file_close">@file_close</a>
+directive is used to close an output file.
+</p><p>
+</p><div class="variablelist"><dl><dt><span class="term"><a href="ch02s05s64.html" title="2.5.64. @version">@version</a></span></dt><dd><p>
+PSMet/SVGMet version number. This must be the first directive!</p></dd><dt><span class="term"><a href="ch02s05s28.html" title="2.5.28. @file_name">@file_name</a></span></dt><dd><p>
+Name and location of PSMet/SVGMet output file</p></dd><dt><span class="term"><a href="ch02s05s27.html" title="2.5.27. @file_close">@file_close</a></span></dt><dd><p>
+Close the PSMet/SVGMet output file</p></dd></dl></div><p>
+The <a href="ch02s05s63.html" title="2.5.63. @verbose">@verbose</a> directive can be used while developing new graphics
+products. It will provide extra diagnostic output to help determine why a
+particular directive does not produce the desired output.
+</p><div class="variablelist"><dl><dt><span class="term"><a href="ch02s05s63.html" title="2.5.63. @verbose">@verbose</a></span></dt><dd><p>
+Provide extra diagnostic output during development</p></dd></dl></div><p>
+The <a href="ch02s05s50.html" title="2.5.50. @process">@process</a> directive can be used to launch an external process from
+within PSMet or SVGMet. For example, this directive could be used to
+display the PSMet or SVGMet output file.
+</p><div class="variablelist"><dl><dt><span class="term"><a href="ch02s05s50.html" title="2.5.50. @process">@process</a></span></dt><dd><p>
+Launch an external process</p></dd></dl></div><p>
+The following directives can be used to simplify the directive and
+keyword commands in a set of product definition files. The <a href="ch02s05s35.html" title="2.5.35. @group">@group</a>
+<a href="ch02s05s37.html" title="2.5.37. @include">@include</a> directives are used to combine keywords or directives. The
+<a href="ch02s05s44.html" title="2.5.44. @loop_begin">@loop_begin</a> <a href="ch02s05s45.html" title="2.5.45. @loop_end">@loop_end</a> directives allow a given sequence of
+directives to be repeated several times with changing keyword values.
+</p><div class="variablelist"><dl><dt><span class="term"><a href="ch02s05s35.html" title="2.5.35. @group">@group</a></span></dt><dd><p>
+Combine a series of repeated keywords</p></dd><dt><span class="term"><a href="ch02s05s37.html" title="2.5.37. @include">@include</a></span></dt><dd><p>
+Process a series of directives from another "pdf" file</p></dd><dt><span class="term"><a href="ch02s05s44.html" title="2.5.44. @loop_begin">@loop_begin</a></span></dt><dd><p>
+Beginning of loop for repeating directives with
+changing keyword values</p></dd><dt><span class="term"><a href="ch02s05s45.html" title="2.5.45. @loop_end">@loop_end</a></span></dt><dd><p>
+End of loop for repeating directives</p></dd><dt><span class="term"><a href="ch02s05s46.html" title="2.5.46. @loop_location_look_up">@loop_location_look_up</a></span></dt><dd><p>
+Create a temporary location look up table from a point, line or link chain feature.</p></dd></dl></div><p>
+The following directives control positioning for the output display. The
+<a href="ch02s05s58.html" title="2.5.58. @size">@size</a> directive is used to set the actual page size of the output display.
+The <a href="ch02s05s19.html" title="2.5.19. @display_units">@display_units</a> directive sets the units to be used for all
+calculations of position on the output display. (The units can be whatever
+the user feels most comfortable dealing with.) The <a href="ch02s05s02.html" title="2.5.2. @anchor">@anchor</a> directive is
+used for defining positions on the output display. This directive can be
+reset any number of times.
+</p><div class="variablelist"><dl><dt><span class="term"><a href="ch02s05s58.html" title="2.5.58. @size">@size</a></span></dt><dd><p>
+Size of the output display (the paper size)</p></dd><dt><span class="term"><a href="ch02s05s19.html" title="2.5.19. @display_units">@display_units</a></span></dt><dd><p>
+Units for positioning and display of graphics</p></dd><dt><span class="term"><a href="ch02s05s02.html" title="2.5.2. @anchor">@anchor</a></span></dt><dd><p>
+Define a reference position for displaying graphics</p></dd></dl></div><p>
+The <a href="ch02s05s51.html" title="2.5.51. @projection">@projection</a> <a href="ch02s05s47.html" title="2.5.47. @mapdef">@mapdef</a> <a href="ch02s05s54.html" title="2.5.54. @resolution">@resolution</a> <a href="ch02s05s15.html" title="2.5.15. @define_map_placement">@define_map_placement</a>
+directives control the map background used for sampling or display.
+(Note that any background map should be completely contained by the
+map defined in the <span class="acronym">FPA</span> setup file and the <span class="acronym">FPA</span> metafiles, or errors could
+result when sampling or displaying the data. Errors can also occur if the
+locations for sampling data are beyond the limits of the background map
+defined by these directives.) These directives are usually found at the
+beginning of PSMet and SVGMet product definition files.
+</p><div class="variablelist"><dl><dt><span class="term"><a href="ch02s05s51.html" title="2.5.51. @projection">@projection</a></span></dt><dd><p>
+Map projection for the current map</p></dd><dt><span class="term"><a href="ch02s05s47.html" title="2.5.47. @mapdef">@mapdef</a></span></dt><dd><p>
+Map definition for the current map</p></dd><dt><span class="term"><a href="ch02s05s54.html" title="2.5.54. @resolution">@resolution</a></span></dt><dd><p>
+Spline resolution for the current map</p></dd><dt><span class="term"><a href="ch02s05s15.html" title="2.5.15. @define_map_placement">@define_map_placement</a></span></dt><dd><p>
+Size and location on the page for the current map</p></dd></dl></div><p>
+The <a href="ch02s05s49.html" title="2.5.49. @presentation">@presentation</a> directive sets the default display parameters for all
+subsequent directives. Many of the keywords in PSMet and SVGMet
+have default values that are set automatically when the application is run.
+These parameters are reset by keywords in the <a href="ch02s05s49.html" title="2.5.49. @presentation">@presentation</a> directive.
+However, many of the keywords found in the <a href="ch02s05s49.html" title="2.5.49. @presentation">@presentation</a> directive
+are also found in other directives. The effect of such keywords is to
+override the default display parameters for that directive only; the default
+display parameters will not be changed.
+</p><div class="variablelist"><dl><dt><span class="term"><a href="ch02s05s49.html" title="2.5.49. @presentation">@presentation</a></span></dt><dd><p>
+Default display parameters for appearance of graphics</p></dd></dl></div><p>
+</p><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id3557291"></a>.1. Special format specific directives available only in SVGMet</h3></div></div></div><p>
+The SVG format allows for grouping of display objects, 
+which can be useful for moving a complex label, for example, 
+in a graphics post processor such as Adobe Illustrator.
+The <a href="ch02s05s32.html" title="2.5.32. @gpgen_group_begin">@gpgen_group_begin</a> <a href="ch02s05s33.html" title="2.5.33. @gpgen_group_end">@gpgen_group_end</a> directives can be used to create an SVG grouping.
+</p><div class="variablelist"><dl><dt><span class="term"><a href="ch02s05s32.html" title="2.5.32. @gpgen_group_begin">@gpgen_group_begin</a></span></dt><dd><p>
+Start grouping of display objects.</p></dd><dt><span class="term"><a href="ch02s05s33.html" title="2.5.33. @gpgen_group_end">@gpgen_group_end</a></span></dt><dd><p>
+End grouping of display objects.
+</p></dd></dl></div><p>
+
+The SVG format has a number of powerful features, not all of which could be incorporated into SVGMet.
+The <a href="ch02s05s34.html" title="2.5.34. @gpgen_insert">@gpgen_insert</a> directive can be used to insert such features directly into the output SVG format file.
+</p><div class="variablelist"><dl><dt><span class="term"><a href="ch02s05s34.html" title="2.5.34. @gpgen_insert">@gpgen_insert</a></span></dt><dd><p>
+Insert SVG commands directly into the output SVG format file.</p></dd></dl></div><p>
+</p></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s02.html#id3557291">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.1. PSMet/SVGMet Input and Output Files </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> .1. Special format specific directives available only in SVGMet</td></tr></table></div></body></html>

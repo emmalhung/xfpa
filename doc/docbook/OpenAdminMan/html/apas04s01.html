@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>A.4.1. Template of an 'Elements' Block</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apas04.html" title="A.4. Elements block" /><link rel="prev" href="apas04.html" title="A.4. Elements block" /><link rel="next" href="apas05.html" title="A.5. Fields block" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">A.4.1. Template of an 'Elements' Block</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apas04.html">Prev</a> </td><th width="60%" align="center">A.4. Elements block</th><td width="20%" align="right"> <a accesskey="n" href="apas05.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2045769"></a>A.4.1. Template of an 'Elements' Block</h3></div></div></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>Elements</code></strong></span></dt><dd><p>
+<strong class="userinput"><code>{</code></strong>
+	</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code><span xmlns="" class="replaceable">element_name</span></code></strong></span></dt><dd><p>
+	<strong class="userinput"><code>{</code></strong>
+		</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		This is the label that the user sees.
+		The default is <span xmlns="" class="replaceable">element_name</span>.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>short_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		The short_label is used when there is not enough room on the <span class="acronym">FPA</span> screen or button to use the longer label.
+		The default is <span xmlns="" class="replaceable">element_name</span>.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>description = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		This is an optional descriptive label.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>field_type = </code></strong></span></dt><dd><p> 
+		Must be one of: 
+		<strong class="userinput"><code>Continuous</code></strong>,
+		<strong class="userinput"><code>Vector</code></strong>,
+		<strong class="userinput"><code>Discrete</code></strong>,
+		<strong class="userinput"><code>Wind</code></strong>,
+		<strong class="userinput"><code>Line</code></strong>,
+		<strong class="userinput"><code>LChain</code></strong>,
+		<strong class="userinput"><code>Scattered</code></strong>,
+		<strong class="userinput"><code>Special</code></strong></p><p>
+		This parameter identifies the type of meteorological field.
+		The choices are described in <a href="apas03.html#common_keys" title="Table A.1. Common Keywords">Table A.1</a>.</p><p>
+		The choices available for the 'editor', 'labelling', and 'sample' keywords (below) are determined by the field_type.
+		This is indicated in the comments associated with each keywords.
+		Note that no 'editor', 'labelling', or 'sample' keywords are available for Special elements.</p><p>
+		Note that this parameter cannot be re-specified!
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>level_type = </code></strong></span></dt><dd><p>
+		Must be one of: 
+		<strong class="userinput"><code>Msl</code></strong>,
+		<strong class="userinput"><code>Surface</code></strong>,
+		<strong class="userinput"><code>Level</code></strong>,
+		<strong class="userinput"><code>Layer</code></strong>,
+		<strong class="userinput"><code>Geography</code></strong>,
+		<strong class="userinput"><code>Annotation</code></strong>,
+		<strong class="userinput"><code>Any</code></strong></p><p>
+		This parameter matches the element to an acceptable level to create a field.
+		The choices are described in <a href="apas03.html#common_keys" title="Table A.1. Common Keywords">Table A.1</a>.
+		</p><p>
+		Note that this parameter cannot be re-specified!
+		</p></dd></dl></div><p>
+		<dt></dt><dd><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following <strong class="userinput"><code>display_format</code></strong> keyword is applicable to <strong class="userinput"><code>Discrete</code></strong> fields.</p></div></dd>
+		</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>display_format = Simple | Complex</code></strong></span></dt><dd><p>
+		This parameter should be set to <strong class="userinput"><code>Complex</code></strong> only if the <strong class="userinput"><code>Discrete</code></strong> field will have both dividing lines AND holes.
+		A <strong class="userinput"><code>Discrete</code></strong> field with both dividing lines and holes requires more complicated calculations to ensure correct masking and display of features.
+		</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>element_group = <span xmlns="" class="replaceable">group_name</span></code></strong></span></dt><dd><p>
+		This parameter groups <span class="acronym">FPA</span> elements in the interface.
+		The <span xmlns="" class="replaceable">group_name</span> is from the 'Elements' sub block of the 'Groups' block.
+		The default group is 'Miscellaneous'.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>field_group = <span xmlns="" class="replaceable">group_name</span></code></strong></span></dt><dd><p>
+		This parameter groups <span class="acronym">FPA</span> fields in the interface.
+		The <span xmlns="" class="replaceable">group_name</span> is from the 'Fields' sub block of the 'Groups' block.
+		This parameter is the default group if the field or the field_group for the field are not specified.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>alias = <span xmlns="" class="replaceable">alias_name(s)</span></code></strong></span></dt><dd><p>
+		These can be shorter names for use, say, in equations.
+		(An example is the label "Pressure" which has a short_label "Pres".
+		Aliases include "p" and "pres".
+		These aliases can be used in equations which involve pressure.) Alias names cannot be reused by another element.
+		Only the first one encountered gets used.
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>file_id = None | <span xmlns="" class="replaceable">identifier</span></code></strong></span></dt><dd><p>
+		This is the identifier used to construct old style <span class="acronym">FPA</span> file names (see <a href="apas03.html#common_keys" title="Table A.1. Common Keywords">Table A.1</a>).
+		It cannot be re-specified unless changed from <strong class="userinput"><code>None</code></strong>!
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>file_ident = None | <span xmlns="" class="replaceable">identifier</span></code></strong></span></dt><dd><p>
+		This is the identifier used to construct new style <span class="acronym">FPA</span> file names (see <a href="apas03.html#common_keys" title="Table A.1. Common Keywords">Table A.1</a>).
+		It cannot be re-specified unless changed from <strong class="userinput"><code>None</code></strong>!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>precision = <span xmlns="" class="replaceable">value unit_name</span></code></strong></span></dt><dd><p>
+		This is the output precision of the element for metafiles (usually 0.01) and the normal units for the element.
+		This value is required for Continuous fields.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>time_dependence = Normal</code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term"><strong class="userinput"><code>time_dependence =</code></strong></span></dt><dd><p>
+		<strong class="userinput"><code>{</code></strong></p><p>
+			This parameter identifies temporal information for the field.
+			</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>time_type = </code></strong></span></dt><dd><p>Sets the time coverage of the field.
+			Must be one of:</p><p>- <strong class="userinput"><code>Normal</code></strong>: for fields valid at one time (such as hourly temperature).</p><p>- <strong class="userinput"><code>Daily</code></strong>: for fields valid over a time period (such as the daily maximum temperature).</p><p>- <strong class="userinput"><code>Static</code></strong>: for fields that remain unchanged in time (such as ice cover).</p></dd><dt><span class="term"><strong class="userinput"><code>daily_range = <span xmlns="" class="replaceable">normal_time begin_time end_time unit_name</span></code></strong></span></dt><dd><p>
+			This parameter sets times for Daily fields; the normal time of day for the field, the begin and end times for display of the field, and the units that the times are in.
+			</p></dd></dl></div><p>
+		<strong class="userinput"><code>}</code></strong> #(End of time_dependence Block)
+		</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>wind_class = </code></strong></span></dt><dd><p>Identifies the type of wind calculation appropriate for the meteorological field.
+		Must be one of:</p><p>- <strong class="userinput"><code>Pressure</code></strong>: for pressure or pressure change fields.</p><p>- <strong class="userinput"><code>Height</code></strong>: for geopotential height fields.</p><p>- <strong class="userinput"><code>Thickness</code></strong>: for geopotential thickness fields.</p><p>- <strong class="userinput"><code>Adjustment</code></strong>: for wind adjustment fields.</p><p>- <strong class="userinput"><code>None</code></strong>: for fields with no appropriate type of wind calculation.</p></dd><dt><span class="term"><strong class="userinput"><code>attributes_reset = True | False</code></strong></span></dt><dd><p>
+		This parameter resets the attributes list given below.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>attributes = Default</code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term"><strong class="userinput"><code>attributes = </code></strong></span></dt><dd><p>
+		This parameter identifies allowed attributes for the field.
+		Attributes are parameters that can be attached to objects in Discrete, Wind, Line, or LChain type fields, or attached to labels in any field.</p><p>
+		Some default attributes are automatically declared by the <span class="acronym">FPA</span>, and therefore do not need to be declared in any configuration file.
+		However, the default value of those attributes with the prefix "FPA_" may be reset in this section, or in the labelling block described below.
+		Also, the values for default attributes with the prefix "EVAL_" are automatically calculated from the <span class="acronym">FPA</span> fields.
+		(Note that they are most often used for field labels, and are set with a default_value of Yes in the attribute_defaults section of the labelling block described below.)</p><p>Default attributes for all fields</p><p>- <strong class="userinput"><code>FPA_user_label</code></strong>: for a user defined label</p><p>- <strong class="userinput"><code>FPA_auto_label</code></strong>: for an automatic label</p><p>- <strong class="userinput"><code>FPA_category</code></strong>: for a category of feature</p><p>- <strong class="userinput"><code>FPA_label_type</code></strong>: for a type of label</p><p>Default attributes for <strong class="userinput"><code>Continuous</code></strong> and <strong class="userinput"><code>Vector</code></strong> fields</p><p>- <strong class="userinput"><code>EVAL_contour</code></strong>: for the value on the closest field contour</p><p>- <strong class="userinput"><code>EVAL_spval</code></strong>: for the value at a set location on the field</p><p>- <strong class="userinput"><code>EVAL_wind</code></strong>: for a wind evaluated at a set location</p><p>Default attributes for <strong class="userinput"><code>Wind</code></strong> fields</p><p>- <strong class="userinput"><code>FPA_wind_model</code></strong>: for the default wind calculation model</p><p>- <strong class="userinput"><code>FPA_wind_direction</code></strong>: for the default wind direction adjustment</p><p>- <strong class="userinput"><code>FPA_wind_speed</code></strong>: for the default wind speed adjustment</p><p>- <strong class="userinput"><code>FPA_wind_gust</code></strong>: for the default wind gust adjustment</p><p>- <strong class="userinput"><code>EVAL_wind</code></strong>: for a wind evaluated at a set location</p><p>Default attributes for <strong class="userinput"><code>Line</code></strong> fields</p><p>- <strong class="userinput"><code>FPA_line_type</code></strong>: for the type of line</p><p>- <strong class="userinput"><code>FPA_proximity</code></strong>: proximity of sample to line (kilometres)</p><p>- <strong class="userinput"><code>FPA_line_direction</code></strong>: direction of line at sample point (degrees true)</p><p>- <strong class="userinput"><code>FPA_line_length</code></strong>: length of the line in (kilometres)</p><p>Default attributes for <strong class="userinput"><code>LChain</code></strong> fields</p><p>- <strong class="userinput"><code>FPA_lchain_reference</code></strong>: T0 associated with link chain.</p><p>- <strong class="userinput"><code>FPA_lchain_start_time</code></strong>: time wrt <strong class="userinput"><code>FPA_lchain_reference</code></strong> of first node in link chain.</p><p>- <strong class="userinput"><code>FPA_lchain_end_time</code></strong>: time wrt <strong class="userinput"><code>FPA_lchain_reference</code></strong> of last node in link chain.</p><p>Default attributes for <strong class="userinput"><code>LChain nodes</code></strong></p><p>- <strong class="userinput"><code>FPA_lnode_type</code></strong>: type of node one of ...</p><p>- <strong class="userinput"><code>FPA_lnode_time</code></strong>: time wrt <strong class="userinput"><code>FPA_lchain_reference</code></strong> of node.</p><p>- <strong class="userinput"><code>FPA_lnode_direction</code></strong>: direction of movement calculated from current link node to the next node in the link chain.</p><p>- <strong class="userinput"><code>FPA_lnode_speed</code></strong>: speed calculated from current link node to the next link node in the link chain.</p><p>- <strong class="userinput"><code>FPA_lnode_vector</code></strong>: direction and speed calculated from current link node to the next link node in the link chain.</p><p>Default attributes for <strong class="userinput"><code>Scattered</code></strong> fields</p><p>- <strong class="userinput"><code>FPA_scattered_type</code></strong>: for the type of line</p><p>- <strong class="userinput"><code>FPA_proximity</code></strong>: proximity of sample to scattered point (kilometres)</p><p><strong class="userinput"><code> </code></strong></p><p>Note that, unless <strong class="userinput"><code>attributes_reset = True</code></strong> is used, attributes defined below are ADDED to those already defined.
+		</p><p>
+		<strong class="userinput"><code>{</code></strong>
+			</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>attribute_name [<span class="optional"><span xmlns="" class="replaceable">default_value</span></span>]</code></strong></span></dt><dd><p>
+			Note that if only the default_value is required, it can be set on this line!.</p><p>
+			<strong class="userinput"><code>{</code></strong>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>attribute_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+				This is the label that the user sees.
+				The default is attribute_name.
+				This parameter is "language" sensitive!
+				</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_short_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+				The attribute_short_label is used when there is not enough room on the <span class="acronym">FPA</span> screen to use the longer attribute_label.
+				The default is attribute_name.
+				This parameter is "language" sensitive!
+				</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_background_default = <span xmlns="" class="replaceable">default_value</span></code></strong></span></dt><dd><p>
+				This parameter identifies the default value for the attribute.
+				Note that the <span xmlns="" class="replaceable">default_value</span> can also be set in an entry menu (described in the entry_file or background_entry_file keywords in the editor block below).
+				The <span xmlns="" class="replaceable">default_value</span> in these files takes precedence over any value set here!
+				</p></dd></dl></div><p>
+			<strong class="userinput"><code>}</code></strong> #(End of attribute_name Block)
+			</p></dd></dl></div><p>
+		<strong class="userinput"><code>}</code></strong> #(End of attributes Block)
+		</p></dd></dl></div><p>
+
+		<dt></dt><dd><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following <strong class="userinput"><code>line_types</code></strong> keywords are applicable to <strong class="userinput"><code>Line</code></strong> fields.</p></div></dd>
+
+		</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>line_types_reset = True | False</code></strong></span></dt><dd><p>
+		This parameter resets the line_types list given below.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>line_types = None</code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term"><strong class="userinput"><code>line_types = </code></strong></span></dt><dd><p>
+		This parameter identifies allowed line types for the field.
+		The line_types keyword is only applicable to <strong class="userinput"><code>field_type = Line</code></strong>.</p><p>Note that, unless <strong class="userinput"><code>line_types_reset = True</code></strong> is used, subelements are ADDED to those already defined. 
+		</p><p>
+		<strong class="userinput"><code>{</code></strong>
+			</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>line_type_name</code></strong></span></dt><dd><p>
+			<strong class="userinput"><code>{</code></strong>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>type_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+				This is the label that the user sees.
+				The default is <span xmlns="" class="replaceable">label_type_name</span>.
+				This parameter is "language" sensitive!
+				</p></dd><dt><span class="term"><strong class="userinput"><code>type_short_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+				The type_short_label is used when there is not enough room on the <span class="acronym">FPA</span> screen to use the longer type_label.
+				The default is <span xmlns="" class="replaceable">label_type_name</span>.
+				This parameter is "language" sensitive!
+				</p></dd><dt><span class="term"><strong class="userinput"><code>pattern = <span xmlns="" class="replaceable">filename</span></code></strong></span></dt><dd><p>
+				This is an <span class="acronym">FPA</span> metafile describing the line pattern.
+				It will appear in the drawing selection list for the <strong class="userinput"><code>field_type = Line</code></strong> field editor.
+				</p></dd></dl></div><p>
+			<strong class="userinput"><code>}</code></strong> #(End of line_type_name Block)
+			</p></dd></dl></div><p>
+		<strong class="userinput"><code>}</code></strong> #(End of line_types Block)
+		</p></dd></dl></div><p>
+		<dt></dt><dd><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following <strong class="userinput"><code>scattered_types</code></strong> keywords are applicable to <strong class="userinput"><code>Scattered</code></strong> fields.</p></div></dd>
+		</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>scattered_types_reset = True | False</code></strong></span></dt><dd><p>
+		This parameter resets the scattered_types list given below.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>scattered_types = None</code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term"><strong class="userinput"><code>scattered_types =</code></strong></span></dt><dd><p>
+		This parameter identifies allowed scattered types for the field.
+		The scattered_types keyword is only applicable to <strong class="userinput"><code>field_type = Scattered</code></strong>.</p><p>Note that, unless <strong class="userinput"><code>scattered_types_reset = True</code></strong> is used, scattered types are ADDED to those already defined. 
+		</p><p>
+		<strong class="userinput"><code>{</code></strong>
+			</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code><span xmlns="" class="replaceable">scattered_type_name</span></code></strong></span></dt><dd><p>
+				<strong class="userinput"><code>{</code></strong>
+					</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>type_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+					This is the label that the user sees.
+					The default is scattered_type_name.
+					This parameter is "language" sensitive!
+					</p></dd><dt><span class="term"><strong class="userinput"><code>type_short_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+					The type_short_label is used when there is not enough room on the <span class="acronym">FPA</span> screen to use the longer type_label.
+					The default is <span xmlns="" class="replaceable">label_type_name</span>.This parameter is "language" sensitive!
+					</p></dd><dt><span class="term"><strong class="userinput"><code>type_class = <span xmlns="" class="replaceable">class_name</span></code></strong></span></dt><dd><p>
+					This parameter sets a label category.
+					</p></dd><dt><span class="term"><strong class="userinput"><code>type_entry_file = <span xmlns="" class="replaceable">entry_file_name</span></code></strong></span></dt><dd><p>
+					Identifies an entry menu file to be accessed when a label is added or modified.
+					Note that self-documented example menus can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Menus</code>.
+					</p></dd><dt><span class="term"><strong class="userinput"><code>type_modify_file = <span xmlns="" class="replaceable">entry_modify_name</span></code></strong></span></dt><dd><p>
+					Identifies an entry menu file to be accessed when a label is modified.
+					The default is type_entry_file above.
+					Note that self-documented example menus can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Menus</code>.
+					</p></dd><dt><span class="term"><strong class="userinput"><code>type_attach = </code></strong></span></dt><dd><p>This parameter controls where the label appears on the field.
+					Must be one of:</p><p>- <strong class="userinput"><code>attach_auto</code></strong>: for the closest point</p><p>- <strong class="userinput"><code>attach_point</code></strong>: for the closest point</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_defaults_reset = True | False</code></strong></span></dt><dd><p>
+					This parameter resets the attribute_defaults list given below.
+					</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_defaults =</code></strong></span></dt><dd><p>
+					This parameter sets default attribute values for this type of label.</p><p>Note that, unless <strong class="userinput"><code>attribute_defaults_reset = True</code></strong> is used, default attribute values are ADDED to those already defined. 
+					Note that default attributes which can be set here (including those with the prefix "EVAL_") are described in the attributes block above.</p><p>
+					<strong class="userinput"><code>{</code></strong></p><p>
+						attribute_name default_value</p><p>
+					<strong class="userinput"><code>}</code></strong>
+					</p></dd><dt><span class="term"><strong class="userinput"><code>type_rules_reset = True | False</code></strong></span></dt><dd><p>
+					This parameter resets the type_rules list given below.</p></dd><dt><span class="term"><strong class="userinput"><code>type_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+					Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for this label are set.</p><p>Note that, unless <strong class="userinput"><code>type_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined.
+					Note that user defined entry rule functions can also be used.</p></dd><dt><span class="term"><strong class="userinput"><code>python_type_rules_reset = True | False</code></strong></span></dt><dd><p>
+					This parameter resets the python_type_rules list given below.</p></dd><dt><span class="term"><strong class="userinput"><code>python_type_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+					Identifies a list of name(s) for <span class="acronym">FPA</span> python entry rule functions that will be invoked when attributes for this label are set.</p><p>Note that, unless <strong class="userinput"><code>python_type_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined.
+					Note that user defined entry rule functions can also be used.</p></dd></dl></div><p>
+				<strong class="userinput"><code>}</code></strong> #(End of scattered_type_name Block)
+				</p></dd></dl></div><p>
+			<strong class="userinput"><code>}</code></strong> #(End of scattered_types Block)
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>editor = None</code></strong></span></dt><dd><p>
+			OR
+			</p></dd><dt><span class="term"><strong class="userinput"><code>editor =</code></strong></span></dt><dd><p>
+			This parameter identifies information for editing the field.</p><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+
+			</p><p>
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to all field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>merge_fields_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the merge_fields list given below</p></dd><dt><span class="term"><strong class="userinput"><code>merge_fields = <span xmlns="" class="replaceable">element level</span></code></strong></span></dt><dd><p>
+				Identifies fields that can be used in the <span class="emphasis"><em>Merge</em></span> editor tool, so that features can be copied from another <span class="acronym">FPA</span> field.
+				Note that the fields must have units that can be converted to those of the <span class="acronym">FPA</span> field.
+				</p></dd><dt></dt><dd></dd></dl></div><p>
+
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>Continuous</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>hilo = True | False </code></strong></span></dt><dd><p>
+				Determines whether maxima and minima of the field will be shown.</p></dd><dt><span class="term"><strong class="userinput"><code>poke = <span xmlns="" class="replaceable">value unit_name</span></code></strong></span></dt><dd><p>
+				Identifies the magnitude and units used on the sidebar for field edits.
+				A poke value is required if you want this element to be editable.</p></dd><dt></dt><dd></dd></dl></div><p>
+
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>Vector</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>hilo = True | False </code></strong></span></dt><dd><p>
+				Determines whether maxima and minima of the field will be shown.</p></dd><dt><span class="term"><strong class="userinput"><code>magnitude_poke = <span xmlns="" class="replaceable">value unit_name</span></code></strong></span></dt><dd><p>
+				Identifies the magnitude and units used on the sidebar for field edits.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>direction_poke = <span xmlns="" class="replaceable">value unit_name</span></code></strong></span></dt><dd><p>
+				Identifies the magnitude and units used on the sidebar for field edits.
+				</p></dd><dt></dt><dd></dd></dl></div><p>
+
+				
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>Wind</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>display_order = True | False</code></strong></span></dt><dd><p>
+				Show numbered boxes to display the stacking order of areas drawn.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_file = <span xmlns="" class="replaceable">entry_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when the "Set" button on the sidebar is clicked.
+				Note that self-documented example menus can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Menus</code>.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>modify_file = <span xmlns="" class="replaceable">modify_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when the "Set" button for a modified area is clicked.
+				The default is entry_file_name above.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>memory_file = <span xmlns="" class="replaceable">memory_file_name</span></code></strong></span></dt><dd><p>
+				Identifies a predefined list of choices for applying to drawn areas.
+				Note that self-documented example memory lists can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Memory</code>.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>background_entry_file = <span xmlns="" class="replaceable">background_entry_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when the background "Set" button on the sidebar is clicked.
+				Note that self-documented example background menus can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Menus</code>.
+				(The format is identical to entry_file.)
+				</p></dd><dt><span class="term"><strong class="userinput"><code>background_memory_file = <span xmlns="" class="replaceable">background_memory_file_name</span></code></strong></span></dt><dd><p>
+				Identifies a predefined list of choices for applying as the background value for the given field.
+				Note that self-documented example background memory lists can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Memory</code>.
+				(The format is identical to memory_file.)
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for any entry_file, modify_file or memory_file are set.</p><p>Note that, unless <strong class="userinput"><code>entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the python_entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions, written in python, that will be invoked when attributes for any entry_file,
+				modify_file or memory_file are set.</p><p>Note that, unless <strong class="userinput"><code>python_entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</p></dd><dt></dt><dd></dd></dl></div><p>
+
+				
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>Discrete</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>display_order = True | False</code></strong></span></dt><dd><p>
+				Show numbered boxes to display the stacking order of areas drawn.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_file = <span xmlns="" class="replaceable">entry_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when the "Set" button on the sidebar is clicked.
+				Note that self-documented example menus can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Menus</code>.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>modify_file = <span xmlns="" class="replaceable">modify_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when the "Set" button for a modified area is clicked.
+				The default is entry_file_name above.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>memory_file = <span xmlns="" class="replaceable">memory_file_name</span></code></strong></span></dt><dd><p>
+				Identifies a predefined list of choices for applying to drawn areas.
+				Note that self-documented example memory lists can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Memory</code>.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>background_entry_file = <span xmlns="" class="replaceable">background_entry_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when the background "Set" button on the sidebar is clicked.
+				Note that self-documented example background menus can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Menus</code>.
+				(The format is identical to entry_file.)
+				</p></dd><dt><span class="term"><strong class="userinput"><code>background_memory_file = <span xmlns="" class="replaceable">background_memory_file_name</span></code></strong></span></dt><dd><p>
+				Identifies a predefined list of choices for applying as the background value for the given field.
+				Note that self-documented example background memory lists can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Memory</code>.
+				(The format is identical to memory_file.)
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for any entry_file, modify_file or memory_file are set.</p><p>Note that, unless <strong class="userinput"><code>entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the python_entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions, written in python, that will be invoked when attributes for any entry_file,
+				modify_file or memory_file are set.</p><p>Note that, unless <strong class="userinput"><code>python_entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</p></dd><dt><span class="term"><strong class="userinput"><code>overlaying = True | False</code></strong></span></dt><dd><p>
+				Determines whether the overlapping areas can both be sampled.
+				</p></dd><dt></dt><dd></dd></dl></div><p>
+
+				
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>Line</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>entry_file = <span xmlns="" class="replaceable">entry_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when a line type is drawn
+				</p></dd><dt><span class="term"><strong class="userinput"><code>modify_file = <span xmlns="" class="replaceable">modify_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when a line type is modified.
+				The default is <span xmlns="" class="replaceable">entry_file_name</span>
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules = <span xmlns="" class="replaceable">entry_rules_name(s)</span> </code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for any entry_file or modify_file are set.</p><p>Note that, unless <strong class="userinput"><code>entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the python_entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions, written in python, that will be invoked when attributes for any entry_file or modify_file are set.</p><p>Note that, unless <strong class="userinput"><code>python_entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</p></dd><dt></dt><dd></dd></dl></div><p>
+
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>Scattered</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>entry_file = <span xmlns="" class="replaceable">entry_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when a scattered type is drawn
+				</p></dd><dt><span class="term"><strong class="userinput"><code>modify_file = <span xmlns="" class="replaceable">modify_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when a scattered type is modified.
+				The default is <span xmlns="" class="replaceable">entry_file_name</span>
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules = <span xmlns="" class="replaceable">entry_rules_name(s)</span> </code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for any entry_file or modify_file are set.</p><p>Note that, unless <strong class="userinput"><code>entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the python_entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions, written in python, that will be invoked when attributes for any entry_file or modify_file are set.</p><p>Note that, unless <strong class="userinput"><code>python_entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</p></dd><dt></dt><dd></dd></dl></div><p>
+
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>LChain</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>entry_file = <span xmlns="" class="replaceable">entry_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when a lchain type is drawn
+				</p></dd><dt><span class="term"><strong class="userinput"><code>modify_file = <span xmlns="" class="replaceable">modify_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when a lchain type is modified.
+				The default is <span xmlns="" class="replaceable">entry_file_name</span>
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>entry_rules = <span xmlns="" class="replaceable">entry_rules_name(s)</span> </code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for any entry_file or modify_file are set
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for any entry_file or modify_file are set.</p><p>Note that, unless <strong class="userinput"><code>entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the python_entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_entry_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions, written in python, that will be invoked when attributes for any entry_file or modify_file are set.</p><p>Note that, unless <strong class="userinput"><code>python_entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</p></dd><dt><span class="term"><strong class="userinput"><code>interpolation_delta = <span xmlns="" class="replaceable">HH:mm</span></code></strong></span></dt><dd><p>
+				Sets the default time between nodes when adding a link chain.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>node_entry_file = <span xmlns="" class="replaceable">entry_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when a link chain node is placed.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>node_modify_file = <span xmlns="" class="replaceable">modify_file_name</span></code></strong></span></dt><dd><p>
+				Identifies an entry menu file to be accessed when a link chain node is modified.
+				The default is <span xmlns="" class="replaceable">entry_file_name</span>
+				</p></dd><dt><span class="term"><strong class="userinput"><code>node_entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the node_entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>node_entry_rules = <span xmlns="" class="replaceable">entry_rules_name(s)</span> </code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for any node_entry_file or node_modify_file are set
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for any node entry_file or modify_file are set.</p><p>Note that, unless <strong class="userinput"><code>node_entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_node_entry_rules_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the python_node_entry_rules list given below.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>python_node_entry_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+				Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions, written in python, that will be invoked when attributes for any node_entry_file or node_modify_file are set.</p><p>Note that, unless <strong class="userinput"><code>python_node_entry_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined. 
+				Note that user defined entry rule functions can also be used.</p></dd><dt><span class="term"><strong class="userinput"><code>link_fields_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the link_fields list given below</p></dd><dt><span class="term"><strong class="userinput"><code>link_fields = <span xmlns="" class="replaceable">element level</span></code></strong></span></dt><dd><p>
+				Identifies fields that can be used in the <span class="emphasis"><em>Merge</em></span> editor tool, so that link chains used to timelink another <span class="acronym">FPA</span> field can be copied to this field.
+				</p></dd></dl></div><p>
+			<strong class="userinput"><code>}</code></strong> #(End of editor Block)
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>labelling_reset = True | False</code></strong></span></dt><dd><p>
+			This parameter resets the labelling list to default values.
+			</p></dd><dt><span class="term"><strong class="userinput"><code>labelling = Default</code></strong></span></dt><dd><p>
+			OR
+			</p></dd><dt><span class="term"><strong class="userinput"><code>labelling =</code></strong></span></dt><dd><p>
+			This parameter identifies information for labelling the field.
+			The labelling keyword is NOT applicable to <strong class="userinput"><code>field_type = Scattered</code></strong>.</p><p>
+			<strong class="userinput"><code>{</code></strong>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>label_types_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the label_types list given below to default values.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>label_types =</code></strong></span></dt><dd><p>
+				This parameter identifies allowed types of labels for the field.</p><p>Note that, unless <strong class="userinput"><code>label_types_reset = True</code></strong> is used, label types are ADDED to those already defined.
+				</p><p>
+				<strong class="userinput"><code>{</code></strong>
+					</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code><span xmlns="" class="replaceable">label_type_name</span></code></strong></span></dt><dd><p>
+					<strong class="userinput"><code>{</code></strong>
+						</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>type_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+						This is the label that the user sees.
+						The default is <span xmlns="" class="replaceable">label_type_name</span>.
+						This parameter is "language" sensitive!
+						</p></dd><dt><span class="term"><strong class="userinput"><code>type_short_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+						The type_short_label is used when there is not enough room on the <span class="acronym">FPA</span> screen to use the longer type_label.
+						The default is <span xmlns="" class="replaceable">label_type_name</span>.
+						This parameter is "language" sensitive!
+						</p></dd><dt><span class="term"><strong class="userinput"><code>type_class = <span xmlns="" class="replaceable">class_name</span></code></strong></span></dt><dd><p>
+						This parameter sets a label category.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>type_entry_file = <span xmlns="" class="replaceable">entry_file_name</span></code></strong></span></dt><dd><p>
+						Identifies an entry menu file to be accessed when a label is added.
+						Note that self-documented example menus can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Menus</code>.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>type_modify_file = <span xmlns="" class="replaceable">entry_modify_name</span></code></strong></span></dt><dd><p>
+						Identifies an entry menu file to be accessed when a label is modified.
+						The default is <span xmlns="" class="replaceable">type_entry_file</span> above.
+						Note that self-documented example menus can be found in the directory <code class="filename"><code class="envar">$FPA</code>/config/Menus</code>.
+			</p></dd><dt><span class="term"><strong class="userinput"><code>type_attach =</code></strong></span></dt><dd><p>This parameter controls where the label appears on the field.</p><p>Acceptable parameters for <strong class="userinput"><code>field_type = Continuous</code></strong> or <strong class="userinput"><code>Vector</code></strong> fields are:</p><p>- <strong class="userinput"><code>no_attach</code></strong>: for the current location (when chosen)</p><p>- <strong class="userinput"><code>attach_auto</code></strong>: for the closest minimum, maximum, or contour</p><p>- <strong class="userinput"><code>attach_min</code></strong>: for the closest minimum on the field</p><p>- <strong class="userinput"><code>attach_max</code></strong>: for the closest maximum on the field</p><p>- <strong class="userinput"><code>attach_col</code></strong>: for the closest saddle point on the field</p><p>- <strong class="userinput"><code>attach_contour</code></strong>: for the closest contour on the field</p><p>Acceptable parameters for <strong class="userinput"><code>field_type = Discrete</code></strong> or <strong class="userinput"><code>Wind</code></strong> fields are:</p><p>- <strong class="userinput"><code>attach_auto</code></strong>: for the current location (when chosen)</p><p>Acceptable parameters for <strong class="userinput"><code>:field_type = Line</code></strong> fields are:</p><p>- <strong class="userinput"><code>attach_auto</code></strong>: for the closest line</p><p>- <strong class="userinput"><code>attach_line</code></strong>: for the closest line</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_defaults_reset = True | False</code></strong></span></dt><dd><p>
+				This parameter resets the attribute_defaults list given below.
+			</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_defaults =</code></strong></span></dt><dd><p>
+						This parameter sets default attribute values for this type of label.</p><p>
+						Note that, unless <strong class="userinput"><code>attribute_defaults_reset = True</code></strong> is used, default attribute values are ADDED to those already defined.
+						</p><p>
+						Note that default attributes which can be set here (including those with the prefix "EVAL_") are described in the attributes block above.</p><p>
+						Note that if a label is to have extra attributes that are not part of the object to which the label is attached, then those attributes must be listed here.
+						Otherwise, any modifications of the object will replace the value of the extra attribute with a blank!</p><p>
+						<strong class="userinput"><code>{</code></strong></p><p>
+							<span xmlns="" class="replaceable">attribute_name default_value</span></p><p>
+						<strong class="userinput"><code>}</code></strong>
+						</p></dd><dt><span class="term"><strong class="userinput"><code>type_rules_reset = True | False</code></strong></span></dt><dd><p>
+						This parameter resets the type_rules list given below.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>type_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+						Identifies a list of name(s) for <span class="acronym">FPA</span> entry rule functions that will be invoked when attributes for this label are set.</p><p>
+						Note that, unless <strong class="userinput"><code>type_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined.
+						</p><p>
+						Note that user defined entry rule functions can also be used.</p><p>
+						</p></dd><dt><span class="term"><strong class="userinput"><code>python_type_rules_reset = True | False</code></strong></span></dt><dd><p>
+						This parameter resets the python_type_rules list given below.</p></dd><dt><span class="term"><strong class="userinput"><code>python_type_rules = <span xmlns="" class="replaceable">entry_rule_name(s)</span></code></strong></span></dt><dd><p>
+						Identifies a list of name(s) for <span class="acronym">FPA</span> python entry rule functions that will be invoked when attributes for this label are set.</p><p>Note that, unless <strong class="userinput"><code>python_type_rules_reset = True</code></strong> is used, entry rule functions are ADDED to those already defined.
+						Note that user defined entry rule functions can also be used.</p></dd></dl></div><p>
+					<strong class="userinput"><code>}</code></strong> #(End of label_type_name Block)
+					</p></dd></dl></div><p>
+				<strong class="userinput"><code>}</code></strong> #(End of label_types Block)
+				</p></dd></dl></div><p>
+			<strong class="userinput"><code>}</code></strong> #(End of labelling Block)
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>sampling_reset = True | False</code></strong></span></dt><dd><p>
+			The parameter resets the sample list below to its default values.
+			</p></dd><dt><span class="term"><strong class="userinput"><code>sample = Default</code></strong></span></dt><dd><p>
+			OR
+			</p></dd><dt><span class="term"><strong class="userinput"><code>sample =</code></strong></span></dt><dd><p>
+			This parameter identifies information for sampling the field.</p><p>
+			<strong class="userinput"><code>{</code></strong></p><p>
+
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>Continuous</code></strong> or <strong class="userinput"><code>Vector</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>value_sample_types = <span xmlns="" class="replaceable">sample_type_name(s)</span></code></strong></span></dt><dd><p>
+				This parameter sets the types of values to sample from a given field.</p><p>
+				Each <span xmlns="" class="replaceable">sample_type_name</span> is from the Values sub block of the 'Samples' block.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>wind_sample_types = <span xmlns="" class="replaceable">sample_type_name(s)</span></code></strong></span></dt><dd><p>
+				This parameter sets the types of winds to sample from a given field.</p><p>
+				Each <span xmlns="" class="replaceable">sample_type_name</span> is from the 'Winds' sub block of the 'Samples' block.
+				</p></dd><dt></dt><dd></dd></dl></div><p>
+
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>Discrete</code></strong>, <strong class="userinput"><code>Line</code></strong>, <strong class="userinput"><code>LChain</code></strong> or <strong class="userinput"><code>Scattered</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>attribute_sample_names = <span xmlns="" class="replaceable">attribute_name(s)</span></code></strong></span></dt><dd><p>
+				This parameter sets the names of attributes to sample from a given field.</p><p>
+				Each <span xmlns="" class="replaceable">attribute_name</span> is from the attributes sub block above..
+				</p></dd><dt></dt><dd></dd></dl></div><p>
+				
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The following keywords are applicable to <strong class="userinput"><code>Wind</code></strong> field editors.</p></div><p>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>wind_crossrefs = <span xmlns="" class="replaceable">crossref_name(s)</span></code></strong></span></dt><dd><p>
+				This parameter sets the types of winds to sample based on other cross-referenced fields.
+				Each <span xmlns="" class="replaceable">crossref_name</span> is from the 'Winds' sub block of the 'CrossRefs' block.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>wind_sample_type = <span xmlns="" class="replaceable">sample_type_name</span></code></strong></span></dt><dd><p>
+				This parameter sets the adjusted wind to sample from a given wind field.</p><p>
+				The <span xmlns="" class="replaceable">sample_type_name</span> is from the 'Winds' sub block of the 'Samples' block, and must use wind_function = FPA_Adjusted_Wind_Func.
+				</p></dd></dl></div><p>
+			<strong class="userinput"><code>}</code></strong> #(End of sample Block)
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>equation = None</code></strong></span></dt><dd><p>
+			OR
+			</p></dd><dt><span class="term"><strong class="userinput"><code>equation =</code></strong></span></dt><dd><p>
+			This parameter is used to identify an equation for calculating the given meteorological field from other meteorological fields with a mathematical equation.
+			See <a href="apb.html" title="Appendix B. Equation Evaluator">Equation Evaluator, (Appendix B)</a> for more information about equations.</p><p>
+			<strong class="userinput"><code>{</code></strong>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>force_calculation = True | False</code></strong></span></dt><dd><p>
+				This parameter should be set to True for testing new equations.
+				It forces a recalculation of the equation from the input fields.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>equation_string = <span xmlns="" class="replaceable">equation</span></code></strong></span></dt><dd><p>
+				This parameter gives the equation for the meteorological field.
+				The format of equations is explained in <a href="apb.html" title="Appendix B. Equation Evaluator">Equation Evaluator, (Appendix B)</a>.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>equation_units = <span xmlns="" class="replaceable">unit_name</span></code></strong></span></dt><dd><p>
+				This parameter gives the units for the equation.
+				</p></dd></dl></div><p>
+			<strong class="userinput"><code>}</code></strong> #(End of equation Block)
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>value_calculation = None</code></strong></span></dt><dd><p>
+			OR
+			</p></dd><dt><span class="term"><strong class="userinput"><code>value_calculation =</code></strong></span></dt><dd><p>
+			This parameter is used to identify a method of determining the given meteorological field from other meteorological fields with a cross-reference.</p><p>
+			<strong class="userinput"><code>{</code></strong>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>force_calculation = True | False</code></strong></span></dt><dd><p>
+				This parameter should be set to True for testing new equations.
+				It forces a recalculation of the equation from the input fields.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>value_crossref = <span xmlns="" class="replaceable">crossref_name</span></code></strong></span></dt><dd><p>
+				This parameter identifies the cross-reference for determining the meteorological field.
+				The <span xmlns="" class="replaceable">crossref_name</span> is from the 'Values' sub block of the 'CrossRefs' block.
+			</p></dd><dt><span class="term"><strong class="userinput"><code>source_types = </code></strong></span></dt><dd><p>
+			This parameter sets the types of data sources for determining the meteorological field.
+			More than one can be specified.
+			The choices are described in <a href="apas03.html#common_keys" title="Table A.1. Common Keywords">Table A.1</a>.
+			May be one or more of:
+			<strong class="userinput"><code>Depiction</code></strong>,
+			<strong class="userinput"><code>Guidance</code></strong>,
+			<strong class="userinput"><code>Allied</code></strong>,
+			<strong class="userinput"><code>Maps</code></strong>,
+			<strong class="userinput"><code>Direct</code></strong>,
+			<strong class="userinput"><code>NotUsed</code></strong>.
+			</p></dd></dl></div><p>
+		<strong class="userinput"><code>}</code></strong> #(End of value_calculation Block)
+		</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>components = None</code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term"><strong class="userinput"><code>components =</code></strong></span></dt><dd><p>
+		This parameter is used to identify meteorological fields that have u and v (x and y) components, or vector (direction and magnitude) components.
+		Both components must be identified.</p><p>
+		<strong class="userinput"><code>{</code></strong></p><p>
+			<strong class="userinput"><code>x_component = <span xmlns="" class="replaceable">element_name</span></code></strong></p><p>
+			<strong class="userinput"><code>y_component = <span xmlns="" class="replaceable">element_name</span></code></strong></p><p>
+			These parameters identify the u and v (x and y) components of a meteorological field.</p><p>
+			OR</p><p>
+			<strong class="userinput"><code>direction_component = <span xmlns="" class="replaceable">element_name</span></code></strong></p><p>
+			<strong class="userinput"><code>magnitude_component = <span xmlns="" class="replaceable">element_name</span></code></strong></p><p>
+			These parameters identify the vector (direction and magnitude) 	components of a meteorological field.</p><p>
+		<strong class="userinput"><code>}</code></strong> #(End of components Block)
+		</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>linking_reset = True | False</code></strong></span></dt><dd><p>
+		The parameter resets the link list below to its default values.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>linking = Default</code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term"><strong class="userinput"><code>linking =</code></strong></span></dt><dd><p>
+		You can share time links between fields by including them here.</p><p>
+			<strong class="userinput"><code>{</code></strong> </p><p>
+			<strong class="userinput"><code>link_fields_reset   = True | False</code></strong></p><p>
+			The parameter resets the <strong class="userinput"><code>link_fields</code></strong> list below to empty.
+			</p><p>
+			<strong class="userinput"><code>link_fields         = <span xmlns="" class="replaceable">element_name level_name</span></code></strong></p><p>
+			This parameter may be specified more than once to build a list of fields (element/level pairs) from which link chains can be imported.
+			</p><p>
+			<strong class="userinput"><code>}</code></strong> #(End of <strong class="userinput"><code>linking</code></strong> Block)
+		</p></dd><dt></dt><dd></dd></dl></div><p>
+	<strong class="userinput"><code>}</code></strong> #(End of <span xmlns="" class="replaceable">element_name</span> Block)
+	</p></dd></dl></div><p>
+<strong class="userinput"><code>}</code></strong> #(End of 'Elements' Block)
+</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apas04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apas04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apas05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">A.4. Elements block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> A.5. Fields block</td></tr></table></div></body></html>

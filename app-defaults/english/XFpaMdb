@@ -1,0 +1,61 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Dialog messages.  The various utility dialogs used in the FPA have
+!                    their messages stored here. The extraction routine
+!                    will eliminate all spaces after the \n.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#include CommonMdb
+#include IngredMdb
+
+about_fpa.title:  About FPA
+about_fpa.posn:   200 90
+about_fpa.dialog: \
+Forecast Production Assistant %s\n\n\
+The FPA is free software: you can redistribute it and/or\n\
+modify it under the terms of the GNU General Public\n\
+License as published by the Free Software Foundation,\n\
+either version 3 of the License, or any later version\n\n\
+The FPA is distributed in the hope it will be useful, but\n\
+WIHOUT ANY WARRANTY: without even the implied warranty\n\
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\
+See the GNU General Public License for more details.\n\n\
+@very_small@Copyright %s Unpublished (created 1984, revised 1985 through 2011),\n\
+Environment Canada, Government of Canada.
+
+alliedAbort.title:  *** RUN ERROR ***
+alliedAbort.posn:   120 175
+alliedAbort.dialog: Allied Model "%s" terminated abnormally.\n\n\
+					Check the log file and inform the FPA System Administrator.
+
+alliedModelError.title:  Allied Model Error
+alliedModelError.posn:   300 300
+alliedModelError.dialog: Invalid entry for Allied Model "%s" in the FPA\n\
+						 Configuration file. Contact your FPA System Administrator.
+
+
+dataLock.title:  Database Lock Message
+dataLock.posn:   default
+dataLock.dialog: The database is being edited by another FPA.\n\n\
+				 Edit permission denied. Will exit on confirmation.
+
+exit_fpa_confirm.title:  Exit Confirm
+exit_fpa_confirm.posn:   40 140
+exit_fpa_confirm.dialog: Really exit FPA?
+exit_fpa_confirm.toggleLabel: Delete all depictions on exit
+
+fogAbort.title:  *** RUN ERROR ***
+fogAbort.posn:   120 175
+fogAbort.dialog: The Forecast Generator (FoG) terminated abnormally.\n\n\
+				Check the log file and inform the FPA System Administrator.
+
+radarStatMod.title: Table Modified
+radarStatMod.posn: 100 50
+radarStatMod.dialog: The STAT table has been modified.\n\
+                     Save before proceeding?
+
+TimelinkNoGrps.title:  Field Configuration Error
+TimelinkNoGrps.posn:   -150 100
+TimelinkNoGrps.dialog: There are no link groups defined for any of the fields!\n\
+					   Inform your FPA System Administrator.

@@ -1,0 +1,527 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Common Dialog messages.
+!
+!  The various utility dialogs used in the FPA have their common
+!  messages stored here. The extraction routine will eliminate all
+!  spaces after the \n. 
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+alliedModelNoField.title:  Champ de modèle allié introuvable 
+alliedModelNoField.posn:   -50 -150
+alliedModelNoField.dialog: Un ou plusieurs champs requis pour exécuter le modèle allié\n\
+                           "%s"ne sont pas disponibles.\n\
+						   Ces champs sont:\n\n\
+						   %s\n\
+						  Voulez-vous exécuter le modèle quand même?
+
+AnimationMinNr.title:  Remarque
+AnimationMinNr.posn:   320 90
+AnimationMinNr.dialog: Il faut au moins deux représentations pour l'animation.
+
+
+AutoImportCreateDepiction.title:  Demande de création de représentation 
+AutoImportCreateDepiction.posn:   0 0
+AutoImportCreateDepiction.dialog: Représentation introuvable à %s.\n\n Voulez-vous en créer une?
+
+coc.title:  Confirmation d'écrasement de champ 
+coc.posn:   45 -115
+coc.dialog: Le champ %s existe à l'heure cible sélectionnée.\n\
+            Voulez-vous le remplacer par un nouveau champ?\n\n\
+			Annulation de commande impossible pour cette operation.
+
+CreateDepiction.title:  Demande de création de représentation
+CreateDepiction.posn:   -30 -206
+CreateDepiction.dialog: Il n'y a pas de représentation pour l'heure cible sélectionnée.\n\
+						Voulez-vous en créer une et y copier les champs?
+
+createField.title:  Créer un champ de représentation
+createField.posn:   250 250 
+createField.dialog: Voulez-vous créer un champ %s de type "%s"\n\
+					maintenant? Veuillez noter que ce champ sera dépourvu \n\
+					d'attributs et semblera vide.
+
+DeleteConfirm.title:  Confirmer la suppression
+DeleteConfirm.posn:   284 160
+DeleteConfirm.dialog: Cette suppression ne pourra pas être annulée.\n\
+					  Voulez-vous continuer?
+
+exit_fpa_confirm.title:  Confirmation de la sortie
+exit_fpa_confirm.posn:   40 140
+
+field_overwrite_confirm.title:  Confirmation d'écrasement de champs
+field_overwrite_confirm.posn:   45 -115
+field_overwrite_confirm.dialog: Écraser le(s) champ(s)?
+
+FieldConfigError.title:  Erreur de configuration
+FieldConfigError.posn:   0 0
+FieldConfigError.dialog: Ce champ comporte une erreur de configuration.\n\
+Veuillez contacter votre gestionnaire de système.
+
+FieldExists.title:  Erreur d'entrée
+FieldExists.posn:   10 -100
+FieldExists.dialog: Le champ sélectionné figure déjà sur la liste.
+
+FieldMissing_Text.title:  Champ des prévisions introuvable
+FieldMissing_Text.posn:   0 -150
+FieldMissing_Text.dialog: Un ou plusieurs champs requis n'ont pas été interpolés.\n\
+						  Les champs introuvables sont ceux des prévisions %s\n\
+						  \n\
+						  Voulez-vous générer des prévisions?
+
+FieldMissing_Model.title:  Champ de modèle introuvable
+FieldMissing_Model.posn:   0 0
+FieldMissing_Model.dialog: Un ou plusieurs champs requis n'ont pas été interpolés.\n\
+						   Les champs introuvables sont ceux du modèle %s\n\
+                           \n\
+						   Voulez-vous exécuter le modèle?
+
+GuidanceReselection.title:  [Selected Guidance Action]
+GuidanceReselection.posn:   -500 100
+GuidanceReselection.dialog: [Guidance fields have been updated.]\n\n\
+						    [Some displayed fields at the "Current" issue time]\n\
+						    [have been reselected as the "Previous" issue time.]\n\n\
+						    [Do you wish to update to the "Current" issue time?]
+
+GuidancePartialReselection.title:  [Selected Guidance Action]
+GuidancePartialReselection.posn:   -500 100
+GuidancePartialReselection.dialog: [Guidance fields have been updated.]\n\n\
+								   [Some displayed fields at the "Current" issue time]\n\
+								   [have been reselected as the "Previous" issue time.]\n\
+								   [Fields that could not be reselected were removed.]\n\n\
+								   [Do you wish to update to the "Current" issue time?]
+
+import_confirm.title:  Demande de sauvegarde
+import_confirm.posn:   -20 -105
+import_confirm.dialog: Il y a déjà une représentation pour l'heure cible sélectionnée \n\
+					   Voulez-vous la sauvegarder avant la modification?
+
+InterpDelta.title:  Warning
+InterpDelta.posn:   150 300
+InterpDelta.dialog: [The depiction time sequence does not match the interpolation delta.]\n\
+                    [Timelink will not operate properly!]\n\n\
+                    [Please exit and correct "interpolation.delta" in the setup file.]
+
+LatLimit.title:  Erreur d'entrée
+LatLimit.posn:   15 185
+LatLimit.dialog: Erreur d'entrée de latitude.
+
+LongLimit.title:  Erreur d'entrée
+LongLimit.posn:   15 185
+LongLimit.dialog: Erreur d'entrée de longitude.
+
+ListExists.title:  Erreur d'entrée
+ListExists.posn:   15 15
+ListExists.dialog: Il y a déjà une entrée pour la liste"%s".
+
+MissingDependences.title:  Champ du modèle introuvable
+MissingDependences.posn:   0 0
+MissingDependences.dialog: Un ou plusieurs champs requis ne sont pas disponibles. \n\
+						   Les champs introuvables ("niveau de l'élément source") sont\n\n\
+						   Modèle:  %s\n\
+						   Voulez-vous exécuter le modèle?
+
+MissingPointFcstLabel.title:  Erreur d'entrée
+MissingPointFcstLabel.posn:   15 185
+MissingPointFcstLabel.dialog: Étiquette des prévisions ponctuelles non déterminée.
+
+MissingPointFcstValidTime.title:  Erreur d'entrée
+MissingPointFcstValidTime.posn:   15 185
+MissingPointFcstValidTime.dialog: Période des prévisions non déterminée.
+
+NoConfig.title:  [Configuration Error]
+NoConfig.posn:   50 100
+NoConfig.dialog: [Error while reading the configuration.]\n\
+                 [Contact your system administrator.]
+
+NoDepict.title:  [Configuration Error]
+NoDepict.posn:   50 100
+NoDepict.dialog: [Unable to find the depiction directory]\n\
+                 [as specified by the configuration.]\n\
+                 [Contact your system administrator.]
+
+NoInterp.title:  [Configuration Error]
+NoInterp.posn:   50 100
+NoInterp.dialog: [Unable to find the interpolation directory]\n\
+                 [as specified by the configuration.]\n\
+                 [Contact your system administrator.]
+
+NoBackup.title:  [Configuration Error]
+NoBackup.posn:   50 100
+NoBackup.dialog: [Unable to find the depiction backup directory]\n\
+                 [as specified by the configuration.]\n\
+                 [Contact your system administrator.]
+
+NoDepictTime.title:  Pas de représentation
+NoDepictTime.posn:   -47 -60
+NoDepictTime.dialog: Il n'y a pas de représentation pour aucune des heures indiquées\n\
+                     dans le fichier pdf. Demande de génération ignorée.
+
+MissingDepict.title:  Représentations introuvables
+MissingDepict.posn:   -47 -60
+MissingDepict.dialog: Les représentations suivantes ne sont pas disponibles :\n\n\
+					  %s\n\n \
+					  Voulez-vous continuer?
+
+NoEditor.title:  Éditeur introuvable
+NoEditor.posn:   300 300
+NoEditor.dialog: L'éditeur de texte "%s" est introuvable.\n\
+                 Veuillez contacter votre administrateur de réseau.
+
+NoEntryDialog.title:  Erreur de configuration
+NoEntryDialog.posn:   -270 -150
+NoEntryDialog.dialog: Boîte de dialogue d'entrée de données introuvable pour cet élément.\n\
+					 Veuillez contacter votre gestionnaire de système.
+
+NoFcstRelease.title:  Erreur de procédure
+NoFcstRelease.posn:   50 100
+NoFcstRelease.dialog: Aucune prévision n'est disponible pour diffusion.\n\
+					  En avez-vous généré une?
+
+NoFieldToAdd.title:  Avertissement
+NoFieldToAdd.posn:   -10 -125
+NoFieldToAdd.dialog: Le champ requis n'est pas disponible.\n\
+                     Voulez-vous l'ajouter quand même à la liste?
+
+NoFieldsToInterp.title:  Message de la liste des champs
+NoFieldsToInterp.posn:   -200 -50
+NoFieldsToInterp.dialog: Aucun champ ne peut être sélectionné.
+
+NoHelp.title:  Erreur du système d'aide 
+NoHelp.posn:   -150 0
+NoHelp.dialog: Le système d'aide en ligne n'est pas disponible.\n\
+			   Veuillez contacter votre gestionnaire de système.
+
+NoImportSelect.title:  Erreur de sélection
+NoImportSelect.posn:   -5 -106
+NoImportSelect.dialog: Aucun champ n'a été selectionné pour la copie.
+
+NoOpenReportLog.title:  Erreur du fichier journal
+NoOpenReportLog.posn:   0 -100
+NoOpenReportLog.dialog: Impossible d'ouvrir le fichier journal "%s" pour la mise à jour.\n\n\
+                        Vérifier les autorisations (lect. et écrit.) pour le chemin.
+
+no-pgm.title:  Erreur du programme
+no-pgm.posn:   -142 -53
+no-pgm.dialog: Exécution impossible %s.\n\n\
+               Raison : "%s"
+
+NoValidSources.title:  Erreur de source
+NoValidSources.posn:   50 50
+NoValidSources.dialog: Aucune source sélectionnnée dans le fichier d'installation ne contient\n\
+					   des données pour la mise à jour des champs des représentations.
+
+NoValidTimeSelect.title:  Erreur de sélection
+NoValidTimeSelect.posn:   -5 -106
+NoValidTimeSelect.dialog: Aucune période de validité n'a été selectionnée.
+
+NoUndo.title:  Avertissement
+NoUndo.posn:   50 50
+NoUndo.dialog: Ce changement sera permanent. Annulation impossible.\n\
+			   Voulez-vous continuer?
+
+Overwrite.title:  Confirmer la copie
+Overwrite.posn:   -27 -116
+Overwrite.dialog: La représentation existante sera écrasée.\n\
+				Lancer la copie?
+
+OutsideMap.title:	Erreur d'entrée
+OutsideMap.posn:    15 185
+OutsideMap.dialog:	Le point à cette latitude et longitude est à l'extérieur de la carte.
+
+ProfileDelete.title:  [Delete Confirm]
+ProfileDelete.posn:   0 0
+ProfileDelete.dialog: [Delete profile "%s"?]
+
+ActiveProfileDelete.title:  [Delete Confirm]
+ActiveProfileDelete.posn:   0 0
+ActiveProfileDelete.dialog: ["%s" is the active profile and deletion is not allowed.]\n\n\
+							 [If necessary, do a 'save as' to another profile then delete.]
+
+run-fail.title:  Erreur du système
+run-fail.posn:   -142 -53
+run-fail.dialog: Exécution de %s impossible pour une raison inconnue.\n\
+				 Veuillez essayer à nouveau dans environ 20 secondes.
+
+pending_edit.title:  Avertissement de modification
+pending_edit.posn:   0 0
+pending_edit.dialog: Modification en attente.\n\
+                     Si vous continuez, cette modification peut être perdue.\n\n\
+					 Voulez-vous continuer?
+
+PgmRunning.title:  Avertissement du programme
+PgmRunning.posn:   -142 -53
+PgmRunning.dialog: %s est en cours d'exécution. Demande ignorée.
+
+PointFcstMod.title:  Sauvegarde de la demande
+PointFcstMod.posn:   50 50
+PointFcstMod.dialog: La prévision existante a été modifiée.\n\
+                     Sauvegarder et écraser la prévision initiale?
+
+ProblemReportEntryError.title:  Erreur d'entrée
+ProblemReportEntryError.posn:   100 250
+ProblemReportEntryError.dialog: On doit remplir les champs du nom, du sommaire et de la description.
+
+SaveDepiction.title:  Demande de sauvegarde
+SaveDepiction.posn:   80 110
+SaveDepiction.dialog: Sauvegarder la représentation modifiée?
+
+SomeModified.title:  Demande de sauvegarde
+SomeModified.posn:   50 110
+SomeModified.dialog: Une ou plusieurs représentations ont été modifiées.\n\
+					 Voulez-vous faire une sauvegarde avant la suppression?
+
+SomethingGenerating.title:  Confirmation d'interpolation
+SomethingGenerating.posn:   -200 -50
+SomethingGenerating.dialog: Un processus accède aux représentations \n\
+                            interpolées. L'exécution de l'interpolation \n\
+							peut interférer avec ce processus.\n\n\
+							Voulez-vous continuer quand même?
+
+
+TimelinkDepictNr.title:  Erreur de procédure
+TimelinkDepictNr.posn:   -350 50
+TimelinkDepictNr.dialog: La procédure de liaison temporelle exige\n\
+au moins deux représentations.
+
+TimelinkElementNr.title:  Erreur de procédure
+TimelinkElementNr.posn:   -150 100
+TimelinkElementNr.dialog: Il n'y a pas d'élément de liaison disponible\n\
+                          dans la séquence de la représentation.
+
+YouSure.title:  Confirmation de l'entrée
+YouSure.posn:   -100 60
+YouSure.dialog: Êtes-vous sûr?
+
+!
+! Returns from FoG_WeatherEntryValid() function. See weatherEntryDialog().
+!
+bad_input.FoG:      Code non autorisé
+Executable.FoG:     Erreur d'exécution selon la procédure de vérification de la syntaxe.\n\
+				    Veuillez contacter votre gestionnaire de système.
+modification.FoG:   Une seule modification est permise.
+no_visby_cause.FoG: La visibilité réduite doit avoir une cause.
+parsing.FoG:        Séquence non autorisée.
+trash.FoG:          Entrée rejetée.
+visibility.FoG:     Les valeurs de visibilité doivent être comprises entre 0 et 8.
+weather.FoG:        Seulement trois types de conditions météo sont autorisés.
+
+hot_parse.title:  Erreur d'entrée
+hot_parse.posn:   -50 200
+hot_parse.dialog: Procédure de vérification des entrées non disponible.\n\
+				  Veuillez prévenir votre gestionnaire de système.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  State Flag Labels - Label strings for the general preferences dialog.
+!                      The keys are number.pref, where number has to
+!                      agree in order with the enumerated status keys in
+!                      the state.h header file.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+000.pref:
+001.pref:
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Date Words - The first in the list is the full name followed by
+!               the required short form.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+mon.day: Lundi     Lun
+tue.day: Mardi     Mar
+wed.day: Mercredi  Mer
+thu.day: Jeudi     Jeu
+fri.day: Vendredi  Ven
+sat.day: Samedi    Sam
+sun.day: Dimanche  Dim
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Warnings.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+BitmapFileInvalid.warn: Format du fichier bitmap non valide -> %s
+BitmapOpenFailed.warn: Impossible d'ouvrir le fichier bitmap -> %s
+BitmapNoMemory.warn: Mémoire insuffisante pour créer une bitmap à partir du fichier -> %s
+EmptyElementGroup.warn: Groupe d'éléments vides défini dans le fichier de configuration -> %s
+ErrorInField.warn: Erreur détectée pour le champ -> %s
+FcstType.warn: Pas de fichier de concepts"%s"
+ForkFail.warn: Échec de Fork()dans la fonction %s
+FrameStartFailed.warn: Impossible de lancer la visionneuse Frame Viewer -> "%s"
+GraphicProdType.warn: Paramètre du produit graphique inconnu -> "%s"
+MetsisSizeCode.warn: Code de taille graphique inconnu dans la section interface du fichier d'installation
+NoAlliedConfig.warn: Modèle allié "%s%s%s" introuvable dans le fichier de configuration. Entrée de modèle ignorée.
+NoBitmapFile.warn: impossible de trouver le fichier bitmap -> "%s"
+NoEditorEnv.warn: Variable environnementale FPA_TEXT_EDITOR non définie.
+NoGuidListFile.warn: Impossible d'ouvrir la liste de référence du fichier de définition "%s/%s"
+NoLineLabel.warn: Étiquette introuvable pour ce type de ligne -> %s
+UnknownSetupKey.warn: Mot-clé "%s" introuvable dans le bloc d'interface du fichier d'installation.
+NoFcstAreas.warn: Impossible de trouver des zones de prévisions pour les prévisions "%s"
+NoFieldEditor.warn: Aucun éditeur sélectionnné pour ce champ dans le fichier de configuration.
+NoFieldGroup.warn: Aucune entrée pour le champ "%s" dans le fichier config du groupe. >>> Champ ignoré.
+NoFrameDir.warn: Il n'y a pas d'entrée  "help.viewer" dans le bloc répertoire du fichier d'installation.
+NoHelpFile.warn: Impossible d'ouvrir le fichier d'aide en ligne -> "%s"
+no-weather-menu.warn: Impossible de trouver le fichier de configuration du menu météo "%s" pour l'élément "%s".
+PrintOrientation.warn: Orientation d'impression non valide : %s
+PrintSize.warn: Taille d'impression non valide : %s
+UnknownElement.warn: Nom d'élément inconnu -> "%s"
+UnknownFieldType.warn: Type de champ inconnu dans le fichier de configuration.
+UnknownGroup.warn: Groupe du champ "%s" introuvable dans le fichier de configuration du groupe.
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Errors.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+NoElements.error: Aucun élément n'est défini dans le fichier d'installation.
+NoSetup.error: Fichier d'installation "%s" introuvable
+Setup.error: Échec de la lecture du bloc "interface" du fichier d'installation.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Status. The messages expect to have " at <date-time>" added to end.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+ClientConnected.status: %s Connecté
+ClientDisconnect.status: %s Déconnecté
+EndByError.status: Erreur - Fin du programme 
+EndByUser.status: Terminé
+Start.status: En cours
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Most of the interface is configured for the language of choice 
+!  through the user of X resource files.  For labels which are
+!  printed out depending on events it was found to be easier to handle
+!  them here.  Note that labels are limited to a maximum of 100 chars.
+!  All labels are first letter capitalized by default.  Any other form,
+!  (ie. all capitalized) is done by the retrevial functions.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+AllAttrib.label: Tous les attributs
+amd.label: Rectificatif
+AMD.label: Rectificatif
+area.label: Zone
+cancel.label: Annuler
+change_request.label: Demande de changement
+contour.label: Contour
+cor.label: Corrigé
+COR.label: Corrigé
+current.label: Actuel
+curr.label: Actuel
+default.label: Par défaut
+delta.label: Delta
+demoDate.label: Date de démo. fixée au :
+depictions.label: Représentations
+display.label: Affichage
+doc_bug.label: Bogue de documentation
+english.label: Anglais
+fcst.label: Prévis
+fcstNa.label: Pas de prévisions disponibles.
+fcstNotSel.label: Pas de prévisions selectionnées.
+fields.label: [Fields]
+forecasts.label: Prévisions
+french.label: Français
+generating.label: En cours de génération
+globalMaster.label: Global Master
+graphics.label: Graphiques
+hidden.label: [Hidden]
+high.label: Élevé
+idle.label: Inactif
+interpolations.label: Interpolations
+labelType.label: Type d'étiquette
+line.label: Ligne
+link.label: [Link]
+low.label: Faible
+kasspr.label: Kasspr
+masterLink.label: Group Master
+medium.label: Médium
+merged.label: Regroupement de prévisions
+models.label: Modèles
+na.label: Non disponible 
+na-short.label: n. d.
+napp.label: Sans objet 
+new.label: Nouveau
+noData.label: No Data
+no_metafiles.label: Pas de métafichiers définis
+no_time_match.label: Pas de synchronisation
+no.label: Non
+nofieldlabel.label: Étiquette de champ introuvable
+noLabel.label: < Pas d'étiquette >
+none.label: Aucun
+none_found.label: Introuvable
+noField.label: Champ non défini
+noInterp.label: Pas de représentations interpolées
+nor.label: Régulier
+NOR.label: Régulier
+ok.label: OK
+on.label: marche
+off.label: arrêt
+outdated.label: Plus ancien que les représentations interpolées
+processing.label: Traitement
+pointFcsts.label: Prévisions ponctuelles
+presetList.label: Type: prédéfini
+previous.label: Précédent
+previous-depict.label: Représentation précédente
+prev.label: Précedent
+quit.label: Quitter
+released.label: Diffusé
+refNr.label: No de réf.
+requirement.label: Exigence
+sameReleased.label: Comme pour la prévision diffusée
+saved.label: Sauvegardé
+status.label: État
+submitted.label: Présenté
+suggestion.label: Suggestion
+support.label: Question de l'utilisateur
+sw_bug.label: Bogue du logiciel
+textFcsts.label: Prévisions en format texte
+type.label: Type
+unknownElem.label: Élément inconnu
+unreleased.label: Non diffusé
+updating.label: Mise à jour en cours
+userList.label: Type : défini par l'utilisateur
+value.label: Valeur
+version.label: Version
+wind.label: Vent
+working.label: Travail en cours
+xrefwind.label: Valeur de renvoi pour le vent
+xrefvalue.label: Valeur de renvoi
+yes.label: Oui
+<temp>.label: * Temporaire *
+
+! Weather element labels
+
+weather.label: Météo
+wind.label: Vent
+sea-state.label: État de la mer
+sky-cover.label: Nébulosité
+temperature.label: Température
+
+! Timezones
+
+pacific.label: Pacifique
+mountain.label: Montagnes
+central.label: Centre
+eastern.label: Est
+atlantic.label: Atlantique
+newfoundland.label: T.-N.
+
+! Product Status
+
+abort.label: Interrompu
+model.label: Modèle
+noPrevRun.label: Aucun passage précédent
+prep.label: Pré-processeur
+post.label: Post-processeur
+running.label: Exécution en cours

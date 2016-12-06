@@ -1,0 +1,65 @@
+! Reset presentations for contours (independent of element) ...
+@reset_contour_presentation { }
+
+! Set presentation for pressure contours ...
+@contour_presentation
+	{
+	units      = mb;
+	range      = [800 , 1200];
+	line_width = 0.015;
+	line_style = solid;
+	outline    = X11 Black;
+	fill       = none;
+	}
+
+! Set a filter for drawing contours ...
+@filter	{ 0.01 }
+
+! Display the pressure contours at regular intervals ...
+@contours
+	{
+	element  = pressure;
+	level    = msl;
+	units    = mb;
+	min      =  800;
+	max      = 1200;
+	base     = 1000;
+	interval =    4;
+	pattern  = simple;
+	}
+
+! Reset filter ...
+@filter	{ 0 }
+
+! Display the Labelled Lows and Highs ... using pre-defined symbols
+@label
+	{
+	element            = pressure;
+	level              = msl;
+	category_attribute = hilo_type;
+	category           = high low;
+	mark               = hilo;
+	mark_scale         = 15;
+	symbol_scale       = 40;
+	text_size          = 0.30;
+	outline            = X11 black;
+	fill               = X11 black;
+	justification      = centre;
+
+	attribute          = hilo_type;
+	attribute_anchor   = none;
+	attribute_ref      = lower_centre;
+	attribute_format   = symbol;
+	attribute_look_up  = hilo;
+	attribute_x_off    =  0.00;
+	attribute_y_off    =  0.15;
+	attribute_outline  = none;
+
+	attribute          = EVAL_spval;
+	attribute_anchor   = none;
+	attribute_ref      = lower_centre;
+	attribute_format   = direct %s;
+	attribute_x_off    =  0.00;
+	attribute_y_off    = -0.30;
+	attribute_outline  = none;
+	}

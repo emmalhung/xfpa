@@ -1,0 +1,36 @@
+#!/bin/bash
+FONTS_DIR="$FPA/fonts"
+FPA_FONTS="putfonts.tar"
+
+## You must be root to do the following 
+cur_usr=`whoami`
+if [ "$cur_usr" != "root" ] 
+then
+	echo "*** You are running this script as: $cur_usr ***"
+	echo "*** You must be root to run this script  ***"
+	exit 1
+fi
+
+if [ -d $FONTS_DIR ]
+then
+	echo "*** $FONTS_DIR already exists ***"
+	echo "Replace it (y/n)? "
+
+	read answer
+	if [ "$answer" != 'y' ]
+	then
+	  	echo "Bye!"
+		exit 1
+	fi
+else
+	mkdir $FONTS_DIR
+fi
+
+# E(x)tract the (f)ile include (v)erbose comments
+cp $FPA_FONTS $FONTS_DIR
+cd $FONTS_DIR
+tar -xvmf $FPA_FONTS
+rm $FPA_FONTS
+chown bin:bin *
+chmod 444 *
+exit 1

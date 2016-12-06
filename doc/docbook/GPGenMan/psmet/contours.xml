@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_contours'> <title>@contours</title> <titleabbrev>@contours</titleabbrev>
+<para>
+Display contours from a "continuous" field (or magnitude contours from a "vector" field) on the current map.
+</para> <para>
+Note that the appearance of contours is usually given by the presentations set in
+the <link linkend='ps_contour_presentation'>@contour_presentation</link> directive, but that any presentation parameters
+set here will take precedence over those set in <link linkend='ps_contour_presentation'>@contour_presentation</link>.
+</para> <para>
+Note that <userinput>display_as_areas = yes</userinput> is used to display colour banded contours.
+The <userinput>min</userinput> keyword value (or the minimum value for each range if <userinput>base</userinput> and
+<userinput>interval</userinput> are used) is used to determine the contour presentation to display.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/equation.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/units.xml'/>
+<row><entry colname='desc'><para>(Note: <userinput>values min max base interval</userinput> are given in these units)</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/display_as_areas.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/values.xml'/>
+<row><entry colname='desc'><para>of contours to display</para></entry></row>
+
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/min.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/max.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/base.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/interval.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/interior_fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/symbol_fill_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_length.xml'/>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>line_width</userinput>, <userinput>line_style</userinput>, <userinput>outline</userinput> and <userinput>fill</userinput> can be specified more than once in this directive, for drawing multi-coloured contours!</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@contours
+{
+  element  = pressure;
+  level    = msl;
+  units    = mb;
+  pattern  = simple;
+  min      = 900;
+  max      = 1060;
+  base     = 1000;
+  interval = 4;
+}
+</programlisting>
+Display contours from the msl pressure field at every multiple of 4 mb away from 1000 mb,
+beginning at 900 mb and ending at 1060 mb. The contours will be drawn with a simple line,
+and with a presentation previously set by the <link linkend='ps_contour_presentation'>@contour_presentation</link> directive.
+</para></example>
+<example><title></title><para>
+<programlisting>@contours
+{
+  &lt;MaxTempAreas;
+  min           = -35;
+  max           = -30;
+  interior_fill = X11 White;
+}
+</programlisting>
+Note that the keywords for the "macro" called "MaxTempAreas" are defined as an example in the
+<link linkend='ps_group'>@ps_group</link> directive, given below, and are automatically included as part of this directive.
+</para><para>
+Display the -35 to -30 degreesC contour band from the surface max_temp field as an area (or areas)
+filled with White. The minimum and maximum limits of the contour range will not be drawn.
+</para></example>
+</para></sect2>

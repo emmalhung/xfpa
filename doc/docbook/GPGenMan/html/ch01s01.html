@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>1.1. Product Definition Files</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch01.html" title="Chapter 1. Introduction to the Graphics Product Generator" /><link rel="prev" href="ch01.html" title="Chapter 1. Introduction to the Graphics Product Generator" /><link rel="next" href="ch01s02.html" title="1.2. Control Characters and Quotes" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.1. Product Definition Files</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01.html">Prev</a> </td><th width="60%" align="center">Chapter 1. Introduction to the Graphics Product Generator</th><td width="20%" align="right"> <a accesskey="n" href="ch01s02.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id3384942"></a>1.1. Product Definition Files</h2></div></div></div><p>
+The Graphics Product Generator applications control the display of <span class="acronym">FPA</span> data through the use of <span class="acronym">FPA</span> product definition files, usually referred to as "pdf" files, because they used to have the suffix ".pdf". 
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+When <span class="acronym">FPA</span> "pdf" files were first introduced the ".pdf" extension did not have the association it does now. The extension ".pdf" has since become synonymous with Portable Document Format files, and as a result it has become difficult to share <span class="acronym">FPA</span> "pdf" files, especially on Windows platforms. With the introduction of <span class="acronym">FPA</span> Version 7, the extension of <span class="acronym">FPA</span> product definition files has been changed to ".fpdf".
+</p></div><p>
+Each "pdf" file contains a series of directives, or commands, that allow for the sampling and formatted display of information from the <span class="acronym">FPA</span> database.
+</p><p>
+The syntax for most directives in the product definition files is:
+</p><pre class="programlisting">@directive { keyword = value(s); keyword = value(s); ..... }</pre><p>
+or:
+</p><pre class="programlisting">@directive
+  {
+  keyword = value(s);
+  keyword = value(s);
+  .....
+  }</pre><p>
+or any combination of the two syntaxes. The keywords for each
+directive set one or more values for parameters that are allowed within
+each command. Multiple values can be separated by spaces or tabs. There
+is no required order to the keywords, so long as the instructions within
+each directive are sufficient to fully describe the data to be sampled and
+the format of how the data will be displayed.
+</p><p>
+The only limit on the directives is that each "keyword = value(s)"
+instruction has a maximum length of 255 characters.
+</p><p>
+The value(s) for parameters may have one of the following formats:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top">string</td><td valign="top">an ASCII literal value</td></tr><tr valign="top"><td valign="top">integer</td><td valign="top">an integer number</td></tr><tr valign="top"><td valign="top">real</td><td valign="top">a real number</td></tr><tr valign="top"><td valign="top">latlon</td><td valign="top">(see <a href="ch01s03.html" title="1.3. Format of Latitudes and Longitudes">Format of Latitudes and Longitudes, (Section 1.3)</a>)</td></tr><tr valign="top"><td valign="top">range</td><td valign="top">(see <a href="ch01s04.html" title="1.4. Format of Values in a Range">Format of Values in a Range, (Section 1.4)</a>)</td></tr><tr valign="top"><td valign="top">vtime</td><td valign="top">(see <a href="ch01s05.html" title="1.5. Format of Valid Time Identifiers">Format of Valid Time Identifiers, (Section 1.5)</a>)</td></tr></tbody></table></div><p>
+A few special directives have no keywords. These include the <span class="application">PSMet</span>,
+<span class="application">SVGMet</span> and <span class="application">TexMet</span> directives <span><strong class="command">@file_close @include @loop_end @process @verbose</strong></span> and <span><strong class="command">@version</strong></span>, 
+the <span class="application">PSMet</span> and <span class="application">SVGMet</span> directives <span><strong class="command">@filter @reset_contour_presentation</strong></span> and <span><strong class="command">@reset_geo_presentation</strong></span>, and <span><strong class="command">@gpgen_group_end</strong></span>.  The syntax for these directives is:
+</p><pre class="programlisting">@directive { value }</pre><p>
+or     
+</p><pre class="programlisting">@directive { }</pre><p>
+</p><p>
+The <span><strong class="command">@include</strong></span> directive allows the user to split up large product
+definition files into a number of smaller files, which will then be processed
+sequentially when the Graphics Product Generator application is run.
+</p><p>
+There are a handful of special directives that allow output of language specific values. 
+These directives begin with <span><strong class="command">@gpgen_</strong></span> such as <span><strong class="command">@gpgen_group_begin</strong></span> and <span><strong class="command">@gpgen_insert</strong></span>.
+The syntax for these directives is one of:
+</p><pre class="programlisting">@gpgen_directive { keyword = value(s); keyword = value(s); ... }</pre><p>
+</p><pre class="programlisting">@gpgen_directive { 
+	keyword = value(s); 
+	keyword = value(s);
+	...
+}</pre><p>
+</p><pre class="programlisting">@gpgen_directive { value(s) }</pre><p>
+or
+</p><pre class="programlisting">@gpgen_directive { }</pre><p>
+The keywords and values are assumed to be specific to the output format (SVG for example), and so are not checked against valid GPGEN keywords and values. Instead they are inserted as is into the output product.
+</p><p>
+A description of all directives and their keywords for the <span class="application">PSMet</span>, <span class="application">SVGMet</span>
+and <span class="application">TexMet</span> applications can be found in <a href="ch02.html" title="Chapter 2. PSMet/SVGMet">PSMet/SVGMet, (Chapter 2)</a> and <a href="ch03.html" title="Chapter 3. TexMet">TexMet, (Chapter 3)</a>.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 1. Introduction to the Graphics Product Generator </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.2. Control Characters and Quotes</td></tr></table></div></body></html>

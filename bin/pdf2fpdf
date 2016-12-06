@@ -1,0 +1,85 @@
+#!/bin/bash
+#################################################################################	
+#	
+#	Purpose:	
+#  		Bourne script to rename FPA style .pdf files to .fpdf files.
+#		Change introduced to avoid confusion with Adobe .pdf files.
+#		The script attempts to identify Adobe PDF documents to avoid
+#		renaming them.
+#	
+#	Author: Emma Bradbury (Emma.Bradbury@ec.gc.ca)
+#	Date:	May 30 2007
+#	
+#################################################################################	
+
+
+PROG=`basename $0`	
+YES='y'
+NO='n'
+
+change_ext()
+{
+	for pfile in $1/*.pdf; do			# Examine all file with .pdf extension
+		if [ -f $pfile ]; then			# Don't want to rename directories
+			result=`file $pfile | grep PDF`
+			if [ $? -ne 0 ]; then 		# If file is not an Adobe PDF document ...
+				if [ $ASK -eq 1 ]; then	# If interactive ask permission to rename
+					echo -e "$PROG: rename '$pfile' to '${pfile%.pdf}.fpdf'? (y/n) \c"
+					read -n1 answer
+					echo
+					if [ ${answer:-$NO} = $YES ]; then
+						mv $pfile ${pfile%.pdf}.fpdf
+					fi
+				else					# otherwise rename file without asking
+					echo "$PROG: renaming '$pfile' to '${pfile%.pdf}.fpdf'"
+					mv $pfile ${pfile%.pdf}.fpdf	
+				fi
+			else						# This is probably not an FPA document leave it
+				echo "$PROG: ignoring Adobe PDF document '$pfile'"
+			fi
+		fi
+	done
+}
+
+# Make sure the script is called correctly
+if [ ${#} -lt 1 ]; then
+	echo "Rename FPA .pdf files to .fpdf to avoid confusion with Adobe PDF documents."
+	echo "	Usage: $PROG {-i} <dir>"
+	echo "		where <dir> is a directory containing FPA product definition files."
+	echo "		      {-i}  turn on interactive mode."
+	exit 1
+fi
+
+# Check for interactive option
+OPT=""
+ASK=0
+while getopts ":i" Option; do
+	case $Option in
+		i) ASK=1; OPT="-i"
+		;;
+		*) ASK=0
+		;;
+	esac
+done
+shift $(($OPTIND -1))	# Decrement arg pointer to point to next arg
+
+# Input must be a valid directory
+if [ ! -d $1 ]; then
+	echo "$PROG: '$1' is not a directory!"
+	echo "	Aborting '$PROG $1'"
+	exit 1
+fi
+
+change_ext $1 			# Check for pdf files in the current directory
+
+# Now look to see if there are any subdirectories
+for dir in $1/*; do
+	if [ -d $dir ]; then
+		echo -e "$PROG: check subdirectory '${dir}'? (y/n) \c"
+		read -n1 answer
+		echo
+		if [ ${answer:-$NO} = $YES ]; then
+			$0 $OPT $dir 	# Recursively call this function on subdirectories.
+		fi
+	fi
+done

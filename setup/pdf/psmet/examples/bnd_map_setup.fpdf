@@ -1,0 +1,27 @@
+! Define a projection ...
+@projection
+	{
+	type = polar_stereographic;		!EDIT!
+	ref1 = north;					!EDIT!
+	ref2 = 60N;						!EDIT!
+	}
+
+! Define a map ...
+@mapdef
+	{
+	olat      = 45:00N;				!EDIT!
+	olon      = 65:00W;				!EDIT!
+	rlon      = 92:30W;				!EDIT!
+	xmin      = -2000;				!EDIT!
+	ymin      = -1300;				!EDIT!
+	xmax      =  1200;				!EDIT!
+	ymax      =  1100;				!EDIT!
+	map_units =  1000;				!EDIT!
+	}
+
+! Define a spline resolution ...
+@resolution
+	{
+	res       = 200;				!EDIT!
+	map_units = 1000;				!EDIT!
+	}

@@ -1,0 +1,78 @@
+#!/bin/bash
+ID="[get_setup]"
+
+# Script to find the setup file in the same way as the environ.a library
+
+# If no filename given use $FPA_SETUP_FILE or "fpa.setup"
+setup=${1:-${FPA_SETUP_FILE:-"fpa.setup"}}
+
+# If we have an absolute path see if it exists
+if abspath "$setup"
+then
+	if [ -r $setup ]
+	then
+		echo $setup
+		exit 0
+	else
+		echo "$ID Setup file \"$setup\" not found." 1>&2
+		exit 1
+	fi
+fi
+
+# Otherwise search the standard setup directories
+
+# Try ./$setup
+if [ -r ./$setup ]
+then
+	echo `pwd`/$setup
+	exit 0
+fi
+
+# Try $HOME/$setup
+# and $HOME/setup/$setup
+if [ "$HOME" != "" ]
+then
+	if [ -r $HOME/$setup ]
+	then
+		echo $HOME/$setup
+		exit 0
+	elif [ -r $HOME/setup/$setup ]
+	then
+		echo $HOME/setup/$setup
+		exit 0
+	fi
+fi
+
+# Try $FPA_SETUP_DIR/$setup
+if [ "$FPA_SETUP_DIR" != "" ]
+then
+	if [ -r $FPA_SETUP_DIR/$setup ]
+	then
+		echo $FPA_SETUP_DIR/$setup
+		exit 0
+	fi
+fi
+
+# Try $FPA/setup/$setup
+# and $FPA/config/$setup
+# and $FPA/config/setup/$setup
+if [ "$FPA" != "" ]
+then
+	if [ -r $FPA/setup/$setup ]
+	then
+		echo $FPA/setup/$setup
+		exit 0
+	elif [ -r $FPA/config/$setup ]
+	then
+		echo $FPA/config/$setup
+		exit 0
+	elif [ -r $FPA/config/setup/$setup ]
+	then
+		echo $FPA/config/setup/$setup
+		exit 0
+	fi
+fi
+
+# Nothing left to try
+echo "$ID Setup file \"$setup\" not found." 1>&2
+exit 1

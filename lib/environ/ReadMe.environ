@@ -1,0 +1,37 @@
+Environ Library:
+
+This directory contains all the modules that are used to manage configuration
+and setup files, and some functionality that makes direct use of config and
+setup information (such as reading and writing metafiles).
+
+==============================================================================
+
+environ.h
+
+read_config.[ch]
+
+config_info.[ch]
+config_structs.h
+forecasts.[ch]
+presentation.[ch]
+units.c
+
+read_setup.[ch]
+read_setup_P.h
+
+adv_feature.[ch]
+depict_fields.[ch]
+diag.[ch]
+ingest.[ch]
+target_map.[ch]
+
+meta.h
+meta_read.c
+meta_write.c
+
+calculation.[ch]
+cal.[ch]
+files_and_directories.[ch]
+pdf_info.[ch]
+revision.[ch]
+rules.[ch]

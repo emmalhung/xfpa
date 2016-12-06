@@ -1,0 +1,60 @@
+! Define some named presentations for lines ...
+@presentation
+	{
+	name           = stationary;
+	pattern        = front.sfc.stationary;
+	pattern_width  = .100;
+	pattern_length = .500;
+	outline        = none;
+	fill           = CMYK 100 100   0 0;
+	fill           = CMYK   0 100 100 0;
+	}
+@presentation
+	{
+	name           = cold;
+	pattern        = front.sfc.cold;
+	pattern_width  = .100;
+	pattern_length = .500;
+	outline        = none;
+	fill           = CMYK 100 100 0 0;
+	}
+@presentation
+	{
+	name           = occluded;
+	pattern        = front.sfc.occluded;
+	pattern_width  = .100;
+	pattern_length = .500;
+	outline        = none;
+	fill           = CMYK 100 100 0 0;
+	fill           = CMYK 0 100 100 0;
+	}
+@presentation
+	{
+	name           = warm;
+	pattern        = front.sfc.warm;
+	pattern_width  = .100;
+	pattern_length = .500;
+	outline        = none;
+	fill           = CMYK 0 100 100 0;
+	}
+@presentation
+	{
+	name           = trowal;
+	pattern        = trowal;
+	pattern_width  = .100;
+	pattern_length = .500;
+	outline        = none;
+	fill           = CMYK 100 100 0 0;
+	fill           = CMYK 0 100 100 0;
+	}
+
+! Display some fronts ...
+@lines
+	{
+	element            = fronts;
+	level              = surface;
+	category_attribute = FPA_category;
+	category           = stationary cold occluded warm trowal;
+	attribute          = FPA_category;
+	look_up            = fronts;
+	}

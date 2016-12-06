@@ -1,0 +1,7036 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Config-type files in the $FPA/config directory can and will be updated #
+#   with any new release, update, or patch of the FPA software suite.          #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Config file that refers to this file through an     #
+#   #include statement.  Refer to the file Config, or d.Config for further     #
+#   instructions.                                                              #
+#                                                                              #
+################################################################################
+
+################################################################################
+#
+# "Config.master" Master Configuration File
+#
+# This configuration file contains the necessary information for constructing,
+# storing and accessing meteorological and oceanographic fields.
+#
+# In particular, it contains the physical description of each and
+# every field that can be processed by FPA applications.
+#
+# (This does not include the transient visual description, which is provided
+#  in the "Presentation" configuration file, though it may in the future!)
+#
+# >>>>> This section may require some more description <<<<<
+#
+# This file also contains the physical descriptions of all recognized elements,
+# levels, data sources, constants and units.
+# The element descriptions may also contain equations for generating new fields
+# from existing ones.
+# The unit descriptions allow conversion of fields from standard MKS units
+# to conventional units.
+#
+# Note: All data stored in metafiles, as well as all data in constants or
+#       equations, is converted to standard MKS units before being used.
+#       For example, a constant in this file with target units of degreesC
+#       would be converted to degreesK whenever it was used.
+#       Similarly, an equation in this file with target units of mb/12hr would
+#       return values converted to Pa/s.
+#
+################################################################################
+
+revision 6.0
+
+################################################################################
+#
+# "Fields" block - Descriptions of each field
+#
+# Each field in this block is identified by a unique <element> <level> pair.
+# Each element name must correspond to an element name defined in the
+# "Elements" block below.
+# Similarly, each level name must correspond to a level name defined in the
+# "Levels" block below.
+# (Note that all name comparisons are case insensitive!)
+#
+################################################################################
+
+Fields
+	{
+
+	pressure		msl
+		{
+		label			= <*default*> "Msl Pressure"
+		short_label		= <*default*> "Msl Pres"
+		}
+
+	temperature		surface
+		{
+		label			= <*default*> "Surface Temperature"
+		short_label		= <*default*> "Sfc Temp"
+		}
+
+	mixing_ratio	surface
+		{
+		element_info	=
+			{
+			equation		=
+				{
+				equation_string		= EPSR * svprs[td] \
+											/ (psfc - svprs[td])
+				equation_units		= kg/kg
+				}
+			}
+		}
+
+	virtual_temp	surface
+		{
+		element_info	=
+			{
+			equation		=
+				{
+				equation_string		= temp / (1 - (1-EPSR)*svprs[td]/psfc)
+				equation_units		= degreesK
+				}
+			}
+		}
+
+	air_density		surface
+		{
+		element_info	=
+			{
+			equation		=
+				{
+				equation_string		= psfc / (RDRY * tvirt)
+				equation_units		= unitless
+				}
+			}
+		}
+
+	theta_e			surface
+		{
+		element_info	=
+			{
+			equation		=
+				{
+				equation_string		= temp * pow[100000/psfc, \
+											0.2854 * (1.0 - 0.00028*wrat)] \
+											* exp[(3.376/tlcl - 0.00254) \
+											* wrat * (1.0 + 0.00081*wrat)]
+				equation_units		= degreesK
+				}
+			}
+		}
+
+	weather_system	surface
+		{
+		label			= <*default*> "System Weather"
+		short_label		= <*default*> "System Wx"
+		field_group		= Surface
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	weather_local	surface
+		{
+		label			= <*default*> "Local Weather"
+		short_label		= <*default*> "Local Wx"
+		field_group		= Surface
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	POP				surface
+		{
+		label			= <*default*> "Probability of Precipitation"
+		short_label		= <*default*> "POP"
+		field_group		= Surface
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	actual_wind	surface
+		{
+		label			= <*default*> "Wind Field"
+		short_label		= <*default*> "Wind"
+		field_group		= Surface
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	fronts			surface
+		{
+		label			= <*default*> "Fronts"
+		short_label		= <*default*> "Fronts"
+		field_group		= Surface
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	wave_height		surface
+		{
+		label			= <*default*> "Wave Height"
+		short_label		= <*default*> "Wave Hght"
+		field_group		= Sea
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	uv_wave_hgt		surface
+		{
+		label			= <*default*> "U/V Wave Height"
+		short_label		= <*default*> "UV Wave Hgt"
+		field_group		= Sea
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	wave_period		surface
+		{
+		label			= <*default*> "Wave Period"
+		short_label		= <*default*> "Wave Pd"
+		field_group		= Sea
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	sea_temp		surface
+		{
+		label			= <*default*> "Sea Surface Temperature"
+		short_label		= <*default*> "SST"
+		field_group		= Sea
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	sea_ice			surface
+		{
+		label			= <*default*> "Sea Ice"
+		short_label		= <*default*> "Sea Ice"
+		field_group		= Sea
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	freezing_spray	surface
+		{
+		label			= <*default*> "Freezing Spray"
+		short_label		= <*default*> "Frzg Spray"
+		field_group		= Sea
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	max_temp		surface
+		{
+		label			= <*default*> "Maximum Temperature"
+		short_label		= <*default*> "Max Temp"
+		field_group		= Maxmin
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	min_temp		surface
+		{
+		label			= <*default*> "Minimum Temperature"
+		short_label		= <*default*> "Min Temp"
+		field_group		= Maxmin
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	max_temp_time	surface
+		{
+		label			= <*default*> "Maximum Temperature Time"
+		short_label		= <*default*> "Max Temp Time"
+		field_group		= Maxmin
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	min_temp_time	surface
+		{
+		label			= <*default*> "Minimum Temperature Time"
+		short_label		= <*default*> "Min Temp Time"
+		field_group		= Maxmin
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	wave_plot		surface
+		{
+		label			= <*default*> "Wave Plot"
+		short_label		= <*default*> "Wave Plot"
+		field_group		= Miscellaneous
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	wind_plot		surface
+		{
+		label			= <*default*> "Wind Plot"
+		short_label		= <*default*> "Wind Plot"
+		field_group		= Miscellaneous
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	geography		geography
+		{
+		label			= <*default*> "Geography"
+		short_label		= <*default*> "Geography"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	land_water		geography
+		{
+		label			= <*default*> "Land/Water Areas"
+		short_label		= <*default*> "Land/Water"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	boundaries		geography
+		{
+		label			= <*default*> "Geographical Boundaries"
+		short_label		= <*default*> "Boundaries"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	cities			geography
+		{
+		label			= <*default*> "Cities"
+		short_label		= <*default*> "Cities"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	road			geography
+		{
+		label			= <*default*> "Roads"
+		short_label		= <*default*> "Roads"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	rail			geography
+		{
+		label			= <*default*> "Railways"
+		short_label		= <*default*> "Railways"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	hypsography		geography
+		{
+		label			= <*default*> "Hypsography"
+		short_label		= <*default*> "Hypsography"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	forecast_areas	geography
+		{
+		label			= <*default*> "Forecast Areas"
+		short_label		= <*default*> "Fcst Areas"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	app_menu		annotation
+		{
+		label			= <*default*> "Application Menu"
+		short_label		= <*default*> "App Menu"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	legend			annotation
+		{
+		label			= <*default*> "Legend"
+		short_label		= <*default*> "Legend"
+		field_group		= Not_Displayed
+
+		element_info	= Default
+		level_info		= Default
+		}
+
+	}
+
+################################################################################
+#
+# "Elements" block - Descriptions of each element
+#
+# Each element in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each element may optionally be identified by an alias name.
+# These aliases are used to match the element names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each element by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+# (Note that the "equation_string" in the "equation" block can use either
+# the name, the file_id, the file_ident, or any alias to refer to an element
+# or level in the equation!)
+#
+################################################################################
+
+Elements
+	{
+
+	pressure
+		{
+		label			= <*default*> "Pressure"
+		short_label		= <*default*> "Pres"
+		element_group	= Pressure
+		level_type		= Msl
+		alias			= p  pres
+
+		file_id			= pn
+		file_ident		= pressure
+		precision		= .01  mb
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= Pressure
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 8.000  mb
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample  Gradient_Sample  Curvature_Sample
+			wind_sample_types	= Geostrophic_Wind
+			}
+		}
+
+	pres_change
+		{
+		label			= <*default*> "Pressure Change"
+		short_label		= <*default*> "Pres Change"
+		element_group	= Pressure
+		level_type		= Msl
+		alias			= dp  dpdt  pressure_change  pres_tendency  \
+							pressure_tendency
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  mb/3hr
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= Pressure
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= Isallobaric_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= ddt[p]
+			equation_units		= Pa/s
+			}
+		}
+
+	sfc_pressure
+		{
+		label			= <*default*> "Actual Pressure"
+		short_label		= <*default*> "Actual Pres"
+		element_group	= Pressure
+		level_type		= Surface
+		alias			= psfc  surface_pressure  real_pressure
+
+		file_id			= p0
+		file_ident		= sfc_pressure
+		precision		= .01  mb
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= Pressure
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 8.000  mb
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample  Gradient_Sample  Curvature_Sample
+			wind_sample_types	= Geostrophic_Wind
+			}
+		}
+
+	height
+		{
+		label			= <*default*> "Height"
+		short_label		= <*default*> "Hght"
+		element_group	= Pressure
+		level_type		= Level
+		alias			= gz
+
+		file_id			= gz
+		file_ident		= height
+		precision		= .01  Dm
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= Height
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 12.0  Dm
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample  Gradient_Sample  Curvature_Sample
+			wind_sample_types	= Geostrophic_Wind
+			}
+		}
+
+	height_change
+		{
+		label			= <*default*> "Height Change"
+		short_label		= <*default*> "Hght Change"
+		element_group	= Pressure
+		level_type		= Level
+		alias			= dz  dzdt
+
+		file_id			= dz
+		file_ident		= height_change
+		precision		= .01  Dm/12hr
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample  Curvature_Sample
+			wind_sample_types	= Isallobaric_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= ddt[gz]
+			equation_units		= m/s
+			}
+		}
+
+	thickness
+		{
+		label			= <*default*> "Thickness"
+		short_label		= <*default*> "Thick"
+		element_group	= Pressure
+		level_type		= Layer
+		alias			= thick
+
+		file_id			= th
+		file_ident		= thickness
+		precision		= .01  Dm
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= Thickness
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 12.0  Dm
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample  Gradient_Sample  Curvature_Sample
+			wind_sample_types	= Thermal_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= gz<$upper> - gz<$lower>
+			equation_units		= m
+			}
+		}
+
+	geopotential
+		{
+		label			= <*default*> "Geopotential"
+		short_label		= <*default*> "Geopotential"
+		element_group	= Pressure
+		level_type		= Level
+
+		file_id			= ge
+		file_ident		= geopotential
+		precision		= .01  m2/s/s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	pressure_curvature
+		{
+		label			= <*default*> "Pressure Curvature"
+		short_label		= <*default*> "Curvature"
+		element_group	= Pressure
+		level_type		= Msl
+		alias			= curvp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  1/km
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= curv[p]
+			equation_units		= 1/m
+			}
+		}
+
+	pressure_difference_12hr
+		{
+		label			= <*default*> "12 hour Pressure Difference"
+		short_label		= <*default*> "12hr Pres Diff"
+		element_group	= Pressure
+		level_type		= Msl
+		alias			= xp12hr  pres_12hr_prev
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  mb
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= 12hr_prev<@p>
+			equation_units		= Pa
+			}
+		}
+
+	actual_wind
+		{
+		label			= <*default*> "Actual Wind Field"
+		short_label		= <*default*> "Actual Wind"
+		element_group	= Wind
+		level_type		= Surface
+		alias			= wind  wind_deviation
+
+		file_id			= dv
+		file_ident		= actual_wind
+		precision		= 0.0  category
+
+		time_dependence	= Normal
+
+		field_type		= Wind
+		wind_class		= Adjustment
+
+		attributes		=
+			{
+			FPA_wind_model				Vg_Msl
+			FPA_wind_direction			-30  degrees_true
+			FPA_wind_speed				70  percent
+			}
+
+		editor			=
+			{
+			entry_file				= actual_wind
+			background_entry_file	= actual_wind_background
+			}
+
+		sample			=
+			{
+			value_sample_types		= Value_Sample  Label_Sample
+			wind_sample_type		= Adjusted_Wind
+			wind_crossrefs			= Vg_Msl  Vr_Msl  Vc_Msl  Vx_Msl  Is_Msl  \
+										Vg_850
+			}
+		}
+
+	actual_wind_speed
+		{
+		label			= <*default*> "Actual Wind Speed"
+		short_label		= <*default*> "Actual Wnd Spd"
+		element_group	= Wind
+		level_type		= Surface
+		alias			= adj_speed
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		value_calculation	=
+			{
+			value_crossref		= Adjusted_Wind_Speed
+			source_types		= Depiction  Guidance  Allied
+			}
+
+		components		=
+			{
+			direction_component	= actual_wind_direction
+			magnitude_component	= actual_wind_speed
+			}
+		}
+
+	actual_wind_direction
+		{
+		label			= <*default*> "Actual Wind Direction"
+		short_label		= <*default*> "Actual Wnd Dir"
+		element_group	= Wind
+		level_type		= Surface
+		alias			= adj_direction
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_true
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		value_calculation	=
+			{
+			value_crossref		= Adjusted_Wind_Direction
+			source_types		= Depiction  Guidance  Allied
+			}
+
+		components		=
+			{
+			direction_component	= actual_wind_direction
+			magnitude_component	= actual_wind_speed
+			}
+		}
+
+	vertical_vel
+		{
+		label			= <*default*> "Vertical Velocity"
+		short_label		= <*default*> "Vert Vel"
+		element_group	= Wind
+		level_type		= Level
+		alias			= vvert  vertical_velocity
+
+		file_id			= ww
+		file_ident		= vertical_velocity
+		precision		= .01  mb/hr
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	u_wind
+		{
+		label			= <*default*> "U Component Wind"
+		short_label		= <*default*> "U Wind"
+		element_group	= Wind
+		level_type		= Level
+		alias			= uwind  uu_wind
+
+		file_id			= uu
+		file_ident		= u_wind
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		components		=
+			{
+			x_component			= u_wind
+			y_component			= v_wind
+			}
+		}
+
+	v_wind
+		{
+		label			= <*default*> "V Component Wind"
+		short_label		= <*default*> "V Wind"
+		element_group	= Wind
+		level_type		= Level
+		alias			= vwind  vv_wind
+
+		file_id			= vv
+		file_ident		= v_wind
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		components		=
+			{
+			x_component			= u_wind
+			y_component			= v_wind
+			}
+		}
+
+	uv_wind
+		{
+		label			= <*default*> "U/V Component Wind"
+		short_label		= <*default*> "UV Wind"
+		element_group	= Wind
+		level_type		= Level
+		alias			= uvwind
+
+		file_id			= uv
+		file_ident		= uv_wind
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Vector
+		wind_class		= None
+
+		editor          =
+			{
+			hilo            = False
+			magnitude_poke  = 10 knots
+			direction_poke	= 30 degrees_true
+			}
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		components		=
+			{
+			x_component			= u_wind
+			y_component			= v_wind
+			}
+		}
+
+	wind_speed
+		{
+		label			= <*default*> "Wind Speed"
+		short_label		= <*default*> "Wind Spd"
+		element_group	= Wind
+		level_type		= Level
+		alias			= wspd
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= hypot[uwind, vwind]
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= wind_direction
+			magnitude_component	= wind_speed
+			}
+		}
+
+	wind_direction
+		{
+		label			= <*default*> "Wind Direction"
+		short_label		= <*default*> "Wind Dir"
+		element_group	= Wind
+		level_type		= Level
+		alias			= wdir
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= 180.0 + (atan2[vwind, uwind] / RAD)
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= wind_direction
+			magnitude_component	= wind_speed
+			}
+		}
+
+	uv_geostr
+		{
+		label			= <*default*> "U/V Component Geostrophic"
+		short_label		= <*default*> "UV Geostr"
+		element_group	= Wind
+		level_type		= Level
+		alias			= uvg
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Vector
+		wind_class		= None
+
+		editor          = None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		components		=
+			{
+			x_component			= u_geostr
+			y_component			= v_geostr
+			}
+		}
+
+	u_geostr
+		{
+		label			= <*default*> "U Component Geostrophic"
+		short_label		= <*default*> "U Geostr"
+		element_group	= Wind
+		level_type		= Level
+		alias			= ug
+
+		file_id			= ug
+		file_ident		= u_geostrophic
+		precision		= .01  knots
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= ughght<@gz>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_geostr
+			y_component			= v_geostr
+			}
+		}
+
+	v_geostr
+		{
+		label			= <*default*> "V Component Geostrophic"
+		short_label		= <*default*> "V Geostr"
+		element_group	= Wind
+		level_type		= Level
+		alias			= vg
+
+		file_id			= vg
+		file_ident		= v_geostrophic
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= vghght<@gz>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_geostr
+			y_component			= v_geostr
+			}
+		}
+
+	geostr_speed
+		{
+		label			= <*default*> "Geostrophic Wind Speed"
+		short_label		= <*default*> "Geostr Spd"
+		element_group	= Wind
+		level_type		= Level
+		alias			= spdg
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= hypot[ug, vg]
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= geostr_direction
+			magnitude_component	= geostr_speed
+			}
+		}
+
+	geostr_direction
+		{
+		label			= <*default*> "Geostrophic Wind Direction"
+		short_label		= <*default*> "Geostr Dir"
+		element_group	= Wind
+		level_type		= Level
+		alias			= dirg
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= 180.0 + (atan2[vg, ug] / RAD)
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= geostr_direction
+			magnitude_component	= geostr_speed
+			}
+		}
+
+	uv_geomsl
+		{
+		label			= <*default*> "U/V Component Geomsl"
+		short_label		= <*default*> "UV Geomsl"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= uvgp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Vector
+		wind_class		= None
+
+		editor          = None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		components		=
+			{
+			x_component			= u_geomsl
+			y_component			= v_geomsl
+			}
+		}
+
+	u_geomsl
+		{
+		label			= <*default*> "U Component Geomsl"
+		short_label		= <*default*> "U Geomsl"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= ugp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= ugpres<@p>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_geomsl
+			y_component			= v_geomsl
+			}
+		}
+
+	v_geomsl
+		{
+		label			= <*default*> "V Component Geomsl"
+		short_label		= <*default*> "V Geomsl"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= vgp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= vgpres<@p>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_geomsl
+			y_component			= v_geomsl
+			}
+		}
+
+	geomsl_speed
+		{
+		label			= <*default*> "Geomsl Wind Speed"
+		short_label		= <*default*> "Geomsl Spd"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= spdgp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= hypot[ugp, vgp]
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= geomsl_direction
+			magnitude_component	= geomsl_speed
+			}
+		}
+
+	geomsl_direction
+		{
+		label			= <*default*> "Geomsl Wind Direction"
+		short_label		= <*default*> "Geomsl Dir"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= dirgp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= 180.0 + (atan2[vgp, ugp] / RAD)
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= geomsl_direction
+			magnitude_component	= geomsl_speed
+			}
+		}
+
+	uv_isallo
+		{
+		label			= <*default*> "U/V Component Isallobaric"
+		short_label		= <*default*> "UV Isallo"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= uvis
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Vector
+		wind_class		= None
+
+		editor          = None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		components		=
+			{
+			x_component			= u_isallo
+			y_component			= v_isallo
+			}
+		}
+
+	u_isallo
+		{
+		label			= <*default*> "U Component Isallobaric"
+		short_label		= <*default*> "U Isallo"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= uis
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= uisbar<@dp>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_isallo
+			y_component			= v_isallo
+			}
+		}
+
+	v_isallo
+		{
+		label			= <*default*> "V Component Isallobaric"
+		short_label		= <*default*> "V Isallo"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= vis
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= visbar<@dp>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_isallo
+			y_component			= v_isallo
+			}
+		}
+
+	isallo_speed
+		{
+		label			= <*default*> "Isallobaric Wind Speed"
+		short_label		= <*default*> "Isallo Spd"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= spdis
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= hypot[uis, vis]
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= isallo_direction
+			magnitude_component	= isallo_speed
+			}
+		}
+
+	isallo_direction
+		{
+		label			= <*default*> "Isallobaric Wind Direction"
+		short_label		= <*default*> "Isallo Dir"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= diris
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= 180.0 + (atan2[vis, uis] / RAD)
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= isallo_direction
+			magnitude_component	= isallo_speed
+			}
+		}
+
+	uv_thermal
+		{
+		label			= <*default*> "U/V Component Thermal"
+		short_label		= <*default*> "UV Thermal"
+		element_group	= Wind
+		level_type		= Layer
+		alias			= uvtr
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Vector
+		wind_class		= None
+
+		editor          = None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		components		=
+			{
+			x_component			= u_thermal
+			y_component			= v_thermal
+			}
+		}
+
+	u_thermal
+		{
+		label			= <*default*> "U Component Thermal"
+		short_label		= <*default*> "U Thermal"
+		element_group	= Wind
+		level_type		= Layer
+		alias			= utr
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= ughght<@thick>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_thermal
+			y_component			= v_thermal
+			}
+		}
+
+	v_thermal
+		{
+		label			= <*default*> "V Component Thermal"
+		short_label		= <*default*> "V Thermal"
+		element_group	= Wind
+		level_type		= Layer
+		alias			= vtr
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= vghght<@thick>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_thermal
+			y_component			= v_thermal
+			}
+		}
+
+	thermal_speed
+		{
+		label			= <*default*> "Thermal Wind Speed"
+		short_label		= <*default*> "Thermal Spd"
+		element_group	= Wind
+		level_type		= Layer
+		alias			= spdtr
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= hypot[utr, vtr]
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= thermal_direction
+			magnitude_component	= thermal_speed
+			}
+		}
+
+	thermal_direction
+		{
+		label			= <*default*> "Thermal Wind Direction"
+		short_label		= <*default*> "Thermal Dir"
+		element_group	= Wind
+		level_type		= Layer
+		alias			= dirtr
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= 180.0 + (atan2[vtr, utr] / RAD)
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= thermal_direction
+			magnitude_component	= thermal_speed
+			}
+		}
+
+	gradient_speed
+		{
+		label			= <*default*> "Gradient Wind Speed"
+		short_label		= <*default*> "Grad Spd"
+		element_group	= Wind
+		level_type		= Level
+		alias			= spdr
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= srhght<@gz>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= gradient_direction
+			magnitude_component	= gradient_speed
+			}
+		}
+
+	gradient_direction
+		{
+		label			= <*default*> "Gradient Wind Direction"
+		short_label		= <*default*> "Grad Dir"
+		element_group	= Wind
+		level_type		= Level
+		alias			= dirr
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= dirgrad<@gz>
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= gradient_direction
+			magnitude_component	= gradient_speed
+			}
+		}
+
+	gradmsl_speed
+		{
+		label			= <*default*> "Gradmsl Wind Speed"
+		short_label		= <*default*> "Gradmsl Spd"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= spdrp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= srpres<@p>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= gradmsl_direction
+			magnitude_component	= gradmsl_speed
+			}
+		}
+
+	gradmsl_direction
+		{
+		label			= <*default*> "Gradmsl Wind Direction"
+		short_label		= <*default*> "Gradmsl Dir"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= dirrp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= dirgrad<@p>
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= gradmsl_direction
+			magnitude_component	= gradmsl_speed
+			}
+		}
+
+	cyclostr_speed
+		{
+		label			= <*default*> "Cyclostrophic Wind Speed"
+		short_label		= <*default*> "Cyclo Spd"
+		element_group	= Wind
+		level_type		= Level
+		alias			= spdc
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= schght<@gz>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= cyclostr_direction
+			magnitude_component	= cyclostr_speed
+			}
+		}
+
+	cyclostr_direction
+		{
+		label			= <*default*> "Cyclostrophic Wind Direction"
+		short_label		= <*default*> "Cyclo Dir"
+		element_group	= Wind
+		level_type		= Level
+		alias			= dirc
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= dirgrad<@gz>
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= cyclostr_direction
+			magnitude_component	= cyclostr_speed
+			}
+		}
+
+	cyclomsl_speed
+		{
+		label			= <*default*> "Cyclomsl Wind Speed"
+		short_label		= <*default*> "Cyclomsl Spd"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= spdcp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= scpres<@p>
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= cyclomsl_direction
+			magnitude_component	= cyclomsl_speed
+			}
+		}
+
+	cyclomsl_direction
+		{
+		label			= <*default*> "Cyclomsl Wind Direction"
+		short_label		= <*default*> "Cyclomsl Dir"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= dircp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= dirgrad<@p>
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= cyclomsl_direction
+			magnitude_component	= cyclomsl_speed
+			}
+		}
+
+	u_geomsl_isallo
+		{
+		label			= <*default*> "U Geomsl/Isallo"
+		short_label		= <*default*> "U Geomsl/Isallo"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= ugpi
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= u_geomsl + u_isallo
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_geomsl_isallo
+			y_component			= v_geomsl_isallo
+			}
+		}
+
+	v_geomsl_isallo
+		{
+		label			= <*default*> "V Geomsl/Isallo"
+		short_label		= <*default*> "V Geomsl/Isallo"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= vgpi
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= UV_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= v_geomsl + v_isallo
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			x_component			= u_geomsl_isallo
+			y_component			= v_geomsl_isallo
+			}
+		}
+
+	geomsl_isallo_speed
+		{
+		label			= <*default*> "Geomsl/Isallo Wind Speed"
+		short_label		= <*default*> "Geomsl/Isallo Spd"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= spdgpi
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  knots
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= hypot[ugpi, vgpi]
+			equation_units		= m/s
+			}
+
+		components		=
+			{
+			direction_component	= geomsl_isallo_direction
+			magnitude_component	= geomsl_isallo_speed
+			}
+		}
+
+	geomsl_isallo_direction
+		{
+		label			= <*default*> "Geomsl/Isallo Wind Direction"
+		short_label		= <*default*> "Geomsl/Isallo Dir"
+		element_group	= Wind
+		level_type		= Msl
+		alias			= dirgpi
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_bmap
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			=
+			{
+			value_sample_types	= Value_Sample
+			wind_sample_types	= DS_Component_Wind
+			}
+
+		equation		=
+			{
+			equation_string		= 180.0 + (atan2[vgpi, ugpi] / RAD)
+			equation_units		= degrees_bmap
+			}
+
+		components		=
+			{
+			direction_component	= geomsl_isallo_direction
+			magnitude_component	= geomsl_isallo_speed
+			}
+		}
+
+	vorticity
+		{
+		label			= <*default*> "Vorticity"
+		short_label		= <*default*> "Vort"
+		element_group	= Vorticity
+		level_type		= Level
+		alias			= vort  abs_vorticity  abs_vort  absolute_vorticity
+
+		file_id			= qq
+		file_ident		= vorticity
+		precision		= .01  e-5/s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	rel_vorticity
+		{
+		label			= <*default*> "Relative Vorticity"
+		short_label		= <*default*> "Rel Vort"
+		element_group	= Vorticity
+		level_type		= Level
+		alias			= rvort  rel_vort  relative_vorticity
+
+		file_id			= qr
+		file_ident		= relative_vorticity
+		precision		= .01  e-5/s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	vort_adv
+		{
+		label			= <*default*> "Vorticity Advection"
+		short_label		= <*default*> "Vort Adv"
+		element_group	= Vorticity
+		level_type		= Level
+		alias			= qadv  vorticity_advection
+
+		file_id			= qa
+		file_ident		= vorticity_advection
+		precision		= .01  e-9/s2
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= advct[vort, uwind, vwind]
+			equation_units		= 1/s2
+			}
+		}
+
+	vort_adv_geostr
+		{
+		label			= <*default*> "Vorticity Advection Geostrophic"
+		short_label		= <*default*> "Vort Adv Geostr"
+		element_group	= Vorticity
+		level_type		= Level
+		alias			= qag
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  e-9/s2
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= advct[vort, ug, vg]
+			equation_units		= 1/s2
+			}
+		}
+
+	divergence
+		{
+		label			= <*default*> "Divergence"
+		short_label		= <*default*> "Divrg"
+		element_group	= Vorticity
+		level_type		= Level
+		alias			= diver
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  e-7/s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= divrg[uwind, vwind]
+			equation_units		= 1/s
+			}
+		}
+
+	divergence_geostr
+		{
+		label			= <*default*> "Divergence Geostrophic"
+		short_label		= <*default*> "Divrg Geostr"
+		element_group	= Vorticity
+		level_type		= Level
+		alias			= divg  diver_geostr
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  e-7/s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= divrg[ug, vg]
+			equation_units		= 1/s
+			}
+		}
+
+	divergence_geomsl
+		{
+		label			= <*default*> "Divergence Geomsl"
+		short_label		= <*default*> "Divrg Geomsl"
+		element_group	= Vorticity
+		level_type		= Msl
+		alias			= divgp  diver_geomsl
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  e-7/s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= divrg[ugp, vgp]
+			equation_units		= 1/s
+			}
+		}
+
+	temperature
+		{
+		label			= <*default*> "Temperature"
+		short_label		= <*default*> "Temp"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= temp  Tair
+
+		file_id			= tt
+		file_ident		= temperature
+		precision		= .01  degreesC
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 10.000  degreesC
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			= Default
+		}
+
+	temp_adv
+		{
+		label			= <*default*> "Temperature Advection"
+		short_label		= <*default*> "Temp Adv"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= tadv  temperature_advection
+
+		file_id			= ta
+		file_ident		= temperature_advection
+		precision		= .01  Cdegrees/s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= advct[temp, uwind, vwind]
+			equation_units		= Kdegrees/s
+			}
+		}
+
+	temp_adv_geostr
+		{
+		label			= <*default*> "Temperature Advection Geostrophic"
+		short_label		= <*default*> "Temp Adv Geostr"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= tag
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  Cdegrees/s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= advct[temp, ug, vg]
+			equation_units		= Kdegrees/s
+			}
+		}
+
+	temp_adv_geomsl
+		{
+		label			= <*default*> "Temp Adv Geomsl"
+		short_label		= <*default*> "Temp Adv Geomsl"
+		element_group	= Temperature
+		level_type		= Msl
+		alias			= tagp
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  Cdegrees/s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= advct[temp, ugp, vgp]
+			equation_units		= Kdegrees/s
+			}
+		}
+
+	temp_grad
+		{
+		label			= <*default*> "Temperature Gradient"
+		short_label		= <*default*> "Temp Grad"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= tgrd  temp_gradient  temperature_gradient
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  Cdegrees/xkm
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= hypot[ddx[temp], ddy[temp]]
+			equation_units		= Kdegrees/m
+			}
+		}
+
+	dewpoint
+		{
+		label			= <*default*> "Dewpoint Temperature"
+		short_label		= <*default*> "Dewpoint"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= td  dew_point  dewpt  dewpoint_temperature
+
+		file_id			= td
+		file_ident		= dewpoint
+		precision		= .01  degreesC
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 10.000  degreesC
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= temp - es
+			equation_units		= degreesK
+			}
+		}
+
+	dewpoint_dep
+		{
+		label			= <*default*> "Dewpoint Depression"
+		short_label		= <*default*> "Dew Dep"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= es  dewpt_dep  dew_point_dep  dewpoint_depression
+
+		file_id			= es
+		file_ident		= dewpoint_depression
+		precision		= .01  Cdegrees
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 10.000  degreesC
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= temp - td
+			equation_units		= Kdegrees
+			}
+		}
+
+	rel_humidity
+		{
+		label			= <*default*> "Relative Humidity"
+		short_label		= <*default*> "RH"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= relative_humidity  rhum  rh
+
+		file_id			= rh
+		file_ident		= relative_humidity
+		precision		= .01  percent
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 20.000  percent
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= svprs[td] / svprs[temp]
+			equation_units		= ratio
+			}
+		}
+
+	mixing_ratio
+		{
+		label			= <*default*> "Mixing Ratio"
+		short_label		= <*default*> "Mix Ratio"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= mix_ratio  mixr  wrat
+
+		file_id			= mr
+		file_ident		= mixing_ratio
+		precision		= .01  g/kg
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= EPSR * svprs[td] \
+										/ (lvlprs[] - svprs[td])
+			equation_units		= kg/kg
+			}
+		}
+
+	virtual_temp
+		{
+		label			= <*default*> "Virtual Temperature"
+		short_label		= <*default*> "Virt Temp"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= tvirt  virtual_temperature
+
+		file_id			= tv
+		file_ident		= virtual_temperature
+		precision		= .01  degreesC
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= temp / (1 - (1-EPSR)*svprs[td]/lvlprs[])
+			equation_units		= degreesK
+			}
+		}
+
+	air_density
+		{
+		label			= <*default*> "Air Density"
+		short_label		= <*default*> "Air Density"
+		element_group	= Miscellaneous
+		level_type		= Level
+		alias			= ro
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  kg/m3
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= lvlprs[] / (RDRY * tvirt)
+			equation_units		= unitless
+			}
+		}
+
+################################################################################
+# Formula for condensation_temp from Bolton, MWR 108, July 1980, 1046-1053
+################################################################################
+
+	condensation_temp
+		{
+		label			= <*default*> "Lifting Condensation Level Temp"
+		short_label		= <*default*> "LCL Temp"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= lifting_condensation_level_temperature  tlcl
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= 1 / (1/(temp-55) - log[rh]/2840) + 55
+			equation_units		= degreesK
+			}
+		}
+
+################################################################################
+# Formula for theta_e from Bolton, MWR 108, July 1980, 1046-1053
+################################################################################
+
+	theta_e
+		{
+		label			= <*default*> "Equivalent Potential Temp"
+		short_label		= <*default*> "ThetaE"
+		element_group	= Temperature
+		level_type		= Level
+		alias			= equivalent_potential_temp  thetae
+
+		file_id			= te
+		file_ident		= theta_e
+		precision		= .01  Kdegrees
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= temp * pow[100000/lvlprs[], \
+										0.2854 * (1.0 - 0.00028*wrat)] \
+										* exp[(3.376/tlcl - 0.00254) \
+										* wrat * (1.0 + 0.00081*wrat)]
+			equation_units		= degreesK
+			}
+		}
+
+	max_temp
+		{
+		label			= <*default*> "Maximum Temperature"
+		short_label		= <*default*> "Max Temp"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= maxtmp  max_temperature  maximum_temperature  tmax
+
+		file_id			= tx
+		file_ident		= max_temperature
+		precision		= .01  degreesC
+
+		time_dependence	=
+			{
+			time_type		= Daily
+			daily_range		= 14.000  6.000  22.000  hr
+			}
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 10.000  degreesC
+			}
+
+		sample			= Default
+
+		value_calculation	=
+			{
+			value_crossref		= Max_Temp
+			source_types		= Guidance  Allied
+			}
+		}
+
+	min_temp
+		{
+		label			= <*default*> "Minimum Temperature"
+		short_label		= <*default*> "Min Temp"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= mintmp  min_temperature  minimum_temperature  tmin
+
+		file_id			= tn
+		file_ident		= min_temperature
+		precision		= .01  degreesC
+
+		time_dependence	=
+			{
+			time_type		= Daily
+			daily_range		= 5.000  -2.000  9.000  hr
+			}
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 10.000  degreesC
+			}
+
+		sample			= Default
+
+		value_calculation	=
+			{
+			value_crossref		= Min_Temp
+			source_types		= Guidance  Allied
+			}
+		}
+
+	max_temp_time
+		{
+		label			= <*default*> "Maximum Temperature Time"
+		short_label		= <*default*> "Max Temp Time"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= maxthr  max_temperature_time  \
+							maximum_temperature_time  tmax_time
+
+		file_id			= hx
+		file_ident		= max_temperature_time
+		precision		= .01  hr
+
+		time_dependence	=
+			{
+			time_type		= Daily
+			daily_range		= 14.000  6.000  22.000  hr
+			}
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 6.000  hr
+			}
+
+		sample			= Default
+
+		value_calculation	=
+			{
+			value_crossref		= Max_Temp_Time
+			source_types		= Guidance  Allied
+			}
+		}
+
+	min_temp_time
+		{
+		label			= <*default*> "Minimum Temperature Time"
+		short_label		= <*default*> "Min Temp Time"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= minthr  min_temperature_time  \
+							minimum_temperature_time  tmin_time
+
+		file_id			= hn
+		file_ident		= min_temperature_time
+		precision		= .01  hr
+
+		time_dependence	=
+			{
+			time_type		= Daily
+			daily_range		= 5.000  -2.000  9.000  hr
+			}
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 6.000  hr
+			}
+
+		sample			= Default
+
+		value_calculation	=
+			{
+			value_crossref		= Min_Temp_Time
+			source_types		= Guidance  Allied
+			}
+		}
+
+	total_totals
+		{
+		label			= <*default*> "Total Totals Index"
+		short_label		= <*default*> "Ttotal"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= ttotals
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  Cdegrees
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= (temp<850> - temp<500>) + (td<850> - temp<500>)
+			equation_units		= Kdegrees
+			}
+		}
+
+	george_k
+		{
+		label			= <*default*> "Georges K Index"
+		short_label		= <*default*> "George K"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= georgek
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degreesC
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= (temp<850> - temp<500>) +  \
+										td<850>  - (temp<700> - td<700>)
+			equation_units		= degreesK
+			}
+		}
+
+	sun_angle
+		{
+		label			= <*default*> "Sun Angle"
+		short_label		= <*default*> "Sun Angle"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= sang  zenith  zenith_angle
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= sunang[]
+			equation_units		= MKS
+			}
+		}
+
+	solar_flux
+		{
+		label			= <*default*> "Solar Flux"
+		short_label		= <*default*> "Solar Flux"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= sflux
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= SOLAR * cos[sunang[] * RAD] / (sundist[]^2)
+			equation_units		= w/m2
+			}
+		}
+
+	latitude
+		{
+		label			= <*default*> "Latitude"
+		short_label		= <*default*> "Lat"
+		element_group	= Not_Displayed
+		level_type		= Level
+		alias			= lat
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_true
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= lat[]
+			equation_units		= degrees_true
+			}
+		}
+
+	longitude
+		{
+		label			= <*default*> "Longitude"
+		short_label		= <*default*> "Long"
+		element_group	= Not_Displayed
+		level_type		= Level
+		alias			= lon
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  degrees_true
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= lon[]
+			equation_units		= degrees_true
+			}
+		}
+
+	low_cloud
+		{
+		label			= <*default*> "Low Cloud"
+		short_label		= <*default*> "Low Cloud"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= lcloud
+
+		file_id			= lc
+		file_ident		= low_cloud
+		precision		= .01  percent
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 40.0  percent
+			}
+
+		sample			= Default
+		}
+
+	mid_cloud
+		{
+		label			= <*default*> "Mid Cloud"
+		short_label		= <*default*> "Mid Cloud"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= mcloud
+
+		file_id			= mc
+		file_ident		= mid_cloud
+		precision		= .01  percent
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 40.0  percent
+			}
+
+		sample			= Default
+		}
+
+	high_cloud
+		{
+		label			= <*default*> "High Cloud"
+		short_label		= <*default*> "High Cloud"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= hcloud
+
+		file_id			= hc
+		file_ident		= high_cloud
+		precision		= .01  percent
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 40.0  percent
+			}
+
+		sample			= Default
+		}
+
+	total_cloud
+		{
+		label			= <*default*> "Total Cloud"
+		short_label		= <*default*> "Total Cloud"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= tcloud
+
+		file_id			= tc
+		file_ident		= total_cloud
+		precision		= .01  percent
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 40.0  percent
+			}
+
+		sample			= Default
+		}
+
+	precipitation
+		{
+		label			= <*default*> "Precipitation"
+		short_label		= <*default*> "Precip"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= precip
+
+		file_id			= pr
+		file_ident		= precipitation
+		precision		= .01  mm(H2O)
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 1.0  mm(H2O)
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			= Default
+		}
+
+	convective_precip
+		{
+		label			= <*default*> "Convective Precipitation"
+		short_label		= <*default*> "Cnvct Precip"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= cnvctp  convective_precip_amount
+
+		file_id			= pc
+		file_ident		= cvctv_precipitation
+		precision		= .01  mm(H2O)
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 1.0  mm(H2O)
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			= Default
+		}
+
+	rainfall_rate
+		{
+		label			= <*default*> "Rainfall Rate"
+		short_label		= <*default*> "Rain Rate"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= rrate  rain_rate  precip_rate  precipitation_rate
+
+		file_id			= rr
+		file_ident		= rainfall_rate
+		precision		= .01  mm(H2O)/hr
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 1.0  mm(H2O)/hr
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			= Default
+		}
+
+	convective_precip_rate
+		{
+		label			= <*default*> "Convective Rain Rate"
+		short_label		= <*default*> "Cnvct Rain Rate"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= convective_rain_rate
+
+		file_id			= rc
+		file_ident		= cvctv_rainfall_rate
+		precision		= .01  mm(H2O)/hr
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= True
+			poke			= 1.0  mm(H2O)/hr
+			}
+
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			}
+
+		sample			= Default
+		}
+
+	POP
+		{
+		label			= <*default*> "Probability of Precipitation"
+		short_label		= <*default*> "POP"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= probability_of_precip
+
+		file_id			= pp
+		file_ident		= pop
+		precision		= .01  percent
+
+		time_dependence	=
+			{
+			time_type		= Daily
+			daily_range		= 0.000  0.000  23.000  hr
+			}
+
+		field_type		= Discrete
+		wind_class		= None
+
+		attributes		=
+			{
+			FPA_category				none
+			FPA_auto_label				<*default*> "0%"
+			FPA_user_label				<*default*> "0 Percent"
+			}
+
+		editor			=
+			{
+			overlaying				= False
+			memory_file				= pop_memory_preset
+			}
+
+		sample			= Default
+		}
+
+	precipitation_amount
+		{
+		label			= <*default*> "Precipitation Amount"
+		short_label		= <*default*> "Precip Amount"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= pcpamt  precip_amount
+
+		file_id			= pa
+		file_ident		= precipitation_amount
+		precision		= .01  mm(H2O)
+
+		time_dependence	=
+			{
+			time_type		= Daily
+			daily_range		= 0.000  0.000  23.000  hr
+			}
+
+		field_type		= Discrete
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	weather_system
+		{
+		label			= <*default*> "System Weather"
+		short_label		= <*default*> "System Wx"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= system_weather  system_wx  systemwx  weather  wx
+
+		file_id			= sx
+		file_ident		= weather_system
+		precision		= 0.0  category
+
+		time_dependence	= Normal
+
+		field_type		= Discrete
+		wind_class		= None
+
+		attributes		=
+			{
+			FPA_category				none
+			FPA_auto_label				<*default*> "CLR"
+			FPA_user_label				<*default*> "Clear"
+			cloud_amount
+				{
+				attribute_label			= <*default*> "Cloud Amount"
+				attribute_short_label	= <*default*> "Amount"
+				}
+			cloud_remarks
+				{
+				attribute_label			= <*default*> "Cloud Remarks"
+				attribute_short_label	= <*default*> "Remarks"
+				}
+			visibility
+				{
+				attribute_label			= <*default*> "Visibility"
+				attribute_short_label	= <*default*> "Vis"
+				}
+			weather
+				{
+				attribute_label			= <*default*> "Weather"
+				attribute_short_label	= <*default*> "Wx"
+				}
+			weather_modifier
+				{
+				attribute_label			= <*default*> "Weather Modifier"
+				attribute_short_label	= <*default*> "Wx Mod"
+				}
+			visibility_secondary
+				{
+				attribute_label			= <*default*> "Visibility 2"
+				attribute_short_label	= <*default*> "Vis 2"
+				}
+			weather_secondary
+				{
+				attribute_label			= <*default*> "Weather 2"
+				attribute_short_label	= <*default*> "Wx 2"
+				}
+			wx_remarks
+				{
+				attribute_label			= <*default*> "Weather Remarks"
+				attribute_short_label	= <*default*> "Wx Remarks"
+				}
+			}
+
+		editor			=
+			{
+			overlaying				= True
+			entry_file				= weather_system
+			entry_rules				= weather_label weather_category
+			}
+
+		sample			=
+			{
+			attribute_sample_names	= FPA_category
+			}
+		}
+
+	weather_local
+		{
+		label			= <*default*> "Local Weather"
+		short_label		= <*default*> "Local Wx"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= local_weather  local_wx  localwx
+
+		file_id			= ox
+		file_ident		= weather_local
+		precision		= 0.0  category
+
+		time_dependence	= Normal
+
+		field_type		= Discrete
+		wind_class		= None
+
+		attributes		=
+			{
+			FPA_category				none
+			FPA_auto_label				<*default*> "NONE"
+			FPA_user_label				<*default*> "No Local Wx"
+			cloud_amount
+				{
+				attribute_label			= <*default*> "Cloud Amount"
+				attribute_short_label	= <*default*> "Amount"
+				}
+			cloud_remarks
+				{
+				attribute_label			= <*default*> "Cloud Remarks"
+				attribute_short_label	= <*default*> "Remarks"
+				}
+			visibility
+				{
+				attribute_label			= <*default*> "Visibility"
+				attribute_short_label	= <*default*> "Vis"
+				}
+			weather
+				{
+				attribute_label			= <*default*> "Weather"
+				attribute_short_label	= <*default*> "Wx"
+				}
+			weather_modifier
+				{
+				attribute_label			= <*default*> "Weather Modifier"
+				attribute_short_label	= <*default*> "Wx Mod"
+				}
+			visibility_secondary
+				{
+				attribute_label			= <*default*> "Visibility 2"
+				attribute_short_label	= <*default*> "Vis 2"
+				}
+			weather_secondary
+				{
+				attribute_label			= <*default*> "Weather 2"
+				attribute_short_label	= <*default*> "Wx 2"
+				}
+			wx_remarks
+				{
+				attribute_label			= <*default*> "Weather Remarks"
+				attribute_short_label	= <*default*> "Wx Remarks"
+				}
+			}
+
+		editor			=
+			{
+			overlaying				= True
+			entry_file				= weather_local
+			entry_rules				= weather_category
+			}
+
+		sample			= Default
+		}
+
+	fronts
+		{
+		label			= <*default*> "Fronts"
+		short_label		= <*default*> "Fronts"
+		element_group	= Miscellaneous
+		level_type		= Surface
+
+		file_id			= ff
+		file_ident		= fronts
+		precision		= 0.0  category
+
+		field_type		= Line
+		wind_class		= None
+
+		line_types		=
+			{
+			cold
+				{
+				type_label	= <*default*> "Cold Front"
+				pattern		=  front.sfc.cold
+				}
+			warm
+				{
+				type_label	= <*default*> "Warm Front"
+				pattern		=  front.sfc.warm
+				}
+			stationary
+				{
+				type_label	= <*default*> "Stationary Front"
+				pattern		=  front.sfc.stationary
+				}
+			occluded
+				{
+				type_label	= <*default*> "Occluded Front"
+				pattern		=  front.sfc.occluded
+				}
+			trowal
+				{
+				type_label	= <*default*> "Trowal"
+				pattern		=  trowal
+				}
+			trof
+				{
+				type_label	= <*default*> "Trof"
+				pattern		=  trof
+				}
+			ridge
+				{
+				type_label	= <*default*> "Ridge"
+				pattern		=  ridge
+				}
+			upper_cold
+				{
+				type_label	= <*default*> "Upper Cold Front"
+				pattern		=  front.upr.cold
+				}
+			upper_warm
+				{
+				type_label	= <*default*> "Upper Warm Front"
+				pattern		=  front.upr.warm
+				}
+			upper_stationary
+				{
+				type_label	= <*default*> "Upper Stationary Front"
+				pattern		=  front.upr.stationary
+				}
+			upper_trof
+				{
+				type_label	= <*default*> "Upper Trof"
+				pattern		=  trof.upr
+				}
+			}
+
+		editor			= 
+			{
+			}
+
+		sample			=
+			{
+			attribute_sample_names	= FPA_category
+			}
+		}
+
+	sea_temp
+		{
+		label			= <*default*> "Sea Surface Temperature"
+		short_label		= <*default*> "SST"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+		alias			= tsea  sst  sea_temperature  \
+							lake_temp  Tlake  lake_temperature
+
+		file_id			= tm
+		file_ident		= sea_sfc_temperature
+		precision		= .01  degreesC
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 10.000  degreesC
+			}
+
+		sample			= Default
+		}
+
+	freezing_spray
+		{
+		label			= <*default*> "Freezing Spray"
+		short_label		= <*default*> "Frzg Spray"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+		alias			= fspray
+
+		file_id			= fz
+		file_ident		= freezing_spray
+		precision		= 0.0  category
+
+		time_dependence	= Normal
+
+		field_type		= Discrete
+		wind_class		= None
+
+		attributes		=
+			{
+			FPA_category				none
+			FPA_auto_label				<*default*> "NONE"
+			FPA_user_label				<*default*> "None"
+			frzg_spray_modifier
+				{
+				attribute_label			= <*default*> "Freezing Spray Modifier"
+				attribute_short_label	= <*default*> "Frzg Spray Mod"
+				}
+			frzg_spray_intensity		NONE
+				{
+				attribute_label			= <*default*> "Freezing Spray Intensity"
+				attribute_short_label	= <*default*> "Frzg Spray Int"
+				}
+			frzg_spray_remarks
+				{
+				attribute_label			= <*default*> "Freezing Spray Remarks"
+				attribute_short_label	= <*default*> "Frzg Spray Rem"
+				}
+			}
+
+		editor			=
+			{
+			overlaying				= False
+			entry_file				= freezing_spray
+			}
+
+		sample			= Default
+		}
+
+	sea_ice
+		{
+		label			= <*default*> "Sea Ice"
+		short_label		= <*default*> "Sea Ice"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+		alias			= seaice
+
+		file_id			= ic
+		file_ident		= sea_ice
+		precision		= 0.0  category
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Discrete
+		wind_class		= None
+
+		attributes		=
+			{
+			FPA_category				none
+			FPA_auto_label				<*default*> "NONE"
+			FPA_user_label				<*default*> "No Ice"
+			}
+
+		editor			=
+			{
+			overlaying				= False
+			memory_file				= sea_ice_memory_preset
+			}
+
+		sample			= Default
+		}
+
+	ice_cover
+		{
+		label			= <*default*> "Ice Cover"
+		short_label		= <*default*> "Ice Cover"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+		alias			= icecover
+
+		file_id			= ir
+		file_ident		= ice_cover
+		precision		= 0.01  ratio
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	wave_height
+		{
+		label			= <*default*> "Wave Height"
+		short_label		= <*default*> "Wave Hght"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+		alias			= waveht  waveheight
+
+		file_id			= wh
+		file_ident		= wave_height
+		precision		= .01  m
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 10.000  m
+			}
+
+		sample			= Default
+		}
+
+	u_wave_hgt
+		{
+		label			= <*default*> "U Wave Height"
+		short_label		= <*default*> "U Wave Hgt"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+
+		file_id			= uh
+		file_ident		= u_wave_height
+		precision		= .01  m
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	v_wave_hgt
+		{
+		label			= <*default*> "V Wave Height"
+		short_label		= <*default*> "V Wave Hgt"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+
+		file_id			= vh
+		file_ident		= v_wave_height
+		precision		= .01  m
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	uv_wave_hgt
+		{
+		label			= <*default*> "U/V Wave Height"
+		short_label		= <*default*> "UV Wave Hgt"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+		alias			= uvwave
+
+		file_id			= xh
+		file_ident		= uv_wave_height
+		precision		= .01  m
+
+		time_dependence	= Normal
+
+		field_type		= Vector
+		wind_class		= None
+
+		editor          =
+			{
+			hilo            = False
+			magnitude_poke  = 10 m
+			direction_poke	= 30 degrees_true
+			}
+
+		sample			= Default
+
+		components		=
+			{
+			x_component			= u_wave_hgt
+			y_component			= v_wave_hgt
+			}
+		}
+
+	wave_period
+		{
+		label			= <*default*> "Wave Period"
+		short_label		= <*default*> "Wave Pd"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+		alias			= wavepd  waveperiod
+
+		file_id			= wp
+		file_ident		= wave_period
+		precision		= .01  s
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 10.000  s
+			}
+
+		sample			= Default
+		}
+
+	wave_plot
+		{
+		label			= <*default*> "Wave Plot"
+		short_label		= <*default*> "Wave Plot"
+		element_group	= Sea
+		level_type		= Surface
+		field_group		= Sea
+		alias			= waveplot
+
+		file_id			= wv
+		file_ident		= wave_plot
+		precision		= .01  none
+
+		time_dependence	= Normal
+
+		field_type		= Scattered
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	wind_plot
+		{
+		label			= <*default*> "Wind Plot"
+		short_label		= <*default*> "Wind Plot"
+		element_group	= Wind
+		level_type		= Surface
+		alias			= windplot
+
+		file_id			= wd
+		file_ident		= wind_plot
+		precision		= .01  none
+
+		time_dependence	= Normal
+
+		field_type		= Scattered
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	storms
+		{
+		label			= <*default*> "Storms"
+		short_label		= <*default*> "Storms"
+		element_group	= Sea
+		level_type		= Msl
+		field_group		= Sea
+
+		file_id			= sp
+		file_ident		= storms
+		precision		= .01  none
+
+		time_dependence	= Normal
+
+		field_type		= Scattered
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	geography
+		{
+		label			= <*default*> "Geography"
+		short_label		= <*default*> "Geography"
+		element_group	= Not_Displayed
+		level_type		= Geography
+		alias			= geog
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Special
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	land_water
+		{
+		label			= <*default*> "Land/Water Areas"
+		short_label		= <*default*> "Land/Water"
+		element_group	= Not_Displayed
+		level_type		= Geography
+		alias			= lw  land  water
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Discrete
+		wind_class		= None
+
+		attributes		=
+			{
+			FPA_category				water
+			FPA_auto_label				<*default*> "WATER"
+			FPA_user_label				<*default*> "Water"
+			}
+
+		editor			=
+			{
+			overlaying				= False
+			# >>> perhaps only one of the following <<< #
+			entry_file				= land_water
+			memory_file				= land_water_memory_preset
+			}
+
+		sample			= Default
+		}
+
+	boundaries
+		{
+		label			= <*default*> "Geographical Boundaries"
+		short_label		= <*default*> "Boundaries"
+		element_group	= Not_Displayed
+		level_type		= Geography
+		alias			= bound
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Line
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	cities
+		{
+		label			= <*default*> "Cities"
+		short_label		= <*default*> "Cities"
+		element_group	= Not_Displayed
+		level_type		= Geography
+		alias			= city
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Scattered
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	road
+		{
+		label			= <*default*> "Roads"
+		short_label		= <*default*> "Roads"
+		element_group	= Not_Displayed
+		level_type		= Geography
+		alias			= roads
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Line
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	rail
+		{
+		label			= <*default*> "Railways"
+		short_label		= <*default*> "Railways"
+		element_group	= Not_Displayed
+		level_type		= Geography
+		alias			= railroad  railroads  railway  railways
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Line
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	hypsography
+		{
+		label			= <*default*> "Hypsography"
+		short_label		= <*default*> "Hypsography"
+		element_group	= Not_Displayed
+		level_type		= Geography
+		alias			= hyps  terrain  elevation
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Discrete
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	forecast_areas
+		{
+		label			= <*default*> "Forecast Areas"
+		short_label		= <*default*> "Fcst Areas"
+		element_group	= Not_Displayed
+		level_type		= Geography
+		alias			= fcst  fcst_areas
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Discrete
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	app_menu
+		{
+		label			= <*default*> "Application Menu"
+		short_label		= <*default*> "App Menu"
+		element_group	= Not_Displayed
+		level_type		= Annotation
+		alias			= menu
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Special
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	legend
+		{
+		label			= <*default*> "Legend"
+		short_label		= <*default*> "Legend"
+		element_group	= Not_Displayed
+		level_type		= Annotation
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  none
+
+		time_dependence	=
+			{
+			time_type		= Static
+			}
+
+		field_type		= Special
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+		}
+
+	guess_cloud
+		{
+		label			= <*default*> "Guess Cloud"
+		short_label		= <*default*> "Guess Cloud"
+		element_group	= Miscellaneous
+		level_type		= Level
+		alias			= gcld
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			=
+			{
+			hilo			= False
+			poke			= 4.000  MKS
+			}
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= max[0.0, ((max[60.0, rh] - 60.0) * -ww)]
+			equation_units		= none
+			}
+		}
+
+	GENERIC_flat_field_0
+		{
+		label			= <*default*> "Flat Field of 0"
+		short_label		= <*default*> "Flat 0"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= flat_field_0
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= 0.0
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_flat_field_50
+		{
+		label			= <*default*> "Flat Field of 50"
+		short_label		= <*default*> "Flat 50"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= flat_field_50
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= 50.0
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_24hr_difference
+		{
+		label			= <*default*> "24hr Difference"
+		short_label		= <*default*> "24hr Diff"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= 24hr_diff  24hrdiff
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= @ - @<v-24>
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_12hr_difference
+		{
+		label			= <*default*> "12hr Difference"
+		short_label		= <*default*> "12hr Diff"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= 12hr_diff  12hrdiff
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= @ - @<v-12>
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_06hr_difference
+		{
+		label			= <*default*> "6hr Difference"
+		short_label		= <*default*> "6hr Diff"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= 06hr_diff  06hrdiff
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= @ - @<v-06>
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_06hr_forward_difference
+		{
+		label			= <*default*> "6hr Forward Difference"
+		short_label		= <*default*> "6hr Fwd Diff"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= 06hr_fwd_diff  06hrfwddiff
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= @<v+06> - @
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_24hr_previous
+		{
+		label			= <*default*> "24hr Previous Difference"
+		short_label		= <*default*> "24hr Prev"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= 24hr_prev  24hrprev
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= @ - @<r-24>
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_12hr_previous
+		{
+		label			= <*default*> "12hr Previous Difference"
+		short_label		= <*default*> "12hr Prev"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= 12hr_prev  12hrprev
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= @ - @<r-12>
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_06hr_previous
+		{
+		label			= <*default*> "6hr Previous Difference"
+		short_label		= <*default*> "6hr Prev"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= 06hr_prev  06hrprev
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= @ - @<r-06>
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_difference
+		{
+		label			= <*default*> "Generic Difference"
+		short_label		= <*default*> "Gen Diff"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= generic_diff  model_diff  model_difference  modeldiff
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= @ - @<!>
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_forward_difference
+		{
+		label			= <*default*> "Generic Forward Difference"
+		short_label		= <*default*> "Gen Fwd Diff"
+		element_group	= Generic_Equation
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= generic_fwd_diff  fwd_diff  forward_difference
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= @<!> - @
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_speed_by_gradients
+		{
+		label			= <*default*> "Wind Speed by Gradients"
+		short_label		= <*default*> "Wind Spd"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= spdgrad
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= hypot[ddx[@], ddy[@]]
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_direction_by_gradients
+		{
+		label			= <*default*> "Wind Direction by Gradients"
+		short_label		= <*default*> "Wind Dir"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= dirgrad
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= 180.0 +  \
+									(atan2[(ddx[@] * copysign[1.0, lat[]]),  \
+										(-ddy[@] * copysign[1.0, lat[]])] / RAD)
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_u_geostr_height
+		{
+		label			= <*default*> "U Component Geostrophic Height"
+		short_label		= <*default*> "U Geostr Hght"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= ughght
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= -GRAV * ddy[@] / limcorio
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_v_geostr_height
+		{
+		label			= <*default*> "V Component Geostrophic Height"
+		short_label		= <*default*> "V Geostr Hght"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= vghght
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= GRAV * ddx[@] / limcorio
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_u_geostr_pressure
+		{
+		label			= <*default*> "U Component Geostrophic Pressure"
+		short_label		= <*default*> "U Geostr Pres"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= ugpres
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= -ddy[@] / ROSTD / limcorio
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_v_geostr_pressure
+		{
+		label			= <*default*> "V Component Geostrophic Pressure"
+		short_label		= <*default*> "V Geostr Pres"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= vgpres
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= ddx[@] / ROSTD / limcorio
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_spd_grad_height
+		{
+		label			= <*default*> "Gradient Wind Speed Height"
+		short_label		= <*default*> "Grad Spd Hght"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= srhght
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= (-fabs[limcorio]/2.0 +  \
+									sqrt[(limcorio/2.0)^2.0 +  \
+										spdgrad*gradhghtcurv*GRAV])  \
+									/ gradhghtcurv
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_spd_grad_pressure
+		{
+		label			= <*default*> "Gradient Wind Speed Pressure"
+		short_label		= <*default*> "Grad Spd Pres"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= srpres
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= (-fabs[limcorio]/2.0 +  \
+									sqrt[(limcorio/2.0)^2.0 +  \
+										spdgrad*gradprescurv/ROSTD])  \
+									/ gradprescurv
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_spd_cyclo_height
+		{
+		label			= <*default*> "Cyclostrophic Wind Speed Height"
+		short_label		= <*default*> "Cyclo Spd Hght"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= schght
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= sqrt[spdgrad * GRAV / fabs[limcurve]]
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_spd_cyclo_pressure
+		{
+		label			= <*default*> "Cyclostrophic Wind Speed Pressure"
+		short_label		= <*default*> "Cyclo Spd Pres"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= scpres
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= sqrt[spdgrad / ROSTD / fabs[limcurve]]
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_u_isallobaric
+		{
+		label			= <*default*> "U Component Isallobaric"
+		short_label		= <*default*> "U Isallo"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= uisbar
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= -ddx[@] / ROSTD / limcorio^2.0
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_v_isallobaric
+		{
+		label			= <*default*> "V Component Isallobaric"
+		short_label		= <*default*> "V Isallo"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= visbar
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= -ddy[@] / ROSTD / limcorio^2.0
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_coriolis_force
+		{
+		label			= <*default*> "Coriolis Force"
+		short_label		= <*default*> "Coriolis"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= coriolis
+
+		file_id			= None
+		file_ident		= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= COR * sin[lat[] * RAD]
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_limited_coriolis_force
+		{
+		label			= <*default*> "Limited Coriolis Force"
+		short_label		= <*default*> "Limit Corio"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= limcorio
+
+		file_ident		= None
+		file_id			= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= COR * sin[outside[lat[], -17.0, 17.0] * RAD]
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_limited_curvature
+		{
+		label			= <*default*> "Limited Curvature"
+		short_label		= <*default*> "Limit Curv"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= limcurve
+
+		file_ident		= None
+		file_id			= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= outside[curv[@], -1.0e-8, 1.0e-8]
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_gradient_height_curvature
+		{
+		label			= <*default*> "Gradient Height Curvature"
+		short_label		= <*default*> "Grad Hgt Curv"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= gradhghtcurv
+
+		file_ident		= None
+		file_id			= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= between[limcurve,  \
+									-((limcorio/2.0)^2.0 / spdgrad / GRAV),  \
+									FPA_MAX_VALUE]
+			equation_units		= MKS
+			}
+		}
+
+	GENERIC_gradient_pressure_curvature
+		{
+		label			= <*default*> "Gradient Pressure Curvature"
+		short_label		= <*default*> "Grad Pres Curv"
+		element_group	= Not_Displayed
+		level_type		= Any
+		field_group		= Not_Displayed
+		alias			= gradprescurv
+
+		file_ident		= None
+		file_id			= None
+		precision		= .01  MKS
+
+		time_dependence	= Normal
+
+		field_type		= Continuous
+		wind_class		= None
+
+		editor			= None
+
+		sample			= Default
+
+		equation		=
+			{
+			equation_string		= between[limcurve,  \
+									-((limcorio/2.0)^2.0 / spdgrad * ROSTD),  \
+									FPA_MAX_VALUE]
+			equation_units		= MKS
+			}
+		}
+
+	Any_Element
+		{
+		element_group	= Not_Displayed
+		level_type		= Any
+		alias			= ANY ALL
+		field_type		= NotUsed
+		}
+
+	NULL
+		{
+		element_group	= Not_Displayed
+		level_type		= NotUsed
+		alias			= NONE
+		field_type		= NotUsed
+		}
+
+	}
+
+################################################################################
+#
+# "Levels" block - Descriptions of each level
+#
+# Each level in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each level may optionally be identified by an alias name.
+# These aliases are used to match the level names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each level by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+################################################################################
+
+Levels
+	{
+
+	msl
+		{
+		label			= <*default*> "Msl"
+		short_label		= <*default*> "Msl"
+		level_type		= Msl
+		field_group		= Surface
+
+		file_id			= msl
+		file_ident		= msl
+
+		level_levels	= Msl
+		}
+
+	surface
+		{
+		label			= <*default*> "Surface"
+		short_label		= <*default*> "Sfc"
+		level_type		= Surface
+		field_group		= Surface
+		alias			= sfc  100sigma  100ETA  10000ETA  0ETA
+
+		file_id			= sfc
+		file_ident		= sfc
+
+		level_levels	= Surface
+		}
+
+	1000mb
+		{
+		label			= <*default*> "1000mb"
+		short_label		= <*default*> "1000mb"
+		level_type		= Level
+		field_group		= Surface
+		alias			= 1000  1K
+
+		file_id			= 1000
+		file_ident		= 1000
+
+		level_levels	= Pressure  1000
+		}
+
+	925mb
+		{
+		label			= <*default*> "925mb"
+		short_label		= <*default*> "925mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 925
+
+		file_id			= 925
+		file_ident		= 925
+
+		level_levels	= Pressure  925
+		}
+
+	850mb
+		{
+		label			= <*default*> "850mb"
+		short_label		= <*default*> "850mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 850
+
+		file_id			= 850
+		file_ident		= 850
+
+		level_levels	= Pressure  850
+		}
+
+	700mb
+		{
+		label			= <*default*> "700mb"
+		short_label		= <*default*> "700mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 700
+
+		file_id			= 700
+		file_ident		= 700
+
+		level_levels	= Pressure  700
+		}
+
+	500mb
+		{
+		label			= <*default*> "500mb"
+		short_label		= <*default*> "500mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 500
+
+		file_id			= 500
+		file_ident		= 500
+
+		level_levels	= Pressure  500
+		}
+
+	400mb
+		{
+		label			= <*default*> "400mb"
+		short_label		= <*default*> "400mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 400
+
+		file_id			= 400
+		file_ident		= 400
+
+		level_levels	= Pressure  400
+		}
+
+	300mb
+		{
+		label			= <*default*> "300mb"
+		short_label		= <*default*> "300mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 300
+
+		file_id			= 300
+		file_ident		= 300
+
+		level_levels	= Pressure  300
+		}
+
+	250mb
+		{
+		label			= <*default*> "250mb"
+		short_label		= <*default*> "250mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 250
+
+		file_id			= 250
+		file_ident		= 250
+
+		level_levels	= Pressure  250
+		}
+
+	200mb
+		{
+		label			= <*default*> "200mb"
+		short_label		= <*default*> "200mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 200
+
+		file_id			= 200
+		file_ident		= 200
+
+		level_levels	= Pressure  200
+		}
+
+	150mb
+		{
+		label			= <*default*> "150mb"
+		short_label		= <*default*> "150mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 150
+
+		file_id			= 150
+		file_ident		= 150
+
+		level_levels	= Pressure  150
+		}
+
+	100mb
+		{
+		label			= <*default*> "100mb"
+		short_label		= <*default*> "100mb"
+		level_type		= Level
+		field_group		= Upper_Level
+		alias			= 100
+
+		file_id			= 100
+		file_ident		= 100
+
+		level_levels	= Pressure  100
+		}
+
+	500-1000mb
+		{
+		label			= <*default*> "500-1000mb"
+		short_label		= <*default*> "500-1000mb"
+		level_type		= Layer
+		field_group		= Upper_Level
+		alias			= 501K  500-1000
+
+		file_id			= 501K
+		file_ident		= 500_1000
+
+		level_levels	= Pressure  500  1000
+		}
+
+	850-1000mb
+		{
+		label			= <*default*> "850-1000mb"
+		short_label		= <*default*> "850-1000mb"
+		level_type		= Layer
+		field_group		= Upper_Level
+		alias			= 851K  850-1000
+
+		file_id			= 851K
+		file_ident		= 850_1000
+
+		level_levels	= Pressure  850  1000
+		}
+
+	700-1000mb
+		{
+		label			= <*default*> "700-1000mb"
+		short_label		= <*default*> "700-1000mb"
+		level_type		= Layer
+		field_group		= Upper_Level
+		alias			= 701K  700-1000
+
+		file_id			= 701K
+		file_ident		= 700_1000
+
+		level_levels	= Pressure  700  1000
+		}
+
+	500-850mb
+		{
+		label			= <*default*> "500-850mb"
+		short_label		= <*default*> "500-850mb"
+		level_type		= Layer
+		field_group		= Upper_Level
+		alias			= 5085  500-850
+
+		file_id			= 5085
+		file_ident		= 500_850
+
+		level_levels	= Pressure  500  850
+		}
+
+	700-850mb
+		{
+		label			= <*default*> "700-850mb"
+		short_label		= <*default*> "700-850mb"
+		level_type		= Layer
+		field_group		= Upper_Level
+		alias			= 7085  700-850
+
+		file_id			= 7085
+		file_ident		= 700_850
+
+		level_levels	= Pressure  700  850
+		}
+
+	500-700mb
+		{
+		label			= <*default*> "500-700mb"
+		short_label		= <*default*> "500-700mb"
+		level_type		= Layer
+		field_group		= Upper_Level
+		alias			= 5070  500-700
+
+		file_id			= 5070
+		file_ident		= 500_700
+
+		level_levels	= Pressure  500  700
+		}
+
+	geography
+		{
+		label			= <*default*> "Geography"
+		short_label		= <*default*> "Geography"
+		level_type		= Geography
+		field_group		= Not_Displayed
+		alias			= geog
+
+		file_id			= geog
+		file_ident		= geography
+
+		level_levels	= Geography
+		}
+
+	annotation
+		{
+		label			= <*default*> "Annotation"
+		short_label		= <*default*> "Annotation"
+		level_type		= Annotation
+		field_group		= Not_Displayed
+		alias			= annot
+
+		file_id			= annot
+		file_ident		= annotation
+
+		level_levels	= Annotation
+		}
+
+	Any_Level
+		{
+		level_type		= Any
+		alias			= ANY  ALL
+		}
+
+	NULL
+		{
+		level_type		= NotUsed
+		alias			= NONE
+		}
+
+	}
+
+################################################################################
+#
+# "Groups" block - Descriptions of field and element groups
+#
+################################################################################
+
+Groups
+	{
+
+	Fields
+		{
+
+		Surface
+			{
+			label		= <*default*> "Surface Fields"
+			short_label	= <*default*> "Surface"
+			}
+
+		Sea
+			{
+			label		= <*default*> "Sea State Fields"
+			short_label	= <*default*> "Sea State"
+			}
+
+		Maxmin
+			{
+			label		= <*default*> "T-max / T-min"
+			short_label	= <*default*> "Max/Min"
+			}
+
+		Upper_Level
+			{
+			label		= <*default*> "Upper Level Fields"
+			short_label	= <*default*> "Upper"
+			}
+
+		Miscellaneous
+			{
+			label		= <*default*> "Miscellaneous"
+			short_label	= <*default*> "Misc"
+			}
+
+		Not_Displayed
+
+		}
+
+	Elements
+		{
+
+		Pressure
+			{
+			label		= <*default*> "Pressure Related"
+			short_label	= <*default*> "Pressure"
+			}
+
+		Temperature
+			{
+			label		= <*default*> "Temperature Related"
+			short_label	= <*default*> "Temperature"
+			}
+
+		Vorticity
+			{
+			label		= <*default*> "Vorticity and Divergence"
+			short_label	= <*default*> "Vorticity"
+			}
+
+		Sea
+			{
+			label		= <*default*> "Sea Surface Parameters"
+			short_label	= <*default*> "Sea"
+			}
+
+		Wind
+			{
+			label		= <*default*> "Wind Parameters"
+			short_label	= <*default*> "Wind"
+			}
+
+		Miscellaneous
+			{
+			label		= <*default*> "Miscellaneous"
+			short_label	= <*default*> "Misc"
+			}
+
+		Generic_Equation
+			{
+			label		= <*default*> "Generic Equations"
+			short_label	= <*default*> "Generic"
+			}
+
+		Not_Displayed
+
+		}
+
+	}
+
+################################################################################
+#
+# "CrossRefs" block - Descriptions of wind and value crossreferences
+#
+################################################################################
+
+CrossRefs
+	{
+
+	Winds
+		{
+
+		Vg_Msl
+			{
+			label			= <*default*> "Msl Geostrophic Wind"
+			short_label		= <*default*> "Vg Msl"
+			wind_function	= FPA_Geostrophic_Wind_Func
+			crossref_fields	=
+				{
+				pressure		msl
+				}
+			}
+
+		Vr_Msl
+			{
+			label			= <*default*> "Msl Gradient Wind"
+			short_label		= <*default*> "Vr Msl"
+			wind_function	= FPA_Gradient_Wind_Func
+			crossref_fields	=
+				{
+				pressure		msl
+				}
+			}
+
+		Vc_Msl
+			{
+			label			= <*default*> "Msl Cyclostrophic Wind"
+			short_label		= <*default*> "Vc Msl"
+			wind_function	= FPA_Cyclostrophic_Wind_Func
+			crossref_fields	=
+				{
+				pressure		msl
+				}
+			}
+
+		Vx_Msl
+			{
+			label			= <*default*> "Msl Geomsl/Isallo Wind"
+			short_label		= <*default*> "Msl Geomsl/Isallo"
+			wind_function	= FPA_UVcomponent_Wind_Func
+			crossref_fields	=
+				{
+				u_geomsl_isallo	msl
+				v_geomsl_isallo	msl
+				}
+			}
+
+		Vg_850
+			{
+			label			= <*default*> "850mb Geostrophic Wind"
+			short_label		= <*default*> "Vg 850"
+			wind_function	= FPA_Geostrophic_Wind_Func
+			crossref_fields	=
+				{
+				height			850mb
+				}
+			}
+
+		Is_Msl
+			{
+			label			= <*default*> "Isallobaric Wind"
+			short_label		= <*default*> "Isallo"
+			wind_function	= FPA_Isallobaric_Wind_Func
+			crossref_fields	=
+				{
+				pres_change		msl
+				}
+			}
+
+		Th_851K
+			{
+			label			= <*default*> "850-1000mb Thermal Wind"
+			short_label		= <*default*> "850-1000 Thermal"
+			wind_function	= FPA_Thermal_Wind_Func
+			crossref_fields	=
+				{
+				thickness		850-1000mb
+				}
+			}
+
+		Fpa_Wind
+			{
+			label			= <*default*> "FPA Model Wind"
+			short_label		= <*default*> "Model"
+			wind_function	= FPA_Adjusted_Wind_Func
+			crossref_fields	=
+				{
+				actual_wind		surface
+				}
+			}
+
+		}
+
+	Values
+		{
+
+		Max_Temp
+			{
+			label			= <*default*> "Daily Maximum Temperature"
+			short_label		= <*default*> "Max Temp"
+			value_function	= FPA_Daily_Max_Value_Func
+			time_weight		= 8.000  hr
+			value_weight	= 2.500  degreesK
+			crossref_fields	=
+				{
+				temperature		surface
+				}
+			}
+
+		Min_Temp
+			{
+			label			= <*default*> "Daily Minimum Temperature"
+			short_label		= <*default*> "Min Temp"
+			value_function	= FPA_Daily_Min_Value_Func
+			time_weight		= 7.000  hr
+			value_weight	= 2.500  degreesK
+			crossref_fields	=
+				{
+				temperature		surface
+				}
+			}
+
+		Max_Temp_Time
+			{
+			label			= <*default*> "Daily Maximum Temperature Time"
+			short_label		= <*default*> "Max Temp Time"
+			value_function	= FPA_Daily_Max_Time_Func
+			time_weight		= 8.000  hr
+			value_weight	= 2.500  degreesK
+			crossref_fields	=
+				{
+				temperature		surface
+				}
+			}
+
+		Min_Temp_Time
+			{
+			label			= <*default*> "Daily Minimum Temperature Time"
+			short_label		= <*default*> "Min Temp Time"
+			value_function	= FPA_Daily_Min_Time_Func
+			time_weight		= 7.000  hr
+			value_weight	= 2.500  degreesK
+			crossref_fields	=
+				{
+				temperature		surface
+				}
+			}
+
+		Adjusted_Wind_Speed
+			{
+			label			= <*default*> "FPA Wind Speed"
+			short_label		= <*default*> "FPA Wind Spd"
+			value_function	= FPA_Actual_Wind_Speed_Func
+			crossref_fields	=
+				{
+				actual_wind		surface
+				}
+			}
+
+		Adjusted_Wind_Direction
+			{
+			label			= <*default*> "FPA Wind Direction"
+			short_label		= <*default*> "FPA Wind Dir"
+			value_function	= FPA_Actual_Wind_Direction_Func
+			crossref_fields	=
+				{
+				actual_wind		surface
+				}
+			}
+
+		}
+	}
+
+################################################################################
+#
+# "Samples" block - Descriptions of value and wind samples
+#
+################################################################################
+
+Samples
+	{
+
+	Values
+		{
+
+		Value_Sample
+			{
+			label			= <*default*> "Value"
+			short_label		= <*default*> "Value"
+			value_samptype	= FPA_Sample_Value
+			}
+
+		Gradient_Sample
+			{
+			label			= <*default*> "Gradient"
+			short_label		= <*default*> "Gradient"
+			value_samptype	= FPA_Sample_Gradient
+			}
+
+		Curvature_Sample
+			{
+			label			= <*default*> "Curvature"
+			short_label		= <*default*> "Curvature"
+			value_samptype	= FPA_Sample_Curvature
+			}
+
+		Magnitude_Sample
+			{
+			label			= <*default*> "Magnitude"
+			short_label		= <*default*> "Magnitude"
+			value_samptype	= FPA_Sample_Magnitude
+			}
+
+		Direction_Sample
+			{
+			label			= <*default*> "Direction"
+			short_label		= <*default*> "Direction"
+			value_samptype	= FPA_Sample_Direction
+			}
+
+		Label_Sample
+			{
+			label			= <*default*> "Label"
+			short_label		= <*default*> "Label"
+			value_samptype	= FPA_Sample_Label
+			}
+
+		Value_Type				### Obsolete value sample type ###
+			{
+			label			= <*default*> "Value -Call FPA Group-"
+			short_label		= <*default*> "Value -Call FPA-"
+			value_samptype	= FPA_Sample_Value
+			}
+
+		Gradient_Type			### Obsolete value sample type ###
+			{
+			label			= <*default*> "Gradient -Call FPA Group-"
+			short_label		= <*default*> "Gradient -Call FPA-"
+			value_samptype	= FPA_Sample_Gradient
+			}
+
+		Curvature_Type			### Obsolete value sample type ###
+			{
+			label			= <*default*> "Curvature -Call FPA Group-"
+			short_label		= <*default*> "Curvature -Call FPA-"
+			value_samptype	= FPA_Sample_Curvature
+			}
+
+		Label_Type				### Obsolete value sample type ###
+			{
+			label			= <*default*> "Label -Call FPA Group-"
+			short_label		= <*default*> "Label -Call FPA-"
+			value_samptype	= FPA_Sample_Label
+			}
+
+		}
+
+	Winds
+		{
+
+		Geostrophic_Wind
+			{
+			label			= <*default*> "Geostrophic Wind"
+			short_label		= <*default*> "Geostr Wind"
+			wind_function	= FPA_Geostrophic_Wind_Func
+			}
+
+		Gradient_Wind
+			{
+			label			= <*default*> "Gradient Wind"
+			short_label		= <*default*> "Grad Wind"
+			wind_function	= FPA_Gradient_Wind_Func
+			}
+
+		Cyclostrophic_Wind
+			{
+			label			= <*default*> "Cyclostrophic Wind"
+			short_label		= <*default*> "Cyclo Wind"
+			wind_function	= FPA_Cyclostrophic_Wind_Func
+			}
+
+		Isallobaric_Wind
+			{
+			label			= <*default*> "Isallobaric Wind"
+			short_label		= <*default*> "Isallo Wind"
+			wind_function	= FPA_Isallobaric_Wind_Func
+			}
+
+		Thermal_Wind
+			{
+			label			= <*default*> "Thermal Wind"
+			short_label		= <*default*> "Thermal Wind"
+			wind_function	= FPA_Thermal_Wind_Func
+			}
+
+		UV_Component_Wind
+			{
+			label			= <*default*> "U/V Component Wind"
+			short_label		= <*default*> "UV Wind"
+			wind_function	= FPA_UVcomponent_Wind_Func
+			}
+
+		DS_Component_Wind
+			{
+			label			= <*default*> "Direction/Speed Component Wind"
+			short_label		= <*default*> "Dir/Spd Wind"
+			wind_function	= FPA_DirectionSpeed_Wind_Func
+			}
+
+		Adjusted_Wind
+			{
+			label			= <*default*> "Adjusted Wind"
+			short_label		= <*default*> "Adjust Wind"
+			wind_function	= FPA_Adjusted_Wind_Func
+			}
+
+		}
+	}
+
+################################################################################
+#
+# "Sources" block - Descriptions of each data source
+#
+# Each source in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each source may optionally be identified by an alias name.
+# These aliases are used to match the source names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each source by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+################################################################################
+
+Sources
+	{
+
+	depict
+		{
+		label			= <*default*> "Depictions"
+		short_label		= <*default*> "Depict"
+		source_type		= Depiction
+		alias			= fpa  Sequence  depiction  depictions
+
+		directory_tag	= Data
+		directory_path	= Depict
+
+		subsources		= None
+		}
+
+	interp
+		{
+		label			= <*default*> "Interpolations"
+		short_label		= <*default*> "Interp"
+		source_type		= Depiction
+		alias			= FPA_Interp
+
+		directory_tag	= Data
+		directory_path	= Interp
+
+		subsources		= None
+		}
+
+	autoimport
+		{
+		label			= <*default*> "Auto Import Directory"
+		short_label		= <*default*> "Auto Import"
+		source_type		= Depiction
+		alias			= FPA_AutoImport
+
+		directory_tag	= Data
+		directory_path	= AutoImport
+
+		subsources		= None
+		}
+
+	backup
+		{
+		label			= <*default*> "Backup Depictions"
+		short_label		= <*default*> "Backup"
+		source_type		= Depiction
+		alias			= FPA_Backup
+
+		directory_tag	= Data
+		directory_path	= Backup
+
+		subsources		= None
+		}
+
+	maps
+		{
+		label			= <*default*> "Maps"
+		short_label		= <*default*> "Maps"
+		source_type		= Maps
+		alias			= background
+
+		directory_tag	= Maps
+		directory_path	= None
+
+		subsources		= None
+		}
+
+	GEM
+		{
+		label			= <*default*> "Global Environment Multiscale"
+		short_label		= <*default*> "GEM"
+		source_type		= Guidance
+		alias			= CMC_36  CMC_37  CMC_38  CMC_39 \
+							FEM_36  FEM_37  FEM_38  FEM_39
+
+		directory_tag	= Guidance
+		directory_path	= GEM
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	GEM_ANAL
+		{
+		label			= <*default*> "GEM Analysis"
+		short_label		= <*default*> "GEM ANAL"
+		source_type		= Guidance
+		alias			= CMC_31  CMC_32  CMC_33  CMC_34  \
+							FEM_Analysis_31  FEM_Analysis_32  \
+							FEM_Analysis_33  FEM_Analysis_34  \
+							gemanal  GEM_Analysis
+
+		directory_tag	= Guidance
+		directory_path	= GEM_Analysis
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	FEM
+		{
+		label			= <*default*> "Regional Finite Element"
+		short_label		= <*default*> "RFE"
+		source_type		= Guidance
+		alias			= CMC_35  FEM_35  RFE
+
+		directory_tag	= Guidance
+		directory_path	= FEM
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	FEM_ANAL
+		{
+		label			= <*default*> "RFE Analysis"
+		short_label		= <*default*> "RFE ANAL"
+		source_type		= Guidance
+		alias			= CMC_30  FEM_Analysis_30  \
+							femanal  FEM_Analysis  RFE_Anal  RFE_Analysis
+
+		directory_tag	= Guidance
+		directory_path	= FEM_Analysis
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	Spectral
+		{
+		label			= <*default*> "Global"
+		short_label		= <*default*> "Glob"
+		source_type		= Guidance
+		alias			= Spectral_45  Spectral_46  Spectral_47  Spectral_48  \
+							Spectral_49  sv9  Glob  Global  GLB
+
+		directory_tag	= Guidance
+		directory_path	= Spectral
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	Spe_ANAL
+		{
+		label			= <*default*> "Global Analysis"
+		short_label		= <*default*> "Glob ANAL"
+		source_type		= Guidance
+		alias			= Spectral_Analysis_40  Spectral_Analysis_41  \
+							Spectral_Analysis_42  Spectral_Analysis_43  \
+							Spectral_Analysis_44  Spectral_Analysis  \
+							speanal  Spectral_ANAL  Glob_ANAL  Glob_Analysis  \
+							Global_Analysis  GLB_ANAL  GLB_Analysis
+
+		directory_tag	= Guidance
+		directory_path	= Spectral_Analysis
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	NMC
+		{
+		label			= <*default*> "NMC"
+		short_label		= <*default*> "NMC"
+		source_type		= Guidance
+		alias			= NMC_77  NMC_78  NMC_79  NMC_80  USmodel
+
+		directory_tag	= Guidance
+		directory_path	= NMC
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	ECMWF
+		{
+		label			= <*default*> "ECMWF"
+		short_label		= <*default*> "ECMWF"
+		source_type		= Guidance
+		alias			= ECMWF_40
+
+		directory_tag	= Guidance
+		directory_path	= ECMWF
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	JMA
+		{
+		label			= <*default*> "JMA"
+		short_label		= <*default*> "JMA"
+		source_type		= Guidance
+		alias			= JMA_99  Japan
+
+		directory_tag	= Guidance
+		directory_path	= JMA
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	JMA_ANAL
+		{
+		label			= <*default*> "JMA ANAL"
+		short_label		= <*default*> "JMA ANAL"
+		source_type		= Guidance
+		alias			= JMA_Anal_10  jmaanal  JMA_Analysis  Japan_Analysis
+
+		directory_tag	= Guidance
+		directory_path	= JMA_Analysis
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	UKMetOffice
+		{
+		label			= <*default*> "UK Met Office"
+		short_label		= <*default*> "UK Met"
+		source_type		= Guidance
+		alias			= UKMET
+
+		directory_tag	= Guidance
+		directory_path	= UKMET
+		directory_layers	= 2
+
+		subsources		= None
+		}
+
+	Metworks
+		{
+		label			= <*default*> "Metworks"
+		short_label		= <*default*> "Metworks"
+		source_type		= Depiction
+
+		directory_tag	= Data
+		directory_path	= Metworks
+		}
+
+	FpaWarp
+		{
+		label			= <*default*> "FPA fitted fields"
+		short_label		= <*default*> "FPA fit"
+		source_type		= Guidance
+
+		directory_tag	= AModels.Data
+		directory_path	= FpaWarp
+		directory_layers	= 2
+		}
+
+	FpaCreate
+		{
+		label			= <*default*> "FPA object areas"
+		short_label		= <*default*> "FPA areas"
+		source_type		= Guidance
+
+		directory_tag	= AModels.Data
+		directory_path	= FpaCreate
+		directory_layers	= 2
+		}
+
+	Scribe
+		{
+		label			= <*default*> "SCRIBE Data"
+		short_label		= <*default*> "SCRIBE"
+		source_type		= Guidance
+		alias			= scdata
+
+		directory_tag	= Data
+		directory_path	= SCRIBE
+		directory_layers	= 2
+
+		subsources		=
+			{
+			GEM
+				{
+				label				= <*default*> "SCRIBE Data from GEM"
+				short_label			= <*default*> "SCRIBE GEM"
+				sub_directory_path	= GEM
+				}
+			RFE
+				{
+				label				= <*default*> "SCRIBE Data from RFE"
+				short_label			= <*default*> "SCRIBE RFE"
+				sub_directory_path	= RFE
+				}
+			Global
+				{
+				label				= <*default*> "SCRIBE Data from Global"
+				short_label			= <*default*> "SCRIBE Global"
+				sub_directory_path	= Global
+				}
+			}
+		}
+
+	PLOT
+		{
+		label			= <*default*> "Miscellaneous Plot Objects"
+		short_label		= <*default*> "Misc Plots"
+		source_type		= Depiction
+
+		directory_tag	= Data
+		directory_path	= PLOT
+		}
+
+	Any_Source
+		{
+		source_type		= Any
+		alias			= ANY  ALL
+		}
+
+	NULL
+		{
+		source_type		= NotUsed
+		alias			= NONE
+		}
+
+	}
+
+################################################################################
+#
+# "Constants" block - List of constants for calculating fields
+#
+################################################################################
+
+Constants
+	{
+
+	PI
+		{
+		label		= <*default*> "Pi"
+		short_label	= <*default*> "Pi"
+		constant	= 3.1415926536  unitless
+		}
+
+	RAD
+		{
+		label		= <*default*> "Radians per Degree"
+		short_label	= <*default*> "Rad / Deg"
+		constant	= 0.017453292520  unitless
+		}
+
+	SECHR
+		{
+		label		= <*default*> "Seconds per Hour"
+		short_label	= <*default*> "Sec / Hr"
+		constant	= 3600.0  unitless
+		}
+
+	REARTH
+		{
+		label		= <*default*> "Radius of Earth"
+		short_label	= <*default*> "Earth Radius"
+		constant	= 6367650.000  m
+		}
+
+	GRAV
+		{
+		label		= <*default*> "Acceleration due to Gravity"
+		short_label	= <*default*> "Gravity"
+		constant	= 9.80665  m/s2
+		}
+
+	COR
+		{
+		label		= <*default*> "Coriolis Parameter"
+		short_label	= <*default*> "Coriolis"
+		constant	= 1.4584232e-4 1/s
+		}
+
+	SOLAR
+		{
+		label		= <*default*> "Solar Flux"
+		short_label	= <*default*> "Solar Flux"
+		constant	= 1353.000  w/m2
+		}
+
+	RDRY
+		{
+		label		= <*default*> "Gas Constant for Dry Air"
+		short_label	= <*default*> "R dry"
+		constant	= 287.050  kg/m3
+		}
+
+	RVAP
+		{
+		label		= <*default*> "Gas Constant for Water Vapour"
+		short_label	= <*default*> "R vapour"
+		constant	= 461.510  kg/m3
+		}
+
+	EPSR
+		{
+		label		= <*default*> "Gas Constant Ratio"
+		short_label	= <*default*> "R dry / R vap"
+		constant	= 0.62198  unitless
+		}
+
+	ROSTD
+		{
+		label		= <*default*> "Standard Atmospheric Density"
+		short_label	= <*default*> "Density"
+		constant	= 1.255  kg/m3
+		}
+
+	ZEROC
+		{
+		label		= <*default*> "Zero Degrees C"
+		short_label	= <*default*> "Zero C"
+		constant	= 273.150  degreesK
+		}
+
+	TRIPLE
+		{
+		label		= <*default*> "Triple Point of Water"
+		short_label	= <*default*> "Triple Point"
+		constant	= 273.160  degreesK
+		}
+
+	FPA_MAX_VALUE
+		{
+		label		= <*default*> "Maximum Acceptable Value"
+		short_label	= <*default*> "Max Value"
+		constant	= 3.40282347E+38  unitless
+		}
+
+	FPA_MIN_VALUE
+		{
+		label		= <*default*> "Minimum Acceptable Value"
+		short_label	= <*default*> "Min Value"
+		constant	= 1.17549435E-38  unitless
+		}
+
+	}
+
+################################################################################
+#
+# "Units" block - Description of units for conversion from MKS
+#
+################################################################################
+
+Units
+	{
+
+	MKS
+		{
+		MKS_equivalent	= MKS
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	unitless
+		{
+		MKS_equivalent	= unitless
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	none
+		{
+		MKS_equivalent	= unitless
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	category
+		{
+		MKS_equivalent	= category
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	percent
+		{
+		MKS_equivalent	= percent
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	%
+		{
+		MKS_equivalent	= percent
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	10ths
+		{
+		MKS_equivalent	= percent
+		MKS_conversion	= 1.000000e-1  0.00
+		}
+
+	100ths
+		{
+		MKS_equivalent	= percent
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	ratio
+		{
+		MKS_equivalent	= percent
+		MKS_conversion	= 1.000000e-2  0.00
+		}
+
+	s
+		{
+		MKS_equivalent	= s
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	hs
+		{
+		MKS_equivalent	= s
+		MKS_conversion	= 1.000000e2  0.00
+		}
+
+	min
+		{
+		MKS_equivalent	= s
+		MKS_conversion	= 1.666666667e-2  0.00
+		}
+
+	hr
+		{
+		MKS_equivalent	= s
+		MKS_conversion	= 2.777777778e-4  0.00
+		}
+
+	3hr
+		{
+		MKS_equivalent	= s
+		MKS_conversion	= 9.259259259e-5  0.00
+		}
+
+	6hr
+		{
+		MKS_equivalent	= s
+		MKS_conversion	= 4.629629630e-5  0.00
+		}
+
+	12hr
+		{
+		MKS_equivalent	= s
+		MKS_conversion	= 2.314814815e-5  0.00
+		}
+
+	degrees_true
+		{
+		MKS_equivalent	= degrees_true
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	degrees_math
+		{
+		MKS_equivalent	= degrees_true
+		MKS_conversion	= -1.000000  90.00
+		}
+
+	degrees_bmap
+		{
+		MKS_equivalent	= degrees_bmap
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	Pa
+		{
+		MKS_equivalent	= Pa
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	HPa
+		{
+		MKS_equivalent	= Pa
+		MKS_conversion	= 1.000000e-2  0.00
+		}
+
+	mb
+		{
+		MKS_equivalent	= Pa
+		MKS_conversion	= 1.000000e-2  0.00
+		}
+
+	Pa/s
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	Pa/hr
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 3600.000000  0.00
+		}
+
+	Pa/3hr
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 10800.000000  0.00
+		}
+
+	Pa/6hr
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 21600.000000  0.00
+		}
+
+	Pa/12hr
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 43200.000000  0.00
+		}
+
+	mb/s
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 1.000000e-2  0.00
+		}
+
+	mb/hr
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 36.000000  0.00
+		}
+
+	mb/3hr
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 108.000000  0.00
+		}
+
+	mb/6hr
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 216.000000  0.00
+		}
+
+	mb/12hr
+		{
+		MKS_equivalent	= Pa/s
+		MKS_conversion	= 432.000000  0.00
+		}
+
+	Pa/m2
+		{
+		MKS_equivalent	= Pa/m2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	Pa/m/m
+		{
+		MKS_equivalent	= Pa/m2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	mb/km2
+		{
+		MKS_equivalent	= Pa/m2
+		MKS_conversion	= 1.000000e4  0.00
+		}
+
+	e-4mb/km2
+		{
+		MKS_equivalent	= Pa/m2
+		MKS_conversion	= 1.000000e8  0.00
+		}
+
+	degreesK
+		{
+		MKS_equivalent	= degreesK
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	degreesC
+		{
+		MKS_equivalent	= degreesK
+		MKS_conversion	= 1.000000 -273.15
+		}
+
+	degreesF
+		{
+		MKS_equivalent	= degreesK
+		MKS_conversion	= 1.800000 -459.67
+		}
+
+	ddegreesC
+		{
+		MKS_equivalent	= degreesK
+		MKS_conversion	= 1.000000e1 -273.15
+		}
+
+	Kdegrees
+		{
+		MKS_equivalent	= Kdegrees
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	Cdegrees
+		{
+		MKS_equivalent	= Kdegrees
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	Kdegrees/s
+		{
+		MKS_equivalent	= Kdegrees/s
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	Cdegrees/s
+		{
+		MKS_equivalent	= Kdegrees/s
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	Kdegrees/hr
+		{
+		MKS_equivalent	= Kdegrees/s
+		MKS_conversion	= 3600.000000  0.00
+		}
+
+	Cdegrees/hr
+		{
+		MKS_equivalent	= Kdegrees/s
+		MKS_conversion	= 3600.000000  0.00
+		}
+
+	Kdegrees/m
+		{
+		MKS_equivalent	= Kdegrees/m
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	Cdegrees/m
+		{
+		MKS_equivalent	= Kdegrees/m
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	Kdegrees/Dm
+		{
+		MKS_equivalent	= Kdegrees/m
+		MKS_conversion	= 1.000000e1  0.00
+		}
+
+	Cdegrees/Dm
+		{
+		MKS_equivalent	= Kdegrees/m
+		MKS_conversion	= 1.000000e1  0.00
+		}
+
+	Kdegrees/xkm
+		{
+		MKS_equivalent	= Kdegrees/m
+		MKS_conversion	= 1.000000e5  0.00
+		}
+
+	Cdegrees/xkm
+		{
+		MKS_equivalent	= Kdegrees/m
+		MKS_conversion	= 1.000000e5  0.00
+		}
+
+	m
+		{
+		MKS_equivalent	= m
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	cm
+		{
+		MKS_equivalent	= m
+		MKS_conversion	= 1.000000e2  0.00
+		}
+
+	Dm
+		{
+		MKS_equivalent	= m
+		MKS_conversion	= 1.000000e-1  0.00
+		}
+
+	km
+		{
+		MKS_equivalent	= m
+		MKS_conversion	= 1.000000e-3  0.00
+		}
+
+	mi
+		{
+		MKS_equivalent	= m
+		MKS_conversion	= .00062  0.00
+		}
+
+	nm
+		{
+		MKS_equivalent	= m
+		MKS_conversion	= .00054  0.00
+		}
+
+	m/s
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	m/hr
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 3600.000000  0.00
+		}
+
+	m/12hr
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 43200.000000  0.00
+		}
+
+	km/hr
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 3.600000  0.00
+		}
+
+	knots
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 1.944000  0.00
+		}
+
+	Dm/s
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 1.000000e-1  0.00
+		}
+
+	Dm/hr
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 360.000000  0.00
+		}
+
+	Dm/3hr
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 1080.000000  0.00
+		}
+
+	Dm/6hr
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 2160.000000  0.00
+		}
+
+	Dm/12hr
+		{
+		MKS_equivalent	= m/s
+		MKS_conversion	= 4320.000000  0.00
+		}
+
+	m/s2
+		{
+		MKS_equivalent	= m/s2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	m/s/s
+		{
+		MKS_equivalent	= m/s2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	m2/s2
+		{
+		MKS_equivalent	= m2/s2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	m2/s/s
+		{
+		MKS_equivalent	= m2/s2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	kg
+		{
+		MKS_equivalent	= kg
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	kg/m2
+		{
+		MKS_equivalent	= kg/m2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	kg/m/m
+		{
+		MKS_equivalent	= kg/m2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	mm(H2O)
+		{
+		MKS_equivalent	= kg/m2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	mm(H2O)/10
+		{
+		MKS_equivalent	= kg/m2
+		MKS_conversion	= 1.000000e1  0.00
+		}
+
+	kg/m3
+		{
+		MKS_equivalent	= kg/m3
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	kg/m/m/m
+		{
+		MKS_equivalent	= kg/m3
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	kg/m2/s
+		{
+		MKS_equivalent	= kg/m2/s
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	kg/m/m/s
+		{
+		MKS_equivalent	= kg/m2/s
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	J/kg
+		{
+		MKS_equivalent	= J/kg
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	mm(H2O)/s
+		{
+		MKS_equivalent	= kg/m2/s
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	mm(H2O)/hr
+		{
+		MKS_equivalent	= kg/m2/s
+		MKS_conversion	= 3600.000000  0.00
+		}
+
+	g/kg
+		{
+		MKS_equivalent	= g/kg
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	dg/kg
+		{
+		MKS_equivalent	= g/kg
+		MKS_conversion	= 1.000000e1  0.00
+		}
+
+	kg/kg
+		{
+		MKS_equivalent	= g/kg
+		MKS_conversion	= 1.000000e-3  0.00
+		}
+
+	1/s
+		{
+		MKS_equivalent	= 1/s
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	e-5/s
+		{
+		MKS_equivalent	= 1/s
+		MKS_conversion	= 1.000000e5  0.00
+		}
+
+	e-6/s
+		{
+		MKS_equivalent	= 1/s
+		MKS_conversion	= 1.000000e6  0.00
+		}
+
+	e-7/s
+		{
+		MKS_equivalent	= 1/s
+		MKS_conversion	= 1.000000e7  0.00
+		}
+
+	1/s2
+		{
+		MKS_equivalent	= 1/s2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	1/s/s
+		{
+		MKS_equivalent	= 1/s2
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	e-9/s2
+		{
+		MKS_equivalent	= 1/s2
+		MKS_conversion	= 1.000000e9  0.00
+		}
+
+	e-9/s/s
+		{
+		MKS_equivalent	= 1/s2
+		MKS_conversion	= 1.000000e9  0.00
+		}
+
+	w
+		{
+		MKS_equivalent	= w
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	w/m
+		{
+		MKS_equivalent	= w/m
+		MKS_conversion	= 1.000000  0.00
+		}
+
+	w/m2
+		{
+		MKS_equivalent	= w/m2
+		MKS_conversion	= 1.000000 0.00
+		}
+
+	w/m/m
+		{
+		MKS_equivalent	= w/m2
+		MKS_conversion	= 1.000000 0.00
+		}
+
+	1/m
+		{
+		MKS_equivalent	= 1/m
+		MKS_conversion	= 1.000000 0.00
+		}
+
+	1/km
+		{
+		MKS_equivalent	= 1/m
+		MKS_conversion	= 1.000000e3 0.00
+		}
+
+	e-3/m
+		{
+		MKS_equivalent	= 1/m
+		MKS_conversion	= 1.000000e3 0.00
+		}
+
+	e-4/m
+		{
+		MKS_equivalent	= 1/m
+		MKS_conversion	= 1.000000e4 0.00
+		}
+
+	e-5/m
+		{
+		MKS_equivalent	= 1/m
+		MKS_conversion	= 1.000000e5 0.00
+		}
+
+	e-6/m
+		{
+		MKS_equivalent	= 1/m
+		MKS_conversion	= 1.000000e6 0.00
+		}
+
+	e-9/m
+		{
+		MKS_equivalent	= 1/m
+		MKS_conversion	= 1.000000e9 0.00
+		}
+
+	e-12/m
+		{
+		MKS_equivalent	= 1/m
+		MKS_conversion	= 1.000000e12 0.00
+		}
+
+	}
+
+################################################################################
+#
+#  Include any fixes here.
+#
+################################################################################

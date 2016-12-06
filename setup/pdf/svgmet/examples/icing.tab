@@ -1,0 +1,6 @@
+Look-up   | Symbol file          | Text String | Presentation
+*default* : none                 : ICG NIL     : clear1
+SVR       : svricg               :             : clear1
+MDT       : mdticg               :             : clear1
+LGT       : lgticg               :             : clear1
+NONE      : none                 : ICG NIL     : clear1

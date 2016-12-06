@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_label_display'> <title>@label_display</title> <titleabbrev>@label_display</titleabbrev>
+<para>
+Set display parameters for drawing a box, ellipse, or underline around simple or
+complex labels or sampled values.
+</para><para>
+Note that the same display parameters can be used for different display types.
+The type of display to use is set by a <userinput>display_type</userinput> keyword in each directive.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>display_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Display name</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/height.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/width_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/height_attribute.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for value of <userinput>height_attribute</userinput> and <userinput>height_attribute</userinput>.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radius</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Set width and height of fixed sized ellipse to one value. (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>radius_attribute</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Set width and height of ellipse to value of attribute. (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>diameter</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Set width and height of fixed sized ellipse to one value. (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>diameter_attribute</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Set width and height of ellipse to value of attribute. (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>start_angle</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Start angle for ellipse display  (in counter-clockwise decimal degrees from x-axis)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>end_angle</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>End angle for ellipse display (in count-clockwise decimal degrees from x-axis)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotation.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotation_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_off.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>margin_left</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Offset left edge of display leftwards (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>margin_right</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Offset right edge of display rightwards (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>margin_top</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Offset top edge of display upwards (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>margin_bottom</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Offset bottom edge of display downwards (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>margin_width</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Offset left edge of display leftwards and right edge of display rightwards (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>margin_height</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Offset top edge of display upwards and bottom edge of display downwards (in display units)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/interior_fill.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@label_display
+{
+  display_name  = label1;
+  margin_left   = 0.05;
+  margin_right  = 0.00;
+  margin_top    = 0.00;
+  margin_bottom = 0.05;
+  line_width    = 0.02;
+  outline       = CMYK 0 0 0 100;
+  interior_fill = none;
+}</programlisting>
+Set parameters for a display called label1. The display outline will be 0.02 "units" wide in a colour
+composed of 100% Black, and "sized_..." type displays will have a left edge offset 0.05 "units" to the
+left of the outline, and a bottom edge offset 0.05 "units" below the outline.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@label_display
+{
+  display_name  = under1;
+  margin_bottom = 0.02;
+  line_width    = 0.01;
+  outline       = CMYK 0 0 0 100;
+  interior_fill = none;
+}</programlisting>
+Set parameters for a display called under1. The display outline will be 0.01 "units" wide in a colour
+composed of 100% Black, and "sized_..." type displays will have a bottom edge offset 0.02 "units"
+below the outline. (Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

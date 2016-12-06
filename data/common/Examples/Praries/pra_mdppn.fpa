@@ -1,0 +1,3904 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Banff"
+	FPA_user_label "Banff"
+ spot 51.178N -115.57E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Barrhead"
+	FPA_user_label "Barrhead"
+ spot 54.123N -114.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bashaw"
+	FPA_user_label "Bashaw"
+ spot 52.579N -112.97E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bassano"
+	FPA_user_label "Bassano"
+ spot 50.784N -112.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Beaumont"
+	FPA_user_label "Beaumont"
+ spot 53.357N -113.41E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Beaverlodge"
+	FPA_user_label "Beaverlodge"
+ spot 55.218N -119.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Black Diamond"
+	FPA_user_label "Black Diamond"
+ spot 50.688N -114.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Blackfalds"
+	FPA_user_label "Blackfalds"
+ spot 52.376N -113.79E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bon Accord"
+	FPA_user_label "Bon Accord"
+ spot 53.833N -113.42E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bonnyville"
+	FPA_user_label "Bonnyville"
+ spot 54.268N -110.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bowden"
+	FPA_user_label "Bowden"
+ spot 51.931N -114.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bow Island"
+	FPA_user_label "Bow Island"
+ spot 49.868N -111.38E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Brooks"
+	FPA_user_label "Brooks"
+ spot 50.564N -111.9E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bruderheim"
+	FPA_user_label "Bruderheim"
+ spot 53.804N -112.93E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Calmar"
+	FPA_user_label "Calmar"
+ spot 53.265N -113.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Canmore"
+	FPA_user_label "Canmore"
+ spot 51.084N -115.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cardston"
+	FPA_user_label "Cardston"
+ spot 49.202N -113.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carstairs"
+	FPA_user_label "Carstairs"
+ spot 51.562N -114.1E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Castor"
+	FPA_user_label "Castor"
+ spot 52.22N -111.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chestermere"
+	FPA_user_label "Chestermere"
+ spot 51.05N -113.82E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Claresholm"
+	FPA_user_label "Claresholm"
+ spot 50.019N -113.58E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Coaldale"
+	FPA_user_label "Coaldale"
+ spot 49.728N -112.62E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Coalhurst"
+	FPA_user_label "Coalhurst"
+ spot 49.746N -112.93E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cochrane"
+	FPA_user_label "Cochrane"
+ spot 51.191N -114.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Coronation"
+	FPA_user_label "Coronation"
+ spot 52.088N -111.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Crossfield"
+	FPA_user_label "Crossfield"
+ spot 51.431N -114.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Crowsnest Pass"
+	FPA_user_label "Crowsnest Pass"
+ spot 49.591N -114.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Daysland"
+	FPA_user_label "Daysland"
+ spot 52.863N -112.25E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Devon"
+	FPA_user_label "Devon"
+ spot 53.363N -113.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Didsbury"
+	FPA_user_label "Didsbury"
+ spot 51.666N -114.13E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Drayton Valley"
+	FPA_user_label "Drayton Valley"
+ spot 53.222N -114.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Eckville"
+	FPA_user_label "Eckville"
+ spot 52.362N -114.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Edson"
+	FPA_user_label "Edson"
+ spot 53.581N -116.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elk Point"
+	FPA_user_label "Elk Point"
+ spot 53.897N -110.9E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fairview"
+	FPA_user_label "Fairview"
+ spot 56.072N -118.39E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Falher"
+	FPA_user_label "Falher"
+ spot 55.723N -117.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fort Macleod"
+	FPA_user_label "Fort Macleod"
+ spot 49.726N -113.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fox Creek"
+	FPA_user_label "Fox Creek"
+ spot 54.395N -116.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gibbons"
+	FPA_user_label "Gibbons"
+ spot 53.828N -113.32E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Granum"
+	FPA_user_label "Granum"
+ spot 49.874N -113.51E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grimshaw"
+	FPA_user_label "Grimshaw"
+ spot 56.191N -117.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hanna"
+	FPA_user_label "Hanna"
+ spot 51.638N -111.94E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hardisty"
+	FPA_user_label "Hardisty"
+ spot 52.675N -111.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "High Level"
+	FPA_user_label "High Level"
+ spot 58.519N -117.12E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "High Prairie"
+	FPA_user_label "High Prairie"
+ spot 55.433N -116.49E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "High River"
+	FPA_user_label "High River"
+ spot 50.581N -113.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hinton"
+	FPA_user_label "Hinton"
+ spot 53.411N -117.56E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Innisfail"
+	FPA_user_label "Innisfail"
+ spot 52.028N -113.95E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Killam"
+	FPA_user_label "Killam"
+ spot 52.789N -111.85E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lac La Biche"
+	FPA_user_label "Lac La Biche"
+ spot 54.769N -111.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lacombe"
+	FPA_user_label "Lacombe"
+ spot 52.464N -113.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lamont"
+	FPA_user_label "Lamont"
+ spot 53.76N -112.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Legal"
+	FPA_user_label "Legal"
+ spot 53.949N -113.6E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Magrath"
+	FPA_user_label "Magrath"
+ spot 49.424N -112.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Manning"
+	FPA_user_label "Manning"
+ spot 56.914N -117.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "McLennan"
+	FPA_user_label "McLennan"
+ spot 55.711N -116.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Milk River"
+	FPA_user_label "Milk River"
+ spot 49.149N -112.09E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Millet"
+	FPA_user_label "Millet"
+ spot 53.098N -113.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Morinville"
+	FPA_user_label "Morinville"
+ spot 53.802N -113.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mundare"
+	FPA_user_label "Mundare"
+ spot 53.591N -112.34E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Nanton"
+	FPA_user_label "Nanton"
+ spot 50.35N -113.77E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Okotoks"
+	FPA_user_label "Okotoks"
+ spot 50.726N -113.97E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Olds"
+	FPA_user_label "Olds"
+ spot 51.793N -114.11E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Oyen"
+	FPA_user_label "Oyen"
+ spot 51.352N -110.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Peace River"
+	FPA_user_label "Peace River"
+ spot 56.234N -117.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Penhold"
+	FPA_user_label "Penhold"
+ spot 52.135N -113.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Picture Butte"
+	FPA_user_label "Picture Butte"
+ spot 49.873N -112.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pincher Creek"
+	FPA_user_label "Pincher Creek"
+ spot 49.486N -113.95E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ponoka"
+	FPA_user_label "Ponoka"
+ spot 52.676N -113.58E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Provost"
+	FPA_user_label "Provost"
+ spot 52.354N -110.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rainbow Lake"
+	FPA_user_label "Rainbow Lake"
+ spot 58.493N -119.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Raymond"
+	FPA_user_label "Raymond"
+ spot 49.466N -112.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Redcliff"
+	FPA_user_label "Redcliff"
+ spot 50.079N -110.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Redwater"
+	FPA_user_label "Redwater"
+ spot 53.949N -113.11E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rimbey"
+	FPA_user_label "Rimbey"
+ spot 52.64N -114.24E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rocky Mountain House"
+	FPA_user_label "Rocky Mountain House"
+ spot 52.375N -114.92E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Paul"
+	FPA_user_label "St. Paul"
+ spot 53.993N -111.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sedgewick"
+	FPA_user_label "Sedgewick"
+ spot 52.772N -111.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sexsmith"
+	FPA_user_label "Sexsmith"
+ spot 55.345N -118.77E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Slave Lake"
+	FPA_user_label "Slave Lake"
+ spot 55.285N -114.77E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Smoky Lake"
+	FPA_user_label "Smoky Lake"
+ spot 54.121N -112.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Spirit River"
+	FPA_user_label "Spirit River"
+ spot 55.782N -118.83E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stavely"
+	FPA_user_label "Stavely"
+ spot 50.165N -113.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stettler"
+	FPA_user_label "Stettler"
+ spot 52.324N -112.72E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stony Plain"
+	FPA_user_label "Stony Plain"
+ spot 53.53N -114.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Strathmore"
+	FPA_user_label "Strathmore"
+ spot 51.038N -113.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sundre"
+	FPA_user_label "Sundre"
+ spot 51.797N -114.64E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Swan Hills"
+	FPA_user_label "Swan Hills"
+ spot 54.71N -115.41E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sylvan Lake"
+	FPA_user_label "Sylvan Lake"
+ spot 52.308N -114.1E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Taber"
+	FPA_user_label "Taber"
+ spot 49.785N -112.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Three Hills"
+	FPA_user_label "Three Hills"
+ spot 51.707N -113.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tofield"
+	FPA_user_label "Tofield"
+ spot 53.367N -112.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Trochu"
+	FPA_user_label "Trochu"
+ spot 51.824N -113.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Turner Valley"
+	FPA_user_label "Turner Valley"
+ spot 50.674N -114.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Two Hills"
+	FPA_user_label "Two Hills"
+ spot 53.715N -111.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Valleyview"
+	FPA_user_label "Valleyview"
+ spot 55.069N -117.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vauxhall"
+	FPA_user_label "Vauxhall"
+ spot 50.069N -112.1E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vegreville"
+	FPA_user_label "Vegreville"
+ spot 53.493N -112.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vermilion"
+	FPA_user_label "Vermilion"
+ spot 53.354N -110.85E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Viking"
+	FPA_user_label "Viking"
+ spot 53.097N -111.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vulcan"
+	FPA_user_label "Vulcan"
+ spot 50.397N -113.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wainwright"
+	FPA_user_label "Wainwright"
+ spot 52.843N -110.85E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wembley"
+	FPA_user_label "Wembley"
+ spot 55.157N -119.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Westlock"
+	FPA_user_label "Westlock"
+ spot 54.152N -113.85E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Whitecourt"
+	FPA_user_label "Whitecourt"
+ spot 54.143N -115.69E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Athabasca"
+	FPA_user_label "Athabasca"
+ spot 54.72N -113.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alberta Beach"
+	FPA_user_label "Alberta Beach"
+ spot 53.677N -114.35E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alix"
+	FPA_user_label "Alix"
+ spot 52.398N -113.18E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alliance"
+	FPA_user_label "Alliance"
+ spot 52.432N -111.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Amisk"
+	FPA_user_label "Amisk"
+ spot 52.567N -111.06E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Andrew"
+	FPA_user_label "Andrew"
+ spot 53.88N -112.33E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Arrowwood"
+	FPA_user_label "Arrowwood"
+ spot 50.736N -113.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Barnwell"
+	FPA_user_label "Barnwell"
+ spot 49.76N -112.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Barons"
+	FPA_user_label "Barons"
+ spot  50N -113.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bawlf"
+	FPA_user_label "Bawlf"
+ spot 52.917N -112.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Beiseker"
+	FPA_user_label "Beiseker"
+ spot 51.387N -113.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bentley"
+	FPA_user_label "Bentley"
+ spot 52.465N -114.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Berwyn"
+	FPA_user_label "Berwyn"
+ spot 56.147N -117.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Big Valley"
+	FPA_user_label "Big Valley"
+ spot 52.034N -112.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bittern Lake"
+	FPA_user_label "Bittern Lake"
+ spot 53.005N -113.06E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Botha"
+	FPA_user_label "Botha"
+ spot 52.306N -112.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Boyle"
+	FPA_user_label "Boyle"
+ spot 54.587N -112.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Breton"
+	FPA_user_label "Breton"
+ spot 53.105N -114.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Burdett"
+	FPA_user_label "Burdett"
+ spot 49.83N -111.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carbon"
+	FPA_user_label "Carbon"
+ spot 51.489N -113.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carmangay"
+	FPA_user_label "Carmangay"
+ spot 50.132N -113.11E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Caroline"
+	FPA_user_label "Caroline"
+ spot 52.093N -114.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cereal"
+	FPA_user_label "Cereal"
+ spot 51.416N -110.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Champion"
+	FPA_user_label "Champion"
+ spot 50.238N -113.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chauvin"
+	FPA_user_label "Chauvin"
+ spot 52.698N -110.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chipman"
+	FPA_user_label "Chipman"
+ spot 53.699N -112.64E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Clive"
+	FPA_user_label "Clive"
+ spot 52.478N -113.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Clyde"
+	FPA_user_label "Clyde"
+ spot 54.152N -113.64E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Consort"
+	FPA_user_label "Consort"
+ spot 52.007N -110.77E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Coutts"
+	FPA_user_label "Coutts"
+ spot 49.006N -111.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cowley"
+	FPA_user_label "Cowley"
+ spot 49.568N -114.07E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cremona"
+	FPA_user_label "Cremona"
+ spot 51.545N -114.49E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Czar"
+	FPA_user_label "Czar"
+ spot 52.454N -110.83E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Delburne"
+	FPA_user_label "Delburne"
+ spot 52.201N -113.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Delia"
+	FPA_user_label "Delia"
+ spot 51.632N -112.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dewberry"
+	FPA_user_label "Dewberry"
+ spot 53.586N -110.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Donalda"
+	FPA_user_label "Donalda"
+ spot 52.583N -112.57E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Donnelly"
+	FPA_user_label "Donnelly"
+ spot 55.723N -117.1E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Duchess"
+	FPA_user_label "Duchess"
+ spot 50.733N -111.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Edberg"
+	FPA_user_label "Edberg"
+ spot 52.784N -112.79E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Edgerton"
+	FPA_user_label "Edgerton"
+ spot 52.759N -110.46E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elnora"
+	FPA_user_label "Elnora"
+ spot 51.997N -113.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Empress"
+	FPA_user_label "Empress"
+ spot 50.95N -110.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Entwistle"
+	FPA_user_label "Entwistle"
+ spot 53.591N -114.99E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ferintosh"
+	FPA_user_label "Ferintosh"
+ spot 52.767N -112.97E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Foremost"
+	FPA_user_label "Foremost"
+ spot 49.479N -111.44E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Forestburg"
+	FPA_user_label "Forestburg"
+ spot 52.58N -112.07E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gadsby"
+	FPA_user_label "Gadsby"
+ spot 52.296N -112.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Galahad"
+	FPA_user_label "Galahad"
+ spot 52.511N -111.92E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Girouxville"
+	FPA_user_label "Girouxville"
+ spot 55.754N -117.34E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glendon"
+	FPA_user_label "Glendon"
+ spot 54.248N -111.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glenwood"
+	FPA_user_label "Glenwood"
+ spot 49.364N -113.51E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Halkirk"
+	FPA_user_label "Halkirk"
+ spot 52.281N -112.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hay Lakes"
+	FPA_user_label "Hay Lakes"
+ spot 53.192N -113.06E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Heisler"
+	FPA_user_label "Heisler"
+ spot 52.67N -112.22E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hill Spring"
+	FPA_user_label "Hill Spring"
+ spot 49.291N -113.62E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hines Creek"
+	FPA_user_label "Hines Creek"
+ spot 56.246N -118.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Holden"
+	FPA_user_label "Holden"
+ spot 53.233N -112.24E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hughenden"
+	FPA_user_label "Hughenden"
+ spot 52.511N -110.97E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hussar"
+	FPA_user_label "Hussar"
+ spot 51.042N -112.68E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hythe"
+	FPA_user_label "Hythe"
+ spot 55.331N -119.56E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Innisfree"
+	FPA_user_label "Innisfree"
+ spot 53.383N -111.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Irma"
+	FPA_user_label "Irma"
+ spot 52.912N -111.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Irricana"
+	FPA_user_label "Irricana"
+ spot 51.319N -113.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kitscoty"
+	FPA_user_label "Kitscoty"
+ spot 53.337N -110.33E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lavoy"
+	FPA_user_label "Lavoy"
+ spot 53.456N -111.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Linden"
+	FPA_user_label "Linden"
+ spot 51.591N -113.48E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lomond"
+	FPA_user_label "Lomond"
+ spot 50.354N -112.64E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Longview"
+	FPA_user_label "Longview"
+ spot 50.533N -114.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lougheed"
+	FPA_user_label "Lougheed"
+ spot 52.746N -111.55E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mannville"
+	FPA_user_label "Mannville"
+ spot 53.336N -111.18E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Marwayne"
+	FPA_user_label "Marwayne"
+ spot 53.516N -110.33E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Milo"
+	FPA_user_label "Milo"
+ spot 50.572N -112.88E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Minburn"
+	FPA_user_label "Minburn"
+ spot 53.316N -111.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mirror"
+	FPA_user_label "Mirror"
+ spot 52.463N -113.12E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Morrin"
+	FPA_user_label "Morrin"
+ spot 51.658N -112.77E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Munson"
+	FPA_user_label "Munson"
+ spot 51.563N -112.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Myrnam"
+	FPA_user_label "Myrnam"
+ spot 53.661N -111.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Nampa"
+	FPA_user_label "Nampa"
+ spot 56.036N -117.13E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "New Norway"
+	FPA_user_label "New Norway"
+ spot 52.869N -112.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "New Sarepta"
+	FPA_user_label "New Sarepta"
+ spot 53.272N -113.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Nobleford"
+	FPA_user_label "Nobleford"
+ spot 49.882N -113.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Onoway"
+	FPA_user_label "Onoway"
+ spot 53.701N -114.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Paradise Valley"
+	FPA_user_label "Paradise Valley"
+ spot 53.031N -110.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Plamondon"
+	FPA_user_label "Plamondon"
+ spot 54.849N -112.34E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rockyford"
+	FPA_user_label "Rockyford"
+ spot 51.234N -113.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rosalind"
+	FPA_user_label "Rosalind"
+ spot 52.787N -112.44E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rosemary"
+	FPA_user_label "Rosemary"
+ spot 50.758N -112.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rycroft"
+	FPA_user_label "Rycroft"
+ spot 55.758N -118.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ryley"
+	FPA_user_label "Ryley"
+ spot 53.288N -112.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sangudo"
+	FPA_user_label "Sangudo"
+ spot 53.895N -114.89E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Spring Lake"
+	FPA_user_label "Spring Lake"
+ spot 53.519N -114.12E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Standard"
+	FPA_user_label "Standard"
+ spot 51.111N -112.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stirling"
+	FPA_user_label "Stirling"
+ spot 49.502N -112.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Strome"
+	FPA_user_label "Strome"
+ spot 52.808N -112.06E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Thorhild"
+	FPA_user_label "Thorhild"
+ spot 54.153N -113.13E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Thorsby"
+	FPA_user_label "Thorsby"
+ spot 53.228N -114.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tilley"
+	FPA_user_label "Tilley"
+ spot 50.452N -111.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Veteran"
+	FPA_user_label "Veteran"
+ spot 52.003N -111.12E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vilna"
+	FPA_user_label "Vilna"
+ spot 54.116N -111.92E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wabamun"
+	FPA_user_label "Wabamun"
+ spot 53.558N -114.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Warburg"
+	FPA_user_label "Warburg"
+ spot 53.179N -114.32E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Warner"
+	FPA_user_label "Warner"
+ spot 49.284N -112.21E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Warspite"
+	FPA_user_label "Warspite"
+ spot 54.092N -112.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Waskatenau"
+	FPA_user_label "Waskatenau"
+ spot 54.098N -112.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Willingdon"
+	FPA_user_label "Willingdon"
+ spot 53.831N -112.13E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Youngstown"
+	FPA_user_label "Youngstown"
+ spot 51.525N -111.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Acme"
+	FPA_user_label "Acme"
+ spot 51.497N -113.51E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grande Cache"
+	FPA_user_label "Grande Cache"
+ spot 53.875N -119.12E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mayerthorpe"
+	FPA_user_label "Mayerthorpe"
+ spot 53.95N -115.13E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Arborg"
+	FPA_user_label "Arborg"
+ spot 50.906N -97.218E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Beausejour"
+	FPA_user_label "Beausejour"
+ spot 50.062N -96.516E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Birtle"
+	FPA_user_label "Birtle"
+ spot 50.422N -101.04E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Boissevain"
+	FPA_user_label "Boissevain"
+ spot 49.231N -100.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carberry"
+	FPA_user_label "Carberry"
+ spot 49.871N -99.358E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carman"
+	FPA_user_label "Carman"
+ spot 49.502N -98.002E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Churchill"
+	FPA_user_label "Churchill"
+ spot 58.745N -94.115E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Deloraine"
+	FPA_user_label "Deloraine"
+ spot 49.192N -100.49E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Emerson"
+	FPA_user_label "Emerson"
+ spot 49.016N -97.203E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Erickson"
+	FPA_user_label "Erickson"
+ spot 50.498N -99.908E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gimli"
+	FPA_user_label "Gimli"
+ spot 50.633N -96.986E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gladstone"
+	FPA_user_label "Gladstone"
+ spot 50.225N -98.951E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grand Rapids"
+	FPA_user_label "Grand Rapids"
+ spot 53.21N -99.289E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grandview"
+	FPA_user_label "Grandview"
+ spot 51.174N -100.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gretna"
+	FPA_user_label "Gretna"
+ spot 49.008N -97.561E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hartney"
+	FPA_user_label "Hartney"
+ spot 49.481N -100.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Killarney"
+	FPA_user_label "Killarney"
+ spot 49.183N -99.664E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lac du Bonnet"
+	FPA_user_label "Lac du Bonnet"
+ spot 50.259N -96.062E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Leaf Rapids"
+	FPA_user_label "Leaf Rapids"
+ spot 56.463N -100.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Melita"
+	FPA_user_label "Melita"
+ spot 49.272N -100.99E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Minnedosa"
+	FPA_user_label "Minnedosa"
+ spot 50.247N -99.839E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Morden"
+	FPA_user_label "Morden"
+ spot 49.19N -98.098E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Morris"
+	FPA_user_label "Morris"
+ spot 49.354N -97.364E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Neepawa"
+	FPA_user_label "Neepawa"
+ spot 50.228N -99.466E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Niverville"
+	FPA_user_label "Niverville"
+ spot 49.606N -97.041E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Oak Lake"
+	FPA_user_label "Oak Lake"
+ spot 49.766N -100.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pilot Mound"
+	FPA_user_label "Pilot Mound"
+ spot 49.202N -98.896E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rapid City"
+	FPA_user_label "Rapid City"
+ spot 50.12N -100.04E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rivers"
+	FPA_user_label "Rivers"
+ spot 50.029N -100.24E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Roblin"
+	FPA_user_label "Roblin"
+ spot 51.228N -101.35E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rossburn"
+	FPA_user_label "Rossburn"
+ spot 50.67N -100.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Russell"
+	FPA_user_label "Russell"
+ spot 50.78N -101.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ste. Anne"
+	FPA_user_label "Ste. Anne"
+ spot 49.67N -96.647E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shoal Lake"
+	FPA_user_label "Shoal Lake"
+ spot 50.438N -100.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Snow Lake"
+	FPA_user_label "Snow Lake"
+ spot 54.879N -100.02E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Souris"
+	FPA_user_label "Souris"
+ spot 49.621N -100.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stonewall"
+	FPA_user_label "Stonewall"
+ spot 50.136N -97.326E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Swan River"
+	FPA_user_label "Swan River"
+ spot 52.106N -101.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Teulon"
+	FPA_user_label "Teulon"
+ spot 50.385N -97.263E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "The Pas"
+	FPA_user_label "The Pas"
+ spot 53.827N -101.25E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Virden"
+	FPA_user_label "Virden"
+ spot 49.849N -100.93E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Winkler"
+	FPA_user_label "Winkler"
+ spot 49.18N -97.938E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Winnipeg Beach"
+	FPA_user_label "Winnipeg Beach"
+ spot 50.502N -96.975E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Altona"
+	FPA_user_label "Altona"
+ spot 49.104N -97.555E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Selkirk"
+	FPA_user_label "Selkirk"
+ spot 50.143N -96.871E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Steinbach"
+	FPA_user_label "Steinbach"
+ spot 49.526N -96.685E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dauphin"
+	FPA_user_label "Dauphin"
+ spot 51.15N -100.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lundar"
+	FPA_user_label "Lundar"
+ spot 50.698N -98.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stony Mountain"
+	FPA_user_label "Stony Mountain"
+ spot 50.086N -97.219E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Minitonas"
+	FPA_user_label "Minitonas"
+ spot 52.086N -101.04E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lorette"
+	FPA_user_label "Lorette"
+ spot 49.739N -96.874E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Landmark"
+	FPA_user_label "Landmark"
+ spot 49.673N -96.821E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Riverton"
+	FPA_user_label "Riverton"
+ spot 50.996N -97E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Boundary Park"
+	FPA_user_label "Boundary Park"
+ spot 50.514N -96.976E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ponemah"
+	FPA_user_label "Ponemah"
+ spot 50.469N -96.954E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Whytewold"
+	FPA_user_label "Whytewold"
+ spot 50.451N -96.952E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glenboro"
+	FPA_user_label "Glenboro"
+ spot 49.559N -99.289E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Waskada"
+	FPA_user_label "Waskada"
+ spot 49.098N -100.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wawanesa"
+	FPA_user_label "Wawanesa"
+ spot 49.595N -99.684E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wanless"
+	FPA_user_label "Wanless"
+ spot 54.182N -101.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ashern"
+	FPA_user_label "Ashern"
+ spot 51.182N -98.345E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cranberry Portage"
+	FPA_user_label "Cranberry Portage"
+ spot 54.586N -101.38E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pine River"
+	FPA_user_label "Pine River"
+ spot 51.784N -100.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Belmont"
+	FPA_user_label "Belmont"
+ spot 49.41N -99.456E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dunrea"
+	FPA_user_label "Dunrea"
+ spot 49.406N -99.732E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elgin"
+	FPA_user_label "Elgin"
+ spot 49.444N -100.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Griswold"
+	FPA_user_label "Griswold"
+ spot 49.776N -100.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lyleton"
+	FPA_user_label "Lyleton"
+ spot 49.058N -101.18E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Margaret"
+	FPA_user_label "Margaret"
+ spot 49.406N -99.857E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Minto"
+	FPA_user_label "Minto"
+ spot 49.407N -100.02E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ninette"
+	FPA_user_label "Ninette"
+ spot 49.399N -99.631E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ninga"
+	FPA_user_label "Ninga"
+ spot 49.227N -99.889E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pierson"
+	FPA_user_label "Pierson"
+ spot 49.18N -101.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Reston"
+	FPA_user_label "Reston"
+ spot 49.557N -101.09E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alexander"
+	FPA_user_label "Alexander"
+ spot 49.83N -100.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Binscarth"
+	FPA_user_label "Binscarth"
+ spot 50.624N -101.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bowsman"
+	FPA_user_label "Bowsman"
+ spot 52.239N -101.21E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cartwright"
+	FPA_user_label "Cartwright"
+ spot 49.095N -99.346E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Crystal City"
+	FPA_user_label "Crystal City"
+ spot 49.148N -98.941E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dunnottar"
+	FPA_user_label "Dunnottar"
+ spot 50.454N -96.952E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elkhorn"
+	FPA_user_label "Elkhorn"
+ spot 49.975N -101.24E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ethelbert"
+	FPA_user_label "Ethelbert"
+ spot 51.526N -100.39E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Garson"
+	FPA_user_label "Garson"
+ spot 50.077N -96.704E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gilbert Plains"
+	FPA_user_label "Gilbert Plains"
+ spot 51.15N -100.49E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hamiota"
+	FPA_user_label "Hamiota"
+ spot 50.18N -100.6E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Manitou"
+	FPA_user_label "Manitou"
+ spot 49.236N -98.535E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "McCreary"
+	FPA_user_label "McCreary"
+ spot 50.772N -99.492E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Notre Dame de Lourdes"
+	FPA_user_label "Notre Dame de Lourdes"
+ spot 49.532N -98.558E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Plum Coulee"
+	FPA_user_label "Plum Coulee"
+ spot 49.19N -97.753E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ste. Rose du Lac"
+	FPA_user_label "Ste. Rose du Lac"
+ spot 51.059N -99.523E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St-Lazare"
+	FPA_user_label "St-Lazare"
+ spot 50.449N -101.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St-Pierre-Jolys"
+	FPA_user_label "St-Pierre-Jolys"
+ spot 49.441N -96.985E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Somerset"
+	FPA_user_label "Somerset"
+ spot 49.412N -98.659E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Treherne"
+	FPA_user_label "Treherne"
+ spot 49.628N -98.699E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Winnipegosis"
+	FPA_user_label "Winnipegosis"
+ spot 51.65N -99.926E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Benito"
+	FPA_user_label "Benito"
+ spot 51.914N -101.55E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "MacGregor"
+	FPA_user_label "MacGregor"
+ spot 49.966N -98.778E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Powerview"
+	FPA_user_label "Powerview"
+ spot 50.566N -96.196E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Claude"
+	FPA_user_label "St. Claude"
+ spot 49.658N -98.346E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Aberdeen"
+	FPA_user_label "Aberdeen"
+ spot 52.326N -106.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alameda"
+	FPA_user_label "Alameda"
+ spot 49.261N -102.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Allan"
+	FPA_user_label "Allan"
+ spot 51.893N -106.06E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Arborfield"
+	FPA_user_label "Arborfield"
+ spot 53.105N -103.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Arcola"
+	FPA_user_label "Arcola"
+ spot 49.639N -102.49E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Asquith"
+	FPA_user_label "Asquith"
+ spot 52.136N -107.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Assiniboia"
+	FPA_user_label "Assiniboia"
+ spot 49.634N -105.99E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Balcarres"
+	FPA_user_label "Balcarres"
+ spot 50.802N -103.54E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Balgonie"
+	FPA_user_label "Balgonie"
+ spot 50.491N -104.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Battleford"
+	FPA_user_label "Battleford"
+ spot 52.737N -108.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bengough"
+	FPA_user_label "Bengough"
+ spot 49.397N -105.12E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bienfait"
+	FPA_user_label "Bienfait"
+ spot 49.143N -102.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Biggar"
+	FPA_user_label "Biggar"
+ spot 52.062N -107.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Big River"
+	FPA_user_label "Big River"
+ spot 53.833N -107.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Birch Hills"
+	FPA_user_label "Birch Hills"
+ spot 52.985N -105.44E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Blaine Lake"
+	FPA_user_label "Blaine Lake"
+ spot 52.828N -106.88E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bredenbury"
+	FPA_user_label "Bredenbury"
+ spot 50.938N -102.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Broadview"
+	FPA_user_label "Broadview"
+ spot 50.378N -102.58E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bruno"
+	FPA_user_label "Bruno"
+ spot 52.263N -105.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Burstall"
+	FPA_user_label "Burstall"
+ spot 50.656N -109.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cabri"
+	FPA_user_label "Cabri"
+ spot 50.62N -108.46E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Canora"
+	FPA_user_label "Canora"
+ spot 51.634N -102.44E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carlyle"
+	FPA_user_label "Carlyle"
+ spot 49.636N -102.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carnduff"
+	FPA_user_label "Carnduff"
+ spot 49.176N -101.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carrot River"
+	FPA_user_label "Carrot River"
+ spot 53.28N -103.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Central Butte"
+	FPA_user_label "Central Butte"
+ spot 50.801N -106.51E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Choiceland"
+	FPA_user_label "Choiceland"
+ spot 53.492N -104.49E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Churchbridge"
+	FPA_user_label "Churchbridge"
+ spot 50.897N -101.9E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Colonsay"
+	FPA_user_label "Colonsay"
+ spot 51.981N -105.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Coronach"
+	FPA_user_label "Coronach"
+ spot 49.114N -105.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Craik"
+	FPA_user_label "Craik"
+ spot 51.052N -105.82E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Creighton"
+	FPA_user_label "Creighton"
+ spot 54.754N -101.9E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cudworth"
+	FPA_user_label "Cudworth"
+ spot 52.493N -105.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cupar"
+	FPA_user_label "Cupar"
+ spot 50.947N -104.21E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cut Knife"
+	FPA_user_label "Cut Knife"
+ spot 52.748N -109.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dalmeny"
+	FPA_user_label "Dalmeny"
+ spot 52.339N -106.77E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Davidson"
+	FPA_user_label "Davidson"
+ spot 51.266N -106E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Delisle"
+	FPA_user_label "Delisle"
+ spot 51.92N -107.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Duck Lake"
+	FPA_user_label "Duck Lake"
+ spot 52.816N -106.22E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dundurn"
+	FPA_user_label "Dundurn"
+ spot 51.812N -106.5E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Eastend"
+	FPA_user_label "Eastend"
+ spot 49.513N -108.83E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Eatonia"
+	FPA_user_label "Eatonia"
+ spot 51.221N -109.39E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elrose"
+	FPA_user_label "Elrose"
+ spot 51.202N -108.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Esterhazy"
+	FPA_user_label "Esterhazy"
+ spot 50.657N -102.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Eston"
+	FPA_user_label "Eston"
+ spot 51.154N -108.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fleming"
+	FPA_user_label "Fleming"
+ spot 50.076N -101.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Foam Lake"
+	FPA_user_label "Foam Lake"
+ spot 51.638N -103.54E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fort Qu'Appelle"
+	FPA_user_label "Fort Qu'Appelle"
+ spot 50.768N -103.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Francis"
+	FPA_user_label "Francis"
+ spot 50.101N -103.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Govan"
+	FPA_user_label "Govan"
+ spot 51.312N -104.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gravelbourg"
+	FPA_user_label "Gravelbourg"
+ spot 49.879N -106.56E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grenfell"
+	FPA_user_label "Grenfell"
+ spot 50.404N -102.93E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gull Lake"
+	FPA_user_label "Gull Lake"
+ spot 50.097N -108.48E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hafford"
+	FPA_user_label "Hafford"
+ spot 52.728N -107.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hague"
+	FPA_user_label "Hague"
+ spot 52.51N -106.41E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hanley"
+	FPA_user_label "Hanley"
+ spot 51.628N -106.44E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Herbert"
+	FPA_user_label "Herbert"
+ spot 50.426N -107.22E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hudson Bay"
+	FPA_user_label "Hudson Bay"
+ spot 52.857N -102.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Humboldt"
+	FPA_user_label "Humboldt"
+ spot 52.201N -105.12E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Imperial"
+	FPA_user_label "Imperial"
+ spot 51.344N -105.44E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Indian Head"
+	FPA_user_label "Indian Head"
+ spot 50.528N -103.68E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ituna"
+	FPA_user_label "Ituna"
+ spot 51.171N -103.5E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kamsack"
+	FPA_user_label "Kamsack"
+ spot 51.565N -101.9E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kelvington"
+	FPA_user_label "Kelvington"
+ spot 52.167N -103.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kerrobert"
+	FPA_user_label "Kerrobert"
+ spot 51.92N -109.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kindersley"
+	FPA_user_label "Kindersley"
+ spot 51.47N -109.16E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kinistino"
+	FPA_user_label "Kinistino"
+ spot 52.95N -105.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kipling"
+	FPA_user_label "Kipling"
+ spot 50.103N -102.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kyle"
+	FPA_user_label "Kyle"
+ spot 50.83N -108.04E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lafleche"
+	FPA_user_label "Lafleche"
+ spot 49.698N -106.57E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lampman"
+	FPA_user_label "Lampman"
+ spot 49.377N -102.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Langenburg"
+	FPA_user_label "Langenburg"
+ spot 50.841N -101.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Langham"
+	FPA_user_label "Langham"
+ spot 52.36N -106.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lanigan"
+	FPA_user_label "Lanigan"
+ spot 51.848N -105.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "La Ronge"
+	FPA_user_label "La Ronge"
+ spot 55.11N -105.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lashburn"
+	FPA_user_label "Lashburn"
+ spot 53.122N -109.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Leader"
+	FPA_user_label "Leader"
+ spot 50.885N -109.54E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lemberg"
+	FPA_user_label "Lemberg"
+ spot 50.724N -103.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Leroy"
+	FPA_user_label "Leroy"
+ spot  52N -104.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lumsden"
+	FPA_user_label "Lumsden"
+ spot 50.646N -104.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Luseland"
+	FPA_user_label "Luseland"
+ spot 52.08N -109.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Macklin"
+	FPA_user_label "Macklin"
+ spot 52.333N -109.94E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Maidstone"
+	FPA_user_label "Maidstone"
+ spot 53.086N -109.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Maple Creek"
+	FPA_user_label "Maple Creek"
+ spot 49.907N -109.48E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Martensville"
+	FPA_user_label "Martensville"
+ spot 52.286N -106.67E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Meadow Lake"
+	FPA_user_label "Meadow Lake"
+ spot 54.132N -108.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Midale"
+	FPA_user_label "Midale"
+ spot 49.396N -103.41E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Milestone"
+	FPA_user_label "Milestone"
+ spot 49.99N -104.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Moosomin"
+	FPA_user_label "Moosomin"
+ spot 50.144N -101.67E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Morse"
+	FPA_user_label "Morse"
+ spot 50.412N -107.04E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mossbank"
+	FPA_user_label "Mossbank"
+ spot 49.94N -105.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Naicam"
+	FPA_user_label "Naicam"
+ spot 52.42N -104.5E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Nipawin"
+	FPA_user_label "Nipawin"
+ spot 53.362N -104.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Nokomis"
+	FPA_user_label "Nokomis"
+ spot 51.508N -105.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Norquay"
+	FPA_user_label "Norquay"
+ spot 51.882N -102.09E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ogema"
+	FPA_user_label "Ogema"
+ spot 49.573N -104.92E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Osler"
+	FPA_user_label "Osler"
+ spot 52.367N -106.54E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Outlook"
+	FPA_user_label "Outlook"
+ spot 51.488N -107.06E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Oxbow"
+	FPA_user_label "Oxbow"
+ spot 49.227N -102.17E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pilot Butte"
+	FPA_user_label "Pilot Butte"
+ spot 50.478N -104.41E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ponteix"
+	FPA_user_label "Ponteix"
+ spot 49.739N -107.49E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Porcupine Plain"
+	FPA_user_label "Porcupine Plain"
+ spot 52.6N -103.25E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Preeceville"
+	FPA_user_label "Preeceville"
+ spot 51.954N -102.67E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Qu'Appelle"
+	FPA_user_label "Qu'Appelle"
+ spot 50.543N -103.88E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Radisson"
+	FPA_user_label "Radisson"
+ spot 52.463N -107.39E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Radville"
+	FPA_user_label "Radville"
+ spot 49.46N -104.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Raymore"
+	FPA_user_label "Raymore"
+ spot 51.41N -104.54E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Redvers"
+	FPA_user_label "Redvers"
+ spot 49.577N -101.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Regina Beach"
+	FPA_user_label "Regina Beach"
+ spot 50.79N -104.99E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rocanville"
+	FPA_user_label "Rocanville"
+ spot 50.382N -101.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rockglen"
+	FPA_user_label "Rockglen"
+ spot 49.18N -105.95E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rosetown"
+	FPA_user_label "Rosetown"
+ spot 51.555N -108E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rose Valley"
+	FPA_user_label "Rose Valley"
+ spot 52.289N -103.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rosthern"
+	FPA_user_label "Rosthern"
+ spot 52.662N -106.33E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rouleau"
+	FPA_user_label "Rouleau"
+ spot 50.188N -104.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Walburg"
+	FPA_user_label "St. Walburg"
+ spot 53.635N -109.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Saltcoats"
+	FPA_user_label "Saltcoats"
+ spot 51.037N -102.16E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Scott"
+	FPA_user_label "Scott"
+ spot 52.364N -108.83E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shaunavon"
+	FPA_user_label "Shaunavon"
+ spot 49.646N -108.42E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shellbrook"
+	FPA_user_label "Shellbrook"
+ spot 53.227N -106.39E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sintaluta"
+	FPA_user_label "Sintaluta"
+ spot 50.478N -103.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Southey"
+	FPA_user_label "Southey"
+ spot 50.94N -104.5E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Spiritwood"
+	FPA_user_label "Spiritwood"
+ spot 53.367N -107.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Springside"
+	FPA_user_label "Springside"
+ spot 51.343N -102.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Star City"
+	FPA_user_label "Star City"
+ spot 52.864N -104.33E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stoughton"
+	FPA_user_label "Stoughton"
+ spot 49.679N -103.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Strasbourg"
+	FPA_user_label "Strasbourg"
+ spot 51.067N -104.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sturgis"
+	FPA_user_label "Sturgis"
+ spot 51.938N -102.54E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tisdale"
+	FPA_user_label "Tisdale"
+ spot 52.847N -104.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Turtleford"
+	FPA_user_label "Turtleford"
+ spot 53.388N -108.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Unity"
+	FPA_user_label "Unity"
+ spot 52.436N -109.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vonda"
+	FPA_user_label "Vonda"
+ spot 52.318N -106.1E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wadena"
+	FPA_user_label "Wadena"
+ spot 51.945N -103.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wakaw"
+	FPA_user_label "Wakaw"
+ spot 52.652N -105.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Waldheim"
+	FPA_user_label "Waldheim"
+ spot 52.624N -106.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wapella"
+	FPA_user_label "Wapella"
+ spot 50.261N -101.97E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Warman"
+	FPA_user_label "Warman"
+ spot 52.319N -106.58E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Watrous"
+	FPA_user_label "Watrous"
+ spot 51.672N -105.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Watson"
+	FPA_user_label "Watson"
+ spot 52.129N -104.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wawota"
+	FPA_user_label "Wawota"
+ spot 49.903N -102.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Whitewood"
+	FPA_user_label "Whitewood"
+ spot 50.328N -102.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wilkie"
+	FPA_user_label "Wilkie"
+ spot 52.41N -108.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Willow Bunch"
+	FPA_user_label "Willow Bunch"
+ spot 49.392N -105.64E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wolseley"
+	FPA_user_label "Wolseley"
+ spot 50.417N -103.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wynyard"
+	FPA_user_label "Wynyard"
+ spot 51.765N -104.18E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Yellow Grass"
+	FPA_user_label "Yellow Grass"
+ spot 49.807N -104.16E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Zealandia"
+	FPA_user_label "Zealandia"
+ spot 51.616N -107.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Abbey"
+	FPA_user_label "Abbey"
+ spot 50.734N -108.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Abernethy"
+	FPA_user_label "Abernethy"
+ spot 50.747N -103.42E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Adanac"
+	FPA_user_label "Adanac"
+ spot 52.452N -109.06E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Admiral"
+	FPA_user_label "Admiral"
+ spot 49.713N -108.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Albertville"
+	FPA_user_label "Albertville"
+ spot 53.395N -105.54E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alida"
+	FPA_user_label "Alida"
+ spot 49.39N -101.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alsask"
+	FPA_user_label "Alsask"
+ spot 51.376N -109.99E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Alvena"
+	FPA_user_label "Alvena"
+ spot 52.517N -106.02E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Aneroid"
+	FPA_user_label "Aneroid"
+ spot 49.716N -107.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Annaheim"
+	FPA_user_label "Annaheim"
+ spot 52.318N -104.82E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Antler"
+	FPA_user_label "Antler"
+ spot 49.569N -101.46E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Archerwill"
+	FPA_user_label "Archerwill"
+ spot 52.44N -103.86E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Arelee"
+	FPA_user_label "Arelee"
+ spot 52.259N -107.5E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Arran"
+	FPA_user_label "Arran"
+ spot 51.884N -101.72E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Atwater"
+	FPA_user_label "Atwater"
+ spot 50.774N -102.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Avonlea"
+	FPA_user_label "Avonlea"
+ spot 50.016N -105.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Aylesbury"
+	FPA_user_label "Aylesbury"
+ spot 50.94N -105.69E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Aylsham"
+	FPA_user_label "Aylsham"
+ spot 53.191N -103.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bangor"
+	FPA_user_label "Bangor"
+ spot 50.805N -102.34E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Beatty"
+	FPA_user_label "Beatty"
+ spot 52.9N -104.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Beechy"
+	FPA_user_label "Beechy"
+ spot 50.877N -107.38E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Belle Plaine"
+	FPA_user_label "Belle Plaine"
+ spot 50.393N -105.16E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Benson"
+	FPA_user_label "Benson"
+ spot 49.464N -103.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bethune"
+	FPA_user_label "Bethune"
+ spot 50.71N -105.21E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Birsay"
+	FPA_user_label "Birsay"
+ spot 51.096N -106.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bjorkdale"
+	FPA_user_label "Bjorkdale"
+ spot 52.711N -103.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bladworth"
+	FPA_user_label "Bladworth"
+ spot 51.365N -106.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Borden"
+	FPA_user_label "Borden"
+ spot 52.404N -107.24E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bracken"
+	FPA_user_label "Bracken"
+ spot 49.177N -108.09E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bradwell"
+	FPA_user_label "Bradwell"
+ spot 51.947N -106.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Briercrest"
+	FPA_user_label "Briercrest"
+ spot 50.165N -105.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Brock"
+	FPA_user_label "Brock"
+ spot 51.442N -108.72E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Broderick"
+	FPA_user_label "Broderick"
+ spot 51.489N -106.92E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Brownlee"
+	FPA_user_label "Brownlee"
+ spot 50.735N -106.02E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Buchanan"
+	FPA_user_label "Buchanan"
+ spot 51.707N -102.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Buena Vista"
+	FPA_user_label "Buena Vista"
+ spot 50.781N -104.94E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Bulyea"
+	FPA_user_label "Bulyea"
+ spot 50.982N -104.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cadillac"
+	FPA_user_label "Cadillac"
+ spot 49.728N -107.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Calder"
+	FPA_user_label "Calder"
+ spot 51.159N -101.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Cando"
+	FPA_user_label "Cando"
+ spot 52.373N -108.21E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Canwood"
+	FPA_user_label "Canwood"
+ spot 53.359N -106.6E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carievale"
+	FPA_user_label "Carievale"
+ spot 49.175N -101.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carmichael"
+	FPA_user_label "Carmichael"
+ spot 50.045N -108.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Caronport"
+	FPA_user_label "Caronport"
+ spot 50.455N -105.82E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ceylon"
+	FPA_user_label "Ceylon"
+ spot 49.464N -104.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chamberlain"
+	FPA_user_label "Chamberlain"
+ spot 50.851N -105.57E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Chaplin"
+	FPA_user_label "Chaplin"
+ spot 50.462N -106.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Christopher Lake"
+	FPA_user_label "Christopher Lake"
+ spot 53.54N -105.79E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Clavet"
+	FPA_user_label "Clavet"
+ spot 51.998N -106.39E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Climax"
+	FPA_user_label "Climax"
+ spot 49.207N -108.39E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Coderre"
+	FPA_user_label "Coderre"
+ spot 50.135N -106.38E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Codette"
+	FPA_user_label "Codette"
+ spot 53.279N -104.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Coleville"
+	FPA_user_label "Coleville"
+ spot 51.708N -109.25E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Colgate"
+	FPA_user_label "Colgate"
+ spot 49.395N -103.89E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Conquest"
+	FPA_user_label "Conquest"
+ spot 51.531N -107.25E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Consul"
+	FPA_user_label "Consul"
+ spot 49.295N -109.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Craven"
+	FPA_user_label "Craven"
+ spot 50.708N -104.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Creelman"
+	FPA_user_label "Creelman"
+ spot 49.819N -103.31E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dafoe"
+	FPA_user_label "Dafoe"
+ spot 51.753N -104.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Debden"
+	FPA_user_label "Debden"
+ spot 53.525N -106.88E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Denholm"
+	FPA_user_label "Denholm"
+ spot 52.659N -108.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Denzil"
+	FPA_user_label "Denzil"
+ spot 52.231N -109.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dilke"
+	FPA_user_label "Dilke"
+ spot 50.866N -105.25E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dinsmore"
+	FPA_user_label "Dinsmore"
+ spot 51.329N -107.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Disley"
+	FPA_user_label "Disley"
+ spot 50.643N -105.06E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dodsland"
+	FPA_user_label "Dodsland"
+ spot 51.8N -108.84E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dollard"
+	FPA_user_label "Dollard"
+ spot 49.616N -108.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Domremy"
+	FPA_user_label "Domremy"
+ spot 52.791N -105.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dorintosh"
+	FPA_user_label "Dorintosh"
+ spot 54.355N -108.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Drake"
+	FPA_user_label "Drake"
+ spot 51.747N -105.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Drinkwater"
+	FPA_user_label "Drinkwater"
+ spot 50.295N -105.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dubuc"
+	FPA_user_label "Dubuc"
+ spot 50.685N -102.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Duff"
+	FPA_user_label "Duff"
+ spot 50.873N -103.1E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Duval"
+	FPA_user_label "Duval"
+ spot 51.154N -104.99E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dysart"
+	FPA_user_label "Dysart"
+ spot 50.95N -104.04E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Earl Grey"
+	FPA_user_label "Earl Grey"
+ spot 50.938N -104.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ebenezer"
+	FPA_user_label "Ebenezer"
+ spot 51.369N -102.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Edam"
+	FPA_user_label "Edam"
+ spot 53.191N -108.77E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Edenwold"
+	FPA_user_label "Edenwold"
+ spot 50.633N -104.25E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elbow"
+	FPA_user_label "Elbow"
+ spot 51.12N -106.6E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elfros"
+	FPA_user_label "Elfros"
+ spot 51.744N -103.86E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Elstow"
+	FPA_user_label "Elstow"
+ spot 51.987N -106.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Endeavour"
+	FPA_user_label "Endeavour"
+ spot 52.158N -102.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Englefeld"
+	FPA_user_label "Englefeld"
+ spot 52.159N -104.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ernfold"
+	FPA_user_label "Ernfold"
+ spot 50.447N -106.9E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Evesham"
+	FPA_user_label "Evesham"
+ spot 52.389N -109.84E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Eyebrow"
+	FPA_user_label "Eyebrow"
+ spot 50.802N -106.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fairlight"
+	FPA_user_label "Fairlight"
+ spot 49.882N -101.68E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fenwood"
+	FPA_user_label "Fenwood"
+ spot 51.012N -103.05E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fife Lake"
+	FPA_user_label "Fife Lake"
+ spot 49.193N -105.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fillmore"
+	FPA_user_label "Fillmore"
+ spot 49.883N -103.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Findlater"
+	FPA_user_label "Findlater"
+ spot 50.789N -105.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Flaxcombe"
+	FPA_user_label "Flaxcombe"
+ spot 51.475N -109.6E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Forget"
+	FPA_user_label "Forget"
+ spot 49.651N -102.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fosston"
+	FPA_user_label "Fosston"
+ spot 52.195N -103.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fox Valley"
+	FPA_user_label "Fox Valley"
+ spot 50.464N -109.49E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Frobisher"
+	FPA_user_label "Frobisher"
+ spot 49.207N -102.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Frontier"
+	FPA_user_label "Frontier"
+ spot 49.203N -108.56E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gainsborough"
+	FPA_user_label "Gainsborough"
+ spot 49.178N -101.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gerald"
+	FPA_user_label "Gerald"
+ spot 50.667N -101.79E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Girvin"
+	FPA_user_label "Girvin"
+ spot 51.154N -105.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Gladmar"
+	FPA_user_label "Gladmar"
+ spot 49.163N -104.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glaslyn"
+	FPA_user_label "Glaslyn"
+ spot 53.363N -108.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glenavon"
+	FPA_user_label "Glenavon"
+ spot 50.195N -103.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glen Ewen"
+	FPA_user_label "Glen Ewen"
+ spot 49.208N -102.02E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glenside"
+	FPA_user_label "Glenside"
+ spot 51.452N -106.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glentworth"
+	FPA_user_label "Glentworth"
+ spot 49.424N -106.68E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Glidden"
+	FPA_user_label "Glidden"
+ spot 51.237N -109.17E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Golden Prairie"
+	FPA_user_label "Golden Prairie"
+ spot 50.222N -109.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Goodeve"
+	FPA_user_label "Goodeve"
+ spot 51.063N -103.19E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Goodsoil"
+	FPA_user_label "Goodsoil"
+ spot 54.398N -109.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Goodwater"
+	FPA_user_label "Goodwater"
+ spot 49.396N -103.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grand Coulee"
+	FPA_user_label "Grand Coulee"
+ spot 50.431N -104.82E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grandview Beach"
+	FPA_user_label "Grandview Beach"
+ spot 50.873N -105.11E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Grayson"
+	FPA_user_label "Grayson"
+ spot 50.724N -102.64E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Guernsey"
+	FPA_user_label "Guernsey"
+ spot 51.871N -105.19E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Halbrite"
+	FPA_user_label "Halbrite"
+ spot 49.489N -103.55E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Handel"
+	FPA_user_label "Handel"
+ spot 52.061N -108.69E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Harris"
+	FPA_user_label "Harris"
+ spot 51.736N -107.58E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hawarden"
+	FPA_user_label "Hawarden"
+ spot 51.414N -106.6E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hazenmore"
+	FPA_user_label "Hazenmore"
+ spot 49.689N -107.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hazlet"
+	FPA_user_label "Hazlet"
+ spot 50.397N -108.6E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hepburn"
+	FPA_user_label "Hepburn"
+ spot 52.522N -106.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Herschel"
+	FPA_user_label "Herschel"
+ spot 51.638N -108.35E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Heward"
+	FPA_user_label "Heward"
+ spot 49.739N -103.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hodgeville"
+	FPA_user_label "Hodgeville"
+ spot 50.11N -106.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Holdfast"
+	FPA_user_label "Holdfast"
+ spot 50.959N -105.42E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hubbard"
+	FPA_user_label "Hubbard"
+ spot 51.128N -103.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hyas"
+	FPA_user_label "Hyas"
+ spot 51.894N -102.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Insinger"
+	FPA_user_label "Insinger"
+ spot 51.52N -103.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Invermay"
+	FPA_user_label "Invermay"
+ spot 51.805N -103.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Jansen"
+	FPA_user_label "Jansen"
+ spot 51.789N -104.72E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Jedburgh"
+	FPA_user_label "Jedburgh"
+ spot 51.299N -103E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kannata Valley"
+	FPA_user_label "Kannata Valley"
+ spot 50.784N -104.9E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Keeler"
+	FPA_user_label "Keeler"
+ spot 50.677N -105.88E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kelfield"
+	FPA_user_label "Kelfield"
+ spot 51.943N -108.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kelliher"
+	FPA_user_label "Kelliher"
+ spot 51.262N -103.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kenaston"
+	FPA_user_label "Kenaston"
+ spot 51.503N -106.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kendal"
+	FPA_user_label "Kendal"
+ spot 50.254N -103.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kennedy"
+	FPA_user_label "Kennedy"
+ spot 50.013N -102.35E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kenosee Lake"
+	FPA_user_label "Kenosee Lake"
+ spot 49.834N -102.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Khedive"
+	FPA_user_label "Khedive"
+ spot 49.621N -104.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Killaly"
+	FPA_user_label "Killaly"
+ spot 50.754N -102.83E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kincaid"
+	FPA_user_label "Kincaid"
+ spot 49.669N -107E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kinley"
+	FPA_user_label "Kinley"
+ spot 52.066N -107.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Kisbey"
+	FPA_user_label "Kisbey"
+ spot 49.646N -102.68E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Krydor"
+	FPA_user_label "Krydor"
+ spot 52.788N -107.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Laird"
+	FPA_user_label "Laird"
+ spot 52.711N -106.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lake Alma"
+	FPA_user_label "Lake Alma"
+ spot 49.145N -104.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lake Lenore"
+	FPA_user_label "Lake Lenore"
+ spot 52.396N -104.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lancer"
+	FPA_user_label "Lancer"
+ spot 50.801N -108.89E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Landis"
+	FPA_user_label "Landis"
+ spot 52.2N -108.46E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lang"
+	FPA_user_label "Lang"
+ spot 49.919N -104.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Leask"
+	FPA_user_label "Leask"
+ spot 53.019N -106.74E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lebret"
+	FPA_user_label "Lebret"
+ spot 50.757N -103.7E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Leoville"
+	FPA_user_label "Leoville"
+ spot 53.633N -107.55E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Leross"
+	FPA_user_label "Leross"
+ spot 51.285N -103.86E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Leslie"
+	FPA_user_label "Leslie"
+ spot 51.695N -103.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lestock"
+	FPA_user_label "Lestock"
+ spot 51.31N -103.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Liberty"
+	FPA_user_label "Liberty"
+ spot 51.139N -105.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Limerick"
+	FPA_user_label "Limerick"
+ spot 49.653N -106.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lintlaw"
+	FPA_user_label "Lintlaw"
+ spot 52.066N -103.24E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lipton"
+	FPA_user_label "Lipton"
+ spot 50.902N -103.85E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lockwood"
+	FPA_user_label "Lockwood"
+ spot 51.643N -105.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Loon Lake"
+	FPA_user_label "Loon Lake"
+ spot 54.025N -109.16E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Loreburn"
+	FPA_user_label "Loreburn"
+ spot 51.227N -106.6E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Love"
+	FPA_user_label "Love"
+ spot 53.487N -104.17E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Loverna"
+	FPA_user_label "Loverna"
+ spot 51.66N -110E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Lucky Lake"
+	FPA_user_label "Lucky Lake"
+ spot 50.987N -107.14E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "MacNutt"
+	FPA_user_label "MacNutt"
+ spot 51.085N -101.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Macoun"
+	FPA_user_label "Macoun"
+ spot 49.312N -103.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Macrorie"
+	FPA_user_label "Macrorie"
+ spot 51.327N -107.09E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Major"
+	FPA_user_label "Major"
+ spot 51.872N -109.62E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Makwa"
+	FPA_user_label "Makwa"
+ spot 54.006N -108.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mankota"
+	FPA_user_label "Mankota"
+ spot 49.422N -107.07E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Manor"
+	FPA_user_label "Manor"
+ spot 49.61N -102.09E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mantario"
+	FPA_user_label "Mantario"
+ spot 51.262N -109.69E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Marcelin"
+	FPA_user_label "Marcelin"
+ spot 52.93N -106.79E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Marengo"
+	FPA_user_label "Marengo"
+ spot 51.482N -109.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Margo"
+	FPA_user_label "Margo"
+ spot 51.826N -103.34E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Markinch"
+	FPA_user_label "Markinch"
+ spot 50.937N -104.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Marquis"
+	FPA_user_label "Marquis"
+ spot 50.62N -105.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Marsden"
+	FPA_user_label "Marsden"
+ spot 52.842N -109.82E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Marshall"
+	FPA_user_label "Marshall"
+ spot 53.191N -109.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Maryfield"
+	FPA_user_label "Maryfield"
+ spot 49.836N -101.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Maymont"
+	FPA_user_label "Maymont"
+ spot 52.563N -107.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mazenod"
+	FPA_user_label "Mazenod"
+ spot 49.86N -106.21E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "McLean"
+	FPA_user_label "McLean"
+ spot 50.517N -104.07E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "McTaggart"
+	FPA_user_label "McTaggart"
+ spot 49.731N -104.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Meacham"
+	FPA_user_label "Meacham"
+ spot 52.1N -105.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Meath Park"
+	FPA_user_label "Meath Park"
+ spot 53.443N -105.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Medstead"
+	FPA_user_label "Medstead"
+ spot 53.298N -108.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mendham"
+	FPA_user_label "Mendham"
+ spot 50.773N -109.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Meota"
+	FPA_user_label "Meota"
+ spot 53.034N -108.46E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mervin"
+	FPA_user_label "Mervin"
+ spot 53.336N -108.88E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Meyronne"
+	FPA_user_label "Meyronne"
+ spot 49.669N -106.84E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Middle Lake"
+	FPA_user_label "Middle Lake"
+ spot 52.479N -105.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Milden"
+	FPA_user_label "Milden"
+ spot 51.485N -107.53E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Minton"
+	FPA_user_label "Minton"
+ spot 49.164N -104.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mistatim"
+	FPA_user_label "Mistatim"
+ spot 52.871N -103.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Montmartre"
+	FPA_user_label "Montmartre"
+ spot 50.221N -103.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mortlach"
+	FPA_user_label "Mortlach"
+ spot 50.456N -106.07E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Muenster"
+	FPA_user_label "Muenster"
+ spot 52.19N -105E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Neilburg"
+	FPA_user_label "Neilburg"
+ spot 52.836N -109.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Netherhill"
+	FPA_user_label "Netherhill"
+ spot 51.475N -108.86E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Neudorf"
+	FPA_user_label "Neudorf"
+ spot 50.714N -103.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Neville"
+	FPA_user_label "Neville"
+ spot 49.961N -107.63E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "North Portal"
+	FPA_user_label "North Portal"
+ spot 49.002N -102.55E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Odessa"
+	FPA_user_label "Odessa"
+ spot 50.281N -103.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Osage"
+	FPA_user_label "Osage"
+ spot 49.954N -103.58E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Paddockwood"
+	FPA_user_label "Paddockwood"
+ spot 53.511N -105.56E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Palmer"
+	FPA_user_label "Palmer"
+ spot 49.859N -106.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pangman"
+	FPA_user_label "Pangman"
+ spot 49.647N -104.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Paradise Hill"
+	FPA_user_label "Paradise Hill"
+ spot 53.539N -109.46E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Parkside"
+	FPA_user_label "Parkside"
+ spot 53.166N -106.54E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Paynton"
+	FPA_user_label "Paynton"
+ spot 53.015N -108.94E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pelly"
+	FPA_user_label "Pelly"
+ spot 51.856N -101.93E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pennant"
+	FPA_user_label "Pennant"
+ spot 50.533N -108.23E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pense"
+	FPA_user_label "Pense"
+ spot 50.414N -104.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Penzance"
+	FPA_user_label "Penzance"
+ spot 51.06N -105.44E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Perdue"
+	FPA_user_label "Perdue"
+ spot 52.059N -107.54E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Piapot"
+	FPA_user_label "Piapot"
+ spot 49.989N -109.13E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pierceland"
+	FPA_user_label "Pierceland"
+ spot 54.344N -109.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pilger"
+	FPA_user_label "Pilger"
+ spot 52.422N -105.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Pleasantdale"
+	FPA_user_label "Pleasantdale"
+ spot 52.575N -104.51E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Plenty"
+	FPA_user_label "Plenty"
+ spot 51.782N -108.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Plunkett"
+	FPA_user_label "Plunkett"
+ spot 51.907N -105.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Prelate"
+	FPA_user_label "Prelate"
+ spot 50.852N -109.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Primate"
+	FPA_user_label "Primate"
+ spot 52.26N -109.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Prud'homme"
+	FPA_user_label "Prud'homme"
+ spot 52.333N -105.89E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Punnichy"
+	FPA_user_label "Punnichy"
+ spot 51.374N -104.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Quill Lake"
+	FPA_user_label "Quill Lake"
+ spot 52.07N -104.26E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Quinton"
+	FPA_user_label "Quinton"
+ spot 51.387N -104.41E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rabbit Lake"
+	FPA_user_label "Rabbit Lake"
+ spot 53.14N -107.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rama"
+	FPA_user_label "Rama"
+ spot 51.758N -103E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rhein"
+	FPA_user_label "Rhein"
+ spot 51.354N -102.19E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Richard"
+	FPA_user_label "Richard"
+ spot 52.696N -107.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Richmound"
+	FPA_user_label "Richmound"
+ spot 50.456N -109.76E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ridgedale"
+	FPA_user_label "Ridgedale"
+ spot 53.058N -104.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Riverhurst"
+	FPA_user_label "Riverhurst"
+ spot 50.901N -106.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Robsart"
+	FPA_user_label "Robsart"
+ spot 49.374N -109.28E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Roche Percee"
+	FPA_user_label "Roche Percee"
+ spot 49.069N -102.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rockhaven"
+	FPA_user_label "Rockhaven"
+ spot 52.67N -108.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ruddell"
+	FPA_user_label "Ruddell"
+ spot 52.605N -107.86E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Rush Lake"
+	FPA_user_label "Rush Lake"
+ spot 50.405N -107.4E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Ruthilda"
+	FPA_user_label "Ruthilda"
+ spot 51.893N -108.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Benedict"
+	FPA_user_label "St. Benedict"
+ spot 52.568N -105.39E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Brieux"
+	FPA_user_label "St. Brieux"
+ spot 52.638N -104.89E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Gregor"
+	FPA_user_label "St. Gregor"
+ spot 52.178N -104.83E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Louis"
+	FPA_user_label "St. Louis"
+ spot 52.922N -105.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "St. Victor"
+	FPA_user_label "St. Victor"
+ spot 49.435N -105.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sceptre"
+	FPA_user_label "Sceptre"
+ spot 50.863N -109.27E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sedley"
+	FPA_user_label "Sedley"
+ spot 50.17N -104.01E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Semans"
+	FPA_user_label "Semans"
+ spot 51.403N -104.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Senlac"
+	FPA_user_label "Senlac"
+ spot 52.493N -109.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shackleton"
+	FPA_user_label "Shackleton"
+ spot 50.686N -108.61E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shamrock"
+	FPA_user_label "Shamrock"
+ spot 50.164N -106.62E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sheho"
+	FPA_user_label "Sheho"
+ spot 51.585N -103.21E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Shell Lake"
+	FPA_user_label "Shell Lake"
+ spot 53.306N -107.07E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Silton"
+	FPA_user_label "Silton"
+ spot 50.805N -104.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Simpson"
+	FPA_user_label "Simpson"
+ spot 51.449N -105.45E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Smeaton"
+	FPA_user_label "Smeaton"
+ spot 53.493N -104.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Smiley"
+	FPA_user_label "Smiley"
+ spot 51.634N -109.48E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Sovereign"
+	FPA_user_label "Sovereign"
+ spot 51.512N -107.72E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Spalding"
+	FPA_user_label "Spalding"
+ spot 52.332N -104.5E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Speers"
+	FPA_user_label "Speers"
+ spot 52.71N -107.56E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Springwater"
+	FPA_user_label "Springwater"
+ spot 51.971N -108.38E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Spruce Lake"
+	FPA_user_label "Spruce Lake"
+ spot 53.542N -109.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Spy Hill"
+	FPA_user_label "Spy Hill"
+ spot 50.602N -101.69E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stenen"
+	FPA_user_label "Stenen"
+ spot 51.901N -102.38E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stewart Valley"
+	FPA_user_label "Stewart Valley"
+ spot 50.595N -107.81E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stockholm"
+	FPA_user_label "Stockholm"
+ spot 50.664N -102.31E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Stornoway"
+	FPA_user_label "Stornoway"
+ spot 51.294N -102.03E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Storthoaks"
+	FPA_user_label "Storthoaks"
+ spot 49.384N -101.6E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Strongfield"
+	FPA_user_label "Strongfield"
+ spot 51.332N -106.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Success"
+	FPA_user_label "Success"
+ spot 50.461N -108.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tantallon"
+	FPA_user_label "Tantallon"
+ spot 50.541N -101.84E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tessier"
+	FPA_user_label "Tessier"
+ spot 51.809N -107.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Theodore"
+	FPA_user_label "Theodore"
+ spot 51.424N -102.92E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Togo"
+	FPA_user_label "Togo"
+ spot 51.405N -101.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tompkins"
+	FPA_user_label "Tompkins"
+ spot 50.063N -108.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Torquay"
+	FPA_user_label "Torquay"
+ spot 49.142N -103.5E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tramping Lake"
+	FPA_user_label "Tramping Lake"
+ spot 52.138N -108.96E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tribune"
+	FPA_user_label "Tribune"
+ spot 49.246N -103.82E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tugaske"
+	FPA_user_label "Tugaske"
+ spot 50.875N -106.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Tuxford"
+	FPA_user_label "Tuxford"
+ spot 50.576N -105.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Val Marie"
+	FPA_user_label "Val Marie"
+ spot 49.247N -107.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Valparaiso"
+	FPA_user_label "Valparaiso"
+ spot 52.85N -104.18E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vanguard"
+	FPA_user_label "Vanguard"
+ spot 49.906N -107.3E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vanscoy"
+	FPA_user_label "Vanscoy"
+ spot 52.002N -106.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vawn"
+	FPA_user_label "Vawn"
+ spot 53.107N -108.66E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Veregin"
+	FPA_user_label "Veregin"
+ spot 51.586N -102.08E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Vibank"
+	FPA_user_label "Vibank"
+ spot 50.331N -103.94E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Viceroy"
+	FPA_user_label "Viceroy"
+ spot 49.459N -105.37E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Viscount"
+	FPA_user_label "Viscount"
+ spot 51.949N -105.65E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Waldeck"
+	FPA_user_label "Waldeck"
+ spot 50.36N -107.59E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Waldron"
+	FPA_user_label "Waldron"
+ spot 50.851N -102.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Waseca"
+	FPA_user_label "Waseca"
+ spot 53.1N -109.47E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Webb"
+	FPA_user_label "Webb"
+ spot 50.181N -108.2E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Weekes"
+	FPA_user_label "Weekes"
+ spot 52.568N -102.87E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Weirdale"
+	FPA_user_label "Weirdale"
+ spot 53.447N -105.24E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Weldon"
+	FPA_user_label "Weldon"
+ spot 53.009N -105.15E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Welwyn"
+	FPA_user_label "Welwyn"
+ spot 50.327N -101.52E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "White City"
+	FPA_user_label "White City"
+ spot 50.444N -104.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "White Fox"
+	FPA_user_label "White Fox"
+ spot 53.453N -104.09E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wilcox"
+	FPA_user_label "Wilcox"
+ spot 50.097N -104.72E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Willowbrook"
+	FPA_user_label "Willowbrook"
+ spot 51.204N -102.8E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Windthorst"
+	FPA_user_label "Windthorst"
+ spot 50.107N -102.84E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wiseton"
+	FPA_user_label "Wiseton"
+ spot 51.315N -107.64E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wishart"
+	FPA_user_label "Wishart"
+ spot 51.55N -103.98E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Wood Mountain"
+	FPA_user_label "Wood Mountain"
+ spot 49.371N -106.38E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Woodrow"
+	FPA_user_label "Woodrow"
+ spot 49.698N -106.73E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Yarbo"
+	FPA_user_label "Yarbo"
+ spot 50.695N -101.93E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Yellow Creek"
+	FPA_user_label "Yellow Creek"
+ spot 52.75N -105.25E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Young"
+	FPA_user_label "Young"
+ spot 51.768N -105.75E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Zelma"
+	FPA_user_label "Zelma"
+ spot 51.842N -105.91E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Zenon Park"
+	FPA_user_label "Zenon Park"
+ spot 53.065N -103.76E location none
+
+* 
+* End
+

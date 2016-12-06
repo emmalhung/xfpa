@@ -1,0 +1,35 @@
+ #
+#  Bourne script to run user_winds as a stand alone test
+#
+
+echo "*** Now running user_winds as a stand alone test ***"
+if [ $# -eq 1 ]
+then
+	outfile=${1}
+else
+	outfile=diagwinds
+fi
+if [ -f ${outfile} ]
+then
+	echo "*** File ${outfile} already exists ***"
+	echo "     Type:  go    to overwrite it"
+	echo "     Type:  stop  to stop now"
+	read ans
+	if [ "$ans" != go ]
+	then
+		echo "*** ...user_winds aborted ***"
+		exit 1
+	fi
+	rm -f ${outfile}
+fi
+echo "*** Output to file ${outfile} ***"
+
+# Define the FPA environment
+if [ -r $FPA/bin/.fpaenvrc ]
+then
+  . $FPA/bin/.fpaenvrc
+fi
+
+# Run the test program
+$PLATFORM/user_winds >${outfile} 2>&1
+echo "*** ...user_winds completed ***"

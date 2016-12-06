@@ -1,0 +1,438 @@
+#########################################################
+#                                                       #
+#   All Config-type files in the $FPA/config directory  #
+#   can and will be updated with any new release,       #
+#   update or patch of the FPA software suite.          #
+#                                                       #
+#   You should only introduce changes and additions to  #
+#   the information in the Ingest.master file by using  #
+#   a local Ingest config file that refers to the       #
+#   Ingest.master file through an #include statement.   #
+#                                                       #
+#########################################################
+
+#########################################################
+#
+#  FPA Ingest Configuration File     
+#
+#	This configuration file contains changes and
+#	additions to default information for model, element,
+#	and level identifiers from GRIB.
+#
+#	There is also a mechanism for choosing which fields
+#	to process (or not) into metafiles or datafiles.
+#
+#	This file is similar in format to the Config files.
+#	The basic structure is:
+#
+#   revision 6.0
+#
+#	include $FPA/config/Ingest.master
+#
+#	Grib <edition>
+#		{
+#
+#		Sources
+#			{
+#			<source_name>
+#				{
+#				parameters	=	<p1> <p2> ...
+#				...
+#				}
+#			}
+#		Elements
+#			{
+#			<source_list> or default
+#				{
+#				<element> <units>
+#					{
+#					parameters	=	<p1> <p2> ...
+#					...
+#					}
+#				}
+#			}
+#		Levels
+#			{
+#			<source_list> or default
+#				{
+#				<level_tag>
+#					{
+#					parameters	=	<p1> <p2> ...
+#					...
+#					}
+#				}
+#			}
+#		Fields
+#			{
+#			process		= <source> <element> <level>
+#			skip		= <source> <element> <level>
+#			redirect	= <source> <source alias>
+#			...
+#			}
+#
+#		DataFiles
+#			{
+#			process		= <source> <element> <level>
+#			skip		= <source> <element> <level>
+#			redirect	= <source> <source alias>
+#			rescale		= <element> <level> <scale> <offset>
+#			...
+#			}
+#		}
+#		...
+#
+#	"Grib" block	- Sets rules for specific GRIB edition
+#
+#	format:	Grib	<edition>
+#
+#	where <edition> is a valid GRIB edition number.
+#	Editions 1 and 2 are currently supported by the FPA.
+#
+# "Sources" block
+#	- Set rules to assign Source names to GRIB models.
+#
+#	The parameters used to define a model differ depending
+#	on the GRIB edition.
+#
+#	Source
+#		{
+#		<source_name>
+#			{
+#			parameters	= <p0> ... <px>
+#			parameters	= <p0> ... <px>
+#			...
+#			}
+#		}
+#
+#	edition 1
+#		parameters	= <center_id> <model_id>
+#
+#	edition 2
+#		parameters	= <centre_id> <sub_center>
+#						<template> <forecast_type>
+#							<process> <bkgd_process>
+#
+#	The '*' character can be used to specify "all" of
+#	something.
+#
+#	For example, if you want all models coming from
+#	centre 54 to have the source tag GEM then use the
+#	following:
+#
+#	Grib	1
+#		{
+#		Sources
+#			{
+#			GEM
+#				{
+#				parameters	= 54	*
+#				}
+#			}
+#		}
+#
+#	Some restrictions apply to the use of '*'. Generally once
+#	you use a '*' all parameters after must also be '*'.
+#	The exception to this rule is for GRIB 2, you may set
+#	<sub_centre> to '*' and still specify <forecast_type>
+#		<template> <process> and <bkgd_process>.
+#
+#	If you want a range of model ids to match a single source
+#	you can specify as many parameter directives as you require
+#	to do this.
+#
+#	Grib	1
+#		{
+#		Sources
+#			{
+#			GEM
+#				{
+#				parameters	= 54	45
+#				parameters	= 54	46
+#				parameters	= 54	47
+#				parameters	= 54	48
+#				parameters	= 54	49
+#				}
+#			}
+#		}
+#
+#	When two or more rules match a query, the more specific
+#	rule will be applied. If there is a tie the "last"
+#	rule will be applied. Thus it is important to make your
+#	changes after Ingest.master is included.
+#
+#	Source names should be previously defined in the Config
+#	file to be recognized.
+#
+# "Elements" block
+#		- set rules to assign FPA element and units tags
+#		  to GRIB fields.
+#
+#	Each GRIB producer has the option to define their own
+#	element parameters within the ranges reserved for local
+#	use. The source list is used to identify an element
+#	parameterization with a particular source or list of
+#	sources.
+#
+#	If the paramerization is from the standard range then
+#	then the source can be set to "default". These
+#	parameters will be valid for all all sources.
+#
+#	The parameters used to define an element differ
+#	depending on the GRIB edition.
+#
+#	Elements
+#		{
+#		<source_name(s)> OR default
+#			{
+#			<element>	<units>
+#				{
+#				parameters	= <p0> ... <px>
+#				parameters	= <p0> ... <px>
+#				...
+#				}
+#			}
+#		}
+#
+#	edition 1
+#		parameters	= <table_version> <parameter>
+#
+#	edition 2
+#		parameters	= <discipline> <template>
+#						<category> <parameter>
+#
+#	The '*' character can be used to specify "all" of
+#	something. In the Elements block the '*' character is
+#	only acceptable in place of <template> or
+#	<table_version>.
+#
+#	When two or more rules match a query, the more specific
+#	rule will be applied. If there is a tie the "last"
+#	rule will be applied. Thus it is important to make your
+#	changes after Ingest.master is included.
+#
+#	Element and unit names should be previously defined in
+#	the Config file to be recognized.
+#
+# "Levels" block
+#		- set rules to assign FPA level tags to GRIB levels.
+#
+#	Each GRIB producer has the option to define their own
+#	levels within the range [192-254] reserved for local use.
+#	The source list is used to identify a level id with a
+#	particular source or list of sources.
+#	If the level id is from the standard range then
+#	then the source can be set to "default". These levels
+#	will be valid for all all sources.
+#
+#	The parameters required to define a level tag differ
+#	depending on the GRIB edition.
+#
+#	Levels
+#		{
+#		<source_name(s)> OR default
+#			{
+#			<level_name> OR <level_tag>
+#				{
+#				parameters	= <p0> ... <px>
+#				parameters	= <p0> ... <px>
+#				...
+#				}
+#			}
+#		}
+#
+#	edition 1
+#		parameters	= <level_type> <level_id> <scale_1>
+#						<offset_1> <scale_2> <offset_2>
+#	where - level_type is one of (0->surface), (1->level)
+#			or (2->layer),
+#		  - level_id is the GRIB level parameter,
+#		  - scale_1/2 are the amounts to scale level
+#			(or layer) values by. These values are specified
+#			in the GRIB documentation.
+#		  - offset_1/2 are the amounts to offset level
+#			(or layer) values by. These values are specified
+#			in the GRIB documentation.
+#
+#	edition 2
+#		parameters	= <level_type> <level_id> <scale>
+#						<offset>
+#	where - level_type is one of (0->surface), (1->level
+#			or layer),
+#		  - level_id is the GRIB level parameter,
+#		  - scale is the amount to scale level (or layer)
+#			values by.
+#		  - offset is the amount to offset level (or layer)
+#			values by.
+#
+#  In both Edition 1 and 2, the scale and offset values are
+#	used to change the units of the level or layer values to
+#	MKS or something more convienent for FPA. FPA uses
+#	leve/layer values to specify a level tag. The values
+#	need to be integers for this purpose.
+#
+#	When two or more rules match a query, the more specific
+#	rule will be applied. If there is a tie the "last"
+#	rule will be applied. Thus it is important to make your
+#	changes after Ingest.master is included.
+#
+#	Level names should be previously defined in the Config
+#	file to be recognized.
+#
+# "Fields" block
+#	- specify the list of files to process  or skip when
+#	  turning fields into FPA Metafiles.
+#
+#	Fields
+#		{
+#		process	 = <source> <element> <level>
+#		skip	 = <source> <element> <level>
+#		redirect = <source1> <source2>
+#		}
+#
+#	To process specified fields only, include a process
+#	directive for each source, element, level combination
+#	you would like to process.
+#
+#	To skip specified fields only, include a skip directive
+#	for each source, element, level combination you would
+#	like to skip.
+#
+#	You cannot combine process and skip directives.
+#	If a process directive exists then all skip directives
+#	are ignored.
+#
+#	The '*' character may be used to match all possible
+#	choices for source, element or level.
+#
+#	example:	process = GFS	*	surface
+#
+#	will process all surface fields from the GFS source.
+#
+#	To redirect a source just before processing a GRIB
+#	field into a Metafile, specify the origin source and
+#	destination source in a redirect directive.
+#	This allows us to seperate GRIB 1 and 2 data for
+#	testing. The destination source MUST be defined in a
+#	Config file.
+#
+#   For example if you wish to seperate GRIB 1 data from
+#   GRIB 2 data for comparison you might redirect the
+#	source NMC to NMCGRIB2 in the "Grib 2" block.
+#
+#	example:	redirect = NMC	NMCGRIB2
+#
+# "DataFiles" block
+#	- specify the list of files to process  or skip when
+#	  turning fields into binary datafiles.
+#
+#	DataFiles
+#		{
+#		process	 = <source> <element> <level>
+#		skip	 = <source> <element> <level>
+#		redirect = <source1> <source2>
+#		rescale  = <element> <level> <scale> <offset>
+#		}
+#
+#	To process specified fields only, include a process
+#	directive for each source, element, level combination
+#	you would like to process.
+#
+#	To skip specified fields only, include a skip directive
+#	for each source, element, level combination you would
+#	like to skip.
+#
+#	You cannot combine process and skip directives.
+#	If a process directive exists then all skip directives
+#	are ignored.
+#
+#	The '*' character may be used to match all possible
+#	choices for source, element or level.
+#
+#	example:	process = GFS	*	surface
+#
+#	will process all surface fields from the GFS source.
+#
+#	To redirect a source just before processing a GRIB
+#	field into a datafile, specify the origin source and
+#	destination source in a redirect directive. This allows
+#	us to separate metafiles and datafiles generated from
+#	the same GRIB field into seperate directories. In this
+#	case the destination source MUST be defined in a Config
+#	file.
+#
+#	A datafile is a binary file which contains a simple
+#	grid of data. Each datum is stored as signed short
+#	integer (2 bytes). If any of the data being store falls
+#	outside the range of signed shorts information will be
+#	lost. You can use the rescale direcitve to scale and
+#	offset the data before it is converted.
+#
+#	short_val = (short int)( (float_val - offset) / scale )
+#
+#	The '*' character may be used to match all possible
+#	choices for element or level. Scale and offset may be
+#	floating point numbers, and default to 1.0 and 0.0
+#	respectively
+#
+#	example:	rescale = temperature	*	0.1 0.0
+#
+###########################################################
+
+revision 6.0
+
+#########################################################
+# Include master Ingest configuration file, as well as
+#	configuration files for optional modules.
+#########################################################
+## Master Ingest configuration (must include this):
+	include $FPA/config/Ingest.master
+## Optional Ingest configuration files:
+
+###########################################################
+# GRIB EDITION 1
+###########################################################
+Grib	1
+	{
+	Sources
+		{
+		}
+	Elements
+		{
+		}
+	Levels
+		{
+		}
+	Fields
+		{
+		}
+	DataFiles
+		{
+		}
+	}
+
+###########################################################
+# GRIB EDITION 2
+###########################################################
+Grib	2
+	{
+
+	Sources
+		{
+		}
+
+	Elements
+		{
+		}
+
+	Levels
+		{
+		}
+
+	Fields
+		{
+		}
+
+	DataFiles
+		{
+		}
+	}

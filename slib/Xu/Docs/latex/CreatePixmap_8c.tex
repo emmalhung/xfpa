@@ -1,0 +1,211 @@
+\hypertarget{CreatePixmap_8c}{
+\subsection{Create\-Pixmap.c File Reference}
+\label{CreatePixmap_8c}\index{CreatePixmap.c@{CreatePixmap.c}}
+}
+Pixmap creation functions. 
+
+{\tt \#include $<$stdarg.h$>$}\par
+{\tt \#include $<$X11/X.h$>$}\par
+{\tt \#include \char`\"{}Xu\-P.h\char`\"{}}\par
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+Pixmap \hyperlink{CreatePixmap_8c_XuCreateColoredPixmap_28Widget_20w_2C_20Pixel_20fg_2C_20int_20width_2C_20int_20height_29}{Xu\-Create\-Colored\-Pixmap} (Widget w, Pixel fg, int width, int height)
+\begin{CompactList}\small\item\em Create a pixmap with the same depth as the given widget. \item\end{CompactList}\item 
+Pixmap \hyperlink{CreatePixmap_8c_XuCreateInsensitivePixmap_28Widget_20w_2C_20Pixmap_20pixmap_29}{Xu\-Create\-Insensitive\-Pixmap} (Widget w, Pixmap pixmap)
+\begin{CompactList}\small\item\em Create an insensitive pixmap from the given pixmap. \item\end{CompactList}\item 
+Pixmap \hyperlink{CreatePixmap_8c_XuXpmFileToPixmap_28Widget_20w_2C_20String_20fname_2C_20XpmAttributes_20_2Axpmatts_29}{Xu\-Xpm\-File\-To\-Pixmap} (Widget w, String fname, Xpm\-Attributes $\ast$xpmatts)
+\begin{CompactList}\small\item\em Create a pixmap from the given xpm format file. \item\end{CompactList}\item 
+Pixmap \hyperlink{CreatePixmap_8c_XuCreateArrowPixmap_28Widget_20w_2C_20XuArrowAttributes_20_2Aattrib_29}{Xu\-Create\-Arrow\-Pixmap} (Widget w, Xu\-Arrow\-Attributes $\ast$attrib)
+\begin{CompactList}\small\item\em Create a pixmap containing an arrow. \item\end{CompactList}\item 
+void \hyperlink{CreatePixmap_8c_XuFreePixmap_28Widget_20wid_2C_20Pixmap_20pix_29}{Xu\-Free\-Pixmap} (Widget wid, Pixmap pix)
+\begin{CompactList}\small\item\em Free the specified pixmap. \item\end{CompactList}\item 
+void \hyperlink{CreatePixmap_8c_XuSetButtonArrow_28Widget_20w_2C_20XuArrowAttributes_20_2Aattrib_29}{Xu\-Set\-Button\-Arrow} (Widget w, Xu\-Arrow\-Attributes $\ast$attrib)
+\begin{CompactList}\small\item\em Replaces the text in the given widget with a pixmap containing an arrow. \item\end{CompactList}\item 
+void \hyperlink{CreatePixmap_8c_XuClearButtonArrow_28Widget_20w_29}{Xu\-Clear\-Button\-Arrow} (Widget w)
+\begin{CompactList}\small\item\em Removes a pixmap from a widget that was set through the use of Xu\-Set\-Button\-Arrow and restores it to its original form. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Detailed Description}
+Pixmap creation functions. 
+
+\begin{Desc}
+\item[Note:]The pixmaps created by these functions are cached so that any pixmap is not created more than once per display. The cache is only added to and entries are not destroyed but made available for reuse.\end{Desc}
+\begin{Desc}
+\item[Author:]R.D.Paterson\end{Desc}
+\begin{Desc}
+\item[Date:]2005/03/15 Creation \end{Desc}
+
+
+\subsubsection{Function Documentation}
+\hypertarget{CreatePixmap_8c_XuClearButtonArrow_28Widget_20w_29}{
+\index{CreatePixmap.c@{Create\-Pixmap.c}!XuClearButtonArrow@{XuClearButtonArrow}}
+\index{XuClearButtonArrow@{XuClearButtonArrow}!CreatePixmap.c@{Create\-Pixmap.c}}
+\paragraph[XuClearButtonArrow]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Clear\-Button\-Arrow (Widget {\em w})}\hfill}
+\label{CreatePixmap_8c_XuClearButtonArrow_28Widget_20w_29}
+
+
+Removes a pixmap from a widget that was set through the use of Xu\-Set\-Button\-Arrow and restores it to its original form. 
+
+param\mbox{[}in\mbox{]} w The widget to restore
+
+\begin{Desc}
+\item[Note:]The widget user\-Data resource is set back to NULL. \end{Desc}
+\hypertarget{CreatePixmap_8c_XuCreateArrowPixmap_28Widget_20w_2C_20XuArrowAttributes_20_2Aattrib_29}{
+\index{CreatePixmap.c@{Create\-Pixmap.c}!XuCreateArrowPixmap@{XuCreateArrowPixmap}}
+\index{XuCreateArrowPixmap@{XuCreateArrowPixmap}!CreatePixmap.c@{Create\-Pixmap.c}}
+\paragraph[XuCreateArrowPixmap]{\setlength{\rightskip}{0pt plus 5cm}Pixmap Xu\-Create\-Arrow\-Pixmap (Widget {\em w}, Xu\-Arrow\-Attributes $\ast$ {\em attrib})}\hfill}
+\label{CreatePixmap_8c_XuCreateArrowPixmap_28Widget_20w_2C_20XuArrowAttributes_20_2Aattrib_29}
+
+
+Create a pixmap containing an arrow. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em w}]A reference widget \item[\mbox{$\leftarrow$} {\em attrib}]The arrow attributes\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The created pixmap\end{Desc}
+{\bf Arrow Attributes:}
+
+The arrow attributes are set through the use the following Xu\-Arrow\-Attributes structure.
+
+
+
+\footnotesize\begin{verbatim} long                flags
+ long                appearance
+ XuARROW_ORIENTATION direction
+ int                 height
+ int                 width
+ int                 margin_height
+ int                 margin_width
+ int                 outline_width
+ Pixel               foreground
+ Pixel               background
+ \end{verbatim}
+\normalsize
+
+
+Which elements in the structure are used depends on the values set in the {\tt flags} variable. This consists of a set of enumerated values which can be or'ed together to allow more then one element to be set. The values are:
+
+\begin{itemize}
+\item {\tt Xu\-ARROW\_\-APPEARANCE} \item {\tt Xu\-ARROW\_\-DIRECTION} \item {\tt Xu\-ARROW\_\-HEIGHT} \item {\tt Xu\-ARROW\_\-WIDTH} \item {\tt Xu\-ARROW\_\-MARGIN\_\-HEIGHT} \item {\tt Xu\-ARROW\_\-MARGIN\_\-WIDTH} \item {\tt Xu\-ARROW\_\-OUTLINE\_\-WIDTH} \item {\tt Xu\-ARROW\_\-FOREGROUND} \item {\tt Xu\-ARROW\_\-BACKGROUND} \item {\tt Xu\-ARROW\_\-TEXT\_\-UNDER} \item {\tt Xu\-ARROW\_\-ALL} \end{itemize}
+The {\tt Xu\-ARROW\_\-ALL} is a convienience entry that indicates that all elements in the structure contain data.
+
+The {\tt appearance} must be some combination of the following values which can be or'ed together to produce a variety of arrow styles.
+
+\begin{itemize}
+\item {\tt Xu\-ARROW\_\-PLAIN} The arrow head is a plain unadorned style \item {\tt Xu\-ARROW\_\-BARBED} The arrow head has barbs. \item {\tt Xu\-ARROW\_\-BAR} The arrow head has a bar across the tip \item {\tt Xu\-ARROW\_\-STEM} The arrow head has a stem \item {\tt Xu\-ARROW\_\-OUTLINED} The arrow is outlined\end{itemize}
+The {\tt direction} must be one of the following:
+
+\begin{itemize}
+\item {\tt Xu\-ARROW\_\-UP} \item {\tt Xu\-ARROW\_\-DOWN} \item {\tt Xu\-ARROW\_\-RIGHT} \item {\tt Xu\-ARROW\_\-LEFT} \end{itemize}
+\hypertarget{CreatePixmap_8c_XuCreateColoredPixmap_28Widget_20w_2C_20Pixel_20fg_2C_20int_20width_2C_20int_20height_29}{
+\index{CreatePixmap.c@{Create\-Pixmap.c}!XuCreateColoredPixmap@{XuCreateColoredPixmap}}
+\index{XuCreateColoredPixmap@{XuCreateColoredPixmap}!CreatePixmap.c@{Create\-Pixmap.c}}
+\paragraph[XuCreateColoredPixmap]{\setlength{\rightskip}{0pt plus 5cm}Pixmap Xu\-Create\-Colored\-Pixmap (Widget {\em w}, Pixel {\em fg}, int {\em width}, int {\em height})}\hfill}
+\label{CreatePixmap_8c_XuCreateColoredPixmap_28Widget_20w_2C_20Pixel_20fg_2C_20int_20width_2C_20int_20height_29}
+
+
+Create a pixmap with the same depth as the given widget. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em w}]Reference widget \item[\mbox{$\leftarrow$} {\em fg}]Colour to fill in the pixmap with. \item[\mbox{$\leftarrow$} {\em width}]Pixmap width \item[\mbox{$\leftarrow$} {\em height}]Pixmap height \end{description}
+\end{Desc}
+\hypertarget{CreatePixmap_8c_XuCreateInsensitivePixmap_28Widget_20w_2C_20Pixmap_20pixmap_29}{
+\index{CreatePixmap.c@{Create\-Pixmap.c}!XuCreateInsensitivePixmap@{XuCreateInsensitivePixmap}}
+\index{XuCreateInsensitivePixmap@{XuCreateInsensitivePixmap}!CreatePixmap.c@{Create\-Pixmap.c}}
+\paragraph[XuCreateInsensitivePixmap]{\setlength{\rightskip}{0pt plus 5cm}Pixmap Xu\-Create\-Insensitive\-Pixmap (Widget {\em w}, Pixmap {\em pixmap})}\hfill}
+\label{CreatePixmap_8c_XuCreateInsensitivePixmap_28Widget_20w_2C_20Pixmap_20pixmap_29}
+
+
+Create an insensitive pixmap from the given pixmap. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em w}]A reference widget. \item[\mbox{$\leftarrow$} {\em pixmap}]The pixmap to make the insensitive pixmap from.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The insensitive version of the input pixmap.\end{Desc}
+\begin{Desc}
+\item[Note:]This we do by stippling the pixmap with 50\% background colour. \end{Desc}
+\hypertarget{CreatePixmap_8c_XuFreePixmap_28Widget_20wid_2C_20Pixmap_20pix_29}{
+\index{CreatePixmap.c@{Create\-Pixmap.c}!XuFreePixmap@{XuFreePixmap}}
+\index{XuFreePixmap@{XuFreePixmap}!CreatePixmap.c@{Create\-Pixmap.c}}
+\paragraph[XuFreePixmap]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Free\-Pixmap (Widget {\em wid}, Pixmap {\em pix})}\hfill}
+\label{CreatePixmap_8c_XuFreePixmap_28Widget_20wid_2C_20Pixmap_20pix_29}
+
+
+Free the specified pixmap. 
+
+param\mbox{[}in\mbox{]} wid A reference widget param\mbox{[}in\mbox{]} pix The pixmap to free
+
+\begin{Desc}
+\item[Note:]The pixmap and its cache structure are not actually freed until the reference count decreases to zero. \end{Desc}
+\hypertarget{CreatePixmap_8c_XuSetButtonArrow_28Widget_20w_2C_20XuArrowAttributes_20_2Aattrib_29}{
+\index{CreatePixmap.c@{Create\-Pixmap.c}!XuSetButtonArrow@{XuSetButtonArrow}}
+\index{XuSetButtonArrow@{XuSetButtonArrow}!CreatePixmap.c@{Create\-Pixmap.c}}
+\paragraph[XuSetButtonArrow]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Set\-Button\-Arrow (Widget {\em w}, Xu\-Arrow\-Attributes $\ast$ {\em attrib})}\hfill}
+\label{CreatePixmap_8c_XuSetButtonArrow_28Widget_20w_2C_20XuArrowAttributes_20_2Aattrib_29}
+
+
+Replaces the text in the given widget with a pixmap containing an arrow. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em w}]The widget, which must be a subclass of label \item[\mbox{$\leftarrow$} {\em attrib}]The arrow attribute structure\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Attention:]The Xm\-Nuser\-Data resouce is used to hold the initial state of the widget and thus must not be used by any widget called with these functions.\end{Desc}
+{\bf Arrow Attributes:} The arrow attributes are set through the use the following Xu\-Arrow\-Attributes structure.
+
+
+
+\footnotesize\begin{verbatim} long                flags
+ long                appearance
+ XuARROW_ORIENTATION direction
+ int                 height
+ int                 width
+ int                 margin_height
+ int                 margin_width
+ int                 outline_width
+ Pixel               foreground
+ Pixel               background
+ Boolean             text_under
+ \end{verbatim}
+\normalsize
+
+
+Which elements in the structure are used depends on the values set in the {\tt flags} variable and not all of the elements in the structure are allowed to be set in this function. This consists of a set of enumerated values which can be or'ed together to allow more then one element to be set. The allowed values are:
+
+\begin{itemize}
+\item {\tt Xu\-ARROW\_\-APPEARANCE} \item {\tt Xu\-ARROW\_\-DIRECTION} \item {\tt Xu\-ARROW\_\-OUTLINE\_\-WIDTH} \item {\tt Xu\-ARROW\_\-FOREGROUND} \item {\tt Xu\-ARROW\_\-BACKGROUND} \item {\tt Xu\-ARROW\_\-TEXT\_\-UNDER} \end{itemize}
+The {\tt appearance} must be some combination of the following values which can be or'ed together to produce a variety of arrow styles.
+
+\begin{itemize}
+\item {\tt Xu\-ARROW\_\-PLAIN} The arrow head is a plain unadorned style \item {\tt Xu\-ARROW\_\-BARBED} The arrow head has barbs. \item {\tt Xu\-ARROW\_\-BAR} The arrow head has a bar across the tip \item {\tt Xu\-ARROW\_\-STEM} The arrow head has a stem \item {\tt Xu\-ARROW\_\-OUTLINED} The arrow is outlined\end{itemize}
+The {\tt direction} must be one of the following:
+
+\begin{itemize}
+\item {\tt Xu\-ARROW\_\-UP} \item {\tt Xu\-ARROW\_\-DOWN} \item {\tt Xu\-ARROW\_\-RIGHT} \item {\tt Xu\-ARROW\_\-LEFT} \end{itemize}
+Note that there is not a {\tt flags} entry for text\_\-under as this is automatically looked for by this function. This determines if any text in the button is inserted \char`\"{}under\char`\"{} the arrow and would thus appear in the button along with the arrow. The default value is true. \hypertarget{CreatePixmap_8c_XuXpmFileToPixmap_28Widget_20w_2C_20String_20fname_2C_20XpmAttributes_20_2Axpmatts_29}{
+\index{CreatePixmap.c@{Create\-Pixmap.c}!XuXpmFileToPixmap@{XuXpmFileToPixmap}}
+\index{XuXpmFileToPixmap@{XuXpmFileToPixmap}!CreatePixmap.c@{Create\-Pixmap.c}}
+\paragraph[XuXpmFileToPixmap]{\setlength{\rightskip}{0pt plus 5cm}Pixmap Xu\-Xpm\-File\-To\-Pixmap (Widget {\em w}, String {\em fname}, Xpm\-Attributes $\ast$ {\em xpmatts})}\hfill}
+\label{CreatePixmap_8c_XuXpmFileToPixmap_28Widget_20w_2C_20String_20fname_2C_20XpmAttributes_20_2Axpmatts_29}
+
+
+Create a pixmap from the given xpm format file. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em w}]A reference widget \item[\mbox{$\leftarrow$} {\em fname}]The xpm file \item[\mbox{$\leftarrow$} {\em xpmatts}]The xpm attributes. See the xpm documentation for this.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The resulting pixmap \end{Desc}

@@ -1,0 +1,38 @@
+! Geography for Aviation 2 panel example ...
+
+! Set version ... this line must be first!
+@version { svgmet7.0 }
+
+! Set verbose mode for diagnostic output ...
+@verbose { no }
+
+! Set the display units used in all following directives ...
+!  "type" can be  inches  cm  mm  picas  points
+@display_units { type = inches }
+
+! Set the page size ...
+@size { width = 8.50; height = 11.00 }
+
+! Open the output file for the geography for AVIATION_2.fpdf ...
+@file_name
+	{
+	name = $FPA/setup/pdf/svgmet/examples/geography_AVIATION_2;
+	}
+
+! Define the map ...
+@include { av_map_setup2 }
+
+! Define a size and placement for the map ... centered at 0,0
+! (SVGMet output files define 0,0 as the upper left corner of the page!)
+@anchor { ref = absolute }
+@define_map_placement
+	{
+	map_scale     = 10000000;
+	axis_to_scale = x_axis;
+	x_off         = -4.25;
+	y_off         =  5.50;
+	}
+@anchor { ref = map }
+
+! Display geographic features as outlines ...
+@include { av_geography }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.5.13. @define_cross_section</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s05.html" title="2.5. Complete Description of All PSMet/SVGMet Directives" /><link rel="prev" href="ch02s05s12.html" title="2.5.12. @cross_section_curves" /><link rel="next" href="ch02s05s14.html" title="2.5.14. @define_line" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5.13. @define_cross_section</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s05s12.html">Prev</a> </td><th width="60%" align="center">2.5. Complete Description of All PSMet/SVGMet Directives</th><td width="20%" align="right"> <a accesskey="n" href="ch02s05s14.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ps_define_cross_section"></a>2.5.13. @define_cross_section</h3></div></div></div><p>
+Set the size and location of a cross section. Cross sections in space, in time, and
+in space and time are allowed.
+</p><div class="itemizedlist"><ul type="disc"><li><p>A <strong class="userinput"><code>space</code></strong> type cross section samples through space at a set time.</p></li><li><p>A <strong class="userinput"><code>time</code></strong> type cross section samples through time at a set location.</p></li><li><p>A <strong class="userinput"><code>space_route</code></strong> or <strong class="userinput"><code>time_route</code></strong> type cross section samples through space and time.</p></li></ul></div><p>
+The default locations and times for the horizontal axis of the cross section are
+defined in the location look up table.
+</p><p>
+The horizontal axis for a <strong class="userinput"><code>space</code></strong> or <strong class="userinput"><code>space_route</code></strong> type cross section is scaled with
+respect to the total distance in space, according to a map scale given by
+<strong class="userinput"><code>map_scale</code></strong>, or using an absolute width given by <strong class="userinput"><code>width</code></strong>.
+</p><p>
+The horizontal axis for a <strong class="userinput"><code>time</code></strong> or <strong class="userinput"><code>time_route</code></strong> type cross section is scaled with
+respect to the total time, using an absolute width given by <strong class="userinput"><code>width</code></strong>.
+</p><p>
+The default vertical locations and scaling for the vertical axis of the cross section
+are defined in the vertical look up table. The third column of the vertical look
+up table is entered as a percentage of an absolute height given by <strong class="userinput"><code>height</code></strong>.
+
+</p><div class="informaltable"><table border="0"><colgroup><col align="right" /><col align="center" /><col align="left" /><col /></colgroup><thead><tr valign="top"><th align="right" valign="top"><p>KEYWORD</p></th><th align="center" valign="top"><p>TYPE</p></th><th align="left" valign="top"><p>DESCRIPTION</p></th><td class="auto-generated"> </td></tr></thead><tbody><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>cross_section_name</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p>Cross section name (from <a href="ch02s05s13.html" title="2.5.13. @define_cross_section">@define_cross_section</a>)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>type</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p>Type of cross section
+</p><p>One of:
+</p><div class="informaltable"><table border="0"><colgroup><col /><col /></colgroup><tbody><tr><td align="right"><strong class="userinput"><code>space</code></strong></td><td align="center">constant time</td></tr><tr><td align="right"><strong class="userinput"><code>time</code></strong></td><td align="center">constant location</td></tr><tr><td align="right"><strong class="userinput"><code>space_route</code></strong></td><td align="center">scale wrt space</td></tr><tr><td align="right"><strong class="userinput"><code>time_route</code></strong></td><td align="center">scale wrt time</td></tr></tbody></table></div></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>map_scale</code></strong></p></td><td align="center" valign="top"><p>real</p></td><td align="left" valign="top"><p>Scaling factor
+</p><p>(10000000 corresponds to 1:10,000,000)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td class="auto-generated"> </td><td class="auto-generated"> </td><td align="left" valign="top"><p>applied to the horizontal axis of the cross section</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>width</code></strong></p></td><td align="center" valign="top"><p>real</p></td><td align="left" valign="top"><p>Width (in display units)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td class="auto-generated"> </td><td class="auto-generated"> </td><td align="left" valign="top"><p>(horizontal axis)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>height</code></strong></p></td><td align="center" valign="top"><p>real</p></td><td align="left" valign="top"><p>Height (in display units)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td class="auto-generated"> </td><td class="auto-generated"> </td><td align="left" valign="top"><p>(vertical axis)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>location_look_up</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p>File name for the location look up table for the cross section horizontal axis 
+</p><p>(Note: one point will be sampled for each location in the location look up table)
+</p><p>(Note: ".ltab" suffix is optional)</p>
+</td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>vertical_look_up</code></strong></p></td><td align="center" valign="top"><p>string</p></td><td align="left" valign="top"><p>File name for the vertical look up table, for converting values to locations on the cross section vertical axis
+</p><p>(Note: ".ztab" suffix is optional)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>x_off</code></strong></p></td><td align="center" valign="top"><p>real</p></td><td align="left" valign="top"><p>Horizontal offset wrt current anchor position (in display units)</p></td><td class="auto-generated"> </td></tr><tr valign="top"><td align="right" valign="top"><p><strong class="userinput"><code>y_off</code></strong></p></td><td align="center" valign="top"><p>real</p></td><td align="left" valign="top"><p>Vertical offset wrt current anchor position (in display units)</p></td><td class="auto-generated"> </td></tr></tbody></table></div><p>
+
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id3469464"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 2.23.  </b></p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">@define_cross_section
+{
+  cross_section_name = route_cross_section;
+  type               = time_route;
+  map_scale          = 10000000;
+  height             = 5.00;
+  location_look_up   = route;
+  vertical_look_up   = xsect;
+}
+</pre><p xmlns="http://www.w3.org/1999/xhtml">
+Set the location of a cross section called <strong class="userinput"><code>route_cross_section</code></strong> to the current anchor location. The
+cross section will sample data through space and time. The horizontal axis locations are defined in
+the location look up table <code class="filename">route.ltab</code> and the horizontal axis will be scaled at 1:10,000,000 of the
+total distance covered by the location look up table. The vertical axis locations are defined in the
+vertical look up table <code class="filename">xsect.ztab</code> and the vertical axis will be scaled to 5.00 <strong class="userinput"><code>units</code></strong>
+(Note that <strong class="userinput"><code>units</code></strong> is set by <a href="ch02s05s19.html" title="2.5.19. @display_units">@display_units</a>.)
+</p></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s05s12.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s05s14.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.5.12. @cross_section_curves </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.5.14. @define_line</td></tr></table></div></body></html>

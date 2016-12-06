@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_define_sample_list'> <title>@define_sample_list</title> <titleabbrev>@define_sample_list</titleabbrev>
+<para>
+Define a list of positions for sampling.
+</para><para>
+Lists can contain latitude-longitude locations, map positions on the current map,
+or identifiers for a location look up table.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>list_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>List name</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For latlon positions ...</para></entry></row>
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>lat_lon_ident</userinput> can be specified more than once in this directive.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lat_lon_ident.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For map positions ...</para></entry></row>
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>map_x_y_ident</userinput> and <userinput>map_units</userinput> can be specified more than once in this directive.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_x_y_ident.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_units.xml'/>
+<row><entry colname='desc'><para> (default is <userinput>map_units</userinput> from <link linkend='tx_mapdef'>@mapdef</link> directive)</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For location idents ...</para></entry></row>
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>location_ident</userinput> and <userinput>location_ident_list</userinput> can be specified more than once in this directive.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_ident.xml'/>
+<row><entry colname='desc'><para>(Note: the location look_up table will be defined in a sampling directive)</para></entry></row>
+<row valign='top'><entry colname='desc'><para>(Note: the magic parameters <userinput>GPGEN_All</userinput> and 
+<userinput>GPGEN_All_vtime</userinput> can be used to display ALL locations in a location look up table)</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_ident_list.xml'/>
+<row><entry colname='desc'><para> (Note: the location look_up table will be defined in a sampling directive)</para></entry></row>
+<row valign='top'><entry spanname='tbltitle'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_shift.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_shift.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_wrap.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_wrap.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@define_sample_list
+{
+  list_name           = aerodrome_list;
+  location_ident_list = CYFC CYYG CYHZ CYQY CYQX CYJT CYYY;
+  location_ident_list = CYZV CYQB CYUL KBOS CJFK;
+}
+</programlisting>
+Define a list for sampling called "aerodrome_list". The list contains 12 location identifiers which
+will be matched to locations in a location look up table. The location look up table will be defined in
+a sampling directive which refers to the named list.
+</para></example>
+</para></sect2>

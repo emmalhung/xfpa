@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# save current directory path
+THIS=`pwd`
+p=`basename $THIS`
+if [ "$p" != "Xgl" ]
+then
+	echo "Not in Xgl directory"
+	exit
+fi
+
+# create glib path as we cound be in various versions
+p=`dirname $THIS`
+p=`dirname $p`
+LIB=$p/lib/glib
+
+changed="N"
+
+# remove any files in glib not in Xgl
+cd $LIB
+list=`ls *.[ch]`
+cd $THIS
+for file in $list
+do
+	if [ ! -f $file ]
+	then
+		rm $LIB/$file
+		echo "Removed file: $LIB/$file"
+		changed="Y"
+	fi
+done
+
+# copy any changed or new files
+list=`ls glib*.[ch]`
+echo " "
+for file in $list
+do
+	if [ -f $LIB/$file ]
+	then
+		d=`diff $file $LIB/$file`
+		if [ "$d" != "" ]
+		then
+			cp $file $LIB
+			echo "Updated file: $LIB/$file"
+			chmod 644 $LIB/$file
+			changed="Y"
+		fi
+	else
+		cp $file $LIB
+		echo "Added file: $LIB/$file"
+		chmod 644 $LIB/$file
+		changed="Y"
+	fi
+done
+
+if [ -f $LIB/Makefile.fpa ]
+then
+	d=`diff Makefile.glib $LIB/Makefile.fpa`
+	if [ "$d" != "" ]
+	then
+		cp Makefile.glib $LIB/Makefile.fpa
+		chmod 644 $LIB/Makefile.fpa
+		changed="Y"
+		echo "Updated file: $LIB/Makefile.fpa"
+	fi
+else
+	cp Makefile.glib $LIB/Makefile.fpa
+	changed="Y"
+	echo "Added file: $LIB/Makefile.fpa"
+fi
+
+if [ "$changed" = "N" ]
+then
+	echo "All files are identical"
+fi
+echo " "

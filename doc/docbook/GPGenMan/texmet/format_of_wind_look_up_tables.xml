@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_format_of_wind_look_up_tables'> <title>Format of Wind Look Up Tables</title> <titleabbrev>wind look up</titleabbrev>
+<para>
+Wind look up tables control the format for displaying wind direction,
+speed, and gusts as symbols or text, rather than as wind barbs. They are
+accessed by the <userinput>wind_look_up</userinput> keyword in the 
+<link linkend='tx_wind_presentation'>@wind_presentation</link>
+directive. Files containing wind look up tables have a ".wtab" suffix.
+</para><para>
+Wind look up tables contain four sections. One section must specify the
+"calm" condition, since this may override both the direction and speed
+displays. The other sections specify the "direction" or "speed" or "gust"
+formats to use when displaying winds. Note that all wind directions are in
+degrees true, and all wind speeds gusts are converted to the units given by
+the "units" keyword of the sampling or display directive.
+</para><para>
+Note that all parameters that follow the <userinput>!</userinput> or <userinput>#</userinput> characters in a line are considered comments.
+</para><para>
+Note that the examples are taken from wind look up tables in the directories
+<filename><envar>$FPA</envar>/setup/pdf/texmet/examples</filename>. 
+</para><para>
+The "calm" section can include the following two formats:
+<programlisting>
+calm    value
+	<replaceable>min_spd max_spd round factor sdigits</replaceable>
+	end
+calm    text
+	<replaceable>min_spd max_spd text</replaceable>
+	end
+</programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>min_spd</replaceable></entry><entry>is the minimum wind speed for "calm" conditions</entry></row>
+<row valign='top'><entry><replaceable>max_spd</replaceable></entry><entry>is the maximum wind speed for "calm" conditions</entry></row>
+<row valign='top'><entry><replaceable>round</replaceable></entry><entry>is the value to round the wind speed to the nearest multiple of</entry></row>
+<row valign='top'><entry><replaceable>factor</replaceable></entry><entry>is the power of 10 to divide the wind speed by</entry></row>
+<row valign='top'><entry><replaceable>sdigits</replaceable></entry><entry><para>is the significant digits of the wind speed to display
+<simplelist>
+<member>0 - for the nearest integer</member>
+<member>&gt;0 - for the nearest integer this long (with leading zeroes)</member>
+<member>&lt;0 - for a real number with digits after the decimal place</member>
+</simplelist></para></entry></row>
+<row valign='top'><entry><replaceable>text</replaceable></entry><entry>is the text to display (in double quotes)</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+
+<example><title> </title><para>
+<programlisting>calm value
+    0 5 1 0 0
+    end</programlisting>
+Wind speeds from 0 to 5 are rounded to the nearest whole value, and all significant digits are displayed.
+</para></example>
+
+<example><title> </title><para>
+<programlisting>calm text
+    0 5 "CALM"
+    end</programlisting>
+Wind speeds from 0 to 5 are displayed using the text string "CALM".
+</para></example>
+
+</para><beginpage/><para>
+The "direction" section can include the following two formats:
+<programlisting>
+direction value
+    <replaceable>min_spd max_spd round factor sdigits</replaceable>
+    end
+direction text
+    <replaceable>min_dir max_dir text</replaceable>
+    <replaceable>min_dir max_dir text</replaceable>
+    <replaceable>...</replaceable>
+    end
+</programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>min_spd</replaceable></entry><entry>is the minimum wind speed</entry></row>
+<row valign='top'><entry><replaceable>max_spd</replaceable></entry><entry>is the maximum wind speed</entry></row>
+<row valign='top'><entry><replaceable>round</replaceable></entry><entry>is the value to round wind direction to the nearest multiple of</entry></row>
+<row valign='top'><entry><replaceable>factor</replaceable></entry><entry>is the power of 10 to divide the wind direction by</entry></row>
+<row valign='top'><entry><replaceable>sdigits</replaceable></entry><entry><para>is the significant digits of the wind direction to display
+    <simplelist>
+    <member>0 - for the nearest integer</member>
+    <member>&gt;0 - for the nearest integer this long (with leading zeroes)</member>
+    <member>&lt;0 - for a real number with digits after the decimal place</member>
+    </simplelist></para></entry></row>
+<row valign='top'><entry><replaceable>min_dir</replaceable></entry><entry>is the minimum wind direction angle</entry></row>
+<row valign='top'><entry><replaceable>max_dir</replaceable></entry><entry>is the maximum wind direction angle</entry></row>
+<row valign='top'><entry><replaceable>text</replaceable></entry><entry>is the text to display (in double quotes)</entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>direction value
+    0 999 10 1 2
+    end</programlisting>
+Wind directions for wind speeds from 0 to 999 are rounded to the nearest 10
+degrees, divided by 10<superscript>1</superscript> and displayed as the nearest integer 2 digits long. (That is, a wind
+direction of "53" degrees would be rounded to "50", divided by 10 to give a value of "5" and displayed as "05".)
+</para></example>
+
+<example><title> </title><para>
+<programlisting> direction text
+    337.5  22.5 "N"
+     22.5  67.5 "NE"
+    end</programlisting>
+Wind directions from 337.5 to 22.5 degrees are displayed using the text string
+"N", wind directions from 22.5 to 67.5 degrees are displayed using the text
+string "NE".
+</para><para>
+Note that a wind direction of -22.5 is equivalent to a wind direction of 337.5!
+</para></example>
+
+</para><beginpage/><para>
+The "speed" section can include the following two formats:
+<programlisting>
+speed value
+    <replaceable>min_spd max_spd round factor sdigits</replaceable>
+    end
+speed text
+    <replaceable>min_spd max_spd text</replaceable>
+    <replaceable>min_spd max_spd text</replaceable>
+    <replaceable>...</replaceable>
+    end
+</programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>min_spd</replaceable></entry><entry>is the minimum wind speed</entry></row>
+<row valign='top'><entry><replaceable>max_spd</replaceable></entry><entry>is the maximum wind speed</entry></row>
+<row valign='top'><entry><replaceable>round</replaceable></entry><entry>is the value to round the wind speed to the nearest multiple of</entry></row>
+<row valign='top'><entry><replaceable>factor </replaceable></entry><entry>is the power of 10 to divide the wind speed by</entry></row>
+<row valign='top'><entry><replaceable>sdigits</replaceable></entry><entry><para>is the significant digits of the wind speed to display
+    <simplelist>
+    <member>0 - for the nearest integer</member>
+    <member>&gt;0 - for the nearest integer this long (with leading zeroes)</member>
+    <member>&lt;0 - for a real number with digits after the decimal place</member>
+    </simplelist></para></entry></row>
+<row valign='top'><entry><replaceable>text</replaceable></entry><entry>is the text to display (in double quotes)</entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>speed value
+    5 999 0 0 -1
+    end</programlisting>
+Wind speeds from 5 to 999 are displayed to 1 decimal place accuracy. (That is, wind speed of "24.783" would be displayed as "24.8".)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>speed text
+     5 15 "LIGHT"
+    15 30 "STRONG"
+    end</programlisting>
+Wind speeds from 5 to 15 are displayed using the text string "LIGHT", and
+wind speeds from 15 to 30 are displayed using the text string "STRONG".
+</para></example>
+
+</para><beginpage/><para>
+The "gust" section can include the following two formats:
+<programlisting>
+gust value
+    <replaceable>min_gst max_gst round factor sdigits</replaceable>
+    end
+gust text
+    <replaceable>min_gst max_gst text</replaceable>
+    <replaceable>min_gst max_gst text</replaceable>
+    <replaceable>...</replaceable>
+    end
+</programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>min_gst</replaceable></entry><entry>is the minimum wind gust</entry></row>
+<row valign='top'><entry><replaceable>max_gst</replaceable></entry><entry>is the maximum wind gust</entry></row>
+<row valign='top'><entry><replaceable>round</replaceable></entry><entry>is the value to round the wind gust to the nearest multiple of</entry></row>
+<row valign='top'><entry><replaceable>factor</replaceable></entry><entry>is the power of 10 to divide the wind gust by</entry></row>
+<row valign='top'><entry><replaceable>sdigits</replaceable></entry><entry><para>is the significant digits of the wind gust to display
+    <simplelist>
+    <member>0 - for the nearest integer</member>
+    <member>&gt;0 - for the nearest integer this long (with leading zeroes)</member>
+    <member>&lt;0 - for a real number with digits after the decimal place</member>
+    </simplelist></para></entry></row>
+<row valign='top'><entry><replaceable>text</replaceable></entry><entry>is the text to display (in double quotes)</entry></row>
+</tbody></tgroup></informaltable>
+
+
+<example><title> </title><para>
+<programlisting>gust value
+    5 999 5 0 0
+    end</programlisting>
+Wind gusts from 5 to 999 are rounded to the nearest 5, and the nearest integer wind gust is displayed.
+</para></example>
+
+<example><title> </title><para>
+<programlisting>gust text
+    15  30 "STRONG GUSTS"
+    30 999 "VERY STRONG GUSTS"
+    end</programlisting>
+Wind gusts from 15 to 30 are displayed using the text string "STRONG GUSTS", and wind gusts from 30 to 999 are displayed using the text string "VERY STRONG GUSTS".
+</para></example>
+
+</para></sect2>

@@ -1,0 +1,123 @@
+! Set display parameters for various weather types ...
+@presentation
+	{
+	name           = trw1;
+	outline        = X11 DarkSlateGray;
+	interior_fill  = X11 LightSkyBlue;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+@presentation
+	{
+	name           = frz_rain1;
+	outline        = X11 DarkSlateGray;
+	interior_fill  = X11 LightSkyBlue;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+@presentation
+	{
+	name           = mix1;
+	outline        = X11 DarkSlateGray;
+	interior_fill  = X11 LightSkyBlue;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+@presentation
+	{
+	name           = shower1;
+	outline        = X11 DarkSlateGray;
+	interior_fill  = X11 LightBlue;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+@presentation
+	{
+	name           = snow1;
+	outline        = X11 DarkSlateGray;
+	interior_fill  = X11 LightSteelBlue1;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+@presentation
+	{
+	name           = rain1;
+	outline        = X11 DarkSlateGray;
+	interior_fill  = X11 LightBlue;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+@presentation
+	{
+	name           = fog1;
+	outline        = X11 DarkSlateGray;
+	interior_fill  = X11 LightSkyBlue;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+@presentation
+	{
+	name           = cloud1;
+	outline        = X11 DarkSlateGray;
+	interior_fill  = X11 AliceBlue;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+@presentation
+	{
+	name           = cloud2;
+	outline        = X11 DarkSlateGray;
+	interior_fill  = X11 AliceBlue;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+@presentation
+	{
+	name           = clear1;
+	outline        = none;
+	interior_fill  = none;
+	pattern        = scallop;
+	pattern_width  = .050;
+	pattern_length = .300;
+	line_width     = .030;
+	}
+
+! Display areas for system weather ... using a lookup table for presentation
+@areas
+	{
+	element        = weather_system;
+	level          = surface;
+	category       = All;
+	attribute      = clds_and_wx;
+	look_up        = weather_day;
+	}
+
+! Display areas for local weather directly ...
+@areas
+	{
+	element        = weather_local;
+	level          = surface;
+	category       = All;
+	outline        = X11 IndianRed;
+	pattern        = simple;
+	line_width     = .020;
+	line_style     = 2 6 2;
+	}

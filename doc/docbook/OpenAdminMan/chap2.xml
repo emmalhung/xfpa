@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<chapter id='how_fpa_works'> <title>Understanding How &FPA; Works</title> <para>
+This chapter provides an introduction to the functionality of the &FPA; software.
+It is not intended to be detailed but rather an overview to give you an idea of what is happening.
+</para>
+
+<sect1><title>Download and ingest</title> <para>
+<indexterm><primary>download</primary></indexterm>
+<indexterm><primary>ingest</primary></indexterm>
+&FPA; uses its own internal data representations, but 
+provides procedures to ingest &GRIB; format files.
+</para> <para>
+For new Canadian clients, you may manually download up-to-date &GRIB; files.
+However, arrangements should be made for an automatic download with &CMC; as soon as possible.
+Clients outside the Meteorological Service of Canada will have their own source of data.
+As long as the data is in &GRIB; format it should be compatible with the ingest software.
+</para> <para>
+The ingest daemon <command>fpaingest</command> detects the presence of new data files, and starts an ingest program.
+</para> <para>
+There are two programs available for ingesting &GRIB; data: <command>gribin</command> and <command>gribin2</command>. These programs process the individual fields in each &GRIB; file, re-interpolate to the local map projection and deposit the result to the appropriate guidance directories (see <xref linkend='dir_block'/>). 
+<variablelist>
+<varlistentry><term>gribin</term><listitem><para>Can process &GRIB; editions 0 and 1, and requires a <filename>Gribs</filename> configuration file. (see <xref linkend='config_gribs'/>)</para></listitem></varlistentry>
+<varlistentry><term>gribin2</term><listitem><para>Can process &GRIB; editions 0, 1 and 2, and requires a <filename>Ingest</filename> configuration file. (see <xref linkend='config_ingest'/>)</para></listitem></varlistentry>
+</variablelist>
+The <command>fpaingest</command> daemon, can start user defined ingest programs as well.
+</para> </sect1>
+
+<sect1 id='depiction_editor_options'><title>The Depiction Editor</title> <para>
+<indexterm><primary>depiction editor</primary></indexterm>
+The Depiction Editor (<command>xfpa</command>) is used to create and manage a set of graphical weather depiction charts.
+The depictions are intended to represent a time sequence that describes the predicted behaviour of certain weather elements during the given period.
+</para> <para>
+The Depiction Editor provides several tools for modifying the weather elements contained in each depiction.
+It also provides a facility for examination and rudimentary analysis of operational model guidance forecasts in chart form.
+This assists the forecaster in predicting the behaviour of the various weather elements.
+</para> <para>
+The Depiction Editor also incorporates a mechanism for connecting specific weather features through time, so that it can interpolate the depiction sequence onto a shorter interval.
+This results in a related sequence of interpolated depictions, which can be used to create forecast 
+products at intermediate times.
+</para> <para>
+Please refer to the <userinput>User's Manual</userinput> for details on the functionality of the &FPA; Depiction Editor.
+</para> <para>
+The <command>xfpa</command> command can be run from the command line with a number of arguments:
+</para><para>
+<indexterm><primary>xfpa</primary></indexterm>
+<cmdsynopsis>
+<command>xfpa</command>
+<arg choice='opt' rep='norepeat'>-askForTimes</arg>
+<arg choice='opt' rep='norepeat'>-profile <replaceable>name</replaceable></arg>
+<arg choice='opt' rep='norepeat'>-s[etup] <replaceable>filename</replaceable></arg>
+<arg choice='opt' rep='norepeat'>-stateDir <replaceable>directory</replaceable></arg>
+<arg choice='opt' rep='norepeat'>-t0 <replaceable>YYYY:JJJ:HH</replaceable></arg>
+<arg choice='opt' rep='norepeat'>-v[isible] <replaceable>key</replaceable></arg>
+<arg choice='opt' rep='norepeat'>+viewerMode</arg>
+</cmdsynopsis>
+<table frame='topbot' rowsep='1'>
+<title>Explanation of <command>xfpa</command> optional arguments</title><tgroup cols='2'>&colwidth2;
+<thead> <row rowsep='1'><entry>arg...</entry><entry>meaning...</entry></row></thead>
+<tbody>
+<row valign='top'><entry>-askForTimes</entry>
+<entry>Puts up a dialog box asking which range of depiction times are to be read into the &FPA;</entry></row>
+
+<row valign='top'><entry>-profile <replaceable>key</replaceable></entry>
+<entry>Start using the specified profile instead of putting up a dialog asking the user for a profile.
+"none" is a valid input.</entry></row>
+
+<row valign='top'><entry>-s<optional>etup</optional> <replaceable>filename</replaceable></entry>
+<entry>Specifies the name of the file to use as the setup file.
+This may be an absolute path name or relative to the default setup directories.</entry></row>
+
+<row valign='top'><entry>-stateDir <replaceable>directory</replaceable></entry>
+<entry>The directory to use to store the state store file.
+This is only used if in viewer mode.</entry></row>
+
+<row valign='top'><entry>-t0 <replaceable>YYYY:JJJ:HH</replaceable></entry>
+<entry>Specifies the time to use as T0 for the depiction sequence.
+<replaceable>YYYY</replaceable> = 4 digit year,
+<replaceable>JJJ</replaceable> = julian day of the year,
+<replaceable>HH</replaceable> = hour of the day</entry></row>
+
+<row valign='top'><entry>-v<optional>isible</optional><replaceable>key</replaceable></entry>
+<entry>Bring up &FPA;  with fields visible as specified by the block of data indicated by the <replaceable>key</replaceable> in the preset field visibility config file.</entry></row>
+
+<row valign='top'><entry>+viewerMode</entry>
+<entry>Runs the &FPA; in viewer mode.
+All loading, deletion, saving and editing commands are not available so that only sequence viewing is possible.</entry></row>
+</tbody></tgroup></table></para>
+<note><para>The &FPA; restricts access to the graphical weather depictions to one user at one time.  The &FPA; enforces this restriction by creating a <filename>.LOCK*</filename> file in the <filename>Depict</filename> directory while <command>xfpa</command> is running.  Attempts to access the same graphical weather depictions with another <command>xfpa</command> command will result in an error.
+</para><para><userinput/>
+</para><para>Note that Guidance and Allied Model directories can be shared, and the graphical weather depictions can be accessed by other users, but only one user can add, delete or modify graphical weather depictions at one time.
+</para><para><userinput/>
+</para><para>One result of this restriction is that the &FPA; code assumes that no other external process will add, delete or modify graphical weather depictions (that is, files in the <filename>Depict</filename>, <filename>Backup</filename> and <filename>Interp</filename> directories) while <command>xfpa</command> is running, and any external process trying to do so may result in errors in the &FPA;, up to and including crashes!
+</para></note>
+</sect1>
+
+<sect1><title>Product Generators</title> <para>
+<indexterm><primary>product generation</primary></indexterm>
+There are several different product generators.
+Each is designed for producing a different type of product out of the depiction sequence.
+One of these generators is invoked when the <guibutton>Generate</guibutton> button is selected.
+</para> <para>
+The Graphics Product Generator application allows users to create tailored graphical products or simpler ASCII products from the &FPA; database.  The two graphical product applications are <application>PSMet</application> (producing output in PostScript format) and <application>SVGMet</application> (producing output in SVG format, an open XML format).  The ASCII application is <application>TexMet</application>.  All three applications use a command language in product generation files to sample the &FPA; database and display the results in a number of different formats.  Please refer to the <userinput>Graphics Product Generator Reference Manual</userinput> for details on the functionality of the applications and their product definition files.
+</para> <para>
+There is also an internal graphics application for copying &FPA; metafiles to transfer them to another location where they can be used as initial fields or as guidance.
+Note that the format of product definition files for copying &FPA; metafiles is discussed in <xref linkend='appendd'/>.
+</para> </sect1>
+
+<sect1><title>Product Editors</title> <para>
+<indexterm><primary>product generation</primary><secondary>editors</secondary></indexterm>
+Certain text and graphical products have a corresponding product editor to allow the user to review and modify the product if necessary.
+The appropriate editor is invoked when the Edit button is selected from within the product generation menu.
+</para> </sect1>
+
+<sect1><title>Allied Models</title> <para>
+<indexterm><primary>allied model</primary></indexterm>
+A number of useful models have been integrated with &FPA;.
+We use the term "allied" to indicate that they are not actually part of &FPA; itself.
+However, a mechanism exists that allows users to integrate an Allied Model in to the &FPA;, so that the Allied Model can be run directly from the &FPA; interface.
+</para> <para>
+Integrating an Allied Model into the &FPA; is accomplished by creating one or more specialized modules to: extract information from the &FPA; database required as input by an Allied Model; to run the Allied Model; or to translate the output of an Allied Model into &FPA; database files so as to import the Allied Model information back into the &FPA; depiction sequence.
+Allied Models are described in <xref linkend='appende'/>.
+</para> <para>
+The last sections of <xref linkend='appende'/> describe special internal Allied Models called "&FPA; <application>Warp</application>", "&FPA; <application>Create Area</application>" and "&FPA; <application>Create Contour</application>".
+These Allied Models can be used to create metafiles without the need to develop special code, by simply adding lines in the Local Setup file and the Local Configuration file.
+</para> <para>
+"&FPA; <application>Warp</application>" uses the <application>fpawarp</application> program to merge point data (either over a grid or at random locations) with an &FPA; field, modifying the field to match the point data values.
+</para> <para>
+"&FPA; <application>Create Area</application>" uses the <application>fpacreate_area</application> program to generate Discrete areas from the attributes of features in Line, Link Chain or Scattered type fields.
+</para> <para>
+"&FPA; <application>Create Contour</application>" uses the <application>fpacreate_cont</application> program to generate Discrete areas from the contours of Continuous fields.
+</para>
+</sect1>
+</chapter>

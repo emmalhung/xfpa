@@ -1,0 +1,48 @@
+! Set the default presentation for red text bordered with black ...
+@presentation
+	{
+	line_width    = 0.01;
+	outline       = CMYK 0   0   0 100;
+	fill          = CMYK 0 100 100  30;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	justification = left;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Display symbols at selected locations ...
+@group
+	{
+	group_name = lctn_sym;
+	symbol     = circle_mark;
+	scale      =   70;
+	x_off      =  0.00;
+	y_off      =  0.00;
+	}
+@anchor { ref = map }
+@add { <lctn_sym;  lat = 44:40N;  lon = 63:35W }		!EDIT! (Halifax)
+@add { <lctn_sym;  lat = 45:28N;  lon = 73:45W }		!EDIT! (Montreal)
+@add { <lctn_sym;  lat = 46:48N;  lon = 71:24W }		!EDIT! (Quebec City)
+@add { <lctn_sym;  lat = 50:13N;  lon = 66:15W }		!EDIT! (Sept-Iles)
+@add { <lctn_sym;  lat = 47:37N;  lon = 52:45W }		!EDIT! (St John's)
+@add { <lctn_sym;  lat = 42:22N;  lon = 71:02W }		!EDIT! (Boston)
+
+! Display text at selected locations ...
+@group
+	{
+	group_name    = lctn_txt;
+	text_size     =  0.20;
+	justification = right;
+	x_off         = -0.08;
+	y_off         = -0.06;
+	}
+@anchor { ref = map }
+@text { <lctn_txt; lat = 44:40N; lon = 63:35W; string = Halifax }	!EDIT! (Halifax)
+@text { <lctn_txt; lat = 45:28N; lon = 73:45W; string = Montreal }	!EDIT! (Montreal)
+@text { <lctn_txt; lat = 46:48N; lon = 71:24W; string = Quebec }	!EDIT! (Quebec City)
+@text { <lctn_txt; lat = 50:13N; lon = 66:15W; string = Sept-Iles }	!EDIT! (Sept-Iles)
+@text { <lctn_txt; lat = 47:37N; lon = 52:45W; string = St John's }	!EDIT! (St John's)
+@text { <lctn_txt; lat = 42:22N; lon = 71:02W; string = Boston }	!EDIT! (Boston)

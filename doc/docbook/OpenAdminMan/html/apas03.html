@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>A.3. Common Keywords</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apa.html" title="Appendix A. Config and Config.name File Format" /><link rel="prev" href="apas02s01.html" title="A.2.1. Other Languages in the Configurable Menus" /><link rel="next" href="apas04.html" title="A.4. Elements block" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">A.3. Common Keywords</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apas02s01.html">Prev</a> </td><th width="60%" align="center">Appendix A. Config and Config.<span xmlns="" class="replaceable">name</span> File Format</th><td width="20%" align="right"> <a accesskey="n" href="apas04.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2084561"></a>A.3. Common Keywords</h2></div></div></div><p>
+The following table describes keywords that are common to several configuration file blocks, or which contain lists of preset choices for keywords.
+A description of each of the preset choices is also given.
+Occurrences of these keywords in the individual configuration file blocks described below will refer back to this Table.
+</p><div xmlns="" class="table"><a xmlns="http://www.w3.org/1999/xhtml" id="common_keys"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Table A.1. Common Keywords</b></p><table xmlns="http://www.w3.org/1999/xhtml" summary="Common Keywords" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>Keyword</th><th>Explanation</th></tr></thead><tbody><tr valign="top"><td valign="top"><strong class="userinput"><code>label</code></strong></td><td valign="top">This is the label the user sees.</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>short_label</code></strong></td><td valign="top">This is the label the user sees when there is not much space on the button.
+It should be less than 12 characters</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>description</code></strong></td><td valign="top">This is an optional descriptive label</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>file_id</code></strong></td><td valign="top">This is the identifier used to construct (old style) <span class="acronym">FPA</span> file names.
+(element identifiers are limited to 2 characters!)
+For example, in the <code class="filename">Config.master</code> file, pressure has a file_id of pn.
+Thus metafiles containing pressure data are named with the prefix pn (e.g.
+a depiction metafile named pnmsl_1998:182:00 for mean sea level pressure).</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>file_ident</code></strong></td><td valign="top">This is the identifier used to construct (new style) <span class="acronym">FPA</span> file names 
+(limited to 32 characters.)
+May not contain spaces or '~')</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>field_group</code></strong></td><td valign="top">This parameter will group the <span class="acronym">FPA</span> fields in the interface.
+The group name must be from the 'Fields' sub block of the 'Groups' block.</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>element_group</code></strong></td><td valign="top">This parameter will group the <span class="acronym">FPA</span> elements in the interface.
+The group name must be from the 'Elements' sub block of the 'Groups' block</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>field_type</code></strong></td><td valign="top"><p>This parameter identifies the type of meteorological field.
+One of:</p>
+<p><strong class="userinput"><code>Continuous</code></strong>: for contoured b-spline fields (grid point data).</p>
+<p><strong class="userinput"><code>Vector</code></strong>: for u, v component b-spline fields</p>
+<p><strong class="userinput"><code>Discrete</code></strong>: for area fields</p>
+<p><strong class="userinput"><code>Wind</code></strong>: for fields containing areas of adjusted wind</p>
+<p><strong class="userinput"><code>Line</code></strong>: for line fields</p>
+<p><strong class="userinput"><code>LChain</code></strong>: for link chain fields</p>
+<p><strong class="userinput"><code>Scattered</code></strong>: for data at random points</p>
+<p><strong class="userinput"><code>Special</code></strong>: for all other fields</p>
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>level_type</code></strong></td><td valign="top"><p>This parameter matches acceptable elements and levels to create fields.
+One of: </p>
+<p><strong class="userinput"><code>Msl</code></strong>: for mean sea level fields</p>
+<p><strong class="userinput"><code>Surface</code></strong>: for surface of the Earth fields</p>
+<p><strong class="userinput"><code>Level</code></strong>: for level type fields</p>
+<p><strong class="userinput"><code>Layer</code></strong>: for layer type fields</p>
+<p><strong class="userinput"><code>Geography</code></strong>: for geographical fields</p>
+<p><strong class="userinput"><code>Annotation</code></strong>: for menus or legends</p>
+<p><strong class="userinput"><code>Any</code></strong>: for special elements that may be valid at any level</p>
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>source_type</code></strong> or <strong class="userinput"><code>source_types</code></strong></td><td valign="top"><p>This parameter sets the type of files for a data source.
+One of:</p>
+<p><strong class="userinput"><code>Depiction</code></strong>: for data sources where all fields are unique</p>
+<p><strong class="userinput"><code>Guidance</code></strong>: for data sources where fields may be reproduced at a different run time for the data source</p>
+<p><strong class="userinput"><code>Allied</code></strong>: for data sources from Allied Models (these are similar to Guidance type data sources)</p>
+<p><strong class="userinput"><code>Maps</code></strong>: for geographical data sources</p>
+<p><strong class="userinput"><code>Direct</code></strong>: (not yet used)</p>
+<p><strong class="userinput"><code>Any</code></strong>: for any of the above types</p>
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>value_function</code></strong></td><td valign="top"><p>This parameter sets a value calculation function used to determine a given field.
+Note that each value calculation function refers to an FPA routine to calculate a value based on given input fields.
+One of:</p>
+<p><strong class="userinput"><code>FPA_Value_Func</code></strong>: extract values from a single field</p>
+<p><strong class="userinput"><code>FPA_Vector_Magnitude_Func</code></strong>: extract a magnitude from a vector field</p>
+<p><strong class="userinput"><code>FPA_Vector_Direction_Func</code></strong>: extract a direction from a vector field</p>
+<p><strong class="userinput"><code>FPA_Daily_Max_Value/Time_Func</code></strong>: extract maximum values or times of maximum values from a series of fields</p>
+<p><strong class="userinput"><code>FPA_Daily_Min_Value/Time_Func</code></strong>: extract minimum values or times of minimum values from a series of fields</p>
+<p><strong class="userinput"><code>FPA_Get_Daily_Value_Func</code></strong>: extracts values from a daily field that matches a given time.</p>
+<p><strong class="userinput"><code>FPA_Actual_Wind_Speed/Direction_Func</code></strong>: extract wind speed or wind direction from a field containing areas of adjusted wind</p>
+<p>Note that user defined value functions can also be used.</p></td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>wind_function</code></strong></td><td valign="top"><p>This parameter sets a wind calculation function used to determine a given type of wind.
+Note that each wind calculation function refers to an FPA routine to calculate wind speed and direction based on given input fields.
+One of:</p>
+<p><strong class="userinput"><code>FPA_Geostrophic_Wind_Func</code></strong>: extract wind based on the geostrophic wind equation</p>
+<p><strong class="userinput"><code>FPA_Gradient_Wind_Func</code></strong>: extract wind based on the gradient wind equation</p>
+<p><strong class="userinput"><code>FPA_Cyclostrophic_Wind_Func</code></strong>: extract wind based on the cyclostrophic wind equation</p>
+<p><strong class="userinput"><code>FPA_Isallobaric_Wind_Func</code></strong>: extract wind based on the isallobaric wind equation</p>
+<p><strong class="userinput"><code>FPA_Thermal_Wind_Func</code></strong>: extract wind based on the thermal wind equation</p>
+<p><strong class="userinput"><code>FPA_UVcomponent_Wind_Func</code></strong>: extract wind based on the u and v components of wind</p>
+<p><strong class="userinput"><code>FPA_DirectionSpeed_Wind_Func</code></strong>: extract wind based on the direction and speed components of wind</p>
+<p><strong class="userinput"><code>FPA_Adjusted_Wind_Func</code></strong>: extract wind from the wind adjustment field where <strong class="userinput"><code>field_type = Wind</code></strong></p>
+<p><strong class="userinput"><code>FPA_Absolute_Wind_Func</code></strong>: set absolute wind speed and direction to zero.</p>
+<p>Note that user defined wind functions can also be used.</p>
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>value_sample</code></strong></td><td valign="top"><p>This parameter determines the type of value to sample from a field.
+Note that each type of value refers to an FPA routine to determine parameters from a given input field.
+One of:</p>
+<p><strong class="userinput"><code>FPA_Sample_Value</code></strong>: sample the value of Continuous or Vector type field</p>
+<p><strong class="userinput"><code>FPA_Sample_Gradient</code></strong>: sample the gradient of a Continuous type field</p>
+<p><strong class="userinput"><code>FPA_Sample_Curvature</code></strong>: sample the curvature of a Continuous type field</p>
+<p><strong class="userinput"><code>FPA_Sample_Magnitude</code></strong>: sample the Magnitude of a Vector type field</p>
+<p><strong class="userinput"><code>FPA_Sample_Direction</code></strong>: sample the direction of a Vector type field</p>
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>value_sample_types</code></strong></td><td valign="top">This parameter sets value sampling types for a given field.
+Each <span xmlns="" class="replaceable">sample_type_name</span> is from the 'Values' sub block of the 'Samples' block.</td></tr><tr valign="top"><td valign="top"><p><strong class="userinput"><code>wind_sample_type</code></strong></p>
+<p>or</p>
+<p><strong class="userinput"><code>wind_sample_types</code></strong></p></td><td valign="top">This parameter sets wind sampling types for a given field.
+Each <span xmlns="" class="replaceable">sample_type_name</span> is from the 'Winds' sub block of the 'Samples' block</td></tr></tbody></table></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apas02s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apa.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apas04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">A.2.1. Other Languages in the Configurable Menus </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> A.4. Elements block</td></tr></table></div></body></html>

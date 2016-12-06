@@ -1,0 +1,34 @@
+! Set the default presentation for red text bordered with black ...
+@presentation
+	{
+	line_width    = 0.01;
+	outline       = X11 Black;
+	fill          = X11 IndianRed;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	justification = left;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Display aerodromes at lookup table locations ...
+@add
+	{
+	location_look_up = aerodromes;
+	location_ident   = GPGEN_All;
+	symbol           = circle_filled;
+	scale            =    50;
+	x_off            =  0.00;
+	y_off            =  0.00;
+	}
+@text
+	{
+	attribute        = GPGEN_label;
+	location_look_up = aerodromes;
+	location_ident   = GPGEN_All;
+	text_size        =  0.12;
+	x_off            =  0.05;
+	y_off            = -0.03;
+	}

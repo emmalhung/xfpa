@@ -1,0 +1,120 @@
+# Define all the usual places to look for things:
+LIBPATH = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(SLIBDIR)/$${PLATFORM}
+INCPATH = $${INCLUDE_PATH} $${X_INCLUDE} $${FT2_INCLUDE} \
+			-I$(INCDIR) -I$(LIBDIR) -I$(SINCDIR) -I$(SLIBDIR)
+
+LDIR    = $(SLIBDIR)/$(PLATFORM)
+LIB     = $(LDIR)/libXbae.a
+
+MODULES =	Actions.o \
+			Clip.o \
+			Converters.o \
+			Create.o \
+			DebugUtil.o \
+			Draw.o \
+			Input.o \
+			Matrix.o \
+			Methods.o \
+			Public.o \
+			ScrollMgr.o \
+			Shadow.o \
+			Utils.o
+
+
+HEADER =	$(SINCDIR)/Xbae/Actions.h \
+			$(SINCDIR)/Xbae/Clip.h \
+			$(SINCDIR)/Xbae/Converters.h \
+			$(SINCDIR)/Xbae/Create.h \
+			$(SINCDIR)/Xbae/Draw.h \
+			$(SINCDIR)/Xbae/Input.h \
+			$(SINCDIR)/Xbae/Macros.h \
+			$(SINCDIR)/Xbae/Matrix.h \
+			$(SINCDIR)/Xbae/Methods.h \
+			$(SINCDIR)/Xbae/ScrollMgr.h \
+			$(SINCDIR)/Xbae/Shadow.h \
+			$(SINCDIR)/Xbae/Utils.h \
+			$(SINCDIR)/Xbae/patchlevel.h
+
+
+HEADERS =	Actions.h \
+			Clip.h \
+			ClipP.h \
+			Converters.h \
+			Create.h \
+			Draw.h \
+			Input.h \
+			InputP.h \
+			Macros.h \
+			Matrix.h \
+			MatrixP.h \
+			Methods.h \
+			ScrollMgr.h \
+			Shadow.h \
+			Utils.h \
+			XbaeDebug.h \
+			patchlevel.h
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(LIB) $(MODULES) $(HEADER)
+
+
+# Rules for building the library:
+all lib:	$(HEADER) Pmodules $(LIB)
+		@	echo FPA $${PLATFORM} X utilities library ready
+		@	echo
+
+$(LIB):		$(MODULES)
+		@	echo Re-building FPA $${PLATFORM} X utilities library
+		@   if [ ! -d $(LDIR) ]; then mkdir -p $(LDIR); fi
+		@	if [ -f $(LIB) ]; then rm -f $(LIB); fi
+		@	sleep 1
+		@	$${LIB_ARCHIVE} $(LIB) $(MODULES) 2>/dev/null
+
+
+# Rules for building the object modules:
+modules:	$(HEADER) Pmodules $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA X utilities library"
+
+$(MODULES):		$(HEADERS)
+
+# Rules for building the master header file:
+defs header:	$(HEADER)
+$(HEADER):		$(HEADERS)
+			@	echo Updating FPA X utilities library header
+			@	if [ ! -d $(SINCDIR)/Xbae ]; then mkdir -p $(SINCDIR)/Xbae; fi
+			@	rm -f $(SINCDIR)/Xbae/*.h
+			@	cp Actions.h $(SINCDIR)/Xbae/Actions.h
+			@	cp Clip.h $(SINCDIR)/Xbae/Clip.h
+			@	cp Converters.h $(SINCDIR)/Xbae/Converters.h
+			@	cp Create.h $(SINCDIR)/Xbae/Create.h
+			@	cp Draw.h $(SINCDIR)/Xbae/Draw.h
+			@	cp Input.h $(SINCDIR)/Xbae/Input.h
+			@	cp Macros.h $(SINCDIR)/Xbae/Macros.h
+			@	cp Matrix.h $(SINCDIR)/Xbae/Matrix.h
+			@	cp Methods.h $(SINCDIR)/Xbae/Methods.h
+			@	cp patchlevel.h $(SINCDIR)/Xbae/patchlevel.h
+			@	cp ScrollMgr.h $(SINCDIR)/Xbae/ScrollMgr.h
+			@	cp Shadow.h $(SINCDIR)/Xbae/Shadow.h
+			@	cp Utils.h $(SINCDIR)/Xbae/Utils.h
+			@	sleep 1
+
+ClipP.h:	Clip.h
+		@	sleep 1; touch $@
+InputP.h:	Input.h
+		@	sleep 1; touch $@
+MatrixP.h:	Matrix.h
+		@	sleep 1; touch $@
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} X utilities module $<"
+	@	$${C_COMPILER} -c $(INCPATH) $(C_OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

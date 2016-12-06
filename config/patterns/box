@@ -1,0 +1,16 @@
+* MSRB Metafile Standard
+ rev 1.2
+* 
+ mapdef 0 0 0 100 100 1
+ units xy
+* 
+* lines
+ entity-c NULL NULL LSPEC "[colour=Yellow style=solid]"
+ curve r 5
+ 20 20 20 80 80 80 80 20 20 20
+* areas
+ entity-b NULL NULL FSPEC "[colour=Cyan style=solid_fill]"
+ curve r 5
+ 20 -20 20 -80 80 -80 80 -20 20 -20
+*
+* End

@@ -1,0 +1,75 @@
+#!/bin/bash
+
+################################################################################
+#
+# Convert files in an FPA directory to filenames ending in minutes.
+#
+################################################################################
+
+if [ $# -ne 1 ]
+then
+	echo "Usage: fpadb_minutes <dir>"
+	exit 1
+fi
+
+# Check that the directory exists
+if [ ! -d ${1} ]
+then
+	echo "*** Directory ${1} does not exist ***"
+	exit 1
+fi
+
+# Set the directory
+dir=${1}
+echo
+echo "========================================================="
+echo "Converting filenames in $dir to minutes format"
+echo "========================================================="
+
+# Determine filenames to convert
+startdir=`pwd`
+cd $dir
+mfiles=`ls *:*:*:[0-6][0-9]`
+ffiles=`ls *:*:[0-2][0-9]`
+lfiles=`ls *:*:[0-2][0-9]L`
+cd $startdir
+
+# Complain if some files are already in "minutes" format
+for mfile in $mfiles
+do
+
+	# Only check actual files (not links or directories)
+	if [ -r $dir/$mfile -a ! -h $dir/$mfile -a ! -d $dir/$mfile ]
+	then
+		echo "Warning: File $mfile already in minutes format!"
+	fi
+done
+
+# Convert normal files with "hour" format
+for ffile in $ffiles
+do
+
+	# Only convert actual files (not links or directories)
+	if [ -r $dir/$ffile -a ! -h $dir/$ffile -a ! -d $dir/$ffile ]
+	then
+		echo "Converting file $ffile to minutes format"
+		mv $dir/$ffile $dir/$ffile:00
+	fi
+done
+
+# Convert local files with "hour" format
+for lfile in $lfiles
+do
+
+	# Only check actual files (not links or directories)
+	if [ -r $dir/$lfile -a ! -h $dir/$lfile -a ! -d $dir/$lfile ]
+	then
+		# Break the filename into bits
+		lyjd=`echo $lfile | cut -s -d: -f1-2`
+		lhrL=`echo $lfile | cut -s -d: -f3`
+		lhr=`echo $lhrL | cut -c 1-2`
+		# Change the filename
+		echo "Converting file $lfile to minutes format"
+		mv $dir/$lfile $dir/$lyjd:$lhr:00L
+	fi
+done

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_anchor'> <title>@anchor</title> <titleabbrev>@anchor</titleabbrev>
+<para>
+Set a new reference location, or anchor position, for subsequent displays in the ASCII output file.
+</para><para>
+Note that the following directives are affected by the anchor position:
+<link linkend='tx_define_table'>@define_table</link>
+<link linkend='tx_label'>@label</link>
+<link linkend='tx_lchain_nodes'>@lchain_nodes</link>
+<link linkend='tx_sample_field'>@sample_field</link>
+<link linkend='tx_sample_wind'>@sample_wind</link>
+<link linkend='tx_text'>@text</link>
+<link linkend='tx_write_time'>@write_time</link>
+</para><para>
+Note, however, that if the directive contains a <userinput>table_name</userinput> keyword, the anchor
+position for that directive defaults to the table location set in <link linkend='tx_define_table'>@define_table</link>.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>ref</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Starting point for new reference location
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.5*'/><tbody>
+<row><entry><userinput>absolute</userinput></entry><entry>first column - first line</entry></row>
+<row><entry><userinput>lower_left</userinput></entry><entry>first column - last line</entry></row>
+<row><entry><userinput>centre_left</userinput></entry><entry>first column - centre line</entry></row>
+<row><entry><userinput>upper_left</userinput></entry><entry>first column - first line</entry></row>
+<row><entry><userinput>lower_centre</userinput></entry><entry>centre column - last line</entry></row>
+<row><entry><userinput>centre</userinput></entry><entry>centre column</entry></row>
+<row><entry></entry><entry> - centre line</entry></row>
+<row><entry><userinput>upper_centre</userinput></entry><entry>centre column - first line</entry></row>
+<row><entry><userinput>lower_right</userinput></entry><entry>last column - last line</entry></row>
+<row><entry><userinput>centre_right</userinput></entry><entry>last column - centre line</entry></row>
+<row><entry><userinput>upper_right</userinput></entry><entry>last column - first line</entry></row>
+<row><entry><userinput>current</userinput></entry><entry>wrt current anchor</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>(default starting point is <userinput>absolute</userinput>)</para></entry></row>
+
+
+<row valign='top'>
+<entry colname='key'><para><userinput>column</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Column (character) offset from starting point</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>row</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Row (line) offset from starting point</para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@anchor { ref = absolute; column = 5; row = 4; }</programlisting>
+Set a new reference location offset 5 columns (characters) to the right of the first column and 4 rows
+(lines) below the first line of the ASCII output file.
+</para></example>
+</para></sect2>

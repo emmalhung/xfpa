@@ -1,0 +1,80 @@
+! Display local weather areas at cross section locations ...
+
+! Display local weather cloud ...
+@cross_section_areas
+	{
+	cross_section_name       = route_cross_section;
+	vertical_element         = weather_local;
+	vertical_level           = surface;
+	vertical_attribute_upper = cloud_top;
+	vertical_attribute_lower = cloud_base;
+	vertical_look_up         = xsect_heights;
+	pattern                  = simple;
+	outline                  = X11 CadetBlue;
+	interior_fill            = X11 SkyBlue;
+	pattern                  = scallop;
+	pattern_width            = .050;
+	pattern_length           = .300;
+	line_width               = .020;
+	}
+
+! Display system weather areas at cross section locations ...
+! (Note that only FPA_category "freezing/frozen/precip/vis/cloud" are displayed!)
+
+! First display third layer cloud ...
+@cross_section_areas
+	{
+	cross_section_name       = route_cross_section;
+	vertical_element         = weather_system;
+	vertical_level           = surface;
+	vertical_attribute_upper = cloud_top_3;
+	vertical_attribute_lower = cloud_base_3;
+	vertical_look_up         = xsect_heights;
+	category_attribute       = FPA_category;
+	category                 = freezing  frozen  precip  vis  cloud;
+	outline                  = X11 CadetBlue;
+	interior_fill            = X11 SkyBlue;
+	pattern                  = scallop;
+	pattern_width            = .050;
+	pattern_length           = .300;
+	line_width               = .020;
+	}
+
+! Next display second layer cloud ...
+@cross_section_areas
+	{
+	cross_section_name       = route_cross_section;
+	vertical_element         = weather_system;
+	vertical_level           = surface;
+	vertical_attribute_upper = cloud_top_2;
+	vertical_attribute_lower = cloud_base_2;
+	vertical_look_up         = xsect_heights;
+	category_attribute       = FPA_category;
+	category                 = freezing  frozen  precip  vis  cloud;
+	outline                  = X11 CadetBlue;
+	interior_fill            = X11 SkyBlue;
+	pattern                  = scallop;
+	pattern_width            = .050;
+	pattern_length           = .300;
+	line_width               = .020;
+	}
+
+! Next display first layer cloud ...
+@cross_section_areas
+	{
+	cross_section_name       = route_cross_section;
+	vertical_element         = weather_system;
+	vertical_level           = surface;
+	vertical_attribute_upper = cloud_top;
+	vertical_attribute_lower = cloud_base;
+	vertical_look_up         = xsect_heights;
+	category_attribute       = FPA_category;
+	category                 = freezing  frozen  precip  vis  cloud;
+	pattern                  = simple;
+	outline                  = X11 CadetBlue;
+	interior_fill            = X11 SkyBlue;
+	pattern                  = scallop;
+	pattern_width            = .050;
+	pattern_length           = .300;
+	line_width               = .020;
+	}

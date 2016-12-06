@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>vertical_data_file_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Identify the format of the data in the ASCII data file with a list of recognized format types separated by the same characters used to separate the values in the ASCII data file.</para>
+<para>Recognized types:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>
+<colspec colwidth='1*'/>
+<colspec colwidth='1.2*'/><tbody>
+<row valign='top'><entry><userinput>identifier</userinput></entry><entry>Identifier string</entry></row>
+<row valign='top'><entry><userinput>latitude</userinput></entry><entry>Latitude location</entry></row>
+<row valign='top'><entry><userinput>longitude</userinput></entry><entry>Longitude location</entry></row>
+<row valign='top'><entry><userinput>timestamp</userinput></entry><entry>Valid time</entry></row>
+<row valign='top'><entry><userinput>label</userinput></entry><entry>Data string</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>Data value</entry></row>
+<row valign='top'><entry><userinput>units</userinput></entry><entry>&FPA; units of data value</entry></row>
+<row valign='top'><entry><userinput>-</userinput></entry><entry>Placeholder in data file</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+Note that either the <userinput>identifier</userinput> or the <userinput>latitude</userinput> and <userinput>longitude</userinput> must be present to identify the data locations, but all other format types are optional.
+</para><para>
+Note that only the <userinput>value</userinput> format type can be used to set the vertical positions in a cross section.</para></entry></row>

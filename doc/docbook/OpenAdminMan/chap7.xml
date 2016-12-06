@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<chapter id='connecting'><title>Connecting to External Processes</title> <para>
+<indexterm><primary>external processes</primary><secondary>connecting</secondary></indexterm>
+The output of the &FPA; is a set of graphic, text, and/or data products.
+These products may be suitable "as is" for dissemination to various clients.
+In other cases &FPA; products must be sent further down the "production line" for modification or packaging.
+Generally &FPA; end products are placed somewhere in a user's &FPA; data directory, but the exact location can usually be specified in the "directories block" of a setup file.
+&FPA; provides hooks that allow the initiation of external processes once a product is placed in a release directory.
+</para>
+
+<sect1><title>The Product Manager Script (fpapm)</title> <para>
+<indexterm><primary>external processes</primary><secondary>fpapm</secondary></indexterm>
+Graphic product output programs, 
+<indexterm><primary>allied model</primary></indexterm>
+allied models, archiving, printing and other process which are run externally to &FPA; are all handled within the &FPA; Product Manager script (<application>fpapm</application>).
+</para> <para>
+This script may be modified by the client site to implement procedures specific to the site.
+You must be aware, however, that a new release of &FPA; will probably contain a modified version of fpapm and that any changes made by the client will have to be made to the revised script.
+It is suggested that a note be made of all changes made to the script so that they can be inserted into any new release.
+</para> <para>
+<application>fpapm</application> is located in <filename class='directory'>$FPA/bin</filename>.
+</para> </sect1>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='autoimport.xml'/>
+</chapter>

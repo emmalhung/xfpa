@@ -1,0 +1,1836 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % ingred SYSTEM 'ingred.ent'>
+%ingred;
+]>
+<chapter><title>Control Functions</title>
+<para>
+This section contains alphabetically-organized reference pages of Ingred control 
+functions. Control over Ingred is exercised through the use of library function calls which 
+are to be found in the <command>ingred.a</command> library (<filename>/usr/workstation/fpa/lib</filename>). It is the responsibility of 
+the driving interface to ensure that commands are sent in a meaningful order. If the currently active field is a spline field and a discrete field editing command is sent it may be ignored 
+and an invalid status returned, but there is no guarantee of this.
+</para><para>
+The routines are:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry>GEAction()</entry><entry>Miscellaneous graphics requests</entry></row>
+<row><entry>GEAnimate()</entry><entry>Animation commands.</entry></row>
+<row><entry>GEConnect()</entry><entry>Initialize the Ingred library.</entry></row>
+<row><entry>GEDepiction()</entry><entry>Commands applicable to individual depictions.</entry></row>
+<row><entry>GEDisconnect()</entry><entry>Disconnect from the display and close all files.</entry></row>
+<row><entry>GEEdit()</entry><entry>Edit the currently active element.</entry></row>
+<row><entry>GEGuidance()</entry><entry>Controls guidance display.</entry></row>
+<row><entry>GEImagery()</entry><entry>Controls the display of imagery.</entry></row>
+<row><entry>GESequence()</entry><entry>Handles depiction sequence control requests.</entry></row>
+<row><entry>GEStatus()</entry><entry>Request status information from Ingred.</entry></row>
+<row><entry>GEScratchpad()</entry><entry>Scratch pad control functions.</entry></row>
+<row><entry>GETimelink()</entry><entry>Time linking control requests.</entry></row>
+<row><entry>GEZoom()</entry><entry>Zoom control.</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+Three functions are required by Ingred which must be supplied by the calling application during the call to GEConnect(). The prototype functions are to be found in section 2.
+</para><para>
+	In the description of the control functions all keywords are given in <userinput>bold</userinput> and all parameters are given in <replaceable>italic</replaceable>. Items which are separated by a "|" are exclusive selections and 
+those enclosed within square brackets are optional depending on the specifics of the command. Any parameter given as time has a format of "yyyy:jjj:hh" where yyyy is the year, 
+jjj the julian day of the year, and hh the hour, all with leading zeros if required.
+</para>
+
+<sect1><title>GEAction</title><para>Handles miscellaneous graphics requests.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef>GEREPLY <function>GEAction( command )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+The <replaceable>command</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+
+<varlistentry><term><userinput>FONT ADD </userinput> <replaceable> key  description</replaceable></term>
+<listitem><para>
+Add a font to the list of fonts that Ingred will recognize.
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry><replaceable>key</replaceable></entry><entry>The key name to use to identify the font in Ingred commands.</entry></row>
+<row><entry><replaceable>description</replaceable></entry><entry>The font in standard X font descriptor format.</entry></row>
+</tbody></tgroup></informaltable>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>LINK PALETTE </userinput> <replaceable> chains  labels  guess</replaceable></term>
+<listitem><para>
+Set the link chain colour coding scheme (use '-' for the default colour).
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry><replaceable>chains</replaceable></entry><entry>Colour for link chains and nodes.</entry></row>
+<row><entry><replaceable>labels</replaceable></entry><entry>Colour for labels.</entry></row>
+<row><entry><replaceable>guess</replaceable></entry><entry>Colour of link node that is not attached to a feature.</entry></row>
+</tbody></tgroup></informaltable>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>STATE DRAW_MODE CONT</userinput> | <userinput>PPS</userinput> <replaceable>smoothing</replaceable></term>
+<listitem><para>
+Specifies the way in which lines will be drawn by the input device. The options are: 
+<orderedlist>
+<listitem><para>
+Continuous (<userinput>CONT</userinput>) in which lines are drawn by pressing and holding down the first 
+mouse button, drawing the line, then releasing it when the line is to be terminated. The 
+smoothing parameter is not used. This is the default mode on start-up.
+</para></listitem>
+
+<listitem><para>
+Point-to-point smoothed (<userinput>PPS</userinput>) in which lines are drawn as smoothed line segments by 
+clicking a point with the first mouse button, then moving to the next point and clicking 
+again. This process continues until terminated by clicking with the secon button. The 
+amount of smoothing is given by the smoothing parameter as a percentage (0 - 100).
+</para></listitem>
+</orderedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>STATE LINK_MODE NORMAL</userinput> | <userinput>INTERMEDIATE</userinput></term>
+<listitem><para>
+Set the current linking mode.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>STATE MOVE_MODE FIELD</userinput> | <userinput>FIELD_AND_LABELS</userinput></term>
+<listitem><para>
+Sets what is to be moved when the move edit command is issued. For any given object in 
+the field either just the object itself or the object and any associated labels will be moved.
+</para></listitem></varlistentry>
+<varlistentry><term><userinput>STATE MERGE_MODE FIELD</userinput> | <userinput>FIELD_AND_LABELS</userinput></term>
+<listitem><para>
+
+Sets what is to be merged into a field when the merge edit command is issued. Either the 
+field by itself will be merged in or the field and its associated labels.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>STATE MODIFY_MODE CONT</userinput> | <userinput>PPS</userinput> | <userinput>PUCK</userinput> <optional><replaceable>size</replaceable></optional> <replaceable>smoothing</replaceable></term>
+<listitem><para>
+Specifies the way in which lines will be modified when the editor is in modify mode for 
+both line and area edit. The options are:
+<orderedlist>
+<listitem><para>
+Continuous (<userinput>CONT</userinput>) in which lines are modified by pressing and holding down the first 
+mouse button close to the existing line, drawing the new line position, then releasing it 
+when the line is to be terminated. The <replaceable>size</replaceable> and <replaceable>smoothing</replaceable> parameters are not used.
+</para></listitem>
+<listitem><para>
+Point-to-point smoothed (<userinput>PPS</userinput>) in which lines are drawn as smoothed line segments by 
+clicking a point with the first mouse button, then moving to the next point and clicking 
+again. This process continues until terminated by clicking with the secon button. Otherwise 
+the it is the same as option 1. The amount of smoothing is given by the <replaceable>smoothing</replaceable> parameter 
+as a percentage (0 - 100). The <replaceable>size</replaceable> parameter is not used.
+</para></listitem>
+<listitem><para>
+<userinput>PUCK</userinput> modify. Lines are modified by being "pushed" by a puck shaped tool. The size 
+of the puck is specified as a percentage (1 - 100) given by the <replaceable>size</replaceable> parameter and the amount 
+of smoothing by the <replaceable>smoothing</replaceable> parameter as a percentage (0 - 100).
+</para></listitem>
+</orderedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>STATE SMOOTHING_AMOUNT</userinput> <replaceable>amount</replaceable></term>
+<listitem><para>
+Specifies the amount of smoothing, in number of patches, to apply to a field when the edit 
+command SMOOTH is in effect. The <replaceable>amount</replaceable> must have a minimum of 1.0.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>STATE SPREAD</userinput> <replaceable>amount</replaceable></term>
+<listitem><para>
+Specifies the radius of influence of an edit on a continuous field. This is given as a percentage of the maximum radius of influence (<replaceable>amount</replaceable>) which is about one quarter of the visible 
+map area. The minimum radius of influence depends on the resolution of the underlying 
+grid. If a zoom operation is performed these rules are still in operation and the maximum 
+radius of influence is still about one quarter of the visible map area (what the user sees on 
+the screen). Note that if the zoom in is near the resolution of the grid then the maximum 
+and minimum radius of influence may be the same.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>STATE STACK_ORDER TOP</userinput> | <userinput>BOTTOM</userinput></term>
+<listitem><para>
+Specifies the stacking order of any new area drawn on a discrete field. If the order if given 
+as <userinput>TOP</userinput> then all new areas will be drawn on top of any existing areas. If the order is given 
+as <userinput>BOTTOM</userinput> then all new areas will be drawn underneath any existing areas.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MAP BASE</userinput> <replaceable>map</replaceable> <replaceable>noverlays</replaceable></term>
+<listitem><para>
+Specifies the base <replaceable>map</replaceable> and the number of map overlays, <replaceable>noverlays</replaceable>, which are defined. Note 
+that this command must come before any <userinput>MAP OVERLAY</userinput> commands.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MAP OVERLAY</userinput> <replaceable>overlay</replaceable> <replaceable>map</replaceable> | <userinput>OFF <optional>REREAD</optional></userinput></term>
+<listitem><para>
+Display map overlay found in the file <replaceable>map</replaceable> in overlay number <replaceable>overlay</replaceable> or turn off overlay 
+number <replaceable>overlay</replaceable>. <replaceable>overlay</replaceable> must have a value between 1 and <replaceable>noverlays</replaceable> inclusive (see above). 
+The optional parameter <userinput>REREAD</userinput> will force Ingred to reread the overlay file and redisplay 
+the overlay. This is necessary if the overlay file changes.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MAP PALETTE</userinput> <replaceable>land water coast border lat-lon forecast-area forecast-border</replaceable></term>
+<listitem><para>
+Change the colours of the map background (use "-" to leave a colour alone).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MODE NORMAL</userinput> | <userinput>SUSPEND</userinput></term>
+<listitem><para>
+Change the mode of operation. By default Ingred starts up in <userinput>START_UP</userinput> mode. In this 
+mode all interactive commands are blocked until the mode is changed by this command. 
+The modes are:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry><userinput>NORMAL</userinput></entry><entry>Start full interactive mode.</entry></row>
+<row><entry><userinput>SUSPEND</userinput></entry><entry>Clean up all ongoing processes and suspend all operations.</entry></row>
+</tbody></tgroup></informaltable>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>DEFAULTS WINDS</userinput> <replaceable>windmin</replaceable> <replaceable>windmax</replaceable> <replaceable>units</replaceable> </term>
+<listitem><para>
+Sets the minimum and maximum wind speeds (in the given <replaceable>units</replaceable>)
+for display of winds in the interface.  Winds outside this range may be displayed as circles.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>DEFAULTS TIMELINK</userinput> <replaceable>units</replaceable> <replaceable>label</replaceable> </term>
+<listitem><para>
+Sets the <replaceable>units</replaceable> (and a label for the units) for display of motion at timelink nodes.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>RASTER_DUMP</userinput> <replaceable>format mode vtime</replaceable> | <userinput>ACTIVE</userinput> <replaceable>width height dfile</replaceable> <userinput>PAD</userinput> | <userinput>NOPAD</userinput> <optional><replaceable>overlay</replaceable></optional></term>
+<listitem><para>
+Print the given depiction to an output file.
+</para><para>
+<itemizedlist>
+<listitem><para>
+<replaceable>format</replaceable> sets the image encoding scheme and must be one of
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry><userinput>gif</userinput></entry><entry>Graphical Interchange Format</entry></row>
+<row><entry><userinput>xgl</userinput></entry><entry>Native graphics library format</entry></row>
+<row><entry><userinput>xwd</userinput></entry><entry>X windows dump format</entry></row>
+</tbody></tgroup></informaltable>
+</para></listitem>
+<listitem><para>
+<replaceable>mode</replaceable> determines the type of image required and must be one of
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry><userinput>bw</userinput></entry><entry>Depiction is converted to black and white</entry></row>
+<row><entry><userinput>greyscale</userinput></entry><entry>Depiction is converted greyscale</entry></row>
+<row><entry><userinput>colour</userinput></entry><entry>Depiction output in origional colours</entry></row>
+</tbody></tgroup></informaltable>
+</para></listitem>
+<listitem><para>
+<replaceable>vtime</replaceable> is the valid time of the depiction wanted. This must be either 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry><replaceable>vtime</replaceable></entry><entry>the valid time of the depiction or</entry></row>
+<row><entry><userinput>ACTIVE</userinput></entry><entry>whatever is displaying on the screen will be output.</entry></row>
+</tbody></tgroup></informaltable>
+</para></listitem>
+<listitem><para>
+<replaceable>width</replaceable> and <replaceable>height</replaceable> of the image are given in pixels.
+</para></listitem>
+<listitem><para>
+<replaceable>dfile</replaceable> is the name of the output file
+</para></listitem>
+<listitem><para>
+<userinput>PAD</userinput> | <userinput>NOPAD</userinput> Normally Ingred will create an output image with the same aspect ratio as 
+the requested depiction and maximize the image size based on the given <replaceable>width</replaceable> and 
+<replaceable>height</replaceable> (<userinput>NOPAD</userinput>). If <userinput>PAD</userinput> is specified the output image will be exactly <replaceable>width</replaceable> x 
+</para></listitem>
+<listitem><para>
+<replaceable>height</replaceable> with padding added to the depiction image if the aspect ratio differs from 
+that of the depiction.
+</para></listitem>
+<listitem><para>
+<replaceable>overlay</replaceable> (optional parameter) specifies the full path-name of a meta-file which will be overlaid on the output image. This can be used to provide labels for graphical output.
+</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry> </varlistentry>
+<varlistentry> </varlistentry>
+<varlistentry><term><userinput>REDISPLAY</userinput></term>
+<listitem><para>
+This command forces Ingred to redisplay its graphics. This command is most useful at the 
+end of the mainline after all of the initialization has been done. If the user has resized the 
+window during the initialization procedure, Ingred will not receive the proper resize event 
+and the display may not appear correctly forcing the user to resize the window again to get 
+the correct appearance. Using this command just before entering the main loop will avoid 
+this problem.
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+<beginpage/>
+
+<sect1><title>GEAnimate</title><para>Controls the animation mode of Ingred.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEAnimate( command )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+The <replaceable>command</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+<varlistentry><term><userinput>DELAY</userinput> <replaceable>ms</replaceable></term>
+<listitem><para>
+Set the delay interval in milliseconds between depictions in the animation.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>ENTER</userinput></term>
+<listitem><para>
+Enter animation mode. All of the other commands in this function are only recognized after 
+the ENTER command is issued. The initial visibility state of the fields will be that of those 
+in the depiction sequence.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EXIT</userinput></term>
+<listitem><para>
+Exit animation mode.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>ZOOM</userinput></term>
+<listitem><para>
+Exit animation mode to perform a zoom or pan, and then re-enter animation mode preserving the current animation state.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD_VISIBILITY</userinput> <replaceable>element level</replaceable> <userinput>ON</userinput> | <userinput>OFF</userinput></term>
+<listitem><para>
+Turn the visibility of the given field in the animating sequence on or off. Any field which 
+is off will not be seen by the user.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MODE DEPICT</userinput> | <userinput>INTERP</userinput></term>
+<listitem><para>
+Set the animation to be of either the depiction sequence currently being edited or of the sequence of interpolated depictions. 
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SHOW NEXT</userinput> | <userinput>PREV</userinput> | <replaceable>valid_time</replaceable></term>
+<listitem><para>
+Show the next (<userinput>NEXT</userinput>) or previous (<userinput>PREV</userinput>) depiction/interpolation in the sequence or the 
+depiction/interpolation valid at the specified time (<replaceable>valid_time</replaceable>).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>START</userinput></term>
+<listitem><para>
+Start the animation using the selected <userinput>DELAY</userinput> and <userinput>MODE</userinput> settings.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>STOP</userinput></term>
+<listitem><para>
+Stop the animation.
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+<variablelist>
+<varlistentry></varlistentry>
+</variablelist>
+</para></sect2></sect1>
+
+<sect1><title>GEConnect</title><para>Initializes Ingred.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEConnect( app_context, w, wait_proc, msg_proc, status_proc)</function></funcdef>
+<paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
+<paramdef>Widget <parameter>w</parameter></paramdef>
+<paramdef>char <parameter>*options</parameter></paramdef>
+<paramdef>void <parameter>(*cursor_proc)();</parameter></paramdef>
+<paramdef>void <parameter>(*msg_proc)();</parameter></paramdef>
+<paramdef>void <parameter>(*status_proc)();</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+This function initializes Ingred and passes the required start-up parameters. Note that by default 
+Ingred starts up in a non-interactive mode. After the controlling interface has issued all required initialization commands, 
+Ingred must be put into its interactive mode (see GEAction("<userinput>MODE INTERACTIVE</userinput>") command).The parameters are:
+</para><para>
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry><replaceable>app_context</replaceable></entry><entry>The application context of the interface.</entry></row>
+<row><entry><replaceable>w</replaceable></entry><entry>The widget to use for display and input (Normally the drawing window).</entry></row>
+<row><entry><replaceable>cursor_proc</replaceable></entry><entry>Function to call to request that the interface display a specified cursor.</entry></row>
+<row><entry><replaceable>msg_proc</replaceable></entry><entry>Function to call when Ingred wants the interface to display a message.</entry></row>
+<row><entry><replaceable>status_proc</replaceable></entry><entry>Function to call when Ingred needs to pass status information.</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+The three functions are supplied by the calling interface and must have specific parameter calling lists.
+For a detailed description see the function prototype descriptions at the end of this document.
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+<beginpage/>
+
+<sect1><title>GEDepiction</title><para>Handles individual depiction commands.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEDepiction( command, cal )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+<paramdef>CAL <parameter>cal</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+The <replaceable>cal</replaceable> variable is an opaque structure of type <type>CAL</type> which contains the object attribute values for the given command.
+Values are set into and retreived from the structure through the use of CAL_...() functions.
+See the Complete Attribute List (<type>CAL</type>) section at the end of this document.
+</para><para>
+The <replaceable>command</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+<varlistentry><term><userinput>BACKGROUND</userinput> <replaceable>element level</replaceable></term>
+<listitem><para>
+Set the background for all depictions for the field defined by <replaceable>element</replaceable> and <replaceable>level</replaceable>.
+The background is that as specified in the given <type>CAL</type> structure.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT</userinput> <replaceable>command_list</replaceable></term>
+<listitem><para>
+Edit the currently active field. See below for details on the actual commands.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD</userinput> <replaceable>element level</replaceable></term>
+<listitem><para>
+Make the field, as given by <replaceable>element</replaceable> and <replaceable>level</replaceable>, editable and the group containing the field and the field itself active. 
+If <replaceable>element</replaceable> and <replaceable>level</replaceable> are given as <userinput>NONE</userinput> then no field is active. 
+Note that this id done automatically by the <userinput>HIDE</userinput> command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD_VISIBILITY</userinput> <replaceable>element level</replaceable> <userinput>ON</userinput> | <userinput>ON_WHEN_GROUP_VISIBLE</userinput> | <userinput>OFF</userinput></term>
+<listitem><para>
+Change the visibility mode of the named field. If the mode is <userinput>ON</userinput> then the field will always 
+be shown. If <userinput>ON_WHEN_GROUP_VISIBLE</userinput> the field will only be visible when the 
+group is visible. If the mode of a given field is <userinput>OFF</userinput> then the element will only be displayed 
+if it is the element being edited. That is, an <userinput>ELEMENT</userinput> command will cause it to be shown.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>GROUP</userinput> <replaceable>group</replaceable></term>
+<listitem><para>
+Make the given <replaceable>group</replaceable> the active group without an active field.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>GROUP_VISIBILITY</userinput> <replaceable>group</replaceable> <userinput>ON</userinput> | <userinput>OFF</userinput></term>
+<listitem><para>
+Change the visibility mode of the given group. If mode is <userinput>ON</userinput> then the group fields are always visible if the <userinput>FIELD_VISIBILITY</userinput> is <userinput>ON_WHEN_GROUP_VISIBLE</userinput>. If <userinput>OFF</userinput> 
+then the group fields are only visible when the group is active.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>LABEL</userinput> <replaceable>process type</replaceable> <optional> <userinput>SET</userinput> </optional></term>
+<listitem><para>
+Label the currently active field. Insertions, deletions, modification and moves are done with the left mouse button. The commands are:
+
+<variablelist>
+<varlistentry><term><replaceable>process</replaceable></term>
+<listitem><para>
+The labeling procedure. This must be one of:
+<variablelist>
+<varlistentry><term><userinput>ADD</userinput></term>
+<listitem><para> Add a label to the depiction at the selected loction.
+If there is an entry menu file associated with the given <replaceable>type</replaceable>, then ask the interface to put up an entry menu to allow modification of the label attributes.
+If <replaceable>type</replaceable> is followed by <userinput>SET</userinput> the attributes of a previously selected label are being set.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>DELETE</userinput></term>
+<listitem><para>Delete the label closest to the selected location.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>LIST</userinput> <replaceable>latitude longitude</replaceable> | <userinput>GO</userinput></term>
+<listitem><para>
+labeling is to be done for a list of points. 
+If <replaceable>latitude</replaceable> and <replaceable>longitude</replaceable> are given Ingred will cache the points and will not do the labeling until a <userinput>GO</userinput> command is received.
+The <userinput>GO</userinput> command will clear the internal cache. 
+Note that <replaceable>type</replaceable> is not required with the <userinput>LIST</userinput> <replaceable>latitude longitude</replaceable> command.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MODIFY</userinput></term>
+<listitem><para>Modify the attributes of the label of type <replaceable>type</replaceable> closest to the location 
+selected on the depiction only if there is an entry menu file associated with the 
+given <replaceable>type</replaceable>. If so, ask the interface to put up an entry menu to allow modification 
+of the label attributes. If type if followed by <userinput>SET</userinput>, then the attributes of a previously seelcted label are being set.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MOVE</userinput></term>
+<listitem><para>Move the label closest to the selected location.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SHOW</userinput></term>
+<listitem><para>Send the interface the attributes of the label closest to the location selected on the depiction (See function prototype status_proc() <userinput>LABEL</userinput> command).</para></listitem></varlistentry>
+</variablelist>
+
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>type</replaceable></term>
+<listitem><para>
+The keyword for the type of label as specified in the configuration files. See the configuration file documentation for details.
+</para></listitem></varlistentry>
+</variablelist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SAMPLE</userinput> <replaceable>process type name font size colour</replaceable></term>
+<listitem><para>
+Sample the currently active field. The commands are:
+<variablelist>
+<varlistentry><term><replaceable>process</replaceable></term>
+<listitem><para>
+The sampling procedure. This must be one of:
+<variablelist>
+<varlistentry><term><userinput>NORMAL</userinput></term>
+<listitem><para>
+The sampling is done on a point by point basis through use of the 
+mouse by selecting the sample point on the map area.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>GRID</userinput> <replaceable>nx ny</replaceable> </term>
+<listitem><para>
+The sampling is to be done on a grid with the number of points in the x and y axis specified by 
+<replaceable>nx</replaceable> and <replaceable>ny</replaceable>.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>LIST</userinput> <replaceable>latitude longitude</replaceable> | <userinput>GO</userinput></term>
+<listitem><para>
+Sampling is to be done for a list of points. 
+If <replaceable>latitude</replaceable> and <replaceable>longitude</replaceable> are given,
+Ingred will cache the points and will not do the sampling until a <userinput>GO</userinput> command is received. 
+The <userinput>GO</userinput> command will cause Ingred to sample at the given points and then clear the internal cache.
+Note that none of the other parameters after <replaceable>process</replaceable> are required when the <userinput>LIST</userinput> 
+<replaceable>latitude longitude</replaceable> command is issued.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>CANCEL</userinput> </term>
+<listitem><para>
+Only the type and name are needed for this command. This command needs to be sent to Ingred when
+changing the sample type, closing the graphical display of attributes, or
+leaving the sample state.
+</para></listitem></varlistentry>
+
+</variablelist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>type</replaceable></term>
+<listitem><para>
+One of <userinput>AttribType</userinput>, <userinput>ValueType</userinput>, <userinput>FieldLabels</userinput>, <userinput>LinkNodes</userinput>, <userinput>WindType</userinput> or
+</para><para>
+<userinput>WindCrossRef</userinput> followed by a valid <replaceable>name</replaceable>.
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>name</replaceable></term>
+<listitem><para>
+Each <replaceable>type</replaceable> has a list of valid item names which can be sampled (depending on the particular field).
+</para><para>
+For <userinput>AttribType</userinput> one of: <userinput>All</userinput> or an <replaceable>attribute_name</replaceable> in the Config files.
+</para><para>
+For <userinput>ValueType</userinput> one of the Values in the Samples block in the Config files.
+</para><para>
+For <userinput>FieldLabels</userinput> use <userinput>FPA_field_labels</userinput>.
+</para><para>
+For <userinput>LinkNodes</userinput> use <userinput>FPA_link_nodes</userinput>.
+</para><para>
+For <userinput>WindType</userinput> one of the Winds in the Samples block in the Config files.
+</para><para>
+For <userinput>WindCrossRef</userinput> one of the Winds in the CrossRefs block in the Config files.
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>font</replaceable></term>
+<listitem><para>
+The font to use in displaying the sample.
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>size</replaceable></term>
+<listitem><para>
+The size of the font. If the numerical size is followed by a percent sign (<userinput>%</userinput>), this 
+is the size as a percent of map size. If followed by a P, this is the size in points.
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>colour</replaceable></term>
+<listitem><para>
+Colour of the sample as a standard X colour name.
+</para></listitem></varlistentry>
+</variablelist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SHOW</userinput></term>
+<listitem><para>
+Show the active depiction in the map window.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>HIDE</userinput></term>
+<listitem><para>
+Hide the active depiction. The active element is set to <userinput>NONE</userinput>.
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>EDIT COMMAND NOTES</title><para>
+Editing is performed on six types of objects; b-spline fields (such as pressure), vector fields (2-D b-spline fields, such as u/v components of wind), discrete areas (such 
+as cloud areas), line objects (such as fronts), link chain objects (such as storm tracks), and point objects (such as station plots). 
+</para><para>
+These editing commands are persistent, that is they remain in effect until suspended by an incoming 
+request. Thus in order to maintain a given edit state, the edit command must be re-issued after any 
+other request.
+</para><para>
+The recognized <replaceable>font</replaceable> names are <userinput>Helvetica</userinput>, <userinput>HelveticaBold</userinput>, <userinput>TimesRoman</userinput> and <userinput>TimesRomanBold</userinput>.
+</para><para>
+Line styles are specified as width.style where the allowable values of width are: <userinput>thin</userinput>, <userinput>medium</userinput> and 
+<userinput>thick</userinput>, and the allowable values of style are: <userinput>solid</userinput>, <userinput>dashed</userinput>, <userinput>dotted</userinput>", <userinput>dash_dot</userinput>, <userinput>dash_dot_dot</userinput>, 
+<userinput>long_dash</userinput>, <userinput>centre_dash</userinput>" and <userinput>centre_dash_dash</userinput>.
+</para></sect2>
+
+<sect3><title>SPLINE FIELD EDIT COMMANDS</title><para>
+The area of influence of spline edits are determined by the current SPREAD setting. See GEAction 
+for details.
+<variablelist>
+<varlistentry><term><userinput>EDIT AREA</userinput> <optional> <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT AREA</userinput> <optional> <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> | <userinput>COPY</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into move mode, which allows the user to relocate a portion of the spline surface.</para><para>
+Once in move mode, Ingred will request that the user draw an outline which defines the area on the spline surface that will be moved. 
+Optionally the command <userinput>PRESET_OUTLINE</userinput> can be issued using the special programming macros FpaEditorLastDrawnBoundary, FpaEditorLastMovedBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once an outline has been drawn, issuing the command with <userinput>TRANSLATE</userinput>, <userinput>ROTATE</userinput> or <userinput>COPY</userinput> will cause Ingred to go into a state that allows the area on the spline surface to be translated, rotated or copied. (Note that the last moved boundary can be used to translate and then rotate the same area of the spline surface.)
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT DRAG</userinput></term>
+<listitem><para>Allows the user to perform a drag edit operation.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>FETCH</userinput> <replaceable>source sub-source run-time valid-time element level</replaceable> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into merge mode, which allows the user to merge a portion of a specified spline field with the current spline field.</para><para>
+The command with <userinput>FETCH</userinput> (and parameters) specifies the source field to use for the merge. 
+Any parameter not relevant for a particular source must be place held with a dash (<userinput>-</userinput>).
+Once completed, Ingred will return to the state assumed upon receiving the <userinput>MERGE</userinput> command without parameters.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>MERGE</userinput> | <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> </optional></term>
+<listitem><para>
+After a <userinput>MERGE FETCH</userinput> command has been issued, Ingred will request that the user draw an outline which defines the area from the fetched spline surface to be merged with the existing spline surface. Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Optionally the user can choose a preset outline which will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macros FpaEditorLastDrawnBoundary, FpaEditorLastMovedBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once an outline has been drawn, issuing the command with <userinput>MERGE</userinput>, <userinput>TRANSLATE</userinput> or <userinput>ROTATE</userinput> will cause Ingred to go into a state that allows the area on the spline surface to be merged in place, or translated/rotated and then merged.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT POKE</userinput> <replaceable>delta</replaceable></term>
+<listitem><para>Allows the user to perform a poke edit operation.  The <replaceable>delta</replaceable> defines the outer limit of a modification region centred on the poke location.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT SMOOTH</userinput></term>
+<listitem><para>
+Allows the user to perform a smooth edit operation. Note that the amount of smoothing is given by the 
+current value of the "GEAction STATE SMOOTHING_AMOUNT &lt;<replaceable>value</replaceable>&gt;" command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT STOMP</userinput> <replaceable>delta</replaceable> <replaceable>interior-delta</replaceable></term>
+<listitem><para>
+Allows the user to perform a stomp edit operation. The stomp is like the poke but over an area instead of centred at a point.
+The <replaceable>delta</replaceable> defines the outer limit of a modification region around the area,
+and the <replaceable>interior-delta</replaceable> allows control of modification within the area.
+</para></listitem></varlistentry>
+<varlistentry> </varlistentry>
+</variablelist>
+</para></sect3>
+
+<sect3><title>VECTOR FIELD EDIT COMMANDS</title><para>
+The area of influence of vector field (two component spline field) edits are determined by the current 
+<userinput>SPREAD</userinput> setting. See GEAction for details.
+<variablelist>
+
+<varlistentry><term><userinput>EDIT AREA</userinput> <optional> <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT AREA</userinput> <optional> <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> | <userinput>COPY</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into move mode, which allows the user to relocate a portion of the two component spline surface.</para><para>
+Once in move mode, Ingred will request that the user draw an outline which defines the area on the two component spline surface that will be moved. 
+Optionally the command <userinput>PRESET_OUTLINE</userinput> can be issued using the special programming macros FpaEditorLastDrawnBoundary, FpaEditorLastMovedBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once an outline has been drawn, issuing the command with <userinput>TRANSLATE</userinput>, <userinput>ROTATE</userinput> or <userinput>COPY</userinput> will cause Ingred to go into a state that allows the area on the two component spline surface to be translated, rotated or copied. (Note that the last moved boundary can be used to translate and then rotate the same area of the two component spline surface.)
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT DRAG</userinput></term>
+<listitem><para>Allows the user to perform a drag edit operation.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>FETCH</userinput> <replaceable>source sub-source run-time valid-time element level</replaceable> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into merge mode, which allows the user to merge a portion of a specified two component spline field with the current two component spline field.</para><para>
+The command with <userinput>FETCH</userinput> (and parameters) specifies the source field to use for the merge. 
+Any parameter not relevant for a particular source must be place held with a dash (<userinput>-</userinput>).
+Once completed, Ingred will return to the state assumed upon receiving the <userinput>MERGE</userinput> command without parameters.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>MERGE</userinput> | <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> </optional></term>
+<listitem><para>
+After a <userinput>MERGE FETCH</userinput> command has been issued, Ingred will request that the user draw an outline which defines the area from the fetched two component spline surface to be merged with the existing two component spline surface. Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Optionally the user can choose a preset outline which will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macros FpaEditorLastDrawnBoundary, FpaEditorLastMovedBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once an outline has been drawn, issuing the command with <userinput>MERGE</userinput>, <userinput>TRANSLATE</userinput> or <userinput>ROTATE</userinput> will cause Ingred to go into a state that allows the area on the two component spline surface to be merged in place, or translated/rotated and then merged.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT POKE</userinput> <replaceable>delta</replaceable></term>
+<listitem><para>Allows the user to perform a poke edit operation.  The <replaceable>delta</replaceable> defines the outer limit of a modification region centred on the poke location.  (The poke edit can be applied to either or both of the magnitude and direction components of the spline surface.)
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT SMOOTH</userinput></term>
+<listitem><para>
+Allows the user to perform a smooth edit operation.
+Note that the amount of smoothing is given by the current value of the "GEAction STATE SMOOTHING_AMOUNT &lt;<replaceable>value</replaceable>&gt;" command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT STOMP</userinput> <replaceable>delta</replaceable> <replaceable>interior-delta</replaceable></term>
+<listitem><para>
+Allows the user to perform a stomp edit operation. The stomp is like the poke but over an area instead of centred at a point.
+The <replaceable>delta</replaceable> defines the outer limit of a modification region around the area,
+and the <replaceable>interior-delta</replaceable> allows control of modification within the area.  (The stomp edit can be applied to either or both of the magnitude and direction components of the spline surface.)
+</para></listitem></varlistentry>
+<varlistentry></varlistentry>
+</variablelist>
+</para></sect3>
+
+<sect3><title>AREA AND WIND FIELD EDIT COMMANDS</title><para>
+<variablelist>
+<varlistentry><term><userinput>EDIT DRAW</userinput> <optional> <userinput>SET</userinput> </optional></term>
+<listitem><para>
+Allows the user to draw a discrete area.
+The area is either drawn on top of or underneath of any existing areas according to the setting <userinput>STACK_ORDER</userinput> state (see GEAction).
+The line attributes are set with the current <replaceable>cal</replaceable>.
+</para><para>
+Once in draw mode, issuing this command with the optional parameter <userinput>SET</userinput> sets the attributes of the last area drawn, but not posted, to the returned <replaceable>cal</replaceable>.
+The editor will automatically return to draw mode after this command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT DRAW_HOLE</userinput> <optional> <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term>
+<listitem><para>
+Allows the user to draw holes in an area.
+Ingred will send a message asking the user to select the area in which to draw the holes.
+Once selected Ingred then prompts the user to draw the holes.</para><para>
+Optionally the command <userinput>PRESET_OUTLINE</userinput> can be issued using the programming macro FpaEditorLastDrawnHole or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT DIVIDE</userinput> <optional> <userinput>SET</userinput> | <userinput>REJOIN</userinput> </optional></term>
+<listitem><para>
+Allows the user to divide an existing discrete area. Ingred will send a message asking the user to select the area to divide. Once selected Ingred then prompts the user to draw the dividing line.</para><para>
+Once the dividing line is drawn, the command <userinput>SET</userinput> will set new attributes for the first or second portions of the divided area.
+The area attributes are set using the returned <replaceable>cal</replaceable>.
+If the <userinput>REJOIN</userinput> command is given, then the selected portion will be joined to the adjacent portion (that is the previous divide operation will be undone).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>FETCH</userinput> <replaceable>source sub-source run-time valid-time element level</replaceable> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into merge mode, which allows the user to merge areas from a specified field with the current field.</para><para>
+The command with <userinput>FETCH</userinput> (and parameters) specifies the source field to use for the merge. 
+Any parameter not relevant for a particular source must be place held with a dash (<userinput>-</userinput>).
+Once completed, Ingred will return to the state assumed upon receiving the <userinput>MERGE</userinput> command without parameters.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>SELECT_ALL</userinput> | <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>MERGE</userinput> | <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> </optional></term>
+<listitem><para>
+After a <userinput>MERGE FETCH</userinput> command has been issued, Ingred will request that the user choose areas to merge with the existing field. Areas can be selected or deselected with the mouse, or all the areas in the merge field can be chosen with the <userinput>SELECT_ALL</userinput> option.</para><para>
+Optionally the user can choose to use an outline within which all fully enclosed areas will be chosen.  Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Choosing a preset outline will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macro FpaEditorLastDrawnBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once the desired areas have been chosen, issuing the command with <userinput>MERGE</userinput>, <userinput>TRANSLATE</userinput> or <userinput>ROTATE</userinput> will cause Ingred to go into a state that allows the chosen areas to be merged in place, or translated/rotated and then merged.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MODIFY</userinput></term></varlistentry>
+<varlistentry><term><userinput>EDIT MODIFY</userinput> <optional> <userinput>DELETE</userinput> | <userinput>DELETE HOLE</userinput> </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MODIFY</userinput> <optional> <userinput>SET</userinput> | <userinput>STACK</userinput> </optional> 
+<optional> <userinput>TOP</userinput> | <userinput>UP</userinput> | <userinput>DOWN</userinput> | <userinput>BOTTOM</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into modify mode, which allows the user to modify area boundaries, dividing lines or holes for areas in the current field.
+Ingred will send a message asking the user to select the area feature to modify.</para><para>
+Once an area feature has been chosen, the user can modify the shape of the feature.</para><para>
+Once an area feature has been chosen, the command <userinput>DELETE</userinput> will delete the area containing the currently selected feature.</para><para>
+Once an area hole has been chosen, the command <userinput>DELETE HOLE</userinput> will delete the area hole.</para><para>
+Once the interior of the area boundary has been chosen, the command <userinput>SET</userinput> will set the attributes for the chosen area.
+The attributes are provided in the returned <replaceable>cal</replaceable> structure.</para><para>
+Once an area feature has been chosen, the command <userinput>STACK</userinput> will change the stacking order of the chosen area.
+The area may be moved to the top of the stacking order (<userinput>TOP</userinput>), 
+moved up one position (<userinput>UP</userinput>), moved down one position (<userinput>DOWN</userinput>)
+or moved to the bottom of the stacking order (<userinput>BOTTOM</userinput>).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MOVE</userinput> <optional> <userinput>SELECT_ALL</userinput> | <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MOVE</userinput> <optional> <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> | <userinput>COPY</userinput> | <userinput>CUT</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into move mode, which allows the user to relocate areas in the current field.</para><para>
+Once in the move mode Ingred will request that the user choose areas to move.
+Areas can be selected or deselected with the mouse, or all the areas can be chosen with the <userinput>SELECT_ALL</userinput> option.</para><para>
+Optionally the user can choose to use an outline within which all fully enclosed areas will be chosen.  Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Choosing a preset outline will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macro FpaEditorLastDrawnBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once the desired areas have been chosen, issuing the command with <userinput>TRANSLATE</userinput>, <userinput>ROTATE</userinput>, <userinput>COPY</userinput> or <userinput>CUT</userinput> will cause Ingred to go into a state that allows the chosen areas to be translated and/or rotated, or Ingred will copy or cut the areas.
+</para></listitem></varlistentry>
+<varlistentry> </varlistentry>
+</variablelist>
+</para></sect3>
+
+<sect3><title>LINE FIELD EDIT COMMANDS</title><para>
+In any given line field there may be more than one type of line defined. We could, for example, have 
+cold and warm fronts. For those commands which set the line type through the <replaceable>cal</replaceable> structure, the specific items that must be set are: CALcategory, CALuserlabel and CALautolabel. See the chapters on 
+the <replaceable>cal</replaceable> structure at the end of this document.
+<variablelist>
+
+<varlistentry><term><userinput>EDIT DRAW</userinput> <optional> <userinput>SET</userinput> </optional></term>
+<listitem><para>
+Allows the user to draw a line feature.
+The line attributes are set with the current <replaceable>cal</replaceable>.</para><para>
+Once in draw mode, issuing this command with the optional parameter <userinput>SET</userinput> sets the attributes of the last line drawn, but not posted, to the returned <replaceable>cal</replaceable>.
+The editor will automatically return to draw mode after this command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT FLIP</userinput> <optional><userinput>FLIP</userinput> | <userinput>REVERSE</userinput> | <userinput>FLIP-REVERSE</userinput></optional></term>
+<listitem><para>
+Allows the user to flip or reverse a line feature.
+The line to flip is selected with the mouse.
+Once the line is selected, issuing the command with the optional parameters will result in the currently selected line being flipped,
+reversed end to end or flipped and reversed.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT JOIN</userinput></term>
+<listitem><para>
+Allows the user to join two line features, or break a line feature into two parts.</para><para>
+The two lines to join are chosen by the mouse, and must be of the same type.
+The end of the first selected line will be joined to the nearest point of the second selected line.
+The portion of the second line joined will be that part which continues in the same direction as the first line.</para><para>
+The user can also choose a line to break into two sections at a location defined by the mouse.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>FETCH</userinput> <replaceable>source sub-source run-time valid-time element level</replaceable> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into merge mode, which allows the user to merge lines from a specified field with the current field.</para><para>
+The command with <userinput>FETCH</userinput> (and parameters) specifies the source field to use for the merge. 
+Any parameter not relevant for a particular source must be place held with a dash (<userinput>-</userinput>).
+Once completed, Ingred will return to the state assumed upon receiving the <userinput>MERGE</userinput> command without parameters.
+</para></listitem></varlistentry>
+<varlistentry> </varlistentry>
+<varlistentry> </varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>SELECT_ALL</userinput> | <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>MERGE</userinput> | <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> </optional></term>
+<listitem><para>
+After a <userinput>MERGE FETCH</userinput> command has been issued, Ingred will request that the user choose lines to merge with the existing field. Lines can be selected or deselected with the mouse, or all the lines in the merge field can be chosen with the <userinput>SELECT_ALL</userinput> option.</para><para>
+Optionally the user can choose to use an outline within which all fully enclosed lines will be chosen.  Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Choosing a preset outline will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macro FpaEditorLastDrawnBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once the desired lines have been chosen, issuing the command with <userinput>MERGE</userinput>, <userinput>TRANSLATE</userinput> or <userinput>ROTATE</userinput> will cause Ingred to go into a state that allows the chosen lines to be merged in place, or translated/rotated and then merged.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MODIFY</userinput> <optional> <userinput>DELETE</userinput> | <userinput>SET</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into modify mode, which allows the user to modify line features in the current field.
+Ingred will send a message asking the user to select the line feature to modify.</para><para>
+Once a line feature has been chosen, the user can modify the shape of the feature.</para><para>
+Once a line feature has been chosen, the command <userinput>DELETE</userinput> will delete the currently selected feature.</para><para>
+Once a line feature has been chosen, the command <userinput>SET</userinput> will set the attributes for the chosen line feature.
+The attributes are provided in the returned <replaceable>cal</replaceable> structure.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MOVE</userinput> <optional> <userinput>SELECT_ALL</userinput> | <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MOVE</userinput> <optional> <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> | <userinput>COPY</userinput> | <userinput>CUT</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into move mode, which allows the user to relocate line features in the current field.</para><para>
+Once in the move mode Ingred will request that the user choose line features to move.
+Line features can be selected or deselected with the mouse, or all the line features can be chosen with the <userinput>SELECT_ALL</userinput> option.</para><para>
+Optionally the user can choose to use an outline within which all fully enclosed line features will be chosen.  Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Choosing a preset outline will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macro FpaEditorLastDrawnBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once the desired line features have been chosen, issuing the command with <userinput>TRANSLATE</userinput>, <userinput>ROTATE</userinput>, <userinput>COPY</userinput> or <userinput>CUT</userinput> will cause Ingred to go into a state that allows the chosen line features to be translated and/or rotated, or Ingred will copy or cut the line features.
+</para></listitem></varlistentry>
+<varlistentry> </varlistentry>
+</variablelist>
+</para></sect3>
+
+<sect3><title>LINK CHAIN FIELD EDIT COMMANDS</title><para>
+Link chains are defined by a set of nodes at a sequence of times separated by <replaceable>interp_delta</replaceable> minutes, which is set in the <userinput>GESequence INITIALIZE EDIT <replaceable>interp_delta</replaceable></userinput> command.</para><para> Each link node has a type which determines whether it has attributes and/or a location, or whether the attributes and/or location are automatically interpolated. The following types of nodes are allowed:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row><entry><userinput>normal</userinput></entry><entry>has both attributes and a location</entry></row>
+<row><entry><userinput>control</userinput></entry><entry>has a location but attributes are interpolated</entry></row>
+<row><entry><userinput>floating</userinput></entry><entry>has attributes but a location is interpolated</entry></row>
+<row><entry><userinput>interp</userinput></entry><entry>both attributes and location are interpolated</entry></row>
+</tbody></tgroup></informaltable>
+<variablelist>
+
+<varlistentry><term><userinput>EDIT ADD</userinput> <replaceable>reference-time time-delta</replaceable>   <userinput>normal</userinput>|<userinput>control</userinput></term></varlistentry>
+<varlistentry><term><userinput>EDIT ADD END_CHAIN</userinput></term>
+<listitem><para>
+Allows the user to create a link chain node by node, beginning with a <userinput>normal</userinput> or <userinput>control</userinput> node at the <replaceable>reference-time</replaceable>, and with the next node occurring <replaceable>time-delta</replaceable> minutes thereafter.</para><para>
+The command with <userinput>END_CHAIN</userinput> ends and saves the link chain.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>FETCH</userinput> <replaceable>source sub-source run-time valid-time element level</replaceable> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into merge mode, which allows the user to merge link chains from a specified field with the current field.</para><para>
+The command with <userinput>FETCH</userinput> (and parameters) specifies the source field to use for the merge. 
+Any parameter not relevant for a particular source must be place held with a dash (<userinput>-</userinput>).
+Once completed, Ingred will return to the state assumed upon receiving the <userinput>MERGE</userinput> command without parameters.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>SELECT_ALL</userinput> | <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>MERGE</userinput> | <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> </optional></term>
+<listitem><para>
+After a <userinput>MERGE FETCH</userinput> command has been issued, Ingred will request that the user choose link chains to merge with the existing field. Link chains can be selected or deselected with the mouse, or all the link chains in the merge field can be chosen with the <userinput>SELECT_ALL</userinput> option.</para><para>
+Optionally the user can choose to use an outline within which all fully enclosed link chains will be chosen.  Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Choosing a preset outline will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macro FpaEditorLastDrawnBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once the desired link chains have been chosen, issuing the command with <userinput>MERGE</userinput>, <userinput>TRANSLATE</userinput> or <userinput>ROTATE</userinput> will cause Ingred to go into a state that allows the chosen link chains to be merged in place, or translated/rotated and then merged.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MODIFY</userinput> <optional> <userinput>DELETE</userinput> | <userinput>SET</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into modify mode, which allows the user to modify link chain in the current field.
+Ingred will send a message asking the user to select the link chain to modify.</para><para>
+Once a link chain has been chosen, the command <userinput>DELETE</userinput> will delete the currently selected link chain.</para><para>
+Once a link chain has been chosen, the command <userinput>SET</userinput> will set the attributes for the chosen link chain.
+The attributes are provided in the returned <replaceable>cal</replaceable> structure.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MOVE</userinput> <optional> <userinput>SELECT_ALL</userinput> | <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MOVE</userinput> <optional> <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> | <userinput>COPY</userinput> | <userinput>CUT</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into move mode, which allows the user to relocate link chains in the current field.</para><para>
+Once in the move mode Ingred will request that the user choose link chains to move.
+link chains can be selected or deselected with the mouse, or all the link chains can be chosen with the <userinput>SELECT_ALL</userinput> option.</para><para>
+Optionally the user can choose to use an outline within which all fully enclosed link chains will be chosen.  Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Choosing a preset outline will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macro FpaEditorLastDrawnBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once the desired link chains have been chosen, issuing the command with <userinput>TRANSLATE</userinput>, <userinput>ROTATE</userinput>, <userinput>COPY</userinput> or <userinput>CUT</userinput> will cause Ingred to go into a state that allows the chosen link chains to be translated and/or rotated, or Ingred will copy or cut the link chains.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT NODES</userinput> <userinput>MOVE</userinput> | <userinput>DELETE</userinput> | <userinput>SHOW</userinput> | <userinput>MODIFY</userinput> <userinput>normal</userinput>|<userinput>control</userinput>|<userinput>floating</userinput>|<userinput>interp</userinput> <optional> <userinput>SET</userinput> </optional></term>
+<listitem><para>
+Allows the user to choose a link chain and a node on the link chain, and then to move, delete or show the attributes of the node, or to modify the type and optionally set the attributes of the node.
+</para></listitem></varlistentry>
+<varlistentry> </varlistentry>
+</variablelist>
+</para></sect3>
+
+<sect3><title>POINT FIELD EDIT COMMANDS</title><para>
+In any given point field there may be more than one type of point defined.
+We could, for example, have maximum and minimum temperature points.
+For those commands which set the point type through the <replaceable>cal</replaceable> structure, 
+the specific items that must be set are: CALcategory, CALuserlabel and CALautolabel.
+See the chapters on the <replaceable>cal</replaceable> structure at the end of this document.
+
+<variablelist>
+<varlistentry><term><userinput>EDIT DRAW</userinput> <replaceable>type</replaceable> <optional> <userinput>SET</userinput> </optional></term>
+<listitem><para>
+Allows the user to add new points.
+The point types are defined in the configuration files, and the attribute values of the point are set with the current <replaceable>cal</replaceable>.
+</para><para>
+Once in draw mode, issuing this command with the optional parameter <userinput>SET</userinput> sets the attributes of the last point added,
+but not posted, to the returned <replaceable>cal</replaceable>.
+The editor will automatically return to draw mode after this command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>FETCH</userinput> <replaceable>source sub-source run-time valid-time element level</replaceable> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into merge mode, which allows the user to merge points from a specified field with the current field.</para><para>
+The command with <userinput>FETCH</userinput> (and parameters) specifies the source field to use for the merge. 
+Any parameter not relevant for a particular source must be place held with a dash (<userinput>-</userinput>).
+Once completed, Ingred will return to the state assumed upon receiving the <userinput>MERGE</userinput> command without parameters.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>SELECT_ALL</userinput> | <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>MERGE</userinput> | <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> </optional></term>
+<listitem><para>
+After a <userinput>MERGE FETCH</userinput> command has been issued, Ingred will request that the user choose points to merge with the existing field. Points can be selected or deselected with the mouse, or all the points in the merge field can be chosen with the <userinput>SELECT_ALL</userinput> option.</para><para>
+Optionally the user can choose to use an outline within which all fully enclosed points will be chosen.  Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Choosing a preset outline will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macro FpaEditorLastDrawnBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once the desired points have been chosen, issuing the command with <userinput>MERGE</userinput>, <userinput>TRANSLATE</userinput> or <userinput>ROTATE</userinput> will cause Ingred to go into a state that allows the chosen points to be merged in place, or translated/rotated and then merged.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MODIFY</userinput> <replaceable>type</replaceable> <optional> <userinput>DELETE</userinput> | <userinput>SET</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into modify mode, which allows the user to modify a point of <replaceable>type</replaceable> (as defined in the configuration files) in the current field.
+Ingred will send a message asking the user to select the point to modify.</para><para>
+Once a point has been chosen, the command <userinput>DELETE</userinput> will delete the currently selected point.</para><para>
+Once a point has been chosen, the command <userinput>SET</userinput> will set the attributes for the chosen point.
+The attributes are provided in the returned <replaceable>cal</replaceable> structure.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MOVE</userinput> <optional> <userinput>SELECT_ALL</userinput> | <userinput>DRAW_OUTLINE</userinput> | <userinput>PRESET_OUTLINE</userinput> &lt;<replaceable>metafile</replaceable>&gt; </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MOVE</userinput> <optional> <userinput>TRANSLATE</userinput> | <userinput>COPY</userinput> | <userinput>CUT</userinput> </optional></term>
+<listitem><para>
+The command given without parameters puts Ingred into move mode, which allows the user to relocate points in the current field.</para><para>
+Once in the move mode Ingred will request that the user choose points to move.
+points can be selected or deselected with the mouse, or all the points can be chosen with the <userinput>SELECT_ALL</userinput> option.</para><para>
+Optionally the user can choose to use an outline within which all fully enclosed points will be chosen.  Drawing an outline will generate a <userinput>DRAW_OUTLINE</userinput> command.
+Choosing a preset outline will generate a <userinput>PRESET_OUTLINE</userinput> command using the special programming macro FpaEditorLastDrawnBoundary or with a <replaceable>metafile</replaceable> reference.
+With the metafile reference the first outline in the <replaceable>metafile</replaceable> will be used.</para><para>
+Once the desired points have been chosen, issuing the command with <userinput>TRANSLATE</userinput>, <userinput>COPY</userinput> or <userinput>CUT</userinput> will cause Ingred to go into a state that allows the chosen points to be translated, or Ingred will copy or cut the points.
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect3>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+
+<sect1><title>GEDisconnect</title><para>Ingred does a cleanup and disconnects from the display window.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEDisconnect();</function></funcdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+This function causes Ingred to clean up the state of the graphics, save all relevant data and disconnect 
+from all graphics devices.
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+<beginpage/>
+
+<sect1><title>GEEdit</title><para>Handles commands for certain editing procedures.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEEdit( command )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+Issues edit commands valid for the currently active depiction element, guidance annotation field or scratch pad.
+These commands do an auto-setback of the editing state and do not require the edit command to be re-issued after they are used.
+</para><para>
+The <replaceable>command</replaceable> parameter consists of the following key words:
+<variablelist>
+
+<varlistentry><term><userinput>BREAK</userinput></term>
+<listitem><para>
+Break a line in the currently active editing field into two sections.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>CANCEL</userinput></term>
+<listitem><para>
+Cancel the pending edit.
+This applies to those edits which require multiple inputs before being acted upon.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>CLEAR</userinput></term>
+<listitem><para>
+Clear the currently active editing field.
+Note that if the current state for a given field is <userinput>LABEL</userinput>, then all labels will be cleared from the field.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>DRAW_DONE</userinput></term>
+<listitem><para>
+When Ingred is in the point-by-point draw state, this command will terminate the draw and accept the line defined by the points.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>END_CHAIN</userinput></term>
+<listitem><para>
+Terminate the input of a timelink chain.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>JOIN</userinput></term>
+<listitem><para>
+Join two lines in the currently active editing field.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MODIFY_CONFIRM</userinput></term>
+<listitem><para>
+When Ingred is in the point-by-point modify state, this command will confirm the final modified display of the feature.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>PASTE</userinput></term>
+<listitem><para>
+Paste a copied feature into the currently active editing field.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>REJOIN</userinput></term>
+<listitem><para>
+Rejoin two sections of a divided area.  The attributes will be taken from the first area chosen.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>RESUME</userinput></term>
+<listitem><para>
+Forces the editor to pick up where it left off.
+This is the command to issue if there is unrelated windowing activity going on.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>UNDO</userinput></term>
+<listitem><para>
+Undo the previous edit.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>UPDATE</userinput></term>
+<listitem><para>
+Post all pending edits.
+Note that after this command an undo is no longer possible.
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+<beginpage/>
+
+<sect1><title>GEGuidance</title><para>Controls the display and annotation of guidance.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEGuidance( command )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+This function controls the display of guidance fields.
+The <replaceable>command</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+  <varlistentry><term><userinput>EDIT FIELD</userinput> <replaceable>field_id</replaceable> <optional><replaceable>key</replaceable> <optional><replaceable>value</replaceable></optional></optional> </term>
+  <listitem><para>
+  Modify the appearance of a guidance field with field identifier <replaceable>field_id</replaceable> to that given by <replaceable>key</replaceable>. 
+  The <replaceable>key</replaceable> values are: <userinput>ERASE</userinput>, <userinput>RESTORE</userinput>, <userinput>COLOR</userinput> and <userinput>STYLE</userinput>.
+  <userinput>ERASE</userinput> removes the field from the display.
+  <userinput>RESTORE</userinput> displays the field in the default display state.
+  <userinput>COLOR</userinput> changes the colour of the contours.
+  <userinput>STYLE</userinput> changes the line style and thickness of the contours (see Note 3 above for the format).
+  The colour, style and thickness values are given by <replaceable>value</replaceable>.
+  If the <userinput>FIELD</userinput> command is given without any specifiers, then the current valid date and time are displayed by Ingred.
+  </para></listitem></varlistentry>
+  
+  <varlistentry><term><userinput>LABEL</userinput> <replaceable>process field_id cmd</replaceable></term>
+  <listitem><para>
+  Label the field identified by <replaceable>field_id</replaceable>.
+  Insertions are done with the left mouse button.
+  The commands are:
+  <variablelist>
+    <varlistentry><term><replaceable>process</replaceable></term>
+    <listitem><para>The labeling procedure. This must be one of:</para><para>
+    <userinput>ADD</userinput> - Add the label to the field at the location selected with the cursor. 
+    </para></listitem></varlistentry>
+  
+    <varlistentry><term><replaceable>field_id</replaceable></term>
+    <listitem><para>The guidance field identifier (See GEGuidance).
+    </para></listitem></varlistentry>
+  
+    <varlistentry><term><replaceable>cmd</replaceable></term>
+    <listitem><para>
+    One of <userinput>VALUE</userinput>, which labels the field with the field value, or <userinput>WIND</userinput> which labels 
+    the field with a wind barb appropriate to the field, as set in the Fields config file.
+    </para></listitem></varlistentry>
+  </variablelist>
+  </para></listitem></varlistentry>
+
+  <varlistentry><term><userinput>FIELD_REGISTER</userinput> <replaceable>field_id element level source sub-source</replaceable>|- <replaceable>run_time</replaceable>|-</term>
+  <listitem><para>
+  Associate the field as defined by <replaceable>element</replaceable>, <replaceable>level</replaceable>, 
+  <replaceable>source</replaceable> (and <replaceable>sub-source</replaceable>) and <replaceable>run_time</replaceable> with 
+  the field identifier <replaceable>field_id</replaceable>.
+  Depending on the <replaceable>source</replaceable>, <replaceable>sub-source</replaceable> and <replaceable>run_time</replaceable> may not be applicable and are then replaced by a dash ("-").
+  The field identifier can be any arbitrary string.
+  If a field has already been associated with the given identifier when this command is issued, 
+  then all references to the existing field are eliminated from memory and replaced with the new association.
+  Note that the same field can be registered more than once (this would allow showing the same field at more than one valid time).
+  </para></listitem></varlistentry>
+  
+  <varlistentry><term><userinput>FIELD_DEREGISTER</userinput> <replaceable>field_id</replaceable></term>
+  <listitem><para>
+  Disassociate the field associated with the given <replaceable>field_id</replaceable>.
+  All references to the field are eliminated from memory.
+  </para></listitem></varlistentry>
+  
+  <varlistentry><term><userinput>FIELD_VISIBILITY</userinput> <replaceable>field_id valid_time</replaceable> <userinput>ON</userinput> | <userinput>OFF</userinput></term>
+  <listitem><para>
+  Set the field visibility, as identified by the given <replaceable>field_id</replaceable>, 
+  at the specified <replaceable>valid_time</replaceable> to be either <userinput>ON</userinput> (showing) or <userinput>OFF</userinput> (not showing).
+  The <userinput>FIELD</userinput> command above must have been issued previously in order to obtain the <replaceable>field_id</replaceable>.
+  Note that this command only sets the visibility state and a SHOW command is required.
+  </para></listitem></varlistentry>
+  
+  <varlistentry><term><userinput>SAMPLE</userinput> <replaceable>process field_id valid_time type name font size colour</replaceable></term>
+  <listitem><para>
+  Sample the field as given by field identifier <replaceable>field_id</replaceable> at valid time <replaceable>valid_time</replaceable>.
+  The remaining commands are:
+  <variablelist>
+    <varlistentry><term><replaceable>process</replaceable></term>
+    <listitem><para>
+    The sampling procedure. This must be one of:
+    <variablelist>
+      <varlistentry><term><userinput>NORMAL</userinput></term>
+      <listitem><para>
+      The sampling is done on a point by point basis through use of the mouse by selecting the sample point on the map area.
+      </para></listitem></varlistentry>
+    
+      <varlistentry><term><userinput>GRID</userinput> <replaceable>nx ny</replaceable></term>
+      <listitem><para>
+      The sampling is to be done on a grid with the number of points in the x and y axis specified by 
+      <replaceable>nx</replaceable> and <replaceable>ny</replaceable>.
+      </para></listitem></varlistentry>
+    
+      <varlistentry><term><userinput>LIST</userinput> <replaceable>latitude longitude</replaceable> | <userinput>GO</userinput></term>
+      <listitem><para>
+      Sampling is to be done for a list of points.
+      If <replaceable>latitude</replaceable> and <replaceable>longitude</replaceable> are given,
+      Ingred will cache the points and will not do the sampling until a <userinput>GO</userinput> command is received.
+      The <userinput>GO</userinput> command will cause Ingred to sample at the given points and then clear the internal cache.
+      Note that none of the other parameters after <replaceable>process</replaceable> are required when the <userinput>LIST</userinput> <replaceable>latitude longitude</replaceable> command is issued.
+      </para></listitem></varlistentry>
+
+      <varlistentry><term><userinput>CANCEL</userinput> </term>
+      <listitem><para>
+      Only the first four terms are needed for this command. This command needs to be sent to Ingred when
+      changing the sample type, closing the graphical display of attributes, or
+      leaving the sample state.
+      </para></listitem></varlistentry>
+
+    </variablelist>
+    </para></listitem></varlistentry>
+
+    <varlistentry><term><replaceable>type</replaceable></term>
+    <listitem><para>
+One of <userinput>AttribType</userinput>, <userinput>ValueType</userinput>, <userinput>FieldLabels</userinput>, <userinput>LinkNodes</userinput>, <userinput>WindType</userinput> or
+	</para><para>
+    <userinput>WindCrossRef</userinput> followed by a valid <replaceable>name</replaceable>.
+    </para></listitem></varlistentry>
+  
+    <varlistentry><term><replaceable>name</replaceable></term>
+    <listitem><para>
+    Each <replaceable>type</replaceable> has a list of valid item names which can be sampled (depending on the particular field).
+    </para><para>
+    For <userinput>ValueType</userinput> one of the Values in the Samples block in the Config files.
+    </para><para>
+    For <userinput>FieldLabels</userinput> use <userinput>FPA_field_labels</userinput>.
+    </para><para>
+    For <userinput>LinkNodes</userinput> use <userinput>FPA_link_nodes</userinput>.
+    </para><para>
+    For <userinput>WindType</userinput> one of the Winds in the Samples block in the Config files.
+    </para><para>
+    For <userinput>WindCrossRef</userinput> one of the Winds in the CrossRefs block in the Config files.
+    </para></listitem></varlistentry>
+    
+    <varlistentry><term><replaceable>font</replaceable></term>
+    <listitem><para>The font to use in displaying the sample.</para></listitem></varlistentry>
+  
+    <varlistentry><term><replaceable>size</replaceable></term>
+    <listitem><para>
+    The size of the font.
+    If size is followed by a percent sign (<userinput>%</userinput>) the size is a percent of map size.
+    If followed by a <userinput>P</userinput> the size is in points.
+    </para></listitem></varlistentry>
+  
+    <varlistentry><term><replaceable>colour</replaceable></term>
+    <listitem><para>Colour of the sample as a standard X colour name.</para></listitem></varlistentry>
+  </variablelist>
+  </para></listitem></varlistentry>
+  
+  <varlistentry><term><userinput>SHOW</userinput></term>
+  <listitem><para>
+  Show all guidance fields for which the field visibility is set to <userinput>ON</userinput> and hide all those set to <userinput>OFF</userinput>.
+  </para></listitem></varlistentry>
+  
+  <varlistentry><term><userinput>HIDE</userinput></term>
+  <listitem><para>
+  Hide all guidance fields irrespective of the state of their field visibility.
+  </para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+<beginpage/>
+
+<sect1><title>GEImagery</title><para>Handles commands for displaying imagery.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEImagery( command )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+Issues commands to display imagery at a given valid time. There are four image planes into which 
+images can be displayed. There are string macros defined for these planes: UNDERLAY_DISPLAY_PLANE, SATELLITE_DISPLAY_PLANE,
+RADAR_DISPLAY_PLANE and OVERLAY_DISPLAY_PLANE. The stacking order of the planes are in the given order of the macros with
+the underlay on the bottom of the stack. The satellite and radar display planes can be blended and are affected by the
+blending command discussed elsewhere. Images are identified by an image tag. This is the tag provided by the image access
+library.</para><para>
+The <replaceable>command</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+<varlistentry><term><userinput>ACTIVE</userinput> <replaceable>tag time</replaceable></term>
+<listitem><para>
+Set the given image as identified by the given <replaceable>tag</replaceable> and <replaceable>time</replaceable> as the active image to which 
+actions (like sampling) will be applied.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>ANIMATE ON</userinput> | <userinput>OFF</userinput> <replaceable>speed</replaceable></term>
+<listitem><para>
+Turn animation on or off and set the animation speed with the on command. The speed is 
+given as a percentage of between 0 and 100 percent.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>BLEND ON</userinput> | <userinput>OFF</userinput> <replaceable>blend_percentage</replaceable></term>
+<listitem><para>
+Turn the blending of images on or off and set the percentage blend. The blending ratio has 
+a value of 0 to 100 and is the percentage of the RADAR_DISPLAY_PLANE to be blended with the SATELLITE_DISPLAY_PLANE.
+A value of 100 will result in the radar image completely covering the satellite image with no image blending.
+</para></listitem></varlistentry>
+
+<varlistentry><term> <userinput>DISPLAY</userinput>  <replaceable> plane  tag  time</replaceable></term>
+<listitem><para>
+Display the image identified by <replaceable>tag</replaceable> at time <replaceable>time</replaceable> in the given
+<replaceable>plane</replaceable>. Note that <replaceable>plane</replaceable>  must be the string defined in one of
+the macros specified above.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>REMOVE</userinput> <replaceable>tag</replaceable></term>
+<listitem><para>Remove the image identified by <replaceable>tag</replaceable> from whatever image plane it is in.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SETLUT</userinput> <replaceable>tag lut</replaceable></term>
+<listitem><para>
+Set the look up table for the image identified by <replaceable>tag</replaceable> to <replaceable>lut</replaceable>. 
+Note that <replaceable>lut</replaceable> of <userinput>DEFAULT</userinput>
+will use the first look up table in the list.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SAMPLE</userinput> <replaceable>process type item font size colour</replaceable></term>
+<listitem><para>
+Sample the field as given by field identifier <replaceable>field_id</replaceable> at valid time <replaceable>valid_time</replaceable>. The remaining commands are:
+<variablelist>
+<varlistentry><term><replaceable>process</replaceable></term>
+<listitem><para>
+The sampling procedure. This must be one of:
+<variablelist>
+<varlistentry><term><userinput>NORMAL</userinput></term>
+<listitem><para>
+The sampling is done on a point by point basis through use of the 
+mouse by selecting the sample point on the map area.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>GRID</userinput> <replaceable>nx ny</replaceable></term>
+<listitem><para>The sampling is to be done on a grid with the number of points in the x and y axis specified by <replaceable>nx</replaceable> and <replaceable>ny</replaceable>.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>LIST</userinput> <replaceable>latitude longitude</replaceable> | <userinput>GO</userinput></term>
+<listitem><para>
+Sampling is to be done for a list of points.
+If <replaceable>latitude</replaceable> and <replaceable>longitude</replaceable> are given,
+Ingred will cache the points and will not do the sampling until a <userinput>GO</userinput> command is received.
+The <userinput>GO</userinput> command will cause Ingred to sample at the given points and then clear the internal cache.
+Note that none of the other parameters after <replaceable>process</replaceable> are required when the <userinput>LIST</userinput> <replaceable>latitude longitude</replaceable> command is issued.
+</para></listitem></varlistentry>
+</variablelist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>type</replaceable></term>
+<listitem><para>For now only <userinput>Default</userinput> is recognized.</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>item</replaceable></term>
+<listitem><para>For images which are associated with several different items 
+(for example URP data files where a given array element can be associated with ZR, rainfall rate or snowfall rate)
+this specifies which item to sample.
+For images with no defined <replaceable>item</replaceable>, <userinput>Default</userinput> must be used.
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>font</replaceable></term>
+<listitem><para>The font to use in displaying the sample.</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>size</replaceable></term>
+<listitem><para>The size of the font.
+If size is followed by a percent sign (<userinput>%</userinput>) the size is a percent of map size.
+If followed by a <userinput>P</userinput> the size is in points.
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>colour</replaceable></term>
+<listitem><para>Colour of the sample as a standard X colour name.</para></listitem></varlistentry>
+</variablelist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SHOW</userinput></term>
+<listitem><para>
+Any <userinput>BLEND</userinput>, <userinput>DISPLAY</userinput> or <userinput>REMOVE</userinput> commands will not be executed
+until a <userinput>SHOW</userinput> command is received.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>HIDE</userinput></term>
+<listitem><para>Hide all image planes.</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+<beginpage/>
+
+<sect1><title>GESequence</title><para>Processes requests dealing with the depiction sequence.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GESequence( command )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+This group handles requests which deals with the depiction sequence. Note that Ingred does not assume anything about what is required upon start-up. It is the responsibility of the interface control 
+to issue the required command sequence.
+</para><para>
+The <replaceable>command</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+<varlistentry><term><userinput>ACTIVE</userinput> <replaceable>depiction_time</replaceable> <optional><replaceable>active_field_time</replaceable></optional></term>
+<listitem><para>
+Display the given depiction from the sequence and make it the active depiction to which all further commands will apply.
+If a field is selected then make the field editable at the given time.
+If the selected field is to be edited at a time different from <replaceable>depiction_time</replaceable> then this time is specified by <replaceable>active_field_time</replaceable>.
+This will usually apply to static and daily fields.
+Automatically turned off by <userinput>DELETE</userinput>.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>CREATE_DEPICTION</userinput> <replaceable>source</replaceable>|- <replaceable>sub_source</replaceable>|- <replaceable>issue_time</replaceable>|- <replaceable>valid_time</replaceable>|- <optional><replaceable>target_time</replaceable></optional></term>
+<listitem><para>
+Create a depiction using model fields from the given <replaceable>source</replaceable> and <replaceable>sub_source</replaceable> with the issue (run) time <replaceable>issue_time</replaceable> as the base for the depiction.
+If the model does not have a <replaceable>sub_source</replaceable> then use the dash (<userinput>-</userinput>) place holder.
+Use the fields from the given <replaceable>valid_time</replaceable> and create a depiction at <replaceable>target_time</replaceable>.
+If <replaceable>target_time</replaceable> is not given, use <replaceable>valid_time</replaceable> as the target time.
+The fields to use from the model for depiction creation are specified in the configuration files associated with Ingred.
+If <replaceable>source</replaceable>, <replaceable>sub_source</replaceable>, 
+<replaceable>issue_time</replaceable> and <replaceable>valid_time</replaceable> are all dashed (<userinput>-</userinput>) then an empty depiction is created at <replaceable>target_time</replaceable> which must be specified.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>CREATE_FIELD</userinput> <replaceable>element level valid_time</replaceable> </term>
+<listitem><para>
+Create an empty field for the given <replaceable>element</replaceable> and <replaceable>level</replaceable> at the given <replaceable>valid_time</replaceable>.
+For daily fields the time will consist of a year and a day only (yyyy:jjj).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>DELETE_DEPICTION</userinput> <replaceable>group</replaceable>|<userinput>ALL</userinput> <replaceable>time</replaceable>|<userinput>ALL</userinput></term>
+<listitem><para>
+Delete the depiction for the given <replaceable>group</replaceable> and <replaceable>time</replaceable>.
+Note that if both group and time are <userinput>ALL</userinput>, then all groups for all times will be deleted.
+(Only the <userinput>ALL</userinput> option for group is implemented at this time).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>DELETE_FIELD</userinput> <replaceable>element level time</replaceable>|<userinput>ALL</userinput></term>
+<listitem><para>
+Delete the field, as defined by the given <replaceable>element</replaceable> and <replaceable>level</replaceable>, from the depiction specified by <replaceable>time</replaceable>.
+If <replaceable>time</replaceable> is <userinput>ALL</userinput> remove the field from every depiction in the sequence.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>GET_DEPICTION</userinput> <replaceable>source valid_time</replaceable>|<userinput>ALL</userinput> <optional><replaceable>target_time</replaceable></optional></term>
+<listitem><para>
+Get a depiction for the given <replaceable>valid_time</replaceable> from the given <replaceable>source</replaceable> and insert it into the sequence at <replaceable>target_time</replaceable>.
+If <replaceable>target_time</replaceable> is not given, use <replaceable>valid_time</replaceable> as the target time.
+<replaceable>Source</replaceable> is the directory key, from the associated setup file, of any directory containing depictions.
+If <replaceable>valid_time</replaceable> is <userinput>ALL</userinput> then <replaceable>target_time</replaceable> is ignored and all of the depictions from the given <replaceable>source</replaceable> are read in. 
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>GET_FIELD</userinput> <replaceable>source sub_source</replaceable>|- <replaceable>issue_time</replaceable>|- <replaceable>element level valid_time</replaceable> <optional><replaceable>target_time</replaceable></optional></term>
+<listitem><para>
+Get a field from the given <replaceable>source</replaceable> and <replaceable>sub_source</replaceable> with the given <replaceable>issue_time</replaceable> and element and level at <replaceable>valid_time</replaceable> and insert into the <replaceable>target_time</replaceable> depiction If <replaceable>target_time</replaceable> is not given assume that it is the same as <replaceable>valid_time</replaceable>.
+<replaceable>Source</replaceable> can be either the directory key, from the associated setup file, of any directory containing depictions or a named <replaceable>source</replaceable> as defined in the Fields configuration file.
+If the given <replaceable>source</replaceable> does not have a <replaceable>sub_source</replaceable> and/or an <replaceable>issue_time</replaceable> then the appropriate parameter is replaced with a dash(<userinput>-</userinput>) as a place holder. 
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>INITIALIZE VIEW</userinput>|<userinput>EDIT</userinput> <replaceable>interp_delta</replaceable> <userinput>ALL</userinput>|<userinput>NONE</userinput>|<userinput>RANGE</userinput> <replaceable>start end</replaceable> <userinput>SAVE</userinput>|<userinput>NOSAVE</userinput></term>
+<listitem><para>
+Initialize the depiction sequence.
+This command must only be issued once.
+The action taken by Ingred depends on the specific initialization command.
+There are three groups of commands. 
+</para><para>
+The first group specifies the mode.
+<userinput>VIEW</userinput> puts Ingred is put into view only mode.
+<userinput>EDIT</userinput> puts Ingred into edit mode and the timestep 
+between the interpolated depictions generated when the depiction sequence is interpolated must be specified by <replaceable>interp_delta</replaceable>. 
+The <replaceable>interp_delta</replaceable> is given in the format <userinput>hh</userinput> for a timestep in hours or <userinput>0:mm</userinput> for a timestep in minutes.
+The <replaceable>interp_delta</replaceable> value must not be given for <userinput>VIEW</userinput> mode.
+</para><para>
+The next group specifies the number of depictions to be read in.
+If <userinput>ALL</userinput>, Ingred reads in all of the depictions from the existing sequence on disc.
+IF <userinput>NONE</userinput>, Ingred deletes any existing depictions from disc and presents the user with an empty sequence.
+If <userinput>RANGE</userinput>, Ingred will read only those depictions which are between <replaceable>start</replaceable> and <replaceable>end</replaceable> and deletes all others from disc (start time and end time are not used with <userinput>ALL</userinput> or <userinput>NONE</userinput>).
+If <replaceable>start</replaceable> is a dash ("-") then the oldest depiction found is used as the start time and if <replaceable>end</replaceable> is a dash the newest depiction is used as the end time.
+</para><para>
+The last group specifies if when depictions are deleted they can be saved to the backup directory.
+<userinput>SAVE</userinput> will backup the depictions while <userinput>NOSAVE</userinput> will not.
+</para><para>
+<orderedlist><title>Notes:</title>
+<listitem><para>This must be done after the background map has been defined with the GEAction() command <userinput>MAP_BASE</userinput>.</para></listitem>
+<listitem><para>If Ingred is in viewer mode the depictions will be read but not deleted from the sequence stored on disc.</para></listitem>
+</orderedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SAVE_DEPICTION</userinput> <replaceable>group</replaceable>|<userinput>ALL</userinput> <replaceable>time</replaceable>|<userinput>ALL</userinput></term>
+<listitem><para>
+Save the depiction for the given <replaceable>group</replaceable> and <replaceable>time</replaceable> to the archive store. 
+(Only the <userinput>ALL</userinput> option is implemented for group at this time)
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>TZERO</userinput> <replaceable>T0_timestamp</replaceable></term>
+<listitem><para>Set the timestamp to be used as the "T0" reference time.</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+<beginpage/>
+
+<sect1><title>GEStatus</title><para>Returns status information on the current depiction sequence.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEStatus(request, nlist, list1, list2, cal)</function></funcdef>
+<paramdef>char <parameter>*request</parameter></paramdef>
+<paramdef>int <parameter>*nlist</parameter></paramdef>
+<paramdef>char <parameter>***list1</parameter></paramdef>
+<paramdef>char <parameter>***list2</parameter></paramdef>
+<paramdef>CAL <parameter>*cal</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+The <replaceable>request</replaceable> parameter defines the information required and <replaceable>nlist</replaceable> and <replaceable>list1</replaceable>, <replaceable>list2</replaceable> and <replaceable>cal</replaceable> return the information as requested.
+If a list is not required the corresponding parameter (<replaceable>list1</replaceable> and/or <replaceable>list2</replaceable>) may be set to NULL.
+Note that <replaceable>list1</replaceable>, <replaceable>list2</replaceable> and <replaceable>cal</replaceable> are internally static to this function and so will be overwritten by the next call to GEStatus().
+If values are required to be kept they must be copied.
+Do not free or modify any of these parameters. 
+</para><para>
+The <replaceable>request</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+<varlistentry><term><userinput>DEPICT MODIFIED</userinput></term>
+<listitem><para>
+Return a list of those depictions which have been modified since the last save.
+The number of depictions is given by <replaceable>nlist</replaceable> and the list of depictions is returned in <replaceable>list1</replaceable> (<replaceable>list2</replaceable> is undefined).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>DEPICT TIMES</userinput></term>
+<listitem><para>
+Returns a list of depiction times. 
+The number of depictions is given by <replaceable>nlist</replaceable> and the list of depictions is returned in <replaceable>list1</replaceable> (<replaceable>list2</replaceable> is undefined).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>INTERP TIMES</userinput></term>
+<listitem><para>
+Returns a list of interpolated depiction times. 
+The number of interpolated depictions is given by <replaceable>nlist</replaceable> and the list of interpolated depictions is returned in <replaceable>list1</replaceable> (<replaceable>list2</replaceable> is undefined).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD BACKGROUND</userinput> <replaceable>element level</replaceable></term>
+<listitem><para>Returns the background value for the given field in <replaceable>cal</replaceable>.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD LINK_INFO</userinput> <replaceable>element level</replaceable></term>
+<listitem><para>
+Returns information on the time link status of the given field.
+Variable <replaceable>list1</replaceable><optional>0</optional> will contain the link status as <userinput>NOT_LINKABLE</userinput>, <userinput>NONE</userinput>, <userinput>PARTIAL</userinput>, <userinput>LINKED</userinput>, <userinput>FIELD</userinput> or <userinput>INTERPOLATED</userinput>.
+The linked to status is given in <replaceable>list2</replaceable><optional>0</optional> as <userinput>MASTER_LINK</userinput>, <userinput>FIELD</userinput> or <userinput>SELF</userinput>.
+If the linked to status is <userinput>FIELD</userinput> then the field to which it is linked is in <replaceable>list1</replaceable><optional>1</optional> (element) and <replaceable>list2</replaceable><optional>1</optional> (level). 
+</para><para>
+A link status of <userinput>LINKED</userinput> indicates that the field is linked but not yet interpolated.  A link status of <userinput>FIELD</userinput> indicates that the field is linked and interpolated but the labels are not. A link status of <userinput>INTERPOLATED</userinput> indicates that both the field and labels are linked and interpolated.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD MODIFIED</userinput> <replaceable>element level</replaceable></term>
+<listitem><para>
+Return a list of times at which the given field has been modified since the last save.
+The number of times in the list is given by <replaceable>nlist</replaceable> and the list of times is returned in <replaceable>list1</replaceable> (<replaceable>list2</replaceable> is undefined).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD TIMES</userinput> <replaceable>element level</replaceable></term>
+<listitem><para>
+Returns a list of times at which the specified field, as given by <replaceable>element</replaceable> and <replaceable>level</replaceable>, exists.
+The times are returned in <replaceable>list1</replaceable>.
+The time in list 1 corresponding to the current active time in the depiction sequence is returned in <replaceable>list2</replaceable><optional>0</optional>.
+Note that for a field in the depiction sequence this will be the same as the current active time.
+For static and daily fields, however, it will normally be different.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELDS</userinput> <optional> <replaceable>time</replaceable> </optional></term>
+<listitem><para>
+Returns a list of fields found in depiction time.
+If <replaceable>time</replaceable> is not specified then the return will be a list of those fields found one or more times in any depiction in the sequence.
+The number of fields is given by <replaceable>nlist</replaceable> and the list of fields is returned in <replaceable>list1</replaceable> and <replaceable>list2</replaceable>,
+where <replaceable>list1</replaceable> contains the element and <replaceable>list2</replaceable> the corresponding level.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELDS EDIT_POSTED</userinput></term>
+<listitem><para>
+Returns a list of fields for which an edit has been posted.
+The number of fields is given by <replaceable>nlist</replaceable> and the list of fields is returned in <replaceable>list1</replaceable> and <replaceable>list2</replaceable> where <replaceable>list1</replaceable> is the element and <replaceable>list2</replaceable> the corresponding level.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELDS INTERPOLATED</userinput> <optional><userinput>ALL</userinput>|<userinput>FIELD</userinput></optional></term>
+<listitem><para>
+By default, or if the optional parameter <userinput>ALL</userinput> is given, returns a list of those fields which have been interpolated and which have not been modified or had any time links modified since they were interpolated.
+The number of fields is given by <replaceable>nlist</replaceable> and the list of fields is returned in <replaceable>list1</replaceable> and <replaceable>list2</replaceable> where <replaceable>list1</replaceable> is the element and <replaceable>list2</replaceable> the corresponding level.
+</para><para>
+If the parameter <userinput>FIELD</userinput> is specified, returns the list of fields which have the field interpolated but not the labels.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELDS LINKABLE</userinput></term>
+<listitem><para>
+Return a list fields which are found one or more times in any depiction sequence and which are capable of being linked.
+The number of fields is given by <replaceable>nlist</replaceable> and the list of fields is returned in <replaceable>list1</replaceable> and <replaceable>list2</replaceable> where <replaceable>list1</replaceable> is the element and <replaceable>list2</replaceable> the corresponding level.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELDS LINKED</userinput></term>
+<listitem><para>
+Return a list fields which are linked and which have not been modified since being linked.
+The number of fields is given by <replaceable>nlist</replaceable> and the list of fields is returned in <replaceable>list1</replaceable> and <replaceable>list2</replaceable> where <replaceable>list1</replaceable> is the element and <replaceable>list2</replaceable> the corresponding level.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>GROUP MASTER_LINK_STATUS</userinput> <replaceable>group</replaceable>|<userinput>GLOBAL</userinput></term>
+<listitem><para>
+Returns the link status of the master link for the given <replaceable>group</replaceable> in <replaceable>list1</replaceable><optional>0</optional>.
+If <replaceable>group</replaceable> is <userinput>GLOBAL</userinput> then the status of the global master link is returned.
+The returned status will be one of <userinput>NONE</userinput>, <userinput>PARTIAL</userinput> or <userinput>LINKED</userinput>.
+</para></listitem></varlistentry>
+<varlistentry></varlistentry>
+
+<varlistentry><term><userinput>GROUPS</userinput> <optional> <replaceable>time</replaceable> </optional></term>
+<listitem><para>
+Returns a list of groups found in depiction <replaceable>time</replaceable>.
+If <replaceable>time</replaceable> is not specified then the return will be a list of those groups found one or more times in any depiction in the depiction sequence.
+The number of groups is given by <replaceable>nlist</replaceable> and the list of groups is returned in <replaceable>list1</replaceable> (<replaceable>list2</replaceable> is undefined).
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+<beginpage/>
+
+<sect1><title>GEScratchpad</title><para>Handles all of the non-editing commands for the scratch pad.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEScratchpad( command )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+The <replaceable>command</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+<varlistentry><term><userinput>EDIT DISTANCE</userinput> <replaceable>colour style d_colour d_font d_font_size</replaceable></term>
+<listitem><para>
+Show the distance and direction between two points.
+The parameters <replaceable>d_colour</replaceable>, <replaceable>d_font</replaceable> and <replaceable>d_font_size</replaceable> are for the display of the distance and direction and the <replaceable>colour</replaceable> and <replaceable>style</replaceable> are for 
+the displayed joining line.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT DRAW</userinput> <replaceable>colour style</replaceable></term>
+<listitem><para>
+Draw a line on the scratch pad using the named X <replaceable>colour</replaceable>, with the given <replaceable>style</replaceable>.
+For allowable <replaceable>style</replaceable> values see Note 3 above.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT PRESET_DISTANCE</userinput> <replaceable>colour style d_colour d_font d_font_size distance</replaceable></term>
+<listitem><para>
+Display a line of a pre-determined length as given by the distance parameter.
+The remaining parameters are as for the <userinput>DISTANCE</userinput> command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT SELECT</userinput> <optional><userinput>ALL</userinput></optional></term>
+<listitem><para>
+Enter a mode that will allow the selection of lines on the scratchpad.
+The optional parameter <userinput>ALL</userinput> will select all of the lines.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT TEXT</userinput> <replaceable>colour font size label</replaceable></term>
+<listitem><para>
+Put a text string label on the scratch pad using the named X <replaceable>colour</replaceable> using font type <replaceable>font</replaceable> of size <replaceable>size</replaceable>.
+For recognized font values see Note 2 above.
+The size can be either in percent of map size (indicated by a "<userinput>%</userinput>"after the size) or in pixels.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SHOW</userinput></term>
+<listitem><para>
+Show the scratch pad.
+The scratch pad will appear to be displayed "under" the currently active depictions.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>HIDE</userinput></term>
+<listitem><para>Hide the scratch pad.</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+
+<beginpage/>
+<sect1><title>GETimelink</title><para>Handles all of the non-editing commands for the time linking.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GETimelink( command )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+Time linking is the process of linking one point or area or line on one chart with the same point or area or line on another thus identifying then as the same object to the graphics editor.
+Most links are specific to a given field but there is a special class of link called Master Link which is tied to s field group and not to any specific field.
+There is also a Master Link which is not tied to any particular group or field but is a "Master" Master Link.
+</para><para>
+The <replaceable>command</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+<varlistentry><term><userinput>EDIT BACKWARD</userinput> | <userinput>DELINK</userinput> | <userinput>FORWARD</userinput> | <userinput>MOVE</userinput> </term>
+<listitem><para>
+Set time link editor to either link in a time forward direction or a time backwards direction.
+The type of link to edit is set by the STATE LINK_MODE command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT DELINK</userinput> <optional> <userinput>NODE</userinput> | <userinput>CHAIN</userinput> | <userinput>CLEAR</userinput> </optional></term>
+<listitem><para>
+Delete the closest link node or link chain. If the optional <userinput>CLEAR</userinput> parameter is given, then delete all the link chains.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>FETCH</userinput> <replaceable>source sub-source element level</replaceable> </optional></term>
+<listitem><para>
+The command given without parameters puts the time link editor into merge mode, which allows the user to merge time links from another field into the currently active field.</para><para>
+The command with <userinput>FETCH</userinput> (and parameters) specifies the source field to use for the merge. 
+Any parameter not relevant for a particular source must be place held with a dash (<userinput>-</userinput>).
+Once completed, the time link editor will return to the state assumed upon receiving the <userinput>MERGE</userinput> command without parameters.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>SELECT_ALL</userinput> </optional></term></varlistentry>
+<varlistentry><term><userinput>EDIT MERGE</userinput> <optional> <userinput>MERGE</userinput> | <userinput>TRANSLATE</userinput> | <userinput>ROTATE</userinput> </optional></term>
+<listitem><para>
+After a <userinput>MERGE FETCH</userinput> command has been issued, the time link editor will request that the user choose link chains to merge with the existing field. Link chains can be selected or deselected with the mouse, or all the link chains in the merge field can be chosen with the <userinput>SELECT_ALL</userinput> option.</para><para>
+Once the desired link chains have been chosen, issuing the command with <userinput>MERGE</userinput>, <userinput>TRANSLATE</userinput> or <userinput>ROTATE</userinput> will cause the time link editor to go into a state that allows the chosen link chains to be merged in place, or translated/rotated and then merged.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT MOVE</userinput> </term>
+<listitem><para>
+Move a link node.  The type of link to move is set by the STATE LINK_MODE command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>ENTER</userinput></term>
+<listitem><para>
+Start the time link procedure. Note that the procedure commands are entered under the edit group.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EXIT</userinput></term>
+<listitem><para>Exit from the time link editor.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>INTERPOLATE</userinput> <optional> <userinput>CANCEL</userinput> | <userinput>FIELD</userinput> <replaceable>element level</replaceable> </optional></term>
+<listitem><para>
+Interpolate any completely linked fields.
+If <userinput>CANCEL</userinput> is given then the interpolation in progress is to be stopped.
+If <userinput>FIELD</userinput> followed by the <replaceable>element</replaceable> and <replaceable>level</replaceable> names of a field is given,
+then interpolate just the specified field.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>LINK_TO</userinput> <replaceable>element level</replaceable></term>
+<listitem><para>
+The currently active field will use the links of the field defined by <replaceable>element</replaceable> and <replaceable>level</replaceable> for time linking.
+If the link is to be to the group master link then the <replaceable>element</replaceable> must be <userinput>MASTER_LINK</userinput> with no associated <replaceable>level</replaceable>.
+If the link is to be to the active field itself then both <replaceable>element</replaceable> and <replaceable>level</replaceable> must not be present.
+If the field is to be linked to itself (it will have its own link) then both <replaceable>element</replaceable> and <replaceable>level</replaceable> must be absent.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MASTER_LINK</userinput> <replaceable>group</replaceable> | <userinput>GLOBAL</userinput></term>
+<listitem><para>
+Create a Master Link.
+If group is given create the link for the specified group.
+If group is <userinput>GLOBAL</userinput> create the global master link for all groups.
+Note: If the given field has links of its own they will be destroyed.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SHOW</userinput> <replaceable>option</replaceable> <userinput>ON</userinput> | <userinput>OFF</userinput></term>
+<listitem><para>
+Turn the given display mode option on or off. The option can be one of:
+<variablelist>
+<varlistentry><term><userinput>CONTROL</userinput></term>
+<listitem><para>Show time of control nodes.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EARLY_LATE</userinput></term>
+<listitem><para>Show early/late start/end times for link chains that do not start/end at depiction times.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SPEED</userinput></term>
+<listitem><para>Show speed above link nodes.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>TIME</userinput></term>
+<listitem><para>Show time below the link nodes.</para></listitem></varlistentry>
+</variablelist>
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+<beginpage/>
+
+<sect1><title>GEZoom</title><para>Handles all zoom commands.</para>
+
+<sect2><title>SYNOPSIS</title><para>
+<funcsynopsis>
+<funcsynopsisinfo>#include &lt;ingred.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef> GEREPLY <function>GEZoom( command )</function></funcdef>
+<paramdef>char <parameter>*command</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+The <replaceable>command</replaceable> parameter consists of a string of key words. These are:
+<variablelist>
+<varlistentry><term><userinput>IN</userinput></term>
+<listitem><para>
+Set Ingred into zoom define mode.
+Ingred will request a zoom cursor and wait for the user to create a rubber band box on the map which defines the area to which to zoom.
+Once this is done Ingred will send the zoom information back to the controlling interface (see status_proc Function prototype).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>OUT</userinput></term>
+<listitem><para>Ingred will zoom out to the full original map.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>PAN</userinput></term>
+<listitem><para>
+Set Ingred into pan mode.
+The user can pan around the base map by "clicking" at the location at which the zoomed area is to be centered.
+When the pan is completed Ingred sends the zoom information back to the controlling interface.
+The right button is used to terminate the pan and the interface is notified of the termination of the zoom by Ingred (see status_proc Function prototype).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>PAN_DONE</userinput></term>
+<listitem><para>Exit pan mode.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>AREA</userinput> <replaceable>x y width height</replaceable></term>
+<listitem><para>
+Zoom into the area defined by <replaceable>x</replaceable>, <replaceable>y</replaceable>, <userinput>width</userinput> and <userinput>height</userinput> the upper-left corner of the zoomed area to the specified location on the base map. 
+The x and y co-ordinates are as a percent of the base map x-axis and y-axis length respectively.
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>RETURN</title><para>
+Upon successful completion <returnvalue>GE_VALID</returnvalue> will be returned, a failure returns <returnvalue>GE_INVALID</returnvalue>.
+</para></sect2></sect1>
+</chapter>

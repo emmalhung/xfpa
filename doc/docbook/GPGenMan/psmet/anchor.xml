@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_anchor'> <title>@anchor</title> <titleabbrev>@anchor</titleabbrev>
+<para>
+Set a new reference location, or anchor position, for subsequent displays on the
+current map.
+</para> <para>
+The following directives are affected by the anchor position:
+</para><para>
+<link linkend='ps_add'>@add</link> 
+<link linkend='ps_box'>@box</link> 
+<link linkend='ps_define_map_placement'>@define_map_placement</link> 
+<link linkend='ps_define_table'>@define_table</link>
+<link linkend='ps_define_cross_section'>@define_cross_section</link> 
+<link linkend='ps_draw_line'>@draw_line</link> 
+<link linkend='ps_ellipse'>@ellipse</link> 
+<link linkend='ps_label'>@label</link>
+<link linkend='ps_lchain_nodes'>@lchain_nodes</link>
+<link linkend='ps_sample_field'>@sample_field</link> 
+<link linkend='ps_sample_wind'>@sample_wind</link> 
+<link linkend='ps_text'>@text</link> 
+<link linkend='ps_write_time'>@write_time</link>.
+</para><para>
+However, if the directive contains a <userinput>table_name</userinput> keyword, the anchor position for that directive defaults to the table location set in 
+<link linkend='ps_define_table'>@define_table</link>.
+</para> <para>
+Setting an anchor position of <userinput>ref = map</userinput> is necessary for displaying
+sampled values at the correct location on the current map for directives:
+<link linkend='ps_add'>@add</link> <link linkend='ps_box'>@box</link> <link linkend='ps_ellipse'>@ellipse</link> <link linkend='ps_label'>@label</link> <link linkend='ps_lchain_nodes'>@lchain_nodes</link> <link linkend='ps_sample_field'>@sample_field</link> <link linkend='ps_sample_wind'>@sample_wind</link> <link linkend='ps_text'>@text</link>.
+</para> <para>
+Note, however, that graphics displayed for the following directives are always
+anchored on the current map, regardless of the anchor position:
+<link linkend='ps_areas'>@areas</link> <link linkend='ps_background'>@background</link> <link linkend='ps_contours'>@contours</link> <link linkend='ps_geography'>@geography</link> <link linkend='ps_lchain_tracks'>@lchain_tracks</link> <link linkend='ps_lines'>@lines</link>.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>ref</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para> Starting point for new reference location
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>
+<colspec colwidth='1*'/>
+<colspec colwidth='1.4*'/><tbody>
+<row valign='top'><entry><userinput>map</userinput></entry><entry>reset to centre of current map</entry></row>
+<row valign='top'><entry><userinput>map_latlon</userinput></entry><entry>wrt lat/lon on current map</entry></row>
+<row valign='top'><entry><userinput>absolute</userinput></entry><entry>wrt page centre</entry></row>
+<row valign='top'><entry><userinput>lower_left</userinput></entry><entry>wrt current map</entry></row>
+<row valign='top'><entry><userinput>centre_left</userinput></entry><entry>wrt current map</entry></row>
+<row valign='top'><entry><userinput>upper_left</userinput></entry><entry>wrt current map</entry></row>
+<row valign='top'><entry><userinput>lower_centre</userinput></entry><entry>wrt current map</entry></row>
+<row valign='top'><entry><userinput>centre</userinput></entry><entry>wrt current map</entry></row>
+<row valign='top'><entry><userinput>upper_centre</userinput></entry><entry>wrt current map</entry></row>
+<row valign='top'><entry><userinput>lower_right</userinput></entry><entry>wrt current map</entry></row>
+<row valign='top'><entry><userinput>centre_right</userinput></entry><entry>wrt current map</entry></row>
+<row valign='top'><entry><userinput>upper_right</userinput></entry><entry>wrt current map</entry></row>
+<row valign='top'><entry><userinput>current</userinput></entry><entry>wrt current anchor position</entry></row>
+<row valign='top'><entry><userinput>xsect_lower_left</userinput></entry><entry></entry></row>
+<row valign='top'><entry></entry><entry>wrt current cross-section</entry></row>
+<row valign='top'><entry><userinput>xsect_centre_left</userinput></entry><entry></entry></row>
+<row valign='top'><entry></entry><entry>wrt current cross-section</entry></row>
+<row valign='top'><entry><userinput>xsect_upper_left</userinput></entry><entry></entry></row>
+<row valign='top'><entry></entry><entry>wrt current cross-section</entry></row>
+<row valign='top'><entry><userinput>xsect_lower_right</userinput></entry><entry></entry></row>
+<row valign='top'><entry></entry><entry>wrt current cross-section</entry></row>
+<row valign='top'><entry><userinput>xsect_centre_right</userinput></entry><entry></entry></row>
+<row valign='top'><entry></entry><entry>wrt current cross-section</entry></row>
+<row valign='top'><entry><userinput>xsect_upper_right</userinput></entry><entry></entry></row>
+<row valign='top'><entry></entry><entry>wrt current cross-section</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y.xml'/>
+<row><entry spanname='tblnote'>&extraline;<para>For <userinput>xsect_*</userinput> ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/cross_section_name.xml'/>
+
+<row><entry spanname='tblnote'>&extraline;<para>For <userinput>map_latlon</userinput> ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lat.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lon.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_ident.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/valid_time.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_look_up.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@anchor { ref = absolute; x = -3.7; y = 1.5; }</programlisting>
+Set a new reference location offset -3.7 "units" horizontally and 1.5 "units" vertically from the centre of the page. (Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+<example><title> </title><para>
+<programlisting>@anchor { ref = map; }</programlisting>
+Reset the reference location to the centre of the current map
+</para></example>
+<example><title> </title><para>
+<programlisting>@anchor { ref = map_latlon; lat = 42:30N; lon = 71:00W; }</programlisting>
+Reset the reference location to latitude 42 degrees and 30 minutes North and longitude 71 degrees
+West on the current map
+</para></example>
+</para></sect2>

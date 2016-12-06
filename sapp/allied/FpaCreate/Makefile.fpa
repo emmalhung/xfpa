@@ -1,0 +1,76 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpasup -lfpauser -lfpa -lfpauser \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	fpacreate_area fpacreate_cont
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "FpaCreate"
+
+
+# Rules for building fpacreate_area program:
+FPACREATEAREA		= $(BINDIR)/$(PLATFORM)/fpacreate_area
+FPACREATEAREA_OBJ	= fpacreate_area.o
+fpacreate_area:		Pobjects $(FPACREATEAREA)
+					@	echo "FPA $(PLATFORM) fpacreate_area ready"
+					@	echo ""
+$(FPACREATEAREA):	$(FPACREATEAREA_OBJ) $(LIBS)
+					@   echo "Loading FPA $(PLATFORM) fpacreate_area"
+					@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+							then mkdir $(BINDIR)/$(PLATFORM); fi
+					@   $${C_COMPLOAD} -o $@ \
+							$(C_OPTIONS) $(INCPATH) $(FPACREATEAREA_OBJ) $(LIBPATH)
+					@   if [ ! -x $(BINDIR)/fpacreate_area ]; \
+							then cd $(BINDIR); ln -s fpa.exec fpacreate_area; fi
+
+
+# Rules for building fpacreate_cont program:
+FPACREATECONT		= $(BINDIR)/$(PLATFORM)/fpacreate_cont
+FPACREATECONT_OBJ	= fpacreate_cont.o
+fpacreate_cont:		Pobjects $(FPACREATECONT)
+					@	echo "FPA $(PLATFORM) fpacreate_cont ready"
+					@	echo ""
+$(FPACREATECONT):	$(FPACREATECONT_OBJ) $(LIBS)
+					@   echo "Loading FPA $(PLATFORM) fpacreate_cont"
+					@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+							then mkdir $(BINDIR)/$(PLATFORM); fi
+					@   $${C_COMPLOAD} -o $@ \
+							$(C_OPTIONS) $(INCPATH) $(FPACREATECONT_OBJ) $(LIBPATH)
+					@   if [ ! -x $(BINDIR)/fpacreate_cont ]; \
+							then cd $(BINDIR); ln -s fpa.exec fpacreate_cont; fi
+
+
+# Rules for building object modules:
+fpacreate_area.o:	$(TYPES) $(MACROS) $(GETMEM) $(TOOLS) $(OBJECTS) $(ENVIRON)
+fpacreate_cont.o:	$(TYPES) $(MACROS) $(GETMEM) $(TOOLS) $(OBJECTS) $(ENVIRON)
+
+
+# Rules for keeping header files up to date:
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) FpaCreate modules $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

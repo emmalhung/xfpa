@@ -1,0 +1,74 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa -lfpauser \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	getmap
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "getmap"
+
+
+# Rules for building metafile translator programs:
+GETMAP      = $(BINDIR)/$(PLATFORM)/getmap
+GETMAP_OBJ  = getmap.o
+getmap:		Pobjects $(GETMAP)
+			@	echo "FPA $(PLATFORM) getmap ready"
+			@	echo 
+$(GETMAP):		$(GETMAP_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) getmap"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(GETMAP_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/getmap ]; \
+					then cd $(BINDIR); ln -s fpa.exec getmap; fi
+
+# Rules for building metafile translator programs:
+TXMAP      = $(BINDIR)/$(PLATFORM)/txmap
+TXMAP_OBJ  = getmap.c
+txmap:		Pobjects $(TXMAP)
+			@	echo "FPA $(PLATFORM) txmap ready"
+			@	echo 
+$(TXMAP):		$(TXMAP_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) txmap"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ -D TRANS \
+					$(C_OPTIONS) $(INCPATH) $(TXMAP_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/txmap ]; \
+					then cd $(BINDIR); ln -s fpa.exec txmap; fi
+
+
+# Rules for building object modules:
+getmap.o:	$(FPAHDR)
+
+
+# Rules for keeping header files up to date:
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) getmap module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

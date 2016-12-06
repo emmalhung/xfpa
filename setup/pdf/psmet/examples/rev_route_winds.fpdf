@@ -1,0 +1,109 @@
+! Set barb presentation for winds ...
+@wind_barb_presentation
+	{
+	shaft_length       = 0.40;
+	barb_length        = 0.50;
+	barb_width         = 0.25;
+	barb_space         = 0.20;
+	barb_angle         =   60;
+	gust_above         =    5;
+	gust_size          = 0.20;
+	gust_distance      = 0.50;
+	gust_angle         =   90;
+	gust_justification = Centre;
+	gust_format        = G%.0f;
+	calm_max           =    1;
+	calm_symbol        = circle_mark;
+	calm_scale         =  100;
+	huge_min           =  250;
+	huge_symbol        = circle_mark;
+	huge_scale         =  200;
+	}
+
+! Display winds at cross section locations ...
+@sample_wind
+	{
+	wind_crossref      = Vm_Sfc;
+	units              = knots;
+	format             = wind_barb;
+	line_width         = 0.03;
+	outline            = X11 FireBrick;
+	fill               = X11 FireBrick;
+	x_off              = 0.00;
+	y_off              = 0.00;
+	source             = GEM;					!EDIT!
+	cross_section_name = rev_route_cross_section;
+	location_look_up   = rev_route_winds;
+	}
+@sample_wind
+	{
+	wind_crossref      = Vm_850;
+	units              = knots;
+	format             = wind_barb;
+	line_width         = 0.03;
+	outline            = X11 FireBrick;
+	fill               = X11 FireBrick;
+	x_off              = 0.00;
+	y_off              = 0.00;
+	source             = GEM;					!EDIT!
+	cross_section_name = rev_route_cross_section;
+	location_look_up   = rev_route_winds;
+	vertical_element   = uu_wind;
+	vertical_level     = 850;
+	vertical_equation  = lvlprs[];
+	vertical_units     = mb;
+	}
+@sample_wind
+	{
+	wind_crossref      = Vm_700;
+	units              = knots;
+	format             = wind_barb;
+	line_width         = 0.03;
+	outline            = X11 FireBrick;
+	fill               = X11 FireBrick;
+	x_off              = 0.00;
+	y_off              = 0.00;
+	source             = GEM;					!EDIT!
+	cross_section_name = rev_route_cross_section;
+	location_look_up   = rev_route_winds;
+	vertical_element   = uu_wind;
+	vertical_level     = 700;
+	vertical_equation  = lvlprs[];
+	vertical_units     = mb;
+	}
+@sample_wind
+	{
+	wind_crossref      = Vm_500;
+	units              = knots;
+	format             = wind_barb;
+	line_width         = 0.03;
+	outline            = X11 FireBrick;
+	fill               = X11 FireBrick;
+	x_off              = 0.00;
+	y_off              = 0.00;
+	source             = GEM;					!EDIT!
+	cross_section_name = rev_route_cross_section;
+	location_look_up   = rev_route_winds;
+	vertical_element   = uu_wind;
+	vertical_level     = 500;
+	vertical_equation  = lvlprs[];
+	vertical_units     = mb;
+	}
+@sample_wind
+	{
+	wind_crossref      = Vm_250;
+	units              = knots;
+	format             = wind_barb;
+	line_width         = 0.03;
+	outline            = X11 FireBrick;
+	fill               = X11 FireBrick;
+	x_off              = 0.00;
+	y_off              = 0.00;
+	source             = GEM;					!EDIT!
+	cross_section_name = rev_route_cross_section;
+	location_look_up   = rev_route_winds;
+	vertical_element   = uu_wind;
+	vertical_level     = 250;
+	vertical_equation  = lvlprs[];
+	vertical_units     = mb;
+	}

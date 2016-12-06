@@ -1,0 +1,54 @@
+memory
+FPA_user_label = "0 Percent"
+FPA_auto_label = "0%"
+FPA_category   = none
+
+memory
+FPA_user_label = "10 Percent"
+FPA_auto_label = "10%"
+FPA_category   = 10
+
+memory
+FPA_user_label = "20 Percent"
+FPA_auto_label = "20%"
+FPA_category   = 20
+
+memory
+FPA_user_label = "30 Percent"
+FPA_auto_label = "30%"
+FPA_category   = 30
+
+memory
+FPA_user_label = "40 Percent"
+FPA_auto_label = "40%"
+FPA_category   = 40
+
+memory
+FPA_user_label = "50 Percent"
+FPA_auto_label = "50%"
+FPA_category   = 50
+
+memory
+FPA_user_label = "60 Percent"
+FPA_auto_label = "60%"
+FPA_category   = 60
+
+memory
+FPA_user_label = "70 Percent"
+FPA_auto_label = "70%"
+FPA_category   = 70
+
+memory
+FPA_user_label = "80 Percent"
+FPA_auto_label = "80%"
+FPA_category   = 80
+
+memory
+FPA_user_label = "90 Percent"
+FPA_auto_label = "90%"
+FPA_category   = 90
+
+memory
+FPA_user_label = "100 Percent"
+FPA_auto_label = "100%"
+FPA_category   = 100

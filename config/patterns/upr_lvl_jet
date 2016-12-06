@@ -1,0 +1,29 @@
+* MSRB Metafile Standard
+ rev 1.2
+* 
+ mapdef 0 0 0 100 100 1
+ units xy
+*
+*
+ info pattern repeat 3
+ info pattern baseline centre
+ info pattern symmetric yes
+* 
+* lines
+ entity-c NULL NULL FSPEC "[colour=Purple style=solid_fill width=10]"
+ curve r 2
+  0 50  15 50
+ entity-c NULL NULL FSPEC "[colour=Purple style=solid_fill width=10]"
+ curve r 2
+  0 -50  15 -50
+ entity-b NULL NULL FSPEC "[colour=Purple style=solid_fill width=3]"
+ curve r 5
+  15 0 15 100 30 0 15 -100 15 0
+ entity-c NULL NULL FSPEC "[colour=Purple style=solid_fill width=10]"
+ curve r 2
+  30 50  100 50
+ entity-c NULL NULL FSPEC "[colour=MediumOrchid style=solid_fill width=10]"
+ curve r 2
+  30 -50  100 -50
+*
+* End

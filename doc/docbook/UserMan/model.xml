@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='the_fpa_model'> <title>The &FPA; Model</title>
+<sect1 id='fields_and_depictions'> <title>Fields and depictions</title>
+<para>
+<indexterm><primary>depiction</primary></indexterm>
+In the &FPA;, a weather <glossterm linkend='g_elements'>element</glossterm>
+<indexterm><primary>elements</primary></indexterm>
+at a specific <glossterm linkend='g_levels'>level</glossterm> <indexterm><primary>levels</primary></indexterm>
+(for example, pressure at msl) is called a <indexterm><primary>field</primary></indexterm><glossterm linkend='g_fields'>field</glossterm>.
+</para>
+<variablelist> <title>A field is classified as one of three types:</title>
+<varlistentry><term>Normal</term><listitem><para>
+Fields which change frequently over time and whose representation is valid only at a specific time.
+<indexterm><primary>field</primary><secondary>normal</secondary></indexterm>
+These are typically valid on an hourly basis but can be set to minutes as well.
+Examples are msl pressure or system weather.
+</para></listitem></varlistentry>
+
+<varlistentry><term>Daily</term><listitem><para>
+Fields which have values valid for a specific day or portion of a day, for example, maximum temperature or minimum temperature.
+<indexterm><primary>field</primary><secondary>daily</secondary></indexterm>
+</para></listitem></varlistentry>
+
+<varlistentry><term>Static</term><listitem><para>
+Fields which change slowly enough to be considered to remain unchanged over a considerable period of time, for example, sea ice.
+<indexterm><primary>field</primary><secondary>static</secondary></indexterm>
+</para></listitem></varlistentry>
+</variablelist>
+
+<para>
+<indexterm><primary>field</primary><secondary>normal</secondary></indexterm>
+Normal fields are grouped into <glossterm linkend='g_depiction'>depictions</glossterm>, a collection of fields valid at the same time.
+</para>
+</sect1>
+<sect1 id='the_depiction_sequence'> <title>The depiction sequence</title>
+<para>
+Fields can be grouped into <indexterm><primary>depiction</primary></indexterm>depictions, a collection of fields at a specific time.
+A <indexterm><primary>depiction</primary><secondary>sequence</secondary></indexterm>
+<glossterm linkend='g_depiction_sequence'>depiction sequence</glossterm> is a collection of depictions that shows how the different fields change over time.
+A field does not have to exist in every depiction.
+<figure pgwide='0' float='1'><title>Depiction sequence with Normal fields</title>
+<mediaobject>
+<imageobject><imagedata fileref='png/FPA_Fields.png'/></imageobject>
+</mediaobject>
+</figure>
+</para> <para>
+Daily and static fields are in independent time sequences since they may begin or end in the middle of a day and span over several depictions.
+For example, maximum temperature could be defined as the highest temperature between early morning and late evening on a particular day.
+<figure pgwide='0' float='1'><title>Depiction sequence with Normal, Daily and Static fields</title>
+<mediaobject>
+<imageobject><imagedata fileref='png/Daily_Static_Fields.png'/> </imageobject>
+</mediaobject>
+</figure>
+</para><para>
+<indexterm><primary>field</primary><secondary>normal</secondary></indexterm>
+<indexterm><primary>field</primary><secondary>daily</secondary></indexterm>
+<indexterm><primary>field</primary><secondary>static</secondary></indexterm>
+Note that normal fields are grouped as depictions in one time <glossterm linkend='g_sequence'>sequence</glossterm>, but that individual daily and static fields each have separate time sequence.
+</para>
+</sect1>
+<sect1 id='the_fpa_process'> <title>The &FPA; process</title>
+<para>
+As a meteorologist, you add input to the &FPA; by using the field editors to identify and modify significant <glossterm linkend='g_features'>features</glossterm>
+<indexterm><primary>feature</primary></indexterm>
+on depictions and to link the features through a depiction series.
+This process, <indexterm><primary>time link</primary></indexterm><glossterm linkend='g_time_link'>time linking</glossterm>, allows the &FPA; to interpolate the depictions through time.
+For many forecasts, the &FPA; needs more than a few depictions to reasonably describe changes in weather parameters over time.
+</para> <para>
+<indexterm><primary>sequence</primary></indexterm>
+In the &FPA;, you have access to any field in the time sequence, but you can only work in (that is, edit or link) one field at a time.
+</para> <para>
+<orderedlist> <title>This is a brief overview of the &FPA; process:</title>
+<listitem><para>
+<indexterm><primary>sequence</primary></indexterm>
+Previously produced working depictions are automatically loaded into your active time sequence.
+</para> <para>
+You can use current information (new model predictions, observations, etc.) to modify or replace fields and you can use field editors and forecast tools to edit the fields.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>field</primary><secondary>normal</secondary></indexterm>
+You link the significant points on normal depictions to show how the weather parameters evolve over time.
+</para> <para>
+Use the Time Link tool to do this.
+</para> <para>
+Note: If you are producing only graphical products, you may not need interpolated depictions.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>interpolate</primary></indexterm>
+The &FPA; interpolates the depictions to create a set of intermediate depictions.
+</para></listitem>
+
+<listitem><para>
+The &FPA; creates forecast products or runs <glossterm linkend='g_allied_models'>Allied Models</glossterm>
+<indexterm><primary>allied model</primary></indexterm>
+based on the series of interpolated depictions.
+You can edit the resulting forecast products if desired.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<sect1 id='example_process'> <title>Example process</title>
+<para>
+<orderedlist>
+<listitem><para>
+<indexterm><primary>field</primary><secondary>normal</secondary></indexterm>
+<indexterm><primary>field</primary><secondary>daily</secondary></indexterm>
+<indexterm><primary>field</primary><secondary>static</secondary></indexterm>
+<indexterm><primary>sequence</primary></indexterm>
+Load any needed normal, daily or static fields into your active time sequence.
+<simplelist>
+<member><xref linkend='loading_normal_fields'/></member>
+<member><xref linkend='loading_fields_at_a_different_time'/></member>
+<member><xref linkend='loading_daily_fields'/></member>
+<member><xref linkend='loading_static_fields'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+Use Options to define the way you want your depictions to appear.
+<simplelist>
+<member><xref linkend='displaying_map_overlays'/></member>
+<member><xref linkend='user_interface_preferences'/></member>
+<member><xref linkend='defining_t0_depiction'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>guidance</primary></indexterm>
+Select one or more <glossterm linkend='g_guidance'>guidance</glossterm> products.
+<simplelist>
+<member><xref linkend='selecting_guidance_fields'/></member>
+<member><xref linkend='changing_the_appearance_of_a_field'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>scratchpad</primary></indexterm>
+Use the scratchpad to make notes on the depiction if desired.
+You can overlay a scratchpad on any depiction to make notes that you do not want to remain permanently on the depiction.
+<simplelist>
+<member><xref linkend='the_scratchpad'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+Use the surface editor to label the main features
+<indexterm><primary>feature</primary></indexterm>
+in the depiction (e.g., label the highs and lows).
+<simplelist>
+<member><xref linkend='editing_continuous_fields'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+Adjust the position of the contours if desired (e.g., you may want to deepen a low or sharpen a trough).
+<simplelist>
+<member><xref linkend='editing_continuous_fields'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+Use the line editor to add fronts to your depiction.
+<simplelist>
+<member><xref linkend='editing_lines'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+Use the area editor to create weather areas and use weather attributes to define current weather parameters.
+The guidance annotations help you in defining the weather areas.
+<simplelist>
+<member><xref linkend='editing_areas_and_wind_areas'/></member>
+<member><xref linkend='defining_area_values'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+Use Time Link to link the depictions through time.
+The links are used to interpolate the forecast over a specified period.
+Selected link chains can also be transferred to a feature motion field to be used in output products.
+<simplelist>
+<member><xref linkend='time_linking_and_interpolation'/></member>
+<member><xref linkend='editing_linkchains'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+Interpolate the depictions.
+<simplelist>
+<member><xref linkend='interpolating_the_linked_depictions'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>  <indexterm><primary>allied model</primary></indexterm>
+Run an allied model.
+<simplelist>
+<member><xref linkend='running_allied_models'/></member>
+</simplelist>
+</para></listitem>
+
+<listitem><para>
+Generate the forecasts.
+<simplelist>
+<member><xref linkend='generating_forecasts_and_other_products'/></member>
+</simplelist>
+</para></listitem>
+</orderedlist>
+The exact procedure followed is individual and evolves for each person with experience.
+</para>
+</sect1>
+<sect1 id='the_fpa_components'> <title>The &FPA; components</title>
+<sect2 id='field_editors'> <title>Field editors</title>
+<para>
+The &FPA; provides six different editors.
+Each is suited to a particular type of field.
+<variablelist>
+<varlistentry> <term>continuous surface editor</term> <listitem><para>
+for single value grid point fields (such as pressure, temperature and wave height)
+<indexterm><primary>editor</primary><secondary>continuous surface</secondary></indexterm>
+- allows you to manipulate surfaces by moving, dragging, poking, stomping or merging and enables the labelling of contours and maxima and minima points.
+</para></listitem></varlistentry>
+
+<varlistentry> <term>vector field editor</term> <listitem><para>
+for component grid point fields with both magnitude and direction (such as wind and ocean waves)
+<indexterm><primary>editor</primary><secondary>vector</secondary></indexterm>
+- allows you to change surfaces by moving, dragging, poking, stomping or merging and enables you to change either the magnitude or direction of the field or both.
+</para></listitem></varlistentry>
+
+<varlistentry> <term>area editor</term> <listitem><para>
+for discrete features (such as weather and ice cover)
+<indexterm><primary>editor</primary><secondary>area</secondary></indexterm>
+- allows you to outline areas and divide, modify, move, merge and label the areas.
+</para></listitem></varlistentry>
+
+<varlistentry> <term>link chain editor</term> <listitem><para>
+for time sequences (such as feature motion or travel routes)
+<indexterm><primary>editor</primary><secondary>link chain</secondary></indexterm>
+- allows you to add, move, modify, merge and adjust nodes for link chain features.
+</para></listitem></varlistentry>
+
+<varlistentry> <term>line editor</term> <listitem><para>
+for line features (such as fronts and jet axes)
+<indexterm><primary>editor</primary><secondary>line</secondary></indexterm>
+- allows you to draw lines and modify, move, merge and label line features.
+</para></listitem></varlistentry>
+
+<varlistentry> <term>point editor</term> <listitem><para>
+for point values (such as snow depth or precipitation totals)
+<indexterm><primary>editor</primary><secondary>point</secondary></indexterm>
+- allows you to add, move, modify, merge and sample points on your depiction.
+</para></listitem></varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2 id='tools'> <title>Tools</title>
+<para>
+<variablelist>
+<varlistentry><term>Customization</term> <listitem><para>
+You can specify which elements
+<indexterm><primary>customization</primary></indexterm>
+<indexterm><primary>elements</primary></indexterm>
+to display, add map overlays, change the colour of the map, set the location for dialogs on multi-headed systems, set the T0 depiction and change the appearance of the cursor.
+</para></listitem></varlistentry>
+
+<varlistentry><term>Creating a Sequence of Weather Depictions</term> <listitem><para>
+The &FPA; allows you to easily load (and then modify) a sequence of depictions.
+<indexterm><primary>sequence</primary></indexterm>
+You can choose
+<indexterm><primary>field</primary><secondary>normal</secondary></indexterm>
+<glossterm linkend='g_normal_fields'>normal</glossterm>,
+<indexterm><primary>field</primary><secondary>daily</secondary></indexterm>
+<glossterm linkend='g_daily_fields'>daily</glossterm> or
+<indexterm><primary>field</primary><secondary>static</secondary></indexterm>
+<glossterm linkend='g_static_fields'>static</glossterm> fields from NWP, from previously archived depictions, from existing depictions, from
+<indexterm><primary>allied model</primary></indexterm>
+allied model output or from any analysis or forecast process that produces grid point data (<menuchoice><guimenu>Fields</guimenu><guimenuitem>Load</guimenuitem></menuchoice>).
+These depictions and fields serve as the base for the creation of the forecast.
+</para>
+<para>
+<indexterm><primary>depiction</primary><secondary>sequence</secondary></indexterm>
+The existing depiction(s) could be from any other depiction sequence in your office or from another weather centre.
+</para></listitem></varlistentry>
+
+<varlistentry><term>Scratchpad</term><listitem><para>
+The &FPA; provides a scratchpad to use with your depictions.
+<indexterm><primary>scratchpad</primary></indexterm>
+This is like a clear piece of Plexiglas that you lay over your depictions.
+Any notations you make are on the scratchpad only.
+This can be useful for noting the position of a guidance feature as a function of time throughout the forecast period.
+</para></listitem></varlistentry>
+
+<varlistentry><term>Guidance</term> <listitem><para>
+Displays guidance fields.
+<indexterm><primary>guidance</primary></indexterm>
+You can check if new guidance is available, update guidance or add guidance products, display guidance and sample guidance fields.
+<indexterm><primary>sequence</primary></indexterm>
+</para></listitem></varlistentry>
+
+<varlistentry><term>Time Linking and Interpolating a Sequence</term> <listitem><para>
+You link the significant points on a
+<indexterm><primary>time link</primary></indexterm>
+<indexterm><primary>interpolate</primary></indexterm>
+<indexterm><primary>field</primary><secondary>normal</secondary></indexterm>
+normal field through time using Time Link, then interpolate them.
+The links define how the depictions are time interpolated.
+<indexterm><primary>depiction</primary><secondary>animate</secondary></indexterm>
+<indexterm><primary>interpolate</primary></indexterm>
+You can then animate the interpolated sequence to view the movement.
+You can also animate the depictions before you link to see what features <indexterm><primary>feature</primary></indexterm>
+on the continuous fields are significant and therefore should be linked through time.
+</para></listitem></varlistentry>
+
+<varlistentry><term>Creating a Forecast</term> <listitem><para>
+Using the &FPA;, you can easily create graphical and tabular displays of a forecast (<menuchoice><guimenu>Products</guimenu><guimenuitem>Graphics</guimenuitem></menuchoice>).
+You have done all the work you need to do through your analysis and creation of the depictions.
+Now all you have to do to create the display for a forecast is select the forecast you want from a list.
+The graphical or tabular product is created from the interpolated depictions.
+(Examples of forecast products are provided and can be modified as desired by forecast offices.)
+</para></listitem></varlistentry>
+</variablelist>
+</para>
+</sect2>
+</sect1>
+</chapter>

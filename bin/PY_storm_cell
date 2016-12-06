@@ -1,0 +1,76 @@
+#!/usr/bin/python
+
+### DO NOT EDIT
+###-->
+import sys
+import FPALib
+
+fileName = sys.argv[1]
+dict     = FPALib.get_dict(fileName)
+###<--
+
+### INSERT YOUR CODE HERE
+###-->
+# Compute wind label for jet wind if possible
+if ( not dict.has_key(FPALib.FPA_lnode_type) ) or ( not dict.has_key(FPALib.FPA_lnode_time) ) or ( not dict.has_key(FPALib.FPA_label_type) ):
+	#print FPALib.NO_ATTRIBUTE % (FPALib.FPA_lnode_type)
+	#print FPALib.NO_ATTRIBUTE % (FPALib.FPA_lnode_time)
+	#print FPALib.NO_ATTRIBUTE % (FPALib.FPA_label_type)
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+# Attributes of interpolated nodes are not changed
+stype = dict[FPALib.FPA_lnode_type]
+if ( FPALib.blank(stype) ) or 
+	( stype == FPALib.FPA_node_class_unknown ) or 
+	( stype == FPALib.Fpa_node_class_interp ):
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+# Get the storm cell time ... which will be in minutes
+splus = dict[FPALib.FPA_lnode_time]
+try:
+	mplus = int(splus)
+except ValueError:
+	mplus = 0
+
+# Get the storm cell label type
+stype = dict[FPALib.FPA_label_type]
+if ( not FPALib.blank(stype) ):
+	# Storm cells with time less than zero must be 'hist'
+	if ( mplus < 0 and not stype == "hist"):
+		print "[%s] DIAG: Modify '%s' from '%s' to 'hist' for time: %d" % 
+			(sys.argv[0], FPALib.FPA_label_type, stype, mplus)
+		dict[FPALib.FPA_label_type] = "hist"
+	# Storm cells with time of zero must be 'hist_end' or 'prestorm_start'
+	elif ( ( mplus == 0 ) and ( not stype == "hist_end" ) and ( not stype == "prestorm_start") ):
+		# Modify prestorm cell types
+		if stype.startswith("prestorm"):
+			print "[%s] DIAG: Modify '%s' from '%s' to 'prestorm_start' for time: %d" 
+			% (sys.argv[0], FPALib.FPA_label_type, stype, mplus)
+			dict[FPALib.FPA_label_type] = "prestorm_start"
+		# Modify all other storm cell types
+		else
+			print "[%s] DIAG: Modify '%s' from '%s' to 'hist_end' for time: %d" % 
+				(sys.argv[0], FPALib.FPA_label_type, stype, mplus)
+			dict[FPALib.FPA_label_type] = "hist_end"
+
+	# Storm cells with time greater than zero must be 'fcst' or 'prestorm'
+	elif ( ( mplus > 0 ) and ( not stype.startswith("fcst") ) and ( not stype == "prestorm") ):
+		# Modify prestorm cell types
+		if ( stype.startswith("prestorm") ):
+			print "[%s] DIAG: Modify '%s' from '%s' to 'prestorm' for time: %d" % 
+				(sys.argv[0], FPALib.FPA_label_type, stype, mplus)
+			dict[FPALib.FPA_label_type] = "prestorm"
+		# Modify all other storm cell types
+		else:
+			print "[%s] DIAG: Modify '%s' from '%s' to 'fcst' for time: %d" % 
+				(sys.argv[0], FPALib.FPA_label_type, stype, mplus)
+			dict[FPALib.FPA_label_type] = "fcst"
+###<--
+
+### ALL DONE! 
+###-->
+FPALib.print_dict(fileName, dict)
+sys.exit()
+###<--

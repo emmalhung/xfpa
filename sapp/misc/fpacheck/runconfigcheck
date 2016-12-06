@@ -1,0 +1,33 @@
+#!/bin/bash
+#  Bourne script to test development config_check routines
+
+if [ $# -eq 1 ]
+then
+	outfile=${1}
+else
+	outfile=diagconfigcheck
+fi
+if [ -f ${outfile} ]
+then
+	echo "*** File ${outfile} already exists ***"
+	echo "     Type:  go    to overwrite it"
+	echo "     Type:  stop  to stop now"
+	read ans
+	if [ "$ans" != go ]
+	then
+		echo "*** ...config_check aborted ***"
+		exit 1
+	fi
+	rm -f ${outfile}
+fi
+echo "*** Output to file ${outfile} ***"
+
+# Define the development environment
+if [ -r $FPA/bin/.fpaenvrc ]
+then
+  . $FPA/bin/.fpaenvrc
+fi
+
+# Run the development version of config_check
+#
+time config_check av_atlantic Y 1>${outfile} 2>&1

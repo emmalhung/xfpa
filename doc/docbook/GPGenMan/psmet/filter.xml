@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_filter'> <title>@filter</title> <titleabbrev>@filter</titleabbrev>
+<para>
+Set a minimum distance between points for drawing lines or outlines, to allow for editing within graphics post processor.
+</para><para>
+Note that it is important to reset the filter value to 0 when the required lines or outlines have been drawn.
+</para><para>
+Note that geographical outlines should be drawn with a filter value of 0.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&valuehead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><replaceable>filter_value</replaceable></para></entry>
+<entry colname='type'><para>(real)</para></entry>
+<entry colname='desc'><para>Minimum allowed distance between consecutive points drawn in a line or outline (in display units)
+</para><para>(Note: a value of "0" will draw all points)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@filter { 0.1 }</programlisting>
+Sets the minimum allowed distance between consecutive points in a line to 0.1 "units". Points closer
+than this distance will be omitted. (Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@filter { 0 }</programlisting>
+Reset the filter value to display ALL points in a line or outline.
+</para></example>
+</para></sect2>

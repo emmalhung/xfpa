@@ -1,0 +1,12 @@
+Notes on Xgl library.
+
+This library separated into two locations, one in lib/glib and one in slib/Xgl.
+The lib/glib functions contain no references to X based functions, but do allow
+for initialization and the creation of virtural windows so that image manipulation
+can be done. The slib/Xgl functions contain all of the drawing functionality and
+allow the output of images to a screen.
+
+The functions for both libraries are kept in the Xgl library for ease of maintenance,
+as the two parts are closely related. All files named glib*.[ch] go into lib/glib.
+The script CPGLIB is included in this library to do this, but must be modified for use
+in a particular environment as it assumes the authors setup.

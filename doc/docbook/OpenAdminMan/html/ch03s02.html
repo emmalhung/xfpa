@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.2. Installation/update of FPA databases</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch03.html" title="Chapter 3. Preparing to Install FPA Source Code" /><link rel="prev" href="ch03s01s07.html" title="3.1.7. Test the FPA software" /><link rel="next" href="ch03s02s01.html" title="3.2.1. Test the FPA database" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.2. Installation/update of <span class="acronym">FPA</span> databases</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s01s07.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Preparing to Install <span class="acronym">FPA</span> Source Code</th><td width="20%" align="right"> <a accesskey="n" href="ch03s02s01.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="install_database"></a>3.2. Installation/update of <span class="acronym">FPA</span> databases</h2></div></div></div><div class="toc"><dl><dt><span class="sect2"><a href="ch03s02s01.html">3.2.1. Test the <span class="acronym">FPA</span> database</a></span></dt></dl></div><p>
+<a id="id2052579" class="indexterm"></a>
+You may wish to update your existing <span class="acronym">FPA</span> databases and/or install one or more new databases.
+It is intended that an <span class="acronym">FPA</span> database should be administered from a single user account.
+However, one user can administer several databases.
+</p><p>
+The <span class="acronym">FPA</span> master directory must be accessible (i.e. has been installed or remote mounted).
+Repeat the following steps for each <span class="acronym">FPA</span> database you wish to install or update.
+</p><div class="orderedlist"><ol type="1"><li><p>
+If necessary, create the administrator account for this <span class="acronym">FPA</span> database.
+</p></li><li><p>
+Log in to the administrator account for this <span class="acronym">FPA</span> database.
+</p></li><li><p>
+If necessary, update the local environment profile file.
+All <span class="acronym">FPA</span> software depends on the existence of the environment variable, <code class="envar">FPA</code>, which contains the full path of the <span class="acronym">FPA</span> master directory.
+Edit the environment profile file (<code class="filename">.profile</code>, <code class="filename">.csh.login</code>, <code class="filename">.vueprofile</code>, <code class="filename">.bash_profile</code>, etc) that corresponds with the normal login shell for the administrator account, and add an exported environment variable called <span class="acronym">FPA</span>, which has a value equal to the full path of the <span class="acronym">FPA</span> master directory. If you created a user account for <span class="acronym">FPA</span> development and the source code is located in a directory called <code class="filename">fpav8</code> then you might edit your profile file as follows:
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="user_profile"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 3.7. Sample (bourne shell) user profile file</b></p><pre xmlns="http://www.w3.org/1999/xhtml" class="screen">FPA="/home/fpadev/fpav8"
+PATH="$FPA/bin:$PATH"
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+fi
+export FPA PATH </pre></div><p>
+</p></li><li><p>
+When done, re-invoke the new profile by "sourcing" (dotting) it or by logging out and back in.
+</p></li><li><p>
+For each database controlled by this administrator account, build or update the database and setup file.
+</p><div class="orderedlist"><ol type="i"><li><p>
+Execute the <span><strong class="command">mkfpadb</strong></span> script.
+This script first builds or updates the <span class="acronym">FPA</span> environment "dot" file, <code class="filename">$HOME/.fparc</code>.
+If this file already exists, and has not yet been updated, <span><strong class="command">mkfpadb</strong></span> attempts to preserve all your customizations.
+The old version is saved for comparison.
+</p></li><li><p>
+Next, <span><strong class="command">mkfpadb</strong></span> asks for the setup directory and the name of a setup file.
+A new setup file is created, using the template setup file as a model.
+If the given setup file exists, the map projection information and database directory are preserved, and a copy of the original is made for comparison.
+</p></li><li><p>
+This script asks you for the data directory name, or allows you to redefine the data directory if the setup file already exists.
+It then builds or updates the database, creating various data subdirectories if needed.
+</p></li><li><p>
+You must obtain a <code class="filename">base_map.fpa</code> file and place it in the <code class="filename">$HOME/your_database/Maps</code> directory to display a background map in the field editor.
+
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+You can find a number of example <span class="acronym">FPA</span> map files in the directory <code class="filename">$FPA/data/common/Examples</code>.
+</p><p>TODO: There was a tool that would translate ESRI Shapefiles into FPA map metafiles, it is now out of date. Somebody with ArcGIS programming experience might want to try replace it.</p></div><p>
+If you chose to name your background map something other than <code class="filename">base_map.fpa</code> you will need to edit your setup file (the "[map.base]" section in the 'interface' block) to reflect this.
+</p></li><li><p>
+Customize the setup file that was built for you.
+The new setup file contains instructions for customizing.
+Lines beginning with "#!" describe sections that will generally have to be modified.
+If you updated an existing setup file, there is no guarantee that all your settings will be preserved reliably.
+Use the retained copy of the original for comparison.
+</p></li><li><p>
+Follow the customization instructions in the file <code class="filename">$HOME/.fparc</code>.
+This file is sourced ("dotted") by all <span class="acronym">FPA</span> applications, to set a number of environment variables to control such things as where to search for the setup file, where to send log output and where to send printer output.
+If updating several databases, this file is modified only the first time, and all existing variable settings will have been preserved.
+In particular, you may wish to supply the name of the <a id="defaultsetup"></a>default setup file (<code class="envar">FPA_SETUP_FILE</code>).
+This should probably be the name of one of the setup files that was built in the previous steps.
+The local destination for <span class="acronym">GRIB</span> files can also be specified (<code class="envar">FPA_LOCAL_GRIB</code>).
+This specifies the default directory where the <span class="acronym">GRIB</span> files are to be found by the ingest process.
+</p></li></ol></div><p>
+</p></li></ol></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s01s07.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s02s01.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.1.7. Test the <span class="acronym">FPA</span> software </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.2.1. Test the <span class="acronym">FPA</span> database</td></tr></table></div></body></html>

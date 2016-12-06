@@ -1,0 +1,58 @@
+# Define all the usual places to look for things:
+LIBPATH = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(SLIBDIR)/$${PLATFORM}
+INCPATH = $${INCLUDE_PATH} $${X_INCLUDE} $${FT2_INCLUDE} \
+			-I$(INCDIR) -I$(LIBDIR) -I$(SINCDIR) -I$(SLIBDIR)
+
+LDIR    = $(SLIBDIR)/$(PLATFORM)
+LIB     = $(LDIR)/libFpaXgl.a
+
+HEADER  = $(SINCDIR)/FpaXgl.h
+
+MODULES =	color.o draw.o font.o image_output.o \
+			init.o misc_fcns.o motif.o \
+			snapshot.o windowToFile.o
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(HEADER) $(MODULES) $(LIB)
+
+
+# Rules for building the library:
+all lib:	$(HEADER) Pmodules $(LIB)
+		@	echo FPA $${PLATFORM} X graphics library ready
+		@	echo
+$(LIB):		$(MODULES)
+		@	echo Re-building FPA $${PLATFORM} X graphics library
+		@   if [ ! -d $(LDIR) ]; then mkdir -p $(LDIR); fi
+		@	if [ -f $(LIB) ]; then rm -f $(LIB); fi
+		@	sleep 1
+		@	$${LIB_ARCHIVE} $(LIB) $(MODULES) 2>/dev/null
+
+
+# Rules for building the object modules:
+modules:	$(HEADER) Pmodules $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA X graphics library"
+		
+
+$(MODULES): 		$(HEADER)	$(SINCDIR)/Xu.h	FpaXgl.h FpaXglP.h glib.h glib_private.h
+draw.o:				$(MATH)
+font.o:				$(MATH)
+
+
+# Rules for building the master header file(s):
+defs header:	$(HEADER)
+$(HEADER):	FpaXgl.h glib.h
+		@	echo "Updating Fpa X graphics Library header"
+		@	cp -f FpaXgl.h $(HEADER)
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} X graphics module $<"
+	@	$${C_COMPILER} -c $(INCPATH) $(C_OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

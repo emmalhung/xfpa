@@ -1,0 +1,14 @@
+# Command file to set up FPA defined functions etc.
+
+# NOTE: This is not a script - it must be sourced.
+
+opsys=`uname -s`
+case $opsys in
+	Linux)	opt=-e;;
+	*)		opt=;;
+esac
+
+pecho()
+	{
+	echo $opt "$*"
+	}

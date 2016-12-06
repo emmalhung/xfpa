@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_legend'> <title>@legend</title> <titleabbrev>@legend</titleabbrev>
+<para>
+Display a graphic symbol or text at a location away from the main display.
+Note that this directive is similar to the <link linkend='ps_add'>@add</link> and <link linkend='ps_text'>@text</link> directives, except
+that the graphics and text from this directive are grouped separately from the
+remainder of the display, where they can be easily copied or moved to appropriate
+locations.
+Note that the <link linkend='ps_legend'>@legend</link> display is ALWAYS anchored to the centre of the page!
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/symbol.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/string.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/text_size.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotation.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_off.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline_first.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font_weight.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/italics.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/char_space.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/word_spacing.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@legend
+{
+  symbol = $FPA/setup/pdf/svgmet/common/svg/low;
+  scale  = 25;
+  x_off  = 5.0;
+  y_off  = 0.5;
+}</programlisting>
+Display the graphic from file <filename><envar>$FPA</envar>/setup/pdf/svgmet/common/svg/low</filename> 5.0 "units" to the right and
+0.5 "units" above the centre of the page. The graphic will be displayed at 25% of its original size.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

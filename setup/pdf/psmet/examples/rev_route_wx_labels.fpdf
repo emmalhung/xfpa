@@ -1,0 +1,283 @@
+! Set the default presentation for black text with no outline ...
+@presentation
+	{
+	outline       = none;
+	fill          = X11 Black;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	text_size     = 0.15;
+	char_space    =  0;
+	word_space    = 60;
+	}
+
+! Set named presentations to draw a surrounding box filled with white ...
+@label_display
+	{
+	display_name  = label1;
+	margin_left   =  0.05;
+	margin_right  =  0.00;
+	margin_top    =  0.00;
+	margin_bottom =  0.05;
+	line_width    =  0.02;
+	outline       = X11 Black;
+	interior_fill = X11 White;
+	}
+@label_display
+	{
+	display_name  = label2;
+	margin_left   =  0.02;
+	margin_right  =  0.02;
+	margin_top    =  0.00;
+	margin_bottom =  0.05;
+	line_width    =  0.02;
+	outline       = X11 Black;
+	interior_fill = X11 White;
+	}
+
+! Set named presentations for some underlines ...
+@label_display
+	{
+	display_name  = under1;
+	margin_bottom =  0.02;
+	line_width    =  0.01;
+	outline       = X11 Black;
+	interior_fill = none;
+	}
+@label_display
+	{
+	display_name  = over1;
+	margin_bottom = -0.13;
+	line_width    =  0.01;
+	outline       = X11 Black;
+	interior_fill = none;
+	}
+
+! Display local weather cloud labels at cross section locations ...
+@sample_field
+	{
+	element                  = weather_local;
+	level                    = surface;
+	format                   = direct;
+	display_name             = label2;
+	display_type             = sized_box;
+	cross_section_name       = rev_route_cross_section;
+	location_look_up         = rev_route_samples;
+	vertical_look_up         = xsect_heights;
+	vertical_element         = weather_local;
+	vertical_level           = surface;
+	vertical_attribute_upper = cloud_top;
+	vertical_attribute_lower = cloud_base;
+
+	attribute               = cloud_amount;
+	attribute_anchor        = none;
+	attribute_justification = centre;
+	attribute_vertical_just = centre;
+	}
+
+! Display system weather cloud labels at cross section locations ...
+! (Note that only FPA_category "freezing/frozen/precip/vis/cloud" are displayed!)
+
+! First display third layer cloud ...
+@sample_field
+	{
+	element                  = weather_system;
+	level                    = surface;
+	category_attribute       = FPA_category;
+	category                 = freezing  frozen  precip  vis  cloud;
+	format                   = direct;
+	mark                     = triangle_up;
+	mark_scale               = 100.0;
+	display_name             = label1;
+	display_type             = sized_box;
+	cross_section_name       = rev_route_cross_section;
+	location_look_up         = rev_route_samples;
+	vertical_look_up         = xsect_heights;
+	vertical_element         = weather_system;
+	vertical_level           = surface;
+	vertical_attribute_upper = cloud_top_3;
+	vertical_attribute_lower = cloud_base_3;
+
+	attribute               = cloud_top_3;
+	attribute_anchor        = none;
+	attribute_display_name  = under1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = left;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_base_3;
+	attribute_anchor        = cloud_top_3;
+	attribute_ref           = lower_centre;
+	attribute_display_name  = over1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_amount_3;
+	attribute_anchor        = cloud_base_3;
+	attribute_ref           = upper_left;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+	attribute_x_off         = -0.08;
+	attribute_y_off         = -0.02;
+	attribute_format        = symbol;
+	attribute_symbol_scale  = 10;
+	attribute_look_up       = route_clouds;
+	attribute_outline       = X11 Black;
+	attribute_line_width    = 0.02;
+	}
+
+! Next display second layer cloud ...
+@sample_field
+	{
+	element                  = weather_system;
+	level                    = surface;
+	category_attribute       = FPA_category;
+	category                 = freezing  frozen  precip  vis  cloud;
+	format                   = direct;
+	mark                     = triangle_up;
+	mark_scale               = 100.0;
+	display_name             = label1;
+	display_type             = sized_box;
+	cross_section_name       = rev_route_cross_section;
+	location_look_up         = rev_route_samples;
+	vertical_look_up         = xsect_heights;
+	vertical_element         = weather_system;
+	vertical_level           = surface;
+	vertical_attribute_upper = cloud_top_2;
+	vertical_attribute_lower = cloud_base_2;
+
+	attribute               = cloud_top_2;
+	attribute_anchor        = none;
+	attribute_display_name  = under1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = left;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_base_2;
+	attribute_anchor        = cloud_top_2;
+	attribute_ref           = lower_centre;
+	attribute_display_name  = over1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_amount_2;
+	attribute_anchor        = cloud_base_2;
+	attribute_ref           = upper_left;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+	attribute_x_off         = -0.08;
+	attribute_y_off         = -0.02;
+	attribute_format        = symbol;
+	attribute_symbol_scale  = 10;
+	attribute_look_up       = route_clouds;
+	attribute_outline       = X11 Black;
+	attribute_line_width    = 0.02;
+	}
+
+! Next display first layer cloud ...
+@sample_field
+	{
+	element                  = weather_system;
+	level                    = surface;
+	category_attribute       = FPA_category;
+	category                 = freezing  frozen  precip  vis  cloud;
+	format                   = direct;
+	mark                     = triangle_up;
+	mark_scale               = 100.0;
+	display_name             = label1;
+	display_type             = sized_box;
+	cross_section_name       = rev_route_cross_section;
+	location_look_up         = rev_route_samples;
+	vertical_look_up         = xsect_heights;
+	vertical_element         = weather_system;
+	vertical_level           = surface;
+	vertical_attribute_upper = cloud_top;
+	vertical_attribute_lower = cloud_base;
+	y_display_off            = 0.20;
+
+	attribute               = cloud_top;
+	attribute_anchor        = none;
+	attribute_display_name  = under1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = left;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_base;
+	attribute_anchor        = cloud_top;
+	attribute_ref           = lower_centre;
+	attribute_display_name  = over1;
+	attribute_display_type  = sized_underline;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_amount;
+	attribute_anchor        = cloud_base;
+	attribute_ref           = upper_left;
+	attribute_justification = right;
+	attribute_vertical_just = centre;
+	attribute_x_off         = -0.08;
+	attribute_y_off         = -0.02;
+	attribute_format        = symbol;
+	attribute_symbol_scale  = 10;
+	attribute_look_up       = route_clouds;
+	attribute_outline       = X11 Black;
+	attribute_line_width    = 0.02;
+	}
+
+! Next display precipitation symbol with first layer cloud ...
+@sample_field
+	{
+	element                  = weather_system;
+	level                    = surface;
+	category_attribute       = FPA_category;
+	category                 = freezing  frozen  precip;
+	format                   = direct;
+	cross_section_name       = rev_route_cross_section;
+	location_look_up         = rev_route_samples;
+	vertical_look_up         = xsect_heights;
+	vertical_element         = weather_system;
+	vertical_level           = surface;
+	vertical_attribute_upper = cloud_top;
+	vertical_attribute_lower = cloud_base;
+	y_display_off            = -0.40;
+
+	attribute               = weather;
+	attribute_anchor        = none;
+	attribute_format        = symbol;
+	attribute_symbol_scale  = 80;
+	attribute_look_up       = weather_syno;
+	attribute_justification = centre;
+	attribute_vertical_just = centre;
+	}
+
+! Display visibility and weather labels at cross section locations ...
+! (Note that only FPA_category "freezing/frozen/precip/vis" are displayed!)
+
+! Next display surface weather and visibility ...
+@sample_field
+	{
+	element                  = weather_system;
+	level                    = surface;
+	category_attribute       = FPA_category;
+	category                 = freezing  frozen  precip  vis;
+	format                   = direct;
+	display_name             = label1;
+	display_type             = sized_box;
+	cross_section_name       = rev_route_cross_section;
+	location_look_up         = rev_route_samples;
+	vertical_look_up         = xsect_heights;
+
+	attribute               = visibility;
+	attribute_anchor        = none;
+	attribute_format        = direct %s;
+	attribute_justification = right;
+	attribute_vertical_just = bottom;
+
+	attribute               = weather;
+	attribute_anchor        = visibility;
+	attribute_ref           = lower_right;
+	attribute_justification = left;
+	attribute_x_off         = 0.05;
+	}

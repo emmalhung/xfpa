@@ -1,0 +1,45 @@
+#!/usr/bin/python
+
+### DO NOT EDIT
+###-->
+import sys
+import FPALib
+
+fileName = sys.argv[1]
+dict     = FPALib.get_dict(fileName)
+###<--
+
+### INSERT YOUR CODE HERE
+###-->
+# Compute wind label for jet wind if possible
+if ( not dict.has_key(FPALib.EVAL_spval) ) and ( not dict.has_key(FPALib.EVAL_contour)):
+	#print FPALib.NO_ATTRIBUTE % (FPALib.EVAL_spval)
+	#print FPALib.NO_ATTRIBUTE % (PALib.EVAL_contour)
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+# Get spline value (if available)
+val = dict[FPALib.EVAL_spval]
+if (FPALib.blank(val)): val = dict[FPALib.EVAL_contour]
+
+# Determin short form of spline value
+try:
+	dval = float(val)
+except ValueError:
+	#print FPALib.INVALID_ATTRIBUTE % (FPALib.EVAL_spval, dict[FPALib.EVAL_spval])
+	#print FPALib.INVALID_ATTRIBUTE % (FPALib.EVAL_contour, dict[FPALib.EVAL_contour])
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+	
+modval = round(dval % 100)
+smodval = "%.2d" % modval
+
+# Set 'EVAL_mod100_spval' value
+dict['EVAL_mod100_spval'] = smodval
+###<--
+
+### ALL DONE! 
+###-->
+FPALib.print_dict(fileName, dict)
+sys.exit()
+###<--

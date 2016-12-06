@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>C.4. Examples</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apc.html" title="Appendix C. Presentation and Presentation.name" /><link rel="prev" href="apcs03.html" title="C.3. Display Options" /><link rel="next" href="apd.html" title="Appendix D. Product Definition File Formats" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">C.4. Examples</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apcs03.html">Prev</a> </td><th width="60%" align="center">Appendix C. Presentation and Presentation.<span xmlns="" class="replaceable">name</span></th><td width="20%" align="right"> <a accesskey="n" href="apd.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2081800"></a>C.4. Examples</h2></div></div></div><p>
+<a id="id2081806" class="indexterm"></a>
+The following examples were drawn from $<code class="filename">FPA/config/Presentation.master</code>.
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2081821"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example C.1. Vector &amp; Contour</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+Describes the presentation for the wave height vector field for all levels and all models.
+There are dashed yellow contours at 1 and 2 meters, solid yellow contours at 3 and 4 meters and solid red contours every 2m starting from 5m.
+A grid of thin yellow arrows will be displayed with one arrow per map element.
+Maxima will be denoted by yellow plus marks and minima will be denoted by yellow diamond marks 
+</p></div><p>
+</p><pre class="programlisting">
+field    uv_wave_hgt    ALL    ALL
+  member    vector
+    units     m
+    contour   list 1 2
+      colour  Yellow
+      style   dash
+    contour   list 3 4
+      colour  Yellow
+      style   solid
+      width   1
+    contour   range 5 * 5 2
+      colour  Red
+      style   solid
+      width   1
+    vector    1
+      colour  Yellow
+      btype   arrow    dirto    noval
+      width   thin
+      length  30.0
+    maxima    1 *
+      colour  Yellow
+      marker  plus
+    minima    1 *
+      colour  Yellow
+      marker  diamond  
+</pre><p>
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2081843"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example C.2. Plot</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+Describes the presentation for the storm plot field with level msl and for all models.
+Each point will feature a circle with a cross surround by value 1 above, value 2 to the left and value 3 to the right.
+The values appear in Green Simplex font and the marks are DeepPink.
+</p></div><p>
+</p><pre class="programlisting">
+field    storms    msl    ALL 
+  member  plot
+    subfield  label value1  
+      offset  0 +10
+      colour  Green
+      font    simplex 
+      size    15.0    
+    subfield  label value2  
+      offset  -10 0
+      colour  Green
+      font    simplex 
+      size    15.0    
+    subfield  label value3  
+      offset  10 0
+      colour  Green
+      font    simplex 
+      size    15.0    
+    subfield  mark c1
+      colour  DeepPink
+      marker  circle  
+      size    10.0    
+    subfield  mark c2
+      colour  DeepPink
+      marker  cross
+      size    7.0
+</pre><p>
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2081864"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example C.3. Discrete with Labels</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+Describes the presentation of the weather_system area field for all levels and all models.
+In this example presentation information has been grouped by FPA_category.
+The categories are freezing, frozen, precip, vis, and cloud.
+The outline colour, line style, and line width are set for each category.
+The presentation for weather labels is also set here.
+In addition to the previous categories we have a category none and a default presentation blocks.
+The label size, colour, shadow, and font are set.
+</p></div><p>
+</p><pre class="programlisting">
+field weather_system ALL ALL
+  member discrete weather
+    category   freezing
+      colour   Cyan
+      style    solid
+      width    5
+    category   frozen
+      colour   SkyBlue
+      style    solid
+      width    3
+    category   precip
+      colour   Green
+      style    solid
+      width    3
+    category   vis
+      colour   Yellow
+      style    solid
+      width    2
+    category   cloud
+      colour   Firebrick
+      style    solid
+      width    1
+  member spot labels
+    class area
+      class_member label value
+        category  none
+          size    label
+          colour  Cyan
+          shadow  CornflowerBlue CornflowerBlue
+          font    simplex
+        category  frozen
+          size    label
+          colour  Black
+          shadow   SkyBlue SkyBlue
+          font    simplex
+        category  freezing
+          size    label
+          colour  Black
+          shadow  Cyan Cyan
+          font    simplex
+        category  precip
+          size    label
+          colour  Green
+          shadow  Firebrick Firebrick
+          font    simplex
+        category  vis
+          size    label
+          colour  Yellow
+          shadow  Firebrick Firebrick
+          font    simplex
+        category  cloud
+          size    label
+          colour  Goldenrod
+          shadow  Firebrick Firebrick
+          font    simplex
+        default
+          size    label
+          colour  Green
+          font    simplex
+</pre><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apcs03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apc.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apd.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">C.3. Display Options </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix D. Product Definition File Formats</td></tr></table></div></body></html>

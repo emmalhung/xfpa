@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.7. Attribute Entry Menu Files</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch06.html" title="Chapter 6. Configuration Files" /><link rel="prev" href="ch06s06.html" title="6.6. Memory Preset Configuration File Format" /><link rel="next" href="ch06s07s01.html" title="6.7.1. Object Specification" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.7. Attribute Entry Menu Files</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s06.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Configuration Files</th><td width="20%" align="right"> <a accesskey="n" href="ch06s07s01.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="c6_attrib_menu"></a>6.7. Attribute Entry Menu Files</h2></div></div></div><div class="toc"><dl><dt><span class="sect2"><a href="ch06s07s01.html">6.7.1. Object Specification</a></span></dt></dl></div><p>
+<a id="id2070086" class="indexterm"></a>
+The files in the Menus directory contain definitions of attribute entry menus.
+The name of the file is set in the <strong class="userinput"><code>Elements</code></strong> block of the <code class="filename">Config</code> file.
+There are two types of entry files, Attribute Entry Menu files and Wind Entry Menu files.
+(<a href="ch06s08.html" title="6.8. Wind Entry Menu Files">Wind Entry Menu</a> files are described in the following section.)
+</p><p>
+The attribute entry menu configuration files determine the appearance and content of the attribute entry menus.
+Each file is associated with a particular field or label and is specified in the <code class="filename">Config</code> file by the 
+<strong class="userinput"><code>background_entry_file</code></strong>, 
+<strong class="userinput"><code>type_entry_file</code></strong>, 
+<strong class="userinput"><code>type_modify_file</code></strong>,
+<strong class="userinput"><code>entry_file</code></strong> or
+<strong class="userinput"><code>modify_file</code></strong>
+keywords in the <strong class="userinput"><code>editor</code></strong> section of the <strong class="userinput"><code>Elements</code></strong> block.
+(<a href="apa.html" title="Appendix A. Config and Config.name File Format">Config and Config.<span xmlns="" class="replaceable">name</span> File Format, (Appendix A)</a>).
+These files are located in the <code class="filename">Menus</code> configuration directory.
+</p><p>
+The first six lines of the attribute entry menu files define values which apply to the preset controls in the menu.
+These are:
+</p><div xmlns="" class="table"><a xmlns="http://www.w3.org/1999/xhtml" id="id2001680"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Table 6.4. Attribute Entry Menu - Preset Controls</b></p><table xmlns="http://www.w3.org/1999/xhtml" summary="Attribute Entry Menu - Preset Controls" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>control</th><th>usage</th></tr></thead><tbody><tr valign="top"><td valign="top"><strong class="userinput"><code>menu_title</code></strong></td><td valign="top">
+Sets the title to appear in the menu frame at the very top of the window.
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>geometry</code></strong></td><td valign="top">
+Sets the size of the entire entry menu as x y width height all given in pixels.
+The position x y is relative to the button which causes the menu to appear and can thus have a negative value.
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>label_display_height</code></strong></td><td valign="top">
+Set the height, in rows, of the User Label display.
+If set to zero (0), then the User Label display will not appear in the menu.
+The default is 1
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>value_display_height</code></strong></td><td valign="top">
+sets the height, in rows, of the Auto Label display.
+If set to zero (0) then the Auto Label display will not appear in the menu.
+The default is 2
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>category_display_width</code></strong></td><td valign="top">
+Sets the width of the category display in characters the category display is located just to the right of the Auto Label display.
+If set to zero (0) then the category display will not appear in the menu.
+The default is 20
+</td></tr><tr valign="top"><td valign="top"><strong class="userinput"><code>initialization</code></strong></td><td valign="top">
+Is optional and if present can have one of two values: <strong class="userinput"><code>none</code></strong> or, <strong class="userinput"><code>normal</code></strong>.
+If set to none the menu will always appear with the menu items set to whatever this menu file defines as the start-up state.
+If set to normal, the menu will be filled in with the values of the last object that had its attributes set or modified by the entry menu.
+</td></tr></tbody></table></div><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p> In some instances, <strong class="userinput"><code>label_display_height</code></strong>, <strong class="userinput"><code>value_display_height</code></strong>, and <strong class="userinput"><code>category_display_width</code></strong> would be set to 0 so that none of these appear in the entry menu.
+This would be the case when setting attributes for labels, as none of these would apply and to display them would confuse the user.</p></div><p>
+The remaining lines of the attribute entry menu files refer to dynamically configured and created menu control objects.
+These control objects are arranged into panels, with each panel controlled by a tab.
+The keyword is panel followed by the tab label enclosed in quotes.
+</p><p>
+Any number of objects can be arranged within each panel.
+At the moment there are four types of objects defined: layout objects, attribute entry objects, control objects and display only objects.
+</p><div class="informaltable"><table border="1"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Layout</th><th>Entry</th><th>Control</th><th>Display</th></tr></thead><tbody><tr><td><a href="ch06s07s01.html#c6_frame" title="Table 6.10. Keyword list for the 'frame' object">frame</a></td><td><a href="ch06s07s01.html#c6_button_list" title="Table 6.5. Keyword list for the 'button_list' object">button_list</a></td><td><a href="ch06s07s01.html#c6_clear_btn" title="Table 6.6. Keyword list for the 'clear_btn' object">clear_btn</a></td><td><a href="ch06s07s01.html#c6_display_label" title="Table 6.9. Keyword list for the 'display_label' object">display_label</a></td></tr><tr><td> </td><td><a href="ch06s07s01.html#c6_composite_list" title="Table 6.7. Keyword list for the 'composite_list' object">composite_list</a></td><td><a href="ch06s07s01.html#c6_run_program" title="Table 6.13. Keyword list for the 'run_program' object">run_program</a></td><td><a href="ch06s07s01.html#c6_display_attribute" title="Table 6.8. Keyword list for the 'display_attribute' object">display_attribute</a></td></tr><tr><td> </td><td><a href="ch06s07s01.html#c6_popup_list" title="Table 6.12. Keyword list for the 'popup_list' object">popup_list</a></td><td> </td><td><a href="ch06s07s01.html#c6_line" title="Table 6.11. Keyword list for the 'line' object">line</a></td></tr><tr><td> </td><td><a href="ch06s07s01.html#c6_scrolled_list" title="Table 6.14. Keyword list for the 'scrolled_list' object">scrolled_list</a></td><td> </td><td> </td></tr><tr><td> </td><td><a href="ch06s07s01.html#c6_spin_box" title="Table 6.15. Keyword list for the 'spin_box' object">spin_box</a></td><td> </td><td> </td></tr><tr><td> </td><td><a href="ch06s07s01.html#c6_spin_list" title="Table 6.16. Keyword list for the 'spin_list' object">spin_list</a></td><td> </td><td> </td></tr><tr><td> </td><td><a href="ch06s07s01.html#c6_text" title="Table 6.17. Keyword list for the 'text' object">text</a></td><td> </td><td> </td></tr></tbody></table></div><p>
+</p><p>
+Here is a more detailed description of the objects available for use in the entry menu.
+</p><div class="informaltable"><table border="1"><colgroup><col /><col /></colgroup><thead><tr><th>control</th><th>usage</th></tr></thead><tbody><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_button_list" title="Table 6.5. Keyword list for the 'button_list' object">button_list</a></td><td valign="top">This is a button, that when activated, pops up a list of choices.
+Unlike the popup_list below, there is no visual indication that the button will popup a list when activated.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_clear_btn" title="Table 6.6. Keyword list for the 'clear_btn' object">clear_btn</a></td><td valign="top">A button, which when pressed, clears a specified list of attribute objects.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_composite_list" title="Table 6.7. Keyword list for the 'composite_list' object">composite_list</a></td><td valign="top">This object contains other objects that provide input to a single attribute.
+Any object can be a child of a composite, but only the button_list, popup_list, scrolled_list and spin_list objects will allow input.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_display_attribute" title="Table 6.8. Keyword list for the 'display_attribute' object">display_attribute</a></td><td valign="top">Used to display the value of a given attribute with no modification capability.
+</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_display_label" title="Table 6.9. Keyword list for the 'display_label' object">display_label</a></td><td valign="top">Displays a given label in the menu.
+Used to provide static information to users.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_frame" title="Table 6.10. Keyword list for the 'frame' object">frame</a></td><td valign="top">This is an object that encloses other object(s).
+It is used to "fancy up" the display.
+The frame can be given an optional label which is embedded in the upper left part of the frame border.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_line" title="Table 6.11. Keyword list for the 'line' object">line</a></td><td valign="top">Displays either a horizontal or vertical line of various types.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_popup_list" title="Table 6.12. Keyword list for the 'popup_list' object">popup_list</a></td><td valign="top">An object, indicated by a dash to the right of the display area, which pops up a list of choices when the mouse button is pushed down.
+When the mouse button is released the list pops down.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_scrolled_list" title="Table 6.14. Keyword list for the 'scrolled_list' object">scrolled_list</a></td><td valign="top">An object, with a display area and an arrow displayed to the right of the area which pops up a list of choices.
+The list pops down when the mouse button is pushed outside of the list and selects an item if the mouse button is pushed on a list item.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_spin_box" title="Table 6.15. Keyword list for the 'spin_box' object">spin_box</a></td><td valign="top">An object that displays a numeric value which is controlled by two arrows.
+The object must contain a value and cannot contain the idea of none.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_spin_list" title="Table 6.16. Keyword list for the 'spin_list' object">spin_list</a></td><td valign="top">An object that displays a value from a defined list of values in a spin_box style object.
+This can contain the idea of none.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_run_program" title="Table 6.13. Keyword list for the 'run_program' object">run_program</a></td><td valign="top">A button that when activated will run a specified program.</td></tr><tr valign="top"><td valign="top"><a href="ch06s07s01.html#c6_text" title="Table 6.17. Keyword list for the 'text' object">text</a></td><td valign="top">An object that allows for the free form input of text.</td></tr></tbody></table></div><p>
+</p><p>
+The list objects are for entering the value of any attribute from predefined list of values.
+The composite list does the same but constructs the attribute from several lists which are concatenated together.
+(For example the attribute value RW-SHRA could be made up of components from three lists, one of which contains RW, the second SH and the third RA.
+These objects are nested and related in the following manner:
+</p><pre class="programlisting">menu_title             = <span xmlns="" class="replaceable">title</span>
+geometry               = <span xmlns="" class="replaceable">x y width height</span>
+label_display_height   = <span xmlns="" class="replaceable">value</span>
+value_display_height   = <span xmlns="" class="replaceable">value</span>
+category_display_width = <span xmlns="" class="replaceable">value</span>
+initialization         = <span xmlns="" class="replaceable">value</span>
+panel "<span xmlns="" class="replaceable">panel 1 label</span>"
+  {
+  <span xmlns="" class="replaceable">entry object</span>
+    {
+    <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value</span>
+    <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value</span>
+    ...
+    }
+  <span xmlns="" class="replaceable">frame object</span>
+  {
+  <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value</span>
+  <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value</span>
+  ...
+  <span xmlns="" class="replaceable">entry object</span>
+    {
+    <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value</span>
+    <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value</span>
+    ...
+    }
+  }
+  <span xmlns="" class="replaceable">entry object</span>
+    {
+    <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value</span>
+    <span xmlns="" class="replaceable">keyword</span> = <span xmlns="" class="replaceable">value</span>
+    ...
+    }
+  }
+panel "<span xmlns="" class="replaceable">panel 2 label</span>"
+  {
+  ...
+  }
+</pre><p>
+The characteristics of each of these objects are set by a list of keyword-value pairs.
+If part of a value string has embedded spaces this can be preserved by enclosing the string in quotes.
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2070298"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example 6.1. Preserving embedded spaces</b></p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">label     = "Cloud Amount"
+position  = 241 377
+size      = 500 370
+</pre></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s07s01.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.6. Memory Preset Configuration File Format </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.7.1. Object Specification</td></tr></table></div></body></html>

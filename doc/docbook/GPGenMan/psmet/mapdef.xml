@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_mapdef'> <title>@mapdef</title> <titleabbrev>@mapdef</titleabbrev>
+<para>
+Set the map definition for the current map.
+</para><para>
+A more complete description of map definitions, including acceptable formats for
+all parameters, can be found in the &FPA; Graphics Metafile Standard.
+</para><para>
+Note that this map definition does not need to match the map definition from the
+&FPA; that generates the graphics product, but this map definition should be
+completely within the map definition from the &FPA;.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>olat</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry>
+<entry colname='desc'><para>Latitude of the map "origin"
+(see <xref linkend='latlonfmt'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>olon</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry>
+<entry colname='desc'><para>Longitude of the map "origin"
+(see <xref linkend='latlonfmt'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>rlon</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry>
+<entry colname='desc'><para>Vertical reference longitude of the map
+(see <xref linkend='latlonfmt'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>xmin</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Start point of the x-axis
+</para><para>(in units of <userinput>map_units</userinput> keyword below)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>ymin</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Start point of the y-axis
+</para><para>(in units of <userinput>map_units</userinput> keyword below)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>xmax</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>End point of the x-axis
+</para><para>(in units of <userinput>map_units</userinput> keyword below)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>ymax</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>End point of the y-axis
+</para><para>(in units of <userinput>map_units</userinput> keyword below)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>map_units</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para> Number of meters (or degrees) per map unit</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@mapdef
+{
+  olat      = 44:40N;
+  olon      = 63:35W;
+  rlon      = 80.0W;
+  xmin      = -1300;
+  ymin      = -700;
+  xmax      = 1100;
+  ymax      = 1100;
+  map_units = 1000;
+}</programlisting>
+Set a map definition for the current map with an origin of 44 degrees and 40 minutes North and 63
+degrees and 35 minutes West, oriented with the vertical axis parallel to 80 degrees West longitude.
+All distances in the map definition will be in units of 1000 m, or km.
+The map will extend from -1300 km to 1100 km horizontally from the origin, and from -700 km to 1100 km vertically from the origin.
+(Note that the origin in this example is near the centre of the map.)
+</para></example>
+</para></sect2>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE appendix PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<appendix id='appendh'><title>User Defined Functions</title><para>
+<indexterm><primary>user defined functions</primary></indexterm>
+The directory <filename class='directory'><envar>$FPA</envar>/templates/userlib</filename> contains template files (<acronym>ANSI-C</acronym> source, scripts and makefiles) for building your own local client-written library, that can be accessed by &FPA; applications.
+</para><para>
+Do not modify the original files found in <filename class='directory'><envar>$FPA</envar>/templates</filename>.
+These files will be updated with future releases and patches.
+It is intended that you copy them to a convenient directory, and build the library there.
+The script copyuserlib has been provided for this purpose.
+</para><para>
+This directory should contain the following files:
+<informaltable frame='topbot'>
+<tgroup cols='2'>&colwidth2;
+<thead><row><entry>File name</entry><entry>Description</entry></row></thead>
+<tbody>
+<row valign='top'><entry><filename>README</filename></entry><entry>File describing the contents of the directory</entry></row>
+<row valign='top'><entry><command>copyuserlib</command></entry><entry>script to copy the template files to a working directory</entry></row>
+<row valign='top'><entry><filename>user_rules.c</filename></entry><entry>source template for rules to calculate attribute values</entry></row>
+<row valign='top'><entry><filename>user_confirm.c</filename></entry><entry>to confirm that the correct user defined library is being accessed</entry></row>
+<row valign='top'><entry><filename>user_values.c</filename></entry><entry>source template for value calculations</entry></row>
+<row valign='top'><entry><filename>user_winds.c</filename></entry><entry>source template for wind calculations</entry></row>
+<row valign='top'><entry><command>libmake</command></entry><entry>script to build library</entry></row>
+<row valign='top'><entry><command>libput</command></entry><entry>script to place library where it can be accessed</entry></row>
+<row valign='top'><entry><command>librestore</command></entry><entry>script to restore the previous version of the library for use by
+the operational &FPA; software</entry></row>
+<row valign='top'><entry><filename>Makefile.lib</filename></entry><entry>make file used by libmake</entry></row>
+</tbody></tgroup></informaltable>
+Once you have copied the template files to a convenient working directory, instructions for writing your own functions are given inside the individual ".c" files.
+<variablelist>
+<varlistentry><term>Version Confirmation</term><listitem><para>
+The source file <filename>user_confirm.c</filename> is designed to confirm that the correct user defined library is connected.
+With each new major release of your library you should set an identifying message here.
+When the library is invoked this message will appear amongst the other startup messages in the log.
+This allows you to confirm functions in your new library are indeed being invoked.
+You can also set flags for displaying rules, value functions, and wind functions in the log.
+A flag set to <computeroutput>FALSE</computeroutput> implies that module does not need to be displayed in the startup message.
+</para></listitem></varlistentry>
+<varlistentry><term>User defined Rules</term><listitem><para>
+The source file <filename>user_rules.c</filename> is designed to access user defined routines to determine attributes for meteorological fields.
+To add a new rule, you must follow the steps documented in the file: Add a prototype for the rule, add the rule to the rule table and finally add the code to calculate the rule.
+The template file contains three sample rules: clds_and_wx_rule, full_weather_rule, and full_cloud_rule.
+</para></listitem></varlistentry>
+<varlistentry><term>User defined value functions</term><listitem><para>
+The source file <filename>user_values.c</filename> was designed to access user defined routines to extract values from fields of meteorological data.
+There is one example routine for value extraction called <function>values_for_values()</function>.
+It gives an example of how data can be calculated by passing values to a function that the user would supply.
+</para></listitem></varlistentry>
+<varlistentry><term>User defined wind functions</term><listitem><para>
+The source file <filename>user_winds.c</filename> was designed to access user defined routines to extract wind speed and direction from fields of meteorological data.
+There are three example routines given for winds extraction: <function>winds_from_equations()</function> gives an example of winds calculated using a generic equation from the configuration files; <function>winds_from_values()</function> gives an example of winds calculated by passing values to a function that the user would supply; <function>gradient_wind_function()</function> gives an alternate way to calculate a gradient wind, using a more complicated function call rather than the equations given in the configuration files.
+This last function also allows a cross isobaric estimate to be added.
+</para></listitem></varlistentry>
+</variablelist>
+</para>
+
+<section><title>Testing and Installing the user library</title><para>
+<indexterm><primary>user defined functions</primary><secondary>testing</secondary></indexterm>
+<indexterm><primary>user defined functions</primary><secondary>installing</secondary></indexterm>
+<indexterm><primary>user defined functions</primary><secondary>library</secondary></indexterm>
+To test the library before installing it as the operational version, build the library using <command>libmake</command>, then set and export the <envar>FPA_SHLIB_PATH</envar> variable to the directory in which the library was built.
+Running any &FPA; application from that environment will access the newly built library.</para><para>
+ Once tested, you may then install the library in the standard directory, using the <command>libput</command> script.
+ The <command>libput</command> script will fail if the shared library is in use, so be sure to shutdown the depiction editor and ingest daemon before you transfer the files.
+ Unset the <envar>FPA_SHLIB_PATH</envar> variable and test that the library was transferred properly.
+ The <command>librestore</command> script provides the ability to go back to the last working version of the library, if it turns out to have been installed prematurely!
+ </para></section>
+ <section><title>Writing user defined rules in python</title><para>
+Python is an easy to learn programming language.
+It comes standard on most Linux distributions.
+It is interpreted so it need not be compiled and thus allows for easy testing and debugging.
+These features make it ideal for writing &FPA; rules.
+Rules are simple scripts that determine the value of field attributes based on the values of other field attributes.
+With the introduction of python rules, it should be easier for &FPA; users to harness the power of attribute rules for their databases.
+There are some sample rules located in <filename class='directory'><envar>$FPA</envar>/bin</filename>.
+You should not edit these as they may be overwritten the next time you update &FPA;.
+Instead copy them to your local bin directory <filename class='directory'><envar>$HOME</envar>/bin</filename> and edit them there.
+Once you have fully tested and debugged them you may wish to save them in the <filename class='directory'><envar>$FPA</envar>/localbin</filename> directory.
+This directory appears before  <filename class='directory'><envar>$FPA</envar>/bin</filename> in the <envar>$PATH</envar> variable and so will be found before any of the default scripts.
+Common variables and tests used in User Defined rules have been included in the FPAlib.py file.
+To invoke python rules use the <userinput>python_type_rules</userinput> or <userinput>python_entry_rules</userinput> in the Configuration file instead of <userinput>type_rules</userinput> or <userinput>entry_rules</userinput>.
+ </para></section>
+ </appendix>

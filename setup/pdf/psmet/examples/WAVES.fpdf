@@ -1,0 +1,129 @@
+! Set version ... this line must be first!
+@version { psmet7.0 }
+
+! Set verbose mode for diagnostic output ...
+@verbose { no }
+
+! Set the display units used in all following directives ...
+!  "type" can be  inches  cm  mm  picas  points
+@display_units { type = inches }
+
+! Set the page size ...
+@size { width = 11.00; height = 8.50 }
+
+! Open the output file ...
+@file_name
+	{
+	dir  = <default>;
+				! Options <default> <home>
+	name = <pdf>;
+				! Options <pdf> <year> <month> <day> <julian> <hour>
+	}
+
+! Set the current anchor position ...
+@anchor { ref = absolute }
+
+! Define the map ....
+@include { wvs_map_setup }
+
+! Define a size and placement for the map ...
+@define_map_placement
+	{
+	size          = 8.0
+	axis_to_scale = x_axis;
+	x_off         = 0.0
+	y_off         = 0.0
+	}
+
+! Reset anchor to current map ...
+@anchor { ref = map }
+
+! Draw a background box ... filled with turquoise for oceans
+@background
+	{
+	outline       = X11 Black;
+	interior_fill = X11 Turquoise;
+	line_width    = 0.05;
+	extra_x       = 0.03;
+	extra_y       = 0.03;
+	}
+
+! Set the source and valid time ...
+@set_source { source = depict; valid_time = 12 }
+
+! Display wave height contours ...
+@include { wvs_hgt_contours }
+
+! Display geographic features as filled areas ...
+@include { wvs_geography }
+
+! Display some pressure contours and hi-lo symbols ...
+@include { wvs_pressure }
+
+! Display a grid of sampled winds ...
+@include { wvs_grid_winds }
+
+! Display a grid of sampled waves ...
+@include { wvs_grid_waves }
+
+! Display some fronts ...
+@include { wvs_fronts }
+
+! Display some winds ... MUST be labelled in FPA to appear
+@include { wvs_winds }
+
+! Display wave height labels ...
+@include { wvs_hgt_labels }
+
+! Re-draw the background box ... unfilled!
+@background
+	{
+	outline       = X11 black;
+	interior_fill = none;
+	line_width    = 0.05;
+	extra_x       = 0.03;
+	extra_y       = 0.03;
+	}
+
+! Write a label including the valid time in a box ...
+@anchor { ref = upper_centre }
+@box
+	{
+	width         =  5.00;
+	height        =  0.35;
+	x_off         =  0.00;
+	y_off         = -0.25;
+	line_width    =  0.03;
+	outline       = X11 Brown;
+	interior_fill = X11 Grey90;
+	}
+@write_time
+	{
+	line_width    = 0.01;
+	outline       = X11 Black;
+	fill          = X11 Brown;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = bold;
+	italics       = no;
+	text_size     = 0.25;
+	char_space    =   0;
+	word_space    = 100;
+	line_space    = 100;
+	type          = valid;
+	time          = GMT;
+	format        = Wave Height Forecast Valid: %HZ %d/%m/%y
+	x_off         =  0.000;
+	y_off         = -0.325;
+	justification = centre;
+	}
+
+! Close the file ...
+@file_close { }
+
+! Display the result using "display" or "evince" ...
+@process
+	{
+	!display <file_name>
+	evince <file_name>
+	}

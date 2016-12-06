@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_reset_contour_presentation'> <title>@reset_contour_presentation</title> <titleabbrev>@reset_contour_presentation</titleabbrev>
+<para>
+Removes all current contour presentations set by calling the <link linkend='ps_contour_presentation'>@contour_presentation</link> directive.
+</para><para>
+Note that this directive has no keywords.
+<example><title> </title><para>
+<programlisting>@reset_contour_presentation { }</programlisting>
+Removes all current contour presentations set by the <link linkend='ps_contour_presentation'>@contour_presentation</link> directive.
+</para></example>
+</para></sect2>

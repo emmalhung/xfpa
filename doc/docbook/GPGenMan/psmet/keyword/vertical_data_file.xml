@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>vertical_data_file</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Identify the name of the ASCII data file to sample. May contain codewords: &lt;default&gt;, &lt;psmet&gt;, &lt;psout&gt;, &lt;svgmet&gt;, &lt;svgout&gt;, &lt;texmet&gt;, &lt;texout&gt; or &lt;home&gt; to refer to &PSMet;, &SVGMet; or &TexMet; directories in the same &FPA; database.</para></entry></row>
+

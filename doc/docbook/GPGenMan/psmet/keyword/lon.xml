@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>lon</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry> 
+<entry colname='desc'><para>Longitude position on current map (see <xref linkend='latlonfmt'/>) </para></entry></row>

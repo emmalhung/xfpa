@@ -1,0 +1,42 @@
+calm  value
+ 0  5  0  0  0
+ end
+
+calm  text
+ 0  7.5  "CALM"
+ end
+
+direction  value
+ 0  999  10  1  2
+ end
+
+direction  text
+  22.5   67.5  "NE"
+  67.5  112.5  "E"
+ 112.5  157.5  "SE"
+ 157.5  202.5  "S"
+ 202.5  247.5  "SW"
+ 247.5  295.5  "W"
+ 295.5  337.5  "NW"
+ 337.5   22.5  "N"
+ end
+
+speed  value
+ 5  999  5  0  0
+ end
+
+speed  text
+  5   15  "LIGHT"
+ 15   30  "STRONG"
+ 30  999  "VERY STRONG"
+ end
+
+gust  value
+ 5  999  5  0  0
+ end
+
+gust  text
+  5   15  "LIGHT GUSTS"
+ 15   30  "STRONG GUSTS"
+ 30  999  "VERY STRONG GUSTS"
+ end

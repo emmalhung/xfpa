@@ -1,0 +1,168 @@
+# Define all the usual places to look for things:
+
+LIBS  = 
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa -lfpauser \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(LIBS) $(USRLIB)
+libs:		.DEFAULT
+			@	cd $(LIBDIR);  $(MAKE) libs
+			@	cd $(SLIBDIR); $(MAKE) libs
+
+
+# Rules for building everything:
+all ALL:	fpagpgen cmf_to_ps cmf_to_svg bmp_to_ps svg_to_ps
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "fpagpgen"
+
+
+# Rules for building fpagpgen programs:
+FPAGPGEN		= $(BINDIR)/$(PLATFORM)/fpagpgen
+CORMET			= $(BINDIR)/$(PLATFORM)/cormet
+TEXMET			= $(BINDIR)/$(PLATFORM)/texmet
+PSMET			= $(BINDIR)/$(PLATFORM)/psmet
+SVGMET			= $(BINDIR)/$(PLATFORM)/svgmet
+FPAGPGEN_OBJ	= fpagpgen.o gra_misc.o gra_io.o gra_process.o \
+					gra_set.o gra_do.o gra_action.o \
+					clipper.o colour_utils.o
+FPAGPGEN_HDR	= fpagpgen_structs.h fpagpgen_routines.h \
+					clipper.h colour_utils.h
+fpagpgen:		Pobjects $(FPAGPGEN)
+			@	echo "FPA $(PLATFORM) fpagpgen ready"
+			@	echo ""
+$(FPAGPGEN):	$(FPAGPGEN_OBJ) $(LIBS)
+			@   echo "Loading FPA $(PLATFORM) fpagpgen"
+			@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(FPAGPGEN_OBJ) $(LIBPATH)
+			@	rm -f $(CORMET);  ln $(FPAGPGEN) $(CORMET)
+			@	rm -f $(TEXMET);  ln $(FPAGPGEN) $(TEXMET)
+			@	rm -f $(PSMET);   ln $(FPAGPGEN) $(PSMET)
+			@	rm -f $(SVGMET);  ln $(FPAGPGEN) $(SVGMET)
+			@   if [ ! -x $(BINDIR)/fpagpgen ]; \
+					then cd $(BINDIR); ln -s fpa.exec fpagpgen; fi
+			@   if [ ! -x $(BINDIR)/cormet ]; \
+					then cd $(BINDIR); ln -s fpa.exec cormet; fi
+			@   if [ ! -x $(BINDIR)/texmet ]; \
+					then cd $(BINDIR); ln -s fpa.exec texmet; fi
+			@   if [ ! -x $(BINDIR)/psmet ]; \
+					then cd $(BINDIR); ln -s fpa.exec psmet; fi
+			@   if [ ! -x $(BINDIR)/svgmet ]; \
+					then cd $(BINDIR); ln -s fpa.exec svgmet; fi
+
+# Rules for building symbol conversion programs:
+CMF_TO_PS		= $(BINDIR)/$(PLATFORM)/cmf_to_ps
+CMF_TO_PS_OBJ	= cmf_to_ps.o colour_utils.o
+CMF_TO_PS_HDR	= fpagpgen_structs.h colour_utils.h
+cmf_to_ps:		Pobjects $(CMF_TO_PS)
+			@	echo "FPA $(PLATFORM) cmf_to_ps ready"
+			@	echo ""
+$(CMF_TO_PS):	$(CMF_TO_PS_OBJ) $(LIBS)
+			@   echo "Loading FPA $(PLATFORM) cmf_to_ps"
+			@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(CMF_TO_PS_OBJ) $(LIBPATH)
+			@   if [ ! -x $(BINDIR)/cmf_to_ps ]; \
+					then cd $(BINDIR); ln -s fpa.exec cmf_to_ps; fi
+
+CMF_TO_SVG		= $(BINDIR)/$(PLATFORM)/cmf_to_svg
+CMF_TO_SVG_OBJ	= cmf_to_svg.o colour_utils.o
+CMF_TO_SVG_HDR	= fpagpgen_structs.h colour_utils.h
+cmf_to_svg:		Pobjects $(CMF_TO_SVG)
+			@	echo "FPA $(PLATFORM) cmf_to_svg ready"
+			@	echo ""
+$(CMF_TO_SVG):	$(CMF_TO_SVG_OBJ) $(LIBS)
+			@   echo "Loading FPA $(PLATFORM) cmf_to_svg"
+			@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(CMF_TO_SVG_OBJ) $(LIBPATH)
+			@   if [ ! -x $(BINDIR)/cmf_to_svg ]; \
+					then cd $(BINDIR); ln -s fpa.exec cmf_to_svg; fi
+
+BMP_TO_PS		= $(BINDIR)/$(PLATFORM)/bmp_to_ps
+BMP_TO_PS_OBJ	= bmp_to_ps.o colour_utils.o
+BMP_TO_PS_HDR	= fpagpgen_structs.h colour_utils.h
+bmp_to_ps:		Pobjects $(BMP_TO_PS)
+			@	echo "FPA $(PLATFORM) bmp_to_ps ready"
+			@	echo ""
+$(BMP_TO_PS):	$(BMP_TO_PS_OBJ) $(LIBS)
+			@   echo "Loading FPA $(PLATFORM) bmp_to_ps"
+			@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(BMP_TO_PS_OBJ) $(LIBPATH)
+			@   if [ ! -x $(BINDIR)/bmp_to_ps ]; \
+					then cd $(BINDIR); ln -s fpa.exec bmp_to_ps; fi
+
+SVG_TO_PS		= $(BINDIR)/$(PLATFORM)/svg_to_ps
+SVG_TO_PS_OBJ	= svg_to_ps.o
+svg_to_ps:			Pobjects $(SVG_TO_PS)
+			@	echo "FPA $(PLATFORM) svg_to_ps ready"
+			@	echo ""
+$(SVG_TO_PS):	$(SVG_TO_PS_OBJ) $(LIBS)
+			@   echo "Loading FPA $(PLATFORM) svg_to_ps"
+			@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(SVG_TO_PS_OBJ) $(LIBPATH)
+			@   if [ ! -x $(BINDIR)/svg_to_ps ]; \
+					then cd $(BINDIR); ln -s fpa.exec svg_to_ps; fi
+
+# Rules for building object modules:
+fpagpgen.o:		$(FPAHDR) fpagpgen_structs.h fpagpgen_routines.h
+
+clipper.o:		$(FPAHDR) fpagpgen_structs.h clipper.h
+colour_utils.o:	$(FPAHDR) fpagpgen_structs.h colour_utils.h x11names.h
+
+gra_misc.o:		$(FPAHDR) fpagpgen_structs.h fpagpgen_routines.h \
+						colour_utils.h
+gra_io.o:		$(FPAHDR) fpagpgen_structs.h fpagpgen_routines.h
+gra_process.o:	$(FPAHDR) fpagpgen_structs.h fpagpgen_routines.h
+gra_set.o:		$(FPAHDR) fpagpgen_structs.h fpagpgen_routines.h
+gra_do.o:		$(FPAHDR) fpagpgen_structs.h fpagpgen_routines.h
+gra_action.o:	$(FPAHDR) fpagpgen_structs.h fpagpgen_routines.h \
+						clipper.h
+
+cmf_to_ps.o:	$(FPAHDR) colour_utils.h
+cmf_to_svg.o:	$(FPAHDR) colour_utils.h
+bmp_to_ps.o:	$(FPAHDR) colour_utils.h
+svg_to_ps.o:		$(FPAHDR) 
+
+
+# Rules for keeping header files up to date:
+fpagpgen_structs.h:		$(FPAHDR)
+					@	sleep 1;	touch $@
+fpagpgen_routines.h:	$(FPAHDR) fpagpgen_structs.h
+					@	sleep 1;	touch $@
+clipper.h:				$(FPAHDR)
+					@	sleep 1;	touch $@
+colour_utils.h:			$(FPAHDR)
+					@	sleep 1;	touch $@
+
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) fpagpgen module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

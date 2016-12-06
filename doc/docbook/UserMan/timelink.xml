@@ -1,0 +1,982 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='time_linking_interpolation_animation'> <title> Time Linking, Interpolation &amp; Animation</title>
+<sect1 id='time_linking_and_interpolation'> <title>Time linking and interpolation</title>
+<para>
+<indexterm><primary>time link</primary></indexterm>
+<indexterm><primary>interpolate</primary></indexterm>
+With the &FPA;, you can use the <guilabel>Time Link</guilabel> feature to track significant locations through time.
+The links are used to indicate movement of <glossterm linkend='g_features'>features</glossterm>
+<indexterm><primary>feature</primary></indexterm>
+in the depictions and allow the depictions to be interpolated through time.
+</para>
+<para>
+For a chosen field, you select a point on the field which identifies a common feature in each depiction; then you select a point identifying the same feature at a different time.
+The feature is now <glossterm linkend='g_link'>linked</glossterm> between the depictions.
+</para> <para>
+Any feature on one field which is common to a feature on the same field at a consecutive time (either before or after) may be linked.
+</para> <para>
+Note: It is the shape of the feature, not its value, that is important.
+</para> <para>
+You can link depictions forward in time or backwards.
+(See <xref  linkend='linking_forward'/> and <xref  linkend='linking_backward'/>.)
+</para>
+
+<sect2 id='optional_time_link_information'> <title>Optional time link information</title>
+
+<para>
+<indexterm><primary>time link</primary><secondary>optional information</secondary></indexterm>
+<orderedlist> <title>To modify optional time link information:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Preferences...</guimenuitem></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>General</guilabel> tab.
+</para></listitem>
+
+<listitem><para>
+Select the time link information to display, and the colour palette for the link chains.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Apply</guibutton>.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='examples_of_time_linking'> <title>Examples of time linking</title>
+<sect3 id='time_linking_continuous_fields'> <title>Time linking continuous or vector fields</title>
+<para>
+<indexterm><primary>time link</primary><secondary>continuous field</secondary></indexterm>
+<indexterm><primary>time link</primary><secondary>vector field</secondary></indexterm>
+Choose the significant features
+<indexterm><primary>feature</primary></indexterm>
+on continuous or vector fields to provide the link.
+For example, links can identify locations of the maximum or minimum values of a field (such as highs and lows in an msl pressure field) or the location of axes (such as troughs or ridges in an msl pressure field).
+</para><para>
+It is important to link features that appear stationary over time as well as features that move.
+This guarantees that such features remain stationary relative to other moving features.
+</para>
+</sect3>
+
+<sect3 id='time_linking_line_fields'> <title>Time linking line fields</title>
+<para>
+<indexterm><primary>time link</primary><secondary>line field</secondary></indexterm>
+Choose the most significant points on each line.
+Link at approximately the same <emphasis>relative</emphasis> locations on each line through all depictions.
+</para> <para>
+For example, if the line moves or rotates, pick the same feature on the line in each depiction, such as a kink in the line or a location close to one end of the line.
+</para> <para>
+Note that the line pattern is often used to determine which end of the line is which.
+</para>
+</sect3>
+
+<sect3 id='time_linking_area_fields'> <title>Time linking area fields</title>
+<para>
+<indexterm><primary>time link</primary><secondary>area field</secondary></indexterm>
+Choose the most significant points on the area perimeter.
+In the subsequent times, click on approximately the same <emphasis>relative</emphasis> spots on the perimeter.
+See <xref linkend='linkarea'/>.
+</para><para>
+Note that the first set of links will cause the area to change shape between each panel in a distorted manner, whereas the second set of links will cause the area to rotate.
+<figure id='linkarea' pgwide='0' float='1'><title>Linking areas</title>
+<mediaobject><imageobject><imagedata fileref='png/linkarea.png'/></imageobject></mediaobject>
+</figure>
+</para> <para>
+Even if the area changes shape, it will interpolate properly as long as you choose distinguishable features on the area and link consistently.
+</para>
+</sect3>
+
+<sect3 id='linking_an_area_that_splits_into_two_areas'> <title>Linking an area that splits into two areas (or two areas that merge into one)</title>
+<para>
+<indexterm><primary>time link</primary><secondary>area field</secondary></indexterm>
+When an area field splits, you need to maintain consistency.
+See <xref linkend='linksplt'/>
+<figure id='linksplt' pgwide='0' float='1'><title></title>
+<mediaobject><imageobject><imagedata fileref='png/linksplt.png'/></imageobject></mediaobject>
+</figure>
+</para> <para>
+Start another chain at the depiction just before the split.
+After the two areas split, each field has its separate time chain.
+For a merge, which is this scenario backwards in time, end the second chain at the depiction where the two areas merge.
+</para>
+</sect3>
+
+<sect3 id='linking_split_and_merge_areas'> <title>Linking &quot;split and merge&quot; areas</title>
+<para>
+<indexterm><primary>time link</primary><secondary>area field</secondary></indexterm>
+This example is a more complicated case of splitting and merging.
+There are initially two areas, then one area splits (now there are three areas) and then the newly-split area merges with the other area (now there are two areas again).
+</para> <para>
+The same principles apply as explained in <xref  linkend='linking_an_area_that_splits_into_two_areas'/>.
+Start the new chain at the depiction right before the split and end the third chain at the depiction where the two areas merge.
+See <xref linkend='linksm'/>
+<figure id='linksm' pgwide='0' float='1'><title></title>
+<mediaobject><imageobject><imagedata fileref='png/linksm.png'/></imageobject></mediaobject>
+</figure>
+</para> <para>
+Note: At the moment when there are three areas, there are four chains; one chain starts in this depiction and one is ending.
+</para>
+</sect3>
+
+<sect3 id='linking_a_divided_area'> <title>Linking a divided area</title>
+<para>
+<indexterm><primary>time link</primary><secondary>divided area</secondary></indexterm>
+You must link dividing lines in a divided area to another divide line in the next depiction.
+If there are two dividing lines, link each one.
+</para><para>
+Note that the position of the link on the dividing line matters. If the dividing line has only a single link, position it towards one end of the dividing line. This will ensure that the divided areas do not switch places unexpectedly.
+See <xref linkend='linkdiv'/>
+(Dividing lines can be drawn left-to-right or right-to-left and the direction of drawing is important in the time link process, especially when the dividing line is drawn in different directions in different depictions. With two or more links, the direction of the dividing line can be determined by the locations of the links, but with a single link, the direction is determined by which end of the line is closest.
+Single links should therefore be placed close to the same end of the dividing line.)
+<figure id='linkdiv' pgwide='0' float='1'><title> </title>
+<mediaobject><imageobject><imagedata fileref='png/linkdiv.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+Note that dividing lines are interpolated separately from the areas they divide. If the extrapolated position of the dividing line moves outside of the extrapolated position of the area, then the area will no longer be divided, and the values of the area will depend on which side of the interpolated dividing line the area is on.
+</para>
+</sect3>
+
+<sect3 id='early_late_start_end'><title>Early starts, late starts, early ends and late ends</title><para>
+Discrete, wind and line fields can be linked so that the features appear at times different from the depiction times. 
+(See the time selection section in <xref linkend='linking_forward'/> or <xref linkend='linking_backward'/>.)
+If link times are chosen so as to begin before the first depiction time in the link chain (an early start) or after the last depiction time in the link chain ( a late end), then the feature is extrapolated to the earlier or later times. If the link times are chosen so as  to begin after the first depiction time in the link chain (a late start) or before the last depiction time in the link chain (an early end), then the feature is interpolated to the in between times, and the feature may not appear at the depiction times in the interpolations.
+</para>
+</sect3>
+</sect2>
+
+<sect2 id='guess_nodes'> <title>Guess Nodes</title>
+<para>
+Changes in the depiction sequence can affect the status of linked fields. 
+For example, removing an area or line from a depiction panel may result in a link node that is no longer associated with a feature, and inserting a field into the depiction sequence will create link nodes on link chains that span the new depiction but are not connected to any feature.
+In these cases, the &FPA; will create guess link nodes (usually identified by a pink block) which must be moved to the appropriate location for the field to be linked. (see <xref linkend='moving_a_guess_node_in_a_link_chain'/>)
+</para>
+</sect2>
+
+<sect2 id='link_criteria'> <title>Link criteria</title>
+<para>
+<indexterm><primary>time link</primary><secondary>criteria</secondary></indexterm>
+There are certain link criteria that the &FPA; expects to be met before it considers a field to have been appropriately linked.
+If there are no links for a given field, the square beside the field is red.
+If there are links, but there are not enough for the &FPA; to interpolate, the square turns blue.
+When the field is sufficiently linked the square turns yellow.
+When a field has been linked and interpolated the square turns green.
+</para> <para>
+<indexterm><primary>field</primary><secondary>static</secondary></indexterm>
+<indexterm><primary>field</primary><secondary>daily</secondary></indexterm>
+<glossterm linkend='g_daily_fields'>Daily</glossterm> or
+<glossterm linkend='g_static_fields'>static</glossterm> fields are indicated as a group.
+</para> <para>
+When linking continuous or vector fields you need one or more links that together span from the beginning to the end across all the depictions.
+</para> <para>
+When linking line fields, all lines must be linked.
+</para> <para>
+When linking discrete or wind fields, all boundaries and any dividing lines or holes must be linked.
+</para> <para>
+This represents the minimum link information required to interpolate, that is, the necessary number of links.
+</para><para>
+Additional links may be needed to describe all the important aspects of the motion of features in the field, that is, the sufficient number of links.
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='using_the_time_link_function'> <title>Using the Time Link function</title>
+<para>
+<indexterm><primary>time link</primary></indexterm>
+Use <guilabel>Time Link</guilabel> to link significant points on fields at different times so that the depictions can be interpolated through time.
+</para>
+<para>
+To display the Time Link controls, click the <guilabel>Time Link</guilabel> tab.
+(see <xref linkend='timelink_tools'/>)
+<figure id='timelink_tools' pgwide='0' float='1'><title>Time link controls</title>
+<mediaobject><imageobject><imagedata fileref='png/timelink.png'/></imageobject></mediaobject>
+</figure>
+</para>
+<beginpage/>
+<sect2 id='linking_forward'> <title>Linking forward</title>
+<para>
+<indexterm><primary>time link</primary><secondary>forward</secondary></indexterm>
+<orderedlist> <title>To link forward:</title>
+<listitem><para>
+From the <guilabel>Field</guilabel> list, select the field you wish to link.
+</para> <para>
+If you are linking a continuous field (such as pressure, temperature or wave height) the field displays white on the depiction to indicate that it is the active field.
+</para><para>
+If you are linking a discrete field (such as weather, wind or freezing spray) the discrete areas and any dividing lines turn yellow if they have not yet been linked or white if they have been linked.
+</para><para>
+If you are linking a line field (such as fronts or jet axes) the curves turn yellow if they have not yet been linked or white if they have been linked.
+</para><para>
+(see also <xref  linkend='using_one_set_of_links_as_a_master'/>)
+</para></listitem>
+
+<listitem><para>
+Select the <emphasis>Link Forward</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Link Forward</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/link_forward.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para> <para>
+A forward (right) arrow appears on the depiction bar indicating what depiction you are beginning on and the direction of the link.
+</para> <para>
+Note: You can begin your linking procedure in the middle of the depiction bar by clicking the desired time box.You will maintain your previously established link direction.
+</para></listitem>
+
+<listitem><para>
+Pick a point on the current depiction to link.
+(see also <xref  linkend='examples_of_time_linking'/>)
+</para> <para>
+A yellow box appears at the link node you picked.
+You are automatically moved to the next depiction.
+The arrow moves to show that the current depiction has been advanced.
+</para> <para>
+For discrete or line fields: If you start the link chain at the first depiction, you are given the option of beginning the link at some time after the depiction in which the link chain starts. 
+<figure id='flink_start_after' pgwide='0' float='1'>
+<title>Start a link chain after the current depiction</title>
+<mediaobject><imageobject><imagedata fileref='png/flink_start_after.png'/></imageobject>
+<caption><para> The cyan square represents the current depiction.  The green squares represent times between the current depiction and the next depiction.  </para></caption></mediaobject>
+
+</figure>
+(see <xref linkend='flink_start_after'/>)
+</para><para>
+If you start the link chain after the first depiction you are given the option of beginning the link chain at some time before or after the depiction in which the link chain starts.
+<figure id='flink_start_before_after' pgwide='0' float='1'>
+<title>Start a link chain before or after the current depiction</title>
+<mediaobject><imageobject><imagedata fileref='png/flink_start_before_after.png'/></imageobject>
+<caption><para> The blue squares represent times between the previous depiction and the current depiction.  The cyan square represents the current depiction.  The green squares represent times between the current depiction and the next depiction.  </para></caption></mediaobject>
+
+</figure>
+(see <xref linkend='flink_start_before_after'/>)
+</para></listitem>
+
+<listitem><para>
+Pick the next point of the link.
+</para></listitem>
+
+<listitem><para>
+Repeat the previous step until you reach the end of your depictions 	
+</para> <para>
+or 	
+</para> <para>
+Click the &right; mouse button and select <menuchoice><guimenu>End chain</guimenu></menuchoice> to end the link chain if the link does not extend across all depictions.
+</para> <para>
+For discrete or line fields: If you end the link chain at the last depiction you are given the option of ending the link chain before the time of the depiction in which the link chain terminates. (see <xref linkend='flink_end_before'/>)
+<figure id='flink_end_before' pgwide='0' float='1'>
+<title>End a link chain before the current depiction</title>
+<mediaobject><imageobject><imagedata fileref='png/flink_end_before.png'/></imageobject>
+<caption><para> The green squares are times between the previous depiction and the current depiction.  The cyan square is the current depiction.  </para></caption></mediaobject>
+
+</figure>
+</para><para>
+If you end the link chain before the last depiction you are given the option of ending the link chain before or after the time of the depiction in which the link chain terminates. 
+<figure id='flink_end_before_after' pgwide='0' float='1'>
+<title>End a link chain before or after the current depiction</title>
+<mediaobject><imageobject><imagedata fileref='png/flink_end_before_after.png'/></imageobject>
+<caption><para> The green squares are times between the previous depiction and the current depiction.  The cyan square is the current depiction.  The blue squares are times between the current depiction and the next depiction.  </para></caption></mediaobject>
+
+</figure>
+(see <xref linkend='flink_end_before_after'/>)
+</para></listitem>
+
+<listitem><para>
+The link chain turns light blue to indicate it is complete.
+You are automatically returned to the depiction you started to link from.
+</para> <para>
+Note: If the <guilabel>Show early/late start/end times</guilabel> option in selected (<menuchoice><guimenu>Options</guimenu><guimenuitem>Preferences...</guimenuitem></menuchoice>, <guilabel>General</guilabel> tab) and the start (or end) time is not at one of the depiction times, the actual start (or end) time is shown to the left (or right) of the node.
+</para></listitem>
+
+<listitem><para>
+Check the colour of the square beside the field name in the list.
+It should be yellow.
+If it is blue, you do not have enough links to interpolate the depictions.
+</para><para>
+or
+</para><para>
+Check the colour of the depiction boxes.
+They should all be green.
+If any are blue, you do not have enough links at the those times to interpolate the depictions.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<beginpage/>
+<sect2 id='linking_backward'> <title>Linking backward</title>
+<para>
+<indexterm><primary>time link</primary><secondary>backward</secondary></indexterm>
+<orderedlist> <title>To link backward:</title>
+<listitem><para>
+From the <guilabel>Field</guilabel> list, select the field you wish to link.
+</para> <para>
+If you are linking a continuous field (such as pressure, temperature or wave height) the field displays white on the depiction to indicate that it is the active field.
+</para><para>
+If you are linking a discrete field (such as weather, wind or freezing spray) the discrete areas and any dividing lines turn yellow if they have not yet been linked or white if they have been linked.
+</para><para>
+If you are linking a line field (such as fronts or jet axes) the curves turn yellow if they have not yet been linked or white if they have been linked.
+</para><para>
+(see also <xref  linkend='using_one_set_of_links_as_a_master'/>)
+</para></listitem>
+
+<listitem><para>
+Select the <emphasis>Link Backward</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Link Backward</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/link_backward.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para> <para>
+A backward (left) arrow appears on the depiction bar indicating what depiction you are on and the direction of the link.
+</para> <para>
+Note: You can begin your linking procedure in the middle the of the depiction bar by clicking the desired time box.You will maintain your previously established link direction.
+</para></listitem>
+
+<listitem><para>
+Pick a point on the depiction to link.
+(see also <xref  linkend='examples_of_time_linking'/>)
+</para> <para>
+A yellow box appears at the link node you picked.
+You are automatically moved to the previous depiction.
+The arrow shows that you have moved.
+</para> <para>
+For discrete or line fields: If you start the link chain at the last depiction, you are given the option of beginning the link at some time before the depiction in which the link chain starts. 
+<figure id='blink_start_before' pgwide='0' float='1'>
+<title>Start a link chain before the current depiction</title>
+<mediaobject><imageobject><imagedata fileref='png/blink_start_before.png'/></imageobject>
+<caption><para> The green squares are times between the previous depiction and the current depiction.  The cyan square is the current depiction.  </para></caption></mediaobject>
+
+</figure>
+(see <xref linkend='blink_start_before'/>)
+</para><para>
+If you start the link chain before the last depiction you are given the option of beginning the link chain at some time before or after the depiction in which the link chain starts.
+<figure id='blink_start_before_after' pgwide='0' float='1'>
+<title>Start a link chain before or after the current depiction</title>
+<mediaobject><imageobject><imagedata fileref='png/blink_start_before_after.png'/></imageobject>
+<caption><para> The green squares are times between the previous depiction and the current depiction.  The cyan square is the current depiction.  The blue squares are times between the current depiction and the next depiction.  </para></caption></mediaobject>
+
+</figure>
+(see <xref linkend='blink_start_before_after'/>)
+</para></listitem>
+
+<listitem><para>
+Pick the next point of the link.
+</para></listitem>
+
+<listitem><para>
+Repeat the previous step until you reach the beginning of your depictions
+</para> <para>
+or 	
+</para> <para>
+Click the &right; mouse button and select <menuchoice><guimenu>End chain</guimenu></menuchoice> to end the link chain if the link chain does not extend across all depictions.
+</para><para>
+For discrete or line fields: If you end the link chain at the first depiction you are given the option of ending the link chain after the time of the depiction in which the link chain terminates. 
+<figure id='blink_end_after' pgwide='0' float='1'>
+<title>End a link chain after the current depiction</title>
+<mediaobject><imageobject><imagedata fileref='png/blink_end_after.png'/></imageobject>
+<caption><para> The cyan square is the current depiction.  The green squares are times between the current depiction and the next depiction.  </para></caption></mediaobject>
+
+</figure>
+(see <xref linkend='blink_end_after'/>)
+</para><para>
+If you end the link chain after the first depiction you are given the option of ending the link chain before or after the time of the depiction in which the link chain terminates. 
+<figure id='blink_end_before_after' pgwide='0' float='1'>
+<title>End a link chain before or after the current depiction</title>
+<mediaobject><imageobject><imagedata fileref='png/blink_end_before_after.png'/></imageobject>
+<caption><para> The blue squares are times between the previous depiction and the current depiction.  The cyan square is the current depiction.  The green squares are times between the current depiction and the next depiction.  </para></caption></mediaobject>
+</figure>
+(see <xref linkend='blink_end_before_after'/>)
+</para></listitem>
+
+<listitem><para>
+The link chain turns light blue to indicate it is complete.
+You are automatically returned to the depiction you started to link from.
+</para> <para>
+Note: If the <guilabel>Show early/late start/stop times</guilabel> option in selected (<menuchoice><guimenu>Options</guimenu><guimenuitem>Preferences...</guimenuitem></menuchoice>, <guilabel>General</guilabel> tab) and the start (or end) time is not at one of the depiction times, the actual start (or end) time is shown to the left (or right) of the node.
+</para></listitem>
+
+<listitem><para>
+Check the colour of the square beside the field name in the list.
+It should be yellow.
+If it is blue, you do not have enough links to interpolate the depictions.
+</para><para>
+or
+</para><para>
+Check the colour of the depiction boxes.
+They should all be yellow.
+If any are blue, you do not have enough links at the those times to interpolate the depictions.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='extending_a_link_chain'><title>Extending a link chain</title><para>
+<orderedlist><title>To extend a link forward in time:</title>
+
+<listitem><para>
+From the <guilabel>Field</guilabel> list, select the field you wish to link.
+</para> <para>
+If you are linking a continuous field (such as pressure, temperature or wave height) the field displays white on the depiction to indicate that it is the active field.
+</para><para>
+If you are linking a discrete field (such as weather, wind or freezing spray) the discrete areas and any dividing lines turn yellow if they have not yet been linked or white if they have been linked.
+</para><para>
+If you are linking a line field (such as fronts or jet axes) the curves turn yellow if they have not yet been linked or white if they have been linked.
+</para></listitem>
+
+<listitem><para>
+Select the <emphasis>Link Forward</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Link Forward</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/link_forward.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para> <para>
+A forward (right) arrow appears on the depiction bar indicating what depiction you are beginning on and the direction of the link.
+</para></listitem>
+
+<listitem><para>Go to the time of the end of the link chain.</para></listitem>
+<listitem><para>Click inside the box at the end of the link chain. 
+</para> <para>
+The link chain turns yellow.
+</para></listitem>
+
+<listitem><para>Click the &left; mouse button to continue the chain, or click the &right; mouse button and select <menuchoice><guimenu>New chain</guimenu></menuchoice> to start a new chain.
+</para><para>
+You are automatically moved to the next depiction.
+The arrow moves to show that the current depiction has been advanced.
+</para></listitem>
+
+<listitem><para>Pick the next point of the link.</para></listitem>
+
+<listitem><para>
+Repeat the previous step until you reach the end of your depictions 	
+</para> <para>
+or 	
+</para> <para>
+Click the &right; mouse button and select <menuchoice><guimenu>End chain</guimenu></menuchoice> to end the link chain if the link does not extend across all depictions.
+</para> <para>
+For discrete or line fields: If you end the link chain at the last depiction you are given the option of ending the link chain before the time of the depiction in which the link chain terminates. 
+(see <xref linkend='flink_end_before'/>)
+If you end the link chain before the last depiction you are given the option of ending the link chain before or after the time of the depiction in which the link chain terminates. 
+(see <xref linkend='flink_end_before_after'/>)
+</para></listitem>
+
+<listitem><para>
+The link chain turns light blue to indicate it is complete.
+You are automatically returned to the depiction you started to extend the link from.
+</para> <para>
+Note: If the <guilabel>Show early/late start/end times</guilabel> option in selected (<menuchoice><guimenu>Options</guimenu><guimenuitem>Preferences...</guimenuitem></menuchoice>, <guilabel>General</guilabel> tab) and the start (or end) time is not at one of the depiction times, the actual start (or end) time is shown to the left (or right) of the node.
+</para></listitem>
+
+<listitem><para>
+Check the colour of the square beside the field name in the list.
+It should be yellow.
+If it is blue, you do not have enough links to interpolate the depictions.
+</para><para>
+or
+</para><para>
+Check the colour of the depiction boxes.
+They should all be green.
+If any are blue, you do not have enough links at the those times to interpolate the depictions.
+</para></listitem>
+</orderedlist>
+</para><para>
+
+<orderedlist> <title>To extend link chain backwards in time:</title>
+<listitem><para>
+From the <guilabel>Field</guilabel> list, select the field you wish to link.
+</para> <para>
+If you are linking a continuous field (such as pressure, temperature or wave height) the field displays white on the depiction to indicate that it is the active field.
+</para><para>
+If you are linking a discrete field (such as weather, wind or freezing spray) the discrete areas and any dividing lines turn yellow if they have not yet been linked or white if they have been linked.
+</para><para>
+If you are linking a line field (such as fronts or jet axes) the curves turn yellow if they have not yet been linked or white if they have been linked.
+</para></listitem>
+
+<listitem><para>
+Select the <emphasis>Link Backward</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Link Backward</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/link_backward.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para> <para>
+A backward (left) arrow appears on the depiction bar indicating what depiction you are on and the direction of the link.
+</para></listitem>
+
+<listitem><para>Go to the time of the start of the link chain.</para></listitem>
+<listitem><para>Click inside the box at the start of the link chain. 
+</para> <para>
+The link chain turns yellow.
+</para></listitem>
+
+<listitem><para>Click the &left; mouse button to continue the chain, or click the &right; mouse button and select <menuchoice><guimenu>New chain</guimenu></menuchoice> to start a new chain.
+</para><para>
+You are automatically moved to the previous depiction.
+The arrow moves to show that the current depiction has been moved.
+</para></listitem>
+
+<listitem><para>Pick the next point of the link.</para></listitem>
+
+<listitem><para>
+Repeat the previous step until you reach the beginning of your depictions
+</para> <para>
+or 	
+</para> <para>
+Click the &right; mouse button and select <menuchoice><guimenu>End chain</guimenu></menuchoice> to end the link chain if the link chain does not extend across all depictions.
+</para><para>
+For discrete or line fields: If you end the link chain at the first depiction you are given the option of ending the link chain after the time of the depiction in which the link chain terminates. 
+(see <xref linkend='blink_end_after'/>)
+If you end the link chain after the first depiction you are given the option of ending the link chain before or after the time of the depiction in which the link chain terminates. 
+(see <xref linkend='blink_end_before_after'/>)
+</para></listitem>
+
+<listitem><para>
+The link chain turns light blue to indicate it is complete.
+You are automatically returned to the depiction you started to extend the link from.
+</para> <para>
+Note: If the <guilabel>Show early/late start/stop times</guilabel> option in selected (<menuchoice><guimenu>Options</guimenu><guimenuitem>Preferences...</guimenuitem></menuchoice>, <guilabel>General</guilabel> tab) and the start (or end) time is not at one of the depiction times, the actual start (or end) time is shown to the left (or right) of the node.
+</para></listitem>
+
+<listitem><para>
+Check the colour of the square beside the field name in the list.
+It should be yellow.
+If it is blue, you do not have enough links to interpolate the depictions.
+</para><para>
+or
+</para><para>
+Check the colour of the depiction boxes.
+They should all be yellow.
+If any are blue, you do not have enough links at the those times to interpolate the depictions.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='using_one_set_of_links_as_a_master'> <title>Using one set of links to link another field</title>
+<para>
+<indexterm><primary>time link</primary><secondary>master</secondary></indexterm>
+If you are linking a continuous field, you may be able to reduce the amount of linking you need to do by using one set of links as a <emphasis>master</emphasis>.
+</para> <para>
+In Time Link, the link chain for a field uses either one of:
+<itemizedlist>
+<listitem><para>
+the links for the field
+</para></listitem>
+
+<listitem><para>
+the links of another field
+</para></listitem>
+
+<listitem><para>
+a <emphasis>group</emphasis> or <emphasis>master</emphasis> set of links.
+</para></listitem>
+</itemizedlist>
+</para>
+<para>
+For example, you could couple surface temperature links to MSL pressure links.
+Also, often in upper air fields, several fields at a given level can have the same links.
+</para>
+</sect2>
+
+<sect2 id='using_the_links_of_another_field'> <title>Using the links of another field</title>
+<para>
+<indexterm><primary>time link</primary><secondary>other field</secondary></indexterm>
+If you are linking a continuous field, you may be able to use links from another field:
+<orderedlist>
+<listitem><para>
+From the <guilabel>Field</guilabel> list, select the field you wish to link.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Use Links From:</guilabel> option, choose the name of the field from which you want to use the links.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='creating_a_set_of_master_links'> <title>Creating and using a set of master links</title>
+<para>
+<indexterm><primary>time link</primary><secondary>master</secondary></indexterm>
+<orderedlist> <title>To create a set of master links:</title>
+<listitem><para>
+From the Field list, select <guilabel>Group Master</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Link forward or backward as you would for a field.
+(See <xref linkend='linking_forward'/> or <xref linkend='linking_backward'/>.)
+</para> <para>
+See <xref  linkend='creating_a_set_of_master_links'/>.
+</para></listitem>
+</orderedlist>
+</para> <para>
+<indexterm><primary>time link</primary><secondary>master</secondary></indexterm>
+<orderedlist> <title>To use master links:</title>
+<listitem><para>
+From the <guilabel>Field</guilabel> list, select the continuous field you wish to link.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Use Links From:</guilabel> option, select <guilabel>Group Master</guilabel>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='merging_links_from_another_field'> <title>Merging links from another field</title>
+<para>
+<indexterm><primary>time link</primary><secondary>merge</secondary></indexterm>
+You may import links from another &FPA; database or from another field with the merge tool. 
+</para><para>
+<orderedlist> <title>To merge a  link chain from another field or database:</title>
+<listitem><para>
+Select the <emphasis>Merge</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Merge</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/merge.png'/></imageobject>
+</inlinemediaobject></guiicon>
+The <emphasis>Merge</emphasis> menus appear.
+(see <xref linkend='timelink_merge'/>)
+<figure id='timelink_merge' pgwide='0' float='1'><title>Merge menus</title>
+<mediaobject><imageobject><imagedata fileref='png/timelink_merge.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para> 
+Select the <guilabel>Field</guilabel>  and <guilabel>Source</guilabel> of the other field you wish to import links from.
+</para></listitem>
+<listitem><para> Click <guibutton>Fetch</guibutton>.
+</para><para>The link chains from the other field appear in green. </para></listitem>
+<listitem><para> Pick the point(s) to merge.  (see <xref linkend='pick_object'/>) </para></listitem>
+<listitem><para>
+Finish your selection by pressing the &right; mouse button and select
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><menuchoice><guimenu>Merge</guimenu></menuchoice></entry>
+	<entry>merge information in place </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Translate</guimenu></menuchoice></entry>
+	<entry>move and merge the information </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Rotate</guimenu></menuchoice></entry>
+	<entry>rotate and merge the information </entry></row>
+	</tbody></tgroup>
+</informaltable>
+Note: the picked information remains selected, so you may perform multiple translate operations.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the merge.
+</para><para>
+Note: You can still restore the field if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+
+<listitem><para>
+All merged link nodes become pink guess nodes which have to be repositioned (or at least touched) with the move tool.(see <xref linkend='moving_a_guess_node_in_a_link_chain'/>.)
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='moving_a_node_in_a_link_chain'> <title>Moving a node in a link chain</title>
+<para>
+<indexterm><primary>time link</primary><secondary>move</secondary></indexterm>
+You can move a node in a link chain.
+You can only move the node in the current depiction, though you can see the entire link chain.
+The node is indicated by a white box.
+Sometimes links converge on a single node and you cannot distinguish which node you want to move.
+The &FPA; makes it possible for you to click on any node on the link chain and it will automatically pick the current node.
+</para> <para>
+<orderedlist> <title>To move a node in a link chain:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/link_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the node to move and hold the &left; mouse button down.
+The cursor changes to an X.
+</para></listitem>
+
+<listitem><para>
+Drag the node to its new position and release the button.
+</para> <para>
+For discrete or line fields: If the node is at either end of a chain you are also given the option of modifying the start or end time. (see <xref linkend='flink_move'/>.)
+<figure id='flink_move' pgwide='0' float='1'>
+<title>Move a link chain start or end time</title>
+<mediaobject><imageobject><imagedata fileref='png/flink_move.png'/></imageobject>
+<caption><para> The blue squares represent times between the previous depiction and the current depiction. 
+The cyan square represents the current choice for start or end time.  
+The Salmon square represents the current depiction (if it is not the start or end time).  
+The green squares represent times between the current depiction and the next depiction.  </para></caption></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+The link chain is redisplayed.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='moving_a_guess_node_in_a_link_chain'> <title>Moving a guess node in a link chain</title>
+<para>
+<indexterm><primary>time link</primary><secondary>move</secondary></indexterm>
+Changes in the depictions can result in the creation of guess links (usually identified by a pink box), which are not yet attached to a feature in the field. These guess nodes must be moved to an appropriate feature.
+</para> <para>
+<orderedlist> <title>To move a guess node in a link chain:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/link_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the guess node to move and hold the &left; mouse button down.
+The cursor changes to an X.
+</para></listitem>
+
+<listitem><para>
+Drag the node to its new position and release the button.
+</para> <para>
+For discrete or line fields: If the node is at either end of a chain you are also given the option of modifying the start or end time. (see <xref linkend='flink_start_after'/> or <xref linkend='flink_start_before_after'/> for modifying the start time, and <xref linkend='flink_end_before'/> or <xref linkend='flink_end_before_after'/> for modifying the end time.)
+</para></listitem>
+
+<listitem><para>
+The link chain is redisplayed.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='adding_a_control_node'> <title>Adding a control node</title>
+<para>
+<indexterm><primary>time link</primary><secondary>control node</secondary></indexterm>
+You can add a control node to your link chain which you can use to change the link chain path.
+</para> <para>
+Note: Control nodes can only be used in discrete area or line fields.
+</para> <para>
+<orderedlist> <title>To add a control node:</title>
+<listitem><para>
+Select the <emphasis>Move Node</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/link_move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Move</emphasis> menus appear.
+(see <xref linkend='timelink_add_control'/>)
+<figure id='timelink_add_control' pgwide='0' float='1'><title>Move menus</title>
+<mediaobject><imageobject><imagedata fileref='png/timelink_add_control.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the <guibutton>Add Control Node</guibutton> checkbox.
+</para></listitem>
+
+<listitem><para>
+Pick the link chain you want to add a control node to.
+The picked chain turns yellow.
+</para></listitem>
+
+<listitem><para>
+If the links are too close together, a list of possible control times is displayed.
+</para><para>
+Choose the time at which you want to add the control node.
+</para></listitem>
+
+<listitem><para>
+Click the link you want to become the control node and hold the button down.
+</para></listitem>
+
+<listitem><para>
+Drag the link to its new position and release the button.
+</para></listitem>
+
+<listitem><para>
+The link chain is redisplayed.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='removing_a_node'> <title>Removing a node</title>
+<para>
+<indexterm><primary>time link</primary><secondary>delete node</secondary></indexterm>
+You can remove the first and last nodes in a link chain as well as control nodes with the <emphasis>Delete Node</emphasis> tool.
+</para><para>
+<orderedlist> <title>To remove a node from your link chain:</title>
+<listitem><para>
+Select the <emphasis>Remove Node</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Remove Node</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/delete_link.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the link node you want to remove.
+</para></listitem>
+
+<listitem><para>
+The link node is removed.
+</para></listitem>
+</orderedlist>
+Note: The <guibutton>Undo</guibutton> is available if you accidentally delete the wrong node.
+</para>
+</sect2>
+
+<sect2 id='removing_link_chains'> <title>Removing link chains</title>
+<para>
+<indexterm><primary>time link</primary><secondary>delete chain</secondary></indexterm>
+<orderedlist> <title>To remove a link chain from your depiction:</title>
+<listitem><para>
+Select the <emphasis>Remove Chain</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Remove Chain</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/delete_chain.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the link chain to remove.
+The chain is deleted.
+</para></listitem>
+</orderedlist>
+Note: The <guibutton>Undo</guibutton> is available if you accidentally delete the wrong chain.
+</para>
+</sect2>
+
+<sect2 id='removing_all_link_chains'> <title>Removing all link chains</title>
+<para>
+<indexterm><primary>time link</primary><secondary>delete</secondary></indexterm>
+<orderedlist> <title>To remove all link chains from your depiction:</title>
+<listitem><para>
+Select the <emphasis>Remove Chain</emphasis> tool,
+or the <emphasis>Remove Node</emphasis> tool
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice>.
+</para></listitem>
+
+</orderedlist>
+Note: The <guibutton>Undo</guibutton> is available if you accidentally clear all the link chains.
+</para>
+</sect2>
+</sect1>
+<beginpage/>
+<sect1 id='interpolating_the_linked_depictions'> <title>Interpolating the linked depictions</title>
+<para>
+<indexterm><primary>interpolate</primary></indexterm>
+The &FPA; can interpolate the set of depictions to smaller time increments (e.g., 1 hour) using the links you have specified.
+</para> 
+<!-- <warning><para>You should avoid interpolating while zoomed, as the resulting process can be slow.</para></warning> -->
+<para>
+<orderedlist> <title>To interpolate linked depictions:</title>
+<listitem><para>
+Click the <guilabel>Interpolate</guilabel> tab.
+(see <xref linkend='interpolate_tools'/>)
+<figure id='interpolate_tools' pgwide='0' float='1'><title>Interpolation menus</title>
+<mediaobject><imageobject><imagedata fileref='png/interpolate.png'/></imageobject></mediaobject>
+</figure>
+</para> <para>
+Note: The coloured boxes within the Group and Fields boxes.
+Each colour represents the state of the links in that area. (see <xref linkend='status_legend'/>)
+</para></listitem>
+
+<listitem><para>
+To interpolate, click either <guibutton>Selected Fields </guibutton>or <guibutton>All Fields</guibutton>.
+</para> <para>
+If you choose <guibutton>All Fields</guibutton> the interpolation begins.
+</para> <para>
+If you choose <guibutton>Selected Fields</guibutton>, a Field Selection dialog box appears allowing you to choose which field to interpolate.
+When you have selected which fields you want to interpolate, click <guibutton>Accept</guibutton> to begin the Interpolation.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<beginpage/>
+<sect1 id='animating_the_depiction_sequence'> <title>Animating the depiction sequence</title>
+
+<sect2 id='animating_your_depictions'> <title>Animating your depictions</title>
+<para>
+<indexterm><primary>depiction</primary><secondary>animate</secondary></indexterm>
+You can animate your depictions to view the pattern.
+You can animate the basic depictions or the interpolated depictions.
+</para> <para>
+<orderedlist> <title>To animate your depiction:</title>
+<listitem><para>
+Click the <guilabel>Animation</guilabel> tab.
+(see <xref linkend='animation_tools'/>)
+<figure id='animation_tools' pgwide='0' float='1'><title>Animation menus</title>
+<mediaobject><imageobject><imagedata fileref='png/animation.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Depictions</guilabel> or <guilabel>Interpolations</guilabel> as the <guilabel>Source</guilabel>.
+</para></listitem>
+
+<listitem><para>
+From the list in the <guilabel>Animation</guilabel> area, select the fields to animate.
+</para></listitem>
+
+<listitem><para>
+Move the <guilabel>Time Span</guilabel> sliders to set the start and end times for the animation. (see <xref linkend='slider_bar'/>)
+</para></listitem>
+
+<listitem><para>
+Move the <guilabel>Speed</guilabel> slider to the left or right to set the speed of the animation. (see <xref linkend='slider_bar'/>)
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Start</guibutton>.
+</para> <para>
+The depiction automatically starts animating until you click <guibutton>Stop</guibutton>.
+However, you can change the source, fields and speed while it is running.
+</para>
+</listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='viewing_your_animated_depictions'> <title>Viewing your animated depictions</title>
+<para>
+<indexterm><primary>depiction</primary><secondary>animate</secondary></indexterm>
+You can choose to view a particular time from your animated depictions by using the sliding time bar and arrows near the top of your window.
+(see <xref linkend='animation_timebar'/>)
+<figure id='animation_timebar' pgwide='0' float='1'><title>Animation timebar</title>
+<mediaobject><imageobject><imagedata fileref='png/animation_timebar.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+<orderedlist> <title>To change your animation:</title>
+<listitem><para>
+Click <guibutton>Stop</guibutton> to stop the animation.
+</para></listitem>
+
+<listitem><para>
+Click the sliding bar and drag it to the time you wish to view
+</para> <para>
+or
+</para> <para>
+click the arrows to single-step forward or backwards through the animation sequence.
+</para></listitem>
+
+<listitem><para>
+Take note of the date and specific time so you can load it as a new depiction.
+See <xref  linkend='maintaining_fields_and_depictions'/>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+</chapter>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>display_function</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>
+<colspec colwidth='1*'/>
+<colspec colwidth='1.4*'/><tbody>
+<row valign='top'><entry><userinput>linear</userinput></entry><entry>point by point</entry></row>
+<row valign='top'><entry><userinput>step_before</userinput></entry><entry>step function before</entry></row>
+<row valign='top'><entry><userinput>step_centre</userinput></entry><entry>step function centred</entry></row>
+<row valign='top'><entry><userinput>step_after</userinput></entry><entry>step function after</entry></row>
+<row valign='top'><entry><userinput>box</userinput></entry><entry>sequence of boxes</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>

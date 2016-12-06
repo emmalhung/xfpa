@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_arrow_display'> <title>@arrow_display</title> <titleabbrev>@arrow_display</titleabbrev>
+<para>
+Set display parameters for drawing lines with arrow heads or arrow tails.
+See Appendix E for further explanation of keywords for this directive.
+</para> <para>
+Note that arrows use the same presentation as the lines they are drawn on, and that
+arrows on multi-coloured lines use the last colour presentation specified.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+
+<tbody>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>arrow_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Arrow display name</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>arrow_length</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Length of arrow head (in display units)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>arrow_angle</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Angle from line to arrowhead (in counter-clockwise decimal degrees)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>return_angle</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Angle from line to return arrowhead (in counter-clockwise decimal degrees)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>length_offset</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Distance from endpoint of line to tip of arrow (in display units along path of line)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>width_offset</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Distance from endpoint of line to tip of arrow  (in display units to left of path of line)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>head_length</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Width of arrow head (as a fraction of <userinput>arrow_length</userinput> keyword value)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>tail_length</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Width of arrow tail (as a fraction of <userinput>arrow_length</userinput> keyword value)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>arrow_features</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>One of: <userinput>head</userinput> (draw arrow head), <userinput>tail</userinput> (draw arrow tail), <userinput>both</userinput> (draw arrow head and tail), <userinput>both_tail_reversed</userinput> (draw arrow head and reversed tail)</para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@arrow_display
+{
+  arrow_name     = arrowhead;
+  arrow_length   = 0.10;
+  arrow_angle    = 50;
+  return_angle   = 35;
+  length_offset  = 0.0;
+  width_offset   = 0.0;
+  head_length    = 0.2;
+  tail_length    = 0.2;
+  arrow_features = head;
+}
+</programlisting>
+Set parameters for an arrow display called arrowhead. The head of the arrow will be drawn 0.10
+"units" long and 0.02 "units" wide, at an angle of 50 degrees to the line and a return angle of 35
+degrees. The tip of the arrow head will be located at the end of the line and not offset.
+</para><para>
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

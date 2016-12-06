@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>A.6.1. Template of a 'Levels' Block</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apas06.html" title="A.6. Levels block" /><link rel="prev" href="apas06.html" title="A.6. Levels block" /><link rel="next" href="apas07.html" title="A.7. Groups block" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">A.6.1. Template of a 'Levels' Block</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apas06.html">Prev</a> </td><th width="60%" align="center">A.6. Levels block</th><td width="20%" align="right"> <a accesskey="n" href="apas07.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2072001"></a>A.6.1. Template of a 'Levels' Block</h3></div></div></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>Levels</code></strong></span></dt><dd><p>
+<strong class="userinput"><code>{</code></strong>
+	</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code><span xmlns="" class="replaceable">level_name</span></code></strong></span></dt><dd><p>
+	<strong class="userinput"><code>{</code></strong>
+		</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		This is the label that the user sees.
+		The default is <span xmlns="" class="replaceable">level_name</span>.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>short_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		The short_label is used when there is not enough room on the <span class="acronym">FPA</span> screen or button to use the longer label.
+		The default is <span xmlns="" class="replaceable">level_name</span>.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>description = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		This is an optional descriptive label.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>level_type = </code></strong></span></dt><dd><p>
+		This parameter matches the level to an acceptable element to create a field.
+		The choices are described in <a href="apas03.html#common_keys" title="Table A.1. Common Keywords">Table A.1</a>.
+		Must be one of: 
+		<strong class="userinput"><code>Msl</code></strong>,
+		<strong class="userinput"><code>Surface</code></strong>,
+		<strong class="userinput"><code>Level</code></strong>,
+		<strong class="userinput"><code>Layer</code></strong>,
+		<strong class="userinput"><code>Geography</code></strong>,
+		<strong class="userinput"><code>Annotation</code></strong>,
+		<strong class="userinput"><code>Any</code></strong>.
+		Note that this parameter cannot be re-specified!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>field_group = <span xmlns="" class="replaceable">group_name</span></code></strong></span></dt><dd><p>
+		This parameter will group the <span class="acronym">FPA</span> fields in the interface.
+		The <span xmlns="" class="replaceable">group_name</span> is from the 'Fields' sub block of the Groups block.
+		This parameter is the default group if the field or the field_group for the field or the field_group for the element of the field are not specified.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>alias = <span xmlns="" class="replaceable">alias_name(s)</span></code></strong></span></dt><dd><p>
+		These can be shorter names for use in equations, for example.
+		Alias names cannot be reused by another level.
+		Only the first one encountered gets used.
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>file_id = None | <span xmlns="" class="replaceable">identifier</span></code></strong></span></dt><dd><p>
+		This is the identifier used to construct old style <span class="acronym">FPA</span> file names (see <a href="apas03.html#common_keys" title="Table A.1. Common Keywords">Table A.1</a>).
+		It cannot be re-specified unless changed from <strong class="userinput"><code>None</code></strong>!
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>file_ident = None | <span xmlns="" class="replaceable">identifier</span></code></strong></span></dt><dd><p>
+		This is the identifier used to construct new style <span class="acronym">FPA</span> file names (see <a href="apas03.html#common_keys" title="Table A.1. Common Keywords">Table A.1</a>).
+		It cannot be re-specified unless changed from <strong class="userinput"><code>None</code></strong>!
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>level_levels = <span xmlns="" class="replaceable">category</span></code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>level_levels = <span xmlns="" class="replaceable">category value</span></code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>level_levels = <span xmlns="" class="replaceable">category upper lower</span></code></strong></span></dt><dd><p>This parameter identifies information used to set the vertical location in the atmosphere of the given <span xmlns="" class="replaceable">level_name</span>, where:</p><p>- <span xmlns="" class="replaceable">category</span> is one of:
+		<strong class="userinput"><code>Msl</code></strong>, <strong class="userinput"><code>Surface</code></strong>, <strong class="userinput"><code>Pressure</code></strong>,
+		<strong class="userinput"><code>Height</code></strong>, <strong class="userinput"><code>Sigma</code></strong>, <strong class="userinput"><code>Theta</code></strong>,
+		<strong class="userinput"><code>Geography</code></strong>, <strong class="userinput"><code>Annotation</code></strong>.</p><p>- <span xmlns="" class="replaceable">value</span> is a single numeric value for a level</p><p>- <span xmlns="" class="replaceable">upper lower</span> are two numeric values for a layer</p><p>Note that this parameter cannot be re-specified!</p><p>The acceptable value for <strong class="userinput"><code>level_type = Msl</code></strong> is:</p><p>- <strong class="userinput"><code>level_levels = Msl</code></strong> (for mean sea level)</p><p>The acceptable value for <strong class="userinput"><code>level_type = Surface</code></strong> is:</p><p>- <strong class="userinput"><code>level_levels = Surface</code></strong> (for the surface of the Earth)</p><p>The acceptable values for <strong class="userinput"><code>level_type = Level</code></strong> are:</p><p>- <strong class="userinput"><code>level_levels = Pressure <span xmlns="" class="replaceable">value</span></code></strong> (for a constant pressure surface)</p><p>- <strong class="userinput"><code>level_levels = Height <span xmlns="" class="replaceable">value</span></code></strong> (for a constant height surface)</p><p>- <strong class="userinput"><code>level_levels = Sigma <span xmlns="" class="replaceable">value</span></code></strong> (for a sigma surface)</p><p>- <strong class="userinput"><code>level_levels = Theta <span xmlns="" class="replaceable">value</span></code></strong> (for an isentropic surface)</p><p>The acceptable values for <strong class="userinput"><code>level_type = Layer</code></strong> are:</p><p>- <strong class="userinput"><code>level_levels = Pressure <span xmlns="" class="replaceable">upper lower</span></code></strong> (for a pressure layer)</p><p>- <strong class="userinput"><code>level_levels = Height <span xmlns="" class="replaceable">upper lower</span></code></strong> (for a height layer)</p><p>- <strong class="userinput"><code>level_levels = Sigma <span xmlns="" class="replaceable">value</span></code></strong> (for a sigma layer)</p><p>- <strong class="userinput"><code>level_levels = Theta <span xmlns="" class="replaceable">value</span></code></strong> (for an isentropic layer)</p><p>The acceptable value for <strong class="userinput"><code>level_type = Geography</code></strong> is:</p><p>- <strong class="userinput"><code>level_levels = Geography</code></strong> (for geographical information)</p><p>The acceptable value for <strong class="userinput"><code>level_type = Annotation</code></strong> is:</p><p>- <strong class="userinput"><code>level_levels = Annotation</code></strong> (for menus or legends)</p></dd></dl></div><p>
+	<strong class="userinput"><code>}</code></strong> #(End of <span xmlns="" class="replaceable">level_name</span> Block)
+	</p></dd></dl></div><p>
+<strong class="userinput"><code>}</code></strong> #(End of 'Levels' Block)
+</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apas06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apas06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apas07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">A.6. Levels block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> A.7. Groups block</td></tr></table></div></body></html>

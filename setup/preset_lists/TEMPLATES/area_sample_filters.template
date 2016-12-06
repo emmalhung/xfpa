@@ -1,0 +1,81 @@
+##########################################################################
+#
+#  Area Sample Filter Lists
+#
+#  Purpose: When sampling areas the list of attributes associated
+#           with a particular area can be quite large. The purpose
+#           of this file is to:
+#
+#           1. provide a mechanism to filter the attribute display to
+#              show only those attributes of interest.
+#           2. set the display order of the attributes to something
+#              other than that in the configuration files.
+#
+#           The order that the attributes will appear in the list
+#           is that of the filter list and not that of the attribute
+#           order in the configuration file.
+#
+#  NOTE:    There is only one file of this type per FPA setup.
+#
+#
+#  Format: [element.level]  filter_label
+#               <attribute>
+#               <attribute>
+#               ...
+#
+#          [element.level]
+#          ...
+#
+#          The element-level pairs specify that the filter is for
+#          a specific field. If the filter is to be used in every
+#          field, then the element-level pair identifier is replaced
+#          with the keywork "ALL_FIELDS". Don't forget the period
+#          between the element and level!
+#
+#          The filter label is whatever you want it to be. So to
+#          always show a list of certain attributes the file might
+#          contain:
+#
+#          [ALL_FIELDS]  Main Values
+#               cloud_base_1
+#               cloud_base_2
+#               visibility
+#               <and so on>
+#
+#
+#          To associate a particular filter list with just one field
+#          we would have something like the following:
+#
+#          [weather_synoptic.surface] Weather Values
+#                <another list>
+#
+#  NOTE:
+#          There is a special filter group which is always included in
+#          the display called "All Attributes" which will display all of
+#          the attributes. You may want to still limit which attributes
+#          are displayed with this filter and so you can override this
+#          by including the group "ALL_ATTRIBUTES" in this file. A label
+#          is not required for this group as the default name is used,
+#          but if you want to change the label you may.
+#
+#          THIS LIST IS DIFFERENT in that it contains all attributes
+#          which are NOT to be displayed. For Example:
+#
+#          [ALL_ATTRIBUTES] Show Everything
+#               <attribute not to display>
+#               ...
+#
+#          Will change the label from "All Attributes" to "Show Everything"
+#          and remove from display the given list of attributes.
+#
+#
+# EXAMPLE:
+#
+#    [ALL_FIELDS] Value Only
+#      FPA_user_label
+#
+#    [ALL_ATTRIBUTES]
+#      FPA_auto_label
+#
+#
+##########################################################################

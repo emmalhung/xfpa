@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_draw_table_line'> <title>@draw_table_line</title> <titleabbrev>@draw_table_line</titleabbrev>
+<para>
+Display a line in a table. The line is displayed once for each table site (set in the <link linkend='ps_table_site'>@table_site</link> directive).
+</para><para>
+Note that the line parameters must be set in the <link linkend='ps_define_line'>@define_line</link> directive.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/table_name.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>last_site</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry>
+<entry colname='desc'><para>Draw line for last site in table?</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_name.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/arrow_name.xml'/>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>x_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Horizontal offset wrt table location (in display units)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>y_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Vertical offset wrt table location (in display units)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/pattern_length.xml'/>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>line_width</userinput>, <userinput>line_style</userinput>, <userinput>outline</userinput> and <userinput>fill</userinput> can be specified more than once in this directive, for drawing multi-coloured lines!</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@draw_table_line
+{
+  line_name  = vertical_line;
+  table_name = T1;
+  last_site  = yes;
+  x_off      = 1.90;
+  y_off      = 0.00;
+  outline    = CMYK 0 0 0 100;
+  line_width = 0.03;
+  pattern    = simple;
+}
+</programlisting>
+Display a line called "vertical_line" (from the <link linkend='ps_define_line'>@define_line</link> directive) for a table called "T1"
+(from the <xref linkend='ps_define_table'/> directive). The line will be displayed once for every site in the table
+(from the <link linkend='ps_table_site'>@table_site</link> directive). The starting position of the line will be 1.90 "units" to the right
+of each site in the table. The line will be 0.03 "units" wide in a colour composed of 100% Black, and
+will be drawn with a simple pattern. (Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

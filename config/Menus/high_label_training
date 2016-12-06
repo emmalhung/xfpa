@@ -1,0 +1,23 @@
+# Entry menu description file for Highs Labels - Training
+
+menu_title             = Labelled Highs
+geometry               =  -650 -200 700 300
+label_display_height   =  0
+value_display_height   =  0
+category_display_width = 20
+
+panel "High Label"
+{
+	# High name
+	scrolled_list
+	{
+		attribute_id = hilo_name
+		label        = "Name"
+		position     = 20 20
+		default      = none
+		limit_type   = integer
+		ncolumns     = 2
+		none_sub     = ""
+		items        = none 1 2 3 4 5 6 7 8 9
+	}
+}

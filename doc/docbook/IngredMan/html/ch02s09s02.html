@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.9.2. DESCRIPTION</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch02s09.html" title="2.9. GESequence" /><link rel="prev" href="ch02s09s01.html" title="2.9.1. SYNOPSIS" /><link rel="next" href="ch02s09s03.html" title="2.9.3. RETURN" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.9.2. DESCRIPTION</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s09s01.html">Prev</a> </td><th width="60%" align="center">2.9. GESequence</th><td width="20%" align="right"> <a accesskey="n" href="ch02s09s03.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4212331"></a>2.9.2. DESCRIPTION</h3></div></div></div><p> 
+This group handles requests which deals with the depiction sequence. Note that Ingred does not assume anything about what is required upon start-up. It is the responsibility of the interface control 
+to issue the required command sequence.
+</p><p>
+The <span xmlns="" class="replaceable">command</span> parameter consists of a string of key words. These are:
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>ACTIVE</code></strong> <span xmlns="" class="replaceable">depiction_time</span> [<span class="optional"><span xmlns="" class="replaceable">active_field_time</span></span>]</span></dt><dd><p>
+Display the given depiction from the sequence and make it the active depiction to which all further commands will apply.
+If a field is selected then make the field editable at the given time.
+If the selected field is to be edited at a time different from <span xmlns="" class="replaceable">depiction_time</span> then this time is specified by <span xmlns="" class="replaceable">active_field_time</span>.
+This will usually apply to static and daily fields.
+Automatically turned off by <strong class="userinput"><code>DELETE</code></strong>.
+</p></dd><dt><span class="term"><strong class="userinput"><code>CREATE_DEPICTION</code></strong> <span xmlns="" class="replaceable">source</span>|- <span xmlns="" class="replaceable">sub_source</span>|- <span xmlns="" class="replaceable">issue_time</span>|- <span xmlns="" class="replaceable">valid_time</span>|- [<span class="optional"><span xmlns="" class="replaceable">target_time</span></span>]</span></dt><dd><p>
+Create a depiction using model fields from the given <span xmlns="" class="replaceable">source</span> and <span xmlns="" class="replaceable">sub_source</span> with the issue (run) time <span xmlns="" class="replaceable">issue_time</span> as the base for the depiction.
+If the model does not have a <span xmlns="" class="replaceable">sub_source</span> then use the dash (<strong class="userinput"><code>-</code></strong>) place holder.
+Use the fields from the given <span xmlns="" class="replaceable">valid_time</span> and create a depiction at <span xmlns="" class="replaceable">target_time</span>.
+If <span xmlns="" class="replaceable">target_time</span> is not given, use <span xmlns="" class="replaceable">valid_time</span> as the target time.
+The fields to use from the model for depiction creation are specified in the configuration files associated with Ingred.
+If <span xmlns="" class="replaceable">source</span>, <span xmlns="" class="replaceable">sub_source</span>, 
+<span xmlns="" class="replaceable">issue_time</span> and <span xmlns="" class="replaceable">valid_time</span> are all dashed (<strong class="userinput"><code>-</code></strong>) then an empty depiction is created at <span xmlns="" class="replaceable">target_time</span> which must be specified.
+</p></dd><dt><span class="term"><strong class="userinput"><code>CREATE_FIELD</code></strong> <span xmlns="" class="replaceable">element level valid_time</span> </span></dt><dd><p>
+Create an empty field for the given <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span> at the given <span xmlns="" class="replaceable">valid_time</span>.
+For daily fields the time will consist of a year and a day only (yyyy:jjj).
+</p></dd><dt><span class="term"><strong class="userinput"><code>DELETE_DEPICTION</code></strong> <span xmlns="" class="replaceable">group</span>|<strong class="userinput"><code>ALL</code></strong> <span xmlns="" class="replaceable">time</span>|<strong class="userinput"><code>ALL</code></strong></span></dt><dd><p>
+Delete the depiction for the given <span xmlns="" class="replaceable">group</span> and <span xmlns="" class="replaceable">time</span>.
+Note that if both group and time are <strong class="userinput"><code>ALL</code></strong>, then all groups for all times will be deleted.
+(Only the <strong class="userinput"><code>ALL</code></strong> option for group is implemented at this time).
+</p></dd><dt><span class="term"><strong class="userinput"><code>DELETE_FIELD</code></strong> <span xmlns="" class="replaceable">element level time</span>|<strong class="userinput"><code>ALL</code></strong></span></dt><dd><p>
+Delete the field, as defined by the given <span xmlns="" class="replaceable">element</span> and <span xmlns="" class="replaceable">level</span>, from the depiction specified by <span xmlns="" class="replaceable">time</span>.
+If <span xmlns="" class="replaceable">time</span> is <strong class="userinput"><code>ALL</code></strong> remove the field from every depiction in the sequence.
+</p></dd><dt><span class="term"><strong class="userinput"><code>GET_DEPICTION</code></strong> <span xmlns="" class="replaceable">source valid_time</span>|<strong class="userinput"><code>ALL</code></strong> [<span class="optional"><span xmlns="" class="replaceable">target_time</span></span>]</span></dt><dd><p>
+Get a depiction for the given <span xmlns="" class="replaceable">valid_time</span> from the given <span xmlns="" class="replaceable">source</span> and insert it into the sequence at <span xmlns="" class="replaceable">target_time</span>.
+If <span xmlns="" class="replaceable">target_time</span> is not given, use <span xmlns="" class="replaceable">valid_time</span> as the target time.
+<span xmlns="" class="replaceable">Source</span> is the directory key, from the associated setup file, of any directory containing depictions.
+If <span xmlns="" class="replaceable">valid_time</span> is <strong class="userinput"><code>ALL</code></strong> then <span xmlns="" class="replaceable">target_time</span> is ignored and all of the depictions from the given <span xmlns="" class="replaceable">source</span> are read in. 
+</p></dd><dt><span class="term"><strong class="userinput"><code>GET_FIELD</code></strong> <span xmlns="" class="replaceable">source sub_source</span>|- <span xmlns="" class="replaceable">issue_time</span>|- <span xmlns="" class="replaceable">element level valid_time</span> [<span class="optional"><span xmlns="" class="replaceable">target_time</span></span>]</span></dt><dd><p>
+Get a field from the given <span xmlns="" class="replaceable">source</span> and <span xmlns="" class="replaceable">sub_source</span> with the given <span xmlns="" class="replaceable">issue_time</span> and element and level at <span xmlns="" class="replaceable">valid_time</span> and insert into the <span xmlns="" class="replaceable">target_time</span> depiction If <span xmlns="" class="replaceable">target_time</span> is not given assume that it is the same as <span xmlns="" class="replaceable">valid_time</span>.
+<span xmlns="" class="replaceable">Source</span> can be either the directory key, from the associated setup file, of any directory containing depictions or a named <span xmlns="" class="replaceable">source</span> as defined in the Fields configuration file.
+If the given <span xmlns="" class="replaceable">source</span> does not have a <span xmlns="" class="replaceable">sub_source</span> and/or an <span xmlns="" class="replaceable">issue_time</span> then the appropriate parameter is replaced with a dash(<strong class="userinput"><code>-</code></strong>) as a place holder. 
+</p></dd><dt><span class="term"><strong class="userinput"><code>INITIALIZE VIEW</code></strong>|<strong class="userinput"><code>EDIT</code></strong> <span xmlns="" class="replaceable">interp_delta</span> <strong class="userinput"><code>ALL</code></strong>|<strong class="userinput"><code>NONE</code></strong>|<strong class="userinput"><code>RANGE</code></strong> <span xmlns="" class="replaceable">start end</span> <strong class="userinput"><code>SAVE</code></strong>|<strong class="userinput"><code>NOSAVE</code></strong></span></dt><dd><p>
+Initialize the depiction sequence.
+This command must only be issued once.
+The action taken by Ingred depends on the specific initialization command.
+There are three groups of commands. 
+</p><p>
+The first group specifies the mode.
+<strong class="userinput"><code>VIEW</code></strong> puts Ingred is put into view only mode.
+<strong class="userinput"><code>EDIT</code></strong> puts Ingred into edit mode and the timestep 
+between the interpolated depictions generated when the depiction sequence is interpolated must be specified by <span xmlns="" class="replaceable">interp_delta</span>. 
+The <span xmlns="" class="replaceable">interp_delta</span> is given in the format <strong class="userinput"><code>hh</code></strong> for a timestep in hours or <strong class="userinput"><code>0:mm</code></strong> for a timestep in minutes.
+The <span xmlns="" class="replaceable">interp_delta</span> value must not be given for <strong class="userinput"><code>VIEW</code></strong> mode.
+</p><p>
+The next group specifies the number of depictions to be read in.
+If <strong class="userinput"><code>ALL</code></strong>, Ingred reads in all of the depictions from the existing sequence on disc.
+IF <strong class="userinput"><code>NONE</code></strong>, Ingred deletes any existing depictions from disc and presents the user with an empty sequence.
+If <strong class="userinput"><code>RANGE</code></strong>, Ingred will read only those depictions which are between <span xmlns="" class="replaceable">start</span> and <span xmlns="" class="replaceable">end</span> and deletes all others from disc (start time and end time are not used with <strong class="userinput"><code>ALL</code></strong> or <strong class="userinput"><code>NONE</code></strong>).
+If <span xmlns="" class="replaceable">start</span> is a dash ("-") then the oldest depiction found is used as the start time and if <span xmlns="" class="replaceable">end</span> is a dash the newest depiction is used as the end time.
+</p><p>
+The last group specifies if when depictions are deleted they can be saved to the backup directory.
+<strong class="userinput"><code>SAVE</code></strong> will backup the depictions while <strong class="userinput"><code>NOSAVE</code></strong> will not.
+</p><p>
+</p><div class="orderedlist"><p class="title"><b>Notes:</b></p><ol type="1"><li><p>This must be done after the background map has been defined with the GEAction() command <strong class="userinput"><code>MAP_BASE</code></strong>.</p></li><li><p>If Ingred is in viewer mode the depictions will be read but not deleted from the sequence stored on disc.</p></li></ol></div><p>
+</p></dd><dt><span class="term"><strong class="userinput"><code>SAVE_DEPICTION</code></strong> <span xmlns="" class="replaceable">group</span>|<strong class="userinput"><code>ALL</code></strong> <span xmlns="" class="replaceable">time</span>|<strong class="userinput"><code>ALL</code></strong></span></dt><dd><p>
+Save the depiction for the given <span xmlns="" class="replaceable">group</span> and <span xmlns="" class="replaceable">time</span> to the archive store. 
+(Only the <strong class="userinput"><code>ALL</code></strong> option is implemented for group at this time)
+</p></dd><dt><span class="term"><strong class="userinput"><code>TZERO</code></strong> <span xmlns="" class="replaceable">T0_timestamp</span></span></dt><dd><p>Set the timestamp to be used as the "T0" reference time.</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s09s01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02s09.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s09s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.9.1. SYNOPSIS </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.9.3. RETURN</td></tr></table></div></body></html>

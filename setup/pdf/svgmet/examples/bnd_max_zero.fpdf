@@ -1,0 +1,11 @@
+! Display the 0 degree contour as a red line ...
+@contours
+	{
+	element    = max_temp;
+	level      = surface;
+	units      = degreesC;
+	values     = 0;
+	line_width = 0.07;
+	outline    = X11 Red;
+	fill       = none;
+	}

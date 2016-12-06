@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>11.5. Changing the value in a given area (Stomp)</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch11.html" title="Chapter 11. Editing vector fields" /><link rel="prev" href="ch11s04.html" title="11.4. Changing the value at a given point (Poke) " /><link rel="next" href="ch11s06.html" title="11.6. Dragging a feature  on a vector field" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">11.5. Changing the value in a given area (Stomp)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s04.html">Prev</a> </td><th width="60%" align="center">Chapter 11. Editing vector fields</th><td width="20%" align="right"> <a accesskey="n" href="ch11s06.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="vf_changing_the_value_in_a_given_area_stomp"></a>11.5. Changing the value in a given area (Stomp)</h2></div></div></div><p>
+<a id="id1571847" class="indexterm"></a>
+The <span class="emphasis"><em>Stomp</em></span> tool allows you to specify an area on the depiction and change all values within the area.
+This is similar to the <span class="emphasis"><em>Poke</em></span> tool, but is like poking with an area rather than a point.
+</p><p>
+</p><div class="orderedlist"><p class="title"><b>To change the value in a given area:</b></p><ol type="1"><li><p>
+Select the <span class="guibutton">Stomp </span>tool.
+<span class="guiicon"><span class="inlinemediaobject"><img src="png/stomp.png" alt="Stomp" /></span></span>
+</p><p>
+The <span class="emphasis"><em>Stomp</em></span> menus appear.
+(see <a href="ch11s05.html#vect_stomp_tools" title="Figure 11.3. Vector field edit stomp menus">Figure 11.3</a>)
+</p><div class="figure-float"><div xmlns="" class="figure"><a xmlns="http://www.w3.org/1999/xhtml" id="vect_stomp_tools"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Figure 11.3. Vector field edit stomp menus</b></p><table><tr><td><div class="mediaobject"><img xmlns="http://www.w3.org/1999/xhtml" src="png/field_edit_vector_stomp.png" alt="Vector field edit stomp menus" /></div></td></tr></table></div></div><p>
+</p></li><li><p>
+Draw the outline of the area to stomp on the depiction
+or click the <span class="mousebutton">right</span> mouse button and select <span class="guimenu">Boundary from</span> and choose <span class="guimenu">Use Last Stomp Outline</span> or a preset outline if your System Administrator has configured some predefined outlines.
+</p><p>
+The boundary is shown on the depiction.
+</p></li><li><p>
+Move the slider on the magnitude and/or direction slider-bars to adjust the delta amount. (see <a href="ch03s03s05.html" title="3.3.5. Using slider-bars">Using slider-bars, (Section 3.3.5)</a>)
+</p><p>
+Positive values increase the value at the specified area by that value and negative values decrease the value by that amount.
+(If you select zero, nothing happens.)
+</p><p>
+Note: You can select or deselect magnitude and direction by clicking on the button at the top of each column.
+</p></li><li><p>
+Select the amount of taper to determine the shape of the Stomp area.
+</p><p>
+Note: The taper parameter allows you to change the shape of the field adjustment.
+A flat topped taper applies the same adjustment over the interior of the selected area.
+A curved taper applies a larger adjustment at the centre of the selected area, and smaller adjustments towards the edges.
+</p></li><li><p>
+Select a radius of influence.
+(see <a href="ch10s01.html#radius_of_influence" title="Figure 10.3. Radius of influence">Figure 10.3</a>)
+</p><p>
+The percentage indicates the affected area surrounding the point of edit.
+</p></li><li><p>
+Click the <span class="mousebutton">right</span> mouse button and select <span class="guimenu">Proceed</span>.
+</p><p>
+The <span class="acronym">FPA</span> recomputes the field and re-displays the new field contours in white.
+The original contours remain in the normal field colour.
+</p></li></ol></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">11.4. Changing the value at a given point (Poke)  </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 11.6. Dragging a feature  on a vector field</td></tr></table></div></body></html>

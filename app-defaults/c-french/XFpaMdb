@@ -1,0 +1,62 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Dialog messages.  The various utility dialogs used in the FPA have
+!                    their messages stored here. The extraction routine
+!                    will eliminate all spaces after the \n.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#include CommonMdb
+#include IngredMdb
+
+about_fpa.title:  Au sujet du FPA
+about_fpa.posn:   200 90
+about_fpa.dialog: \
+Forecast Production Assistant %s\n\n\
+[The FPA is free software: you can redistribute it and/or]\n\
+[modify it under the terms of the GNU General Public]\n\
+[License as published by the Free Software Foundation,]\n\
+[either version 3 of the License, or any later version]\n\n\
+[The FPA is distributed in the hope it will be useful, but]\n\
+[WIHOUT ANY WARRANTY: without even the implied warranty]\n\
+[of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.]\n\
+[See the GNU General Public License for more details.]\n\n\
+@very_small@Copyright %s Non publié (Créé en 1984, révisé de 1985 à 2011),\n\
+[Environment Canada, Government of Canada.]
+
+alliedAbort.title:  *** ERREUR D’EXÉCUTION ***
+alliedAbort.posn:   120 175
+alliedAbort.dialog: Le modèle allié "%s" s’est arrêté anormalement.\n\n\
+			Vérifier le fichier journal et prévenir l’administrateur de réseau du FPA.
+
+alliedModelError.title:  Erreur du modèle allié
+alliedModelError.posn:   300 300
+alliedModelError.dialog: Entrée non valide pour le modèle allié "%s" dans le FPA\n\
+			Fichier de configuration. Contacter l’administrateur de réseau du FPA.
+
+
+dataLock.title:  Acquisition de la base de données
+dataLock.posn:   default
+dataLock.dialog: La base de données est en train d’être modifiée par un autre FPA.\n\n\
+				 Permission de modification refusée. Sortie du programme après confirmation.
+
+exit_fpa_confirm.title:  Confirmation de sortie
+exit_fpa_confirm.posn:   40 140
+exit_fpa_confirm.dialog: Voulez-vous vraiment quitter le FPA?
+
+exit_fpa_confirm.toggleLabel: [Delete all depictions on exit]
+
+fogAbort.title:  *** ERREUR D’EXÉCUTION ***
+fogAbort.posn:   120 175
+fogAbort.dialog: Le générateur de prévisions (FoG) s’est arrêté anormalement.\n\n\
+			Vérifier le fichier journal et informer l’administrateur de réseau du FPA.
+
+radarStatMod.title: [Table Modified]
+radarStatMod.posn: 100 50
+radarStatMod.dialog: [The STAT table has been modified.]\n\
+                     [Save before proceeding?]
+
+TimelinkNoGrps.title:  Erreur de configuration du champ
+TimelinkNoGrps.posn:   -150 100
+TimelinkNoGrps.dialog: Pas de groupes de liaison définis pour aucun des champs!\n\
+				Prévenir votre administrateur de réseau du FPA.

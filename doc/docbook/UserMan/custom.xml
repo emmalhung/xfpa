@@ -1,0 +1,488 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='preparing_to_use_the_fpa'> <title>Preparing to use the &FPA;</title>
+<sect1 id='installation_and_maintenance'> <title>Installation and maintenance</title>
+<para>
+The installation and maintenance of the &FPA; is handled by a site System Administrator.
+The documentation required by the administrator is provided in a separate manual, &FPA; Administrator's Guide.
+</para> <para>
+Many of the functions of the &FPA; can be configured specifically for your site.
+If you have questions or concerns about the system configuration contact your System Administrator.
+</para>
+</sect1>
+<sect1 id='running_the_fpa'> <title>Running the &FPA;</title>
+<para>
+The principal &FPA; program name is
+<indexterm><primary>xfpa</primary></indexterm>
+<command>xfpa</command> and may be launched with various run time parameter switches (see <xref linkend='setting_command_line_parameters_in_the_fpa'/>).
+How the program is run is specific to your site.
+Some sites will have the users run the program directly using the run time parameters.
+Some will launch the program through the use of an "application launcher" button located on a panel, or from a menu in a master control program.
+Documentation on the procedure used at your site should be provided by your System Administrator.
+</para> <para>
+However the &FPA; is run, the configuration for any run is set through the use of a
+<indexterm><primary>setup file</primary></indexterm>
+setup file.
+This file determines the permitted field sources, the map projection, the set of products to be generated and much more.
+The setup files for your office are configured locally by your site, so if you have any questions you should again contact your System Administrator.
+</para>
+</sect1>
+
+<sect1 id='customizing_fpa_display_layers'> <title>Customizing &FPA; display layers</title>
+<sect2 id='displaying_fields'> <title>Displaying fields</title>
+<para>
+You can select the fields you want to display at all times on your depiction.
+The visibility settings can be either preset by the System Administrator or customized by the user.
+</para>
+<para>
+<orderedlist> <title>To change the fields overlayed on the depiction:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Field  Display Control...</guimenuitem></menuchoice>
+or click the <guiicon><inlinemediaobject>
+<textobject><phrase>Field Display Control</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/field-control.png'/>
+</imageobject></inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para><para>
+The <guilabel>Field Display Control</guilabel> dialog box appears.
+(see <xref linkend='field_display_control'/>)
+<figure id='field_display_control' pgwide='0' float='1'><title>Field Display Control</title>
+<mediaobject><imageobject><imagedata fileref='png/field_display_control.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+<itemizedlist>
+<listitem><para>
+Click the radio buttons on or off to turn a field (or field group) on or off.
+</para> <para>
+If a group (e.g., Surface fields, Sea State fields, etc.) is turned on then the selected fields in the group are visible.
+If the <guilabel>Show Always</guilabel> box is selected the field is always visible.
+If the group is not selected, but the field is, then the field is only visible when the group is active.
+</para></listitem>
+
+<listitem><para>
+Click the <guibutton>Guidance</guibutton>, <guibutton>Scratchpad</guibutton>,  
+<guibutton>Radar</guibutton>, <guibutton>Satellite</guibutton>, <guibutton>Overlay</guibutton> or <guibutton>Underlay</guibutton> 
+radio buttons on or off to turn those layers on or off.
+<indexterm><primary>guidance</primary></indexterm>
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>All On</guibutton> to turn all the fields on.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>All Off</guibutton> to turn all the fields off.
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>field visibility</primary></indexterm>
+Click <guibutton>Reset to Default</guibutton> to reset radio buttons to current default field visibility (custom or preset)
+</para></listitem>
+
+<listitem><para>
+<indexterm><primary>field visibility</primary></indexterm>
+Choose a custom (Default) or preset setting from the <guilabel>Visibility</guilabel> drop-down. 
+</para></listitem>
+</itemizedlist>
+</para></listitem>
+
+<listitem><para>
+If you like a particular setup may save is as your default by clicking the <guibutton>Save As Default</guibutton> button.
+</para></listitem>
+
+<listitem><para>
+When you are satified with the fields displayed. Click the <guibutton>Close</guibutton> button. Your settings will persist.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='displaying_map_overlays'> <title>Displaying map overlays</title>
+<para>
+<orderedlist><title>To display one or more map overlays:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Map Overlay Control...</guimenuitem></menuchoice>
+or click the <guiicon><inlinemediaobject>
+<textobject><phrase>Map Overlay Control</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/map-overlay.png'/>
+</imageobject></inlinemediaobject></guiicon>
+icon in the "Command Icon Bar".
+</para></listitem>
+<listitem><para>
+The <guilabel>Map Overlay Control</guilabel> dialog box appears.
+(see <xref linkend='map_overlay_control'/>)
+<figure id='map_overlay_control' pgwide='0' float='1'><title>Map Overlay Control</title>
+<mediaobject><imageobject><imagedata fileref='png/map_overlay_control.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+<listitem><para>
+Click the radio buttons on or off to select the map overlays you want to display.
+</para></listitem>
+<listitem><para>Click <guibutton>Set</guibutton> to display the selected overlays.</para></listitem>
+<listitem><para>Click <guibutton>Close</guibutton>.</para></listitem>
+</orderedlist>
+</para> <para>
+The <guilabel>Map Overlay Control</guilabel> may be left open while you work in the depiction editor.
+<indexterm><primary>metafile</primary><secondary>map</secondary></indexterm>
+Normally a map <glossterm linkend='g_metafile'>metafile</glossterm> is read only once (when it is first displayed).
+If the contents of a map metafile change then a
+<guiicon><inlinemediaobject>
+<textobject><phrase>Red Flag</phrase></textobject>
+<imageobject><imagedata scale='75' fileref='png/redflag.png'/>
+</imageobject></inlinemediaobject></guiicon>
+icon appears next to it.
+</para> <para>
+<orderedlist continuation='continues'> <title>To re-read modified map metafiles:</title>
+<listitem><para>
+Click <guibutton>Update</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='defining_t0_depiction'> <title>Defining T0 depiction</title>
+<para>
+This option allows you to select the T0 depiction time.
+This is the zero point
+<indexterm><primary>zero point</primary></indexterm>
+<indexterm><primary>sequence</primary></indexterm>
+against which all other depiction times in this time <glossterm linkend='g_sequence'>sequence</glossterm> will be determined.
+</para> <para>
+<orderedlist> <title>To define the T0 depiction time:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>T0 Depiction</guimenuitem></menuchoice>.
+</para> <para>
+A cascading list appears.
+You can pull this list off as a tear-off list.
+(see <xref linkend='using_tear_off_menus'/>)
+<variablelist>
+<varlistentry><term>
+<menuchoice><guimenu>Options</guimenu><guisubmenu>T0 Depiction</guisubmenu><guimenuitem>Set to Active Depiction</guimenuitem></menuchoice>.
+</term><listitem><para>
+Defines the <glossterm linkend='g_active_depiction'>active depiction</glossterm>
+<indexterm><primary>depiction</primary><secondary>active</secondary></indexterm>
+as the T0 (zero) depiction.
+</para></listitem></varlistentry>
+<varlistentry><term>
+<menuchoice><guimenu>Options</guimenu><guisubmenu>T0 Depiction</guisubmenu><guimenuitem>Nearest to System Clock</guimenuitem></menuchoice>.
+</term><listitem><para>
+Defines the depiction prior to the system clock as the T0 depiction.
+(Even if the system clock is closer to the next depiction, the <emphasis>prior</emphasis> depiction is selected as T0.)
+</para></listitem></varlistentry>
+<varlistentry><term>
+<menuchoice><guimenu>Options</guimenu><guisubmenu>T0 Depiction</guisubmenu><guimenuitem>Set to System Clock</guimenuitem></menuchoice>.
+</term><listitem><para>
+Defines T0 as the system clock time.
+Note that if none of the depictions matches the system clock, there will not be a T0 depiction if this setting is chosen.
+</para></listitem></varlistentry>
+</variablelist>
+</para> <para>
+The time offset of the other depictions shifts accordingly after you choose the T0 depiction.
+</para></listitem>
+</orderedlist>
+or
+<orderedlist>
+<listitem><para>
+Click and hold the &right; mouse button on a time in the depiction sequence, and
+select <menuchoice><guimenu>Set as T0</guimenu></menuchoice> from the context menu.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='minimum_time_step'><title>Minimum Time Step</title>
+<para>
+The usual behaviour of the forward/backward arrows to the right of the time sequence is to step through the depictions one by one, regardless of the time between depictions.
+<indexterm><primary>sequence</primary></indexterm>
+</para> <para>
+<orderedlist> <title>To step through the depictions based on time:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Minimum Time Step</guimenuitem></menuchoice> and select the desired time step.
+</para></listitem>
+</orderedlist>
+</para> <para>
+<orderedlist> <title>To revert to the default:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Minimum Time Step</guimenuitem></menuchoice> and select <guilabel>Step Through All</guilabel>.
+</para></listitem>
+</orderedlist>
+</para> <para>
+Note: The available time steps (and an associated label which appears between the forward/backward arrows) can be set by the System Administrator with <emphasis>sequenceIncrements</emphasis> in the <filename>.XFpa</filename> resource file.
+</para>
+</sect1>
+
+<sect1 id='limiting_the_start_and_end_time_in_the_time_sequence'> <title>Limiting the start and end time in the time sequence</title> 
+<para>
+<orderedlist> <title>To temporarily limit the range of depictions:</title>
+<listitem><para>
+Click and hold the &right; mouse button on a time in the depiction sequence, and
+select <menuchoice><guimenu>Set as Sequence Start</guimenu></menuchoice> from the context menu.
+</para></listitem>
+
+<listitem><para>
+Click and hold the &right; mouse button on a time later in the depiction sequence, and
+select <menuchoice><guimenu>Set as Sequence End</guimenu></menuchoice> from the context menu.
+</para></listitem>
+</orderedlist>
+
+<orderedlist> <title>To remove the limits:</title>
+<listitem><para>
+Click and hold the &right; mouse button on a time and select <menuchoice><guimenu>Remove Start Limit</guimenu></menuchoice> from the context menu, or click the &left; mouse button on the red <guibutton>&lt;</guibutton> button at the start of the sequence.
+</para></listitem>
+
+<listitem><para>
+Click and hold the &right; mouse button on a time and select <menuchoice><guimenu>Remove End Limit</guimenu></menuchoice> from the context menu, or click the &left; mouse button on the red <guibutton>&gt;</guibutton> button at the end of the sequence.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='customizing_fpa_preferences'> <title>Customizing &FPA; preferences</title>
+<para>
+You can customize the &FPA; interface so that it is easier to use.
+</para>
+<sect2 id='general_preferences'><title>General Preferences</title>
+<para>
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice>, and select the <guilabel>General</guilabel> tab.
+(see <xref linkend='general_tab'/>)
+<figure id='general_tab' pgwide='0' float='1'><title>Preferences - General</title>
+<mediaobject><imageobject><imagedata fileref='png/preferences_general.png'/></imageobject></mediaobject>
+</figure>
+</para> <para>
+<indexterm><primary>depiction</primary><secondary>sequence</secondary></indexterm>
+<variablelist> <title>There are a number of miscellaneous options that can be set:</title>
+<varlistentry><term><guilabel>Confirm program exit command</guilabel></term>
+<listitem><para>The &FPA; depiction editor will require a confirmation before exiting.</para></listitem></varlistentry>
+<varlistentry><term><guilabel>Restore edit state upon restart</guilabel></term>
+<listitem><para>The &FPA; depiction editor will remember the state it was in when you last quit.
+When you restart it will return that state.</para></listitem></varlistentry>
+<varlistentry><term><guilabel>Show day name in daily field time button</guilabel></term>
+<listitem><para>Will include the day of the week in the daily field depiction sequence</para></listitem></varlistentry>
+
+<varlistentry><term><guilabel>Map Colours</guilabel></term>
+<listitem><para>You can choose a colour scheme for the &FPA; map layer.
+</para><para>
+Note: The colour schemes can be modified in the &FPA; setup file by your System Administrator.
+</para></listitem></varlistentry>
+
+<varlistentry><term><guilabel>Lat-Long Display</guilabel></term>
+<listitem><para>There is a latitude/longitude display in the upper right corner that tracks the cursor position on the &FPA; map.
+The latitude and longitude can be displayed in <guilabel>decimal degrees</guilabel> or <guilabel>degrees &amp; minutes</guilabel>.</para></listitem></varlistentry>
+<varlistentry><term><guilabel>Timelink Display</guilabel></term>
+<listitem><para>Allows you to customize the look of the timelink display</para></listitem></varlistentry>
+</variablelist>
+</para></listitem>
+<listitem><para> Click <guibutton>Apply</guibutton> to register your changes.</para></listitem>
+<listitem><para> Click <guibutton>Close</guibutton>.</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='user_interface_preferences'> <title>User Interface Preferences</title>
+<para>
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice>, and select the <guilabel>User Interface</guilabel> tab.
+(see <xref linkend='ui_tab'/>)
+<figure id='ui_tab' pgwide='0' float='1'><title>Preferences - User Interface</title>
+<mediaobject><imageobject><imagedata fileref='png/preferences_user_interface.png'/></imageobject></mediaobject>
+</figure>
+</para> <para>
+There are a number of user interface options that can be set:
+<variablelist>
+<varlistentry><term><guilabel>Cursor Style</guilabel></term>
+<listitem><para>
+You can set the <guilabel>Style</guilabel>, <guilabel>Body</guilabel> colour and <guilabel>Border</guilabel> colour of the cursor.
+</para></listitem></varlistentry>
+<varlistentry><term><guilabel>Component Location</guilabel></term>
+<listitem><para>The <guilabel>Command Icon Bar</guilabel>, <guilabel>Time Selection Bar</guilabel> and <guilabel>Message Bar</guilabel> can be positioned at the top or bottom of the display.
+</para></listitem></varlistentry>
+
+<varlistentry><term><guilabel>New Guidance Indicator (Bookshelf)</guilabel></term>
+<listitem><para>Allows you to manage when and for how long the "Bookshelf" flashes when new guidance arrives.
+</para></listitem></varlistentry>
+</variablelist>
+
+</para></listitem>
+<listitem><para> Click <guibutton>Apply</guibutton> to register your changes.</para></listitem>
+<listitem><para> Click <guibutton>Close</guibutton>.</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='setting_dialog_locations'> <title>Setting dialog locations</title>
+<para>
+You can set the location for various dialogs if you have a multi-headed system.
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Preferences...</guimenuitem></menuchoice> and select the <guilabel>Dialog Location</guilabel> tab.
+</para></listitem>
+
+<listitem><para>
+Select which monitor a dialog should appear on.
+</para></listitem>
+
+<listitem><para> Click <guibutton>Apply</guibutton> to register your changes.</para></listitem>
+<listitem><para> Click <guibutton>Close</guibutton>.</para></listitem>
+</orderedlist>
+</para> <para>
+Note: The alignment of the columns should correspond to the locations of your monitors.
+Contact your System Administrator if this is not the case.
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='introducing_fpa_profiles'> <title>Introducing &FPA; profiles</title>
+<para>
+A profile controls the look of the &FPA; interface and the layout of &FPA; windows that the user wishes to remain open.
+<indexterm><primary>xfpa</primary></indexterm>
+Once a named profile is created, the same profile can be chosen the next time &FPA; is started.
+From the command line type: <command>xfpa -profile <replaceable>profile_name</replaceable></command>.
+If at least one named profile exists and no profile is specified in the command line then the <guilabel>Startup Profile Selection</guilabel> dialog is displayed.
+You must choose a profile to continue the &FPA; startup.
+(see <xref linkend='startup_profile'/>)
+<figure id='startup_profile' pgwide='0' float='1'><title>Startup Profile Selection</title>
+<mediaobject><imageobject><imagedata fileref='png/startup_profile.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+Even if there are no named profiles there will always be a <emphasis>Default</emphasis> profile.
+The default profile saves the interface and layout of &FPA; upon quiting and restores that state when it is started again.
+If at least one named profile exists, you may still use the default profile by typing:
+<command>xfpa -profile default</command>
+</para>
+<sect2 id='creating_a_profile'> <title>Creating a profile</title>
+<para>
+<orderedlist> <title>To create a profile:</title>
+<listitem><para>
+Customize the &FPA; interface.
+(see <xref linkend='customizing_fpa_preferences'/>)
+</para></listitem>
+
+<listitem><para>
+Open and position all the windows you prefer to have open when you start &FPA;.
+</para></listitem>
+
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Save Profile...</guimenuitem></menuchoice>.
+</para><para>
+The <guilabel>Save Profile</guilabel> dialog box appears.
+(see <xref linkend='save_profile'/>)
+<figure id='save_profile' pgwide='0' float='1'><title>Save Profile dialog</title>
+<mediaobject><imageobject><imagedata fileref='png/save_profile.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Deselect <guilabel>Automatically update profile on exit from program</guilabel> if you <emphasis>DO NOT</emphasis> want to update the profile on exiting &FPA;.
+Otherwise, any changes made to customize the &FPA; interface or any changes to the windows will be saved in the profile on exiting &FPA;
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Save As...</guibutton>.
+</para><para>
+The <guilabel>Save As Profile</guilabel> dialog box appears.
+(see <xref linkend='save_profile_as'/>)
+<figure id='save_profile_as' pgwide='0' float='1'><title>Save Profile As dialog</title>
+<mediaobject><imageobject><imagedata fileref='png/save_as_profile.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para> Enter a profile name.</para></listitem>
+<listitem><para> Click <guibutton>Apply</guibutton>.
+</para><para>Note: The new profile becomes the active profile.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='saving_a_profile'> <title>Saving a profile</title>
+<para>
+<orderedlist> <title>To save the active profile:</title>
+<listitem><para>
+Change the layout and interface options to suit your new requirements.
+</para></listitem>
+
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Save Profile...</guimenuitem></menuchoice>.
+</para><para>
+The <guilabel>Save Profile</guilabel> dialog box appears.
+(see <xref linkend='save_profile_2'/>)
+<figure id='save_profile_2' pgwide='0' float='1'><title>Save Profile dialog</title>
+<mediaobject><imageobject><imagedata fileref='png/save_profile2.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Set the <guilabel>Automatically update profile on exit from program</guilabel> option to your desired behaviour.
+(see <xref linkend='creating_a_profile'/>)
+</para></listitem>
+<listitem><para>
+Click <guibutton>Save</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='managing_profiles'> <title>Managing profiles</title>
+<para>
+Named profiles can be deleted, or copied to another named profile.
+</para> <para>
+<orderedlist><title>To copy a profile:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Manage Profiles...</guimenuitem></menuchoice>.
+</para><para>
+The <guilabel>Manage Profiles</guilabel> dialog box appears.
+(see <xref linkend='manage_profiles'/>)
+<figure id='manage_profiles' pgwide='0' float='1'><title>Manage Profiles dialog</title>
+<mediaobject><imageobject><imagedata fileref='png/manage_profilesb.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the profile you wish to copy from the list of profiles.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Copy</guibutton>.
+</para><para>
+The <guilabel>Save As Profile</guilabel> dialog box appears.
+(see <xref linkend='save_profile_as'/>)
+</para></listitem>
+
+<listitem><para> Enter a profile name.</para></listitem>
+<listitem><para> Click <guibutton>Apply</guibutton>.
+</para><para>Note: The new profile DOES NOT become the active profile.
+</para></listitem>
+<listitem><para> Click <guibutton>Close</guibutton>.</para></listitem>
+</orderedlist>
+</para> <para>
+<orderedlist> <title>To delete a profile:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Options</guimenu><guimenuitem>Manage Profiles...</guimenuitem></menuchoice>.
+</para><para>
+The <guilabel>Manage Profiles</guilabel> dialog box appears.
+(see <xref linkend='manage_profiles'/>)
+</para></listitem>
+
+<listitem><para>
+Select the profile you wish to delete from the list of profiles.
+</para><para>
+Note: you may not delete the active profile!
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Delete</guibutton>.
+</para></listitem>
+
+<listitem><para> Click <guibutton>Close</guibutton>.</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+</chapter>

@@ -1,0 +1,108 @@
+
+Control of Memory Management Mode for memory-intensive objects
+
+
+The Problem:
+
+It is recognized that SURFACE objects and their sub-objects (SPLINE, PATCH and 
+ILIST) can use a substantial amount of allocated memory.  This can cause 
+performance problems and limitations in applications which handle large numbers 
+of continuous grid-based fields, which are represented as SURFACE objects.
+
+The bulk of memory allocated for these objects is used for holding patch 
+functions (a set of coefficients for a bi-cubic polynomial for each patch), and 
+contour data.  The contour data are used only for viewing the field.  The patch 
+functions are used, both for creating the contour data and for evaluating the 
+field at arbitrary locations.
+
+If a field is used in a sampling application, where it will never be viewed, 
+there is no need to allocate memory for the contour data.  In addition, if a 
+large number of fields are to be evaluated at relatively few arbitrary 
+locations, substantial savings can be realized by only allocating patch 
+functions where evaluation takes place.
+
+
+The Solution:
+
+FPA Version 5.0 Patch 1 introduces a mechanism that allows application 
+programmers control over the allocation of memory that might not be used.  The 
+scheme for allocating memory for these memory-intensive objects can now be 
+programatically selected from one of the following 3 modes:
+
+1.  "Preallocate"
+    - This is the former functionality, and continues to be the default.
+    - No memory conservation is attempted.
+    - All patch and contour data is fully allocated when initialized, and never
+      deallocated.
+
+2.  "Allocate When Needed"
+    - Patch and contour data are not allocated when initialized.
+    - Patch and/or contour data are allocated when needed, specifically when
+      evaluating or contouring for display.
+    - Once allocated, they are never deallocated.
+
+3.  "Allocate And Free"
+    - Patch and contour data are not allocated when initialized.
+    - Patch and/or contour data are allocated when needed, specifically when
+      evaluating or contouring for display.
+    - Once used they are immediately deallocated.
+
+These 3 modes allow programmers to control the trade-off between the amount of 
+allocated memory, and the time used in regenerating data that may have been 
+deallocated.  For this reason different modes are better suited to different 
+types of applications.
+
+The standard FPA interface (xfpa) has been built using the "Preallocate" mode.  
+Other non-graphical applications (such as sampler and various allied model 
+pre-processes) have been built with "Allocate When Needed" mode.
+
+
+Specifics:
+
+The Memory Management Mode is represented by a variable of type MMM, which is an 
+enumerated type that can take one of three values.  This is defined in 
+surface.h, as follows:
+
+typedef	enum
+        {
+        MMM_Preallocate,        /* objects will be pre-allocated */
+        MMM_AllocateWhenNeeded, /* objects will be allocated when needed */
+        MMM_AllocateAndFree     /* as above, but freed after use */
+        } MMM;
+
+The following functions can be used to select and test the prevailing Memory 
+Management Mode within an application:
+
+void set_MMM(MMM mode);
+
+   This is used to set the prevailing mode in an application.  It is normal to
+   set this mode once, near the beginning of the application program.  If the
+   mode is changed, current allocation is not changed, but future allocation and
+   deallocation will follow the new setting.
+   
+   The prevailing mode can also be set external to an application program, by
+   means of the FPA_MMM shell variable.  This shell variable is recognized if
+   given of the follwing values:
+
+      "prealloc" - sets mode to MMM_Preallocate,
+      "alloc"    - sets mode to MMM_AllocateWhenNeeded,
+      "dealloc"  - sets mode to MMM_AllocateAndFree.
+      
+   This shell variable, if defined, takes precedence over all calls to
+   set_MMM().
+
+MMM  get_MMM(void);
+
+   This function returns the prevailing mode.  This may be useful if the mode
+   is changed in various stages of an application program, or to determine if
+   the FPA_MMM shell variable has been used.
+
+void check_MMM(void);
+
+   This function is called internally, prior to initializing memory-intensive
+   objects.  If the mode has not been selected by a call to set_MMM(), then it
+   forces the prevailing mode to be set either according to the FPA_MMM shell
+   variable if defined, or to the default ("Preallocate").
+   
+   If called from within application program code, this function merely forces
+   the issue at that point.

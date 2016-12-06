@@ -1,0 +1,206 @@
+# Entry menu description file for local weather
+
+menu_title             = Local Weather Entry Menu
+geometry               =  -650 -300 700 600
+label_display_height   =  1
+value_display_height   =  3
+category_display_width =  25
+
+panel "Cloud"
+{
+	# Only one cloud layer - cloud cover only
+	composite_list
+	{
+		attribute_id   = cloud_amount
+		label          = Clouds
+		position       = 20 30
+		default        = SCT
+		scrolled_list
+			{
+			ncolumns = 4
+			nvisible = 4
+			none_sub = ""
+			items    = none SCT BKN OVC
+			}
+		scrolled_list
+			{
+			prefix   = blank
+			ncolumns = 5
+			nvisible = 3
+			none_sub = ""
+			items    = none OCNL VRBL
+			}
+		scrolled_list
+			{
+			prefix   = blank
+			ncolumns = 4
+			nvisible = 4
+			none_sub = ""
+			items    = none SCT BKN OVC
+			}
+		scrolled_list
+			{
+			prefix   = blank
+			ncolumns = 4
+			nvisible = 4
+			none_sub = ""
+			items    = none CU TCU CB
+			}
+	}
+
+	frame
+	{
+		label    = Frame
+		position = 20 180
+		size     = 600 80
+		text
+		{
+			attribute_id  = cloud_remarks
+			position      = 10 10
+			ncolumns      = 40
+			nrows         = 1
+		}
+	}
+}
+
+panel "Weather"
+{
+	# Primary visibility
+	composite_list
+	{
+		attribute_id   = visibility
+		label          = Weather
+		position       = 20 30
+		default        = none
+		scrolled_list
+			{
+			ncolumns = 3
+			nvisible = 12
+			none_sub = ""
+			items    = none 0 1/4 1/2 3/4 1 2 3 4 5 6 P6
+			}
+		scrolled_list
+			{
+			ncolumns = 4
+			nvisible = 10
+			prefix   = dash
+			none_sub = ""
+			items    = none 1/4 1/2 3/4 1 2 3 4 5 6
+			}
+	}
+
+	# Primary weather
+	composite_list
+	{
+		attribute_id   = weather
+		label          = none
+		position       = 260 30
+		default        = none
+		scrolled_list
+			{
+			prefix   = blank
+			ncolumns = 1
+			nvisible = 3
+			none_sub = ""
+			items    = none "+" "-"
+			}
+		scrolled_list
+			{
+			ncolumns = 5
+			nvisible = 11
+			none_sub = ""
+			items    = none RA SHRA SN SHSN DZ RASN TS TSRA FZRA FZDZ
+			}
+		scrolled_list
+			{
+			prefix   = blank
+			ncolumns = 6
+			nvisible = 6
+			none_sub = ""
+			items    = none BR FG BR/FG HZ FU
+			}
+	}
+
+	# Weather modifier
+	scrolled_list
+	{
+		attribute_id = weather_modifier
+		label        = Weather 2
+		position     = 20 80
+		default      = none
+		ncolumns     = 5
+		nvisible     = 5
+		none_sub     = ""
+		items        = none OCNL FEW FQT LCL
+	}
+
+	# Secondary visibility
+	composite_list
+	{
+		attribute_id   = visibility_secondary
+		label          = none
+		position       = 210 80
+		default        = none
+		scrolled_list
+			{
+			ncolumns = 3
+			nvisible = 12
+			none_sub = ""
+			items    = none 0 1/4 1/2 3/4 1 2 3 4 5 6 P6
+			}
+		scrolled_list
+			{
+			ncolumns = 4
+			nvisible = 10
+			prefix   = dash
+			none_sub = ""
+			items    = none 1/4 1/2 3/4 1 2 3 4 5 6
+			}
+	}
+
+	# Secondary weather
+	composite_list
+	{
+		attribute_id   = weather_secondary
+		label          = none
+		position       = 380 80
+		default        = none
+		scrolled_list
+			{
+			prefix   = blank
+			ncolumns = 1
+			nvisible = 3
+			none_sub = ""
+			items    = none "+" "-"
+			}
+		scrolled_list
+			{
+			ncolumns = 5
+			nvisible = 11
+			none_sub = ""
+			items    = none RA SHRA SN SHSN DZ RASN TS TSRA FZRA FZDZ
+			}
+		scrolled_list
+			{
+			prefix   = blank
+			ncolumns = 6
+			nvisible = 6
+			none_sub = ""
+			items    = none BR FG BR/FG HZ FU
+			}
+	}
+
+	frame
+	{
+		label    = Frame
+		position = 20 180
+		size     = 600 80
+		text
+		{
+			attribute_id  = wx_remarks
+			position      = 10 10
+			ncolumns      = 40
+			nrows         = 1
+		}
+	}
+}

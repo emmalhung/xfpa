@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_gpgen_group_begin'> <title>@gpgen_group_begin</title> <titleabbrev>@gpgen_group_begin</titleabbrev>
+<para>
+Force grouping of objects for an output graphics file.
+</para><para>
+Note that this directive is not used by PSMet!
+</para><para>
+This directive does not require keywords. You may include format specific keywords that will be added to the grouping tag of the output format.
+<example><title>SVG keywords </title><para>
+<programlisting>@gpgen_group_begin { &lt;keyGroup; visibility = 'visible'; }</programlisting>
+Groups all subsequent graphic displays up to next <link linkend='ps_gpgen_group_end'>@gpgen_group_end</link> directive, and assigns the 'keyword = value' pairs from a group directive (defined in a @loop_begin or @group directives) and 'visibility' value to the grouped elements.
+</para><para>
+keywords in &lt;keyGroup; and 'visibility' will not be valid GPGEN keywords, but they should be valid SVG keywords.
+</para></example>
+</para></sect2>

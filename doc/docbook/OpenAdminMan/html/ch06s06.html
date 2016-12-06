@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.6. Memory Preset Configuration File Format</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch06.html" title="Chapter 6. Configuration Files" /><link rel="prev" href="ch06s05s05.html" title="6.5.5. DataFiles Block" /><link rel="next" href="ch06s07.html" title="6.7. Attribute Entry Menu Files" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.6. Memory Preset Configuration File Format</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s05s05.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Configuration Files</th><td width="20%" align="right"> <a accesskey="n" href="ch06s07.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2069948"></a>6.6. Memory Preset Configuration File Format</h2></div></div></div><p>
+<a id="id2069955" class="indexterm"></a>
+The files in the Memory directory contain the definitions of predefined lists of editor memory items.
+These items will always be placed before those defined by the users.
+Each file is associated with a particular field and is specified in the <code class="filename">Config</code> file by the <strong class="userinput"><code>memory_file</code></strong> or <strong class="userinput"><code>background_memory_file</code></strong> keyword in the <strong class="userinput"><code>editor</code></strong> section of the <strong class="userinput"><code>Elements</code></strong> block.
+</p><p>
+Each block of data must be proceeded by the keyword 'memory'.
+After this are attribute - value pairs which define the memory contents.
+Any attribute not listed will be assigned its default value.
+There are three special attributes which can be used by many fields.
+</p><div class="informaltable"><table border="1"><colgroup><col /><col /></colgroup><thead><tr><th>attribute</th><th>purpose</th></tr></thead><tbody><tr valign="top"><td valign="top">FPA_user_label</td><td valign="top">the user set label for the entry</td></tr><tr valign="top"><td valign="top">FPA_auto_label</td><td valign="top">the 'value' of the area</td></tr><tr valign="top"><td valign="top">FPA_category</td><td valign="top">the 'category' of the area</td></tr></tbody></table></div><p>
+</p><div class="informalexample"><pre class="programlisting"> memory
+  FPA_user_label = Showers
+  cloud_base     = 25
+  precip         = RW-
+  vis            = 1-3
+</pre></div><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The actual category names will vary according to what is defined in your configuration files.</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s05s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.5.5. DataFiles Block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.7. Attribute Entry Menu Files</td></tr></table></div></body></html>

@@ -1,0 +1,74 @@
+! Reset presentations for contours (independent of element) ...
+@reset_contour_presentation { }
+
+! Set presentation for wind speed contours ...
+@contour_presentation
+	{
+	units      = knots;
+	range      = [0 : 80];
+	line_width = 0.015;
+	line_style = solid;
+	outline    = X11 Green;
+	}
+@contour_presentation
+	{
+	units      = knots;
+	range      = (80 : 110];
+	line_width = 0.015;
+	line_style = solid;
+	outline    = X11 Red;
+	}
+@contour_presentation
+	{
+	units      = knots;
+	range      = (110 : 140];
+	line_width = 0.015;
+	line_style = solid;
+	outline    = X11 Blue;
+	}
+@contour_presentation
+	{
+	units      = knots;
+	range      = (140 : 170];
+	line_width = 0.015;
+	line_style = solid;
+	outline    = X11 Magenta;
+	}
+@contour_presentation
+	{
+	units      = knots;
+	range      = (170 : 200];
+	line_width = 0.015;
+	line_style = solid;
+	outline    = X11 Yellow;
+	}
+@contour_presentation
+	{
+	units      = knots;
+	range      = (200 : *];
+	line_width = 0.030;
+	line_style = solid;
+	outline    = X11 Yellow;
+	}
+
+! Set a filter for drawing contours ...
+@filter	{ 0.01 }
+
+! Display the wind speed contours at regular intervals ...
+@cross_section_contours
+	{
+	cross_section_name = rev_route_cross_section;
+	element            = wind_speed;
+	level_list         = SFC 850 700 500 250;
+	units              = knots;
+	location_look_up   = rev_route_contours;
+	vertical_look_up   = xsect_heights;
+	pattern            = simple;
+	min                =   10;
+	max                = 1000;
+	base               =   10;
+	interval           =   10;
+	}
+
+! Reset filter ...
+@filter	{ 0 }

@@ -1,0 +1,47 @@
+#!/bin/bash
+ID="[get_config]"
+
+# Script to find the given config file
+
+if [ "$1" = "" -o "$2" = "" ]
+then
+	echo "Usage: get_config <setup> <key>" 1>&2
+	exit 1
+fi
+
+# Get the config_files entry for the desired config file
+setup=$1
+key=$2
+config=`get_setup_parm $setup config_files $key`
+if [ $? -ne 0 ]
+then
+	exit 2
+fi
+
+# If full path return that
+if abspath "$config"
+then
+	if [ -r $config ]
+	then
+		echo $config
+		exit 0
+	else
+		echo "$ID Config file \"$config\" not found." 1>&2
+		exit 1
+	fi
+fi
+
+# Append the config directory
+config=`get_path $setup config $config`
+if [ $? -ne 0 ]
+then
+	exit 2
+fi
+if [ -r $config ]
+then
+	echo $config
+	exit 0
+else
+	echo "$ID Config file \"$config\" not found." 1>&2
+	exit 1
+fi

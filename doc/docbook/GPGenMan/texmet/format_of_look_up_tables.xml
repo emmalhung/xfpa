@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_format_look_up_tables'> <title>Format of Look Up Tables</title> <titleabbrev>look up</titleabbrev>
+<para>
+Look up tables allow conversion of &FPA; style attribute values or sampled
+values into text for display. They are accessed
+by the <userinput>look_up</userinput>, <userinput>case_look_up</userinput>, or <userinput>attribute_look_up</userinput> <userinput>keywords</userinput> in the 
+<link linkend='tx_label'>@label</link> and <link linkend='tx_sample_field'>@sample_field</link>
+directives. Files containing look up tables have a ".tab" suffix.
+</para><para>
+Look up tables contain lines with the following format:
+<programlisting>
+    <replaceable>key(s)</replaceable> : <replaceable>symbol</replaceable> : <replaceable>text</replaceable> : <replaceable>presentation</replaceable>
+    <replaceable>key(s)</replaceable> : <replaceable>symbol</replaceable> : <replaceable>text</replaceable> : <replaceable>presentation</replaceable>
+    <replaceable>...</replaceable></programlisting>
+where:
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'>&colwidth;<tbody>
+<row valign='top'><entry><replaceable>key(s)</replaceable></entry><entry>are one or more "value" strings separated by "white space" (such as blanks or tabs)</entry></row>
+<row valign='top'><entry><replaceable>symbol</replaceable></entry><entry>is a graphic symbol file (not used by &TexMet;)</entry></row>
+<row valign='top'><entry><replaceable>text </replaceable></entry><entry>is text to display (quotes not required)</entry></row>
+<row valign='top'><entry><replaceable>presentation</replaceable></entry><entry>is a named presentation (not used by &TexMet;)</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+Note that one of symbol, text, or presentation must be non-blank, but that the others can be left blank if not required.
+Note also that lines without the <userinput>:</userinput> separators are considered comments, as are all parameters that follow the <userinput>!</userinput> or <userinput>#</userinput> characters in a line.
+</para><para>
+When an &FPA; field is sampled by one of the directives, each of the <replaceable>key(s)</replaceable>
+is tested against the resultant &FPA; "value" string. Each time one <replaceable>key</replaceable> is found
+within the &FPA; "value" string, one "hit" is registered, and the "best" match
+in the look up table is defined as the first line in the file where the maximum
+number of "hits" has been found. The text from that
+line would then used by the directive for displaying the sampled value.
+Two "special" <replaceable>key(s)</replaceable> are allowed.
+<simplelist>
+<member>The <replaceable>key</replaceable> <userinput>*missing*</userinput> will match against blank &FPA; "value" strings.</member>
+<member>The <replaceable>key</replaceable> <userinput>*default*</userinput> will match against &FPA; "value" strings that register no "hits" in the look up table.</member>
+</simplelist>
+</para><para>
+The type of display to use depends on each directive.
+</para><para>
+The <link linkend='tx_label'>@label</link> <link linkend='tx_sample_field'>@sample_field</link>
+directives display the values sampled at each location with a text string
+given by text (if the keyword <userinput>format</userinput> is set to text).
+</para><para>
+The order of the lines in the look up table is extremely important. Lines
+with the most complicated "value" strings should always be included before
+lines with simpler "value" strings, and all lines with a single <replaceable>key</replaceable> should be
+included before lines with two <replaceable>key(s)</replaceable>, and lines with two <replaceable>key(s)</replaceable> before lines
+with three <replaceable>key(s)</replaceable>, and so on.
+</para><para>
+When several lines register the same number of "hits", the line that appears
+first in the look up table will be used. For example, the <replaceable>key(s)</replaceable> for rain "R"
+and light rainshowers "RW-" will both register one "hit" against the &FPA;
+"value" string for reduced visibility in light rainshowers "1-3RW-", since
+each <replaceable>key</replaceable> is found within the &FPA; "value" string. However, if the line for rain
+appears in the look up table before the line for light rainshowers, then the
+line for rain will ALWAYS be chosen first, and any special presentation for
+light rainshowers will never be accessed. Therefore, complicated "value"
+strings should always be listed before simple "value" strings.
+</para><para>
+The number of <replaceable>key(s)</replaceable> in a line does not affect the choice of a "best" match.
+One "hit" on a line with one <replaceable>key</replaceable> is equivalent to one "hit" on a line with
+several <replaceable>key(s)</replaceable>. For example, a line containing the <replaceable>key(s)</replaceable> for rain and snow
+"R S" and a line containing the <replaceable>key</replaceable> for rain alone "R" will both register one
+"hit" against the &FPA; "value" string for light rain "R-". However, if the line
+containing the <replaceable>key(s)</replaceable> for rain and snow appears in the look up table before
+the line containing the <replaceable>key</replaceable> for rain alone, then the line containing the <replaceable>key(s)</replaceable>
+for rain and snow will ALWAYS be chosen first, and the corresponding presentation for mixed rain and snow will be used. Therefore, lines containing fewer <replaceable>key(s)</replaceable> should always be listed first.
+</para><para>
+Care must also be taken to ensure that the combination of look up table
+<replaceable>key(s)</replaceable> and &FPA; "value" strings does not register incorrect "hits". For
+example, a line containing the <replaceable>key</replaceable> for snow "S" will register a "hit" against
+the &FPA; "value" string for risk of a thunderstorm "RISK TRW". In this case,
+the "hit" occurs because of the "S" in "RISK"! It may be necessary to
+constrain the use of some "value" strings within the &FPA; to avoid generating
+unwanted matches in the &TexMet; application.
+</para><para>
+The following example of a look up table and examples of matches with
+&FPA; "value" strings is based on look up tables that are no longer used, but
+the basic principles are still applicable.
+
+<example><title>Look up file format</title><para>
+<programlisting linenumbering='numbered'>
+TRW          : thunder : Thunderstorm   : trw1
+RW           : rain    : Showers        : shower1
+R            : rain    : Rain           : rain1
+S            : snow    : Snow           : snow1
+RSF          : rs_mix  : Rain and Snow  : mix1
+RISK TRW     : thunder : Risk Thunder   : trw2
+RW RISK TRW+ : rain    : Rain / Thunder : rain2
+RW RISK TRW  : rain    : Rain / Thunder : rain2
+</programlisting>
+</para></example>
+
+<example><title>FPA "value" string to match "RW" </title><para>
+One "hit" will be registered by <replaceable>key(s)</replaceable> in lines 2,3,5,7,8. Therefore, line 2 will be used.
+</para><para>If text is required, the text string "Showers" will be displayed.
+</para></example>
+
+<example><title>FPA "value" string to match "RW-F"</title><para>
+One "hit" will be registered by <replaceable>key(s)</replaceable> in lines 2,3,7,8, and two hits by <replaceable>key(s)</replaceable> in line 5. Therefore, line 5 will be used.
+</para><para>If text is required, the text string "Rain and Snow" will be displayed.
+</para><para>(Note: an additional line with the <replaceable>key(s)</replaceable> "R F" or "RW F" may be necessary.)
+</para></example>
+
+<example><title>FPA "value" string to match "RISK TRW+"</title><para>
+One "hit" will be registered by <replaceable>key(s)</replaceable> in lines 1,2,3,4, and two hits by <replaceable>key(s)</replaceable> in lines 5,6,7,8. Therefore, line 5 will be used.
+</para><para>If text is required, the text string "Rain and Snow" will be displayed.
+</para><para>(Note: line 5 should be relocated at the end of the look up table to avoid this error!) 
+</para></example>
+</para></sect2>

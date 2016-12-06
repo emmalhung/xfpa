@@ -1,0 +1,595 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='editing_vectors'> <title>Editing vector fields</title>
+<para>
+<indexterm><primary>editor</primary><secondary>vector</secondary></indexterm>
+The vector field editor allows you to edit fields with magnitude and direction components, such as wind and ocean waves in your depiction.
+</para><para>
+The vector field editor controls appear when you choose to edit a vector field.
+(see <xref linkend='vect_edit_tools'/>)
+<figure id='vect_edit_tools' pgwide='0' float='1'><title>Vector field edit tools</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_vector.png'/></imageobject></mediaobject>
+</figure>
+</para>
+<sect1 id='vf_moving_a_feature'> <title>Moving a feature on a vector field</title>
+<para>
+<indexterm><primary>vector field editor</primary><secondary>move</secondary></indexterm>
+<indexterm><primary>feature</primary></indexterm>
+<orderedlist><title>To move a feature in your depiction:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Move</emphasis> menus appear.
+(see <xref linkend='move_tools1'/>)
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.
+</para></listitem>
+
+<listitem><para>
+Draw the boundary around the feature you want to move.
+</para><para>
+(see <xref linkend='select_surface'/>)
+</para><para>
+This becomes the area of minimum distortion.
+</para></listitem>
+
+<listitem><para>
+Select a radius of influence.
+(see <xref linkend='radius_of_influence'/>)
+</para><para>
+The percentage indicates the affected area surrounding the point of edit.
+</para><para>
+Note: Percentages range from 1 to 100 where 1 is the minimum radius of influence and 100 is approximately one quarter of the map area.
+Your System Administrator establishes the exact percentage increments.
+</para><para>
+The cursor appears with the chosen radius of influence while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Pick a reference point inside the feature and hold the &left; mouse button down.
+</para><para>
+The reference point can be anywhere in the feature; however, if you are moving a portion of the feature off the depiction it is important to pick a point that will remain on the depiction after the move.
+The line shimmers indicating you can now move it.
+</para></listitem>
+
+<listitem><para>
+Drag the feature to the new location.
+</para><para>
+The &FPA; recomputes the field and re-displays the new field contours and direction barbs or arrows in white.
+The original contours remain in the normal field colour.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='vf_rotating_a_feature'><title>Rotating a feature on a vector field</title>
+<para>
+<indexterm><primary>vector field editor</primary><secondary>rotate</secondary></indexterm>
+You can rotate a <glossterm linkend='g_features'>feature</glossterm>
+<indexterm><primary>feature</primary></indexterm>
+with a minimum of distortion occurring within an outlined area using the <emphasis>Move</emphasis> tool.
+</para><para>
+<orderedlist><title>To rotate a feature:</title>
+<listitem><para>
+Select the move tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>move</emphasis> menus appear.
+(see <xref linkend='move_tools1'/>)
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.
+</para></listitem>
+
+<listitem><para>
+Draw the boundary around the feature
+<indexterm><primary>feature</primary></indexterm>
+you want to move.
+</para><para>
+(see <xref linkend='select_surface'/>)
+</para><para>
+This becomes the area of minimum distortion.
+</para></listitem>
+
+<listitem><para>
+Select a <glossterm linkend='g_radius_of_influence'>radius of influence</glossterm>. 
+(see <xref linkend='radius_of_influence'/>)
+</para><para>
+The percentage indicates the affected area surrounding the point of edit.
+</para><para>
+Note: Percentages range from 1 to 100 where 1 is the minimum radius of influence and 100 is approximately one quarter of the map area.
+Your System Administrator establishes the exact percentage increments.
+</para><para>
+The cursor appears with the chosen radius of influence while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Rotate</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Press the &left; mouse button at the point you want to rotate around (the centre of rotation).
+</para></listitem>
+
+<listitem><para>
+Select a second point to form a <emphasis>handle</emphasis> to rotate the feature and hold the &left; mouse button down.
+This is your rotation handle (like the handle of a car window).
+</para><para>
+A line displays between the two chosen points.
+</para><para>
+The handle point can be anywhere; however, it is important to pick a point that will remain on the depiction after the rotate.
+The line shimmers indicating you can now rotate it.
+</para></listitem>
+
+<listitem><para>
+Turn the handle to a new location.
+</para></listitem>
+
+<listitem><para>
+When you have reached the point where the rotation should end, release the &left; mouse button.
+</para><para>
+The &FPA; recomputes the field and re-displays the new field contours in white.
+The original contours remain in the normal field colour.
+</para><para>
+Note: You can still restore the field if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='vf_copying_a_feature'> <title>Copying a feature</title>
+<para>
+<indexterm><primary>vector field editor</primary><secondary>copy</secondary></indexterm>
+You can copy a feature
+<indexterm><primary>feature</primary></indexterm>
+by using <guibutton>Copy</guibutton> and <guibutton>Paste</guibutton> with the <emphasis>Move</emphasis> tool.
+</para><para>
+<orderedlist><title>To copy a feature:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>move</emphasis> menus appear (see <xref linkend='move_tools1'/>).
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.</para></listitem>
+
+<listitem><para>
+Draw the boundary around the feature you want to copy.
+</para><para>
+(see <xref linkend='select_surface'/>)
+</para><para>
+This becomes the area of minimum distortion.
+</para></listitem>
+
+<listitem><para>
+Select a radius of influence.
+(see <xref linkend='radius_of_influence'/>)
+</para><para>
+The percentage indicates the affected area surrounding the point of edit.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Copy</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to cancel the current move action, or move to another depiction.
+</para><para>
+<guibutton>Paste</guibutton> is now available.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Paste</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Translate</guimenu></menuchoice> to enter translation mode 
+(see <xref linkend='vf_moving_a_feature'/> steps 6-7)
+ or  <menuchoice><guimenu>Rotate</guimenu></menuchoice> to enter rotation mode (see <xref linkend='vf_rotating_a_feature'/> steps 6-9). 
+</para><para>
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='vf_changing_the_value_at_a_given_point_poke'> <title>Changing the value at a given point (Poke) </title>
+<para>
+<indexterm><primary>vector field editor</primary><secondary>poke</secondary></indexterm>
+The <emphasis>Poke</emphasis> tool allows you to pick a point on the depiction and change its value.
+The field within the radius of influence is altered to smooth the resulting field.
+</para><para>
+<orderedlist><title>To change the value at a given point:</title>
+<listitem><para>
+Select the <emphasis>Poke</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Poke</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/poke.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Poke</emphasis> menus appear.
+(see <xref linkend='vect_poke_tools'/>)
+<figure id='vect_poke_tools' pgwide='0' float='1'><title>Vector field edit poke menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_vector_poke.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Move the slider on the magnitude and/or direction slider-bars to adjust the delta amount. (see <xref linkend='slider_bar'/>)
+</para><para>
+Positive values increase the value at the specified point by that value and negative values decrease the value by that amount.
+(If you select zero, nothing happens.)
+</para>
+<para>
+Note: You can select or deselect magnitude and direction by clicking on the button at the top of each column.
+</para></listitem>
+
+<listitem><para>
+Select a radius of influence.
+(see <xref linkend='radius_of_influence'/>)
+</para><para>
+The percentage indicates the affected area surrounding the point of edit.
+</para><para>
+The cursor appears with the chosen radius of influence while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Pick the point on the depiction you want to change.
+</para><para>
+The &FPA; recomputes the field and re-displays the new field contours in white.
+The original contours remain in the normal field colour.
+</para></listitem>
+</orderedlist>
+</para>
+<para>
+Remember to select your delta values first.
+If you forget and select the point to change first, the existing value is applied.
+</para>
+</sect1>
+<sect1 id='vf_changing_the_value_in_a_given_area_stomp'> <title>Changing the value in a given area (Stomp)</title>
+
+<para>
+<indexterm><primary>vector field editor</primary><secondary>stomp</secondary></indexterm>
+The <emphasis>Stomp</emphasis> tool allows you to specify an area on the depiction and change all values within the area.
+This is similar to the <emphasis>Poke</emphasis> tool, but is like poking with an area rather than a point.
+</para><para>
+<orderedlist><title>To change the value in a given area:</title>
+<listitem><para>
+Select the <guibutton>Stomp </guibutton>tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Stomp</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/stomp.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Stomp</emphasis> menus appear.
+(see <xref linkend='vect_stomp_tools'/>)
+<figure id='vect_stomp_tools' pgwide='0' float='1'><title>Vector field edit stomp menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_vector_stomp.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Draw the outline of the area to stomp on the depiction
+or click the &right; mouse button and select <menuchoice><guimenu>Boundary from</guimenu></menuchoice> and choose <menuchoice><guimenu>Use Last Stomp Outline</guimenu></menuchoice> or a preset outline if your System Administrator has configured some predefined outlines.
+</para><para>
+The boundary is shown on the depiction.
+</para></listitem>
+
+<listitem><para>
+Move the slider on the magnitude and/or direction slider-bars to adjust the delta amount. (see <xref linkend='slider_bar'/>)
+</para><para>
+Positive values increase the value at the specified area by that value and negative values decrease the value by that amount.
+(If you select zero, nothing happens.)
+</para>
+<para>
+Note: You can select or deselect magnitude and direction by clicking on the button at the top of each column.
+</para></listitem>
+
+<listitem><para>
+Select the amount of taper to determine the shape of the Stomp area.
+</para><para>
+Note: The taper parameter allows you to change the shape of the field adjustment.
+A flat topped taper applies the same adjustment over the interior of the selected area.
+A curved taper applies a larger adjustment at the centre of the selected area, and smaller adjustments towards the edges.
+</para></listitem>
+
+<listitem><para>
+Select a radius of influence.
+(see <xref linkend='radius_of_influence'/>)
+</para><para>
+The percentage indicates the affected area surrounding the point of edit.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Proceed</guimenu></menuchoice>.
+</para><para>
+The &FPA; recomputes the field and re-displays the new field contours in white.
+The original contours remain in the normal field colour.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<sect1 id='vf_dragging_a_feature'> <title>Dragging a feature  on a vector field</title>
+<para>
+<indexterm><primary>vector field editor</primary><secondary>drag</secondary></indexterm>
+The <emphasis>Drag</emphasis> tool allows you to drag values of the vector field to another position.
+</para><para>
+<orderedlist><title>To drag a feature:</title>
+<listitem><para>
+Select the <emphasis>Drag</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Drag</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/drag.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Select a radius of influence.
+(see <xref linkend='radius_of_influence'/>)
+</para><para>
+The percentage indicates the affected area surrounding the point of edit.
+</para><para>
+The cursor appears with the chosen radius of influence while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Pick the point you want to drag and hold the &left; mouse button down.
+</para><para>
+The point is shown with a blue box.
+</para></listitem>
+
+<listitem><para>
+Drag the pointer to a new location and release.
+</para><para>
+A yellow line indicates the path of the drag and the end point.
+</para></listitem>
+
+<listitem><para>
+Repeat the previous two steps for the remaining points to drag.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Proceed</guimenu></menuchoice> when you have finished picking points to drag.
+</para><para>
+The &FPA; recomputes the field and re-displays the new field contours in white.
+The original contours remain in the normal field colour.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='smoothing_vector_field_information'> <title>Smoothing information on a vector field</title>
+<para>
+<indexterm><primary>vector field editor</primary><secondary>smooth</secondary></indexterm>
+<orderedlist><title>To smooth a vector field:</title>
+<listitem><para>
+Select the <emphasis>Smoothing</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Smooth</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/smooth.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Smoothing</emphasis> menus appear.
+(see <xref linkend='smooth_tools'/>)
+</para></listitem>
+
+<listitem><para>
+Select a portion of the surface to smooth.
+</para><para>
+(see <xref linkend='select_surface'/>)
+</para></listitem>
+
+<listitem><para>
+Select a radius of influence.
+(see <xref linkend='radius_of_influence'/>)
+</para><para>
+The percentage indicates the affected area surrounding the point of edit.
+</para><para>
+The cursor appears with the chosen radius while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Select a smoothing factor (a multiple of the current grid spacing)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Proceed</guimenu></menuchoice>. 
+</para><para>
+The &FPA; recomputes the field and re-displays the new field contours in white.
+The original contours remain in the normal field colour.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='merging_vector_field_information'> <title>Merging information in a vector field</title>
+<para>
+<indexterm><primary>vector field editor</primary><secondary>merge</secondary></indexterm>
+You can bring a vector field from another source and time and merge it into the depiction using the <emphasis>Merge</emphasis> tool.
+</para><para>
+<orderedlist><title>To merge information:</title>
+<listitem><para>
+Select the <emphasis>Merge</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Merge</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/merge.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Merge</emphasis> menus appear.
+(see <xref linkend='merge_tools'/>)
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Source</guilabel>,<guilabel> Issue Time</guilabel> and <guilabel>Valid Time</guilabel> of the other field you wish to merge with your current depiction.
+</para><para>
+Note: Your System Administrator may configure a field to accept merges from another "compatible" field.
+If this is the case, there will be a <guilabel>Field</guilabel> list in the <guilabel>Merge Fields</guilabel> area.
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Fetch</guibutton>.
+</para><para>
+The field information from the other source is laid over top of your depiction.
+</para></listitem>
+
+<listitem><para>
+Draw the boundary of the area you want to adopt from the new source.
+</para><para>
+(see <xref linkend='select_surface'/>)
+</para></listitem>
+
+<listitem><para>
+Select a radius of influence.
+(see <xref linkend='radius_of_influence'/>)
+</para><para>
+The percentage indicates the affected area surrounding the point of edit.
+</para><para>
+The cursor appears with the chosen radius of influence while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Merge</guimenu></menuchoice> to merge in place,
+ <menuchoice><guimenu>Translate</guimenu></menuchoice> to enter translation mode (see <xref linkend='vf_moving_a_feature'/> steps 6-7), 
+ or  <menuchoice><guimenu>Rotate</guimenu></menuchoice> to enter rotation mode (see <xref linkend='vf_rotating_a_feature'/> steps 6-9). 
+</para><para>
+The new field merges.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='labelling_your_vector_field'> <title>Labelling your depiction </title>
+<para>
+<indexterm><primary>vector field editor</primary><secondary>label</secondary></indexterm>
+The <emphasis>Labelling</emphasis> tool allows you to label the vector field and set label attributes.
+You can also delete labels.
+</para><para>
+<orderedlist><title>To label your depiction:</title>
+<listitem><para>
+Select the <emphasis>Labelling</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Label</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/label.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select a <guilabel>Label Type</guilabel>.
+</para></listitem>
+</orderedlist>
+</para>
+<beginpage/>
+<para>
+<orderedlist continuation='continues'>
+<listitem><para>
+Click the &right; mouse button and select a <guilabel>Label Action</guilabel>:
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+<thead><row><entry>Click...</entry><entry>To...</entry></row></thead>
+<tbody>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Add</guimenuitem></menuchoice></entry>
+	<entry> add a label at a specified point </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Move</guimenuitem></menuchoice></entry>
+	<entry> facilitate clicking and dragging a label from one location to another (if applicable) </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Modify</guimenuitem></menuchoice></entry>
+	<entry> change label attributes</entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Show</guimenuitem></menuchoice></entry>
+	<entry> display a list of attributes of the particular label selected </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Delete</guimenuitem></menuchoice></entry>
+	<entry> delete a label </entry></row>
+	</tbody></tgroup>
+</informaltable>
+Note: some labels have fixed attributes and cannot be modified.
+In these cases the <emphasis>Modify</emphasis> tool does not appear.
+</para></listitem>
+
+<listitem><para>
+Pick a point to label using the &left; mouse button.
+</para></listitem>
+
+<listitem><para>
+If you have picked <guibutton>Add...</guibutton>.
+</para><para>
+With automatic labelling, the label appears on the nearest contour or at the nearest high or low.
+</para><para>
+All other types of labels appear directly where you click.
+</para><para>
+Note: If your label type requires additional information, an entry menu may appear.
+You can modify the information as required.
+Clicking on <guibutton>Set Attributes</guibutton> will add the label.
+</para></listitem>
+
+<listitem><para>
+If you have picked <guibutton>Move</guibutton>, <guibutton>Modify</guibutton>, <guibutton>Show</guibutton> or <guibutton>Delete</guibutton> ...
+</para><para>
+The nearest label is chosen.
+</para></listitem>
+
+<listitem><para>
+To delete all the labels, click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='sampling_vector_field_values'> <title>Sampling values on a vector field </title>
+<para>
+<indexterm><primary>vector field editor</primary><secondary>sample</secondary></indexterm>
+You can add temporary labels to the &FPA; window with the <emphasis>Sample</emphasis> tool.
+</para><para>
+<orderedlist><title>To sample a value:</title>
+<listitem><para>
+Select the <emphasis>Sample</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Sample</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/sample.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Sample</emphasis> menus appear.
+(see <xref linkend='sample_tools1'/>)
+</para><para>
+The cursor appears as cross-hairs while inside the map window.
+</para></listitem>
+
+<listitem><para>
+Select the type of sample you want from the <guilabel>Sample Item</guilabel> area.
+</para></listitem>
+
+<listitem><para>
+Select the display <guilabel>Attributes</guilabel>: colour, size and font.
+</para></listitem>
+
+<listitem><para>
+Pick a point on the depiction.
+</para><para>
+A temporary label appears.
+</para><para>
+You can sample as many points as you want.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice> to clear the samples from the depiction.
+</para></listitem>
+</orderedlist>
+</para>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='grid_sample.xml'/>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='preset_sample_list.xml'/>
+</sect1>
+</chapter>

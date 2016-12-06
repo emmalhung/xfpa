@@ -1,0 +1,1466 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<chapter id='config_files'><title>Configuration Files</title> <para>
+<indexterm><primary>configuration</primary></indexterm>
+Most &FPA; applications make use of information that is provided in a set of configuration files.
+Unlike information in the setup files, this information is relatively static.
+Configuration files usually enumerate all possible values of a given parameter, or provide a default.
+Setup files select a preferred value or override the default.
+It is not necessary to keep different copies of configuration files to reflect different preferences.
+The existing configuration files should reflect the office preference only.
+The following configuration files are used:
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth;
+<tbody>
+<row valign='top'><entry>Config, Config.<replaceable>name</replaceable></entry>
+<entry>Provides all information about fields, elements and levels</entry></row>
+<row valign='top'><entry>Gribs, Gribs.<replaceable>name</replaceable></entry>
+<entry><para>Provides mapping for unknown &GRIB; identifiers (<command>gribin</command>)</para>
+<para>Note that this file is being replaced by the <filename>Ingest</filename> files listed below. It is included for backwards compatibility.</para></entry></row>
+<row valign='top'><entry>Image, Image.<replaceable>name</replaceable></entry>
+<entry>Provides information about satellite and radar imagery</entry></row>
+<row valign='top'><entry>Ingest, Ingest.<replaceable>name</replaceable></entry>
+<entry>Provides mapping for unknown &GRIB; identifiers (<command>gribin2</command>)</entry></row>
+<row valign='top'><entry>Presentation, Presentation.<replaceable>name</replaceable></entry>
+<entry>Defines the default appearance of all known fields when displayed by graphical &FPA; applications.</entry></row>
+<row valign='top'><entry>Memory/*</entry><entry>A series of files which define memory presets</entry></row>
+<row valign='top'><entry>Menus/*</entry><entry>A series of files which define the contents of attribute entry menus for fields and labels</entry></row></tbody></tgroup></informaltable>
+The '.<replaceable>name</replaceable>' notation is used to indicate a series of files beginning with the same name but ending with different suffixes to indicate files containing specialized versions of configuration information.
+</para>
+
+<sect1><title>Config and Config.<replaceable>name</replaceable></title> <para>
+<indexterm><primary>config file</primary></indexterm>
+The <filename>Config</filename> and <filename>Config</filename>.<replaceable>name</replaceable> configuration files define information about all files and fields recognized by the &FPA;.
+The <filename>Config</filename>.<replaceable>name</replaceable> files are global configuration files containing standard &FPA; information as well as information for specific &FPA; applications.
+The <filename>Config</filename> file is a local configuration file which will include one or more of the <filename>Config</filename>.<replaceable>name</replaceable> files, as well as contain user-defined changes or additions to these files.
+</para> <para>
+A complete description of the format and contents of Config files is given in <xref linkend='appenda'/>.
+Information in the Config files is arranged in blocks.
+The primary blocks are:
+<table frame='topbot'><title>Primary blocks of config files.</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>name</entry><entry>usage</entry></row></thead>
+<tbody>
+<row valign='top'><entry>Elements</entry><entry>any meteorological parameter</entry></row>
+<row valign='top'><entry>Levels</entry><entry>levels of the atmosphere</entry></row>
+<row valign='top'><entry>Fields</entry><entry>an element at a specific level</entry></row>
+<row valign='top'><entry>Groups</entry><entry>grouping for lists of Fields or Elements</entry></row>
+<row valign='top'><entry>CrossRefs</entry><entry>identifying special methods to calculate Values or Winds</entry></row>
+<row valign='top'><entry>Samples</entry><entry>identifying special methods to sample Values or Winds</entry></row>
+<row valign='top'><entry>Sources</entry><entry>sources of input or output data</entry></row>
+<row valign='top'><entry>Constants</entry><entry>meteorological values used in equations</entry></row>
+<row valign='top'><entry>Units</entry><entry>units and conversions to &MKS;</entry></row>
+</tbody></tgroup></table>
+</para> <para>
+The <filename>Config</filename> file may contain as many blocks as desired, and blocks can be repeated if required.
+Each block contains a number of members, and information for those members is identified by keywords.
+The first reference to a member of a block controls the order of that member in any lists for that block, and the last reference to a member controls the values for any given keyword.
+Placing information later in a <filename>Config</filename> file therefore overrides any information that has been identified earlier.
+</para> <para>
+The general format of the <filename>Config</filename> files is:
+<programlisting>revision <replaceable>revision_number</replaceable>
+include <replaceable>filename</replaceable>
+include <replaceable>filename</replaceable>
+<replaceable>block_name</replaceable>
+  {
+  <replaceable>member_name</replaceable>
+    {
+    <replaceable>keyword</replaceable> = <replaceable>value(s)</replaceable>
+      OR
+    <replaceable>keyword</replaceable> =
+      {
+      <replaceable>keyword</replaceable> = <replaceable>value(s)</replaceable>
+      }
+    }
+  }
+</programlisting>
+</para> <para>
+In some cases, there are also <replaceable>sub_block_name</replaceable> or <replaceable>sub_member_name</replaceable> sections, but this general format is seen throughout.
+<xref linkend='appenda'/> identifies the recognized keywords for all Config file information.
+</para>
+<note><para>that the code for reading the Config files is fairly simplistic, and that the format is important.
+For example,
+<itemizedlist>
+<listitem><para>all '{' or '}' characters must be located on their own lines, </para></listitem>
+<listitem><para>the '=' must be separated from the rest of the line by white space, and</para></listitem>
+<listitem><para>line continuations '\' must be used if the <replaceable>keyword</replaceable> = <replaceable>value(s)</replaceable> format will not fit on one line.</para></listitem>
+</itemizedlist>
+</para></note>
+</sect1>
+
+<sect1><title>Presentation and Presentation.<replaceable>name</replaceable></title> <para>
+<indexterm><primary>configuration</primary><secondary>presentation</secondary></indexterm>
+The <filename>Presentation</filename> and <filename>Presentation</filename>.<replaceable>name</replaceable> files define information about how to display fields that &FPA; could potentially encounter.
+The <filename>Presentation</filename>.<replaceable>name</replaceable> files are global presentation files containing standard display information as well as information for specific &FPA; applications.
+The <filename>Presentation</filename> file is a "local" presentation file which will "include" one or more of the <filename>Presentation</filename>.<replaceable>name</replaceable> files, as well as contain user-defined changes or additions to these files.
+</para> 
+
+<sect2><title>Presentation Format Summary</title> <para>
+A complete description of the format and content of Presentation files is given in <xref linkend='appendc'/>.
+The entries in a Presentation file are grouped by field blocks.
+The following represents the basic format of a presentation file entry.
+</para>
+<note><para>
+When a parameter value must come from a predefined list, this list will be presented between '{' and '}' and the options are separated by the '|' character.
+Optional attributes are bracketed between the '[' and ']' characters.
+The "appropriate display options" mentioned in the summary below specify how the objects are to be displayed.
+Since many of the display options are common amongst the different member types they are described once at the end of <xref linkend='appendc'/>.
+</para></note>
+<para>
+<programlisting>revision revision_number
+field <replaceable>element</replaceable> <replaceable>level</replaceable> <replaceable>source</replaceable>
+  member {continuous | vector} <replaceable>dname</replaceable>
+    units <replaceable>uname</replaceable>
+    contour range <replaceable>min</replaceable> <replaceable>max</replaceable> <replaceable>standard increment</replaceable>
+      <replaceable>appropriate display options</replaceable>
+    contour list <replaceable>val</replaceable> <replaceable>val</replaceable> ...
+      <replaceable>appropriate display options</replaceable>
+    vector <replaceable>multiplier</replaceable> (vector only)
+      <replaceable>appropriate display options</replaceable>
+    maxima <replaceable>min</replaceable> <replaceable>max</replaceable>
+      <replaceable>appropriate display options</replaceable>
+    minima <replaceable>min</replaceable> <replaceable>max</replaceable>
+      <replaceable>appropriate display options</replaceable>
+    saddle <replaceable>min</replaceable> <replaceable>max</replaceable>
+      <replaceable>appropriate display options</replaceable>
+  member {nodes | spot} <replaceable>dname</replaceable>
+    class <replaceable>cname</replaceable>
+      class_member {barb | button | label | mark} <replaceable>mname</replaceable> <optional><replaceable>attribute</replaceable></optional>
+        category <replaceable>value</replaceable>
+          <replaceable>appropriate display options</replaceable>
+        attribute <replaceable>name</replaceable> <replaceable>value</replaceable>
+          <replaceable>appropriate display options</replaceable>
+        default
+          <replaceable>appropriate display options</replaceable>
+  member {area| barb| button| curve| discrete| label| lchain| mark} <replaceable>dname</replaceable>
+    category <replaceable>value</replaceable>
+      <replaceable>appropriate display options</replaceable>
+    attribute <replaceable>name</replaceable> <replaceable>value</replaceable>
+      <replaceable>appropriate display options</replaceable>
+    default
+      <replaceable>appropriate display options</replaceable>
+  member plot <replaceable>dname</replaceable>
+    subfield {barb | button | label | mark} <replaceable>sname</replaceable>
+      <replaceable>appropriate display options</replaceable>
+include <replaceable>include_file</replaceable>
+</programlisting>
+Most blocks (shown by indentation here) can be repeated as many times as needed.
+However, for some blocks (vector, maxima, minima, saddle, default) it doesn't make sense to have more than one per member or class_member block.
+</para> </sect2>
+</sect1>
+
+<sect1><title>Image</title> <para>
+<indexterm><primary>configuration</primary><secondary>image</secondary></indexterm>
+The <filename>Image</filename>.<replaceable>name</replaceable> files define how rasterized images are displayed in the &FPA; editor.
+Images are associated with product groups with a common type (radar or satellite) and appearance (colour tables).
+</para> <para>
+In the <filename>Image</filename> file, two types of data are specified.
+Each must be in a block of information in the following format:
+<programlisting><replaceable>block_key</replaceable> <replaceable>block_tag</replaceable>
+  {
+  <replaceable>information</replaceable>
+  ...
+  }
+</programlisting>
+The <replaceable>block_key</replaceable> is either <userinput>product</userinput> or <userinput>image</userinput>.
+The <replaceable>block_tag</replaceable> is whatever you want that will make the file easy to read.
+Images are grouped into products.
+Thus product blocks stand on their own, but an image block must belong to a product block.
+</para>
+
+<sect2><title>Product Block</title> <para>
+<indexterm><primary>configuration</primary><secondary>image</secondary></indexterm>
+A product is a group of images to which certain attributes apply.
+The product is identified by a <replaceable>product_tag</replaceable> which is then referred to in the image entry block.
+The product block format is:
+<programlisting>product <replaceable>product_tag</replaceable>
+  {
+  <replaceable>key_word</replaceable> = <replaceable>item list ...</replaceable>
+  <replaceable>key_word</replaceable> = <replaceable>item list ...</replaceable>
+  ...
+  }
+</programlisting>
+Key words are:
+<variablelist>
+<varlistentry><term>label</term><listitem><para>The product label as seen by the end user</para></listitem></varlistentry>
+<varlistentry><term>class</term><listitem><para>The type of image the group is for.
+One of: <userinput>radar</userinput>, <userinput>satellite</userinput>, <userinput>overlay</userinput>, <userinput>underlay</userinput> or <userinput>geographic</userinput>.
+</para><para> The "overlay" is an image that will appear over the satellite and radar, while "underlay" will appear under satellite and radar.
+</para><para> Geographic images do not have a time component and are meant for static images such as geography or political boundaries.
+</para></listitem></varlistentry>
+<varlistentry><term>ctable</term><listitem><para> Either the location of a colour look up table file to be applied to images in the product group or the special key 'DefinedByImage'.
+</para><para>
+The key 'DefinedByImage' means that the images associated with the product must define their own colour tables. This means that they can not be changed as there will not be just one colour table for all of the images included in the product. (See the entry for ctable in the image block section).
+</para><para>
+There can be more than one colour table defined and they are expected to be selectable by the user. 
+</para><para>
+There are 4 parameters:
+<itemizedlist>
+<listitem><para> The label to give to the look up table. </para></listitem>
+<listitem><para> The directory key, from the setup file, where ctable file is located. </para></listitem>
+<listitem><para> The name of file containing the ctable. </para></listitem>
+<listitem><para> Optional parameter <userinput>default</userinput>.  If specified the given ctable is set as the default.</para></listitem>
+</itemizedlist>
+
+<note><para>
+Look up tables come in two forms, those which assign a particular pixel value to a colour and those which are used with data files to assign a range of values (reflectivity, cloud top temperature, etc) to a colour.
+</para></note>
+<note><para>
+If there is no lut entry in the product block or the <replaceable>directory_key</replaceable> and <replaceable>file_name</replaceable> are either missing or set to a dash ("-") then the display will be the one embedded in the image itself (like &GIF;).
+</para></note>
+</para></listitem></varlistentry>
+</variablelist>
+</para> </sect2>
+
+<sect2 id='image_block'><title>Image Block</title> <para>
+<indexterm><primary>configuration</primary><secondary>image</secondary></indexterm>
+A particular image is identified by an <replaceable>image_tag</replaceable> and a valid time.
+The <filename>Image</filename> file provides other necessary information for processing the image, such as its location and filename, as well as geo-referencing information.
+</para>
+<note><para>
+The order of the images in the configuration file will determine the display order as seen on the screen.
+The first image in the file will be displayed on top of the set of images.
+The second will be displayed "underneath" the first and on top of the third and so on.
+</para></note>
+<para>
+The Image block format is:
+<programlisting> image <replaceable>image_tag</replaceable>
+  {
+  <replaceable>key_word</replaceable> = <replaceable>item list</replaceable>
+  <replaceable>key_word</replaceable> = <replaceable>item list</replaceable>
+  ...
+  }
+</programlisting>
+Key words are:
+<variablelist>
+<varlistentry><term>site or label</term>
+<listitem><para>The name of the radar site (e.g.
+"King") or of the satellite that the image comes from (e.g. "GOES West")</para></listitem></varlistentry>
+<varlistentry><term>product_tag</term>
+<listitem><para>The product group to which this image belongs.
+See product_tag above.</para></listitem></varlistentry>
+<varlistentry><term>ctable</term>
+<listitem><para>
+If the product group ctable entry is 'DefinedByImage' then any images that require a colour table must set it here. 
+<note><para>Unlike the product entry only one ctable can be defined.</para></note>
+There are two parameters:
+<itemizedlist>
+<listitem><para> Directory key from setup file. </para></listitem>
+<listitem><para> Name of file to read.</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term>encode</term><listitem><para>
+How the image is encoded.
+The recognized encoding types are listed in <xref linkend='image_encoding'/>.
+<table id='image_encoding' frame='topbot'><title>Image Encoding</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>type</entry><entry>meaning</entry></row></thead>
+<tbody>
+<row valign='top'><entry>none</entry><entry>The image is an unencoded one byte per pixel grey scale image</entry></row>
+<row valign='top'><entry>rgb</entry><entry>The image is an unencoded three bytes per pixel colour image stored as rgb triples (rgbrgbrgb...)</entry></row>
+<row valign='top'><entry>any</entry><entry>The library attempts to determine the image format from the file extension and file contents.</entry></row>
+<row valign='top'><entry>gif</entry><entry>Stored as a &GIF; file</entry></row>
+<row valign='top'><entry>tiff</entry><entry>Tag Image File Format.</entry></row>
+<row valign='top'><entry>png</entry><entry>Portable Network Graphics file.</entry></row>
+<row valign='top'><entry>xwd</entry><entry>X window dump format</entry></row>
+<row valign='top'><entry>xgl</entry><entry>The format native to this library.</entry></row>
+<row valign='top'><entry>gridded_data</entry><entry>Data is an unencoded array of scaled data values stored as value = pixel * scale + offset.
+See below.</entry></row>
+<row valign='top'><entry>urp_gridded</entry><entry>Stored as universal radar processor data in gridded format.</entry></row>
+<row valign='top'><entry>urp_polar</entry><entry>Stored as URP format in range-theta format.</entry></row>
+<row valign='top'><entry>FpaMetafile</entry><entry>The image or raster of scaled values is in an &FPA; metafile. The actual determination as to which type is done from the meta data in the file.</entry></row>
+</tbody></tgroup></table>
+</para></listitem></varlistentry>
+
+<varlistentry><term>force_grayscale</term><listitem><para>
+<userinput>true</userinput> or <userinput>false</userinput> (default).
+If set the image is forced to grey scale.
+This is provided in case the image (especially satellite) had a colour label added.
+This would cause the entire image to be treated as a colour image, which is not usually wanted.
+</para></listitem></varlistentry>
+
+<varlistentry><term>aspect_ratio</term><listitem><para>
+<userinput>adjust</userinput> or <userinput>fixed</userinput> (default).
+The aspect ratio of the image is allowed to change depending on the view port setting or must remained fixed.
+</para></listitem></varlistentry>
+</variablelist>
+
+</para><para>For all image files (such as gif, png or tiff)
+<variablelist>
+<varlistentry><term>transparent</term>
+<listitem><para>Set the given colour to transparent. There are two parameters:
+<itemizedlist>
+<listitem><para> Either the name of a colour or the red, green and blue values of the colour to be taken as transparent. </para></listitem>
+<listitem><para> Optional parameter "closest". The optional key is only used for image files with a 256 element colour table, like GIF, and will use the colour closest to the requested transparent colour.  Useful in cases when colours like white are "sort of" white.  (example: transparent = white closest, transparent = 201 76 158).
+</para></listitem>
+</itemizedlist>
+More than one transparent entry is allowed and all of the designated colours will be taken as transparent.
+</para></listitem></varlistentry>
+<varlistentry><term>print_cmaps</term>
+<listitem><para>
+For images with 256 element colour tables this will print the tables if in diagnostic mode.
+For temporary use to see what colours are used in a image. There is one parameter:
+<itemizedlist><listitem><para>
+True or False. 
+</para></listitem></itemizedlist>
+Default False.
+</para></listitem></varlistentry>
+</variablelist>
+
+</para><para>For all images except geographic types:
+<variablelist>
+<varlistentry><term>directory</term>
+<listitem><para>Specifies the location of the <filename>Image</filename> files.
+There are two parameters:
+<itemizedlist>
+<listitem><para>The base directory key name of the image directories as found in the setup file.</para></listitem>
+<listitem><para>Directory where the images are to be found.</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+
+<varlistentry><term>fname_mask</term><listitem><para>
+The mask which is used to read the list of files from the above directory.
+</para><para><informalexample>
+The following will return all files starting with any characters in the first 12 positions followed by the string _WSO_CAPPI (and possibly followed by other unspecified characters).
+<programlisting>fname_mask = ............_WSO_CAPPI</programlisting> 
+</informalexample>
+Note that the mask uses regular expression matching, so that "." matches any single character, "*" matches any string of characters, and "$" indicates the end of the name.
+</para><para><informalexample>
+Thus the file <filename>200005132130_WSO_CAPPI_RAIN.GIF</filename> would be a match for the previous example, but not for:
+<programlisting>fname_mask = *_WSO_CAPPI$</programlisting>
+</informalexample>
+If not specified the default is all files ("*").
+Filenames cannot be longer than 120 characters.
+</para></listitem></varlistentry>
+
+<varlistentry><term>fname_time </term><listitem><para>
+The parsing format for the time contained in the file name in the form of <replaceable>format parse_keys</replaceable>.
+Format is the way to parse the string in the standard c sscanf style notation and parse_keys give the meaning of each of the elements parsed.
+In the above example the file starts with the date, so the entry <userinput>%4d%2d%2d%2d%2d YYYY MM DD hh mm</userinput> will parse it.
+If there was a string in front of the date this would need to be included in the format string.
+For example if we had: 
+<programlisting>fname_mask = RT............_WSO_CAPPI</programlisting> then the format would be:
+<programlisting>fname_time = RT%4d%2d%2d%2d%2d YYYY MM DD hh mm</programlisting>
+The default is "<userinput>%4d%2d%2d%2d%2d YYYY MM DD hh mm</userinput>". The parse keys are case sensitive.
+The recognized parse keys are listed in <xref linkend='parse_keys'/>.
+<table id='parse_keys' frame='topbot'><title>Parse Keys</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>key</entry><entry>meaning</entry></row></thead>
+<tbody>
+<row valign='top'><entry>YYYY</entry><entry>4 digit year</entry></row>
+<row valign='top'><entry>YY</entry><entry>2 digit year (the last 2 digits of the year)</entry></row>
+<row valign='top'><entry>JJJ</entry><entry>3 digit julian day</entry></row>
+<row valign='top'><entry>MM</entry><entry>2 digit month</entry></row>
+<row valign='top'><entry>DD</entry><entry>2 digit day of month</entry></row>
+<row valign='top'><entry>hh</entry><entry>2 digit hour of the day</entry></row>
+<row valign='top'><entry>mm</entry><entry>2 digit minute of the hour</entry></row>
+</tbody></tgroup></table>
+</para></listitem></varlistentry>
+
+<varlistentry><term>time_frequency</term><listitem><para>
+The time between images.
+If no time information is to be specified (or if the interval time cannot be specified as is the case for polar orbiting satellites), then enter "none" to avoid complaints from the configuration reader.
+</para> <para>
+The time frequency information consists of four entries:
+<itemizedlist>
+<listitem><para>the start time as an offset from 00 GMT</para></listitem>
+<listitem><para>the cycle time</para></listitem>
+<listitem><para>acceptance window before.</para></listitem>
+<listitem><para>acceptance window after.</para></listitem>
+</itemizedlist>
+All time entries can be specified in minutes (m) or hours and minutes
+in the format h:m (for example 15 or 1:10).
+The acceptance window is a time within which an image can arrive
+and still be considered to be on time.
+Some satellite images that
+normally arrive on the half hour may actually arrive at times like
+10:32, thus an acceptance window of 2 minutes would consider this
+to be the 10:30 image.
+Typical entries might be:
+<programlisting>radar 0:0 10 0 0
+satellite 0:0 15 2 5
+</programlisting>
+If a satellite repeated every half hour starting on the quarter hour,
+plus or minus 2 minutes, the entry would be:
+<programlisting>time_frequency = 15 30 2 2</programlisting>
+</para></listitem></varlistentry>
+</variablelist>
+</para> <para>
+The following are required for radar and satellite images only (like &GIF;) and satellite raw raster data files.
+If projection and mapdef are specified for <acronym>URP</acronym> or <acronym>TDF</acronym> files, then the entries in the <filename>Image</filename> file will override the information in the data file header.
+If not used, mapdef should be specified as "none" or the configuration reader will complain.
+<variablelist>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='projection.xml'/>
+<varlistentry><term>mapdef</term><listitem><para>
+The map definition of the image.
+&FPA; mapdefs are described in the &FPA; Graphics Metafile Standard.
+Entries are:
+<itemizedlist>
+<listitem><para>origin latitude</para></listitem>
+<listitem><para>origin longitude</para></listitem>
+<listitem><para>reference longitude (vertical)</para> </listitem>
+<listitem><para>x minimum (in map units given below)</para></listitem>
+<listitem><para>y minimum (in map units given below)</para></listitem>
+<listitem><para>x maximum (in map units given below)</para></listitem>
+<listitem><para>y maximum (in map units given below)</para></listitem>
+<listitem><para>metres per map unit, or degrees per map unit for latitude_longitude projections</para></listitem>
+</itemizedlist>
+<note><para>For radar numeric files the mapdef can be set to none and the appropriate map definition information will be read from the data files.</para></note>
+</para></listitem></varlistentry>
+
+</variablelist>
+</para> <para>
+Key words for radar image files only (like &GIF;):
+<variablelist>
+<varlistentry><term>radar_overlay</term>
+<listitem><para>If the image has the geography in specific planes in the image this can be used to remove them.
+Parameters are:
+<itemizedlist>
+<listitem><para>either <userinput>on</userinput> or <userinput>off</userinput></para></listitem>
+<listitem><para>an 8-bit mask indicating which bits in the image are to be used or rejected.
+For example 00111111</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+<varlistentry><term>radar_bgnd</term>
+<listitem><para>
+Do we want the image background to be <userinput>transparent</userinput> or <userinput>opaque</userinput>?
+</para></listitem></varlistentry>
+<varlistentry><term>radar_bg_color</term>
+<listitem><para>
+The rgb (red, green, blue) values of the colour to be taken as
+transparent if radar_bgnd is set to <userinput>transparent</userinput>.
+The values must
+range from 0 to 255 and the default is black (radar_bg_color = 0 0 0)
+</para></listitem></varlistentry>
+<varlistentry><term>radar_extent</term>
+<listitem><para>
+Display the entire image (<userinput>full</userinput>) or just the part where the radar scan is (<userinput>data</userinput>)?
+</para></listitem></varlistentry>
+<varlistentry><term>radar_centre</term>
+<listitem><para>
+Where in the image the centre of the radar scan can be found.
+Entries are width and height in pixels
+</para></listitem></varlistentry>
+<varlistentry><term>radar_diameter</term>
+<listitem><para>The diameter of the radar scan part of the image in pixels</para></listitem></varlistentry>
+<varlistentry><term>range_rings</term>
+<listitem><para>If <userinput>true</userinput> the library is allowed to overlay range
+rings on the image.
+Many radar images have range rings already in
+the image so normally this key word is either left out or set to <userinput>false</userinput>
+</para></listitem></varlistentry>
+</variablelist>
+
+</para> <para>
+For satellite images only:
+<variablelist>
+<varlistentry><term>mapdef_file </term><listitem><para>
+Some images, such as those received from polar orbiting satellites have a map definition that changes from one image to another.
+This entry defines the name of the file that contains the map definition and/or projection.
+There are two forms the files can take:
+<orderedlist>
+<listitem><para>The file contains the definitions for one image and the file name identifies which image to information is for.
+The file name is in the form of <replaceable>format encode_keys</replaceable>.
+Format is the way to encode the file name in standard C sprintf style notation and encode_keys give the meaning of each of the elements.
+For example: %2.2d%2.2d%2.2d%2.2d%2.2d_WSO_CAPPI.md ef YY MM DD hh mm
+where the time is encoded according to the rules defined above for the fname_time.
+the file must contain the definitions in the format given in the
+discussion of the projection and mapdef above although the equal ("=") sign is not required.</para></listitem>
+
+<listitem><para>The file contains the definitions and/or projections for more than one image.
+In this case the
+item list contains only one entry which is the name of the file.
+For example: <filename>mapdefs</filename>
+Each line in the given file must be in the form of:
+<programlisting><replaceable>image_file_name key parameters</replaceable></programlisting>
+where <replaceable>image_file_name</replaceable> is the name of the image file, <replaceable>key</replaceable> is one of
+<userinput>mapdef</userinput> or <userinput>projection</userinput>, and the <replaceable>parameters</replaceable> are as described in the discussion
+above.</para></listitem>
+</orderedlist>
+The files are assumed to be in the same directory as the images.
+Note that the map definition and projection must still be specified in
+the <filename>Image</filename> file for use as the default if the file is not found or if only
+the map definition is specified in the file.
+</para></listitem></varlistentry>
+</variablelist>
+
+</para> <para>
+Key words for the satellite or data with encode key <userinput>gridded_data</userinput> only:
+<variablelist>
+<varlistentry><term>element</term>
+<listitem><para>The name of the element encoded into the grid (e.g.
+temperature)</para></listitem></varlistentry>
+<varlistentry><term>size</term>
+<listitem><para>The size of the image grid.
+Entries are width and height in pixels.</para></listitem></varlistentry>
+<varlistentry><term>bytes_per_pixel</term>
+<listitem><para>The number of bytes (8-bit chunks) per pixel (must be one of 1, 2, or 3)</para></listitem></varlistentry>
+<varlistentry><term>byte_order</term>
+<listitem><para>
+Either <userinput>MSBFirst</userinput> for Most Significant Byte First or <userinput>LSBFirst</userinput> for Least Significant Byte First.
+Only valid for bytes_per_pixel >1.
+</para></listitem></varlistentry>
+<varlistentry><term>scale and offset</term>
+<listitem><para>
+Both scale and offset are used to turn the pixels into values represented by the pixels, and are applied as pixel * scale + offset
+For example if cloud top temperature was encoded as degrees Kelvin*100 and we wanted degrees Celsius then the scale and offset values
+would be
+<programlisting>scale = 0.01
+offset = -273.15</programlisting>
+</para></listitem></varlistentry>
+</variablelist>
+
+</para> <para>
+Key words for encode key <userinput>none</userinput> only:
+<variablelist>
+<varlistentry><term>size</term>
+<listitem><para>The image dimensions, width and height in pixels</para></listitem></varlistentry>
+</variablelist>
+
+</para> <para>
+For geographic images only:
+<variablelist>
+<varlistentry><term>file</term>
+<listitem><para>
+<itemizedlist>
+<listitem><para>The base directory key name of the image directories as found in the setup file, or an absolute pathname of the directory (starts with the character '/').
+</para></listitem>
+<listitem><para>The full path name of the file starting from the base directory.</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+</variablelist>
+
+</para> </sect2>
+
+<sect2><title>XGL image file format</title> <para>
+<indexterm><primary>configuration</primary><secondary>image</secondary></indexterm>
+This is the native format of this library.
+It is a very simple uncompressed raster format and consists of 24byte header block followed by a byte that is the type of image storage.
+The options are G, R, P and mean:
+<itemizedlist>
+<listitem><para>G = 1 byte per pixel (grey-scale)</para></listitem>
+<listitem><para>R = 3 bytes per pixel stored as RGB triplets: RGBRGBRGB...</para></listitem>
+<listitem><para>P = 3 bytes perp pixel stored as RGB in plane order: RRRR...GGGG...BBBB</para></listitem>
+</itemizedlist>
+This is followed by a 14 byte block that holds the image size stored as width x height.
+Note that the number of bytes in the image will be width*height*bytes-per-pixel.
+Thus the file size (bytes) will be 24+ width*height*bytes-per-pixel.
+Header example: "xglrasterR1024x768      "
+</para> </sect2>
+</sect1>
+
+<sect1 id='config_gribs'><title>Gribs</title> <para>
+<warning><para>The <filename>Gribs</filename> file is obsolete, it is being replaced by the <filename>Ingest</filename> file (see <xref linkend='config_ingest'/>). It is included for backwards compatibility.</para></warning>
+<indexterm><primary>configuration</primary><secondary>gribin</secondary></indexterm>
+The <filename>Gribs</filename> file describes model identifiers or element identifiers not yet recognized by the &FPA; &GRIB; decoder <command>gribin</command> (For &GRIB; editions 0 and 1).
+The following keywords are recognized:
+<variablelist>
+<varlistentry><term>gribmodel</term>
+<listitem><para>
+Defines GRIB model identifiers not presently recognized by
+the &FPA; &GRIB; decoder <command>gribin</command>.
+The parameters are:
+<itemizedlist>
+<listitem><para>&GRIB; forecast centre identifier number</para></listitem>
+<listitem><para>&GRIB; forecast centre model identifier number</para></listitem>
+<listitem><para>&FPA; model label (must be a valid source in Config)</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+<varlistentry><term>gribelement</term>
+<listitem><para>
+Defines &GRIB; element identifiers not presently recognized by
+the &FPA; &GRIB; decoder <command>gribin</command>.
+The parameters are:
+<itemizedlist>
+<listitem><para>&GRIB; element identifier number.</para></listitem>
+<listitem><para>&FPA; element label (must be a valid element in Config)</para></listitem>
+<listitem><para>&FPA; units (must be valid units in Config).</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+<varlistentry><term>gribfieldskip</term>
+<listitem><para>
+Defines fields which will not be processed by the &FPA; &GRIB;
+decoder <command>gribin</command>.
+The parameters are:
+<itemizedlist>
+<listitem><para>&FPA; element label (must be a valid element in Config) or can be <userinput>ANY</userinput></para></listitem>
+<listitem><para>&FPA; level label (must be a valid level in Config) or can be <userinput>ANY</userinput>.</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+</variablelist>
+</para> </sect1>
+
+<sect1 id='config_ingest'><title>Ingest and Ingest.<replaceable>name</replaceable></title> <para>
+<indexterm><primary>configuration</primary><secondary>gribin2</secondary></indexterm>
+The <filename>Ingest</filename> files map model, element and level information from an input format, such as &GRIB;, into model, element and level tags recognized by the FPA.
+Currently &GRIB; editions 0, 1 and 2 are supported by the ingest program <command>gribin2</command>.
+The <filename>Ingest.master</filename> file contains mappings for common models, elements and levels.
+The <filename>Ingest</filename> file is for local customization and should include the <filename>Ingest.master</filename> file.
+The <filename>Ingest</filename> file format is:
+<programlisting>revision <replaceable>revision_number</replaceable>
+include <replaceable>file_name</replaceable>
+include <replaceable>file_name</replaceable>
+Gribs <replaceable>edition</replaceable>
+  {
+  <replaceable>block_name</replaceable>
+    {
+    ...
+    }
+  ...
+}</programlisting>
+The revision line must be the first uncommented line in each ingest configuration file.
+The include lines allow several ingest configuration files to be used at the same time.
+The ingest configuration file reader merges the information from the included files with the information in the current file to determine all the rules needed to ingest the &GRIB; files successfully.
+When a query matches more than one rule, the last rule read by the ingest configuration file reader will be used.
+</para> <para>
+The general format does not allow line concatenation; for example, <programlisting><replaceable>block_name</replaceable> { </programlisting> on the same line would not be recognized.
+</para> <para>
+The Gribs <replaceable>edition</replaceable> is one of {0,1,2}, and <replaceable>block_name</replaceable> is one of:
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth;
+<tbody>
+<row valign='top'><entry>Sources</entry>
+<entry>A set of rules to assign &FPA; source names to a &GRIB; model</entry></row>
+<row valign='top'><entry>Elements</entry>
+<entry>A set of rules to assign an &FPA; element name to a &GRIB; element</entry></row>
+<row valign='top'><entry>Levels</entry>
+<entry>A set of rules to assign an &FPA; level tag and scale information</entry></row>
+<row valign='top'><entry>Fields</entry>
+<entry>A list of fields to either skip or process into &FPA; Metafiles</entry></row>
+<row valign='top'><entry>DataFiles</entry>
+<entry>A list of fields to either skip or process into a raw Datafiles that can be viewed
+as pseudo-satellite images in <application>xfpa</application>.</entry></row>
+</tbody></tgroup></informaltable>
+</para>
+
+<sect2><title>Sources block</title> <para>
+<indexterm><primary>configuration</primary><secondary>gribin2</secondary></indexterm>
+The <userinput>Sources</userinput> block sets rules to map &GRIB; model identifiers to valid &FPA; sources.
+The general format of the <userinput>Sources</userinput> block is:
+<programlisting>Sources
+  {
+  <replaceable>source_name</replaceable>
+    {
+    parameter = <replaceable>p0 p1 ... pn</replaceable>
+    parameter = <replaceable>p0 p1 ... pn</replaceable>
+    ...
+    }
+  ...
+  }</programlisting>
+where <replaceable>source_name</replaceable> is the source tag to be assigned, and <replaceable>p0</replaceable> through <replaceable>pn</replaceable> are identifiers determined by the &GRIB; edition.
+<variablelist>
+<varlistentry><term>editions 0 &amp; 1</term>
+<listitem><itemizedlist>
+<listitem><para>p0 = Originating centre identification number (centre)</para></listitem>
+<listitem><para>p1 = Model identification number (model)</para></listitem>
+</itemizedlist></listitem></varlistentry>
+<varlistentry><term>edition 2</term>
+<listitem><itemizedlist>
+<listitem><para>p0 = Originating centre identification number (centre)</para></listitem>
+<listitem><para>p1 = Sub centre identification number (sub_centre)</para></listitem>
+<listitem><para>p2 = Product template number (template)</para></listitem>
+<listitem><para>p3 = Type of forecast product (forecast_type)</para></listitem>
+<listitem><para>p4 = Process identification number (process)</para></listitem>
+<listitem><para>p5 = Background process identification number (bkgd_process)</para></listitem>
+</itemizedlist></listitem></varlistentry>
+</variablelist>
+</para> <para>
+The '*' character can be used to specify all of something.
+For example, if you want all models coming from centre 54 to have the source tag GEM then the following parameter values could be used:
+<informalexample>
+<programlisting>parameters = 54 *           # for &GRIB; editions 0 and 1, or
+parameters = 54 * * * * *   # for &GRIB; edition 2.
+</programlisting></informalexample>
+Some restrictions apply to the use of '*' in the <userinput>Sources</userinput> block.
+Generally once you use a '*' all parameters that follow on that line must also be '*'.
+There is one exception to this rule; in &GRIB; edition 2, you may set sub_centre to '*' and still specify forecast_type, template, process and bkgd_process.
+If you want a range of model ids to match a single source tag, you can specify as many parameter lines as you need.
+</para> <para>
+When two or more rules match a query, the more specific rule will be applied.
+If there is a tie the "newest" rule will apply.
+Thus it is important to make your customizations after the <filename>Ingest.master</filename> file is included.
+Source names should be previously defined in the <filename>Config</filename> file to be recognized.
+</para> </sect2>
+
+<sect2><title>Elements Block</title> <para>
+<indexterm><primary>configuration</primary><secondary>gribin2</secondary></indexterm>
+The <userinput>Elements</userinput> block sets rules to assign &FPA; element and unit tags to &GRIB; fields.
+Each &GRIB; producer has the option to define their own element parameters within the ranges reserved for local use.
+The source list is used to identify an element parametrization with a particular source or list of sources.
+If the parametrization is from the standard range then the source can be set to <userinput>default</userinput>.
+These parameters will be valid for all sources.
+<programlisting>Elements
+  {
+  <replaceable>source_names</replaceable>
+    {
+      <replaceable>element units</replaceable>
+        {
+        parameters = <replaceable>p0 p1 ... pn</replaceable>
+        parameters = <replaceable>p0 p1 ... pn</replaceable>
+        ...
+        }
+    }
+  }
+</programlisting>
+where <replaceable>source_names</replaceable> can be a single source, a list of sources or <userinput>default</userinput>, and <replaceable>p0</replaceable> through <replaceable>pn</replaceable> are identifiers determined by the &GRIB; edition
+<variablelist>
+<varlistentry><term>editions 0 &amp; 1</term>
+<listitem><itemizedlist>
+<listitem><para>p0 = Version number of the parameter table (table_version)</para></listitem>
+<listitem><para>p1 = Parameter id (parameter)</para></listitem>
+</itemizedlist></listitem></varlistentry>
+<varlistentry><term>edition 2</term>
+<listitem><itemizedlist>
+<listitem><para>p0 = &GRIB; Master Table number (discipline)</para></listitem>
+<listitem><para>p1 = Product definition template number (template)</para></listitem>
+<listitem><para>p2 = Parameter category (category)</para></listitem>
+<listitem><para>p3 = Parameter identification number (parameter)</para></listitem>
+</itemizedlist></listitem></varlistentry>
+</variablelist>
+</para> <para>
+The '*' character can be used to specify "all" of something.
+In the <userinput>Elements</userinput> block the '*' character is only acceptable in place of template or table_version.
+Element and unit names should be previously defined in the <filename>Config</filename> file to be recognized.
+</para> </sect2>
+
+<sect2><title>Levels Block</title> <para>
+<indexterm><primary>configuration</primary><secondary>gribin2</secondary></indexterm>
+The <userinput>Levels</userinput> block sets rules to assign &FPA; level tags to &GRIB; levels.
+Each &GRIB; producer has the option to define their own levels within the range reserved for local use.
+The source list is used to identify a level id with a particular source or list of sources.
+If the level id is from the standard range then the source can be set to <userinput>default</userinput>.
+These levels will be valid for all sources.
+<programlisting>Levels
+  {
+  <replaceable>source_names</replaceable>
+    {
+    <replaceable>level_name</replaceable>
+      {
+      parameters = <replaceable>p0 p1 ... pn</replaceable>
+      parameters = <replaceable>p0 p1 ... pn</replaceable>
+      ...
+      }
+    }
+  }
+</programlisting>
+where <replaceable>source_names</replaceable> can be a single source, a list of sources or <userinput>default</userinput>, and <replaceable>p0</replaceable> through <replaceable>pn</replaceable> are identifiers determined by the &GRIB; edition
+<variablelist>
+<varlistentry><term>editions 0 &amp; 1</term>
+<listitem><itemizedlist>
+<listitem><para>p0 = Level type: surface=<userinput>0</userinput>, level=<userinput>1</userinput> or layer=<userinput>2</userinput> (level_type)</para></listitem>
+<listitem><para>p1 = &GRIB; level identification number (level_id)</para></listitem>
+<listitem><para>p2 = Amount to scale level (or first level of a layer) value by (scale_1)</para></listitem>
+<listitem><para>p3 = Amount to offset level (or first level of a layer) value by (offset_1)</para></listitem>
+<listitem><para>p4 = Amount to scale upper level of a layer by (scale_2)</para></listitem>
+<listitem><para>p5 = Amount to offset upper level of a layer by (offset_2)</para></listitem>
+</itemizedlist></listitem></varlistentry>
+<varlistentry><term>edition 2</term>
+<listitem>
+<itemizedlist>
+<listitem><para>p0 = Level type: surface=<userinput>0</userinput>, level or layer=<userinput>1</userinput>(level_type)</para></listitem>
+<listitem><para>p1 = &GRIB; level identification number (level_id)</para></listitem>
+<listitem><para>p2 = Amount to scale level by (scale)</para></listitem>
+<listitem><para>p3 = Amount to offset level by (offset)</para></listitem>
+</itemizedlist></listitem></varlistentry>
+</variablelist>
+</para> <para>
+In both edition 1 &amp; 2, the scale and offset values are used to change the units of the level or layer values to &MKS; or something more convenient for FPA.
+&FPA; uses level/layer values to specify a level tag.
+The values need to be integers for this purpose.
+Level names should be previously defined in the <filename>Config</filename> file to be recognized.
+</para> </sect2>
+
+<sect2><title>Fields Block</title> <para>
+<indexterm><primary>configuration</primary><secondary>gribin2</secondary></indexterm>
+The <userinput>Fields</userinput> block is used to specify a list of fields to process or skip when generating &FPA; metafiles.
+<programlisting>Fields
+  {
+  process  = <replaceable>source element level</replaceable>
+  skip     = <replaceable>source element level</replaceable>
+  redirect = <replaceable>original destination</replaceable>
+  }
+</programlisting>
+<informaltable frame='topbot'>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>command</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>process</entry><entry>Convert only selected fields into &FPA; metafiles</entry></row>
+<row valign='top'><entry>skip</entry><entry>Convert all but the selected fields into &FPA; metafiles.
+You cannot combine process and skip directives.
+If a process directive exists then all skip directives are ignored.</entry></row>
+<row valign='top'><entry>redirect</entry><entry>Redirect from origin source to destination source for processed fields.
+This allows us to separate metafiles and datafiles generated from the same &GRIB; field into different directories.
+Here the destination source must be defined in a <filename>Config</filename> file.</entry></row>
+</tbody>
+</tgroup></informaltable>
+The '*' character may be used to match all possible choices for source, element or level.
+<informalexample><programlisting>process = GFS   *   surface</programlisting></informalexample>
+will process all surface fields from the <acronym>GFS</acronym> source.
+</para> </sect2>
+
+<sect2><title>DataFiles Block</title> <para>
+<indexterm><primary>configuration</primary><secondary>gribin2</secondary></indexterm>
+The <userinput>Datafiles</userinput> block specifies a list of fields to process or skip when generating &FPA; datafiles.
+<programlisting>DataFiles
+  {
+  process  = <replaceable>source element level</replaceable>
+  skip     = <replaceable>source element level</replaceable>
+  redirect = <replaceable>original destination</replaceable>
+  rescale  = <replaceable>element level scale offset</replaceable>
+  }</programlisting>
+<informaltable frame='topbot'>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>command</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>process</entry><entry>Convert only selected fields into &FPA; data files</entry></row>
+<row valign='top'><entry>skip</entry><entry>Convert all but the selected fields into &FPA; data files.
+You cannot combine process and skip directives.
+If a process directive exists then all skip directives are ignored.</entry></row>
+<row valign='top'><entry>redirect</entry><entry>Redirect from origin source to destination source for processed fields.
+This allows us to separate metafiles and datafiles generated from the same &GRIB; field into different directories.
+Here the destination source must be defined in a <filename>Config</filename> file.</entry></row>
+<row valign='top'><entry>rescale</entry>
+<entry><para>A datafile is a binary file which contains a simple grid of data.
+Each datum is stored as a signed short integer (2 bytes).
+If any of the data being stored falls outside the range of signed shorts, information will be lost.
+Rescale the data by scale and offset:
+<userinput> short_val = (short int) ((float_val - offset)*scale)</userinput> to avoid losing information.
+The '*' character may be used to match all possible choices of element or level.
+Scale and offset may be floating point numbers.
+example: rescale = temperature * 0.1 0.0 </para>
+</entry></row>
+</tbody>
+</tgroup></informaltable>
+The '*' character may be used to match all possible choices for source, element or level.
+<informalexample><programlisting>process = GFS * surface</programlisting></informalexample>
+will process all surface fields from the <acronym>GFS</acronym> source.
+</para> </sect2>
+</sect1>
+
+<sect1><title>Memory Preset Configuration File Format</title> <para>
+<indexterm><primary>configuration</primary><secondary>memory presets</secondary></indexterm>
+The files in the Memory directory contain the definitions of predefined lists of editor memory items.
+These items will always be placed before those defined by the users.
+Each file is associated with a particular field and is specified in the <filename>Config</filename> file by the <userinput>memory_file</userinput> or <userinput>background_memory_file</userinput> keyword in the <userinput>editor</userinput> section of the <userinput>Elements</userinput> block.
+</para><para>
+Each block of data must be proceeded by the keyword 'memory'.
+After this are attribute - value pairs which define the memory contents.
+Any attribute not listed will be assigned its default value.
+There are three special attributes which can be used by many fields.
+<informaltable frame='topbot'>
+<tgroup cols ='2'>&colwidth;
+<thead><row><entry>attribute</entry><entry>purpose</entry></row></thead>
+<tbody>
+<row valign='top'><entry>FPA_user_label</entry><entry>the user set label for the entry</entry></row>
+<row valign='top'><entry>FPA_auto_label</entry><entry>the 'value' of the area</entry></row>
+<row valign='top'><entry>FPA_category</entry><entry>the 'category' of the area</entry></row>
+</tbody>
+</tgroup></informaltable>
+<informalexample>
+<programlisting> memory
+  FPA_user_label = Showers
+  cloud_base     = 25
+  precip         = RW-
+  vis            = 1-3
+</programlisting></informalexample>
+</para>
+<note><para>The actual category names will vary according to what is defined in your configuration files.</para></note>
+</sect1>
+
+<sect1 id='c6_attrib_menu'><title>Attribute Entry Menu Files</title> <para>
+<indexterm><primary>configuration</primary><secondary>attribute menus</secondary></indexterm>
+The files in the Menus directory contain definitions of attribute entry menus.
+The name of the file is set in the <userinput>Elements</userinput> block of the <filename>Config</filename> file.
+There are two types of entry files, Attribute Entry Menu files and Wind Entry Menu files.
+(<link linkend='c6_wind_menu'>Wind Entry Menu</link> files are described in the following section.)
+</para> <para>
+The attribute entry menu configuration files determine the appearance and content of the attribute entry menus.
+Each file is associated with a particular field or label and is specified in the <filename>Config</filename> file by the 
+<userinput>background_entry_file</userinput>, 
+<userinput>type_entry_file</userinput>, 
+<userinput>type_modify_file</userinput>,
+<userinput>entry_file</userinput> or
+<userinput>modify_file</userinput>
+keywords in the <userinput>editor</userinput> section of the <userinput>Elements</userinput> block.
+(<xref linkend='appenda'/>).
+These files are located in the <filename class='directory'>Menus</filename> configuration directory.
+</para> <para>
+The first six lines of the attribute entry menu files define values which apply to the preset controls in the menu.
+These are:
+<table frame='topbot'><title>Attribute Entry Menu - Preset Controls</title>
+<tgroup cols='2'>&colwidth3;
+<thead><row><entry>control</entry><entry>usage</entry></row></thead>
+<tbody>
+<row valign='top'><entry><userinput>menu_title</userinput></entry>
+<entry>
+Sets the title to appear in the menu frame at the very top of the window.
+</entry></row>
+<row valign='top'><entry><userinput>geometry</userinput></entry>
+<entry>
+Sets the size of the entire entry menu as x y width height all given in pixels.
+The position x y is relative to the button which causes the menu to appear and can thus have a negative value.
+</entry></row>
+<row valign='top'><entry><userinput>label_display_height</userinput></entry>
+<entry>
+Set the height, in rows, of the User Label display.
+If set to zero (0), then the User Label display will not appear in the menu.
+The default is 1
+</entry></row>
+<row valign='top'><entry><userinput>value_display_height</userinput></entry>
+<entry>
+sets the height, in rows, of the Auto Label display.
+If set to zero (0) then the Auto Label display will not appear in the menu.
+The default is 2
+</entry></row>
+<row valign='top'><entry><userinput>category_display_width</userinput></entry>
+<entry>
+Sets the width of the category display in characters the category display is located just to the right of the Auto Label display.
+If set to zero (0) then the category display will not appear in the menu.
+The default is 20
+</entry></row>
+<row valign='top'><entry><userinput>initialization</userinput></entry>
+<entry>
+Is optional and if present can have one of two values: <userinput>none</userinput> or, <userinput>normal</userinput>.
+If set to none the menu will always appear with the menu items set to whatever this menu file defines as the start-up state.
+If set to normal, the menu will be filled in with the values of the last object that had its attributes set or modified by the entry menu.
+</entry></row>
+</tbody></tgroup></table>
+</para>
+<note><para> In some instances, <userinput>label_display_height</userinput>, <userinput>value_display_height</userinput>, and <userinput>category_display_width</userinput> would be set to 0 so that none of these appear in the entry menu.
+This would be the case when setting attributes for labels, as none of these would apply and to display them would confuse the user.</para></note>
+<para>
+The remaining lines of the attribute entry menu files refer to dynamically configured and created menu control objects.
+These control objects are arranged into panels, with each panel controlled by a tab.
+The keyword is panel followed by the tab label enclosed in quotes.
+</para> <para>
+Any number of objects can be arranged within each panel.
+At the moment there are four types of objects defined: layout objects, attribute entry objects, control objects and display only objects.
+<informaltable rowsep='0' colsep='1' frame='all'>
+<tgroup cols='4'>
+<thead><row rowsep='1'><entry>Layout</entry><entry>Entry</entry><entry>Control</entry><entry>Display</entry></row></thead>
+<tbody><row>
+<entry><link linkend='c6_frame'>frame</link></entry>
+<entry><link linkend='c6_button_list'>button_list</link></entry>
+<entry><link linkend='c6_clear_btn'>clear_btn</link></entry>
+<entry><link linkend='c6_display_label'>display_label</link></entry>
+</row><row>
+<entry></entry>
+<entry><link linkend='c6_composite_list'>composite_list</link></entry>
+<entry><link linkend='c6_run_program'>run_program</link></entry>
+<entry><link linkend='c6_display_attribute'>display_attribute</link></entry>
+</row><row>
+<entry></entry>
+<entry><link linkend='c6_popup_list'>popup_list</link></entry>
+<entry></entry>
+<entry><link linkend='c6_line'>line</link></entry>
+</row><row>
+<entry></entry>
+<entry><link linkend='c6_scrolled_list'>scrolled_list</link></entry>
+<entry></entry>
+<entry></entry>
+</row><row>
+<entry></entry>
+<entry><link linkend='c6_spin_box'>spin_box</link></entry>
+<entry></entry>
+<entry></entry>
+</row><row>
+<entry></entry>
+<entry><link linkend='c6_spin_list'>spin_list</link></entry>
+<entry></entry>
+<entry></entry>
+</row><row>
+<entry></entry>
+<entry><link linkend='c6_text'>text</link></entry>
+<entry></entry>
+<entry></entry>
+</row>
+</tbody></tgroup></informaltable>
+</para> <para>
+Here is a more detailed description of the objects available for use in the entry menu.
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth;
+<thead><row><entry>control</entry><entry>usage</entry></row></thead>
+<tbody>
+<row valign='top'><entry><link linkend='c6_button_list'>button_list</link></entry><entry>This is a button, that when activated, pops up a list of choices.
+Unlike the popup_list below, there is no visual indication that the button will popup a list when activated.</entry></row>
+<row valign='top'><entry><link linkend='c6_clear_btn'>clear_btn</link></entry><entry>A button, which when pressed, clears a specified list of attribute objects.</entry></row>
+<row valign='top'><entry><link linkend='c6_composite_list'>composite_list</link></entry><entry>This object contains other objects that provide input to a single attribute.
+Any object can be a child of a composite, but only the button_list, popup_list, scrolled_list and spin_list objects will allow input.</entry></row>
+<row valign='top'><entry><link linkend='c6_display_attribute'>display_attribute</link></entry><entry>Used to display the value of a given attribute with no modification capability.
+</entry></row>
+<row valign='top'><entry><link linkend='c6_display_label'>display_label</link></entry><entry>Displays a given label in the menu.
+Used to provide static information to users.</entry></row>
+<row valign='top'><entry><link linkend='c6_frame'>frame</link></entry><entry>This is an object that encloses other object(s).
+It is used to "fancy up" the display.
+The frame can be given an optional label which is embedded in the upper left part of the frame border.</entry></row>
+<row valign='top'><entry><link linkend='c6_line'>line</link></entry><entry>Displays either a horizontal or vertical line of various types.</entry></row>
+<row valign='top'><entry><link linkend='c6_popup_list'>popup_list</link></entry><entry>An object, indicated by a dash to the right of the display area, which pops up a list of choices when the mouse button is pushed down.
+When the mouse button is released the list pops down.</entry></row>
+<row valign='top'><entry><link linkend='c6_scrolled_list'>scrolled_list</link></entry><entry>An object, with a display area and an arrow displayed to the right of the area which pops up a list of choices.
+The list pops down when the mouse button is pushed outside of the list and selects an item if the mouse button is pushed on a list item.</entry></row>
+<row valign='top'><entry><link linkend='c6_spin_box'>spin_box</link></entry><entry>An object that displays a numeric value which is controlled by two arrows.
+The object must contain a value and cannot contain the idea of none.</entry></row>
+<row valign='top'><entry><link linkend='c6_spin_list'>spin_list</link></entry><entry>An object that displays a value from a defined list of values in a spin_box style object.
+This can contain the idea of none.</entry></row>
+<row valign='top'><entry><link linkend='c6_run_program'>run_program</link></entry><entry>A button that when activated will run a specified program.</entry></row>
+<row valign='top'><entry><link linkend='c6_text'>text</link></entry><entry>An object that allows for the free form input of text.</entry></row>
+</tbody>
+</tgroup></informaltable>
+</para> <para>
+The list objects are for entering the value of any attribute from predefined list of values.
+The composite list does the same but constructs the attribute from several lists which are concatenated together.
+(For example the attribute value RW-SHRA could be made up of components from three lists, one of which contains RW, the second SH and the third RA.
+These objects are nested and related in the following manner:
+<programlisting>menu_title             = <replaceable>title</replaceable>
+geometry               = <replaceable>x y width height</replaceable>
+label_display_height   = <replaceable>value</replaceable>
+value_display_height   = <replaceable>value</replaceable>
+category_display_width = <replaceable>value</replaceable>
+initialization         = <replaceable>value</replaceable>
+panel "<replaceable>panel 1 label</replaceable>"
+  {
+  <replaceable>entry object</replaceable>
+    {
+    <replaceable>keyword</replaceable> = <replaceable>value</replaceable>
+    <replaceable>keyword</replaceable> = <replaceable>value</replaceable>
+    ...
+    }
+  <replaceable>frame object</replaceable>
+  {
+  <replaceable>keyword</replaceable> = <replaceable>value</replaceable>
+  <replaceable>keyword</replaceable> = <replaceable>value</replaceable>
+  ...
+  <replaceable>entry object</replaceable>
+    {
+    <replaceable>keyword</replaceable> = <replaceable>value</replaceable>
+    <replaceable>keyword</replaceable> = <replaceable>value</replaceable>
+    ...
+    }
+  }
+  <replaceable>entry object</replaceable>
+    {
+    <replaceable>keyword</replaceable> = <replaceable>value</replaceable>
+    <replaceable>keyword</replaceable> = <replaceable>value</replaceable>
+    ...
+    }
+  }
+panel "<replaceable>panel 2 label</replaceable>"
+  {
+  ...
+  }
+</programlisting>
+The characteristics of each of these objects are set by a list of keyword-value pairs.
+If part of a value string has embedded spaces this can be preserved by enclosing the string in quotes.
+<example><title>Preserving embedded spaces</title>
+<programlisting>label     = "Cloud Amount"
+position  = 241 377
+size      = 500 370
+</programlisting></example>
+</para>
+
+<sect2><title>Object Specification</title> <para>
+<indexterm><primary>configuration</primary><secondary>attribute menus</secondary></indexterm>
+The following points apply to most objects.
+<orderedlist>
+<listitem id='c6_ncolumns'><para>Most objects have a number of column settings.
+If not specified the program will try to set the correct number, but due to font differences you might have to set the number of columns "ncolumns" to more than you might expect.</para></listitem>
+<listitem id='c6_colour'><para>In all references to colour below, the colour is entered in normal X notation.
+To find out more about X notation type man X at the command line.
+Some choices are: the X colour name (e.g. "wheat"); the rgb specification RGB: rrrr/gggg/bbbb where rrrr, gggg and bbbb are each hexadecmial digits between 0 and FFFF inclusive.
+(e.g. F3/DA/A9); the rgb specification RGBi: rrrr/gggg/bbbb where rrrr, gggg and bbbb are each floating point numbers between 0.0 and 1.0 inclusive.
+(e.g. 0.9529/0.8549/0.6627)</para></listitem>
+<listitem id='c6_list'><para>For those objects which take a list of items the following is valid:
+<itemizedlist>
+<listitem><para>The sequence of items to appear in the list must be separated by white space.
+If any item must have embedded spaces, then the item must be enclosed in quotes.</para></listitem>
+<listitem id='c6_none'><para>There is a special item with the name of "none" which can be inserted into the list and when selected will set the current value of the corresponding attribute to no value.</para></listitem>
+<listitem><para>There is special item with the name of "range:" which can be inserted into the list. It is replaced by a range of values. The syntax for this is: <replaceable>range</replaceable>:<replaceable>minimum</replaceable>,<replaceable>maximum</replaceable>,<replaceable>increment</replaceable>,<replaceable>decimals</replaceable>, where <replaceable>minimum</replaceable> and <replaceable>maximum</replaceable> are the limits to a range of numbers, <replaceable>increment</replaceable> is the amount to step between values by, and <replaceable>decimals</replaceable> is the number of decimal points to display.
+If decimals is not specified or is 0(zero) then the range is taken to be a range of integers.
+If it is specified then the range is taken to be a range of float values.
+It is important that there be no spaces between the elements and the range specification must not be enclosed in quotes.
+There can be more than one range specification in any item list.</para></listitem>
+</itemizedlist>
+</para></listitem>
+<listitem id='c6_limit_type'><para>For those objects which can have their list of values limited by another object the following applies for the limit keyword:
+<itemizedlist>
+<listitem><para>There are two parameters: the limit definition and the id (attribute_id or composite_id) of the object doing the limiting.</para></listitem>
+<listitem><para>The limit definition must be one of LT, LE, GE, GT.
+<informalexample><programlisting>limit = GT cloud_base_lower</programlisting></informalexample> </para></listitem>
+<listitem><para>Some very simple logic can also be done limited to <userinput>AND</userinput> or <userinput>OR</userinput>.
+<informalexample><para> if there where two objects defining the cloud base as a range, say with composite_id's of cb1 and cb2, then we could have:
+<programlisting>limit = GT base:cb1 AND GT base:cb2</programlisting></para></informalexample></para></listitem>
+<listitem><para>How the values in the two objects are compared depends on the limit_type key.
+The possible values for this are string, integer or float.
+This determines if the comparison is done by comparing strings, integer values or float values.
+The default is integer.
+For numerical comparisons there are several assumptions:
+<orderedlist>
+<listitem><para>The values go from smaller to larger in the string.</para></listitem>
+<listitem><para>If an entry starts with a "&gt;" symbol it is unbounded, </para></listitem>
+<listitem><para>and if it starts with a "&lt;" symbol it is very small.
+</para></listitem>
+</orderedlist>
+See the composite_list object for information on the composite_id keyword.</para></listitem>
+</itemizedlist>
+</para></listitem>
+</orderedlist>
+</para> <para>
+The following tables give the recognized keywords and their associated values for each menu object type.
+<table frame='topbot' id='c6_button_list'><title>Keyword list for the 'button_list' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>attribute_id</entry><entry>The name of the attribute to be controlled by this object.</entry></row>
+<row valign='top'><entry>label</entry><entry>If not set, then the label of the list is the attribute label.
+If set, the given value is used instead of the attribute label.
+If set to <userinput>none</userinput> then no label is displayed.</entry></row>
+<row valign='top'><entry>label_size</entry><entry>The attribute label is taken from the configuration file.
+There is a <userinput>long</userinput> form and <userinput>short</userinput> form label available.
+The default is <userinput>long</userinput></entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>foreground</entry><entry>The foreground <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+<row valign='top'><entry>background</entry><entry>The background <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+<row valign='top'><entry>border_color</entry><entry>The <link linkend='c6_colour'>colour</link> of the border.</entry></row>
+<row valign='top'><entry>border_width</entry><entry>The width of the border around the label.
+The default is 0.</entry></row>
+<row valign='top'><entry>margin_height</entry><entry>The height of the margin, in pixels, above and below the string in the label.
+The default is 2.</entry></row>
+<row valign='top'><entry>margin_width</entry><entry>The width of the margin, in pixels, to the right and left of the string in the label.
+The default is 2.</entry></row>
+<row valign='top'><entry>items</entry><entry>The <link linkend='c6_list'>sequence of items</link> to appear in the list</entry></row>
+<row valign='top'><entry>nvisible</entry><entry>The number of items which will be visible in the scrolled list area.</entry></row>
+<row valign='top'><entry>ncolumns</entry><entry>The size of the display area specified in character <link linkend='c6_ncolumns'>columns</link>.</entry></row>
+<row valign='top'><entry>none_sub</entry><entry>Substitute the given string for the <link linkend='c6_none'>none</link> entry in the list.
+The user will see this substituted string but its action will be the same as none.
+The default is a blank (" ").</entry></row>
+<row valign='top'><entry>default</entry><entry>The item from the above list to be used as the default value.</entry></row>
+<row valign='top'><entry>limit</entry><entry>If the valid values in the list are <link linkend='c6_limit_type'>limited</link> by some other entry object this defines this relationship.</entry></row>
+<row valign='top'><entry>limit_type</entry><entry>One of <userinput>integer</userinput>, <userinput>float</userinput> or <userinput>string</userinput>.
+This has meaning only if a limit is specified and determines if the limit testing is numeric or by list position comparison.
+The default is integer.</entry></row>
+</tbody>
+</tgroup></table>
+<table frame='topbot' id='c6_clear_btn'><title>Keyword list for the 'clear_btn' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>label</entry><entry>The label to display to the user.
+The default is "&lt;&lt;Clear"</entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>foreground</entry><entry>The foreground <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+<row valign='top'><entry>background</entry><entry>The background <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+<row valign='top'><entry>border_color</entry><entry>The <link linkend='c6_colour'>colour</link> of the border.</entry></row>
+<row valign='top'><entry>border_width</entry><entry>The width of the border around the label.
+The default is 0.</entry></row>
+<row valign='top'><entry>margin_height</entry><entry>The height of the margin, in pixels, above and below the string in the label.
+The default is 2.</entry></row>
+<row valign='top'><entry>margin_width</entry><entry>The width of the margin, in pixels, to the right and left of the string in the label.
+The default is 2.</entry></row>
+<row valign='top'><entry>attribute_id_list</entry><entry>A list of attribute ids which are to be reset to their default state when this button is pressed.</entry></row>
+</tbody>
+</tgroup></table>
+<table frame='topbot' id='c6_composite_list'><title>Keyword list for the 'composite_list' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>attribute_id</entry><entry>The name of the attribute to be controlled by this object.</entry></row>
+<row valign='top'><entry>label</entry><entry>If not set, then the label of the list is the attribute label.
+If set, the given value is used instead of the attribute label.
+If set to <userinput>none</userinput> then no label is displayed.</entry></row>
+<row valign='top'><entry>label_size</entry><entry>The attribute label is taken from the configuration file.
+There is a <userinput>long</userinput> form and <userinput>short</userinput> form label available.
+The default is <userinput>long</userinput></entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>border_color</entry><entry>The <link linkend='c6_colour'>colour</link> of the border.</entry></row>
+<row valign='top'><entry>border_width</entry><entry>The width of the border around the label.
+The default is 0.</entry></row>
+<row valign='top'><entry>margin_height</entry><entry>The height of the margin, in pixels, above and below the string in the label.
+The default is 2.</entry></row>
+<row valign='top'><entry>margin_width</entry><entry>The width of the margin, in pixels, to the right and left of the string in the label.
+The default is 2.</entry></row>
+<row valign='top'><entry></entry><entry>The list of items that make up the individual parts of the composite must be specified as the item list in each child object.
+None of the child objects requires their attribute_id keyword to be specified and it is ignored if present.
+All of the children of the composite_list can have the following keywords in addition to their normal keyword set:</entry></row>
+<row valign='top'><entry>composite_id</entry><entry>If a child needs to make reference to another child, such as is required by the <link linkend='c6_limit_type'>limit</link> keyword, this key provides the means to give the referenced child an identifier that can be used as the reference id.
+If an object outside of the composite list needs to refer to an object in the composite list it can do so by using the fully qualified identifier <replaceable>attribute_id</replaceable>:<replaceable>composite_id</replaceable>.</entry></row>
+<row valign='top'><entry>prefix</entry><entry>A character that will be inserted before that part of the composite entry controlled by the child object.
+If specified and the character is not a space, then the composite object will display the character before the child object.
+There are two special entries here that can be used for clarity: <userinput>space</userinput> which denotes the use of a space as a prefix and <userinput>dash</userinput> which denotes the use
+of a dash "-".
+All other cases are taken as literal.</entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_display_attribute'><title>Keyword list for the 'display_attribute' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>attribute_id</entry><entry>The name of the attribute to be controlled by this object.</entry></row>
+<row valign='top'><entry>label</entry><entry>If not set, then the label of the list is the attribute label.
+If set, the given value is used instead of the attribute label.
+If set to <userinput>none</userinput> then no label is displayed.</entry></row>
+<row valign='top'><entry>label_size</entry><entry>The attribute label is taken from the configuration file.
+There is a <userinput>long</userinput> form and <userinput>short</userinput> form label available.
+The default is <userinput>long</userinput></entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>ncolumns</entry><entry>The size of the display area specified in character <link linkend='c6_ncolumns'>columns</link>.</entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_display_label'><title>Keyword list for the 'display_label' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>label</entry><entry>The label to display to the user.</entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>foreground</entry><entry>The foreground <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+<row valign='top'><entry>background</entry><entry>The background <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+<row valign='top'><entry>border_color</entry><entry>The <link linkend='c6_colour'>colour</link> of the border.</entry></row>
+<row valign='top'><entry>border_width</entry><entry>The width of the border around the label.
+The default is 0.</entry></row>
+<row valign='top'><entry>margin_height</entry><entry>The height of the margin, in pixels, above and below the string in the label.
+The default is 2.</entry></row>
+<row valign='top'><entry>margin_width</entry><entry>The width of the margin, in pixels, to the right and left of the string in the label.
+The default is 2.</entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_frame'><title>Keyword list for the 'frame' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>label</entry><entry>The label to display on the frame which is to enclose the other objects.
+The default is no label.</entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>size</entry><entry>The width and height, in pixels, of the frame object.</entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_line'><title>Keyword list for the 'line' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>line_style</entry><entry>One of <userinput>etched_in</userinput> (default), <userinput>etched_out</userinput>, <userinput>single</userinput>, <userinput>double</userinput>, <userinput>single_dashed</userinput> or <userinput>double_dashed</userinput>.</entry></row>
+<row valign='top'><entry>orientation</entry><entry>Either <userinput>horizontal</userinput> (default) or <userinput>vertical</userinput>.</entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>length</entry><entry>The length of the line in pixels</entry></row>
+<row valign='top'><entry>foreground</entry><entry>The foreground <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+<row valign='top'><entry>background</entry><entry>The background <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_popup_list'><title>Keyword list for the 'popup_list' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>attribute_id</entry><entry>The name of the attribute to be controlled by this object.</entry></row>
+<row valign='top'><entry>label</entry><entry>If not set, then the label of the list is the attribute label.
+If set, the given value is used instead of the attribute label.
+If set to <userinput>none</userinput> then no label is displayed.</entry></row>
+<row valign='top'><entry>label_size</entry><entry>The attribute label is taken from the configuration file.
+There is a <userinput>long</userinput> form and <userinput>short</userinput> form label available.
+The default is <userinput>long</userinput></entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>items</entry><entry>The <link linkend='c6_list'>sequence of items</link> to appear in the list</entry></row>
+<row valign='top'><entry>none_sub</entry><entry>Substitute the given string for the <link linkend='c6_none'>none</link> entry in the list.
+The user will see this substituted string but its action will be the same as none.
+The default is a blank (" ").</entry></row>
+<row valign='top'><entry>default</entry><entry>The item from the above list to be used as the default value.</entry></row>
+<row valign='top'><entry>limit</entry><entry>If the valid values in the list are <link linkend='c6_limit_type'>limited</link> by some other entry object this defines this relationship.</entry></row>
+<row valign='top'><entry>limit_type</entry><entry>One of <userinput>integer</userinput>, <userinput>float</userinput> or <userinput>string</userinput>.
+This has meaning only if a limit is specified and determines if the limit testing is numeric or by list position comparison.
+The default is integer.</entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_run_program'><title>Keyword list for the 'run_program' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>label</entry><entry>The label to display on the button</entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>size</entry><entry>The width and height of the button in pixels, if you want something other than the generated default size.</entry></row>
+<row valign='top'><entry>foreground</entry><entry>The foreground <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+<row valign='top'><entry>background</entry><entry>The background <link linkend='c6_colour'>colour</link> of the object.
+The default is parent's.</entry></row>
+<row valign='top'><entry>border_color</entry><entry>The <link linkend='c6_colour'>colour</link> of the border.</entry></row>
+<row valign='top'><entry>border_width</entry><entry>The width of the border around the label.
+The default is 0.</entry></row>
+<row valign='top'><entry>margin_height</entry><entry>The height of the margin, in pixels, above and below the string in the label.
+The default is 2.</entry></row>
+<row valign='top'><entry>margin_width</entry><entry>The width of the margin, in pixels, to the right and left of the string in the label.
+The default is 2.</entry></row>
+<row valign='top'><entry>program</entry><entry>The name of the program to run</entry></row>
+<row valign='top'><entry>missing</entry><entry>The string to pass the program if any of the parameter values is missing or not available.
+The default is <userinput>none</userinput></entry></row>
+<row valign='top'><entry>parms</entry><entry><para>The run time parameters of the program.
+All entries are taken as literal except for special key words given in angle brackets &lt;<replaceable>key</replaceable>&gt;.
+These are substituted for the actual values when the button is activated.
+The keys available are:</para>
+<para>&lt;SETUP&gt; - The name of the setup file.</para>
+<para>&lt;RTIME&gt; - Run time. For depictions this is T0</para>
+<para>&lt;VTIME&gt; - Valid time.</para>
+<para>&lt;ELEMENT&gt; - Currently active element</para>
+<para>&lt;LEVEL&gt; - Currently active level</para>
+<para>&lt;LATITUDE&gt; - Latitude of the point or label.</para>
+<para>&lt;LONGITUDE&gt; - Longitude of the point or label.</para>
+<para>&lt;ATTRIB:<replaceable>name</replaceable>&gt; - The value of the attribute name</para>
+<para>Latitude and longitude are only available for point fields and labels.
+One could have as an entry in the parms line items like latitude=&lt;LATITUDE&gt;</para></entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_scrolled_list'><title>Keyword list for the 'scrolled_list' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>attribute_id</entry><entry>The name of the attribute to be controlled by this object.</entry></row>
+<row valign='top'><entry>label</entry><entry>If not set, then the label of the list is the attribute label.
+If set, the given value is used instead of the attribute label.
+If set to <userinput>none</userinput> then no label is displayed.</entry></row>
+<row valign='top'><entry>label_size</entry><entry>The attribute label is taken from the configuration file.
+There is a <userinput>long</userinput> form and <userinput>short</userinput> form label available.
+The default is <userinput>long</userinput></entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>ncolumns</entry><entry>The size of the display area specified in character <link linkend='c6_ncolumns'>columns</link>.</entry></row>
+<row valign='top'><entry>items</entry><entry>The <link linkend='c6_list'>sequence of items</link> to appear in the list</entry></row>
+<row valign='top'><entry>nvisible</entry><entry>The number of items which will be visible in the scrolled list area.</entry></row>
+<row valign='top'><entry>none_sub</entry><entry>Substitute the given string for the <link linkend='c6_none'>none</link> entry in the list.
+The user will see this substituted string but its action will be the same as none.
+The default is a blank (" ").</entry></row>
+<row valign='top'><entry>default</entry><entry>The item from the above list to be used as the default value.</entry></row>
+<row valign='top'><entry>limit</entry><entry>If the valid values in the list are <link linkend='c6_limit_type'>limited</link> by some other entry object this defines this relationship.</entry></row>
+<row valign='top'><entry>limit_type</entry><entry>One of <userinput>integer</userinput>, <userinput>float</userinput> or <userinput>string</userinput>.
+This has meaning only if a limit is specified and determines if the limit testing is numeric or by list position comparison.
+The default is integer.</entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_spin_box'><title>Keyword list for the 'spin_box' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>attribute_id</entry><entry>The name of the attribute to be controlled by this object.</entry></row>
+<row valign='top'><entry>label</entry><entry>If not set, then the label of the list is the attribute label.
+If set, the given value is used instead of the attribute label.
+If set to <userinput>none</userinput> then no label is displayed.</entry></row>
+<row valign='top'><entry>label_size</entry><entry>The attribute label is taken from the configuration file.
+There is a <userinput>long</userinput> form and <userinput>short</userinput> form label available.
+The default is <userinput>long</userinput></entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>ncolumns</entry><entry>The size of the display area specified in character <link linkend='c6_ncolumns'>columns</link>.</entry></row>
+<row valign='top'><entry>value_max</entry><entry>The maximum value of the list</entry></row>
+<row valign='top'><entry>value_min</entry><entry>The minimum value of the list</entry></row>
+<row valign='top'><entry>default</entry><entry>The value which will appear in the spinbox by default</entry></row>
+<row valign='top'><entry>increment</entry><entry>The amount to increment the value by.
+The default is 1.</entry></row>
+<row valign='top'><entry>wrap</entry><entry>
+Either <userinput>True</userinput> or <userinput>False</userinput>. 
+When the value in the spin_box reaches the maximum or minimum does it spin around to the next value. 
+If <userinput>True</userinput>, the next value above the maximum will be the minimum and the the next value below the minimum will be the maximum.
+Default is <userinput>False</userinput>.</entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_spin_list'><title>Keyword list for the 'spin_list' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>attribute_id</entry><entry>The name of the attribute to be controlled by this object.</entry></row>
+<row valign='top'><entry>label</entry><entry>If not set, then the label of the list is the attribute label.
+If set, the given value is used instead of the attribute label.
+If set to <userinput>none</userinput> then no label is displayed.</entry></row>
+<row valign='top'><entry>label_size</entry><entry>The attribute label is taken from the configuration file.
+There is a <userinput>long</userinput> form and <userinput>short</userinput> form label available.
+The default is <userinput>long</userinput></entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>items</entry><entry>The <link linkend='c6_list'>sequence of items</link> to appear in the list</entry></row>
+<row valign='top'><entry>ncolumns</entry><entry>The size of the display area specified in character <link linkend='c6_ncolumns'>columns</link>.</entry></row>
+<row valign='top'><entry>none_sub</entry><entry>Substitute the given string for the <link linkend='c6_none'>none</link> entry in the list.
+The user will see this substituted string but its action will be the same as none.
+The default is a blank (" ").</entry></row>
+<row valign='top'><entry>default</entry><entry>The item from the above list to be used as the default value.</entry></row>
+<row valign='top'><entry>limit</entry><entry>If the valid values in the list are <link linkend='c6_limit_type'>limited</link> by some other entry object this defines this relationship.</entry></row>
+<row valign='top'><entry>limit_type</entry><entry>One of <userinput>integer</userinput>, <userinput>float</userinput> or <userinput>string</userinput>.
+This has meaning only if a limit is specified and determines if the limit testing is numeric or by list position comparison.
+The default is integer.</entry></row>
+<row valign='top'><entry>wrap</entry><entry>
+Either <userinput>True</userinput> or <userinput>False</userinput>. 
+When the value in the spin_list reaches the first or last item in the list does it spin around to the next value. 
+If <userinput>True</userinput>, the next value after the last item will be the first item and the the next value before the first will be the last value.
+Default is <userinput>False</userinput>.</entry></row>
+</tbody>
+</tgroup></table>
+
+<table frame='topbot' id='c6_text'><title>Keyword list for the 'text' object</title>
+<tgroup cols='2'>&colwidth;
+<thead><row><entry>Keyword</entry><entry>Value</entry></row></thead>
+<tbody>
+<row valign='top'><entry>attribute_id</entry><entry>The name of the attribute to be controlled by this object.</entry></row>
+<row valign='top'><entry>label</entry><entry>If not set, then the label of the list is the attribute label.
+If set, the given value is used instead of the attribute label.
+If set to <userinput>none</userinput> then no label is displayed.</entry></row>
+<row valign='top'><entry>label_size</entry><entry>The attribute label is taken from the configuration file.
+There is a <userinput>long</userinput> form and <userinput>short</userinput> form label available.
+The default is <userinput>long</userinput></entry></row>
+<row valign='top'><entry>position</entry><entry>The offset, as x y in pixels, of the entry object from the upper left corner of its parent which can be either a panel or frame.</entry></row>
+<row valign='top'><entry>ncolumns</entry><entry>The size of the text area specified in character <link linkend='c6_ncolumns'>columns</link>.
+The default is 10</entry></row>
+<row valign='top'><entry>nrows</entry><entry>The vertical size of the text area in rows.
+The default is 1</entry></row>
+<row valign='top'><entry>default</entry><entry>A string to initialize the attribute with.</entry></row>
+</tbody>
+</tgroup></table>
+</para></sect2>
+</sect1>
+
+<sect1 id='c6_wind_menu'><title>Wind Entry Menu Files</title> <para>
+<indexterm><primary>configuration</primary><secondary>wind entry</secondary></indexterm>
+The files in the Menus directory contain definitions of attribute entry menus.
+The name of the file is set in the <userinput>Elements</userinput> block of the <filename>Config</filename> file.
+There are two types of entry files, Attribute Entry Menu files and Wind Entry Menu files.
+(<link linkend='c6_attrib_menu'>Attribute Entry Menu</link> files are described in the preceding section.)
+</para> <para>
+The Wind Entry Menu files define the format for the information required by the wind entry menus. 
+Each file is associated with a particular wind field or label and is specified in the <filename>Config</filename> file by the <userinput>memory_file</userinput> or <userinput>background_memory_file</userinput> keyword in the <userinput>editor</userinput> section of the <userinput>Elements</userinput> block.
+</para><para>
+The format of the file is rather simple for now, but is expected to increase in complexity with time as system capabilities grow.
+</para>
+
+<sect2><title>File Format</title> <para>
+<indexterm><primary>configuration</primary><secondary>wind entry</secondary></indexterm>
+The format of the entries is:
+<programlisting>[header1]
+  data line 1
+  data line 2
+  ...
+[header2]
+  data line 1
+  ...
+</programlisting>
+</para> </sect2>
+
+<sect2><title>Header Keys</title> <para>
+<indexterm><primary>configuration</primary><secondary>wind entry</secondary></indexterm>
+At the moment there is just one header key defined and this is <userinput>models</userinput> followed by the recognized model names as specified in the <userinput>Winds</userinput> section of the <userinput>CrossRefs</userinput> block in the <filename>Config</filename> file.
+<informalexample>
+<programlisting>[models]
+  Vg_Msl
+  Vr_Msl
+  Vc_Msl
+  Vx_Msl
+</programlisting></informalexample>
+</para> </sect2>
+</sect1>
+</chapter>

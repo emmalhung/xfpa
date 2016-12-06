@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Set up the FPA environment
+. .fpaenvrc
+
+ldir=$FPA/liblocal/$PLATFORM
+case $PLATFORM in
+	pcLinux*)	lib=libfpauser.so;;
+	*)		echo
+			echo "Unsupported platform \"$PLATFORM\"!"
+			exit 1
+esac
+
+# Create the target directory if necessary
+if [ ! -d $ldir ]
+then
+	# Does not exist
+	echo
+	echo "Target directory \"$ldir\" does not exist."
+	exit 1
+fi
+
+# See if the current library is busy
+if [ -x $FPA/bin/fpabusy ]
+then
+	$FPA/bin/fpabusy $ldir/$lib
+	if [ "$?" -ne 0 ]
+	then
+		echo "Cannot copy!"
+		echo "Bye!"
+		exit 1
+	fi
+fi
+
+# Restore the original if there
+if [ -f $ldir/$lib.old ]
+then
+	echo
+	echo "Restoring original $ldir/$lib - OK? (y/n): \c"
+	read ans
+	if [ "$ans" = "y" ]
+	then
+		echo "Restoring original $ldir/$lib"
+		mv $ldir/$lib.old $ldir/$lib
+	else
+		echo " Cancelled"
+	fi
+else
+	echo
+	echo "Removing $ldir/$lib - OK? (y/n): \c"
+	read ans
+	if [ "$ans" = "y" ]
+	then
+		echo "Removing $ldir/$lib"
+		rm $ldir/$lib
+	else
+		echo " Cancelled"
+	fi
+fi
+
+echo
+echo "Current user library"
+ls -l $ldir/$lib
+echo
+echo "Done!"

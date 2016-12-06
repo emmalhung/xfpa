@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_vector_presentation'> <title>@vector_presentation</title> <titleabbrev>@vector_presentation</titleabbrev>
+<para>
+Set the appearance of vector direction and speed displayed as text in the ASCII output file.
+</para><para>
+Note that each vector component requires a "<userinput>..._type</userinput>" keyword to indicate the appropriate section in the <userinput>vector_look_up</userinput> file to use in formatting the vector component to be displayed.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>vector_look_up</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>File name for the vector look up table 
+</para><para>(Note: ".vtab" suffix is optional)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for "calm" vector speed
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for "calm" vector speed
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_calm</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Column (character) offset for "calm" vector speed</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_calm</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Row (line) offset for "calm" vector speed</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for vector direction
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for vector direction
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_dir</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Column (character) offset for vector direction</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_dir</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Row (line) offset for vector direction</para></entry></row>
+
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for vector speed
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for vector speed
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_spd</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Column (character) offset for vector speed</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_spd</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Row (line) offset for vector speed</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@vector_presentation
+{
+  vector_look_up          = waves;
+  calm_type               = text;
+  calm_justification      = centre;
+  x_calm                  = 0;
+  y_calm                  = 0;
+  direction_type          = value;
+  direction_justification = right;
+  x_dir                   = 0;
+  y_dir                   = 0;
+  speed_type              = value;
+  speed_justification     = centre;
+  x_spd                   = 0;
+  y_spd                   = 0;
+}
+</programlisting>
+Display waves according to the formats in the vector look up table <filename>waves.vtab</filename>. Calm waves will be
+formatted according to the section "calm text", centre justified and not offset. Wave directions will
+be formatted according to the section "direction value", right justified and not offset. Wave speeds
+will be formatted according to the section "speed value", left justified and not offset.
+</para></example>
+</para></sect2>

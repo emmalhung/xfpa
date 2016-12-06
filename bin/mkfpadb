@@ -1,0 +1,466 @@
+#!/bin/bash
+
+################################################################################
+#
+# Environment processing.
+#
+################################################################################
+
+# Copy/revise "." files if necessary.
+mkfpaenv
+
+# Now set up environment.
+. .fpaenvrc
+
+# Get current directory.
+wdir=`pwd`
+
+################################################################################
+#
+# Get database mode.
+#
+################################################################################
+
+pecho
+pecho "Select the type of database to build:"
+dbmode=auto
+
+# Interpret the selection.
+while true
+do
+	pecho
+	pecho "Enter   "F" to build a normal full database,"
+	pecho "Enter   "G" to build a minimal database for guidance ingest only,"
+	pecho "or [RETURN] to build database according to installed applications."
+	pecho
+	pecho "Enter choice: \c"
+	read choice
+
+	# Did we choose to build according to installed applications?
+	if [ "$choice" = "" ]
+	then
+		dbmode=auto
+		break
+
+	# Did we choose to build a full database?
+	elif [ "$choice" = "F" -o "$choice" = "f" ]
+	then
+		dbmode=full
+		break
+
+	# Did we choose to build a guidance database?
+	elif [ "$choice" = "G" -o "$choice" = "g" ]
+	then
+		dbmode=guidance
+		break
+
+	# Must be an invalid choice.
+	else
+		pecho "Invalid choice."
+	fi
+done
+
+
+################################################################################
+#
+# Get directory and name of setup file.
+#
+################################################################################
+
+# Choose a directory for the setup file.
+pecho
+pecho "Select directory for setup file:"
+sdirs='$HOME $HOME/setup'
+if [ "${FPA_SETUP_DIR:-}" != "" ]
+then
+	sdirs="$sdirs"' $FPA_SETUP_DIR'
+fi
+nsdir=0
+for sdir in $sdirs
+do
+	nsdir=`expr $nsdir + 1`
+	eval spath=$sdir
+	if [ "$spath" = "$sdir" ]
+	then
+		pecho "\t$nsdir\t$sdir"
+	else
+		pecho "\t$nsdir\t$sdir\t($spath)"
+	fi
+	eval sdir$nsdir=$sdir
+done
+
+# Interpret the selection.
+while true
+do
+	pecho
+	pecho "Enter the selection number above,"
+	pecho "or [RETURN] to specify another directory."
+	pecho
+	pecho "Enter choice: \c"
+	read choice
+
+	# Did we choose to specify another directory?
+	if [ "$choice" = "" ]
+	then
+		# Specify another directory.
+		pecho
+		pecho "Enter setup directory: \c"
+		read sdir
+		if [ "$sdir" != "" ]
+		then
+			break
+		fi
+
+	# Did we choose one from the list?
+	elif [ "$choice" -gt 0 -a "$choice" -le $nsdir ]
+	then
+		# Use a listed directory.
+		sdir=`eval echo '$'sdir$choice`
+		pecho "Using setup directory: $sdir."
+		break
+
+	# Must be an invalid choice.
+	else
+		pecho "Invalid choice."
+	fi
+done
+
+# Build the setup directory if necessary.
+if [ ! -d $sdir ]
+then
+	pecho
+	pecho "Creating setup directory: $sdir."
+	mkdir -p $sdir
+	if [ $? != 0 ]
+	then
+		pecho
+		pecho "Could not create setup directory: $sdir."
+		exit 1
+	fi
+fi
+
+# Build setup file in original directory.
+pecho
+pecho "Enter setup file name (default fpa.setup): \c"
+read sfile
+if [ "$sfile" = "" ]
+then
+	sfile=fpa.setup
+fi
+
+# Build full path for setup file.
+cd $sdir
+sdir=`pwd`
+spath=`pathname $sdir $sfile`
+cd $wdir
+
+# See if your setup file exists.
+if [ -f $spath ]
+then
+	pecho
+	pecho "Your setup file $spath exists."
+	pecho "A copy will be saved in $spath.old."
+	cp $spath $spath.old
+fi
+
+################################################################################
+#
+# Build/update data directory.
+#
+################################################################################
+
+# If setup file exists, get data directory from setup.
+ddir=
+if [ -f $spath ]
+then
+	hdir=`get_directory $spath home`
+	ddir=`get_directory $spath Data`
+	cd $hdir
+
+	if [ -d "$ddir" ]
+	then
+		cd $ddir
+		ddir=`pwd`
+
+		pecho
+		pecho "Your original setup file refers to the following data directory:"
+		pecho "\t$ddir."
+
+		# Interpret the selection.
+		while true
+		do
+			pecho
+			pecho "Enter   "U" to update existing directory,"
+			pecho "or      "D" to delete existing directory,"
+			pecho "or [RETURN] to specify another directory."
+			pecho
+			pecho "Enter choice: \c"
+			read choice
+
+			# Did we choose to specify another directory?
+			if [ "$choice" = "" ]
+			then
+				# Specify another directory.
+				ddir=
+				break
+
+			# Did we choose to update?
+			elif [ "$choice" = "U" -o "$choice" = "u" ]
+			then
+				pecho
+				pecho "Updating data directory: $ddir."
+				break
+
+			# Did we choose to delete?
+			elif [ "$choice" = "D" -o "$choice" = "d" ]
+			then
+				pecho
+				pecho "Deleting data directory: $ddir."
+				rm -r $ddir/*
+				break
+
+			# Must be an invalid choice.
+			else
+				pecho "Invalid choice."
+			fi
+		done
+
+	else
+		ddir=
+	fi
+fi
+
+# Get data directory.
+if [ "$ddir" = "" ]
+then
+	cd $wdir
+	while true 
+	do
+		pecho
+		pecho "Enter directory name for new FPA database: \c"
+		read ddir
+		if [ "$ddir" != "" ]
+		then
+			mkdir -p $ddir
+			if [ $? -ne 0 ]
+			then
+				pecho "Could not create directory $ddir."
+				exit 1
+			fi
+
+			# Get full path name.
+			cd $ddir
+			ddir=`pwd`
+			break
+		fi
+	done
+
+fi
+
+# Get directory for executables.
+xdir=$FPA/bin/$PLATFORM
+
+# Function to check and build a directory.
+builddir()
+	{
+	for mdir in $*
+	do
+		if [ ! -d $mdir ]
+		then
+			pecho "Building $mdir."
+			mkdir -p $mdir
+		fi
+	done
+	}
+
+# Add assorted directories used by the main interface (if configured).
+if [ "$dbmode" = full -o "$dbmode" = auto -a -x $xdir/xfpa ]
+then
+	# Build the basic database directories.
+	builddir Maps Depict Interp Backup Guidance AModels.DATA
+
+	# Copy default control files for preset lists.
+	builddir $sdir/preset_lists
+	cp -r $FPA/setup/preset_lists/TEMPLATES $sdir/preset_lists
+	for file in $FPA/setup/preset_lists/TEMPLATES/*.template
+	do
+		if [ ! -f "$file" ]
+		then
+			continue
+		fi
+		name=`basename $file | cut -d. -f1 -`
+		if [ ! -f $sdir/preset_lists/$name ]
+		then
+			cp $file $sdir/preset_lists/$name
+		fi
+	done
+
+	# Copy example PDF files for built-in graphics products.
+	builddir $sdir/pdf/graphics
+	cp -r $FPA/setup/pdf/graphics/Examples $sdir/pdf/graphics
+
+	# Copy example PDF files for built-in metafile package products.
+	builddir $sdir/pdf/metafiles
+	cp -r $FPA/setup/pdf/metafiles/template $sdir/pdf/metafiles
+fi
+
+# Add guidance directory for ingest (if configured).
+if [ "$dbmode" = guidance -o "$dbmode" = auto -a -x $xdir/fpaingest ]
+then
+	builddir Guidance
+fi
+
+# Add TexMet/PsMet/SVGMet output directories (if configured).
+if [ "$dbmode" = full -o "$dbmode" = auto -a -x $xdir/fpagpgen ]
+then
+	builddir TexOut PSOut SVGOut
+
+	# Copy the TexMet/PSMet/SVGMet example PDF sub-directories.
+	builddir $sdir/pdf/texmet $sdir/pdf/psmet $sdir/pdf/svgmet
+	cp -r $FPA/setup/pdf/texmet/examples $sdir/pdf/texmet
+	cp -r $FPA/setup/pdf/psmet/examples $sdir/pdf/psmet
+	cp -r $FPA/setup/pdf/svgmet/examples $sdir/pdf/svgmet
+fi
+
+################################################################################
+#
+# Build/update setup file.
+#
+################################################################################
+
+# Check for current projection and map def.
+proj=
+map=
+res=
+if [ -f $spath ]
+then
+	# Extract projection info from original setup.
+	proj=`grep '^[ 	]*projection' $spath`
+	map=`grep '^[ 	]*mapdef' $spath`
+	res=`grep '^[ 	]*resolution' $spath`
+	# Strip leading white
+	proj=`echo $proj`
+	map=`echo $map`
+	res=`echo $res`
+
+	# If resolution is not defined, interpret old gridef directive.
+	if [ "$proj" != "" -a "$map" != "" -a "$res" = "" ]
+	then
+		grid=`grep '^[ 	]*gridef' $spath`
+		grid=`echo $grid`
+		if [ "$grid" != "" ]
+		then
+			res="resolution "`echo $grid | cut -f4- -d' '`
+		fi
+	fi
+
+	# If projection info is found, say so.
+	if [ "$proj" != "" -a "$map" != "" -a "$res" != "" ]
+	then
+		pecho
+		pecho "Your original setup file defines the following projection:"
+		pecho "\t$proj"
+		pecho "\t$map"
+		pecho "\t$res"
+	fi
+fi
+
+# Build new setup file.
+cd $sdir
+$FPA/bin/mkfpasetup $ddir $sfile "$proj" "$map" "$res" "$dbmode"
+cd $wdir
+
+# Customize the setup file.
+
+# Build additional data directories according to setup file.
+
+################################################################################
+#
+# Build/update maps.
+#
+################################################################################
+
+# Can we get map background and forecast areas from pre-defined data?
+pecho
+pecho "Your map background and forecast areas may have been pre-defined."
+pecho "Or, you may be able to run the FPA map generator."
+pecho
+pecho "NOTE: Software to build forecast areas is not yet available."
+pecho
+pecho "Available pre-defined backgrounds:"
+cd $FPA/data
+nmap=0
+for map in `echo [A-Z]*`
+do
+	if [ -d "$map" -a -d "$map"/Maps ]
+	then
+		nmap=`expr $nmap + 1`
+		pecho "\t$nmap\t$map"
+		eval map$nmap=$map
+	fi
+done
+if [ "$nmap" -eq 0 ]
+then
+	pecho "\tNone!"
+fi
+
+# Interpret the selection.
+while true
+do
+	pecho
+	pecho "Enter the selection number above (if any),"
+	if [ -f $FPA/bin/xmap ]
+	then
+		pecho "or "D" to generate a map using DCW (Digital Chart of the World),"
+	fi
+	pecho "or [RETURN] to do nothing."
+	pecho
+	pecho "Enter choice: \c"
+	read choice
+
+	# Did we choose to do nothing?
+	if [ "$choice" = "" ]
+	then
+		# Do nothing.
+		pecho "Doing nothing."
+		break
+
+	# Did we choose to do build a map background with DCW?
+	elif [ "$choice" = "D" -o "$choice" = "d" ]
+	then
+		# Build a map.
+		if [ -f $FPA/bin/xmap ]
+		then
+			pecho "Building a map."
+			$FPA/bin/xmap -s $spath
+			pecho
+			pecho "If you changed the Projection and Map definition in xmap"
+			pecho "you will need to edit the target_map block of your setup"
+			pecho "file $spath."
+			break
+		else
+			pecho "No FPA map generator program!"
+		fi
+
+	# Did we choose a pre-defined background?
+	elif [ "$choice" -gt 0 -a "$choice" -le $nmap ]
+	then
+		# Use pre-defined maps.
+		map=`eval echo '$'map$choice`
+		pecho "Using pre-defined map: $map."
+		cp -r $FPA/data/$map/Maps/* $ddir/Maps
+		if [ -d $FPA/data/$map/Forecast/Working ]
+		then
+			cp -r $FPA/data/$map/Forecast/Working/* $ddir/Forecast/Working 2>/dev/null
+		fi
+		if [ -d $FPA/data/$map/AModels.DATA ]
+		then
+			cp -r $FPA/data/$map/AModels.DATA/* $ddir/AModels.DATA 2>/dev/null
+		fi
+		break
+
+	# Must be an invalid choice.
+	else
+		pecho "Invalid choice."
+	fi
+done

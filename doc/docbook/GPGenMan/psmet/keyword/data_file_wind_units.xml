@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>data_file_wind_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>&FPA; units for wind speed or gust values
+</para><para>Note that all wind speed and gust values are automatically converted to knots. Either the <userinput>wind_units</userinput> format type or the <userinput>data_file_wind_units</userinput> keyword are required for wind speeds or gusts in the data file that are not in knots.</para></entry></row>

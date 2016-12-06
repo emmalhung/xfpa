@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'>
+<entry colname='key'><para><userinput>case</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Time of day or hemisphere in which to use <userinput>case_look_up</userinput> look up table (given below)
+</para><para>One of:<userinput>day</userinput> <userinput>night</userinput> <userinput>dusk</userinput> <userinput>northern_hemisphere</userinput> <userinput>southern_hemisphere</userinput></para></entry></row>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>F.2. Depiction Field Visibility</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apf.html" title="Appendix F.  Predefined GUI Selection Lists " /><link rel="prev" href="apfs01.html" title="F.1. Area Sample Filter Lists" /><link rel="next" href="apfs03.html" title="F.3. Guidance Field List" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">F.2. Depiction Field Visibility</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apfs01.html">Prev</a> </td><th width="60%" align="center">Appendix F.  Predefined GUI Selection Lists </th><td width="20%" align="right"> <a accesskey="n" href="apfs03.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2016704"></a>F.2. Depiction Field Visibility</h2></div></div></div><p>
+<a id="id2016709" class="indexterm"></a>
+The file must be named <code class="filename">field_visibility</code>.
+This file contains the definitions of predefined lists of depiction field visibility states.
+The lists are separated by list keys in square brackets as:
+</p><pre class="programlisting">[<span xmlns="" class="replaceable">list_1_key</span>] <span xmlns="" class="replaceable">list_label</span>
+    <span xmlns="" class="replaceable">field_group_id</span> [<span class="optional">always on</span>]
+    <span xmlns="" class="replaceable">element level</span> [<span class="optional">always on</span>]
+    <span xmlns="" class="replaceable">element level</span> [<span class="optional">always on</span>]
+[<span xmlns="" class="replaceable">list_2_key</span>] <span xmlns="" class="replaceable">list_label</span>
+    <span xmlns="" class="replaceable">element level</span>
+</pre><p>
+and so on.
+The list keys should be something that makes sense, as <span><strong class="command">xfpa</strong></span>, if run with the <code class="option">-v</code> option will come up with that visibility list.
+i.e. <code class="computeroutput">xfpa -v <span xmlns="" class="replaceable">list_2_key</span></code> would come up with the second list selected already.
+</p><p>
+The <span xmlns="" class="replaceable">list_label</span> is what the user will see as the selection in the pulldown list of predefined visibility states.
+</p><p>
+The remaining lines are either the identifiers, as recognized in the configuration files, of the field groups or the fields themselves.
+Any field not listed in the group will be set to off.
+The default state is for the field to be visible when the associated group is visible.
+If the field is to be visible always no matter what, then the element and level are followed by the optional key words "always on".
+</p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2042365"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example F.3. Depiction field visibility</b></p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">[marine] Marine Fields
+    pressure msl always on
+    weather sfc
+    wind sfc
+</pre></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apfs01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apf.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apfs03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">F.1. Area Sample Filter Lists </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> F.3. Guidance Field List</td></tr></table></div></body></html>

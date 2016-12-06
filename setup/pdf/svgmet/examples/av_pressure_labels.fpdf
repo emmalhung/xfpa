@@ -1,0 +1,76 @@
+! Display the Labelled Lows and Highs ... using pre-defined symbols
+! These must be labelled in FPA to appear!
+@label
+	{
+	element                 = pressure;
+	level                   = msl;
+
+	! Use only the "high" and "low" labels ...
+	category_attribute      = hilo_type;
+	category                = high low;
+
+	! Display a "hilo" symbol as a marker ...
+	mark                    = hilo;
+	mark_scale              = 10;
+
+	! Set display parameters for remainder of label ...
+	symbol_scale            = 35;
+	text_size               = 0.20;
+	outline                 = X11 black;
+	fill                    = X11 black;
+	line_width              = 0.01;
+	justification           = centre;
+
+	! Display the high or low as a symbol ...
+	! Note that the "symbol_scale" size from above will be used ...
+	attribute               = hilo_type;
+	attribute_anchor        = none;
+	attribute_ref           = lower_centre;
+	attribute_vertical_just = centre;
+	attribute_format        = symbol;
+	attribute_look_up       = hilo;
+	attribute_x_off         =  0.00;
+	attribute_y_off         =  0.15;
+
+	! Display the value from the spline field as a text string ...
+	! Note that the "text_size" size from above will be used ...
+	attribute               = EVAL_spval;
+	attribute_anchor        = none;
+	attribute_ref           = lower_centre;
+	attribute_format        = direct %s;
+	attribute_x_off         =  0.00;
+	attribute_y_off         = -0.25;
+	attribute_outline       = X11 white;
+	attribute_line_width    = 0.03;
+	attribute_outline_first = yes;
+	}
+
+! Display the Labelled Pressure Contour ... using outlined strings
+! These must be labelled in FPA to appear!
+@label
+	{
+	element                 = pressure;
+	level                   = msl;
+
+	! Use only the "contour" labels ...
+	category_attribute      = FPA_label_type;
+	category                = contour;
+
+	! Set display parameters for label ...
+	line_width              = 0.05;
+	outline                 = X11 White;
+	fill                    = X11 Black;
+	outline_first           = yes;
+
+	! Display the contour labels as outlined strings along contour ...
+	attribute               = EVAL_contour;
+	rotation_attribute      = FPA_line_direction;
+	attribute_justification = centre;
+	attribute_vertical_just = centre;
+	attribute_format        = direct %s;
+	attribute_text_size     =  0.20;
+	attribute_width_scale   =  60;
+	attribute_height_scale  = 100;
+	attribute_x_off         = -0.05;
+	attribute_y_off         =  0.05;
+	}

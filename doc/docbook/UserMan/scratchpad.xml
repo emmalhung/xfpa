@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='the_scratchpad'> <title>	The scratchpad</title>
+<para>
+This chapter describes how to use the Scratchpad feature of the &FPA;.
+</para> <para>
+Use the scratchpad as an overlay on your depiction, like a piece of Plexiglas that you can write on and see through.
+You can use it to make notations that you do not want to remain permanently on the depictions.
+</para> <para>
+To display the scratchpad controls, click the <guilabel>Scratchpad</guilabel> tab.
+</para> <para>
+The scratchpad <guilabel>Function</guilabel> area determines the function used. (see <xref linkend='scratchpad_figure'/>)
+<figure id='scratchpad_figure' pgwide='0' float='1'><title>Scratchpad panel</title>
+<mediaobject><imageobject><imagedata fileref='png/scratchpad2.png'/></imageobject></mediaobject>
+</figure>
+</para>
+<sect1 id='using_the_scratchpad'> <title>Using the scratchpad</title>
+<sect2 id='drawing_on_your_scratchpad '> <title>Drawing on your scratchpad </title>
+<para>
+<indexterm><primary>scratchpad</primary></indexterm>
+You can use the <guilabel>Draw Line</guilabel> function to draw lines on the scratchpad in a variety of colours and styles.
+</para> <para>
+<orderedlist> <title>To draw on the Scratchpad:</title>
+<listitem><para>
+From the <guilabel>Function</guilabel> area, select <guibutton>Draw Line</guibutton>. Scratchpad line draw menus appear. (see <xref linkend='scratchpad_figure'/>)
+<!--
+<figure id='scratchpad_line_draw_figure' pgwide='0' float='1'><title>Scratchpad line draw menus</title>
+<mediaobject><imageobject><imagedata fileref='png/scratchpad_draw_lineb.png'/></imageobject></mediaobject>
+</figure>
+-->
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Mode</guilabel> menu, select a drawing mode by clicking the rectangle to the right of the icon.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Line Colour &amp; Style</guilabel> area, select a colour.
+The colour bar indicates the selection.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Line Colour &amp; Style</guilabel> area, select a line style.
+</para></listitem>
+
+<listitem><para>
+Draw a line.
+(See <xref linkend='drawing_with_the_freehand_tool'/> or <xref linkend='drawing_with_the_curve_tool'/>.)
+</para> <para>
+When you are finished, the line appears in the chosen colour and style.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='placing_text'> <title>Placing text</title>
+<para>
+<indexterm><primary>scratchpad</primary><secondary>text</secondary></indexterm>
+<orderedlist> <title>To place text on your scratchpad:</title>
+<listitem><para>
+From the <guilabel>Function</guilabel> area, select <guibutton>Place Text</guibutton>. Scratchpad text menus appear (see <xref linkend='scratchpad_text_menus'/>)
+<figure id='scratchpad_text_menus' pgwide='0' float='1'><title>Scratchpad text menus</title>
+<mediaobject><imageobject><imagedata fileref='png/scratchpad_place_text.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the text size, font type and colour for the text.
+</para> <para>
+Note: The point sizes are relative; if you resize a window, the size of the text scales accordingly.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Set</guibutton>.
+</para><para>
+An entry dialog box appears.
+</para></listitem>
+
+<listitem><para>
+Type your text.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Set</guibutton>.
+</para></listitem>
+
+<listitem><para>
+Click where you want the text to appear on the scratchpad.
+</para> <para>
+The text appears, centred at the point where you clicked.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='measure_a_distance'> <title>Measure a distance</title>
+<para>
+<indexterm><primary>scratchpad</primary><secondary>measure distance</secondary></indexterm>
+<orderedlist>
+<title>To measure a "Great Circle" distance on your scratchpad:</title>
+<listitem><para>
+From the <guilabel>Function</guilabel> area, select <guibutton>Measure Distance</guibutton>. Scratchpad measure distance menus appear. (see <xref linkend='scratchpad_measure_distance_menus'/>)
+<figure id='scratchpad_measure_distance_menus' pgwide='0' float='1'><title>Scratchpad measure distance menus</title>
+<mediaobject><imageobject><imagedata fileref='png/scratchpad_measure_distance.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Distance Value</guilabel> area, select the text size and font type and colour for the distance label.
+</para> <para>
+Note: The point sizes are relative; if you resize a window, the size of the text scales accordingly.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Line Colour &amp; Style</guilabel> area, select a colour and line style for the distance line.
+</para></listitem>
+
+<listitem><para>
+Click the &left; mouse button on the map where you would like to start the measure.
+</para></listitem>
+
+<listitem><para>
+Click the &left; mouse button on the map where you would like to end the measure.
+</para> <para>
+Note: You can &left; click, hold and drag the distance measure.
+Release the &left; mouse button when you have the desired distance.
+</para> <para>
+The distance and bearing appear on the scratchpad.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='measure_a_preset_distance'> <title>Measure a preset distance</title>
+<para>
+<indexterm><primary>scratchpad</primary><secondary>measure distance</secondary></indexterm>
+<orderedlist>
+<title>To measure a preset "Great Circle" distance on your scratchpad:</title>
+<listitem><para>
+From the <guilabel>Function</guilabel> area, select <guibutton>Preset Distance</guibutton>. Scratchpad preset distance menus appear. (see <xref linkend='scratchpad_preset_distance_menus'/>)
+<figure id='scratchpad_preset_distance_menus' pgwide='0' float='1'><title>Scratchpad preset distance menus</title>
+<mediaobject><imageobject><imagedata fileref='png/scratchpad_preset_distance.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+<listitem><para>
+Set the <guilabel>Distance</guilabel> value in kilometres.
+Use the up and down arrows to increase or decrease the distance by a set amount or click inside the text area and type a specific value.
+</para></listitem>
+<listitem><para>
+From the <guilabel>Distance Value</guilabel> area, select the text size and font type and colour for the distance label.
+</para> <para>
+Note: The point sizes are relative; if you resize a window, the size of the text scales accordingly.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Line Colour &amp; Style</guilabel> area, select a colour and line style for the distance line.
+</para></listitem>
+
+<listitem><para>
+Click the &left; mouse button on the map where you would like to start the measure.
+</para></listitem>
+
+<listitem><para>
+Click the &left; mouse button on the map to indicate the bearing.
+</para><para>
+Note: You can &left; click, hold and drag the distance measure to the desired bearing.
+</para> <para>
+The distance and bearing appear on the scratchpad.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='deleting_scratchpad_items'> <title>Deleting scratchpad items </title>
+<para>
+<indexterm><primary>scratchpad</primary><secondary>clear</secondary></indexterm>
+<orderedlist> <title>To delete Scratchpad items:</title>
+<listitem><para>
+From the <guilabel>Function</guilabel> area, select <guibutton>Select Items</guibutton>.
+</para></listitem>
+
+<listitem><para>
+Point to the item and click the &left; mouse button to select it.
+Selected items turn yellow.
+(Click the &left; mouse button near the item again to deselect it.)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Delete</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para> <para>
+<indexterm><primary>scratchpad</primary><secondary>clear</secondary></indexterm>
+<orderedlist> <title>To delete all Scratchpad items:</title>
+<listitem><para>
+From the <guilabel>Function</guilabel> area, select <guibutton>Select Items</guibutton>.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Select All</guimenu></menuchoice> or click <guibutton>Select All</guibutton> on the right panel.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Delete</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+<sect2 id='displaying_the_scratchpad'> <title>Displaying the scratchpad</title>
+<para>
+<orderedlist> <title>To display the scratchpad while viewing a depiction:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Scratchpad</guimenuitem></menuchoice>.
+<indexterm><primary>scratchpad</primary><secondary>show</secondary></indexterm>
+</para> <para>
+The scratchpad appears on top of your depiction.
+</para></listitem>
+
+<listitem><para>
+To remove the scratchpad, deselect <menuchoice><guimenu>View</guimenu><guimenuitem>Show Scratchpad</guimenuitem></menuchoice>.
+<indexterm><primary>scratchpad</primary><secondary>hide</secondary></indexterm>
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+</chapter>

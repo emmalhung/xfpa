@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_loop_location_look_up'> <title>@loop_location_look_up</title> <titleabbrev>@loop_location_look_up</titleabbrev>
+<para>
+Build an internal location look up table from the current line, point or link chain feature in a loop. 
+Note that the current feature is extracted from the field identified in the <link linkend='ps_loop_begin'>@loop_begin</link> directive.
+</para><para>
+Line and link chain features can be used for space type displays. The horizontal extent of the display is determined by the length of the feature, with look up locations set each <userinput>location_interval</userinput> along the length, or at every point in the line or every node on the link chain if the <userinput>location_interval</userinput> is not set.
+</para><para>
+Point features can be used for time type displays, with look up locations at the point location for each time given in the <userinput>times</userinput> keyword, or at the current valid time if the <userinput>times</userinput> keyword is not set.
+</para><para>
+Link chain features can be used for time type displays, with look up locations at every node on the link chain, except when modified by the keywords <userinput>times</userinput> or the keywords <userinput>start_time</userinput> and <userinput>end_time</userinput>.
+</para><para>
+Note that times in the <userinput>times</userinput> keyword must be listed in increasing order.
+</para><para>
+Note that when using the <userinput>start_time</userinput> and <userinput>end_time</userinput> keywords, the start time must be before the end time.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>location_look_up</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Name for location look up table.
+</para><para>(Note: This is an internal name that can be referred to by other directives, and does not require a ".ltab" suffix.)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>location_interval</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Distance along feature for each look up location from a line or link chain feature.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>location_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for <userinput>location_interval</userinput>.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>times</userinput></para></entry>
+<entry colname='type'><para>vtime(s)</para></entry>
+<entry colname='desc'><para>List of times to use in look up table from a point or link chain feature.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>start_time</userinput></para></entry>
+<entry colname='type'><para>vtime</para></entry>
+<entry colname='desc'><para>Start time for look up locations from a link chain feature.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>end_time</userinput></para></entry>
+<entry colname='type'><para>vtime</para></entry>
+<entry colname='desc'><para>End time for look up locations from a link chain feature.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>labels</userinput></para></entry>
+<entry colname='type'><para>string(s)</para></entry>
+<entry colname='desc'><para>Labels to match up with locations or times.</para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<example><title>Create location look up table for space type display </title><para>
+<programlisting>@loop_location_look_up
+  {
+  location_look_up  = space_intervals;
+  location_interval = 20;
+  location_units    = km;
+  }</programlisting>
+Build an internal location look up table called "space_intervals" from locations every 20 km from features extracted from the field identified in a <link linkend='ps_loop_begin'>@loop_begin</link> directive.
+</para></example>
+
+<example><title>Create location look up table for time type display </title><para>
+<programlisting>@loop_location_look_up
+  {
+  location_look_up = time_intervals;
+  times            = 00/12:00;
+  labels           = 12Z;
+  times            = 00/15:00;
+  labels           = 15Z;
+  times            = 00/18:00;
+  labels           = 18Z;
+  times            = 00/21:00;
+  labels           = 21Z;
+  times            = 01/00:00;
+  labels           = 00Z;
+  times            = 01/03:00;
+  labels           = 03Z;
+  times            = 01/06:00;
+  labels           = 06Z;
+  times            = 01/09:00;
+  labels           = 09Z;
+  times            = 01/12:00;
+  labels           = 12Z;
+  }</programlisting>
+Build an internal location look up table called "time_intervals" from locations every 3 hours from 12:00 "today" until 12:00 "tomorrow" from features extracted from the field identified in a <link linkend='ps_loop_begin'>@loop_begin</link> directive.
+</para></example>
+
+</para></sect2>

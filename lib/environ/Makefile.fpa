@@ -1,0 +1,236 @@
+# Define all the usual places to look for things:
+LIBPATH  = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM}
+INCPATH  = $${INCLUDE_PATH} -I$(INCDIR) -I$(LIBDIR)
+
+
+
+# Here is the list of object files to go into the library:
+MODULES =	calculation.o \
+			cal.o \
+			rules.o \
+			files_and_directories.o \
+			presentation.o \
+			units.o \
+			pdf_info.o \
+			meta_read.o \
+			meta_write.o \
+			target_map.o \
+			forecasts.o \
+			ingest.o \
+			diag.o \
+			adv_feature.o \
+			depict_fields.o \
+			config_info.o \
+			read_config.o \
+			read_setup.o \
+			ingest_info.o \
+			revision.o
+
+
+# Here is the list of include files to go into the master header file:
+HEADER   =	environ.h
+HEADERS  =	calculation.h \
+			cal.h \
+			rules.h \
+			files_and_directories.h \
+			presentation.h \
+			pdf_info.h \
+			meta.h \
+			target_map.h \
+			forecasts.h \
+			ingest.h \
+			diag.h \
+			adv_feature.h \
+			depict_fields.h \
+			ingest_info.h \
+			config_info.h \
+			read_config.h \
+			config_structs.h \
+			read_setup.h \
+			revision.h
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(MODULES) $(HEADER) $(HEADERS)
+
+
+# Rules for building everything:
+all ALL:	modules
+
+
+# Rules for building object modules:
+modules:	Pmodules $(HEADER) $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA environ modules"
+
+calculation.o:				$(GETMEM) calculation.h config_info.h
+cal.o:						$(TYPES) $(GETMEM) $(MACROS) cal.h config_info.h
+rules.o:					$(TYPES) $(GETMEM) $(MACROS) calculation.h rules.h \
+								config_info.h
+files_and_directories.o:	$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) $(OBJECTS) \
+								read_setup.h config_structs.h config_info.h \
+								target_map.h meta.h files_and_directories.h
+meta_read.o:				$(TYPES) $(GETMEM) $(TOOLS) \
+								config_structs.h config_info.h meta.h cal.h \
+								calculation.h rules.h
+meta_write.o:				$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) \
+								config_structs.h config_info.h meta.h cal.h
+target_map.o:				$(TYPES) $(GETMEM) $(TOOLS) $(OBJECTS) \
+								read_setup.h target_map.h
+ingest.o:					$(TYPES) $(GETMEM) $(TOOLS) $(OBJECTS) \
+								read_setup.h ingest.h
+diag.o:						$(TYPES) $(GETMEM) $(TOOLS) read_setup.h diag.h
+adv_feature.o:				$(TYPES) $(GETMEM) $(TOOLS) read_setup.h \
+								adv_feature.h
+depict_fields.o:			$(TYPES) $(GETMEM) $(TOOLS) \
+								read_setup.h config_structs.h config_info.h \
+								depict_fields.h
+presentation.o:				$(TYPES) $(GETMEM) $(TOOLS) $(OBJECTS) \
+								presentation.h config_structs.h config_info.h \
+								read_config.h
+units.o:					$(TYPES) $(GETMEM) $(TOOLS) $(OBJECTS) \
+								presentation.h config_structs.h config_info.h \
+								read_config.h
+pdf_info.o:					$(TYPES) $(GETMEM) $(TOOLS) $(MATH) \
+								pdf_info.h read_setup.h
+forecasts.o:				$(TYPES) $(GETMEM) $(TOOLS) \
+								files_and_directories.h read_setup.h forecasts.h
+ingest_info.o:				$(TYPES) $(TOOLS) $(MACROS) \
+								read_config.h ingest_info.h
+config_info.o:				$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) $(OBJECTS) \
+								read_setup.h config_structs.h read_config.h \
+								rules.h calculation.h config_info.h
+read_config.o:				$(TYPES) $(GETMEM) $(MACROS) $(TOOLS) \
+								revision.h read_setup.h config_structs.h \
+								read_config.h
+read_setup.o:				$(TOOLS) revision.h adv_feature.h read_setup.h \
+								read_setup_P.h
+revision.o:					$(TOOLS) $(MACROS) revision.h
+
+
+# Rules for building the master header file:
+header:		$(HEADER)
+
+$(HEADER):					$(HEADERS)
+						@	echo "Updating FPA environ module header"
+						@	sleep 1; touch $@; sleep 1
+calculation.h:				$(TYPES) cal.h
+						@	sleep 1; touch $@
+cal.h:						$(TYPES) $(OBJECTS) $(TOOLS) files_and_directories.h
+						@	sleep 1; touch $@
+rules.h:					$(TYPES) $(OBJECTS) $(TOOLS) cal.h
+						@	sleep 1; touch $@
+files_and_directories.h:	$(TYPES) $(OBJECTS) config_structs.h
+						@	sleep 1; touch $@
+meta.h:						$(TYPES) $(OBJECTS) config_structs.h
+						@	sleep 1; touch $@
+target_map.h:				$(TYPES) $(OBJECTS)
+						@	sleep 1; touch $@
+forecasts.h:				$(TYPES)
+						@	sleep 1; touch $@
+ingest.h:					$(TYPES) $(OBJECTS)
+						@	sleep 1; touch $@
+diag.h:						$(TYPES)
+						@	sleep 1; touch $@
+adv_feature.h:				$(TYPES)
+						@	sleep 1; touch $@
+depict_fields.h:			config_structs.h
+						@	sleep 1; touch $@
+presentation.h:				$(TYPES) $(OBJECTS)
+						@	sleep 1; touch $@
+pdf_info.h:					$(TYPES)
+						@	sleep 1; touch $@
+ingest_info.h:				$(TYPES) read_config.h
+						@	sleep 1; touch $@
+config_info.h:				$(TYPES) config_structs.h
+						@	sleep 1; touch $@
+read_config.h:				$(TYPES)
+						@	sleep 1; touch $@
+config_structs.h:			$(TYPES) $(OBJECTS)
+						@	sleep 1; touch $@
+read_setup.h:				$(TYPES) $(GETMEM) $(TOOLS)
+						@	sleep 1; touch $@
+revision.h:					$(TYPES)
+						@	sleep 1; touch $@
+read_setup_P.h:				$(TYPES)
+						@	sleep 1; touch $@
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} environ module $<"
+	@	$${C_COMP_SHARED} -c $(C_OPTIONS) $(INCPATH) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}
+
+
+# Rules for building stand-alone test programs:
+
+test tests:	files_and_dirs config meta
+
+# >>> Change this to desired final locations <<< #
+# USRLIB   = $(LIBDIR)/$(PLATFORM)/libfpauser.sl
+
+FILES_AND_DIRS		= $(PLATFORM)/files_and_dirs
+FILES_AND_DIRS_OBJ	= files_and_directories.c config_info.o \
+						calculation.o rules.o read_config.o \
+						meta_read.o target_map.o read_setup.o revision.o
+files_and_dirs:		Pfiles_and_dirs $(FILES_AND_DIRS)
+				@	echo "FPA $${PLATFORM} files_and_dirs test ready"
+				@	echo 
+Pfiles_and_dirs:
+				@	$(SBINDIR)/platform_get object "FPA files_and_dirs"
+$(FILES_AND_DIRS):	$(TYPES) $(MACROS) $(GETMEM) $(TOOLS) $(OBJECTS) \
+						$(FILES_AND_DIRS_OBJ) $(FPALIB)
+				@	echo Building stand-alone test program for \
+						files_and_directories
+				@	rm -f files_and_directories.o
+				@	$${C_COMPLOAD} -o $@ -D FILES_AND_DIRS_STANDALONE \
+						$(INCPATH) $(C_OPTIONS) $(FILES_AND_DIRS_OBJ) \
+						$(FPALIB) $(USRLIB) $(FPALIB) $(USRLIB) $(EXTRA_LIBS)
+				@	rm -f files_and_directories.o
+				@	if [ -f $${PLATFORM}/files_and_directories.o ]; then \
+						ln $${PLATFORM}/files_and_directories.o .; \
+					fi
+
+CONFIG		= $(PLATFORM)/config
+CONFIG_OBJ	= config_info.c calculation.o rules.o \
+					read_config.o read_setup.o revision.o
+config:			Pconfig $(CONFIG)
+			@	echo "FPA $${PLATFORM} config test ready"
+			@	echo 
+Pconfig:
+			@	$(SBINDIR)/platform_get object "FPA config"
+$(CONFIG):		$(TYPES) $(MACROS) $(GETMEM) $(TOOLS) $(OBJECTS) \
+					$(CONFIG_OBJ) $(FPALIB)
+			@	echo Building stand-alone test program for config
+			@	rm -f config_info.o
+			@	$${C_COMPLOAD} -o $@ -D CONFIG_STANDALONE \
+					$(INCPATH) $(C_OPTIONS) $(CONFIG_OBJ) \
+					$(FPALIB) $(USRLIB) $(FPALIB) $(USRLIB) $(EXTRA_LIBS)
+			@	rm -f config_info.o
+			@	if [ -f $${PLATFORM}/config_info.o ]; then \
+					ln $${PLATFORM}/config_info.o .; \
+				fi
+
+META       = $(PLATFORM)/meta
+META_OBJ   = meta_read.c meta_write.o cal.o
+meta:			Pmeta $(META)
+			@	echo "FPA $${PLATFORM} meta test ready"
+			@	echo 
+Pmeta:
+			@	$(SBINDIR)/platform_get object "FPA meta"
+$(META):		$(TYPES) $(MACROS) $(META_OBJ) $(LIBS)
+			@	echo Building stand-alone test program for meta
+			@	rm -f meta_read.o
+			@	$${C_COMPLOAD} -o $@ -D META_STANDALONE \
+					$(INCPATH) $(C_OPTIONS) $(META_OBJ) \
+					$(FPALIB) $(USRLIB) $(FPALIB) $(USRLIB) $(EXTRA_LIBS)
+			@	rm -f meta_read.o
+			@	if [ -f $${PLATFORM}/meta_read.o ]; then \
+					ln $${PLATFORM}/meta_read.o .; \
+				fi

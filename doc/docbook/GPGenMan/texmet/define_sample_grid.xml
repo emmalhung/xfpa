@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_define_sample_grid'> <title>@define_sample_grid</title> <titleabbrev>@define_sample_grid</titleabbrev>
+<para>
+Define a grid of locations for sampling.
+</para><para>
+Grids can be either an array of latitude-longitude locations, or an array of map positions on the current map.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>grid_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Grid name</para></entry></row>
+<row valign='top'><entry spanname='tbltitle'>&extraline;<para>For latlon grid ...</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>lat_begin</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry>
+<entry colname='desc'><para>Latitude to begin grid of positions (see <xref linkend='latlonfmt'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>lat_end</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry>
+<entry colname='desc'><para>Latitude to end grid of positions (see <xref linkend='latlonfmt'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>lat_interval</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry>
+<entry colname='desc'><para>Interval between latitudes in grid (see <xref linkend='latlonfmt'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>lon_begin</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry>
+<entry colname='desc'><para>Longitude to begin grid of positions (see <xref linkend='latlonfmt'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>lon_end</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry>
+<entry colname='desc'><para>Longitude to end grid of positions (see <xref linkend='latlonfmt'/>)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>lon_interval</userinput></para></entry>
+<entry colname='type'><para>latlon</para></entry>
+<entry colname='desc'><para>Interval between longitudes in grid (see <xref linkend='latlonfmt'/>)</para></entry></row>
+
+<row valign='top'><entry spanname='tbltitle'>&extraline;<para>For map grid ...</para></entry></row>
+<row valign='top'>
+<entry colname='key'><para><userinput>map_x_begin</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Position on x-axis of map to begin grid
+</para><para>(Note: position is measured from <userinput>xmin</userinput> from <link linkend='tx_mapdef'>@mapdef</link> directive, in units of <userinput>map_units</userinput> below)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>map_x_end</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Position on x-axis of map to end grid
+</para><para>(Note: position is measured from <userinput>xmin</userinput> from <link linkend='tx_mapdef'>@mapdef</link> directive, in units of <userinput>map_units</userinput> below)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>map_x_interval</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Interval between grid positions on x-axis of map (in units of <userinput>map_units</userinput> below)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>map_y_begin</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Position on y-axis of map to begin grid
+</para><para>(Note: position is measured from <userinput>ymin</userinput> from <link linkend='tx_mapdef'>@mapdef</link> directive, in units of <userinput>map_units</userinput> below)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>map_y_end</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Position on y-axis of map to end grid
+</para><para>(Note: position is measured from <userinput>ymin</userinput> from <link linkend='tx_mapdef'>@mapdef</link> directive, in units of <userinput>map_units</userinput> below)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>map_y_interval</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Interval between grid positions on y-axis of map (in units of <userinput>map_units</userinput> below)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_units.xml'/>
+<row><entry colname='desc'><para> (default is <userinput>map_units</userinput> from <link linkend='tx_mapdef'>@mapdef</link> directive)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_shift.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_shift.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@define_sample_grid
+{
+  grid_name    = grid_waves;
+  lat_begin    = 22.5S;
+  lat_end      = 60.0N;
+  lat_interval = 5.0N;
+  lon_begin    = 92.5W;
+  lon_end      = 20.0W;
+  lon_interval = 5.0E;
+  x_shift      = 5;
+  y_shift      = -1;
+}</programlisting>
+Define a latitude-longitude grid for sampling called "grid_waves". The grid will begin at latitude
+22.5 degrees South and end at latitude 60.0 degrees North with sample positions every 5.0 degrees
+North. The grid will begin at longitude 92.5 degrees West and end at longitude 20.0 degrees West
+with sample positions every 5.0 degrees East. The sampling grid will therefore have 17 rows of
+latitudes by 15 columns of longitudes. Each row will be offset up 1 line, and each column will be
+offset to the right by 5 characters.
+</para></example>
+</para></sect2>

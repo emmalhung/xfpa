@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='imagery'> <title>Imagery</title>
+<sect1 id='image_timebar'><title>Image Timebar</title>
+<para>
+<figure pgwide='0' float='1' id='imagery_panel'><title>Imagery panel</title>
+<mediaobject><imageobject><imagedata fileref='png/imagery.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+Because radar and satellite images tend to come in shorter time intervals than depictions, the Imagery panel contains its own time control.
+(see <xref linkend='imagery_panel'/>)
+The slider-bar at the top of the panel allows the user to step through each time for which there is an image (from the selected products) to view.
+This control does not affect the depiction time.
+</para><para>
+<orderedlist> <title>To step through images in order:</title>
+<listitem><para> Move the slider in the slider-bar. (see <xref linkend='slider_bar'/>)</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='image_selection'> <title>Image Selection</title>
+<para>
+The <emphasis>Image Selection</emphasis>
+<inlinemediaobject>
+<textobject><phrase></phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/image_selection.png'/></imageobject>
+</inlinemediaobject>
+tool controls selection of Radar and Satellite imagery to display, based on parameters set in the <filename>Image</filename> configuration file. 
+(see <xref linkend='imagery_selection'/>)
+</para><para>
+<figure id='imagery_selection' pgwide='0' float='1'><title>Imagery Selection menus</title>
+<mediaobject><imageobject><imagedata fileref='png/imagery_selection.png'/></imageobject></mediaobject>
+</figure>
+</para>
+<sect2 id='radar'> <title>Radar</title>
+<para>
+<orderedlist> <title>To display radar imagery:</title>
+<listitem><para> Choose a radar product from the drop-down list.</para></listitem>
+<listitem><para> 
+Select the radar sites from the list.
+</para><para>
+Note that multiple radar images can be displayed at the same time. The radar image nearest to the top of the list is displayed on top of the others.
+</para></listitem>
+<listitem><para> Choose an <guilabel>Enhancement</guilabel> colour scheme for the radar images from the drop-down list.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='satellite'> <title>Satellite</title>
+<para>
+<orderedlist> <title>To display Satellite imagery:</title>
+<listitem><para> Choose a satellite product from the drop-down list.</para></listitem>
+<listitem><para> Select satellite sources from the list.
+</para><para>
+Note that multiple satellite images can be displayed at the same time. The satellite image nearest to the top of the list is displayed on top of the others.
+</para></listitem>
+<listitem><para> Choose an <guilabel>Enhancement</guilabel> colour scheme for the satellite images from the drop-down list.</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='options'><title>Options</title>
+<para>
+When you are combining radar, satellite and depictions there are some options you can choose to make the display easier to use.
+<variablelist>
+<varlistentry><term><guilabel>Depiction Sync</guilabel></term>
+<listitem><para>
+Synchronize the images with the depictions.
+</para></listitem></varlistentry>
+<varlistentry><term><guilabel>Use Time Window</guilabel></term>
+<listitem><para>
+Use the time window specified in the <emphasis>Image Options</emphasis> tool when synchronizing with depictions.
+(see <xref linkend='time_window'/>.)
+</para></listitem></varlistentry>
+<varlistentry><term><guilabel>Blend Images</guilabel></term>
+<listitem><para>
+Blend the satellite and radar images using the ratio specified in the <emphasis>Image Options</emphasis> tool.
+(see <xref linkend='blending_ratio'/>.)
+</para></listitem></varlistentry>
+<varlistentry><term><guilabel>Apply Brightness</guilabel></term>
+<listitem><para>
+Apply the brightness factor specified in the <emphasis>Image Options</emphasis> tool.
+(see <xref linkend='brightness'/>.)
+</para></listitem></varlistentry>
+<varlistentry><term><guilabel>Show Colour Table</guilabel></term>
+<listitem><para>
+Show the colour tables associated with the selected <guilabel>Enhancement</guilabel>.
+</para></listitem></varlistentry>
+</variablelist>
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='image_options'> <title>Image Options</title>
+<para>
+The <emphasis>Image Options</emphasis>
+<inlinemediaobject>
+<textobject><phrase></phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/image_options.png'/></imageobject>
+</inlinemediaobject>
+tool controls the brightness, blending ration (making the Radar imagery semi-transparent), and time window for displaying imagery.
+The display of radar range rings can also be set. (see <xref linkend='imagery_option_tools'/>)
+</para><para>
+<figure id='imagery_option_tools' pgwide='0' float='1'><title>Imagery Options menus</title>
+<mediaobject><imageobject><imagedata fileref='png/imagery_options.png'/></imageobject></mediaobject>
+</figure>
+</para>
+<sect2 id='brightness'><title>Brightness</title>
+<para>
+<orderedlist> <title>To adjust the brightness of radar images:</title>
+<listitem><para>
+Move the slider for the <guilabel>Rad</guilabel> slider-bar to the right it increase brightness, to the left to decrease brightness. (see <xref linkend='slider_bar'/>)
+</para></listitem>
+</orderedlist>
+<orderedlist> <title>To adjust the brightness of satellite images:</title>
+<listitem><para>
+Move the slider for the <guilabel>Sat</guilabel> slider-bar to the right it increase brightness, to the left to decrease brightness. (see <xref linkend='slider_bar'/>)
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='blending_ratio'><title>Blending Ratio</title>
+<para>
+When satellite and radar are displayed together they are "blended" to display a single image.
+The radar appears over the satellite image, obscuring the satellite information below.
+You can adjust the opacity of the radar so that you can see some satellite data through the radar data.
+</para><para>
+<orderedlist> <title>To adjust the blend ratio:</title>
+<listitem><para>
+Move the slider in the slide-bar to the left to decrease the opacity of the radar (making the radar imagery semi-transparent), and move the slider to the right to increase the opacity of the radar.  (see <xref linkend='slider_bar'/>)
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='time_window'><title>Time Window</title>
+<para>
+<indexterm><primary>depiction</primary><secondary>sequence</secondary></indexterm>
+The times associated with radar and satellite images will not usually match up exactly with the depiction times or with each other.
+Also sometimes a radar or satellite image may be missing for a particular time.
+However, you can step through the <glossterm linkend='g_depiction_sequence'>depiction sequence</glossterm> and have the nearest image (in time) displayed if one exists within a specified window.
+The window is specified in (negative) minutes before the depiction and (positive) minutes after the depiction.
+</para><para>
+<orderedlist> <title>To adjust the radar time window:</title>
+<listitem><para> Adjust the <guilabel>Rad</guilabel> spin-boxes using the up and down arrows.
+</para></listitem>
+</orderedlist>
+<orderedlist> <title>To adjust the satellite time window:</title>
+<listitem><para> Adjust the <guilabel>Sat</guilabel> spin boxes using the up and down arrows.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='radar_data_view'><title>Radar Data View</title>
+<para>
+If your radar images do not already contain range rings, they can be added using the <guilabel>Radar Data View</guilabel> options.
+</para><para>
+<variablelist>
+<varlistentry><term><guilabel>No Range Rings</guilabel></term>
+<listitem><para> Do not display range rings.
+</para></listitem></varlistentry>
+
+<varlistentry><term><guilabel>Limit Ring Only</guilabel></term>
+<listitem><para>Display a ring which displays the limit of the radar range only.
+</para></listitem></varlistentry>
+
+<varlistentry><term><guilabel>All Rings</guilabel></term>
+<listitem><para>Display the limit ring as well as rings spaced according to the <guilabel>Spacing</guilabel> spin-box.
+</para></listitem></varlistentry>
+</variablelist>
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='image_animation'> <title>Image Animation</title>
+<para>
+The <emphasis>Image Animation</emphasis>
+<inlinemediaobject>
+<textobject><phrase></phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/image_animation.png'/></imageobject>
+</inlinemediaobject>
+tool controls animation loops for imagery, independent of the depictions. (see <xref linkend='imagery_animation_tool'/>)
+(Note that moving through the depictions will display matching radar and satellite data depending on the time window set with <emphasis>Image Options</emphasis>, but may not display all the radar or satellite imagery that is available between the depictions.)
+</para><para>
+<figure id='imagery_animation_tool' pgwide='0' float='1'><title>Imagery Animation menus</title>
+<mediaobject><imageobject><imagedata fileref='png/imagery_animation.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+<orderedlist> <title>To start the animation:</title>
+<listitem><para> Click <guibutton>Start</guibutton>.</para></listitem> </orderedlist>
+</para><para>
+<orderedlist continuation='continues'> <title>To end the animation:</title>
+<listitem><para> Click <guibutton>Stop</guibutton>.</para></listitem> </orderedlist>
+</para>
+
+<sect2 id='image_animation_window'><title>Animation Window</title>
+<para>
+It is possible to accumulate a large number radar and satellite images over the course of a day.
+Sometimes you want to animate only a few hours of imagery.
+This can be done using the <guilabel>Animation Window</guilabel> slider bar.
+</para><para>
+<orderedlist>
+<title>To limit the animation to a subset of the available images:</title>
+<listitem><para>Move the left-hand slider to the desired start time. (see <xref linkend='slider_bar'/>)</para></listitem>
+<listitem><para>Move the right-hand slider to the desired end time. (see <xref linkend='slider_bar'/>)</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='image_animation_speed'><title>Animation Speed</title>
+<para>
+You may adjust the speed of the animation by moving the slider in the <guilabel>Speed</guilabel> slider-bar left to slow the animation or right to speed it up. (see <xref linkend='slider_bar'/>)
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='image_sampling'> <title>Image Sampling</title>
+<para>
+The <emphasis>Image Sampling</emphasis>
+<inlinemediaobject>
+<textobject><phrase></phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/sample.png'/></imageobject>
+</inlinemediaobject>
+tool controls sampling data type imagery. (see <xref linkend='imagery_sampling_tools'/>)
+</para><para>
+<figure id='imagery_sampling_tools' pgwide='0' float='1'><title>Imagery Sampling menus</title>
+<mediaobject><imageobject><imagedata fileref='png/imagery_sampling.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+You can add temporary labels to the &FPA; window with the Sample tool, as you can with continuous fields.
+</para><para>
+<orderedlist> <title>To sample a value:</title>
+<listitem><para> Select an image to sample from the <guilabel>Site</guilabel> list.</para></listitem>
+<listitem><para> Select a type of sample from the <guilabel>Value</guilabel> list.</para></listitem>
+<listitem><para> Select the display: colour, size and font from the <guilabel>Attributes</guilabel> section.</para></listitem>
+<listitem><para> Pick a point on the depiction.
+(Point should be within the range of the site chosen)
+</para><para> A temporary label appears.
+</para><para> You can sample as many points as you want.
+</para></listitem>
+<listitem><para> Click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice> to clear the labels from the depiction.
+</para></listitem>
+</orderedlist>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='grid_sample.xml'/>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='preset_sample_list.xml'/>
+</para>
+</sect1>
+</chapter>

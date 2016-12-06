@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_define_line'> <title>@define_line</title> <titleabbrev>@define_line</titleabbrev>
+<para>
+Set parameters for a line to be displayed.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<row valign='top'>
+<entry colname='key'><para><userinput>line_name</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Line name</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>line</userinput></para></entry>
+<entry colname='type'><para>r r ... </para></entry>
+<entry colname='desc'><para>Locations (as x/y pairs) for drawing the line (in display units). Requires a minimum of 2 x/y pairs.</para></entry></row>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@define_line { line_name = distance_scale; line = -0.985 0 0.985 0; }</programlisting>
+Set parameters for a horizontal line called "distance_scale" to be drawn from a position 0.985 "units"
+to the left of the current position (-0.985 0) to a position 0.985 "units" to the right of the current
+position (0 0.985). The line will be drawn with the <link linkend='ps_draw_line'>@draw_line</link> directive.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+
+<example><title></title><para>
+<programlisting>@define_line { line_name = vertical_ticks; line = 0.0 -0.1 0.0 0.1; }</programlisting>
+Set parameters for a vertical line called "vertical_ticks" to be drawn from the a position 0.1 "units"
+below the current position (0.0 -0.1) to a position 0.1 "units" above the current position (0.0 0.1).
+The line will be drawn with the <link linkend='ps_draw_cross_section_line'>@draw_cross_section_line</link> directive.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+
+<example><title></title><para>
+<programlisting>@define_line { line_name = vertical_line; line = 0 0 0 0.5; }</programlisting>
+Set parameters for a vertical line called "vertical_line" to be drawn from the current position (0 0)
+to a position 0.5 "units" higher (0 0.5). The line will be drawn with the <link linkend='ps_draw_table_line'>@draw_table_line</link>
+directive. (Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

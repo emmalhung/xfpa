@@ -1,0 +1,20 @@
+* MSRB Metafile Standard
+ rev 1.2
+* 
+ mapdef 0 0 0 100 100 1
+ units xy
+*
+*
+ info pattern repeat 1
+ info pattern baseline centre
+ info pattern symmetric yes
+* 
+* lines
+ entity-c NULL NULL LSPEC "[colour=Brown width=3]"
+ curve r 2
+ 0 25   50 25
+ entity-c NULL NULL LSPEC "[colour=Brown width=3]"
+ curve r 2
+ 0 -25   50 -25
+*
+* End

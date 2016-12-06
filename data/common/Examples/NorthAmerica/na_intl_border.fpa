@@ -1,0 +1,202 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field line boundaries geography
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 4
+ 13.746N -90.096E 14.234N -89.518E 14.415N -89.571E 14.432N -89.348E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 5
+ 14.432N -89.348E 13.855N -88.468E 13.991N -88.122E 13.864N -87.75E 13.405N -87.816E
+
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 13
+ 12.987N -87.301E 12.988N -87.023E 13.249N -86.903E 13.299N -86.696E 13.754N -86.759E
+ 13.763N -86.326E 14.056N -86.07E 13.829N -85.736E 14.336N -85.159E 14.807N -84.91E
+ 14.619N -84.48E 15.006N -83.486E 14.993N -83.132E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 4
+ 14.432N -89.348E 14.685N -89.138E 15.073N -89.15E 15.724N -88.215E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 3
+ 17.819N -89.142E 15.89N -89.216E 15.894N -88.911E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 10
+ 14.551N -92.247E 15.077N -92.071E 15.262N -92.211E 16.075N -91.729E 16.088N -90.442E
+ 16.416N -90.406E 17.237N -91.434E 17.256N -90.984E 17.821N -90.982E 17.819N -89.142E
+
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 5
+ 17.819N -89.142E 17.995N -89.072E 17.904N -88.841E 18.484N -88.474E 18.483N -88.3E
+
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 6
+ 18.038N -71.768E 18.322N -71.695E 18.601N -72.003E 18.75N -71.716E 19.22N -71.629E
+ 19.706N -71.754E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 4
+ 19.902N -75.224E 19.924N -75.226E 19.961N -75.193E 19.961N -75.159E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 3
+ 19.963N -75.14E 19.965N -75.087E 19.893N -75.085E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 22
+ 32.535N -117.12E 32.718N -114.72E 32.5N -114.8E 31.333N -111.05E 31.333N -108.21E
+ 31.783N -108.21E 31.748N -106.4E 31.472N -106.21E 30.566N -104.9E 29.673N -104.54E
+ 29.024N -103.37E 28.984N -103.16E 29.743N -102.67E 29.888N -102.3E 29.773N -101.41E
+ 29.109N -100.67E 28.281N -100.28E 27.568N -99.504E 27.047N -99.459E 26.435N -99.105E
+ 25.843N -97.417E 25.966N -97.141E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 2
+ 48.999N -123.09E 48.999N -123.03E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 25
+ 69.642N -141E 60.307N -141E 60.188N -139.98E 60.345N -139.07E 60.07N -139.16E
+ 59.239N -137.59E 58.907N -137.47E 59.167N -136.81E 59.163N -136.58E 59.47N -136.46E
+ 59.526N -136.23E 59.602N -136.35E 59.802N -135.47E 59.568N -135.01E 59.427N -135.09E
+ 59.28N -134.95E 58.459N -133.43E 57.205N -132.23E 57.089N -132.32E 57.036N -132.03E
+ 56.867N -132.1E 56.796N -131.86E 56.598N -131.82E 56.118N -130.09E 55.909N -130.02E
+
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 6
+ 47.998N -89.584E 47.98N -89.357E 48.312N -88.368E 46.906N -84.865E 46.466N -84.565E
+ 46.477N -84.49E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 13
+ 46.5N -84.328E 46.529N -84.125E 46.437N -84.091E 46.478N -84.484E 46.485N -84.437E
+ 46.326N -84.05E 46.07N -83.954E 46.114N -83.596E 46.012N -83.448E 45.827N -83.598E
+ 45.356N -82.543E 43.585N -82.13E 43.025N -82.361E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 8
+ 44.426N -75.907E 44.495N -75.795E 43.267N -79.124E 43.466N -79.185E 43.629N -78.725E
+ 43.633N -76.809E 44.102N -76.437E 44.384N -75.977E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 6
+ 42.318N -83.054E 42.301N -83.087E 42.046N -83.169E 41.684N -82.697E 42.82N -78.987E
+ 42.874N -79.003E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 4
+ 42.542N -82.641E 42.412N -82.882E 42.358N -82.981E 42.318N -83.054E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 2
+ 46.477N -84.49E 46.478N -84.484E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 2
+ 46.437N -84.091E 46.326N -84.05E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 2
+ 44.384N -75.977E 44.426N -75.907E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 2
+ 46.485N -84.437E 46.5N -84.328E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 14
+ 48.999N -122.76E 49.001N -114.06E 48.999N -95.154E 49.377N -95.153E 49.306N -94.818E
+ 48.724N -94.606E 48.517N -93.786E 48.623N -92.951E 48.232N -92.36E 48.345N -92.039E
+ 48.041N -91.418E 48.238N -90.869E 48.093N -90.75E 47.998N -89.584E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 16
+ 44.495N -75.795E 44.984N -74.996E 45.021N -71.494E 45.297N -71.321E 45.241N -70.877E
+ 45.909N -70.258E 46.203N -70.288E 46.698N -70.009E 47.468N -69.236E 47.189N -68.892E
+ 47.365N -68.315E 47.07N -67.795E 45.696N -67.795E 45.585N -67.413E 45.263N -67.455E
+ 45.183N -67.207E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 2
+ 42.874N -79.003E 43.267N -79.124E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 3
+ 43.025N -82.361E 42.599N -82.536E 42.542N -82.641E
+ value 3
+	FPA_category "border_major"
+	FPA_auto_label "Major Political Boundary"
+	FPA_user_label "Major Political Boundary"
+ curve r 2
+ 42.412N -82.882E 42.358N -82.981E
+
+* 
+* End
+

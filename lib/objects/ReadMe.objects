@@ -1,0 +1,155 @@
+Objects Library:
+
+This directory contains all the modules that are used to define and manage the
+set of objects available for FPA applications.  This constitutes the objects
+component of the FPA user library:
+
+==============================================================================
+Object Heirarchy:
+
+	Dispnode
+	 |
+	 ----> Metafile
+	        |
+			----> Field
+				   |
+				   |---> Plot
+				   |
+				   |---> Set
+				   |      |
+				   |      |---> Area
+				   |      |      |
+				   |      |      |---> Bound
+				   |      |      ----> Segment
+				   |      |
+				   |      |---> Curve
+				   |      |      |
+				   |      |      ----> Line
+				   |      |
+				   |      |---> Barb
+				   |      |---> Button
+				   |      |---> Label
+				   |      |---> Mark
+				   |      ----> Spot
+				   |
+				   ----> Surface
+						  |
+						  |---> Spline
+						  |---> Ilist
+						  ----> Patch
+
+==============================================================================
+High Level Object Modules:
+
+objects.h ......... "collective" header file.
+
+dispnode.[ch] ..... Display Node Object - the highest level object, normally
+					contains a Metafile Object with display geo-reference
+					information.
+
+metafile.[ch] ..... Metafile Object - contains a complete map or chart,
+					normally contains one or more Field Objects.
+
+field.[ch] ........ Field Object - contains a complete map or chart for a
+					single meteorological or geographical element, normally
+					contains a Set, Plot or Surface Object, depending on the
+					type of field represented.
+
+menu.[ch] ......... Menu Object - contains a Set of Button Objects, resulting
+					in an interactive menu.  This object is rarely used - only
+					present in old WDB II map generator.
+
+==============================================================================
+Field Member Object Modules:
+
+plot.[ch] ......... Plot Object - represents a collection of data values at 
+					a set of scattered points, i.e. a "station plot".  This
+					object is obsolescent, will be replaced by a Set of Spot
+					Objects.
+
+set.[ch] .......... Set Object - represents a collection of "sub-member"
+set_oper.h			objects, all of the same type - etiher Area, Barb, Button,
+					Curve, Label, Mark, or Spot (c.f.).
+
+surface.[ch] ...... Surface Object - represents a continuous numerical 1-D
+surface_cont.c		(scalar) or 2-D (vector) field.  These fields are rep-
+surface_eval.c		resented by an array of bi-cubic B-spline Patches (see
+surface_mem.c		Spline Object).  This object may be contoured (for vis-
+surface_oper.c		ualization purposes), evaluated (the numerical value and
+					various derivatives and components), and manipulated in a
+					variety of ways.
+
+==============================================================================
+Field Sub-Member Object Modules:
+
+item.[ch] ......... Item Object - generic form of any of the "sub-member"
+					objects, The Set Object type-casts its members to this.
+
+area.[ch] ......... Area Object - the principle object for representing
+area_oper.c			"area" (discrete/categorical) fields.
+area_prep.c
+area_set.c
+
+curve.[ch] ........ Curve Object - the principle object for representing
+curve_oper.c		"line" fields.
+curve_set.c
+
+spot.[ch]
+spot_set.c
+
+barb.[ch]
+barb_set.c
+
+button.[ch]
+button_set.c
+
+label.[ch]
+label_set.c
+
+mark.[ch]
+mark_set.c
+
+==============================================================================
+Geometric Object Modules:
+
+bound.[ch]
+bound_oper.c
+
+line.[ch]
+line_oper.c
+
+raster.[ch]
+
+segment.[ch]
+segment_oper.c
+
+spline.[ch]
+
+==============================================================================
+Auxilliary Modules:
+
+attrib.[ch]
+
+misc.[ch]
+
+pipeP.h
+pipe.[ch]
+pipe_buffer.c
+pipe_clip.c
+pipe_disp.c
+pipe_echo.c
+pipe_fill.c
+pipe_filter.c
+pipe_meta.c
+pipe_save.c
+pipe_spline.c
+
+polynomial.[ch]
+
+projection.[ch]
+project_oper.c
+
+pspec.h
+pspec_attrib.c
+pspec_disp.c
+pspec_units.c

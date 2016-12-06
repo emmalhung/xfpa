@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_background'> <title>@background</title> <titleabbrev>@background</titleabbrev>
+<para>
+Display an outline around the current map.
+</para> <para>
+Note that the map size is set in the <link linkend='ps_define_map_placement'>@define_map_placement</link> directive.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>extra_x</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Additional width for outline (in display units)</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>extra_y</userinput></para></entry>
+<entry colname='type'><para>real</para></entry> 
+<entry colname='desc'><para>Additional height for outline (in display units)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/interior_fill.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@background 
+{
+  interior_fill = CMYK 100 30 0 0;
+  line_width    = 0.050;
+  extra_x       = 0.030;
+  extra_y       = 0.030;
+}
+</programlisting>
+Display an outline around the current map that is 0.030 "units" larger than the map size set in the
+<link linkend='ps_define_map_placement'>@define_map_placement</link> directive
+(or 0.015 "units" larger on each edge). The outline will be 0.050 "units" wide
+(or +/- 0.025 "units" wide) and thus will overlap the map by 0.010 "units". The
+outline style and colour will be set from the current defaults, but
+the outline will be filled a with a colour composed of 100% Cyan and 30% Magenta.
+</para><para>
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

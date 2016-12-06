@@ -1,0 +1,264 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Belleville"
+	FPA_user_label "Belleville"
+ spot 44.166N -77.382E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Brant"
+	FPA_user_label "Brant"
+ spot 43.153N -80.172E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Brantford"
+	FPA_user_label "Brantford"
+ spot 43.142N -80.262E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Brockville"
+	FPA_user_label "Brockville"
+ spot 44.59N -75.683E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Cambridge"
+	FPA_user_label "Cambridge"
+ spot 43.362N -80.315E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Cornwall"
+	FPA_user_label "Cornwall"
+ spot 45.021N -74.731E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Dryden"
+	FPA_user_label "Dryden"
+ spot 49.78N -92.837E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Elliot Lake"
+	FPA_user_label "Elliot Lake"
+ spot 46.386N -82.651E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Gloucester"
+	FPA_user_label "Gloucester"
+ spot 45.435N -75.605E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Kanata"
+	FPA_user_label "Kanata"
+ spot 45.302N -75.907E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Kenora"
+	FPA_user_label "Kenora"
+ spot 49.767N -94.491E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Kingston"
+	FPA_user_label "Kingston"
+ spot 44.23N -76.48E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Kitchener"
+	FPA_user_label "Kitchener"
+ spot 43.452N -80.493E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "London"
+	FPA_user_label "London"
+ spot 42.988N -81.246E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Nanticoke"
+	FPA_user_label "Nanticoke"
+ spot 42.887N -80.146E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Nepean"
+	FPA_user_label "Nepean"
+ spot 45.344N -75.762E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Niagara Falls"
+	FPA_user_label "Niagara Falls"
+ spot 43.106N -79.064E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "North Bay"
+	FPA_user_label "North Bay"
+ spot 46.309N -79.461E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Ottawa"
+	FPA_user_label "Ottawa"
+ spot 45.44N -75.695E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Owen Sound"
+	FPA_user_label "Owen Sound"
+ spot 44.564N -80.943E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Pembroke"
+	FPA_user_label "Pembroke"
+ spot 45.827N -77.112E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Peterborough"
+	FPA_user_label "Peterborough"
+ spot 44.309N -78.32E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Port Colborne"
+	FPA_user_label "Port Colborne"
+ spot 42.886N -79.251E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Quinte West"
+	FPA_user_label "Quinte West"
+ spot 44.179N -77.585E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "St. Catharines"
+	FPA_user_label "St. Catharines"
+ spot 43.159N -79.247E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "St. Thomas"
+	FPA_user_label "St. Thomas"
+ spot 42.779N -81.193E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Sarnia"
+	FPA_user_label "Sarnia"
+ spot 42.975N -82.407E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Sault Ste. Marie"
+	FPA_user_label "Sault Ste. Marie"
+ spot 46.507N -84.334E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Stratford"
+	FPA_user_label "Stratford"
+ spot 43.37N -80.982E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Sudbury"
+	FPA_user_label "Sudbury"
+ spot 46.49N -80.99E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Thorold"
+	FPA_user_label "Thorold"
+ spot 43.108N -79.215E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Thunder Bay"
+	FPA_user_label "Thunder Bay"
+ spot 48.382N -89.246E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Timmins"
+	FPA_user_label "Timmins"
+ spot 48.476N -81.329E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Vanier"
+	FPA_user_label "Vanier"
+ spot 45.443N -75.66E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Waterloo"
+	FPA_user_label "Waterloo"
+ spot 43.463N -80.52E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Welland"
+	FPA_user_label "Welland"
+ spot 42.993N -79.239E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Windsor"
+	FPA_user_label "Windsor"
+ spot 42.318N -83.035E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Woodstock"
+	FPA_user_label "Woodstock"
+ spot 43.13N -80.757E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Brampton"
+	FPA_user_label "Brampton"
+ spot 43.685N -79.76E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Burlington"
+	FPA_user_label "Burlington"
+ spot 43.326N -79.799E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Guelph"
+	FPA_user_label "Guelph"
+ spot 43.543N -80.248E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Hamilton"
+	FPA_user_label "Hamilton"
+ spot 43.255N -79.873E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Mississauga"
+	FPA_user_label "Mississauga"
+ spot 43.589N -79.644E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Orillia"
+	FPA_user_label "Orillia"
+ spot 44.609N -79.421E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Oshawa"
+	FPA_user_label "Oshawa"
+ spot 43.896N -78.866E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Stoney Creek"
+	FPA_user_label "Stoney Creek"
+ spot 43.219N -79.766E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Toronto"
+	FPA_user_label "Toronto"
+ spot 43.654N -79.384E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Vaughan"
+	FPA_user_label "Vaughan"
+ spot 43.811N -79.45E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Barrie"
+	FPA_user_label "Barrie"
+ spot 44.39N -79.686E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Chatham"
+	FPA_user_label "Chatham"
+ spot 42.405N -82.191E location none
+
+* 
+* End
+

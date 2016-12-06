@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_label'> <title>@label</title> <titleabbrev>@label</titleabbrev>
+<para>
+Display location dependent information in a table or at a given location.
+This information includes features labeled in the &FPA;, or parameters from locations in a "scattered" type field.
+</para><para>
+Complex (multi-attribute) labels are described at the end of this section.
+</para><para>
+Note that the <userinput>category_attribute</userinput> and <userinput>category</userinput> keywords can be used to display only selected labels.
+</para><para>
+Note that the <userinput>case</userinput> and <userinput>case_look_up</userinput> keywords can only be used for simple (single-attribute) labels.
+</para><para>
+Note that every label requires a <userinput>format</userinput> keyword.
+A <userinput>direct</userinput> style format will display the value of the label attribute from &FPA;.
+A <userinput>text</userinput> style format also requires a <userinput>look_up</userinput> keyword to define a look up table, and the value of the label attribute from &FPA; is cross-referenced in this look up table to identify the text string to display.
+A <userinput>wind_text</userinput> format displays winds using the presentation from the directive <link linkend='tx_wind_presentation'>@wind_presentation</link>.
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/element.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/level.xml'/>
+<row valign='top'>
+<entry colname='key'><para><userinput>units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for label wind speeds or gusts</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>geo_file</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; Metafile for geography labels
+</para><para>
+(Note: this must be the name of a file in the "Maps" directory or a full path name)</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>category_attribute</userinput> and <userinput>category</userinput> can be specified more than once in this directive, and that <userinput>category_cascade</userinput> determines how to combine more than one instance.</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_cascade.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category_attribute.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/category.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_magic.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/look_up.xml'/>
+</tbody></tgroup></informaltable>
+</para><beginpage/><para>
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>case</userinput> and <userinput>case_look_up</userinput> can be specified more than once in this directive!</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/case.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/case_look_up.xml'/>
+<row valign='top'><entry spanname='tblnote'><para></para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/time_zone.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/language.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/format.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fit_to_map.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_off</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Column (character) offset of label</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_off</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Row (line) offset of label</para></entry></row>
+
+<row><entry spanname='tbltitle'>&extraline;<para>For display as a grid ...</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_shift</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Column (character) increment for display of labels</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_shift</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry>
+<entry colname='desc'><para>Row (line) increment for display of labels</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_wrap.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_wrap.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@label
+{
+  element            = pressure;
+  level              = msl;
+  category_attribute = FPA_label_type;
+  category           = labeled_low labeled_high;
+  attribute          = hilo_name;
+  format             = direct;
+  x_shift            = 0;
+  y_shift            = 1;
+  justification      = centre;
+}
+</programlisting>
+Display labels from the msl pressure field which have a value of labeled_low or labeled_high for
+the FPA attribute FPA_label_type. Labels will be displayed as centred text using the value in the
+FPA attribute hilo_name, and each label will be displayed 1 row below the previous label.
+</para></example>
+
+</para><para>
+Complex (multi-attribute) labels allow the display of several label parameters within the same directive.
+The entire complex label is displayed with respect to the <userinput>x_off</userinput>, <userinput>y_off</userinput> keywords set above.
+</para><para>
+Attribute keywords apply only to the attribute that they follow.
+</para><para>
+The position of an attribute in a complex label can be related to the position of other attributes through use of the keywords <userinput>attribute_anchor</userinput>, <userinput>attribute_ref</userinput>, <userinput>attribute_justification</userinput> and <userinput>attribute_vertical_just</userinput>. 
+The <userinput>attribute_ref</userinput> keyword defines the starting position of the attribute with respect to a location about the text identified by the <userinput>attribute_anchor</userinput> keyword.
+The <userinput>attribute_justification</userinput> and <userinput>attribute_vertical_just</userinput> keywords define the horizontal and vertical positioning of the attribute with respect to this starting position.
+</para><para>
+The display parameters of each attribute default to the values of the <userinput>units</userinput>,
+<userinput>format</userinput>, <userinput>look_up</userinput>, and <userinput>justification</userinput> keywords set above. 
+These default values can be replaced by the appropriate attribute keyword listed below, to create multi-format complex labels.
+</para><para>
+Note that the <userinput>attribute_show</userinput> keyword can be used to "turn off" the display of
+attributes, while still maintain positioning with respect to other attributes.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_magic.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_show.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_anchor.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_ref.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_justification.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_vertical_just.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units for label wind speeds or gusts</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_format.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/attribute_y_off.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@label
+{
+  element            = pressure;
+  level              = msl;
+  category_attribute = FPA_label_type;
+  category           = labeled_low labeled_high cyclone_at_min;
+  x_shift            = 0;
+  y_shift            = 1;
+  justification      = left;
+
+  attribute          = hilo_type;
+  attribute_anchor   = none;
+  attribute_format   = text;
+  attribute_look_up  = hilo;
+  
+  attribute          = cyclone_type;
+  attribute_anchor   = none;
+  attribute_format   = text;
+  attribute_look_up  = cyclone;
+
+  attribute          = EVAL_spval;
+  attribute_anchor   = none;
+  attribute_format   = direct %smb;
+  attribute_x_off    = 10;
+  attribute_y_off    = 0;
+}
+</programlisting>
+Display labels from the msl pressure field if the value for the &FPA; attribute FPA_label_type is one of
+labeled_low, labeled_high or cyclone_at_min. All text will be left justified.
+The &FPA; attribute hilo_type will be displayed as text, by matching the attribute value to the values
+within the look up table <filename>hilo.tab</filename>.
+The &FPA; attribute cyclone_type will be displayed as text, by matching the attribute value to the values
+within the look up table <filename>cyclone.tab</filename>.
+The &FPA; attribute EVAL_spval will be displayed as a string in %smb format (1004mb, for example),
+	located 10 columns (characters) to the right of the label location.
+</para></example>
+
+</para></sect2>

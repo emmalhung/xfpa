@@ -1,0 +1,60 @@
+################################################################################
+#
+#   "Presentation" Local (Office) Presentation Configuration File
+#
+#   This file defines the appearance of all fields that may be displayed in
+#   the graphics editor application.  This refers to both guidance fields and
+#   editable depiction fields.
+#
+#   The default field appearance is defined in the various "Presentation"
+#   Configuration Files that are included at the end of this file.
+#
+#   Information found in this file pertains to the appearance of individual
+#   members of a given field.
+#
+#   If a given member of a given field is already described in a Presentation
+#   Configuration File included below, then this information overrides the
+#   default appearance for that member only.  The default appearance of other
+#   members is not affected.
+#
+#   If the member is not already described, then this information serves to add
+#   a new member to the given field, and defines its appearance.
+#
+#   Omitted attributes resort to default values established in the software
+#   which reads this file (for example: colour=Black, style=solid, font=simplex,
+#   etc).
+#
+################################################################################
+
+revision 6.0
+
+################################################################################
+#
+#   Local presentation information.
+#
+#   Any presentation definitions given here will override the corresponding
+#   defintions in the files included at the end of this file.
+#
+################################################################################
+
+
+
+################################################################################
+#
+#   Include master presentation files, and those related to optional modules.
+#
+################################################################################
+
+##	Severe Weather Predictor fields:
+#	include $FPA/config/Presentation.kasspr
+
+##	Aviation:
+#	include $FPA/config/Presentation.aviation
+
+##	Tropical Storms:
+#	include $FPA/config/Presentation.storm
+
+##	Master presentation files (Must include these):
+	include $FPA/config/Presentation.depict
+	include $FPA/config/Presentation.geog
+	include $FPA/config/Presentation.master

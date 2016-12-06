@@ -1,0 +1,32 @@
+#!/bin/bash
+ID="[get_path]"
+
+# Build a full pathname from the given file and a directory defined by the
+# given keyword in the "directories" block of the given setup file.
+
+# It is up to the calling function to determine whether the resulting path
+# exists!
+
+
+if [ "$1" = "" -o "$2" = "" -o "$3" = "" ]
+then
+	echo "Usage: get_path <setup> <key> <file>" 1>&2
+	exit 1
+fi
+
+# If the given file has an absolute path look no further.
+eval "file=$3"
+if abspath $file
+then
+	echo $file
+	exit 0
+fi
+
+# Get the directory from the setup file.
+dir=`get_directory $1 $2`
+if [ $? -ne 0 ]
+then
+	exit 2
+fi
+echo `pathname $dir $file`
+exit 0

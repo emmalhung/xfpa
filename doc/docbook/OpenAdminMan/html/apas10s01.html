@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>A.10.1. Template of a 'Sources' Block</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apas10.html" title="A.10. Sources block" /><link rel="prev" href="apas10.html" title="A.10. Sources block" /><link rel="next" href="apas11.html" title="A.11. Constants block" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">A.10.1. Template of a 'Sources' Block</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apas10.html">Prev</a> </td><th width="60%" align="center">A.10. Sources block</th><td width="20%" align="right"> <a accesskey="n" href="apas11.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2078478"></a>A.10.1. Template of a 'Sources' Block</h3></div></div></div><p>
+</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>Sources</code></strong></span></dt><dd><p>
+<strong class="userinput"><code>{</code></strong>
+	</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>source_name</code></strong></span></dt><dd><p>
+	<strong class="userinput"><code>{</code></strong>
+		</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		This is the label that the user sees.
+		The default is source_name.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>short_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		The short_label is used when there is not enough room on the <span class="acronym">FPA</span> screen or button to use the longer label.
+		The default is source_name.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>description = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+		This is an optional descriptive label.
+		This parameter is "language" sensitive!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>source_type = </code></strong></span></dt><dd><p>This parameter sets the type of files for a data source.
+		The choices are described in <a href="apas03.html#common_keys" title="Table A.1. Common Keywords">Table A.1</a>.
+		Must be one of: <strong class="userinput"><code>Depiction</code></strong>,
+		<strong class="userinput"><code>Guidance</code></strong>, <strong class="userinput"><code>Allied</code></strong>,
+		<strong class="userinput"><code>Maps</code></strong>, <strong class="userinput"><code>Direct</code></strong>,
+		<strong class="userinput"><code>NotUsed</code></strong>.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>minutes_required = True | False</code></strong></span></dt><dd><p>
+		This parameter identifies whether the data source uses minutes in the file timestamps.
+		The default is False
+		</p></dd><dt><span class="term"><strong class="userinput"><code>alias = <span xmlns="" class="replaceable">alias_name(s)</span></code></strong></span></dt><dd><p>
+		These can be shorter names for use in equations, for example.
+		Alias names cannot be reused by another source.
+		Only the first one encountered gets used.
+		</p></dd><dt><span class="term"><strong class="userinput"><code>directory_tag = None</code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>directory_tag = <span xmlns="" class="replaceable">string</span></code></strong></span></dt><dd><p>
+		This is a directory tag defined in the directories block of the setup file.
+		(See <a href="apg.html" title="Appendix G. Setup File Directory Override Options">Setup File Directory Override Options, (Appendix G)</a> for more information.)
+		Note that this parameter cannot be re-specified (unless changed from <strong class="userinput"><code>None</code></strong>)!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>directory_path = None</code></strong></span></dt><dd><p>
+		OR
+		</p></dd><dt><span class="term">! <strong class="userinput"><code>directory_path = <span xmlns="" class="replaceable">string</span></code></strong></span></dt><dd><p>
+		This is the directory path name in the file structure.
+		This path is appended to the directory identified by directory_tag above.
+		Note that this parameter cannot be re-specified (unless changed from <strong class="userinput"><code>None</code></strong>)!
+		</p></dd><dt><span class="term"><strong class="userinput"><code>directory_layers = <span xmlns="" class="replaceable">number_of_layers</span></code></strong></span></dt><dd><p>
+		This specifies the number of data directories available for saving historical data.
+		The default <span xmlns="" class="replaceable">number_of_layers</span> is 1, which would create just the data directory (specified by directory_tag and directory_path).
+		A value greater than 1 will create (<span xmlns="" class="replaceable">number_of_layers</span> - 1) <code class="filename">Prev</code> subdirectories.
+		(For example, a value of 4 would create <code class="filename"><span xmlns="" class="replaceable">base_directory</span>/Prev/Prev/Prev</code>.)
+		Note that increasing <span xmlns="" class="replaceable">number_of_layers</span> will automatically increase the number of subdirectories in the database, but decreasing <span xmlns="" class="replaceable">number_of_layers</span> will not delete subdirectories! The system rmdir command must be used to delete subdirectories in <span class="acronym">FPA</span> databases.
+			</p></dd><dt><span class="term"><strong class="userinput"><code>subsources = None</code></strong></span></dt><dd><p>
+			OR
+			</p></dd><dt><span class="term"><strong class="userinput"><code>subsources =</code></strong></span></dt><dd><p>
+			These are subdirectories for each source_name.
+			It is not necessary for a source to have subsources.</p><p>
+			<strong class="userinput"><code>{</code></strong>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code><span xmlns="" class="replaceable">subsource_name</span></code></strong></span></dt><dd><p>
+				<strong class="userinput"><code>{</code></strong>
+					</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+					This is the label that the user sees.
+					The default is <span xmlns="" class="replaceable">subsource_name</span>.
+					This parameter is "language" sensitive!
+					</p></dd><dt><span class="term"><strong class="userinput"><code>short_label = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+					The short_label is used when there is not enough room on the <span class="acronym">FPA</span> screen or button to use the longer label.
+					The default is <span xmlns="" class="replaceable">subsource_name</span>.
+					This parameter is "language" sensitive!
+					</p></dd><dt><span class="term"><strong class="userinput"><code>description = <span xmlns="" class="replaceable">label</span></code></strong></span></dt><dd><p>
+					This is an optional descriptive label.
+					This parameter is "language" sensitive!
+					</p></dd><dt><span class="term"><strong class="userinput"><code>sub_directory_path = None</code></strong></span></dt><dd><p>
+					OR
+					</p></dd><dt><span class="term">! <strong class="userinput"><code>sub_directory_path = <span xmlns="" class="replaceable">string</span></code></strong></span></dt><dd><p>
+					This is the subdirectory name in the file structure.
+					This path is appended to the directory identified by directory_tag and directory_path above.
+					Note that this parameter cannot be re-specified (unless changed from <strong class="userinput"><code>None</code></strong>)!
+					</p></dd></dl></div><p>
+				<strong class="userinput"><code>}</code></strong> #(End of <span xmlns="" class="replaceable">subsource_name</span> Block)
+				</p></dd></dl></div><p>
+			<strong class="userinput"><code>}</code></strong> #(End of subsources Block)
+			</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>allied_model = None</code></strong></span></dt><dd><p>
+			OR
+			</p></dd><dt><span class="term"><strong class="userinput"><code>allied_model =</code></strong></span></dt><dd><p>
+			This parameter is used to identify information relating to an Allied Model.
+			Each Allied Model in the <span class="acronym">FPA</span> is identified by its own source_name, and information relating to the Allied Model is contained in this sub block.
+			Note that the allied_model block MUST be specified if source_type = Allied.
+			For all other source_type values, allied_model = None can be used.
+			See <a href="ape.html" title="Appendix E. Adding New Allied Models">Adding New Allied Models, (Appendix E)</a> for more information on Allied Models.</p><p>
+			<strong class="userinput"><code>{</code></strong>
+				</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>time_matching = True | False</code></strong></span></dt><dd><p>
+				This parameter should be set to True if the Allied Model will be run from data files whose times will not match the times required by the Allied Model.
+				The Allied Model will then attempt to find the closest available time to match the requested data.
+				(For example, if the Allied Model requires hourly data and will be run from an <span class="acronym">FPA</span> which will be interpolated to every second hour, then the Allied Model would use the same data for two hourly time steps.)
+				This parameter should be set to False in all other cases.
+				</p></dd><dt><span class="term"><strong class="userinput"><code>source_info = <span xmlns="" class="replaceable">source_name</span> [<span class="optional"><span xmlns="" class="replaceable">subsource_name</span></span>]</code></strong></span></dt><dd><p>
+				This parameter identifies the <span xmlns="" class="replaceable">source_name</span> (and <span xmlns="" class="replaceable">subsource_name</span>, if necessary) of the default location of all input data files for the Allied Model.
+				This is usually interp (for <span class="acronym">FPA</span> interpolated data) or depict (for <span class="acronym">FPA</span> depiction data).
+				</p></dd><dt><span class="term"><strong class="userinput"><code>pre_process = <span xmlns="" class="replaceable">pre_process_run_string</span></code></strong></span></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>process = <span xmlns="" class="replaceable">process_run_string</span></code></strong></span></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>post_process = <span xmlns="" class="replaceable">post_process_run_string</span></code></strong></span></dt><dd><p>
+				These keywords set the run strings for the pre-processing, processing, and post-processing modules of a given Allied Model.
+				These run strings can contain any of the following keywords, which automatically substitute the appropriate parameters into the run string when the Allied Model is run.</p><p>- <strong class="userinput"><code>&lt;SETUP&gt;</code></strong>: for the setup file name</p><p>- <strong class="userinput"><code>&lt;SOURCE&gt;</code></strong>: for the <span xmlns="" class="replaceable">source_name</span> and <strong class="userinput"><code>&lt;SUBSOURCE&gt;</code></strong>: for the <span xmlns="" class="replaceable">subsource_name</span></p><p>- <strong class="userinput"><code>&lt;RTIME&gt;</code></strong>: for the "zero" hour in the Depiction sequence</p><p>- <strong class="userinput"><code>&lt;ELEMENT&gt;</code></strong>: for the active depiction element</p><p>- <strong class="userinput"><code>&lt;LEVEL&gt;</code></strong>: for the active depiction level</p><p>- <strong class="userinput"><code>&lt;VTIME&gt;</code></strong>: for the active depiction</p></dd><dt><span class="term"><strong class="userinput"><code>programs = None</code></strong></span></dt><dd><p>
+				OR
+				</p></dd><dt><span class="term"><strong class="userinput"><code>programs =</code></strong></span></dt><dd><p>
+				This parameter identifies the name(s) and location(s) of the actual Allied Model application(s) that will be launched by the <span class="acronym">FPA</span> when the processing module of the Allied Model is run.</p><p>
+				<strong class="userinput"><code>{</code></strong>
+					</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>program_alias</code></strong></span></dt><dd><p>
+					<strong class="userinput"><code>{</code></strong>
+						</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>directory_tag = None</code></strong></span></dt><dd><p>
+						OR
+						</p></dd><dt><span class="term"><strong class="userinput"><code>directory_tag = <span xmlns="" class="replaceable">string</span></code></strong></span></dt><dd><p>
+						This is a directory tag defined in the directories block of the setup file.
+						(See <a href="apg.html" title="Appendix G. Setup File Directory Override Options">Setup File Directory Override Options, (Appendix G)</a> for more information.)
+						The default is the string from the directory_tag parameter declared at the start of the <span xmlns="" class="replaceable">source_name</span> section.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>program_path = <span xmlns="" class="replaceable">string</span></code></strong></span></dt><dd><p>
+						This is the application name in the file structure.
+						This name is appended to the directory identified by directory_tag above.
+						</p></dd></dl></div><p>
+					<strong class="userinput"><code>}</code></strong> #(End of program_alias Block)
+					</p></dd></dl></div><p>
+				<strong class="userinput"><code>}</code></strong> #(End of programs Block)
+				</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>files = None</code></strong></span></dt><dd><p>
+				OR
+				</p></dd><dt><span class="term"><strong class="userinput"><code>files =</code></strong></span></dt><dd><p>
+				This parameter identifies all input and output files required by the application or the <span class="acronym">FPA</span> pre-processing, processing, or post-processing modules in running the Allied Model.</p><p>
+				<strong class="userinput"><code>{</code></strong>
+					</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>file_alias</code></strong></span></dt><dd><p>
+					<strong class="userinput"><code>{</code></strong>
+						</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>directory_tag = None</code></strong></span></dt><dd><p>
+						OR
+						</p></dd><dt><span class="term"><strong class="userinput"><code>directory_tag = <span xmlns="" class="replaceable">string</span></code></strong></span></dt><dd><p>
+						This is a directory tag defined in the directories block of the setup file.
+						(See <a href="apg.html" title="Appendix G. Setup File Directory Override Options">Setup File Directory Override Options, (Appendix G)</a> for more information.)
+						The default is the string from the directory_tag parameter declared at the start of the <span xmlns="" class="replaceable">source_name</span> section.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>file_path = <span xmlns="" class="replaceable">string</span></code></strong></span></dt><dd><p>
+						This is the file name in the file structure.
+						This name is appended to the directory identified by directory_tag above.
+						</p></dd></dl></div><p>
+					<strong class="userinput"><code>}</code></strong> #(End of file_alias Block)
+					</p></dd></dl></div><p>
+				<strong class="userinput"><code>}</code></strong> #(End of files Block)
+				</p></dd><dt></dt><dd></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>required_fields = None</code></strong></span></dt><dd><p>
+				OR
+				</p></dd><dt><span class="term"><strong class="userinput"><code>required_fields =</code></strong></span></dt><dd><p>
+				This parameter identifies all <span class="acronym">FPA</span> fields required by the application to run the Allied Model.
+				(These fields will be checked when the user requests the Allied Model to be run by the <span class="acronym">FPA</span>.)</p><p>
+				<strong class="userinput"><code>{</code></strong>
+					</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>required_field_alias</code></strong></span></dt><dd><p>
+					<strong class="userinput"><code>{</code></strong>
+						</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>field_info = <span xmlns="" class="replaceable">element_name</span> <span xmlns="" class="replaceable">level_name</span> [<span class="optional"> <span xmlns="" class="replaceable">field_type</span>
+						</span>]</code></strong></span></dt><dd><p>
+						This parameter identifies the required field by element and level. If <span xmlns="" class="replaceable">field_type</span> is specified as <strong class="userinput"><code>Scattered</code></strong> the labels of the required field are used.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>sub_field_info = <span xmlns="" class="replaceable">subfield_name</span> <span xmlns="" class="replaceable">unit_name</span></code></strong></span></dt><dd><p>
+						This parameter identifies the sub field and 'units' of the sub-field for information from a plot object metafile.
+						The <span xmlns="" class="replaceable">subfield_name</span> must be defined in the entity line in the metafile.
+						(Can be used with <strong class="userinput"><code>field_type = Scattered</code></strong> )
+						</p></dd><dt><span class="term"><strong class="userinput"><code>source_info = <span xmlns="" class="replaceable">source_name</span> [<span class="optional"><span xmlns="" class="replaceable">subsource_name</span></span>]</code></strong></span></dt><dd><p>
+						This parameter identifies the <span xmlns="" class="replaceable">source_name</span> (and <span xmlns="" class="replaceable">subsource_name</span>, if necessary) of the location of the required field for the Allied Model.
+						The default is the <span xmlns="" class="replaceable">source_name</span> [<span class="optional"><span xmlns="" class="replaceable">subsource_name</span></span>] from the source_info parameter declared at the start of the allied_model block.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_info_reset = True | False</code></strong></span></dt><dd><p>
+						This parameter resets the attribute_info list given below.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_info = <span xmlns="" class="replaceable">tag attrib_name attrib_units</span></code></strong></span></dt><dd><p>
+						Multiple <strong class="userinput"><code>attribute_info</code></strong> entries can be included to build a list of attributes to use in the allied model. 
+						For attributes from Discrete, Line, Point and LChain type fields.
+						The <span xmlns="" class="replaceable">tag</span> is an arbitrary name that will be used by the allied model to refer to each attribute.
+						The <span xmlns="" class="replaceable">attrib_name</span> is the actual attribute (from the <strong class="userinput"><code>attributes</code></strong> list in the 'Elements' Block)
+						which contains the value to be used, and the <strong class="userinput"><code>attrib_units</code></strong> gives the units of the attribute value.
+						(Note that the use of tags instead of attribute names allows for more generic Allied Models.)
+						</p></dd><dt><span class="term"><strong class="userinput"><code>node_attribute_info_reset = True | False</code></strong></span></dt><dd><p>
+						This parameter resets the node_attribute_info list given below.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>node_attribute_info = <span xmlns="" class="replaceable">tag attrib_name attrib_units</span></code></strong></span></dt><dd><p>
+						Multiple <strong class="userinput"><code>node_attribute_info</code></strong> entries can be included to build a list of node attributes to use in the allied model.
+						For attributes from nodes on LChain type fields.
+						The <span xmlns="" class="replaceable">tag</span> is an arbitrary name that will be used by the allied model to refer to each attribute.
+						The <span xmlns="" class="replaceable">node_attrib_name</span> is the actual attribute (from the <strong class="userinput"><code>attributes</code></strong> list in the 'Elements' Block)
+						which contains the value to be used, and the <strong class="userinput"><code>node_attrib_units</code></strong> gives the units of the attribute value.
+						(Note that the use of tags instead of attribute names allows for more generic Allied Models.)
+						</p></dd></dl></div><p>
+					<strong class="userinput"><code>}</code></strong> #(End of required_field_alias Block)
+					</p></dd></dl></div><p>
+				<strong class="userinput"><code>}</code></strong> #(End of required_fields Block)
+				</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>required_wind_crossrefs = None</code></strong></span></dt><dd><p>
+				OR
+				</p></dd><dt><span class="term"><strong class="userinput"><code>required_wind_crossrefs =</code></strong></span></dt><dd><p>
+				This parameter identifies all <span class="acronym">FPA</span> wind cross-reference fields required by the application to run the Allied Model.
+				(These wind cross-references will be checked when the user requests the Allied Model to be run by the <span class="acronym">FPA</span>.)</p><p>
+				<strong class="userinput"><code>{</code></strong>
+					</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>required_wind_crossref_alias</code></strong></span></dt><dd><p>
+					<strong class="userinput"><code>{</code></strong>
+						</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>crossref_info = <span xmlns="" class="replaceable">crossref_name</span></code></strong></span></dt><dd><p>
+						This parameter identifies the required wind cross-reference.
+						The <span xmlns="" class="replaceable">crossref_name</span> is from the Winds sub block of the 'CrossRefs' block.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>source_info = <span xmlns="" class="replaceable">source_name</span> [<span class="optional"><span xmlns="" class="replaceable">subsource_name</span></span>]</code></strong></span></dt><dd><p>
+						This parameter identifies the <span xmlns="" class="replaceable">source_name</span> (and <span xmlns="" class="replaceable">subsource_name</span>, if necessary) of the location of the required wind cross-reference for the Allied Model.
+						The default is the <span xmlns="" class="replaceable">source_name</span> [<span class="optional"><span xmlns="" class="replaceable">subsource_name</span></span>] from the source_info parameter declared at the start of the allied_model block.
+						</p></dd></dl></div><p>
+					<strong class="userinput"><code>}</code></strong> #(End of required_wind_crossref_alias Block)
+					</p></dd></dl></div><p>
+				<strong class="userinput"><code>}</code></strong> #(End of required_wind_crossrefs Block)
+				</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>required_value_crossrefs = None</code></strong></span></dt><dd><p>
+				OR
+				</p></dd><dt><span class="term"><strong class="userinput"><code>required_value_crossrefs =</code></strong></span></dt><dd><p>
+				This parameter identifies all <span class="acronym">FPA</span> value cross-reference fields required by the application to execute the Allied Model.
+				(These value cross-references will be checked when the user requests the Allied Model to be run by the <span class="acronym">FPA</span>.)</p><p>
+				<strong class="userinput"><code>{</code></strong>
+					</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>required_value_crossref_alias</code></strong></span></dt><dd><p>
+					<strong class="userinput"><code>{</code></strong>
+						</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>crossref_info = <span xmlns="" class="replaceable">crossref_name</span></code></strong></span></dt><dd><p>
+						This parameter identifies the required value cross-reference.
+						The <span xmlns="" class="replaceable">crossref_name</span> is from the Values sub block of the 'CrossRefs' block.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>source_info = <span xmlns="" class="replaceable">source_name</span> [<span class="optional"><span xmlns="" class="replaceable">subsource_name</span></span>]</code></strong></span></dt><dd><p>
+						This parameter identifies the <span xmlns="" class="replaceable">source_name</span> (and <span xmlns="" class="replaceable">subsource_name</span>, if necessary) of the location of the required value cross-reference for the Allied Model.
+						The default is the <span xmlns="" class="replaceable">source_name</span> [<span class="optional"><span xmlns="" class="replaceable">subsource_name</span></span>] from the source_info parameter declared at the start of the allied_model block.
+						</p></dd></dl></div><p>
+					<strong class="userinput"><code>}</code></strong> #(End of required_value_crossref_alias Block)
+					</p></dd></dl></div><p>
+				<strong class="userinput"><code>}</code></strong> #(End of required_value_crossrefs Block)
+				</p></dd><dt></dt><dd></dd><dt><span class="term"><strong class="userinput"><code>metafiles = None</code></strong></span></dt><dd><p>
+				OR
+				</p></dd><dt><span class="term"><strong class="userinput"><code>metafiles =</code></strong></span></dt><dd><p>
+				This parameter identifies all <span class="acronym">FPA</span> metafiles produced by running the Allied Model.
+				The metafiles are output to the directory determined from the directory_tag, directory_path, and sub_directory_path parameters identified above.</p><p>
+				<strong class="userinput"><code>{</code></strong>
+					</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>metafile_alias</code></strong></span></dt><dd><p>
+					<strong class="userinput"><code>{</code></strong>
+						</p><div class="variablelist"><dl><dt><span class="term"><strong class="userinput"><code>file_alias = <span xmlns="" class="replaceable">file_alias</span></code></strong></span></dt><dd><p>
+						This parameter identifies a member of the files block above from which the metafile information will be extracted.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>field_info = <span xmlns="" class="replaceable">element_name</span> <span xmlns="" class="replaceable">level_name</span></code></strong></span></dt><dd><p>
+						This parameter identifies the output metafile by element and level.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_info_reset = True | False</code></strong></span></dt><dd><p>
+						This parameter resets the attribute_info list given below.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>attribute_info = <span xmlns="" class="replaceable">tag attrib_name attrib_units</span></code></strong></span></dt><dd><p>
+						Multiple <strong class="userinput"><code>attribute_info</code></strong> entries can be included to build a list of attributes to output from in the allied model. 
+						For attributes from Discrete, Line, Point and LChain type fields. 
+						The <span xmlns="" class="replaceable">tag</span> is an arbitrary name that will be used by the allied model to refer to each attribute.
+						The <span xmlns="" class="replaceable">attrib_name</span> is the actual attribute (from the <strong class="userinput"><code>attributes</code></strong> list in the 'Elements' Block)
+						which contains the value to be used, and the <strong class="userinput"><code>attrib_units</code></strong> gives the units of the attribute value.
+						(Note that the use of tags instead of attribute names allows for more generic Allied Models.)
+						</p></dd><dt><span class="term"><strong class="userinput"><code>default_attrib_info_reset = True | False</code></strong></span></dt><dd><p>
+						This parameter resets the default_attrib_info list given below.
+						</p></dd><dt><span class="term"><strong class="userinput"><code>default_attrib_info = <span xmlns="" class="replaceable">attrib_name attrib_value</span></code></strong></span></dt><dd><p>
+						Multiple <strong class="userinput"><code>default_attrib_info</code></strong> entries can be included to build a list of default attributes to output from the allied model. 
+						The <span xmlns="" class="replaceable">attrib_name</span> is the actual attribute (from the <strong class="userinput"><code>attributes</code></strong> list in the 'Elements' Block),
+						and the <strong class="userinput"><code>attrib_value</code></strong> gives the default attribute value.
+						</p></dd></dl></div><p>
+					<strong class="userinput"><code>}</code></strong> #(End of metafile_alias Block)
+					</p></dd></dl></div><p>
+				<strong class="userinput"><code>}</code></strong> #(End of metafiles Block)
+				</p></dd></dl></div><p>
+			<strong class="userinput"><code>}</code></strong> #(End of allied_model Block)
+			</p></dd></dl></div><p>
+	<strong class="userinput"><code>}</code></strong> #(End of <span xmlns="" class="replaceable">source_name</span> Block)
+	</p></dd></dl></div><p>
+<strong class="userinput"><code>}</code></strong> #(End of Sources Block)
+</p></dd></dl></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apas10.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apas10.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apas11.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">A.10. Sources block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> A.11. Constants block</td></tr></table></div></body></html>

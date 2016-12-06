@@ -1,0 +1,79 @@
+# Define all the usual places to look for things:
+LIBPATH = $${LIB_PATH} -L$(LIBDIR)/$${PLATFORM} -L$(SLIBDIR)/$${PLATFORM}
+INCPATH = $${INCLUDE_PATH} $${X_INCLUDE} \
+			-I$(INCDIR) -I$(LIBDIR) -I$(SINCDIR) -I$(SLIBDIR)
+
+LDIR    = $(SLIBDIR)/$(PLATFORM)
+LIB     = $(LDIR)/libXmp.a
+
+MODULES =	XmpDoubleSS.o \
+			XmpSpinBox.o \
+			XmpGeometry.o \
+			SciPlot.o
+
+
+HEADER =	$(SINCDIR)/Xm/XmpDoubleSS.h \
+			$(SINCDIR)/Xm/XmpSpinBox.h \
+			$(SINCDIR)/Xm/SciPlot.h
+
+
+HEADERS =	XmpDoubleSS.h \
+			XmpDoubleSSP.h \
+			XmpSpinBox.h \
+			XmpSpinBoxP.h \
+			XmpGeometry.h \
+			XmpGeometryP.h \
+			SciPlot.h SciPlotP.h
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+.PRECIOUS:	$(LIB) $(MODULES) $(HEADER)
+
+
+# Rules for building the library:
+all lib:	$(HEADER) Pmodules $(LIB)
+		@	echo FPA $${PLATFORM} Xmp library ready
+		@	echo
+
+$(LIB):		$(MODULES)
+		@	echo Re-building FPA $${PLATFORM} Xmp library
+		@   if [ ! -d $(LDIR) ]; then mkdir -p $(LDIR); fi
+		@	if [ -f $(LIB) ]; then rm -f $(LIB); fi
+		@	sleep 1
+		@	$${LIB_ARCHIVE} $(LIB) $(MODULES) 2>/dev/null
+
+
+# Rules for building the object modules:
+modules:	$(HEADER) Pmodules $(MODULES)
+Pmodules:
+		@	$(SBINDIR)/platform_get object "FPA Xmp library"
+
+$(MODULES):		$(HEADERS)
+
+# Rules for building the master header file:
+defs header:	$(HEADER)
+$(HEADER):		$(HEADERS)
+			@	echo Updating FPA Xmp library headers
+			@	if [ ! -d $(SINCDIR)/Xm ]; then mkdir -p $(SINCDIR)/Xm; fi
+			@	cp XmpDoubleSS.h $(SINCDIR)/Xm/XmpDoubleSS.h
+			@	cp XmpSpinBox.h $(SINCDIR)/Xm/XmpSpinBox.h
+			@	cp SciPlot.h $(SINCDIR)/Xm/SciPlot.h
+			@	sleep 1
+XmpDoubleSSP.h:		XmpDoubleSS.h
+		@	sleep 1; touch $@
+XmpSpinBoxP.h:		XmpSpinBox.h
+		@	sleep 1; touch $@
+SciPlotP.h:	SciPlot.h
+		@	sleep 1; touch $@
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $${PLATFORM} X utilities module $<"
+	@	$${C_COMPILER} -c $(INCPATH) $(C_OPTIONS) $<
+	@	rm -f $${PLATFORM}/$@
+	@	ln $@ $${PLATFORM}

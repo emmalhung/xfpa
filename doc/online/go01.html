@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Terminology</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="prev" href="apa.html" title="Appendix A. Setting command line parameters in the FPA" /><link rel="next" href="ix01.html" title="Index" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Terminology</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apa.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ix01.html">Next</a></td></tr></table><hr /></div><div class="glossary"><div class="titlepage"><div><div><h2 class="title"><a id="terminology"></a>Terminology</h2></div></div></div><div class="glossdiv"><h3 class="title">A</h3><dl><dt><a id="g_active_depiction"></a>Active Depiction</dt><dd><a id="id1507032" class="indexterm"></a><p>
+The current depiction you are working on.
+</p></dd><dt><a id="g_allied_models"></a>Allied Models</dt><dd><a id="id1519712" class="indexterm"></a><p>
+Models which are run by the FPA, using data from the FPA, to generate other data (for example, ocean wave models).
+The models are usually developed elsewhere.
+</p></dd><dt><a id="g_attributes"></a>Attributes</dt><dd><a id="id1514032" class="indexterm"></a><p>
+Attributes are optional parameters which can be attached to any feature in an FPA field.
+For example, a minimum in the pressure field could be identified as a tropical storm, with a name and a radius of influence.
+Similarly, one could indicate the speed and intensity of a cold front.
+</p><p>
+The ability to assign attributes to areas is particularly useful in aviation forecasting.
+For example, forecasters can attach attributes to a cloud area such as cloud amount, cloud type, base of cloud, top of cloud, surface weather and visibility, icing or any other desired parameter.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">B</h3><dl><dt><a id="g_backup"></a>Backup</dt><dd><a id="id1572151" class="indexterm"></a><p>
+A backup is created every time you save a field.
+The number of days for which the field is retained is set in the setup file (contact System Administrator to change this).
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">C</h3><dl><dt><a id="g_coview"></a>CoView</dt><dd><a id="id1572182" class="indexterm"></a><p>
+This feature lets you view the workspace of another depiction.
+(You cannot edit the other depiction, however.) Use this to share your work with other FPA users.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">D</h3><dl><dt><a id="g_daily_fields"></a>Daily Fields</dt><dd><a id="id1637788" class="indexterm"></a><p>
+Daily fields are fields which are valid for a specific day (for example, maximum temperature).
+The time range of a daily field may span more than one depiction.
+See <a href="ch02.html" title="Chapter 2. The FPA Model">The <span class="acronym">FPA</span> Model, (Chapter 2)</a>.
+Daily fields are not interpolated, but can be edited.
+</p></dd><dt><a id="g_depiction"></a>Depiction</dt><dd><a id="id1637819" class="indexterm"></a><p>
+A depiction is your workspace; it is a graphic image of the geographic area overlaid with specific weather fields.
+Load fields into depictions and then modify a sequence of depictions to describe the forecast weather.
+Each depiction is valid for a specific date and time.
+See <a href="ch02.html" title="Chapter 2. The FPA Model">The <span class="acronym">FPA</span> Model, (Chapter 2)</a>.
+</p></dd><dt><a id="g_depiction_sequence"></a>Depiction Sequence</dt><dd><a id="id1637849" class="indexterm"></a><p>
+A depiction sequence is a time ordered set of depictions.
+A depiction can be thought of as a keyframe in a movie.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">E</h3><dl><dt><a id="g_elements"></a>Elements</dt><dd><a id="id1637984" class="indexterm"></a><p>
+Elements are atmospheric parameters such as pressure, temperature or u/v component wind.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">F</h3><dl><dt><a id="g_features"></a>Features</dt><dd><a id="id1638014" class="indexterm"></a><p>
+A feature is a recognizable shape or pattern in a data field.
+For example, the shape of contours that delineate a low pressure centre represent a "feature" of the pressure field.
+Similarly, the shape of an area of rain represents a feature of the precipitation field.
+Forecasters rely heavily on the remarkable ability of the human mind to recognize features in data.
+</p></dd><dt><a id="g_fields"></a>Fields</dt><dd><a id="id1638040" class="indexterm"></a><p>
+Fields are elements at a specific level, for example msl pressure.
+Any given instance of a normal field can only exist in one depiction (See <a href="ch02.html" title="Chapter 2. The FPA Model">The <span class="acronym">FPA</span> Model, (Chapter 2)</a>.) There are different types of fields:
+</p><div class="itemizedlist"><ul type="disc"><li><p>
+Continuous fields (e.g., pressure surface heights, humidity, etc.) are modeled with splines on the FPA, instead of using the more common grid-point methods.
+</p></li><li><p>
+Vector fields are component fields like winds or waves that have both magnitude and direction.
+</p></li><li><p>
+Two-dimensional fields are areas or polygons.
+Areas of clouds and weather are represented as areas on the FPA.
+</p></li><li><p>
+One-dimensional fields are lines like fronts, ridge lines, etc.
+</p></li><li><p>
+Point fields or plot-objects, are used to display point values like surface observations.
+</p></li></ul></div><p>
+Different graphical editors are used to manipulate one-dimensional, two-dimensional and continuous fields.
+</p><p>See Also <a href="go01.html#g_daily_fields">Daily Fields</a>, <a href="go01.html#g_static_fields">Static Fields</a>.</p></dd><dt><a id="g_field_group"></a>Field Group</dt><dd><a id="id1565901" class="indexterm"></a><p>
+Fields are grouped to make them easier to work with. Groups are defined by your system administrator. Speak to your system administrator if you prefer to see them grouped differently.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">G</h3><dl><dt><a id="g_grib"></a>Gridded Binary files (GRIB)</dt><dd><a id="id1565934" class="indexterm"></a><p>
+Major <span class="acronym">NWP</span> centres (CMC, <span class="acronym">NCEP</span>, <span class="acronym">ECMWF</span>, etc.) distribute their model output as GRIB files that you can load into the FPA.
+In Canada, CMC distributes GRIB message from the <span class="acronym">GEM</span> model.
+Each Weather Centre receives the national distribution as well as a set of Regional GRIB messages that contain subsidiary data that the Region has specifically requested.
+</p></dd><dt><a id="g_groups"></a>Groups</dt><dd><a id="id1565974" class="indexterm"></a><p>
+Groups are field classifications.
+The classification of fields into groups is a matter of office preference.
+</p></dd><dt><a id="g_guidance"></a>Guidance</dt><dd><a id="id1571990" class="indexterm"></a><p>
+Guidance comprises fields or data (e.g., <span class="acronym">NWP</span> model output) that the FPA gets from remote system(s) or from allied models.
+You can display, overlay and even annotate (label or draw lines on) guidance, but you cannot edit it.
+Note that you can use depictions as guidance-that is, you can overlay one depiction over another to act as reference; this is useful for drawing areas of clouds and weather.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">I</h3><dl><dt><a id="g_interpolation"></a>Interpolation</dt><dd><a id="id1572025" class="indexterm"></a><p>
+The intermediate depictions obtained by interpolating between the depictions in the sequence to some constant time interval.
+Each interpolated depiction (interpolation) is a complete weather depiction itself.
+In this way, you can work on charts that are spaced arbitrarily in time (e.g., 9 hours, 12 hours, etc.) and produce hourly charts.
+See Sequence.
+</p><div class="itemizedlist"><ul type="disc"><li><p> Interpolations can be imported back into the depiction sequence and re-linked if necessary.
+This allows you to accelerate or decelerate weather systems.
+</p></li><li><p> Some functions (e.g., text generation) require interpolated depictions.
+</p></li><li><p> Interpolations can be animated (see <a href="ch16s04s01.html" title="16.4.1. Animating your depictions">Animating your depictions, (Section 16.4.1)</a>)
+</p></li></ul></div><p>
+</p><p>See Also <a href="go01.html#g_sequence">Sequence</a>.</p></dd></dl></div><div class="glossdiv"><h3 class="title">L</h3><dl><dt><a id="g_levels"></a>Levels</dt><dd><a id="id1572087" class="indexterm"></a><p>
+Levels are vertical parameters in the atmosphere such as msl, surface, 850mb or 500-1000mb.
+</p></dd><dt><a id="g_link"></a>Link</dt><dd><a id="id1600774" class="indexterm"></a><p>
+A link is the segment joining two link nodes.
+</p><p>See Also <a href="go01.html#g_time_link">Time Link</a>.</p></dd><dt><a id="g_link_chain"></a>Link Chain</dt><dd><a id="id1600806" class="indexterm"></a><p>
+A link chain is comprised of one or more links.
+</p><p>See Also <a href="go01.html#g_time_link">Time Link</a>.</p></dd><dt><a id="g_link_node"></a>Link Node</dt><dd><a id="id1600837" class="indexterm"></a><p>
+Link node is a point which indicates a significant feature on a depiction.
+</p><p>See Also <a href="go01.html#g_time_link">Time Link</a>.</p></dd></dl></div><div class="glossdiv"><h3 class="title">M</h3><dl><dt><a id="g_metafile"></a>Metafile</dt><dd><a id="id1600874" class="indexterm"></a><p>
+A metafile is a file containing "higher-order" information.
+In a computer graphics context, metafiles usually contain some kind of display independent data format.
+FPA metafiles are display independent, but also presentation independent.
+For example, an FPA metafile would store the outline of a rain area but not what colour should be used to draw the outline.
+Objects in an FPA metafile also have the geographical reference information needed to have spatial meaning on a map.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">N</h3><dl><dt><a id="g_normal_fields"></a>Normal Fields</dt><dd><a id="id1600908" class="indexterm"></a><p>
+</p><p>See Also <a href="go01.html#g_fields">Fields</a>.</p></dd></dl></div><div class="glossdiv"><h3 class="title">O</h3><dl><dt><a id="g_object_database"></a>Object Database</dt><dd><a id="id1551548" class="indexterm"></a><p>
+An object oriented paradigm organizes data such that characteristics of an entity are encapsulated and methods of access are defined.
+The objects stored in the FPA are the various meteorological fields.
+It is important to note that the FPA is first and foremost a database tool with a graphical user interface (<span class="acronym">GUI</span>) attached.
+This fact separates the FPA from most drawing tools.
+</p><p>
+The FPA does not use relational database technology to store objects.
+When the FPA was first developed, there was virtually no commercial spatial database technology available.
+Instead a very robust system was built from the ground up for reading and writing proprietary graphics metafiles.
+Specifications for the FPA metafiles are available on request.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">P</h3><dl><dt><a id="g_presentation"></a>Presentation</dt><dd><a id="id1551589" class="indexterm"></a><p>
+Presentation refers to the ways things look when displayed.
+For example, line style, colour, and contour intervals are all presentation parameters.
+The FPA design takes special care in making sure that users can set their own presentation parameters by means of configuration files.
+</p></dd><dt><a id="g_psmet"></a>PSMet</dt><dd><a id="id1551614" class="indexterm"></a><p>
+A program to produce graphical products for end-users.
+Use this to design your own graphical products quickly; use any graphics package to do touch-ups.
+</p><div class="cmdsynopsis"><p><code class="command">psmet</code>  {<span xmlns="" class="replaceable">setup_file</span>} {<span xmlns="" class="replaceable">psmet_sub_directory</span>} {<span xmlns="" class="replaceable">pdf_filename</span>} {<span xmlns="" class="replaceable">run_time</span>}</p></div><p>
+</p></dd><dt><a id="g_puck"></a>Puck</dt><dd><a id="id1551688" class="indexterm"></a><p>
+A rubber disc used in the game of ice hockey, an extremely popular sport in Canada.
+In the context of the FPA, a puck describes a circular sculpting tool.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">R</h3><dl><dt><a id="g_radius_of_influence"></a>Radius of influence</dt><dd><a id="id1551721" class="indexterm"></a><p>
+The radius of influence controls the extent of smoothing which occurs when the <span class="emphasis"><em>move</em></span> tool is used on a continuous or vector field.
+</p><p>
+The percentage indicates the affected area surrounding the point of edit.
+</p><p>
+Note: Percentages range from 1 to 100 where 1 is the minimum radius of influence and 100 is approximately one quarter of the map area.
+Your System Administrator establishes the exact percentage increments.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">S</h3><dl><dt><a id="g_sequence"></a>Sequence</dt><dd><a id="id1562776" class="indexterm"></a><p>
+A depiction sequence refers to the collection of depictions.
+</p></dd><dt><a id="g_sculpting"></a>Sculpting</dt><dd><a id="id1562799" class="indexterm"></a><p>
+Modifying a line or outline using the puck tool.
+</p></dd><dt><a id="g_static_fields"></a>Static Fields</dt><dd><a id="id1562822" class="indexterm"></a><p>
+Static fields are elements which have values that are approximately constant until another static field is specified (for example, sea ice).
+Static fields usually span more than one depiction.
+They are not interpolated, but can be edited.
+</p></dd><dt><a id="g_svgmet"></a>SVGMet</dt><dd><a id="id1562849" class="indexterm"></a><p>
+A program to produce graphical products for end-users.
+Use this to design your own graphical products quickly; use any vector graphics package to do touch-ups.
+</p><div class="cmdsynopsis"><p><code class="command">svgmet</code>  {<span xmlns="" class="replaceable">setup_file</span>} {<span xmlns="" class="replaceable">svgmet_sub_directory</span>} {<span xmlns="" class="replaceable">pdf_filename</span>} {<span xmlns="" class="replaceable">run_time</span>}</p></div><p>
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">T</h3><dl><dt><a id="g_target_depiction"></a>Target Depiction</dt><dd><a id="id1562929" class="indexterm"></a><p>
+Target Depiction defines the date and time that you want the depiction to appear in the sequence.
+</p></dd><dt><a id="g_texmet"></a>TexMet</dt><dd><a id="id1562953" class="indexterm"></a><p>
+A program to produce tabular products for end-users.
+Use this to design your own tabular products quickly; use any text editor to do touch-ups.
+</p><div class="cmdsynopsis"><p><code class="command">texmet</code>  {<span xmlns="" class="replaceable">setup_file</span>} {<span xmlns="" class="replaceable">texmet_sub_directory</span>} {<span xmlns="" class="replaceable">pdf_filename</span>} {<span xmlns="" class="replaceable">run_time</span>}</p></div><p>
+</p></dd><dt><a id="g_time_link"></a>Time Link</dt><dd><a id="id1563027" class="indexterm"></a><p>
+When you create a time link you are indicating that a significant feature on one depiction evolved from a significant feature on another depiction so that the FPA knows they are the same.
+The FPA uses these link chains to interpolate the depictions through time.
+See <a href="ch02.html" title="Chapter 2. The FPA Model">The <span class="acronym">FPA</span> Model, (Chapter 2)</a>.
+</p></dd></dl></div><div class="glossdiv"><h3 class="title">Z</h3><dl><dt><a id="g_zoom"></a>Zoom</dt><dd><a id="id1563063" class="indexterm"></a><p>
+Lets you magnify and expand the map area graphically and pan the magnified area.
+This makes it easier to work on depictions close up.
+</p></dd></dl></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apa.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ix01.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix A. Setting command line parameters in the <span class="acronym">FPA</span> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Index</td></tr></table></div></body></html>

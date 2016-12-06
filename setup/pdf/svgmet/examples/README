@@ -1,0 +1,78 @@
+Example Graphics Products for SVGMet
+
+This directory contains some examples of graphic products which can
+be generated from the SVGMet version of the Graphics Product Generator.
+The controlling "fpdf" files are given in upper-case letters.  A short
+description of each product is given below.
+
+These examples are meant to be run from the FPA demo database, but
+they can be modified to run from a local database if desired.  The
+user should make a copy of the required "fpdf" files in the local
+"svgmet" directory, and modify lines followed by the comment ...
+
+  !EDIT!
+
+The graphics products are ...
+
+TABLE and FTABLE
+
+  Tabular form of weather (as symbols) and temperature (in degrees
+  Celsius for TABLE or degrees Fahrenheit for FTABLE) for selected
+  locations for overnight and the following day.
+
+PUBLIC and PUBLIC_PERSPECTIVE
+
+  Media style graphic with a tabular forecast underneath.  Note that
+  the weather areas are filled with colour, filled with symbols,
+  outlined with a patterned line, and also labelled at locations
+  set within the FPA.  Note that PUBLIC_PERSPECTIVE displays a
+  perspective view of the same map area, tilted backwards from the
+  bottom edge of the map.
+
+MAXBANDS
+
+  Media style graphic with colour banded maximum temperature
+  contours, with weather symbols and temperatures at selected locations.
+
+WAVES
+
+  Marine style graphic with contoured wave heights.  Note that winds
+  are displayed at locations set within the FPA.
+
+AVIATION_2
+
+  Aviation style 2 panel graphic forecast with complex labels.  The
+  first panel is for clouds and weather, the second for icing and
+  turbulence.  Note that the geography for this graphic is pre-determined
+  (from the graphic product AVIATION_2_GEOGRAPHY), and thus the
+  processing time is significantly reduced.  Note also that the text
+  files in the "Comments" sections are produced from the TexMet tabular
+  product COMMENTS_AVIATION_2.  These text files are meant to be edited
+  to add necessary comments before the AVIATION_2 product is generated.
+
+AVIATION_2_GEOGRAPHY
+
+  Pre-determined geography for graphic product AVIATION_2.  Note that
+  the "@size" directive must set height greater than width (so that the
+  page will be aligned "upright" or in "portrait" mode), and that the
+  "@define_map_placement" directive must be offset to the lower left
+  corner of the page for the geography to display correctly.
+
+AVIATION_ROUTES
+
+  Aviation style route forecast in space and time between Boston (BOS)
+  and St John's, Newfoundland (YYT), with stops at Halifax, Nova Scotia
+  (YHZ) and Gander, Newfoundland (YQX).  The two graphics display
+  trips over the same route at the same time, but in opposite directions.
+  The cloud and weather information is extracted from an FPA database
+  interpolated to every 5 minutes.  Note that three subdirectories
+  (RouteLookups1, RoutLookups2 and RouteLookups3) contain the set
+  of location lookup files to shift the transit time of the trips from
+  between T+0:00 and T+9:00 to between T+1:30 and T+10:30, or to between
+  T+3:00 and T+12:00.  Note that the only difference in the main fpdf
+  file in the subdirectories, AVIATION_ROUTES.fpdf, is the name of the
+  output graphics file.
+
+
+These examples may be used as templates for local graphics products.
+Good Luck.

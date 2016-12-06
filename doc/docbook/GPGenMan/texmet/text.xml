@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_text'> <title>@text</title> <titleabbrev>@text</titleabbrev>
+<para>
+Display text (including text from a file) in the ASCII output file.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>text_file</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Full path for file containing text to display</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>string</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Text to display
+</para><para>(Note: use <userinput>\</userinput> before all control characters)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>attribute</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>"Magic" attribute containing value to display</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Format of "magic" attribute to display
+</para><para>Must use: <userinput>direct &cform;</userinput>
+</para><para>(Note: &cform; is an optional string which contains a <command>printf</command> conversion format for the "magic" attribute. See <xref linkend='magic_attributes'/> for conversion formats for each attribute.)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_off.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For table display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/table_name_obj.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For grid display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/grid_name.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For list display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/list_name.xml'/>
+
+<row valign='top'><entry spanname='tblnote'>&extraline;<para>For table or list display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/valid_time.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@text
+{
+  table_name   = T1;
+  string       = |                |;
+  x_off        = 18;
+  y_off        = 0;
+  justification = left;
+}</programlisting>
+Display the text string "|&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|" for each site (from the <link linkend='tx_table_site'>@table_site</link> directive) of a table called
+"T1" (from the <link linkend='tx_define_table'>@define_table</link> directive). The string will be displayed 18 columns (characters) to
+the right of the current "anchor position" in the table, and left justified.
+(Note that "anchor position" is set by <link linkend='tx_anchor'>@anchor</link>.)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@text
+{
+  text_file = $FPA/setup/pdf/texmet/examples/example_file;
+  x_off    = 0;
+  y_off    = 35;
+}</programlisting>
+Display text from the file <filename><envar>$FPA</envar>/setup/pdf/texmet/examples/example_file</filename> 35 rows (lines) below the
+current "anchor position". (Note that "anchor position" is set by <link linkend='tx_anchor'>@anchor</link>.)
+</para></example>
+</para></sect2>

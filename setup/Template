@@ -1,0 +1,923 @@
+##############################################################################
+#
+#  FPA Setup File
+#
+##############################################################################
+
+revision 8.0
+
+##############################################################################
+#
+#  This setup file provides customised information to all FPA applications.
+#  Some of the information pertains to every application, while other
+#  information is relevant to specific applications.  To facilitate this,
+#  the information in this file is organized into logical blocks.  Each block
+#  is represented in the following simple structure:
+#
+#      block_id
+#      {
+#          keyword value1 value2 ...
+#          keyword value1 value2 ...
+#      }
+#
+#  Note: (1) Lines starting with a "#" or "*" are comments.
+#        (2) To maintain embedded spaces put the string in quotes.
+#        (3) Brackets delimiting a block must be on their own line.
+#        (4) In some instances '$' may be used in a value to refer to shell
+#            variables, but correct expansion of complex patterns is not
+#            guaranteed.
+#
+##############################################################################
+
+##############################################################################
+#
+#  Target Map Setup:
+#
+#  This block defines the target map projection and related parameters used by
+#  all FPA applications.
+#
+#  All data brought into the application will be transformed to the map
+#  projection given here.
+#
+#  The information here takes precedence over the map projections given in
+#  the map background and overlays, the depictions and the ingested guidance.
+#
+#  If you wish to have an ingest using a different target map projection or
+#  resolution you must use a separate setup file for your ingest process.
+#
+#  The target map projection is defined by 3 lines, beginning with
+#  "projection", "mapdef" and "resolution".  The "projection" and "mapdef"
+#  lines use the same format as the current metafile standard (version 1.5 and
+#  later).  The "resolution" line specifies the desired spline resolution and
+#  units for continuous spline fields.
+#
+#  Latitudes and longitudes may be specified in decimal degrees, or degrees,
+#  minutes and seconds.  The hemisphere may be indicated by a letter (N,S,E,W)
+#  or by a sign (+=N,E -=S,W).  Examples:
+#
+#     52W
+#     45.75N    (decimal)
+#     67:45W    (degrees-minutes)
+#     47:33:20N (degrees-minutes-seconds)
+#
+##############################################################################
+
+target_map
+{
+#!	Specify target map projection (examples):
+#	projection	polar_stereographic north 60N
+#	projection	oblique_stereographic 40N 60W
+#	projection	lambert_conformal 60N 30N
+#	projection	mercator_equatorial
+#	projection	plate_caree
+
+	<<projection>>
+
+#!	Specify target map definition (examples):
+##	parameters: origin-lat origin-lon vertical-lon xmin ymin xmax ymax units
+#	mapdef	26:45N 90W 85W 0 0 4000 5000 1000		# eastern North America #
+#	mapdef	44N 117:30W 87W 0 0 5200 4400 1000		# Canadian arctic       #
+#	mapdef	45N 80W 80W -2000 -2500 2000 2500 1000	# centered Ontario map  #
+#	mapdef	45N 20E 20E -2000 -2500 2000 2500 1000	# centered Europe map   #
+#	mapdef	35N 110W 110W -3000 -3000 3000 3000 1609.2	# centered U.S. map #
+
+	<<mapdef>>
+
+#!	Specify target chart resolution (examples):
+##	Parameters: res units
+##	Best if xmax-xmin and ymax-ymin are both multiples of res
+#	resolution	 30 1000	#  30 km #
+#	resolution	100 1000	# 100 km #
+#	resolution	200 1000	# 200 km #
+#	resolution	500 1000	# 500 km #
+#	resolution	200 1609.2	# 200 mi #
+
+	<<resolution>>
+}
+
+##############################################################################
+#
+#  Directories Setup:
+#
+#  This block defines the directories used by all FPA applications.
+#
+#  The first word is a key used by the system software to identify the
+#  directory and the second is the path of the directory.
+#
+#  Use of "home" directory:
+#
+#    If a "home" directory is defined in this block all relative paths will be
+#    interpretted as being relative to its path.  The library software which
+#    reads this file does a chdir() to the "home" directory automatically.
+#
+#    If "home" is omitted from this block, no chdir() will be done.  Instead,
+#    all relative paths will be interpretted as relative to the directory
+#    defined by the $FPA environment variable (or $HOME if $FPA is not
+#    defined), and will be converted to absolute paths by concatenating this
+#    directory.
+#
+#  Default directories:
+#
+#    Most of the directories that can be specified here have been given
+#    internal default values.  For most directories, the default is
+#    appropriate and a value does not need to be specified in this file.
+#
+#    Many directory keys can actually refer to a list of directories.  If so,
+#    this defines a prioritized sequence of places to look, when searching for
+#    an existing file.  The first matching file found is used.
+#
+#    If a directory key is defined in this block, then the specified directory
+#    is searched ahead of the default directories.  This provides a mechanism
+#    to supply local files that override certain default files.
+#
+#    To view the internally defined list of default directories, use the
+#    fpadir utility.
+#
+##############################################################################
+
+directories
+{
+#!	Home directory:
+##	If this setup file was built by the mkfpadb or mkfpasetup script then this
+##	entry should be correct, otherwise set it to the absolute path of your
+##	database directory
+	home			<<data>>
+
+#!	Local setup and config directories
+	setup			<<sdir>>
+	config			<<cdir>>
+
+##	Standard directories
+	#	Data			.
+	#	Maps			Maps
+
+##	Imagery directories
+	#	images			Images
+	#	ctables			<<cdir>>/Ctables
+
+##	Guidance directories
+	#	Guidance		Guidance
+
+##	Special config sub-directories
+	#	menus.cfg		<<cdir>>/Menus
+	#	memory.cfg		<<cdir>>/Memory
+	#	patterns		<<cdir>>/patterns
+	#	symbols			<<cdir>>/symbols
+
+#!	Directories used by ingest
+##	Define ingest.src to be the location of GRIB data on this host.  In most
+##	cases $FPA_LOCAL_GRIB will work, as long as this variable is defined
+##	correctly in $HOME/.fparc, and ALL the required GRIB files will be found
+##	in that directory.  Otherwise, set this to the appropriate directory.
+	#	ingest.src		$FPA_LOCAL_GRIB
+	#	ingest.stat		Guidance
+	#	ingest.log		Guidance
+
+##	Allied model directories
+	#	AModels.Exec	$FPA/AModels.EXEC
+	#	AModels.Data	AModels.DATA
+
+##	Directories for guidance/sample/visibility lists
+	#	preset_lists	<<sdir>>/preset_lists
+
+##	Directories for product definitions
+##	PostScript products and product definitions used by psmet
+	#	psmet			<<sdir>>/pdf/psmet
+	#	psout			PSOut
+##	SVG products and product definitions used by svgmet
+	#	svgmet			<<sdir>>/pdf/svgmet
+	#	svgout			SVGOut
+##	Tabular products and product definitions used by texmet
+	#	texmet			<<sdir>>/pdf/texmet
+	#	texout			TexOut
+##	FPA metafile product definitions
+	#	metafiles		<<sdir>>/pdf/metafiles
+}
+
+##############################################################################
+#
+#  Configuration File Setup:
+#
+#  This block defines the configuration files used by various FPA applications.
+#
+#  The first word is a key used by the system software to identify the
+#  configuration file and the second is the path of the file.
+#  Usually the key word will be the same as one of the setup blocks, but this
+#  is not a requirement.
+#
+#  Relative paths are interpretted as being relative to the "config" directory
+#  (defined in the "directories" block) and will be converted to absolute paths
+#  by concatenating this directory.
+#
+##############################################################################
+
+config_files
+{
+	config			Config
+	presentation	Presentation
+	gribs			$FPA/config/Gribs
+	image			Image
+	ingest			Ingest
+}
+
+##############################################################################
+#
+#  Interface setup:
+#
+#  This block defines a variety of customized features in the user interface.
+#  The layout of this block is:
+#
+#        [keyword]
+#            value1 value2 ... valuen
+#
+#  Unless otherwise stated all the keywords must exist and have at least one
+#  entry.  The keywords and their required values are:
+#
+#  [allied.model]
+#      source sub_source <notify <i_time>>
+#
+#    Optional. Lists the models which may be run from the Fpa (if any).  There
+#    may be more than one selection.
+#
+#      source     = source for this model as given in Config
+#      sub_source = sub-source for this model (if required)
+#      notify     = optional keyword either "notify" or "no_notify". Specifies
+#                   if the source update indicator (the book shelf) should
+#                   flash when new data arrives. The notify option can have an
+#                   optional time interval <i_time> specification. Any source
+#                   that updates again before this time interval expires will
+#                   not flash the update indicator. Default "notify".
+#      i_time     = interval in minutes. If not specified 0 is assumed.
+#
+#  [demo.date]
+#      YYYY/MM/DD/HH or YYYY/MM/DD HH
+#
+#    Set an imaginary clock if you have a "canned" database.
+#
+#      YYYY = four digit year
+#      MM   = two digit month
+#      DD   = two digit day of month
+#      HH   = two digit GMT hour of day
+#
+#  [depiction.coview]
+#      label  setup_file  view_options  X_options
+#
+#    Optional.  Lists the foreign depictions which may be viewed.
+#
+#      label        = label to appear in the depiction selection button.
+#      setup_file   = setup file for the Fpa viewer to use.
+#      view_options = command line options for the spawned Fpa (See System
+#                     Manager's Manual).
+#      X_options    = list of standard X-windows options (e.g. -display etc.).
+#
+#  [depiction.external]
+#      depiction_database <notify <i_time>>
+#
+#    Optional. Specifies depiction databases which can be imported into or
+#    merged into the existing depiction sequence.
+#
+#      depiction_database = A source name already defined in a configuration
+#                           file.
+#      notify             = optional keyword either "notify" or "no_notify".
+#                           Specifies if the source update indicator (the book
+#                           shelf) should flash when new data arrives. The
+#                           notify option can have an optional time interval
+#                           <i_time> specification. Any source that updates
+#                           again before this time interval expires will not
+#                           flash the update indicator. Default "notify".
+#      i_time             = interval in minutes. If not specified 0 is assumed.
+#
+#  [depiction.foreign]
+#
+#    Obsolete. This has been replaced by [depiction.coview] above.
+#
+#  [depiction.savetime]
+#      days
+#
+#    Optional.  Gives the time in days to save depictions in the backup
+#    directory.  After this time the depictions are automatically purged.
+#    Default is 7 days.
+#
+#  [depiction.timeSteps]
+#       label  short_label  minutes
+#       label  short_label  minutes
+#       ...    
+#
+#     Optional. The depiction sequence time stepping options. The increment
+#     choices other than the normal step by step.
+#
+#        label       = the label to appear in the option selection list
+#        short_label = the label to appear between the depiction time stepping arrows
+#        minutes     = the minimum time step between depictions in minutes
+#
+#  [guidance.animationTimeSteps]
+#       label  minutes
+#       label  minutes
+#       ...    
+#
+#     Optional. The time interval between guidance animations relative to the
+#     T0 depiction time.
+#
+#        label       = the label to appear in the selection list
+#        minutes     = the time step between animation frames
+
+#
+#  [field.autoimport]
+#      source  option1  option2
+#
+#    Lists autoimport sources and specifies options. An autoimport source is
+#    a directory where valid metafiles may be put where FPA will automatically
+#    detect their presence and then import the file into the depiction sequence
+#    with actions that depend on the specified options. See the administrators
+#    manual for specifics.
+#
+#      source  = the autoimport source identifier as defined in a configuration
+#                file
+#      option1 = import the field into the FPA without asking the user for
+#                permission. "true" or "false". Default false.
+#      option2 = if importing the field would create a depiction, create the
+#                depiction without asking the user for permission. "true" or
+#                "false". Default false.
+#
+#  [field.smoothing]
+#      smoothing_factor
+#
+#    Specifies the maximum smoothing factor for the continuous and vector
+#    fields. This is a float value with a default of 5.0.
+#
+#  [guidance.model]
+#      source sub_source <notify <i_time>>
+#
+#    Lists the guidance models available to the user for selection and viewing
+#    of guidance fields.  There may be more than one selection.
+#
+#      source     = source for this model as given in Config
+#      sub_source = sub-source for this model (if required)
+#      notify     = optional keyword either "notify" or "no_notify". Specifies
+#                   if the source update indicator (the book shelf) should
+#                   flash when new data arrives. The notify option can have an
+#                   optional time interval <i_time> specification. Any source
+#                   that updates again before this time interval expires will
+#                   not flash the update indicator. Default "notify".
+#      i_time     = interval in minutes. If not specified 0 is assumed.
+#
+#    Note: The list given in [allied.model] is automatically appended to this.
+#
+#	[imagery.blend]
+#       limit
+#
+#	  Set the lower limit of the radar-satellite image blending amount in
+#	  percent. For example, a value of 40 will limit the blending to 40%
+#	  radar and 60% satellite. The upper limit is always 100% radar meaning
+#	  that the radar blocks out all of the satellite.
+#
+#        limit = minimum amount of radar blended in percent.
+#
+#  [imagery.brightness]
+#      type  min  max
+#
+#    Sets the range of brightness adjustment, in percent, allowed for the
+#    various image types.
+#
+#	   type = One of "overlay", "radar", "satellite" or "underlay"
+#      min  = Minimum brightness. No less then 0%.
+#      max  = Maximum brightness. Can exceed 100% which will make the image
+#             brighter than the origional source.
+#
+#  [interpolation.delta]
+#      delta
+#
+#    Set the timestep between interpolations in hours to delta.
+#
+#  [map.base]
+#      label  metafile
+#
+#    Specifies an available background map.
+#
+#      label    = label to appear in the background selection button,
+#      metafile =  metafile name (relative to "maps" directory).
+#
+#      Note: A '+' prefixed to the map metafile name indicates a map which
+#            is found in the "maps.common" directory as opposed to the "maps"
+#            directory.
+#
+#  [map.overlay]
+#      label  metafile
+#
+#    Specifies an available map overlay.
+#
+#      label    = label to appear in the overlay selection button.
+#      metafile =  metafile name (relative to "maps" directory).
+#
+#      Note: A '+' prefixed to the map metafile name indicates a map which
+#            is found in the "maps.common" directory as opposed to the "maps"
+#            directory.
+#
+#  [map.editor]
+#      label  metafile
+#
+#    Specifies a map containing an outline used in the field editor.
+#
+#      label    = label to appear in the editor selection button.
+#      metafile =  metafile name (relative to "maps" directory).
+#
+#      Note: A '+' prefixed to the map metafile name indicates a map which
+#            is found in the "maps.common" directory as opposed to the "maps"
+#            directory.
+#
+#  [map.holes]
+#      label  metafile
+#
+#    Specifies a map containing an outline used in the field editor
+#    for drawing holes in area fields.
+#
+#      label    = label to appear in the editor selection button.
+#      metafile =  metafile name (relative to "maps" directory).
+#
+#      Note: A '+' prefixed to the map metafile name indicates a map which
+#            is found in the "maps.common" directory as opposed to the "maps"
+#            directory.
+#
+#  [map.palette]
+#      label  land  water  coast  border  lat-lon  fcst_area  fcst_border
+#
+#    Lists the available map colouring schemes.  All colours are to be given
+#    as standard X colour names. A dash ("-") in place of any given colour
+#    means to use the default.
+#
+#      land        = land colour.
+#      water       = water colour.
+#      coast       = coast line colour.
+#      border      = border colour.
+#      lat-lon     = latitude-longitude colour.
+#      fcst_area   = forecast area colour.
+#      fcst_border = forecast area border colour.
+#
+#  [link.palette]
+#      label  chains  labels  guess
+#
+#    Lists the available link chain colouring schemes. All colours must be
+#    given in standard X colour names. A dash ("-") in place of any given
+#    colour means to use the default.
+#
+#      chains = colour for link nodes and chains
+#      labels = colour for labels
+#      guess  = colour of link node that is not attached to a feature
+#
+#  [product.graphic]
+#      label type parms
+#
+#    Lists the regular issue graphical products which will be made available
+#    to the forecaster for generation and issue.  There may be more than
+#    one selection.
+#
+#    If only the label is specified then the entry is taken to be a label to
+#    appear in the list with no action associated with it. This can be used to
+#    visually group list items for easier reading.
+#
+#      label = label to appear in the product selection list.
+#      type  = the type of graphic processing. This can be one of:
+#               "psmet"         = produce graphics using PSMet.
+#               "svgmet"        = produce graphics using SVGMet.
+#               "texmet"        = produce graphics using TexMet.
+#               "metafiles"     = package up the fpa database for transmission
+#                                 to another location.
+#      parms = parameters specific to type
+#
+#    For type "psmet", "svgmet" and "texmet" parms are:
+#
+#           dir pdf
+#
+#        dir = directory (relative to "psmet" or "svgmet" or "texmet" setup
+#              directory) where the product definition file exists.
+#        pdf = product definition file.
+#
+#    For type "metafiles" the parms are:
+#
+#           pdf
+#
+#        pdf = product definition file.  If an absolute path is not specified,
+#              then this is taken relative to the "metafiles" setup directory.
+#
+#  [title]
+#      label
+#
+#    Optional. Specifies a title for the program window.  The default is the
+#    name of the database.
+#
+#  [T0.roundOff]
+#      delta
+#
+#     Set the time roundoff for the setting of T0. This will roundoff T0 to the
+#     nearest time boundary defined by this setting. For example, 6 will result
+#     in a T0 to the nearest 6 hour interval. If the current time was 16:36 GMT
+#     then T0 would be 12 GMT.
+#
+#     delta = Time delta in hours
+#
+##############################################################################
+
+interface
+{
+	[allied.model]
+	#!	Dependent Models
+		##	Fields available using FpaWarp on Canadian SCRIBE data:
+		#	MaxDailyTemp
+		#	MaxDailyTime
+		#	MinDailyTemp
+		#	MinDailyTime
+		#	3HrOpacity
+		#	3HrPrecip
+		#	6HrPOP
+
+	[demo.date]
+	#!	Set a demo date here if you have a "canned" database:
+		#	YYYY/MM/DD/HH
+
+	[depiction.coview]
+	#!	Optional foreign depiction view control (examples):
+		##	Local prog charts:
+		#	"Local Prog" local.setup -askForTimes -title Local \
+		#	             -geometry 600x600+0+0
+		##	Synpotic prog charts:
+		#	"Synoptic Prog" syno.setup -title Synoptic -geometry 700x600+0+0
+		##	Synpotic prog charts on a second head:
+		#	"Synoptic Prog" syno.setup -title Synoptic -geometry 700x600+0+0 \
+		#	                -display local:1.0
+		##	Synpotic prog charts on another host:
+		#	"Synoptic Prog" syno.setup -title Synoptic -geometry 700x600+0+0 \
+		#	                -display <host>:0.0
+
+	[depiction.external]
+	#!	Optional access to external FPA databases for comparison/import
+	#!	(where sources must be defined in Config files) (examples):
+		#	aviation_desk
+		#	atlantic_office
+
+	[depiction.savetime]
+	#!	Number of days to save data in Backup directory:
+			7
+
+	[depiction.timeSteps]
+	#!	Depiction sequence time stepping options.
+		#	"10 Minutes"	10, 10
+		#	"30 Minutes"	30	30
+		#	"1 Hour"		1H	60
+		#	"3 Hours"		3H	180
+
+	[guidance.animationTimeSteps]
+	#!	Time interval between guidance animation displays
+		#	"1 Hour"	60
+		#	"3 Hours"	180
+		#	"6 Hours"	360
+
+	[field.autoimport]
+	#!	Optional directories for automatic import of fields:
+
+	[field.smoothing]
+	#!	Maximum smoothing for contour fields (multiples of resolution):
+			5.0
+
+	[guidance.model]
+	#!	Accessible models for guidance viewing and import:
+	#!	(where sources must be defined in Config files) (examples):
+		##	Usual Canadian models (FEM replaced by GEM now):
+			GEM_ANAL	notify 30
+			GEM			notify 30
+			Spe_ANAL	notify 30
+			Spectral	notify 30
+		##	Assorted international models:
+		#	NMC
+		#	ECMWF
+		##	Canadian workstation analyses:
+		#	Metworks
+		##	Canadian SCRIBE data:
+		#	Scribe:GEM
+		#	Scribe:Global
+		##	Fitted Fields (using fpawarp_exec):
+			FpaWarp
+		##	Created areas (using fpacreate_areas):
+			FpaCreate
+
+	[imagery.blend]
+	#!	Set the lower limit of the radar-satellite image blending.
+			50
+
+	[imagery.brightness]
+	#!	Brightness range adjustment of the imagery display types
+			overlay		30	100
+			radar		50	100
+			satellite	50	100
+			underlay	30	100
+
+	[interpolation.delta]
+	#!	Change interpolation timestep if you don't need 1 hour resolution:
+			1
+
+	[map.base]
+	#!	Usual/synoptic base map:
+			"Base"          base_map.fpa
+
+	[map.overlay]
+	#!	Optional map overlays:
+	##	Note:	A '+' prefixed to the map name indicates a map which is found
+	##			in the maps.common directory as opposed to the maps directory
+		## Put overlays here if you want them to appear underneath lat-lon:
+		#
+		##	Common overlays:
+			"10 deg lat-lon"	+10_deg_lat_lon
+			" 5 deg lat-lon"	+05_deg_lat_lon
+		#	" 1 deg lat-lon"	+01_deg_lat_lon
+		## Put overlays here if you want them to appear on top of lat-lon:
+		#
+
+	[map.editor]
+	#!	Optional map outlines for the field editor:
+		#"Edit Outline 1"	metafile1
+		#"Edit Outline 2"	metafile2
+
+	[map.holes]
+	#!	Optional map outlines for drawing holes in the field editor:
+		#"Hole Outline 1"	hole1
+		#"Hole Outline 2"	hole2
+
+	[map.palette]
+	#!	Available map colouring schemes:
+			Default - - - - - - -
+			Brown-Green #7F7F55550000 MediumAquamarine burlywood \
+						coral #7F7F55550000 - -
+			Light-Brown SandyBrown CadetBlue CornflowerBlue goldenrod \
+						SandyBrown goldenrod DarkGoldenrod
+			Tan-Green tan LightSeaGreen firebrick salmon wheat - -
+			Muted-Green MediumAquamarine SeaGreen LightSeaGreen LightSeaGreen \
+						LightSeaGreen MediumSeaGreen LightSeaGreen
+			Green-Blue OliveDrab CadetBlue MediumForestGreen gold \
+						MediumForestGreen - -
+			White-Grey grey90 white grey20 grey10 grey50 grey80 grey10
+
+	[link.palette]
+	#!	Available link chain colouring schemes:
+			Default - - -
+			Black Black Black Red
+
+	[product.graphic]
+	#!	Graphical products (examples):
+	##	The following examples should all produce something, if invoked.
+	##	The supplied product definition files contain instructions for further
+	##	customization.
+		##	PSMet/SVGMet/TexMet products:
+		#	"PSMet Example"   psmet examples PUBLIC
+		#	"SVGMet Example"  svgmet examples PUBLIC
+		#	"TexMet Example"  texmet examples HOURLYWINDS
+
+	[title]
+	#!  Optional title for program window (default is database name):
+
+	[T0.roundOff]
+		12
+}
+
+##############################################################################
+#
+#  Depiction Setup:
+#
+#  This block defines the list of fields that make up a depiction and may be
+#  edited via the graphics editor application.
+#
+#  Each field definition line has as its arguments the element and level,
+#  as defined in the Config file.
+#
+##############################################################################
+
+depiction
+{
+#!	Surface fields:
+		field	pressure		msl
+		field	temperature		surface
+		field	weather_system	surface
+		field	wind			surface
+		field	fronts			surface
+
+#!	Aviation fields:
+	#	field	turbulence		surface
+	#	field	freezing_level	surface
+	#	field	feature_motion	surface
+
+#!	Sea state fields:
+	#	field	freezing_spray	surface
+	#	field	wave_height		surface
+	#	field	sea_temp		surface
+	#	field	sea_ice			surface
+
+#!	T-max T-min:
+	#	field	max_temp		surface
+	#	field	max_temp_time	surface
+	#	field	min_temp		surface
+	#	field	min_temp_time	surface
+}
+
+################################################################################
+#
+#  Ingest Setup:
+#
+#  This block controls the ingest of numerical weather model output (GRIB
+#  format and others).
+#
+#  The ingest operation is overseen by the Ingest Daemon (fpaingest).  This
+#  program monitors the raw data files identified in this block, and detects
+#  if they have been created or updated.  If this happens, the Ingest Daemon
+#  will launch the appropriate Ingester (e.g. gribin for GRIB data).  The
+#  Ingester extracts and processes the desired data and creates new FPA
+#  metafiles in the appropriate guidance directory of your database.
+#
+#  A line beginning with "wait" defines the time (in seconds) that the Ingest
+#  Deamon will go to sleep before checking for new data again.  If this line
+#  is omitted, a default (300) will be used.
+#
+#  A line beginning with "log" identifies the log file to be used. The log
+#  file will be placed in the "ingest.log" directory, as defined in the
+#  "directories" block, unless an absolute path is given.  If this line is
+#  omitted, a default (ingest.log) will be used.  This line also specifies a
+#  backup log file and the time of day (GMT) at which to move the current log
+#  to the backup.  If omitted, defaults (ingest.old at 0000 GMT) will be used.
+#
+#  A line beginning with "status" identifies the status file to be used. The
+#  status file will be placed in the "ingest.stat" directory, as defined in
+#  the "directories" block, unless an absolute path is given.  If this line is
+#  omitted, a default (ingest.stat) will be used.
+#
+#  Each line beginning with "monitor" or "monitor_in" identifies a set of data
+#  files to be monitored by the Ingest Daemon.  These lines have the following
+#  format:
+#           monitor <type> <pattern>
+#           monitor_in <dir> <type> <pattern>
+#
+#  where <type> defines the type of data so that the Ingest Daemon can launch
+#               the correct Ingester to process files.  The following <type>s
+#               are currently supported:
+#                 grib  = process GRIB Version 0 or 1 files with "gribin"
+#                 grib2 = process GRIB Version 0, 1 or 2 files with "gribin2"
+#
+#        <pattern> specifies a filename, or a sed(1) style regular expression
+#                  that may match one or more filenames.  If one or more
+#                  matching files arrives, its new modification time is
+#                  detected, and the appropriate Ingester is started up to
+#                  process it.
+#
+#        <dir> specifies a directory tag (must be defined in the Directories
+#              Block), which tells the Ingest Daemon where to search to find
+#              files that match the given pattern.  By default (as for
+#              "monitor") the Ingest Daemon searches in the "ingest.src"
+#              directory.
+#
+#  Note: "monitor" may become obsolete in future releases.
+#
+################################################################################
+
+ingest
+{
+##	Shouldn't need to change:
+		wait	600
+		log		<<setup>>.log <<setup>>.old 0030
+		status	<<setup>>.stat
+
+#!	National grid should work for all MSC sites
+##	Change to your local grid if receiving one
+##	sed(1) style regular expressions are permitted
+	#	monitor_in	ingest.src	grib	^natroa..$		(analysis)
+	#	monitor_in	ingest.src	grib	^natrgem.._000$	(T+00 prog)
+	#	monitor_in	ingest.src	grib	^natrgem.._006$
+	#	monitor_in	ingest.src	grib	^natrgem.._012$
+	#	monitor_in	ingest.src	grib	^natrgem.._018$
+	#	monitor_in	ingest.src	grib	^natrgem.._024$
+	#	monitor_in	ingest.src	grib	^natrgem.._030$
+	#	monitor_in	ingest.src	grib	^natrgem.._036$
+	#	monitor_in	ingest.src	grib	^natrgem.._042$
+	#	monitor_in	ingest.src	grib	^natrgem.._048$
+
+#!	Sea surface temperature (examples):
+	#	monitor_in	ingest.src	grib	^oceanstgoa..$  (Atlantic)
+	#	monitor_in	ingest.src	grib	^pwcstgoa..$    (Pacific)
+
+#!	Data in other directories (examples):
+	#	monitor_in	<dir>	grib	<pattern>
+}
+
+################################################################################
+#
+#  Diagnostic Control Setup:
+#
+#  This block controls the diagnostic output from modules in the FPA software.
+#
+#  Behaviour of diagnostic output may also be determined or altered by external
+#  influences, such as run-string arguments.  For example, the -debug argument
+#  in xfpa causes the information in this block to be used, otherwise a default
+#  level and message style (3 and 0) is used and this block is ignored.
+#
+#  A line beginning with "default" defines the default output level and message
+#  style for all modules.
+#
+#  A line beginning with "module" defines the output level for the given module.
+#
+#  Output levels are defined by a number from 0 to 5:
+#
+#         0 = no output
+#         1 = errors only
+#         2 = include warnings
+#         3 = include status messages
+#         4 = include information messages
+#         5 = include diagnostic messages
+#
+#  Message styles are defined by:
+#
+#         0 = module name does not appear with message
+#         1 = module name followed by ":"
+#         2 = module name in "[]"
+#
+#  Module names already exist within the FPA library code.  Additional module
+#  names may be added at any time.
+#
+#  The following module names are accessible by users:
+#
+#    Editor                 General FPA interface messages
+#    Editor.Events          Messages regarding FPA window
+#    Editor.Sequence        Messages regarding FPA time sequence
+#    Editor.Feedback        Messages from FPA libraries to GUI
+#    Editor.API             Messages from GUI to FPA libraries
+#    LogMsg                 General FPA log messages
+#
+#    Config                 Messages related to Config files
+#    Environ                Messages related to files and directories
+#    Fields                 Messages related to depiction fields
+#    Metafile               Messages related to reading/writing metafiles
+#    Presentation           Messages related to Presentation files
+#
+#    Show.Patches           Show the FPA "grid" based on Bspline patches
+#
+#    Advanced.Features      Messages related to Advanced Features block
+#    Diag.Control           Messages related to Diagnostic Control block
+#    Limits                 Messages for specialized limit boxes
+#
+#    Contouring             Messages for problems with contouring
+#    MMM                    Messages for memory management
+#    Patch.Control          Messages for spline patch parameters
+#    Tracker                Messages for contour tracking
+#
+#    Areas                  Messages for problems with area objects
+#    Area.Divide            Messages for problems with dividing lines
+#    Lines                  Messages for problems with line objects
+#    Line.Walk              Messages for distances along boundaries or lines
+#    Sculpt                 Messages for sculpting areas or lines
+#    Spots                  Messages for problems with spot objects
+#
+#    Timelink               Messages related to time linking
+#    Interp                 Messages for general interpolation
+#    Interp.Areas           Messages for interpolating areas
+#    Interp.Curves          Messages for interpolating lines
+#
+#    Image                  Messages for imagery
+#
+#    Rules                  Messages for attribute rules
+#    FPA_mod100_spval       Evaluate last 2 digits of pressure rule
+#    FPA_wx_label           Evaluate weather label rule
+#    FPA_wx_category        Evaluate weather category rule
+#    FPA_clds_and_wx        Evaluate clouds and weather rule
+#    FPA_full_weather       Evaluate full weather rule
+#    user_clds_and_wx       Evaluate user-defined clouds and weather rule
+#    user_full_weather      Evaluate user-defined full weather rule
+#    user_full_cloud        Evaluate user-defined full cloud rule
+#
+################################################################################
+
+diag_control
+{
+	default	3	2
+	#	module	"Editor"				5
+	#	module	"Editor.API"			5
+	#	module	"Editor.Feedback"		5
+	#	module	"Show.Patches"			5
+}
+
+################################################################################
+#
+#  Advanced Features Control Setup:
+#
+#  This block controls the behaviour of certain advanced features in the FPA
+#  software.
+#
+#  A line beginning with "feature" defines the mode to be used for the given
+#  feature.
+#
+#  Feature names are completely arbitrary, and already exist within the FPA
+#  library code.  It is necessary to know about given features in advance, in
+#  order to make effective use of this block.
+#
+################################################################################
+
+advanced_features
+{
+	#	feature	"MMM"				"alloc"
+	#	feature	"Track.Control"		"square"
+	#	feature	"Cursor.Display"	"xor"
+	#	feature	"Link.Truncation"	"yes"
+}

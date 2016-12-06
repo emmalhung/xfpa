@@ -1,0 +1,74 @@
+# Define all the usual places to look for things:
+
+# For the xml parser library libxml2
+LIBXML		=`xml2-config --libs`
+LIBXMLINC	=`xml2-config --cflags`
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-lfpa \
+			$(LIBXML) \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR) \
+			$(LIBXMLINC)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	rankweightDaemon
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "rankweightDaemon"
+
+
+# Rules for building rankweightDaemon:
+RANKWEIGHT     = $(BINDIR)/$(PLATFORM)/rankweightDaemon
+RANKWEIGHT_OBJ = rankweight.o \
+                inotify_utils.o \
+				event_queue.o \
+				calc_weights.o \
+				fcst_weights.o \
+				storm_environment.o \
+				monitor.o
+
+rankweightDaemon:	Pobjects $(RANKWEIGHT)
+			@	echo "FPA $(PLATFORM) rankweightDaemon ready"
+			@	echo 
+$(RANKWEIGHT):	$(RANKWEIGHT_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) rankweightDaemon"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(RANKWEIGHT_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/rankweightDaemon ]; \
+					then cd $(BINDIR); ln -s fpa.exec rankweightDaemon; fi
+
+
+# Rules for building object modules:
+*.o:					rankweight.h
+rankweight.o:			calc_weights.h inotify_utils.h monitor.h
+event_queue.o:			event_queue.h
+inotify_utils.o:		inotify_utils.h	calc_weights.h monitor.h
+fcst_weights.o:			fcst_weights.h
+calc_weights.o:			calc_weights.h fcst_weights.h
+monitor.o:				monitor.h
+storm_environment.o:	storm_environment.h
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) rankweight module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

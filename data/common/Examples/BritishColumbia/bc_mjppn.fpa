@@ -1,0 +1,244 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Armstrong"
+	FPA_user_label "Armstrong"
+ spot 50.448N -119.2E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Burnaby"
+	FPA_user_label "Burnaby"
+ spot 49.249N -122.98E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Castlegar"
+	FPA_user_label "Castlegar"
+ spot 49.326N -117.67E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Chilliwack"
+	FPA_user_label "Chilliwack"
+ spot 49.158N -121.95E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Colwood"
+	FPA_user_label "Colwood"
+ spot 48.423N -123.5E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Coquitlam"
+	FPA_user_label "Coquitlam"
+ spot 49.284N -122.79E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Courtenay"
+	FPA_user_label "Courtenay"
+ spot 49.687N -124.99E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Cranbrook"
+	FPA_user_label "Cranbrook"
+ spot 49.513N -115.77E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Dawson Creek"
+	FPA_user_label "Dawson Creek"
+ spot 55.761N -120.24E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Duncan"
+	FPA_user_label "Duncan"
+ spot 48.779N -123.71E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Enderby"
+	FPA_user_label "Enderby"
+ spot 50.551N -119.14E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Fernie"
+	FPA_user_label "Fernie"
+ spot 49.504N -115.06E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Fort St. John"
+	FPA_user_label "Fort St. John"
+ spot 56.252N -120.85E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Grand Forks"
+	FPA_user_label "Grand Forks"
+ spot 49.033N -118.44E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Greenwood"
+	FPA_user_label "Greenwood"
+ spot 49.09N -118.68E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Kamloops"
+	FPA_user_label "Kamloops"
+ spot 50.676N -120.34E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Kelowna"
+	FPA_user_label "Kelowna"
+ spot 49.888N -119.5E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Kimberley"
+	FPA_user_label "Kimberley"
+ spot 49.676N -115.98E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Langley"
+	FPA_user_label "Langley"
+ spot 49.104N -122.66E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Merritt"
+	FPA_user_label "Merritt"
+ spot 50.113N -120.79E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Nanaimo"
+	FPA_user_label "Nanaimo"
+ spot 49.164N -123.94E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Nelson"
+	FPA_user_label "Nelson"
+ spot 49.493N -117.29E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "New Westminster"
+	FPA_user_label "New Westminster"
+ spot 49.207N -122.91E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "North Vancouver"
+	FPA_user_label "North Vancouver"
+ spot 49.321N -123.07E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Parksville"
+	FPA_user_label "Parksville"
+ spot 49.319N -124.32E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Penticton"
+	FPA_user_label "Penticton"
+ spot 49.501N -119.59E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Port Alberni"
+	FPA_user_label "Port Alberni"
+ spot 49.234N -124.81E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Port Coquitlam"
+	FPA_user_label "Port Coquitlam"
+ spot 49.262N -122.78E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Port Moody"
+	FPA_user_label "Port Moody"
+ spot 49.283N -122.83E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Prince George"
+	FPA_user_label "Prince George"
+ spot 53.914N -122.75E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Prince Rupert"
+	FPA_user_label "Prince Rupert"
+ spot 54.312N -130.33E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Quesnel"
+	FPA_user_label "Quesnel"
+ spot 52.978N -122.49E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Revelstoke"
+	FPA_user_label "Revelstoke"
+ spot 50.998N -118.2E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Richmond"
+	FPA_user_label "Richmond"
+ spot 49.163N -123.14E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Rossland"
+	FPA_user_label "Rossland"
+ spot 49.079N -117.8E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Surrey"
+	FPA_user_label "Surrey"
+ spot 49.106N -122.83E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Terrace"
+	FPA_user_label "Terrace"
+ spot 54.516N -128.6E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Trail"
+	FPA_user_label "Trail"
+ spot 49.097N -117.71E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Vancouver"
+	FPA_user_label "Vancouver"
+ spot 49.262N -123.11E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Vernon"
+	FPA_user_label "Vernon"
+ spot 50.267N -119.27E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Victoria"
+	FPA_user_label "Victoria"
+ spot 48.429N -123.37E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "White Rock"
+	FPA_user_label "White Rock"
+ spot 49.024N -122.8E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Williams Lake"
+	FPA_user_label "Williams Lake"
+ spot 52.13N -122.14E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Abbotsford"
+	FPA_user_label "Abbotsford"
+ spot 49.054N -122.33E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Mission"
+	FPA_user_label "Mission"
+ spot 49.134N -122.31E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Powell River"
+	FPA_user_label "Powell River"
+ spot 49.837N -124.52E location none
+
+* 
+* End
+

@@ -1,0 +1,27 @@
+Look-up   | Symbol file                    | Text String   | Presentation
+*default* : none                           : Clear         : clear1
++TSRA     : syno_heavy_rain_storm          : Thunderstorms : trw1
+TSRA      : syno_rain_storm                : Thunderstorms : trw1
++TS       : syno_heavy_thunder_storm       : Thunderstorms : trw1
+TS        : syno_thunder_storm             : Thunderstorms : trw1
+-FZRA     : syno_light_freezing_rain       : Freezing Rain : frz_rain1
+FZRA      : syno_moderate_freezing_rain    : Freezing Rain : frz_rain1
+-FZDZ     : syno_light_freezing_drizzle    : Freezing Rain : frz_rain1
+FZDZ      : syno_moderate_freezing_drizzle : Freezing Rain : frz_rain1
+-RASN     : syno_light_rain_snow           : Rain and Snow : mix1
+RASN      : syno_moderate_rain_snow        : Rain and Snow : mix1
++SHRA     : syno_violent_rain_shower       : Showers       : shower1
+-SHRA     : syno_light_rain_shower         : Showers       : shower1
+SHRA      : syno_moderate_rain_shower      : Showers       : shower1
+-SHSN     : syno_light_snow_shower         : Snow Flurries : snow1
+SHSN      : syno_moderate_snow_shower      : Snow Flurries : snow1
++RA       : syno_heavy_rain                : Rain          : rain1
+-RA       : syno_light_rain                : Rain          : rain1
+RA        : syno_moderate_rain             : Rain          : rain1
++SN       : syno_heavy_snow                : Snow          : snow1
+-SN       : syno_light_snow                : Snow          : snow1
+SN        : syno_moderate_snow             : Snow          : snow1
++DZ       : syno_heavy_drizzle             : Drizzle       : rain1
+-DZ       : syno_light_drizzle             : Drizzle       : rain1
+DZ        : syno_moderate_drizzle          : Drizzle       : rain1
+FG        : fog                            : Fog           : fog1

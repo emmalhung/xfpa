@@ -1,0 +1,194 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Presentation-type files in the $FPA/config directory can and will be   #
+#   updated with any new release, update, or patch of the FPA software suite.  #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Presentation file that refers to this file through  #
+#   an #include statement.  Refer to the file Presentation, or d.Presentation  #
+#   for further instructions.                                                  #
+#                                                                              #
+################################################################################
+
+# Presentation Configuration File
+
+# This file defines the appearance of all fields that FPA applications can
+# potentially display.  This refers to both guidance fields and editable
+# depiction fields.
+
+# Omitted attributes resort to default values established in the software
+# which reads this file (for example: colour=Black, style=solid, font=simplex,
+# etc).
+
+revision 6.0
+
+############# Kasspr type Presentation Begins #############
+
+field   areas  ALL ALL
+	member  discrete areas
+		category    low_lvl_div
+		colour  Black
+		style   solid
+		width   3
+		fill    hatch_fill Black
+		hatch   parallel_hatch medium 1
+
+        category    low_lvl_moist
+		colour  Green
+		style   solid
+		width   5
+		fill    hatch_fill Green
+		hatch   parallel_hatch medium 1
+	category	mid_lvl_moist
+		colour	Brown
+		style	solid
+		width	5
+		fill	hatch_fill Brown
+		hatch	parallel_hatch medium 1
+	category	dry_prod_mid
+#		pattern dry_prod_mid
+		style	dash
+		colour  Brown
+		width	10
+		category	right_ent
+			colour	Purple
+			style	dash
+			width	10
+			fill	hatch_fill Purple
+			hatch	parallel_hatch small 0
+		category	left_exit
+			colour	Purple
+			style	solid
+			width	3
+			fill	hatch_fill Purple
+			hatch	parallel_hatch small 0
+		length	10
+		category	diff_500
+			colour	Blue
+			style	solid
+			width	3
+			fill	hatch_fill Blue
+			hatch	parallel_hatch medium 0
+		category	conf_500
+			colour	Blue
+			style	solid
+			width	3
+			fill	hatch_fill Cyan
+			hatch	parallel_hatch medium 0
+		category	pva_500
+			colour	Yellow
+			style	solid
+			width	3
+			fill	hatch_fill Yellow
+			hatch	cross_hatch small 0
+
+field	lines	ALL ALL
+	member	curve	lines
+		category	cold
+			pattern	front.sfc.cold
+			width	10
+			length	40
+		category	warm
+			pattern	front.sfc.warm
+			width	10
+			length	40
+		category	stationary
+			pattern	front.sfc.stationary
+			width	10
+			length	40
+		category	occluded
+			pattern	front.sfc.occluded
+			width	10
+			length	40
+		category	upper_cold
+			pattern	front.upr.cold
+			width	10
+			length	40
+		category	upper_warm
+			pattern	front.upr.warm
+			width	10
+			length	40
+		category	upper_stationary
+			pattern	front.upr.stationary
+			width	10
+			length	40
+		category	trowal
+			pattern	trowal		# to draw from the wave to the low
+		#	pattern	trowal.rev	# to draw from the low to the wave
+			width	10
+			length	40
+		category	trof
+			pattern	trof
+			width	10
+			length	40
+		category	ridge
+			pattern	ridge
+			width	10
+			length	40
+		category    conv_zone_sfc
+			pattern conv_zone_sfc
+			width   20
+			length  80
+		category    moist_axis_sfc
+			pattern moist_axis_sfc
+			width	10
+			length	40
+		category    conv_bndry_sfc
+			pattern conv_bndry_sfc
+			width	10
+			length	40
+		category    dry_line
+			pattern dry_line
+			width   20
+			length  20
+		category    th_ridge_850
+			pattern th_ridge_850
+			width	10
+			length  10
+        	category    jet_850
+			pattern jet_850
+			width   100
+			length  200
+		category    moist_axis_850
+			pattern moist_axis_850
+			width	10
+			length	40
+		category	th_trof_850_500
+			pattern th_trof_850_500
+			width	10
+			length	40
+		category	th_ridge_850_500
+			pattern th_ridge_850_500
+			width	20
+			length	20
+		category	jet_250
+			pattern jet_250
+			width	100
+			length	200
+		category	sw_trof_500
+			pattern sw_trof_500
+			width	10
+			length	40
+		category	sw_ridge_500
+			pattern sw_ridge_500
+			width	10
+			length	40
+		category	th_trof_500
+			pattern th_trof_500
+			width	10
+			length	40
+		category	th_ridge_500
+			pattern th_ridge_500
+			width	10
+			length	10
+
+############# Kasspr type Presentation Ends #############

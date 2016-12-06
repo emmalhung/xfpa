@@ -1,0 +1,109 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(GRIBPNGHOME)/lib \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa -lfpauser \
+			-l$(GRIBLIBPNG) \
+			$(EXTRA_LIBS) $(GRIB2LIB) $(JASPERLIB)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR) -I$(GRIBPNGHOME)/include 
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	gribin2 gribtest # getgrib
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "grib ingest"
+
+
+# Rules for building GRIB ingest programs:
+GRIBIN2		  = $(BINDIR)/$(PLATFORM)/gribin2
+GRIBIN2_OBJ	  = gribin2.o rgrib_edition2.o rgrib_edition1.o rgrib_edition0.o gribmeta.o gribdata.o
+GRIBIN2_HDR	  = rgrib_edition2.h rgrib_edition1.h rgrib_edition0.h gribmeta.h gribdata.h
+gribin2:		Pobjects $(GRIBIN2)
+			@	echo "FPA $(PLATFORM) gribin2 ready"
+			@	echo ""
+$(GRIBIN2):		$(GRIBIN2_OBJ) $(LIBS)
+			@   echo "Loading FPA $(PLATFORM) gribin2"
+			@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@	$${PURIFY:+purify} $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(GRIBIN2_OBJ) $(LIBPATH)
+			@   if [ ! -x $(BINDIR)/gribin2 ]; \
+					then cd $(BINDIR); ln -s fpa.exec gribin2; fi
+
+
+GRIBTEST	  = $(BINDIR)/$(PLATFORM)/gribtest
+GRIBTEST_OBJ  = gribtest.o rgrib_edition2.o rgrib_edition1.o rgrib_edition0.o gribmeta.o
+GRIBTEST_HDR  = rgrib_edition2.h rgrib_edition1.h rgrib_edition0.h gribmeta.h
+gribtest:		Pobjects $(GRIBTEST)
+			@	echo "FPA $(PLATFORM) gribtest ready"
+			@	echo ""
+$(GRIBTEST):	$(GRIBTEST_OBJ) $(LIBS)
+			@   echo "Loading FPA $(PLATFORM) gribtest"
+			@   if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(GRIBTEST_OBJ) $(LIBPATH)
+			@   if [ ! -x $(BINDIR)/gribtest ]; \
+					then cd $(BINDIR); ln -s fpa.exec gribtest; fi
+
+
+GETGRIB		  = $(BINDIR)/$(PLATFORM)/getgrib
+GETGRIB_OBJ	  = getgrib.o
+getgrib:		Pobjects $(GETGRIB)
+			@	echo "FPA $(PLATFORM) getgrib ready"
+			@	echo 
+$(GETGRIB):		$(GETGRIB_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) getgrib"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(GETGRIB_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/getgrib ]; \
+					then cd $(BINDIR); ln -s fpa.exec getgrib; fi
+
+# Rules for building object modules:
+gribin2.o:			$(FPAHDR) rgrib.h gribmeta.h gribdata.h
+gribtest.o:			$(FPAHDR) rgrib.h gribmeta.h
+getgrib.o:			$(FPAHDR)
+gribmeta.o:			rgrib.h gribmeta.h
+gribdata.o:			rgrib.h gribdata.h
+rgrib_edition2.o:	rgrib_edition2.h
+rgrib_edition1.o:	rgrib_edition1.h
+rgrib_edition0.o:	rgrib_edition1.h rgrib_edition0.h
+
+
+# Rules for keeping header files up to date:
+gribmeta.h:			$(FPAHDR)  rgrib.h
+				@	sleep 1;	touch $@
+gribdata.h:			$(FPAHDR)  rgrib.h
+				@	sleep 1;	touch $@
+rgrib_edition2.h:	$(FPAHDR) rgrib.h
+				@	sleep 1;	touch $@
+rgrib_edition1.h:	$(FPAHDR) rgrib.h
+				@	sleep 1;	touch $@
+rgrib_edition0.h:	$(FPAHDR) rgrib_edition1.h rgrib.h
+				@	sleep 1;	touch $@
+
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) ingest module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

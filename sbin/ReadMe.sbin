@@ -1,0 +1,13 @@
+Contents of the FPA sbin directory:
+
+    This file attempts to enumerate and explain everything in the sbin directory.
+
+Build scripts:
+fpacleanall     - Remove all compiled files from directories
+                  (to ensure that no dependencies are missed)
+fpacleandir     - Remove all compiled files from a directory
+fpagrep         - Find a string in the FPA library code
+fpagrepmake     - Find a string in the FPA make files
+fpamake         - Main FPA make file
+platform_get    - Detect the current hardware and operating system revision and
+                  build the corresponding sub-directory name (e.g. hp700v8)

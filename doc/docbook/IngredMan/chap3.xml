@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % ingred SYSTEM 'ingred.ent'>
+%ingred;
+]>
+<chapter><title>Function Prototypes</title><para>
+This section contains alphabetically-organized reference pages for each function 
+type that is required by the GEConnect() function.
+</para><para>
+Each page contains a synopsis of the function's calling sequence, its arguments, a 
+description of its purpose and features.
+</para>
+<sect1><title>cursor_proc</title><para>
+Prototype procedure invoked when a processing delay is expected.
+</para>
+
+<sect2><title>SYNOPSIS</title><para>
+
+<funcsynopsis><funcprototype>
+<funcdef>typedef  	void  <function>(*cursor_proc)(char *type, Boolean state)</function></funcdef>
+<paramdef>char <parameter>*type</parameter></paramdef>
+<paramdef>Boolean <parameter>state</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>ARGUMENTS</title><para>
+<variablelist>
+<varlistentry><term><replaceable>type</replaceable></term><listitem><para>
+Specifies the type of cursor requested.
+The types send by ingred are:
+	<variablelist>
+	<varlistentry><term>"<userinput>busy</userinput>"</term><listitem><para>
+	A cursor which indicates that the program is busy.</para></listitem></varlistentry>
+	<varlistentry><term>"<userinput>finger</userinput>"</term><listitem><para>
+	A pointing finger.</para></listitem></varlistentry>
+	<varlistentry><term>"<userinput>obscured</userinput>"</term><listitem><para> 
+	A cursor which indicates that the drawing window is obscured.</para></listitem></varlistentry>
+	<varlistentry><term>"<userinput>pen</userinput>"</term><listitem><para>
+	The figure of a pen or pencil.</para></listitem></varlistentry>
+	<varlistentry><term>"<userinput>stop</userinput>"</term><listitem><para>
+	A stop sign.</para></listitem></varlistentry>
+	</variablelist>
+	</para></listitem></varlistentry>
+<varlistentry><term><replaceable>state</replaceable></term><listitem><para>
+Specifies the display state of the cursor.
+May be either on (<userinput>True</userinput>) of off (<userinput>False</userinput>).
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+This function is invoked by Ingred when a specific style of cursor is wanted.
+It is up to the calling interface to provide the function and determine the look of the requested cursor type.
+</para></sect2></sect1>
+
+<beginpage/>
+<sect1><title>message_proc</title><para>
+Prototype procedure invoked when Ingred wants the interface to post a message.
+</para>
+
+<sect2><title>SYNOPSIS</title><para>
+
+<funcsynopsis><funcprototype>
+<funcdef>typedef  	void <function> (*message_proc)(char *type, char *text)</function></funcdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>ARGUMENTS</title><para>
+<variablelist>
+<varlistentry><term><replaceable>type</replaceable></term><listitem><para>
+The type of the message. Normally the type is used to index into the resource file to obtain information on the colour
+and font that the message should be displayed in. There is a special case where type is the keyword "ErrorDialog". In
+this case the interface is expected to display the message in a separate dialog.
+</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>text</replaceable></term><listitem><para>
+Normally the text of the message. In the special case where type is "ErrorDialog", text contains the keyword
+into the CommonMdb file which contains the actual message.
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+This function is invoked by Ingred when messages are to be displayed to the user.
+It is the responsibility of the calling interface to provide the display mechanism.
+Witht he exception of "ErrorDialog", type is used as a reference in the resource database as:
+<programlisting>xfpa.ingredMessage.type:  colour  font</programlisting>
+Where  <replaceable>colour</replaceable> and <replaceable>font</replaceable> give the colour and font specification for the particular <replaceable>type</replaceable> of message.
+If <replaceable>font</replaceable> is not specified, then the normal font will be used.
+</para></sect2></sect1>
+
+<beginpage/>
+<sect1><title>status_proc</title><para>
+Prototype procedure invoked when Ingred needs to pass status information.
+</para>
+
+<sect2><title>SYNOPSIS</title><para>
+
+<funcsynopsis>
+<funcprototype>
+<funcdef>typedef  	void <function>(*status_proc)(char *status, CAL cal)</function></funcdef>
+<paramdef>char <parameter>*status</parameter></paramdef>
+<paramdef>CAL <parameter>cal</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</para></sect2>
+
+<sect2><title>ARGUMENTS</title><para>
+<variablelist>
+<varlistentry><term><replaceable>char  *status</replaceable></term><listitem><para>
+A null terminated string containing the status information.</para></listitem></varlistentry>
+
+<varlistentry><term><replaceable>CAL  cal</replaceable></term><listitem><para>
+If not NULL, a <type>CAL</type> data structure object.</para></listitem></varlistentry>
+</variablelist>
+</para></sect2>
+
+<sect2><title>DESCRIPTION</title><para> 
+The status information is sent as a series of key words and will depend on the current operating mode of Ingred.
+<variablelist>
+<varlistentry><term><userinput>ANIMATION  SHOWING</userinput>  <replaceable>valid_time</replaceable></term>
+<listitem><para>
+The valid time of the depiction/interpolation currently being displayed in the animation sequence.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>BACKGROUND</userinput>  <replaceable>element</replaceable>  <replaceable>level</replaceable></term>
+<listitem><para>
+The background attribute values of the given field.
+If no background attribute values exist <replaceable>cal</replaceable> will be null.
+This is an implied request for the controlling program to send Ingred valid background attribute values.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT</userinput> 
+<userinput>CONTOUR</userinput>|<userinput>VECTOR</userinput>|<userinput>AREA</userinput>|<userinput>WIND</userinput>|<userinput>LINE</userinput>|<userinput>LCHAIN</userinput>|<userinput>POINT</userinput>
+<userinput>SELECT</userinput>|<userinput>DESELECT</userinput>
+<optional> <userinput>SET</userinput> </optional></term>
+<listitem><para>
+An area, line, link chain, point or an area of influence of a spline or vector field has been selected or deselected.
+If selected and  <replaceable>cal</replaceable> is not NULL, then the attribute values will be contained in this structure.
+If the <userinput>SET</userinput> parameter is part of the command, then the appropriate object attributes can be given values.
+If not present then the object attribute values may not be modified.
+(See <userinput>EDIT</userinput> for commands to sent to Ingred).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT</userinput> 
+<userinput>AREA</userinput>|<userinput>WIND</userinput> <userinput>SELECT</userinput>
+<optional> <userinput>HOLE</userinput> </optional></term>
+<listitem><para>
+An area hole has been selected, and can be deleted.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT</userinput> 
+<userinput>LCHAIN</userinput> <userinput>SELECT</userinput>|<userinput>DESELECT</userinput>
+<optional> <userinput>SET</userinput> </optional></term>
+<listitem><para>
+A link chain node has been selected or deselected.
+If selected and  <replaceable>cal</replaceable> is not NULL, then the attribute values will be contained in this structure.
+If the <userinput>SET</userinput> parameter is part of the command, then the link chain node attributes can be given values.
+If not present then the link chain node attribute values may not be modified.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT ADDING</userinput>  <replaceable>time</replaceable>|<userinput>NEW</userinput></term>
+<listitem><para>
+This status return gives the time of a link chain node that is about to be added or <userinput>NEW</userinput>.
+The latter return indicates that the chosen link chain node location is at the start or end of another link chain, and Ingred must be informed whether the next node will be a new link chain or a continuation of the other link chain.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT  BUTTON</userinput>  <replaceable>command</replaceable>  <userinput>ON</userinput>|<userinput>OFF</userinput></term>
+<listitem><para>
+The button corresponding to the given Ingred edit command should be set active (<userinput>ON</userinput>) or inactive (<userinput>OFF</userinput>).
+The permitted values of command are
+<userinput>BREAK</userinput>, 
+<userinput>CANCEL</userinput>, 
+<userinput>CLEAR</userinput>, 
+<userinput>COPY</userinput>,  
+<userinput>CREATE</userinput>, 
+<userinput>DELETE</userinput>, 
+<userinput>JOIN</userinput>, 
+<userinput>PASTE</userinput>, 
+<userinput>PRESET_OUTLINE</userinput>, 
+<userinput>PROCEED</userinput>, 
+<userinput>REJOIN</userinput>, 
+<userinput>UNDO</userinput> or 
+<userinput>UPDATE</userinput>.
+(See GEEdit for the associated command that is to be sent to Ingred when the button has been made visible and the user has selected it.
+For <userinput>PRESET_OUTLINE</userinput> see GEDepiction.
+Note also that in this case there is a series of commands associated with the requested button).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT  DRAWING</userinput>  <userinput>ON</userinput>|<userinput>OFF</userinput></term>
+<listitem><para>
+This command is issued at the start of a point-by-point draw.
+The interface is expected to make available buttons that will issue a <userinput>DRAW_DONE</userinput> or <userinput>CANCEL GEEdit</userinput> command.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT  MODIFYING</userinput>  <userinput>ON</userinput>|<userinput>OFF</userinput></term>
+<listitem><para>
+This command is issued when an object has been modified (such as the border of an area having been redrawn).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>EDIT  OUTLINE</userinput>  
+<userinput>DRAWN</userinput>|<userinput>HOLE</userinput>|<userinput>MOVED</userinput>|<userinput>STOMP</userinput></term>
+<listitem><para>
+This is status information. It lets the interface know that outlines of the appropriate type have been created and are now available
+for use in the <userinput>PRESET_OUTLINE</userinput> command. Normally the interface would make the corresponding action buttons available for use. Once created
+these outlines are always available.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD  CREATE</userinput>  <replaceable>element  level  valid_time</replaceable>  <optional> <userinput>ASK</userinput> </optional></term>
+<listitem><para>
+The controlling interface is requested to send the command to create an empty field at <replaceable>valid_time</replaceable>.
+If the last parameter is <userinput>ASK</userinput>, the the interface must put up a requestor asking the user for permission to create the field.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD  STATUS</userinput>  <replaceable>element  level  time  status</replaceable></term>
+<listitem><para>
+The given field as defined by <replaceable>element</replaceable> and <replaceable>level</replaceable> has had a status change at the time given by time.
+This can be used by the controlling interface to set visual indications of what times the field exists at and what is the link state of the field at each depiction time.
+Status can have a value of - (dash, meaning not defined), <userinput>DELETED</userinput> (meaning the field does not exist anymore), <userinput>NONE</userinput>, <userinput>PARTIAL</userinput>, <userinput>LINKED</userinput>, <userinput>FIELD</userinput> or <userinput>INTERP</userinput> (See <userinput>TIMELINK</userinput>  <userinput>STATUS_UPDATE</userinput> command below for a description of the last five keywords).
+</para><para>
+The <replaceable>element</replaceable> can be returned as "<userinput>MASTER_LINK</userinput>" with the <replaceable>level</replaceable> undefined.
+This is a special case and gives the status of the Master Link.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>FIELD  TIMES</userinput>  <replaceable>element  level  ntimes  time1  status1  time2  status2   ... </replaceable></term>
+<listitem><para>
+The given field as defined by <replaceable>element</replaceable> and <replaceable>level</replaceable> exists as the times as given in the list <replaceable>time1</replaceable>, <replaceable>time2</replaceable>, ....  with a link status for each time given by <replaceable>status1</replaceable>, <replaceable>status2</replaceable>, ...  The number of times is given by ntimes.
+The content of the status  returns is the same as those defined for the <userinput>FIELD STATUS</userinput> command above.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>GUIDANCE  LEGEND</userinput>  <replaceable>field_id  colour_index</replaceable></term>
+<listitem><para>
+Information about any active guidance fields are usually displayed in a legend dialog.
+This status information line provides the colour that the information should be displayed in.
+The guidance field (as identified by <replaceable>field_id</replaceable>) should have its information displayed in the colour as given by <replaceable>colour_index</replaceable>.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>INTERRUPT</userinput>  <userinput>ON</userinput>|<userinput>OFF</userinput></term>
+<listitem><para>
+The editor is in a state such that GUI elements (such as dialogs) can be popped up for the users consideration (<userinput>ON</userinput>).
+If  <userinput>OFF</userinput> ,  the editor is in a state where interruptions cannot be tolerated.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>INTERPOLATE</userinput>  <replaceable>element level  %done  %total</replaceable></term>
+<listitem><para>
+The field as given by <replaceable>element</replaceable> and <replaceable>level</replaceable> is being interpolated.
+The percentage complete of the interpolation procedure for the field is given by <replaceable>%done</replaceable> and the percentage complete of the interpolation for all of the fields is given by <replaceable>%total</replaceable>.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>LABEL</userinput></term>
+<listitem><para>
+The <type>CAL</type> structure for the label is given in <replaceable>cal</replaceable>.
+The contents of the structure should be put into an attribute editor for possible label addition or modification depending on the current state of the interface.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>MODE  BUTTON</userinput>  <replaceable>command</replaceable>  <userinput>ON</userinput>|<userinput>OFF</userinput></term>
+<listitem><para>
+The button corresponding to the given Ingred mode command should be set active at this time (<userinput>ON</userinput>) or inactive at this time (<userinput>OFF</userinput>).
+The permitted value of command is DRAW.
+(See the GE_ACTION command).
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SAMPLE  DISPLAY</userinput>  <userinput>ON</userinput>|<userinput>OFF</userinput></term>
+<listitem><para>
+If the amount of information to be displayed for a sample operation is too great to look reasonable on the screen, Ingred will pass off the display of this information to the calling interface.
+If sample information is to be shown, then the <userinput>ON</userinput> command is given and the information is contained in the passed <type>CAL</type> structure.
+If the sample display is to be turned off, then the <userinput>OFF</userinput> command is sent.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>SCRATCHPAD  BUTTON DELETE</userinput>  <userinput>ON</userinput>|<userinput>OFF</userinput></term>
+<listitem><para>A button allowing scratchpad lines to be deleted should be turned on or off.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>TIMELINK LINKING</userinput>  <replaceable>time</replaceable>|<userinput>NEW</userinput>|<userinput>EXTRAP</userinput>  <optional>  <replaceable>state</replaceable>  </optional></term>
+<listitem><para>
+This status return gives the time of the field that is about to be linked or <userinput>NEW</userinput> or <userinput>EXTRAP</userinput>.
+The latter returns indicate that Ingred has put up the requestor for the start time of the timelink chain or the the end time of the chain.
+The optional <replaceable>state</replaceable> parameter can have the values:
+	<variablelist>
+	<varlistentry><term><userinput>NO_FIELD</userinput></term><listitem><para>No field is available for linking.</para></listitem></varlistentry>
+	<varlistentry><term><userinput>NO_DATA</userinput></term><listitem><para>No data is available.</para></listitem></varlistentry>
+	</variablelist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>TIMELINK  STATUS_UPDATE</userinput>  <replaceable>element  level</replaceable>  <userinput>NONE</userinput>|<userinput>PARTIAL</userinput>|<userinput>LINKED</userinput>|<userinput>FIELD</userinput>|<userinput>INTERP</userinput></term>
+<listitem><para>
+The link status of the given <replaceable>element</replaceable> at <replaceable>level</replaceable> is:
+	<variablelist>
+	<varlistentry><term><userinput>NONE</userinput></term>
+	<listitem><para>the element is not linked or interpolated,</para></listitem></varlistentry>
+	<varlistentry><term><userinput>PARTIAL</userinput></term>
+	<listitem><para>the element is partially linked but not enough for interpolation,</para></listitem></varlistentry>
+	<varlistentry><term><userinput>LINKED</userinput></term>
+	<listitem><para>the element is linked but not interpolated,</para></listitem></varlistentry>
+	<varlistentry><term><userinput>FIELD</userinput></term>
+	<listitem><para>the element is both linked and interpolated by the labels are not</para></listitem></varlistentry>
+	<varlistentry><term><userinput>INTERP</userinput></term>
+	<listitem><para>the element and labels are both linked and interpolated</para></listitem></varlistentry>
+	</variablelist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>TIMELINK MASTER_LINK_STATUS_UPDATE</userinput>   <replaceable>group</replaceable>|<userinput>GLOBAL NONE</userinput>|<userinput>PARTIAL</userinput>|<userinput>LINKED</userinput></term>
+<listitem><para>
+The status of the master link for the given group is:
+	<variablelist>
+	<varlistentry><term><userinput>NONE</userinput></term>
+	<listitem><para>not linked or interpolated,</para></listitem></varlistentry>
+	<varlistentry><term><userinput>PARTIAL</userinput></term>
+	<listitem><para>partially linked but not enough for interpolation,</para></listitem></varlistentry>
+	<varlistentry><term><userinput>LINKED</userinput></term>
+	<listitem><para>there are sufficient links for interpolation</para></listitem></varlistentry>
+	</variablelist>
+If group is GLOBAL then the link status of the global master  link is given.
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>TIMELINK  ACTION</userinput>  <replaceable>type</replaceable></term>
+<listitem><para>
+The action of type has been completed.
+The types are:
+	<variablelist>
+	<varlistentry><term><userinput>INTERMEDIATE_DONE</userinput></term>
+	<listitem><para>The selection and move  of an intermiediate link point as requested by a timelink edit move command has been completed
+	( see the GETimelink "TIMELINK EDIT MOVE" command).
+	</para></listitem></varlistentry>
+	<varlistentry><term><userinput>SELECT</userinput></term>
+	<listitem><para>One or more of the links that were fetched during the <userinput>MERGE</userinput> operation have been selected
+	(See the GETimelink "EDIT MERGE FETCH ..." command).
+	</para></listitem></varlistentry>
+	<varlistentry><term><userinput>DESELECT</userinput></term>
+	<listitem><para>Any links selected during the <userinput>MERGE</userinput> operation have been deselected.
+	</para></listitem></varlistentry>
+	</variablelist>
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>ZOOM AREA</userinput>  <replaceable>x y width height</replaceable></term>
+<listitem><para>
+The specifications for the zoom area defined interactively by the user within Ingred.
+Once Ingred has accepted the area this message will be sent to the interface.
+The values are the position of the zoom area within the main map (<replaceable>x</replaceable>, <replaceable>y</replaceable>) and the size of the area (<replaceable>width</replaceable>, <replaceable>height</replaceable>)  in decimal percent of the map axis length.
+(For example: 20.0 34.3 34.0 35.3 would define a zoomed area starting 20% along the x-axis, 34.3% along the y-axis and with a <replaceable>width</replaceable> of 34% of the x-axis length and a <replaceable>height</replaceable> of 35.3% of the y-axis length.)
+</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>ZOOM PAN END</userinput></term>
+<listitem><para>This message is sent when the user indicates to Ingred that they are finished the current panning operation.</para></listitem></varlistentry>
+
+<varlistentry><term><userinput>ZOOM START</userinput></term>
+<listitem><para>This message is sent as soon as the user has defined the zoom area on the map and has released the mouse button.
+This should be used to put up a "zooming in progress" cursor indicator.
+</para></listitem></varlistentry>
+
+</variablelist>
+</para></sect2></sect1>
+</chapter>

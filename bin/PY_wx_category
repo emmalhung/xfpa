@@ -1,0 +1,52 @@
+#!/usr/bin/python
+
+### DO NOT EDIT
+###-->
+import sys
+import FPALib
+
+fileName = sys.argv[1]
+dict     = FPALib.get_dict(fileName)
+###<--
+
+### INSERT YOUR CODE HERE
+###-->
+if not dict.has_key("weather"):
+	#print FPALib.NO_ATTRIBUTE % ('weather')
+	weather = ""
+else:
+	weather = dict["weather"]
+
+if not dict.has_key("cloud_amount"):
+	#print FPALib.NO_ATTRIBUTE % ('cloud_amount')
+	cloud_amount = ""
+else:
+	cloud_amount = dict["cloud_amount"]
+
+# Set default weather category
+cat = "none"
+
+# Set weather category based on 'weather' attribute
+if   FPALib.match(weather, "FZ"): cat = "freezing"
+elif FPALib.match(weather, "SN"): cat = "frozen"
+elif FPALib.match(weather, "RA"): cat = "precip"
+elif FPALib.match(weather, "DZ"): cat = "precip"
+elif FPALib.match(weather, "FG"): cat = "vis"
+elif FPALib.match(weather, "BR"): cat = "vis"
+elif FPALib.match(weather, "HZ"): cat = "vis"
+elif FPALib.match(weather, "FU"): cat = "vis"
+else:
+	# Set weather category based on 'cloud_amount'
+	if   FPALib.match(cloud_amount, "OVC"): cat = "cloud"
+	elif FPALib.match(cloud_amount, "BKN"): cat = "cloud"
+	elif FPALib.match(cloud_amount, "SCT"): cat = "cloud"
+
+# Set weather category 
+dict[FPALib.FPA_category] = cat
+###<--
+
+### ALL DONE! 
+###-->
+FPALib.print_dict(fileName, dict)
+sys.exit()
+###<--

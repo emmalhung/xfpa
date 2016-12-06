@@ -1,0 +1,67 @@
+##################################################################
+#
+# Sample Point List definition file.
+#
+# This file contains the definitions of pre-defined lists of
+# points which will be used by sample panels.
+#
+# NOTE: There is only one file of this type per FPA setup.
+#
+#  The lists are separated by list keys in square backets as:
+#
+#     [list_1_key] list_label
+#        latitude longitude  <comments>
+#        latitude longitude  <comments>
+#     [list_2_key] list_label
+#        latitude longitude  <comments>
+#
+#  and so on. The contents of the list key separator can be
+#  anything that make sense.
+#
+#  The list_label is what the user will see to identify the list.
+#
+# The format of the latitude and longitude must be given as one of
+#
+#       [+|-]DDD[N|E|W|S]              = whole degrees
+#       [+|-]DDD.ddd[N|E|W|S]          = decimal degrees
+#       [+|-]DDD:MM[:SS][N|E|W|S]      = degrees, minutes, seconds
+#       [+|-]DDD³MM['SS["]][N|E|W|S]   = degrees, minutes, seconds
+#
+# If the direction is given as one of N|E|W|S then the leading sign
+# is not required. Remember west and south are negative!
+#
+#
+# The <comments> after the position are optional and may be used to
+# remark on what is at the position. This is for file maintenance
+# only and has no other purpose.
+#
+# NOTE:
+#
+# If the label is only required to be in one language then the
+# label is taken as presented. If multi-language labels are
+# required then the label line must be specified as:
+#
+#   <*default*> "a b c" <*language*> "a ä µ" <*language*> "...
+#
+# Where: <*default*>  specifies the label to use if none of the
+#                     other specifiers are valid.
+#        <*language*> is the required language as specified in 
+#                     the LANG environment variable.
+#
+# Example: <*default*> "Msl Pressure"  <*c-french*> "Pression MSL"
+#
+#          If LANG=c-french the label would be "Pression MSL"
+#          otherwise it would be "Msl Pressure".
+#
+#          Note that the quotes around the label are important!
+#
+#
+# EXAMPLE:
+#
+#      [main_cities] Main Cities
+#        43:70N 79:60W   # Toronto
+#        42:35N 83:00W   # Winsor
+#        46:40N 84:50W   ! Sault St Marie
+#
+#
+##################################################################

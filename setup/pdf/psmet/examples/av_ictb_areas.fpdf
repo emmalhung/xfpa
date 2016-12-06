@@ -1,0 +1,27 @@
+! Display icing areas ...
+@areas
+	{
+	element            = weather_system;
+	level              = surface;
+	category_attribute = icing_intensity;
+	category           = LGT MDT SVR;
+	attribute          = icing_intensity;
+	outline            = X11 Blue;
+	interior_fill      = X11 PaleTurquoise;
+	line_width         = .025;
+	}
+
+! Display turbulence areas ...
+@areas
+	{
+	element        = turbulence;
+	level          = surface;
+	category       = All;
+	attribute      = turbulence_intensity;
+	line_width     = .035;
+	outline        = X11 Black;
+	interior_fill  = none;
+	pattern        = turbulence_bdry
+	pattern_width  = .200;
+	pattern_length = .300;
+	}

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE para PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<para>
+Instead of sampling multiple individual locations, you can select a preset list of sampling locations that your System Administrator has already created. 
+<orderedlist continuation='continues'><title>To select a set of preset sample locations:</title>
+<listitem><para>
+Choose one of the preset options in the <guilabel>Preset Points</guilabel> area and click <guibutton>Display</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>

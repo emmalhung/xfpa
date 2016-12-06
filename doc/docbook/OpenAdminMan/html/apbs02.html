@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>B.2.  Mathematical Operators and Their Precedence</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="apb.html" title="Appendix B. Equation Evaluator" /><link rel="prev" href="apbs01.html" title="B.1. Components of Equations" /><link rel="next" href="apbs03.html" title="B.3. Equation Functions" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">B.2.  Mathematical Operators and Their Precedence</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apbs01.html">Prev</a> </td><th width="60%" align="center">Appendix B. Equation Evaluator</th><td width="20%" align="right"> <a accesskey="n" href="apbs03.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2004656"></a>B.2.  Mathematical Operators and Their Precedence</h2></div></div></div><p>
+<a id="id2051169" class="indexterm"></a>
+ Mathematical operators used inside <span class="acronym">FPA</span> equations are a subset of HP C standard mathematical operators, with a few special additions.
+ </p><p>
+ The backslash character, that is <span><strong class="command">\</strong></span>, is used for continuing a long equation onto another line.
+ The effect of the backslash character in an equation string is to simply concatenate the two lines into one.
+ </p><p>
+ The <span><strong class="command">@</strong></span> and <span><strong class="command">!</strong></span> characters are "magic" field or modifier substitution characters described in the Generic Equations section below.</p><p>
+ The <span><strong class="command">$upper</strong></span> and <span><strong class="command">$lower</strong></span> strings are also "magic" layer to level modifiers described in the Field Modifiers section below.</p><p>
+ The <span class="acronym">HP</span> C standard left to right grouping of parameters is used, according to the operator precedence as given in the table below.
+ Round brackets, that is <span><strong class="command">()</strong></span>, can be used for grouping of parameters in equations for clarity, or to force evaluation of equations in the desired order.</p><p>
+ The <span><strong class="command">^</strong></span> character is used as a shorthand form of the power function.
+ For example,   <span><strong class="command">field <sup>2</sup></strong></span> would take the square of all values in field.</p><p>
+ Note that the <span><strong class="command">+</strong></span> and <span><strong class="command">-</strong></span> signs used with mathematical constants can also be used as unary operators with functions, named constants, or fields.
+ For example, <span><strong class="command">-field</strong></span> would give the negative of field.</p><p>
+ The mathematical operators used in equations are summarized below, in order of descending precedence:
+ </p><div class="informaltable"><table border="1"><colgroup><col /><col /></colgroup><thead><tr><th>operation</th><th>meaning</th></tr></thead><tbody><tr><td>\</td><td>line continuation</td></tr><tr><td>@ !</td><td>"magic" for substitution in Generic Equations</td></tr><tr><td>$upper $lower</td><td>"magic" for layer levels in Field Modifiers</td></tr><tr><td>()</td><td>grouping for evaluation</td></tr><tr><td>+ -</td><td>unary plus or minus</td></tr><tr><td>^</td><td>power</td></tr><tr><td>* /</td><td>multiplication or division</td></tr><tr><td>+ -</td><td>addition or subtraction</td></tr></tbody></table></div><p>
+ The left to right grouping of parameters and the precedence of operators will affect the evaluation of any equation.
+ </p><div xmlns="" class="example"><a xmlns="http://www.w3.org/1999/xhtml" id="id2081112"></a><p xmlns="http://www.w3.org/1999/xhtml" class="title"><b>Example B.1. Order of operations</b></p><p xmlns="http://www.w3.org/1999/xhtml">
+ For example, the equation:
+ </p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">a + - b * c / d ^ e - f</pre><p xmlns="http://www.w3.org/1999/xhtml">
+ would be evaluated as:
+ </p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">( a + ( ( ( -b ) * c ) / ( d ^ e ) ) ) - f</pre><p xmlns="http://www.w3.org/1999/xhtml">
+ The user would have to use round brackets to force a different order of evaluation, as in:
+ </p><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">a + ( ( -b ) * ( ( c  /  d )  ^  ( e  -  f ) ) )</pre><p xmlns="http://www.w3.org/1999/xhtml">
+ </p></div><p>
+</p><p>
+ Brackets can be nested for as many layers as is necessary to force the desired evaluation of the equation, or to clarify the order of evaluation.
+ Long equations can be extended to additional lines with as many backslash characters as may be desired.
+ The maximum length of an <span class="acronym">FPA</span> equation in the configuration files is presently 1024 characters, including blank spaces.
+ </p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apbs01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apbs03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">B.1. Components of Equations </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> B.3. Equation Functions</td></tr></table></div></body></html>

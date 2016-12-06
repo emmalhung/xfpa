@@ -1,0 +1,19 @@
+Look-up   | Symbol file          | Text String   | Presentation
+*default* : sunny                : Sunny         : clear1
+TSRA      : thunder              : Thunderstorms : trw1
+TS        : thunder              : Thunderstorms : trw1
+FZRA      : r_frz                : Freezing Rain : frz_rain1
+FZDZ      : r_frz                : Freezing Rain : frz_rain1
+RASN      : rs_mix               : Rain and Snow : mix1
+SHRA      : rain                 : Showers       : shower1
+SHSN      : snow                 : Snow Flurries : snow1
+RA        : rain                 : Rain          : rain1
+SN        : snow                 : Snow          : snow1
+DZ        : rain                 : Drizzle       : rain1
+FG        : fog                  : Fog           : fog1
+BR        : fog                  : Mist          : fog1
+OVC       : cldy                 : Cloudy        : cloud1
+BKN       : cldy                 : Cloudy        : cloud1
+SCT       : cldy_p_d             : Partly Cloudy : cloud2
+CLR       : sunny                : Sunny         : clear1
+NONE      : sunny                : Sunny         : clear1

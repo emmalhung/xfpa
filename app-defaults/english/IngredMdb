@@ -1,0 +1,705 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Ingred Messages:
+!
+!  These are messages that appear on the FPA status line.
+!
+!  The following message types are used:
+!      status ... tells what ingred is doing
+!      prompt ... requests some form of action
+!      warning .. something noteworthy has happened
+!      error .... something bad has happened
+!      system ... an unsupported feature was requested
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+hello.msg:			status	Editor Connected!
+startup.msg:		status	Initializing...
+bye.msg:			status	Goodbye!
+suspend.msg:		status	Editor Suspended!
+redraw.msg:			status	Redraw...
+resize.msg:			status	Resize...
+obscured.msg:		warning	Obscured! - Ignoring Input...
+db-busy.msg:		warning	Database in use (PID:%d on %s)
+db-no-access.msg:	warning	Cannot access depiction directory
+db-no-lock.msg:		warning	Cannot establish database lock
+
+map-bg-loading.msg:		status	Loading Map Background
+map-bg-loaded.msg:		status	Map Background Loaded
+map-bg-access.msg:		error	Map Background "%s" not found
+map-ov-loading.msg:		status	Loading Map Overlay %s
+map-ov-loaded.msg:		status	Map Overlay %s Loaded
+map-ov-access.msg:		error	Map Overlay "%s" not found
+map-ov-invalid.msg:		system	Unknown map overlay: %d
+image-loading.msg:		status	Loading Image %s
+image-processing.msg:	status	Processing Imagery
+image-loaded.msg:		status	Imagery Ready
+image-unsupported.msg:	system	Unsupported Imagery feature: %s %s
+
+dump-format.msg:	status	Formatting raster dump
+dump-ready.msg:		status	Raster dump ready
+
+draw-add.msg:		prompt	Release at desired point
+draw-end.msg:		prompt	Release to complete
+drawing.msg:		prompt	Drawing - Right button to end
+draw-done.msg:		status	Draw complete
+draw-cancel.msg:	warning	Draw Cancelled!
+
+movie-off.msg:					status	Animation Terminated
+movie-select.msg:				prompt	Select Depictions or Interpolations
+movie-depict.msg:				status	Animation of Depictions
+movie-depict-tstamp.msg:		status	%s (T%+.2d)
+movie-depict-tstamp-mins.msg:	status	%s (T%s)
+movie-interp.msg:				status	Animation of Interpolations
+movie-interp-tstamp.msg:		status	%.4d/%.2d/%.2d %.2d (T%+.2d)
+movie-interp-tstamp-mins.msg:	status	%.4d/%.2d/%.2d %.2d:%.2d (T%s)
+movie-interp-get.msg:			status	Retrieving Interpolated Fields
+movie-interp-nolink.msg:		warning	No Fields Can Be Interpolated
+movie-interp-nointerp.msg:		warning	No Fields Interpolated Yet
+movie-interp-nofile.msg:		warning	Interpolation Not Available
+movie-contour.msg:				status	Contouring %s %s T%+.2d
+movie-contour-mins.msg:			status	Contouring %s %s T%s
+
+fld-contour-cont.msg:	status	Contouring %s %s Field
+fld-contour-disp.msg:	status	Displaying %s %s Field
+fld-contour-done.msg:	status	Contouring Complete
+fld-added.msg:			status	Field %s %s Added
+fld-deleted.msg:		status	Field %s %s Deleted
+fld-saving.msg:			status	Saving Field %s %s
+fld-saved.msg:			status	Field %s %s Saved
+
+guid-label.msg:			status	Generating Labels
+guid-appearance.msg:	prompt	Select Field Colour or Line Type
+guid-fld-noedit.msg:	warning	Cannot edit guidance field
+guid-fld-nosample.msg:	warning	Cannot sample guidance field
+guid-fld-invalid.msg:	system	Invalid guidance field ID %s
+guid-unsupported.msg:	system	Unsupported guidance edit feature: %s %s %s
+
+depict-read.msg:		status	Reading Depictions
+depict-ready.msg:		status	Depictions Ready
+depict-process.msg:		status	Processing Depictions
+depict-build.msg:		status	Building Depiction From Fields
+depict-built.msg:		status	Depiction Built
+depict-access.msg:		error	Requested Depiction Not Accessible
+depict-ignore.msg:		warning	Ignoring daily field %s %s
+depict-added.msg:		status	Depiction Added
+depict-deleted.msg:		status	Depiction Deleted
+depict-saving.msg:		status	Saving Depiction
+depict-saved.msg:		status	Depiction Saved
+depict-active.msg:		status	View time: %s ... Edit time: %s
+depict-active-none.msg:	status	No Active Depiction
+
+edit-wrong-button.msg:		warning	Wrong button - Ignored!
+edit-outside-map.msg:		warning	Outside Map - Ignored!
+edit-outside-panel.msg:		warning	Outside Panel - Ignored!
+edit-no-draw.msg:			warning	Nothing Drawn - Ignored!
+edit-no-edit.msg:			warning	No Changes Made - Ignored!
+edit-too-short.msg:			warning	Line Too Short - Ignored!
+edit-cancel.msg:			warning	Cancelled!
+edit-ignore.msg:			warning	Ignored!
+edit-freeze.msg:			status	Freezing previous edits...
+edit-cut.msg:				status	Selection cut
+edit-copy.msg:				status	Selection copied
+edit-paste.msg:				status	Selection pasted
+edit-no-paste.msg:			warning	No selection to paste - Ignored!
+edit-done.msg:				status	Done...
+edit-skip.msg:				status	Skipping...
+edit-clear.msg:				status	Clearing...
+edit-release-proceed.msg:	prompt	Release to Proceed
+edit-release-refit.msg:		prompt	Release to Refit
+edit-release-confirm.msg:	prompt	Release to Confirm
+edit-release-end.msg:		prompt	Release to End
+edit-release-quit.msg:		prompt	Release to Quit
+edit-release-skip.msg:		prompt	Release to Skip
+edit-release-clear.msg:		prompt	Release to Clear
+edit-release-cancel.msg:	prompt	Release to Cancel
+edit-bail-out.msg:			error	Unsuccessful - Bailing out...
+edit-no-drawn-outline.msg:	warning	No outline has been drawn!
+edit-no-drawn-hole.msg:		warning	No hole has been drawn!
+edit-no-moved-outline.msg:	warning	No outline has been moved!
+edit-no-stomp-outline.msg:	warning	No stomp outline has been drawn!
+edit-no-preset-outline.msg:	error	Preset Map outline "%s" not found
+edit-no-preset-holes.msg:	error	Preset holes file "%s" not found
+
+label-unsupported.msg:		system	Unsupported label feature: %s %s
+label-text.msg:				prompt	Left button to place/move text - \
+									Right button to delete
+label-text-add.msg:			prompt	Pick point to place text - Release
+label-text-del.msg:			prompt	Pick label to delete - Release
+label-text-empty.msg:		warning	Enter text first!
+label-point.msg:			prompt	Left button to label
+label-feature.msg:			prompt	Left button to label feature
+label-pick-point.msg:		prompt	Pick point to label - Release
+label-pick-feature.msg:		prompt	Pick feature to label - Release
+label-pick-del.msg:			prompt	Pick label to delete - Release
+label-no-eval.msg:			warning	Cannot evaluate label!
+label-too-close.msg:		warning	Label too close!
+label-deleting.msg:			status	Deleting label...
+label-adding.msg:			status	Adding label...
+label-move.msg:				prompt	Left button to move label
+label-no-move.msg:			warning	No labels to Move!
+label-move-rel.msg:			prompt	Move to new position - Release
+label-move-out3.msg:		warning	Cannot move outside!
+label-move-mult.msg:		warning	Already a label there!
+label-moving.msg:			status	Moving label...
+label-mod.msg:				prompt	Left button to modify label
+label-no-mod.msg:			warning	No labels to Modify!
+label-mod-wrong.msg:		warning	Wrong label type
+label-show.msg:				prompt	Left button to show label
+label-no-show.msg:			warning	No labels to Show!
+label-del.msg:				prompt	Left button to delete label
+label-no-del.msg:			warning	No labels to Delete!
+
+sample-unsupported.msg:	system	Unsupported sample feature: %s %s
+sample-value.msg:		prompt	Left button to sample - \
+								Right button to clear
+sample-value-add.msg:	prompt	Pick point to sample - Release
+sample-wind.msg:		prompt	Left button to sample wind - \
+								Right button to clear
+sample-wind-add.msg:	prompt	Pick point to sample wind - Release
+sample-lnode.msg:		prompt	Left button to sample node - \
+								Right button to clear
+sample-lnode-add.msg:	prompt	Pick node to sample - Release
+sample-image.msg:		prompt	Left button to sample image - \
+								Right button to clear
+sample-image-add.msg:	prompt	Pick point to sample image - Release
+sample-grid.msg:		status	Sampling grid...
+sample-grid2.msg:		status	Sampling grid - Right button to cancel
+sample-grid3.msg:		status	Continuing - Right button to cancel
+sample-no-eval.msg:		warning	Cannot evaluate sample!
+sample-adding.msg:		status	Adding sample...
+
+sculpt-error.msg:		error	Error in sculpting!
+
+merge-field.msg:		prompt	Select a "merge" field
+merge-nofld.msg:		warning	No "merge" field given
+merge-fetching.msg:		status	Fetching "merge" field
+merge-access.msg:		warning	Cannot access "merge" field
+
+spline-unsupported.msg:		system	Unsupported spline edit feature: %s %s %s
+spline-no-field.msg:		warning	No field at current valid time
+spline-no-pokes.msg:		warning	Poke buffer too small - Edit ignored!
+spline-no-delta.msg:		warning	Select a non-zero delta!
+spline-no-drags.msg:		warning	No drags to analyze!
+spline-no-smooth.msg:		warning	Select smoothing factor greater than 1!
+spline-adjust.msg:			status	Adjusting surface...
+spline-poke.msg:			prompt	Pick point to poke (delta = %.1f)
+spline-poke-md.msg:			prompt	Pick point to poke (dmag = %.1f, ddir = %.1f)
+spline-poke-uv.msg:			prompt	Pick point to poke (dx = %.1f, dy = %.1f)
+spline-poke-proc.msg:		status	Analysing edit...
+spline-stomp-draw.msg:		prompt	Draw boundary of affected area
+spline-stomp-set.msg:		prompt	Select delta/taper/radius of influence - \
+									Right button to proceed
+spline-drag.msg:			prompt	Enter a drag - Hold to indicate new position
+spline-drag2.msg:			prompt	Enter another drag - Right button to refit
+spline-drag-end.msg:		prompt	Move to new position - Release
+spline-drag-bad.msg:		warning	Displacements are inconsistent - \
+									Edit ignored!
+spline-drag-proc1.msg:		status	Recording displacement...
+spline-drag-proc2.msg:		status	Analysing displacements...
+spline-move-draw.msg:		prompt	Draw boundary of area to move
+spline-move-nomode.msg:		warning	Move mode will not change until \
+									current move is resolved!
+spline-move-action.msg:		prompt	Right button to copy/translate/rotate
+spline-tran.msg:			prompt	Move: Pick reference point - \
+									Hold to move area
+spline-tran-copy.msg:		prompt	Copy: Pick reference point - \
+									Hold to move area
+spline-centre.msg:			prompt	Move: Pick centre of rotation
+spline-centre-copy.msg:		prompt	Copy: Pick centre of rotation
+spline-rotate.msg:			prompt	Move: Pick reference point - \
+									Hold to rotate area
+spline-rotate-copy.msg:		prompt	Copy: Pick reference point - \
+									Hold to rotate area
+spline-rot-release.msg:		prompt	Rotate to new position - Release
+spline-rot-out.msg:			warning	Cannot pick centre outside!
+spline-rot-ref.msg:			warning	Reference point too close!
+spline-rot-out1.msg:		warning	Cannot move from outside!
+spline-rot-out2.msg:		warning	Cannot move outside!
+spline-merge-nomode.msg:	warning	Merge mode will not change until \
+									current merge is resolved!
+spline-merge-draw.msg:		prompt	Draw boundary of area to merge
+spline-merge-action.msg:	prompt	Right button to merge/translate/rotate
+spline-tran-rel.msg:		prompt	Move to new position - Release
+spline-tran-out1.msg:		warning	Cannot move from outside!
+spline-tran-out2.msg:		warning	Must begin inside the area!
+spline-tran-out3.msg:		warning	Cannot move outside!
+spline-smooth-draw.msg:		prompt	Draw boundary of area to smooth
+spline-smooth-set.msg:		prompt	Select smoothing factor - \
+									Right button to proceed
+spline-smooth-wide.msg:		warning	Smoothing boundary wider than map!
+spline-smooth-tall.msg:		warning	Smoothing boundary taller than map!
+spline-smooth-both.msg:		warning	Smoothing boundary wider and taller \
+									than map!
+
+spline-interp.msg:			status	Interpolating %s %s at T%+.2d
+spline-interp-mins.msg:		status	Interpolating %s %s at T%s
+
+area-unsupported.msg:	system	Unsupported area edit feature: %s %s %s
+area-none-picked.msg:	system	No Area Picked!
+area-no-discard.msg:	system	No Segments to Discard!
+area-draw.msg:			prompt	Draw area boundary
+area-draw2.msg:			prompt	Draw area boundary (%s)
+area-draw-proc.msg:		status	Analysing new area...
+area-draw-rel.msg:		prompt	Draw area boundary - Release
+area-deleting.msg:		status	Deleting area...
+area-bgnd.msg:			status	Setting background...
+area-value.msg:			status	Setting value...
+area-pick.msg:			prompt	Pick area - Release
+area-pick-delete.msg:	prompt	Pick area to delete - Release
+area-picked.msg:		status	Area picked
+area-picked-div.msg:	status	Area dividing line picked
+area-picked-hole.msg:	status	Area hole picked
+area-unpicked.msg:		status	Area un-picked
+area-all-picked.msg:	status	All areas picked
+area-no-field.msg:		warning	No field at current valid time
+area-no-fld-cr.msg:		warning	No field at current valid time - \
+								Right button to create
+area-no-delete.msg:		warning	No areas to delete!
+area-no-move.msg:		warning	No areas to move!
+area-no-mod.msg:		warning	No areas to modify!
+area-no-div.msg:		warning	No areas to divide!
+area-no-set.msg:		warning	No areas to set value!
+area-no-pick.msg:		warning	No areas picked!
+area-move-nomode.msg:	warning	Move mode will not change until \
+								current move is resolved!
+area-move-pick.msg:		prompt	Pick an area to move
+area-move-pick2.msg:	prompt	Pick another area - \
+								Right button to translate/rotate
+area-move-draw.msg:		prompt	Draw outline around areas to move
+area-move-select.msg:	status	Selecting areas inside outline
+area-merge-none.msg:	warning	No areas to merge!
+area-merge-nomode.msg:	warning	Merge mode will not change until \
+								current merge is resolved!
+area-merge-pick.msg:	prompt	Pick an area to merge
+area-merge-pick2.msg:	prompt	Pick another area - \
+								Right button to merge/translate/rotate
+area-merge-action.msg:	prompt	Right button to merge/translate/rotate
+area-merge-draw.msg:	prompt	Draw outline around areas to merge
+area-merge-select.msg:	status	Selecting areas inside outline
+area-tran.msg:			prompt	Pick reference point - \
+								Hold to move picked areas
+area-tran-release.msg:	prompt	Move to new position - Release
+area-tran-out1.msg:		warning	Cannot move from outside!
+area-tran-out2.msg:		warning	Cannot move outside!
+area-rot-centre.msg:	prompt	Pick centre of rotation
+area-rot.msg:			prompt	Pick reference point - \
+								Hold to rotate picked areas
+area-rot-release.msg:	prompt	Rotate to new position - Release
+area-rot-out.msg:		warning	Cannot pick centre outside!
+area-rot-ref.msg:		warning	Reference point too close!
+area-rot-out1.msg:		warning	Cannot move from outside!
+area-rot-out2.msg:		warning	Cannot move outside!
+area-hole-pick.msg:		prompt	Pick area to add holes
+area-hole-draw.msg:		prompt	Left button to draw hole
+area-hole-draw-rel.msg:	prompt	Draw hole - Release
+area-hole-proc.msg:		status	Analysing new hole...
+area-hole-out.msg:		warning	Hole must intersect area
+area-hole-none.msg:		warning	No hole found
+area-mod-pick.msg:		prompt	Pick area to modify
+area-mod-warn.msg:		warning	Unknown area feature
+area-mod-draw.msg:		prompt	Left button to draw new segment - \
+								Right button to change or delete
+area-mod-draw-rel.msg:	prompt	Draw new segment - Release
+area-mod-del.msg:		prompt	Release to delete area
+area-mod-discard.msg:	prompt	Pick (cyan) segment to discard - \
+								Right button to confirm or cancel
+area-mod-disc-rel.msg:	prompt	Pick (cyan) segment to discard - Release
+area-mod-boundary.msg:	status	Modifying area boundary...
+area-mod-divide.msg:	status	Modifying area dividing line...
+area-mod-hole.msg:		status	Modifying area hole...
+area-mod-proc.msg:		status	Analysing new segment...
+area-sculpt-pick.msg:	prompt	Pick area to edit
+area-sculpt.msg:		prompt	Left button to sculpt - \
+								Right button to change or delete
+area-sculpt-rel.msg:	prompt	Hold button to edit - Release when done
+area-div-pick.msg:		prompt	Pick area to divide/undivide
+area-div-draw.msg:		prompt	Draw a dividing line
+area-div-draw-rel.msg:	prompt	Draw dividing line - Release
+area-div-join.msg:		prompt	Draw a dividing line - \
+								Right button to rejoin (green)
+area-div-join-not.msg:	warning	Cannot rejoin with picked area
+area-div-join-out.msg:	warning	Must be adjacent to first area
+area-div-set1.msg:		prompt	Set value for first area - \
+								Right button to leave as is (%s)
+area-div-set2.msg:		prompt	Set value for second area - \
+								Right button to leave as is (%s)
+area-div-out1.msg:		warning	Dividing line must enter area!
+area-div-out2.msg:		warning	Not enough points in dividing line!
+area-div-out3.msg:		warning	Problem with dividing line!
+area-div-cross.msg:		warning	Truncating dividing line that crosses itself!
+area-dividing.msg:		status	Dividing area...
+area-div-proc.msg:		status	Analysing dividing line...
+area-div-warn1.msg:		warning	Dividing line has moved outside area!
+area-div-warn2.msg:		warning	Some dividing lines will be deleted!
+area-undividing.msg:	status	Un-dividing area...
+area-hole-warn1.msg:	warning	Deleting hole!
+area-hole-warn2.msg:	warning	Hole has moved outside area!
+
+area-interp.msg:			status	Interpolating %s %s chain %d \
+									from T%+.2d to T%+.2d
+area-interp-mins.msg:		status	Interpolating %s %s chain %d \
+									from T%s to T%s
+area-interp-div.msg:		status	Dividing %s %s area at T%+.2d
+area-interp-div-mins.msg:	status	Dividing %s %s area at T%s
+area-interp-hole.msg:		status	Adding holes to %s %s area at T%+.2d
+area-interp-hole-mins.msg:	status	Adding holes to %s %s area at T%s
+area-interp-order.msg:		status	Reordering %s %s area at T%+.2d
+area-interp-order-mins.msg:	status	Reordering %s %s area at T%s
+area-interp-warn.msg:		warning	Remove early start divide on split area \
+									for %s %s at T%+.2d
+area-interp-warn-mins.msg:	warning	Remove early start divide on split area \
+									for %s %s at T%s
+area-interp-warn2.msg:		warning	Remove early start hole on split area \
+									for %s %s at T%+.2d
+area-interp-warn2-mins.msg:	warning	Remove early start hole on split area \
+									for %s %s at T%s
+
+line-unsupported.msg:	system	Unsupported line edit feature: %s %s %s
+line-none-picked.msg:	system	No Curve Picked!
+line-no-discard.msg:	system	No New Curve!
+line-draw.msg:			prompt	Draw curve
+line-draw2.msg:			prompt	Draw curve (%s)
+line-draw-rel.msg:		prompt	Draw curve - Release
+line-draw-proc.msg:		status	Analysing new curve...
+line-pick.msg:			prompt	Pick curve - Release
+line-pick-delete.msg:	prompt	Pick curve to delete - Release
+line-deleting.msg:		status	Deleting curve...
+line-value.msg:			status	Setting value...
+line-picked.msg:		status	Curve picked
+line-unpicked.msg:		status	Curve un-picked
+line-all-picked.msg:	status	All curves picked
+line-no-field.msg:		warning	No field at current valid time
+line-no-fld-cr.msg:		warning	No field at current valid time - \
+								Right button to create
+line-no-delete.msg:		warning	No curves to delete!
+line-no-flip.msg:		warning	No curves to flip!
+line-no-move.msg:		warning	No curves to move!
+line-no-mod.msg:		warning	No curves to modify!
+line-no-join.msg:		warning	No curves to join to!
+line-no-join2.msg:		warning	No curves to join!
+line-no-label.msg:		warning	No curves to label!
+line-no-sample.msg:		warning	No curves to sample!
+line-no-pick.msg:		warning	No curves picked!
+line-flip-pick.msg:		prompt	Left button to pick curve to flip/reverse
+line-flip-pick2.msg:	prompt	Left button to repick - \
+								Right button to flip/reverse
+line-flipping.msg:		status	Flipping curve...
+line-reversing.msg:		status	Reversing curve...
+line-flipreversing.msg:	status	Flipping and reversing curve...
+line-move-nomode.msg:	warning	Move mode will not change until \
+								current move is resolved!
+line-move-pick.msg:		prompt	Pick a curve to move
+line-move-pick2.msg:	prompt	Pick another curve - \
+								Right button to translate/rotate
+line-move-draw.msg:		prompt	Draw outline around lines to move
+line-move-select.msg:	status	Selecting lines inside outline
+line-merge-none.msg:	warning	No curves to merge!
+line-merge-nomode.msg:	warning	Merge mode will not change until \
+								current merge is resolved!
+line-merge-pick.msg:	prompt	Pick a curve to merge
+line-merge-pick2.msg:	prompt	Pick another curve - \
+								Right button to merge/translate/rotate
+line-merge-action.msg:	prompt	Right button to merge/translate/rotate
+line-merge-draw.msg:	prompt	Draw outline around lines to merge
+line-merge-select.msg:	status	Selecting lines inside outline
+line-tran.msg:			prompt	Pick reference point - \
+								Hold to move picked curves
+line-tran-release.msg:	prompt	Move to new position - Release
+line-tran-out1.msg:		warning	Cannot move from outside!
+line-tran-out2.msg:		warning	Cannot move outside!
+line-rot-centre.msg:	prompt	Pick centre of rotation
+line-rot.msg:			prompt	Pick reference point - \
+								Hold to rotate picked curves
+line-rot-release.msg:	prompt	Rotate to new position - Release
+line-rot-out.msg:		warning	Cannot pick centre outside!
+line-rot-ref.msg:		warning	Reference point too close!
+line-rot-out1.msg:		warning	Cannot move from outside!
+line-rot-out2.msg:		warning	Cannot move outside!
+line-mod-pick.msg:		prompt	Pick curve to modify
+line-mod-draw.msg:		prompt	Left button to draw new segment - \
+								Right button to change or delete
+line-mod-draw-rel.msg:	prompt	Draw new segment - Release
+line-mod-del.msg:		prompt	Release to delete curve
+line-mod-discard.msg:	prompt	Right button to confirm or cancel
+line-modifying.msg:		status	Modifying curve...
+line-mod-proc.msg:		status	Analysing new segment...
+line-mod-wrong.msg:		warning	Wrong line type
+line-sculpt.msg:		prompt	Left button to sculpt - \
+								Right button to change or delete
+line-sculpt-ovlp.msg:	warning	Overlapping end of line markers!
+line-sculpt-rel.msg:	prompt	Hold button to edit - Release when done
+line-join-pick.msg:			prompt	Pick curve to join to
+line-join2-pick.msg:		prompt	Left button to pick curve to join - \
+									Right button to break
+line-join2-pick2.msg:		prompt	Left button to repick - \
+									Right button to join
+line-join2-nojoin.msg:		warning	Cannot join to same curve!
+line-join2-same.msg:		warning	Curve already picked!
+line-join2-type.msg:		warning	Cannot join curves of different type!
+line-join2-extend.msg:		warning	Cannot join if no extension!
+line-join-joining.msg:		status	Joining curves...
+line-join-break.msg:		prompt	Pick point to break curve
+line-join-break-rel.msg:	prompt	Pick break point - Release
+line-join-breaking.msg:		status	Breaking curve...
+
+line-interp.msg:		status	Interpolating %s %s chain %d \
+								from T%+.2d to T%+.2d
+line-interp-mins.msg:	status	Interpolating %s %s chain %d from T%s to T%s
+
+point-unsupported.msg:	system	Unsupported spot edit feature: %s %s %s
+point-draw.msg:			prompt	Place spot
+point-draw2.msg:		prompt	Place (%s) spot
+point-draw-no-add.msg:	prompt	Cannot add (%s) spots
+point-pick.msg:			prompt	Pick spot - Release
+point-deleting.msg:		status	Deleting spot...
+point-value.msg:		status	Setting value...
+point-picked.msg:		status	Spot picked
+point-unpicked.msg:		status	Spot un-picked
+point-all-picked.msg:	status	All spots picked
+point-no-field.msg:		warning	No field at current valid time
+point-no-fld-cr.msg:	warning	No field at current valid time - \
+								Right button to create
+point-no-delete.msg:	warning	No spots to delete!
+point-no-move.msg:		warning	No spots to move!
+point-no-mod.msg:		warning	No spots to modify!
+point-no-label.msg:		warning	No spots to label!
+point-no-sample.msg:	warning	No spots to sample!
+point-no-pick.msg:		warning	No spots picked!
+point-move-pick.msg:	prompt	Pick a spot to move
+point-move-pick2.msg:	prompt	Pick another spot - Right button to translate
+point-move-draw.msg:	prompt	Draw outline around points to move
+point-move-select.msg:	status	Selecting points inside outline
+point-merge-none.msg:	warning	No spots to merge!
+point-merge-pick.msg:	prompt	Pick a spot to merge
+point-merge-pick2.msg:	prompt	Pick another spot - \
+								Right button to merge/translate
+point-merge-action.msg:	prompt	Right button to merge/translate
+point-merge-draw.msg:	prompt	Draw outline around points to merge
+point-merge-select.msg:	status	Selecting points inside outline
+point-tran.msg:			prompt	Pick reference point - \
+								Hold to move picked spots
+point-tran-release.msg:	prompt	Move to new position - Release
+point-tran-out1.msg:	warning	Cannot move from outside!
+point-tran-out2.msg:	warning	Cannot move outside!
+point-mod-pick.msg:		prompt	Pick spot to modify
+point-modify.msg:		prompt	Right button to change or delete
+point-mod-wrong.msg:	warning	Wrong spot type
+point-mod-nofile.msg:	warning	No modify file
+
+point-interp.msg:		status	Interpolating %s %s chain %d \
+								from T%+.2d to T%+.2d
+point-interp-mins.msg:	status	Interpolating %s %s chain %d from T%s to T%s
+
+lchain-unsupported.msg:		system	Unsupported link chain edit feature: %s %s %s
+lchain-start-norm.msg:		prompt	Pick first (Normal) node for link chain \
+									with start time  %s
+lchain-start-cont.msg:		prompt	Pick first (Control) node for link chain \
+									with start time  %s
+lchain-pick.msg:			prompt	Pick link chain - Release
+lchain-pick-node-rel.msg:	prompt	Pick node - Release
+lchain-pick-node-loc.msg:	prompt	Pick node location - Release
+lchain-next-norm.msg:		prompt	Pick next (Normal) node - \
+									with node time  %s
+lchain-next-cont.msg:		prompt	Pick next (Control) node - \
+									with node time  %s
+lchain-adding.msg:			status	Adding link chain with start time %s
+lchain-join-not-start.msg:	warning	Cannot join start of link chain \
+									with time delta of %d minutes
+lchain-join-not-end.msg:	warning	Cannot join end of link chain \
+									with time delta of %d minutes
+lchain-join.msg:			warning	Left button to join - \
+									Right button to begin new link chain
+lchain-release-join.msg:	prompt	Release to join
+lchain-joining.msg:			status	Continuing existing chain...
+lchain-draw-proc.msg:		status	Processing link chain...
+lchain-deleting.msg:		status	Deleting link chain...
+lchain-del-node.msg:		status	Deleting link node...
+lchain-del-cont.msg:		status	Deleting control node...
+lchain-no-copy-control.msg:	warning	Cannot copy control nodes!
+lchain-no-copy-interp.msg:	warning	Cannot copy interpolated nodes!
+lchain-no-del-interp.msg:	warning	Cannot delete interpolated nodes!
+lchain-attribs.msg:			status	Setting attributes for link chain...
+lchain-times.msg:			status	Setting times for link chain...
+lchain-value-node.msg:		status	Setting value for link node...
+lchain-value-cont.msg:		status	Setting value for control node...
+lchain-value-interp.msg:	status	Setting value for interpolated node...
+lchain-picked.msg:			status	Link chain picked
+lchain-unpicked.msg:		status	Link chain un-picked
+lchain-all-picked.msg:		status	All link chains picked
+lchain-no-field.msg:		warning	No field at current valid time
+lchain-no-fld-cr.msg:		warning	No field at current valid time - \
+									Right button to create
+lchain-no-delta.msg:		warning	Select a non-zero node time delta!
+lchain-no-move.msg:			warning	No link chains to move!
+lchain-no-mod.msg:			warning	No link chains to modify!
+lchain-no-sample.msg:		warning	No link chains to sample!
+lchain-no-pick.msg:			warning	No link chains picked!
+lchain-no-node-chains.msg:	warning	No link chains to pick!
+lchain-no-node-show.msg:	warning	No link chain nodes to show!
+lchain-no-node-picked.msg:	warning	No link chain node picked!
+lchain-move-pick.msg:		prompt	Pick a link chain to move
+lchain-move-pick2.msg:		prompt	Pick another link chain - \
+									Right button to translate/rotate
+lchain-move-draw.msg:		prompt	Draw outline around points to move
+lchain-move-select.msg:		status	Selecting points inside outline
+lchain-merge-none.msg:		warning	No link chains to merge!
+lchain-merge-pick.msg:		prompt	Pick a link chain to merge
+lchain-merge-pick2.msg:		prompt	Pick another link chain - \
+									Right button to merge/translate/rotate
+lchain-merge-action.msg:	prompt	Right button to merge/translate/rotate
+lchain-merge-draw.msg:		prompt	Draw outline around link chains to merge
+lchain-merge-select.msg:	status	Selecting link chains inside outline
+lchain-tran.msg:			prompt	Pick reference point - \
+									Hold to move picked link chains
+lchain-tran-release.msg:	prompt	Move to new position - Release
+lchain-tran-out1.msg:		warning	Cannot move from outside!
+lchain-tran-out2.msg:		warning	Cannot move outside!
+lchain-rot-centre.msg:		prompt	Pick centre of rotation
+lchain-rot.msg:				prompt	Pick reference point - \
+									Hold to rotate picked link chains
+lchain-rot-release.msg:		prompt	Rotate to new position - Release
+lchain-rot-out.msg:			warning	Cannot pick centre outside!
+lchain-rot-ref.msg:			warning	Reference point too close!
+lchain-rot-out1.msg:		warning	Cannot move from outside!
+lchain-rot-out2.msg:		warning	Cannot move outside!
+lchain-mod-pick.msg:		prompt	Pick link chain to modify
+lchain-modify.msg:			prompt	Right button to change or delete
+lchain-node-chain-pick.msg:	prompt	Pick link chain
+lchain-node-move-pick.msg:	prompt	Pick link node to move - \
+									Hold to move to new position
+lchain-node-move-rel.msg:	prompt	Move to new position - Release
+lchain-node-move-out.msg:	warning	Cannot move outside!
+lchain-no-move-interp.msg:	warning	Cannot move Interpolated nodes!
+lchain-no-move-float.msg:	warning	Cannot move Floating nodes!
+lchain-no-mod-control.msg:	warning	Cannot modify attributes \
+									for control nodes!
+lchain-no-mod-interp.msg:	warning	Cannot modify attributes \
+									for interpolated nodes!
+lchain-node-copy-pick.msg:	prompt	Pick link node to copy
+lchain-node-copied.msg:		status	Link node copied
+lchain-node-paste-pick.msg:	prompt	Pick link node to paste to
+lchain-node-pasted.msg:		status	Link node pasted
+lchain-node-mod-pick.msg:	prompt	Pick link node to modify
+lchain-node-modify.msg:		prompt	Right button to change
+lchain-node-show-pick.msg:	prompt	Pick link node to show
+lchain-node-del-pick.msg:	prompt	Pick link node to delete
+lchain-node-pick-ambig.msg:	prompt	Ambiguous - Pick time of node
+lchain-node-unknown.msg:	warning	Unknown node type: %s
+
+scratch-loading.msg:		status	Loading Scratch Pad
+scratch-unsupported.msg:	system	Unsupported scratch pad feature: %s %s %s
+scratch-span.msg:			prompt	Pick start of span - Right button to delete
+scratch-span-end.msg:		prompt	Pick end of span - Hold to move
+scratch-span-out.msg:		warning	Cannot pick end of span outside!
+scratch-span-rel.msg:		prompt	Move to new position - Release
+scratch-span-no-dist.msg:	warning	Select a non-zero distance!
+scratch-span-proc.msg:		status	Analysing new span...
+scratch-no-features.msg:	warning	No scratchpad features to pick!
+scratch-no-pick.msg:		warning	No scratchpad features picked!
+scratch-feature-pick.msg:	prompt	Pick scratchpad feature
+scratch-feature-pick2.msg:	prompt	Pick another feature - \
+									Right button to delete
+scratch-feature-rel.msg:	prompt	Pick scratchpad feature - Release
+scratch-line-picked.msg:	status	Scratchpad line picked
+scratch-line-unpicked.msg:	status	Scratchpad line un-picked
+scratch-span-picked.msg:	status	Scratchpad span picked
+scratch-span-unpicked.msg:	status	Scratchpad span un-picked
+scratch-text-picked.msg:	status	Scratchpad text picked
+scratch-text-unpicked.msg:	status	Scratchpad text un-picked
+scratch-all-picked.msg:		status	All scratchpad features picked
+scratch-feature-del.msg:	status	Deleting features...
+
+link-check.msg:				status	Checking Link Status
+link-unsupported.msg:		system	Unsupported time link feature: %s %s %s
+link-not-sup.msg:			system	Time Linking not Supported for Field %s %s
+link-not-req.msg:			system	Time Linking not Required for Field %s %s
+link-place.msg:				prompt	Place link node (T%+d) - Right button to end
+link-place-mins.msg:		prompt	Place link node (T%s) - Right button to end
+link-place-add.msg:			prompt	Place link node - Release
+link-join.msg:				warning	Left button to join - \
+									Right button to begin new chain
+link-release-new.msg:		prompt	Release to begin new chain
+link-release-join.msg:		prompt	Release to join
+link-not-boundary.msg:		warning	Cannot link hole or divide to boundary!
+link-not-hole.msg:			warning	Cannot link boundary or divide to hole!
+link-not-divide.msg:		warning	Cannot link boundary or hole to divide!
+link-wrong-divide.msg:		warning	Divide already linked to another divide!
+link-common-boundary.msg:	warning	Connecting common boundary to area: %d
+link-common-hole.msg:		warning	Connecting common hole to area: %d
+link-common-divide.msg:		warning	Connecting common divide to area: %d
+link-adding.msg:			status	Adding link node...
+link-begin.msg:				status	Beginning new chain...
+link-joining.msg:			status	Continuing existing chain...
+link-add-proc.msg:			status	Adding link chain...
+link-remove.msg:			prompt	Pick link chain to remove
+link-remove-proc.msg:		status	Deleting link chain...
+link-remove-node.msg:		prompt	Pick link node to remove
+link-remove-node-proc.msg:	status	Deleting link node...
+link-remove-node-no.msg:	warning	Only start or end nodes can be removed!
+link-move.msg:				prompt	Pick link node to move - Hold to move
+link-move-rel.msg:			prompt	Move to new position - Release
+link-move-ambig.msg:		prompt	Click and hold to move to new position
+link-move-proc.msg:			status	Moving link node...
+link-merge-out.msg:			warning	Link chain to merge beyond depiction times!
+link-inter.msg:				prompt	Pick link chain to add control node
+link-inter-pick.msg:		prompt	Pick and move new control node
+link-inter-ambig.msg:		prompt	Pick time for new control node
+link-inter-depict.msg:		warning	Must not be a depiction time!
+link-no-line.msg:			warning	No curves to link!
+link-no-area.msg:			warning	No areas to link!
+link-no-fld.msg:			warning	Nothing to link!
+link-out-line.msg:			warning	Not close enough to a curve!
+link-out-area.msg:			warning	Must be inside an area - Ignored!
+link-no-del.msg:			warning	No link chains to delete!
+link-no-move.msg:			warning	No link chains to move!
+link-no-node.msg:			warning	No current node on this link chain!
+link-too-far.msg:			warning	Too far - Pick inside a link box!
+link-not-interp.msg:		warning	Cannot move interpolated nodes!
+link-not-node.msg:			warning	Normal node cannot be a control node!
+link-not-control.msg:		warning	Already a control node!
+link-ambig.msg:				warning	Ambiguous - (Hint: Pick any node on chain)
+link-ambig-del.msg:			warning	Ambiguous - (Removing duplicate chain!)
+link-node-ambig-del.msg:	warning	Ambiguous - (Removing node from last chain!)
+
+extrap-start.msg:		prompt	Pick start time - Right button for current
+extrap-start-pick.msg:	prompt	Pick extrapolation start time
+extrap-start-new.msg:	prompt	Pick new start time
+extrap-start-yes.msg:	status	Start extrapolation selected
+extrap-start-no.msg:	status	No start extrapolation
+extrap-start-same.msg:	status	Keeping original start time
+extrap-end.msg:			prompt	Pick end time - Right button for current
+extrap-end-pick.msg:	prompt	Pick extrapolation end time
+extrap-end-new.msg:		prompt	Pick new end time
+extrap-end-yes.msg:		status	End extrapolation selected
+extrap-end-no.msg:		status	No end extrapolation
+extrap-end-same.msg:	status	Keeping original end time
+
+interp-all.msg:			status	Interpolating All Linked Fields
+interp-fld.msg:			status	Interpolating Field %s %s
+interp-out.msg:			status	Outputing Field %s %s
+interp-done.msg:		status	Interpolation Complete
+interp-none.msg:		status	Nothing Interpolated
+
+zoom-pick.msg:			prompt	Pick corner of zoom - Hold to define box
+zoom-drag.msg:			prompt	Move to opposite corner - Release
+zoom-too-small.msg:		warning	Zoom box too small - Setting to minimum size!
+zoom-zooming.msg:		status	Zooming!
+zoom-unzooming.msg:		status	Exiting Zoom!
+zoom-redef.msg:			status	Re-defining Zoom Area
+zoom-pan.msg:			prompt	Pick new centre of zoom - Right button to quit
+zoom-pan-rel.msg:		prompt	Pick new centre of zoom - Release
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!  Ingred Legend Messages:
+!
+!  These are status lines that appear as a legend on various FPA fields.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+guid.legend:		%s %s %s - Issued %.2d/%.2d %.2dZ [T%+.2d]
+guid-mins.legend:	%s %s %s - Issued %.2d/%.2d %.2d:%.2dZ [T%s]
+guid-na.legend:		%s %s %s - FIELD NOT AVAILBLE
+static.legend:		STATIC %s %s - Updated %sZ
+daily.legend:		DAILY %s %s - Valid %s

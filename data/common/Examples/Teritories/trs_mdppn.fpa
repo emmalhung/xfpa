@@ -1,0 +1,79 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Dawson"
+	FPA_user_label "Dawson"
+ spot 64.06N -139.43E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Faro"
+	FPA_user_label "Faro"
+ spot 62.232N -133.36E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Watson Lake"
+	FPA_user_label "Watson Lake"
+ spot 60.063N -128.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Carmacks"
+	FPA_user_label "Carmacks"
+ spot 62.088N -136.29E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Haines Junction"
+	FPA_user_label "Haines Junction"
+ spot 60.753N -137.51E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Mayo"
+	FPA_user_label "Mayo"
+ spot 63.594N -135.9E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Teslin"
+	FPA_user_label "Teslin"
+ spot 60.168N -132.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Iqaluit"
+	FPA_user_label "Iqaluit"
+ spot 63.711N -68.328E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Hay River"
+	FPA_user_label "Hay River"
+ spot 60.823N -115.78E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Inuvik"
+	FPA_user_label "Inuvik"
+ spot 68.354N -133.69E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fort Smith"
+	FPA_user_label "Fort Smith"
+ spot 60.012N -111.89E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Norman Wells"
+	FPA_user_label "Norman Wells"
+ spot 65.305N -126.71E location none
+ value 3
+	FPA_category "pop"
+	FPA_auto_label "Fort Simpson"
+	FPA_user_label "Fort Simpson"
+ spot 61.862N -121.35E location none
+
+* 
+* End
+

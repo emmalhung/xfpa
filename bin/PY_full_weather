@@ -1,0 +1,87 @@
+#!/usr/bin/python
+
+### DO NOT EDIT
+###-->
+import sys
+import FPALib
+
+fileName = sys.argv[1]
+dict     = FPALib.get_dict(fileName)
+###<--
+
+### INSERT YOUR CODE HERE
+###-->
+if not dict.has_key("visibility"):
+	#print FPALib.NO_ATTRIBUTE % ('visibility')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+if not dict.has_key("weather"):
+	#print FPALib.NO_ATTRIBUTE % ('weather')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+if not dict.has_key("weather_modifier"):
+	#print FPALib.NO_ATTRIBUTE % ('weather_modifier')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+if not dict.has_key("visibility_secondary"):
+	#print FPALib.NO_ATTRIBUTE % ('visibility_secondary')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+if not dict.has_key("weather_secondary"):
+	#print FPALib.NO_ATTRIBUTE % ('weather_secondary')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+if not dict.has_key("wx_remarks"):
+	#print FPALib.NO_ATTRIBUTE % ('wx_remarks')
+	FPALib.print_dict(fileName, dict)
+	sys.exit()
+
+
+# Set default full_weather
+cat = ""
+
+# Build the primary weather from visibility and weather 
+# Note that weather begins with a blank!
+valv = dict["visibility"]
+valw = dict["weather"]
+if valv == "":
+	cat = cat + valv + valw
+
+# Add the secondary weather from "weather_modifier", "visibility_secondary" and
+# "weather_secondary"
+# NOTE that "weather secondary" begins with a blank!
+valm = dict["weather_modifier"]
+valv = dict["visibility_secondary"]
+valw = dict["weather_secondary"]
+if not FPALib.blank(valm) and not FPALib.blank(valv):
+	if not FPALib.blank(cat): cat = cat + " "
+	cat = cat + valm + " " + valv + valw
+
+valr = dict["wx_remarks"]
+if not FPALib.blank(valr):
+	if not FPALib.blank(cat): 
+		cat = cat + " "
+	cat = cat + valr
+
+if dict.has_key("wx_remarks_2"): 
+	valr = dict["wx_remarks_2"]
+	if not FPALib.blank(valr):
+		if not FPALib.blank(cat): 
+			cat = cat + " "
+		cat = cat + valr
+
+
+# Set full_weather value 
+dict["full_weather"] = cat
+###<--
+
+### ALL DONE! 
+###-->
+FPALib.print_dict(fileName, dict)
+sys.exit()
+###<--

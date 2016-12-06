@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!ENTITY version '8'>
+<!ENTITY FPA '<acronym>FPA</acronym>'>
+<!ENTITY GRIB '<acronym>GRIB</acronym>'>
+<!ENTITY CMC '<acronym>CMC</acronym>'>
+<!ENTITY NFS '<acronym>NFS</acronym>'>
+<!ENTITY GIF '<acronym>GIF</acronym>'>
+<!ENTITY MKS '<acronym>MKS</acronym>'>
+<!ENTITY PSMet '<application>PSMet</application>'>
+<!ENTITY SVGMet '<application>SVGMet</application>'>
+<!ENTITY TexMet '<application>TexMet</application>'>
+<!ENTITY fld '<replaceable>fld</replaceable>'>
+<!ENTITY fld1 '<replaceable>fld1</replaceable>'>
+<!ENTITY fld2 '<replaceable>fld2</replaceable>'>
+<!ENTITY hrs '<replaceable>hrs</replaceable>'>
+<!ENTITY timestamp '<replaceable>timestamp</replaceable>'>
+<!ENTITY fieldatt '<replaceable>field attribute</replaceable>'>
+<!ENTITY units '<replaceable>units</replaceable>'>
+<!ENTITY lookup '<replaceable>lookup</replaceable>'>
+<!ENTITY value '<replaceable>value</replaceable>'>
+<!ENTITY source '<replaceable>source</replaceable>'>
+<!ENTITY subsource '<replaceable>subsource</replaceable>'>
+<!ENTITY level '<replaceable>level</replaceable>'>
+<!ENTITY fpaemail '<email>fpa@ec.gc.ca</email>'>
+<!ENTITY colwidth "<colspec colwidth='1*'/><colspec colwidth='4*'/>">
+<!ENTITY colwidth2 "<colspec colwidth='1*'/><colspec colwidth='3*'/>">
+<!ENTITY colwidth3 "<colspec colwidth='1*'/><colspec colwidth='2*'/>">
+<!ENTITY colwidth4 "<colspec colwidth='2*'/><colspec colwidth='1*'/>">

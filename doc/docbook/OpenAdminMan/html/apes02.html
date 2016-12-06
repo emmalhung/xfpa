@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.2. The Local Setup File</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ape.html" title="Appendix E. Adding New Allied Models" /><link rel="prev" href="apes01.html" title="E.1. Development Directories and FPA Integration" /><link rel="next" href="apes03.html" title="E.3. The Local Configuration File" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">E.2. The Local Setup File</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apes01.html">Prev</a> </td><th width="60%" align="center">Appendix E. Adding New Allied Models</th><td width="20%" align="right"> <a accesskey="n" href="apes03.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2020975"></a>E.2. The Local Setup File</h2></div></div></div><p>
+<a id="id2051811" class="indexterm"></a>
+The format of the Local Setup file is described in <a href="ch05.html" title="Chapter 5. Defining Your Local Setup">Defining Your Local Setup, (Chapter 5)</a>.
+The location of directories required by the new Allied Model is in the 'directories' block of the Local Setup file.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The locations of all directories used by the new Allied Model should be defined in the Local Setup file, and not in the Allied Model processing programs.</p></div><p>
+</p><p>
+The location of the Development Directory for the application itself and constant input data files must be added in 'directories' block, as in:
+</p><pre class="programlisting">amodels.test <span xmlns="" class="replaceable">your_directory</span>/AModels.TEST</pre><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p> The entry for 'amodels.exec' in the 'directories' block refers to the location of other Allied Model applications already integrated into the <span class="acronym">FPA</span>.
+</p></div><p>
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The entries for 'home' and 'Data' in the 'directories' block refer to the location of data files for the <span class="acronym">FPA</span>, and that the entry for 'AModels.Data' in the 'directories' block refers to the usual location of the Data Directory for Allied Model input and output files.
+The path name of this directory is thus given by the path names of these three parameters, as <code class="filename">/home/Data/AModels.Data</code>.
+The subdirectories and files for the new Allied Model are described in the Local Configuration file section below.</p></div><p>
+</p><p>
+The Allied Model to be run must also be added to the "[allied.model]" section of the 'interface' block.
+Each uncommented line in this section identifies an application which will appear in the Allied Model menus of the <span class="acronym">FPA</span> as an application that can be run from within the <span class="acronym">FPA</span>.
+</p><p>
+An Allied Model which can be run at several different locations can appear more than once, as in:
+</p><pre class="programlisting">NewModel Area1
+NewModel Area2
+</pre><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apes01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ape.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apes03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.1. Development Directories and <span class="acronym">FPA</span> Integration </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.3. The Local Configuration File</td></tr></table></div></body></html>

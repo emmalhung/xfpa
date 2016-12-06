@@ -1,0 +1,28 @@
+! Reset presentations for geographic features ...
+@reset_geo_presentation { }
+
+! Define presentation for geographic features we may wish to see ...
+! Land and water will be displayed as filled outlines ...
+@geo_presentation
+	{
+	geo_name      = land;
+	outline       = none;
+	interior_fill = CMYK 0 10 35 0;
+	}
+@geo_presentation
+	{
+	geo_name      = water;
+	outline       = none;
+	interior_fill = CMYK 48 5 0 18;
+	}
+
+! Display some geographic features ... for DCW maps
+@geography
+	{
+	geo_file           = base_map.fpa;		!EDIT!
+	element            = land_water;
+	level              = geography;
+	category_attribute = FPA_category;
+	category           = land
+	attribute          = FPA_category;
+	}

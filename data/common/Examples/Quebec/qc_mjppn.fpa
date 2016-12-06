@@ -1,0 +1,74 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Gatineau"
+	FPA_user_label "Gatineau"
+ spot 45.484N -75.646E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Hull"
+	FPA_user_label "Hull"
+ spot 45.428N -75.711E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Laval"
+	FPA_user_label "Laval"
+ spot 45.561N -73.681E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Montréal"
+	FPA_user_label "Montréal"
+ spot 45.509N -73.554E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Québec"
+	FPA_user_label "Québec"
+ spot 46.814N -71.208E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Sherbrooke"
+	FPA_user_label "Sherbrooke"
+ spot 45.405N -71.893E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Trois-Rivières"
+	FPA_user_label "Trois-Rivières"
+ spot 46.343N -72.543E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Beauport"
+	FPA_user_label "Beauport"
+ spot 46.859N -71.193E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Charlesbourg"
+	FPA_user_label "Charlesbourg"
+ spot 46.859N -71.265E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Chicoutimi"
+	FPA_user_label "Chicoutimi"
+ spot 48.426N -71.048E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Jonquière"
+	FPA_user_label "Jonquière"
+ spot 48.413N -71.255E location none
+ value 3
+	FPA_category "pop_major"
+	FPA_auto_label "Longueuil"
+	FPA_user_label "Longueuil"
+ spot 45.537N -73.511E location none
+
+* 
+* End
+

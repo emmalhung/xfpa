@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_projection'> <title>@projection</title> <titleabbrev>@projection</titleabbrev>
+<para>
+Set the map projection for the current map.
+</para><para>
+A more complete description of map projections, including acceptable formats
+for all parameters, can be found in the FPA Graphics Metaﬁle Standard.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Keyword for projection (predefined)
+</para><para>One of:
+<simplelist>
+<member><userinput>latitude_longitude</userinput></member>
+<member><userinput>plate_caree</userinput></member>
+<member><userinput>polar_stereographic</userinput></member>
+<member><userinput>lambert_conformal</userinput></member>
+<member><userinput>mercator_equatorial</userinput></member>
+<member><userinput>rotated_lat_lon</userinput></member>
+<member><userinput>oblique_stereographic</userinput></member>
+</simplelist></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>ref1</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Projection dependent reference value</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>ref2</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Projection dependent reference value</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>ref3</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Projection dependent reference value</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>ref4</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Projection dependent reference value</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>ref5</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Projection dependent reference value</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='../projection.xml'/>
+
+<example><title> </title><para>
+<programlisting>@projection { type = polar_stereographic; ref1 = north; ref2 = 60; }</programlisting>
+Set a map projection for the current map as north <userinput>polar_stereographic</userinput> true at 60 degrees North.
+</para></example>
+</para></sect2>

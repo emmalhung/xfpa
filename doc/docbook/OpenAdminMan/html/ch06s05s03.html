@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.5.3. Levels Block</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch06s05.html" title="6.5. Ingest and Ingest.name" /><link rel="prev" href="ch06s05s02.html" title="6.5.2. Elements Block" /><link rel="next" href="ch06s05s04.html" title="6.5.4. Fields Block" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.5.3. Levels Block</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s05s02.html">Prev</a> </td><th width="60%" align="center">6.5. Ingest and Ingest.<span xmlns="" class="replaceable">name</span></th><td width="20%" align="right"> <a accesskey="n" href="ch06s05s04.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2062687"></a>6.5.3. Levels Block</h3></div></div></div><p>
+<a id="id2062694" class="indexterm"></a>
+The <strong class="userinput"><code>Levels</code></strong> block sets rules to assign <span class="acronym">FPA</span> level tags to <span class="acronym">GRIB</span> levels.
+Each <span class="acronym">GRIB</span> producer has the option to define their own levels within the range reserved for local use.
+The source list is used to identify a level id with a particular source or list of sources.
+If the level id is from the standard range then the source can be set to <strong class="userinput"><code>default</code></strong>.
+These levels will be valid for all sources.
+</p><pre class="programlisting">Levels
+  {
+  <span xmlns="" class="replaceable">source_names</span>
+    {
+    <span xmlns="" class="replaceable">level_name</span>
+      {
+      parameters = <span xmlns="" class="replaceable">p0 p1 ... pn</span>
+      parameters = <span xmlns="" class="replaceable">p0 p1 ... pn</span>
+      ...
+      }
+    }
+  }
+</pre><p>
+where <span xmlns="" class="replaceable">source_names</span> can be a single source, a list of sources or <strong class="userinput"><code>default</code></strong>, and <span xmlns="" class="replaceable">p0</span> through <span xmlns="" class="replaceable">pn</span> are identifiers determined by the <span class="acronym">GRIB</span> edition
+</p><div class="variablelist"><dl><dt><span class="term">editions 0 &amp; 1</span></dt><dd><div class="itemizedlist"><ul type="disc"><li><p>p0 = Level type: surface=<strong class="userinput"><code>0</code></strong>, level=<strong class="userinput"><code>1</code></strong> or layer=<strong class="userinput"><code>2</code></strong> (level_type)</p></li><li><p>p1 = <span class="acronym">GRIB</span> level identification number (level_id)</p></li><li><p>p2 = Amount to scale level (or first level of a layer) value by (scale_1)</p></li><li><p>p3 = Amount to offset level (or first level of a layer) value by (offset_1)</p></li><li><p>p4 = Amount to scale upper level of a layer by (scale_2)</p></li><li><p>p5 = Amount to offset upper level of a layer by (offset_2)</p></li></ul></div></dd><dt><span class="term">edition 2</span></dt><dd><div class="itemizedlist"><ul type="disc"><li><p>p0 = Level type: surface=<strong class="userinput"><code>0</code></strong>, level or layer=<strong class="userinput"><code>1</code></strong>(level_type)</p></li><li><p>p1 = <span class="acronym">GRIB</span> level identification number (level_id)</p></li><li><p>p2 = Amount to scale level by (scale)</p></li><li><p>p3 = Amount to offset level by (offset)</p></li></ul></div></dd></dl></div><p>
+</p><p>
+In both edition 1 &amp; 2, the scale and offset values are used to change the units of the level or layer values to <span class="acronym">MKS</span> or something more convenient for FPA.
+<span class="acronym">FPA</span> uses level/layer values to specify a level tag.
+The values need to be integers for this purpose.
+Level names should be previously defined in the <code class="filename">Config</code> file to be recognized.
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s05s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06s05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s05s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.5.2. Elements Block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.5.4. Fields Block</td></tr></table></div></body></html>

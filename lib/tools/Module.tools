@@ -1,0 +1,160 @@
+Lib:				Tools
+Lib.Directory:		lib/tools
+Lib.Description:	This directory contains all the modules that are used
+					to build the tools component of the FPA user library:
+
+Module:				Alias
+Module.Type:		System/Kernel
+Module.Files:		alias_F77.f
+Module.Description:	functions to convert a local FORTRAN model to access FPA
+					allied-model alias files
+
+Module:				CDROM
+Module.Type:		System/Kernel
+Module.Files:		cdrom.[ch]
+Module.Description:	functions to manage file and directory navigation on a CD.
+					This is an issue on HP-UX because filenames contain the
+					semicolon and revision number.  Future versions of HP-UX,
+					and CDs mounted using more clever mount commands may not
+					need this - however it will remain transparent because it
+					looks for conventional names first.
+
+Module:				Clock
+Module.Type:		System/Kernel
+Module.Files:		clock.[ch]
+Module.Description:	functions to interpret and modify the system clock - used
+					strictly by the FoG text generator.
+
+Module:				GetMem
+Module.Type:		System/Kernel
+Module.Files:		getmem_ext.[ch]
+Module.Description:	extensions to the macros provided in fpa_getmem.h.  These
+					functions provide the ability to report memory allocation
+					and de-allocation activity.
+
+Module:				IPC
+Module.Type:		System/Kernel
+Module.Files:		ipc.[ch]
+Module.Description:	inter-process communication function suite, to handle
+					server initialization and client-server messaging.
+
+Module:				Lock
+Module.Type:		System/Kernel
+Module.Files:		lock.[ch]
+Module.Description:	management of a lockable resource using a "lock" file.
+
+Module:				MemoryManagementMode
+Module.Type:		System/Kernel
+Module.Files:		mmm.[ch]
+Module.Description:	functions to control the global memory management mode
+					used by various library modules.  Three modes are
+					available:  pre-allocate, allocate-when-needed, and
+					allocate-and-free.
+
+Module:				Trap
+Module.Type:		System/Kernel
+Module.Files:		trap.[ch]
+Module.Description:	functions to trap certain common classes of errors.
+
+Module:				Unix
+Module.Type:		System/Kernel
+Module.Files:		unix.[ch]
+Module.Description:	a variety of functions that provide functionality
+					normally available in common UNIX shells, e.g. timers,
+					process launching, filename parsing, file creation and
+					deletion.
+
+Module:				Horner
+Module.Type:		Math
+Module.Files:		horner.[ch]
+Module.Description:	efficient evaluation of polynomials.
+
+Module:				MathExt
+Module.Type:		Math
+Module.Files:		math_ext.[ch]
+Module.Description:	extensions to various standard math functions, e.g. sin
+					and cos functions that are well-behaved when their values
+					are near zero.
+
+Module:				Matrix
+Module.Type:		Math
+Module.Files:		matrix.[ch]
+Module.Description:	functions to solve various types of systems of equations,
+					including:  standard and quick for both 1D and 2D, as well
+					as "least squares" fitting for over-determined systems.
+
+Module:				Tween
+Module.Type:		Math
+Module.Files:		tween.[ch]
+Module.Description:	functions to perform parametric (i.e. x=f(t), y=g(t))
+					non-uniform cubic interpolation.
+
+Module:				Twixt
+Module.Type:		Math
+Module.Files:		twixt.[ch]
+Module.Description:	functions to perform non-parametric (i.e. y=f(x)) non-
+					uniform cubic interpolation.
+
+Module:				Under
+Module.Type:		Math
+Module.Files:		under.[ch]
+Module.Description:	functions to solve an under-determined system of equations.
+
+Module:				Solar
+Module.Type:		Science
+Module.Files:		solar.[ch]
+Module.Description:	compute the sun's position (declination, deviation from
+					mean-time and earth-sun distance, etc.) at the given
+					date-time, as well as solar flux at the given location.
+
+Module:				Time
+Module.Type:		Science
+Module.Files:		time.[ch]
+Module.Description:	compute, manipulate and convert dates and times.
+
+Module:				Language
+Module.Type:		String Parsing/Formatting
+Module.Files:		language.[ch]
+Module.Description:	parse strings with optional language-dependent portions.
+
+Module:				LatLon
+Module.Type:		String Parsing/Formatting
+Module.Files:		lat_lon.[ch]
+Module.Description:	parse and format latitude and lngitude strings.
+
+Module:				Message
+Module.Type:		String Parsing/Formatting
+Module.Files:		message.[ch]
+Module.Description:	format and print module-specific error, warning and status
+					messages.
+
+Module:				Parse
+Module.Type:		String Parsing/Formatting
+Module.Files:		parse.[ch]
+Module.Description:	low-level parsing of string buffers.
+
+Module:				StringExt
+Module.Type:		String Parsing/Formatting
+Module.Files:		string_ext.[ch]
+Module.Description:	extensions to various standard string handling functions.
+
+Module:				Tstamp
+Module.Type:		String Parsing/Formatting
+Module.Files:		tstamp.[ch]
+Module.Description:	parse, format and manipulate time-date-stamp strings.
+
+Module:				InfoFile
+Module.Type:		Miscellaneous
+Module.Files:		info_file.[ch]
+Module.Description:	functions to handle "info-files" used for storing state
+					information.
+
+Module:				License
+Module.Type:		Miscellaneous
+Module.Files:		license.[ch]
+Module.Description:	license management module - Keep Out!
+
+Module:				Tools
+Module.Type:		Miscellaneous
+Module.Files:		tools.h
+Module.Description:	"collective" header file.

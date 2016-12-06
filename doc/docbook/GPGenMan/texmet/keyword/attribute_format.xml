@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>attribute_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Format of attribute to display
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><tbody>
+<row><entry><userinput>direct &cform;</userinput></entry><entry>use value</entry></row>
+<row><entry><userinput>text &cform;</userinput></entry><entry>use look up</entry></row>
+<row><entry><userinput>wind_text</userinput></entry><entry>for wind values</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+(Note: &cform; is an optional string which contains a <command>printf</command> conversion format for the attribute value.
+This conversion format is applied to the value before accessing the <userinput>attribute_look_up</userinput> table or displaying the value.
+See <xref linkend='magic_attributes'/> for conversion formats for each attribute.)
+</para><para>(Note: use \ before all control characters in the optional &cform; conversion format.)</para></entry></row>

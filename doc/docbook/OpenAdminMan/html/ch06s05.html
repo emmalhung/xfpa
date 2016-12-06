@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.5. Ingest and Ingest.name</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch06.html" title="Chapter 6. Configuration Files" /><link rel="prev" href="ch06s04.html" title="6.4. Gribs" /><link rel="next" href="ch06s05s01.html" title="6.5.1. Sources block" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.5. Ingest and Ingest.<span xmlns="" class="replaceable">name</span></th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s04.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Configuration Files</th><td width="20%" align="right"> <a accesskey="n" href="ch06s05s01.html">Next</a></td></tr></table><hr /></div><div class="sect1" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="config_ingest"></a>6.5. Ingest and Ingest.<span xmlns="" class="replaceable">name</span></h2></div></div></div><div class="toc"><dl><dt><span class="sect2"><a href="ch06s05s01.html">6.5.1. Sources block</a></span></dt><dt><span class="sect2"><a href="ch06s05s02.html">6.5.2. Elements Block</a></span></dt><dt><span class="sect2"><a href="ch06s05s03.html">6.5.3. Levels Block</a></span></dt><dt><span class="sect2"><a href="ch06s05s04.html">6.5.4. Fields Block</a></span></dt><dt><span class="sect2"><a href="ch06s05s05.html">6.5.5. DataFiles Block</a></span></dt></dl></div><p>
+<a id="id2064628" class="indexterm"></a>
+The <code class="filename">Ingest</code> files map model, element and level information from an input format, such as <span class="acronym">GRIB</span>, into model, element and level tags recognized by the FPA.
+Currently <span class="acronym">GRIB</span> editions 0, 1 and 2 are supported by the ingest program <span><strong class="command">gribin2</strong></span>.
+The <code class="filename">Ingest.master</code> file contains mappings for common models, elements and levels.
+The <code class="filename">Ingest</code> file is for local customization and should include the <code class="filename">Ingest.master</code> file.
+The <code class="filename">Ingest</code> file format is:
+</p><pre class="programlisting">revision <span xmlns="" class="replaceable">revision_number</span>
+include <span xmlns="" class="replaceable">file_name</span>
+include <span xmlns="" class="replaceable">file_name</span>
+Gribs <span xmlns="" class="replaceable">edition</span>
+  {
+  <span xmlns="" class="replaceable">block_name</span>
+    {
+    ...
+    }
+  ...
+}</pre><p>
+The revision line must be the first uncommented line in each ingest configuration file.
+The include lines allow several ingest configuration files to be used at the same time.
+The ingest configuration file reader merges the information from the included files with the information in the current file to determine all the rules needed to ingest the <span class="acronym">GRIB</span> files successfully.
+When a query matches more than one rule, the last rule read by the ingest configuration file reader will be used.
+</p><p>
+The general format does not allow line concatenation; for example, </p><pre class="programlisting"><span xmlns="" class="replaceable">block_name</span> { </pre><p> on the same line would not be recognized.
+</p><p>
+The Gribs <span xmlns="" class="replaceable">edition</span> is one of {0,1,2}, and <span xmlns="" class="replaceable">block_name</span> is one of:
+</p><div class="informaltable"><table border="1"><colgroup><col /><col /></colgroup><tbody><tr valign="top"><td valign="top">Sources</td><td valign="top">A set of rules to assign <span class="acronym">FPA</span> source names to a <span class="acronym">GRIB</span> model</td></tr><tr valign="top"><td valign="top">Elements</td><td valign="top">A set of rules to assign an <span class="acronym">FPA</span> element name to a <span class="acronym">GRIB</span> element</td></tr><tr valign="top"><td valign="top">Levels</td><td valign="top">A set of rules to assign an <span class="acronym">FPA</span> level tag and scale information</td></tr><tr valign="top"><td valign="top">Fields</td><td valign="top">A list of fields to either skip or process into <span class="acronym">FPA</span> Metafiles</td></tr><tr valign="top"><td valign="top">DataFiles</td><td valign="top">A list of fields to either skip or process into a raw Datafiles that can be viewed
+as pseudo-satellite images in <span class="application">xfpa</span>.</td></tr></tbody></table></div><p>
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s05s01.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.4. Gribs </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.5.1. Sources block</td></tr></table></div></body></html>

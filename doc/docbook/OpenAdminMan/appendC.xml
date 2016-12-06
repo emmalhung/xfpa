@@ -1,0 +1,590 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE appendix PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<appendix id='appendc'><title>Presentation and Presentation.<replaceable>name</replaceable></title><para>
+<indexterm><primary>configuration</primary><secondary>presentation</secondary></indexterm>
+<indexterm><primary>presentation</primary></indexterm>
+The <filename>Presentation</filename> and <filename>Presentation</filename>.<replaceable>name</replaceable> files define the display information about all fields that &FPA; could potentially encounter.
+The <filename>Presentation</filename>.<replaceable>name</replaceable> files are global <filename>Presentation</filename> files containing standard display information as well as information for specific &FPA; applications.
+The <filename>Presentation</filename> file is a "local" presentation file which will "include" one or more of the <filename>Presentation</filename>.<replaceable>name</replaceable> files, as well as contain user-defined changes or additions to these files.
+</para><para>
+ In this appendix when a parameter value must come from a predefined list, this list will be presented between '{' and '}' and the options are separated by the '|' character.
+ Optional attributes are bracketed between the '[' and ']' characters.
+ Comments are presented between '(' and ')'.
+ The "appropriate display options" mentioned in the summary below specify how the objects are to be displayed.
+ Since many of the display options are common amongst the different member types they are described once at the end of this appendix.
+ </para>
+
+<sect1><title>Presentation Format Summary</title><para>
+<indexterm><primary>presentation</primary><secondary>format summary</secondary></indexterm>
+ The following represents the basic format of a presentation file entry.
+
+<screen>revision <replaceable>revision_number</replaceable>
+
+ field <replaceable>element level source</replaceable>
+
+  member {continuous | vector} <replaceable>dname</replaceable>
+    units <replaceable>uname</replaceable>
+    contour range <replaceable>min max standard increment</replaceable>
+      (appropriate display options)
+    contour list <replaceable>val val ... </replaceable>
+      (appropriate display options)
+    vector <replaceable>multiplier</replaceable> (vector only)
+      (appropriate display options)
+    maxima <replaceable>min max</replaceable>
+      (appropriate display options)
+    minima <replaceable>min max</replaceable>
+      (appropriate display options)
+    saddle    <replaceable>min max</replaceable>
+      (appropriate display options)
+
+  member {nodes | spot} <replaceable>dname</replaceable>
+    class <replaceable>cname</replaceable>
+      class_member {barb | button | label | mark} <replaceable>mname</replaceable> <optional><replaceable>attribute</replaceable></optional>
+        category <replaceable>value</replaceable>
+          (appropriate display options)
+        attribute <replaceable>name value</replaceable>
+          (appropriate display options)
+        default
+          (appropriate display options)
+
+  member {area| barb| button| curve| discrete| label| lchain| mark} <replaceable>dname</replaceable>
+    category <replaceable>value</replaceable>
+      (appropriate display options)
+    attribute <replaceable>name value</replaceable>
+      (appropriate display options)
+    default
+      (appropriate display options)
+
+  member plot <replaceable>dname</replaceable>
+    subfield {barb | button | label | mark} <replaceable>sname</replaceable>
+      (appropriate display options)
+
+include <replaceable>include_file</replaceable>
+</screen>
+</para><para>
+Most blocks (shown by indentation here) can be repeated as many times as needed.
+However, for some blocks (vector, maxima, minima, saddle, default) it doesn't make sense to have more than one per member or class_member block.
+The following section expands this basic format and explains the options and requirements for each block.
+</para></sect1>
+
+<sect1><title>Format Explanation</title><para>
+<indexterm><primary>presentation</primary><secondary>format explanation</secondary></indexterm>
+Now that you have the basic idea of what a presentation file entry looks like let's take a closer look at each block.
+</para><para>
+<variablelist>
+<varlistentry><term><computeroutput>revision <replaceable>revision_number</replaceable></computeroutput></term><listitem><para>
+The revision line must be the first uncommented line in each presentation file.
+(The current revision is &version;.0) </para></listitem></varlistentry>
+<varlistentry><term><computeroutput>field <replaceable>element level source</replaceable></computeroutput></term><listitem><para> 
+Introduces presentation information for the given field.
+All keywords which follow, up to the next field line, describe how this field is to be presented.
+The parameters are:
+<itemizedlist>
+<listitem><para>element (may be ALL)</para></listitem>
+<listitem><para>level (may be ALL)</para></listitem>
+<listitem><para>source (may be ALL)</para></listitem>
+</itemizedlist>
+<variablelist>
+<varlistentry><term><computeroutput>member {continuous | vector} <replaceable>dname</replaceable></computeroutput></term><listitem><para>
+Introduces presentation information for the given member of the current field.
+All keywords which follow, up to the next field or member line, describe how this member is to be presented.
+The parameters are:
+<itemizedlist>
+<listitem><para>The field type of this member, for this example it is one of continuous or vector.</para></listitem>
+<listitem><para>Arbitrary (descriptive) name for this member</para></listitem>
+</itemizedlist>
+<variablelist>
+<varlistentry><term><computeroutput>units <replaceable>uname</replaceable></computeroutput></term><listitem><para>
+Continuous and Vector fields are usually represented by a numerical value.
+This keyword defines the conversion from &MKS; to desired units for this particular field member.
+The parameter is:
+<itemizedlist><listitem><para>unit name (as defined in Config)</para></listitem></itemizedlist>
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>contour range <replaceable>min max standard increment</replaceable></computeroutput></term><listitem><para>
+Defines a set of contours to be generated for the current field member and introduces presentation information for these contours.
+The parameters are:
+<itemizedlist>
+<listitem><para>lowest contour value (* implies no minimum)</para></listitem>
+<listitem><para>highest contour value (* implies no maximum)</para></listitem>
+<listitem><para>standard contour value (increment counts from this value)</para></listitem>
+<listitem><para>contour value increment </para></listitem>
+</itemizedlist>
+Appropriate display options are: colour, scale, style and width
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>contour list <replaceable>val val ...</replaceable></computeroutput></term><listitem><para>
+Defines a set of contours to be generated for the current field member and introduces presentation information for these contours.
+The parameters are:
+<itemizedlist><listitem><para>a list of specific contour values.</para></listitem></itemizedlist>
+Appropriate display options are: colour, scale, style and width.
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>vector <replaceable>multiplier</replaceable> (vector only)</computeroutput></term><listitem><para>
+Defines a grid of barbs or arrows to display with a vector field.
+The parameter is:
+<itemizedlist><listitem><para> multiplier: This is an integer value.
+The usual value is 1, which will display a barb/arrow spaced according to the resolution of the &FPA; base map.
+A value greater than 1 will display that number of barbs/arrows for each map grid.
+A value less than 1 will skip that number of map grids.
+</para></listitem></itemizedlist>
+Appropriate display options are:btype, bvaloff, bcolour, colour, font, length, scale and width.
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>maxima <replaceable>min max</replaceable></computeroutput></term><listitem><para>
+Defines whether local maxima are to be displayed, and introduces presentation information for the maxima displayed.
+The parameters are:
+<itemizedlist>
+<listitem><para>lowest value (* implies no minimum)</para></listitem>
+<listitem><para>highest value (* implies no maximum)</para></listitem>
+</itemizedlist>
+Appropriate display options are: angle, colour, font, hjust, vjust, marker, offset, scale, shadow, size and symbol
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>minima <replaceable>min max</replaceable></computeroutput></term><listitem><para>
+Defines whether local minima are to be displayed, and introduces presentation information for the minima displayed.
+The parameters are:
+<itemizedlist>
+<listitem><para>lowest value (* implies no minimum)</para></listitem>
+<listitem><para>highest value (* implies no maximum)</para></listitem>
+</itemizedlist>
+Appropriate display options are: angle, colour, font, hjust, vjust, marker, offset, scale, shadow, size and symbol
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>saddle <replaceable>min max</replaceable></computeroutput></term><listitem><para>
+Defines whether local saddle (col) points are to be displayed, and introduces presentation information for the saddle points displayed.
+The parameters are:
+<itemizedlist>
+<listitem><para>lowest value     (* implies no minimum)</para></listitem>
+<listitem><para>highest value    (* implies no maximum)</para></listitem>
+</itemizedlist>
+Appropriate display options are: angle, colour, font, hjust, vjust, marker, offset, scale, shadow, size and symbol
+</para></listitem></varlistentry></variablelist>
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>member {nodes | spot} <replaceable>dname</replaceable></computeroutput></term><listitem><para>
+Introduces presentation information for the given member of the current field.
+All keywords which follow, up to the next field or member line, describe how this member is to be presented.
+The parameters are:
+<itemizedlist>
+<listitem><para>The field type of this member, for this example it is one of nodes or spot.</para></listitem>
+<listitem><para>Arbitrary (descriptive) name for this member.</para></listitem>
+</itemizedlist>
+<variablelist>
+<varlistentry><term><computeroutput> class <replaceable>cname</replaceable></computeroutput></term><listitem><para>
+Introduces presentation information for the given class of spot objects from the current field member.
+Consider a "spot" object to be a complex label, made up of a group of simpler member objects, clustered around the evaluation point (similar to a "station plot").
+Spot objects of the same class have the same layout, as described by subsequent class_member keywords.
+The value of class corresponds to the value of type_class specified in the scattered types section of your config entry for this field member.
+The parameter is:
+<itemizedlist><listitem><para> class name</para></listitem></itemizedlist>
+<variablelist>
+<varlistentry><term><computeroutput>class_member {barb | button | label | mark} <replaceable>mname</replaceable> <optional><replaceable>attribute</replaceable></optional></computeroutput></term><listitem><para>
+Defines a new member object for the current class of spot objects, and introduces presentation information for that member.
+The parameters are:
+<itemizedlist>
+<listitem><para>member type is one of:
+<itemizedlist>
+<listitem><para>barb - displays subfield as a wind barb or arrow,</para></listitem>
+<listitem><para>button - displays subfield as a button, </para></listitem>
+<listitem><para>label - displays subfield as a text label,</para></listitem>
+<listitem><para>mark - displays subfield as a marker or text symbol.</para></listitem>
+</itemizedlist>
+</para></listitem>
+<listitem><para>member name</para></listitem>
+<listitem><para>attribute name (This is the attribute for the label display).</para></listitem>
+</itemizedlist>
+<variablelist>
+<varlistentry><term><computeroutput>category <replaceable>value</replaceable></computeroutput></term><listitem><para>
+Introduces presentation information for objects in the current spot class member that match the given category.
+The parameter is:
+<itemizedlist><listitem><para>The category value corresponds to an FPA_category for this field.</para></listitem></itemizedlist>
+If you specified an attribute name for the class_memeber above the default label text will be the value of that attribute otherwise it will be the FPA_category value.
+</para><para>
+Appropriate display options are: angle, btype, bvaloff, bcolour, colour, font, hjust, vjust, length, marker, offset, scale, shadow, size and symbol.
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>attribute <replaceable>name value</replaceable></computeroutput></term><listitem><para>
+Introduces presentation information for objects in the current spot class member that match the given value of the given attribute.
+The parameters are:
+<itemizedlist>
+<listitem><para>attribute name </para></listitem>
+<listitem><para>attribute value (This is the value to match with the value from attribute name.)</para></listitem>
+</itemizedlist>
+If you specified an attribute name for the class_memeber above the default label text will be the value of that attribute otherwise it will be the value of the attribute you are grouping by.
+</para><para>
+Appropriate display options are: angle, btype, bvaloff, bcolour, colour, font, hjust, vjust, length, marker, offset, scale, shadow, size and symbol.
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>default</computeroutput></term><listitem><para>
+Introduces presentation information for objects in the current spot class member that do not match any of the category or attribute selections introduced for the same field member.
+No parameters.
+You must specify an attribute name for the class_member if you want labels.
+The default label text will be the value of that attribute.
+</para><para>
+Appropriate display options are: angle, btype, bvaloff, bcolour, colour, font, hjust, vjust, length, marker, offset, scale, shadow, size and symbol.
+</para></listitem></varlistentry></variablelist>
+</para></listitem></varlistentry></variablelist>
+</para></listitem></varlistentry></variablelist>
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>member {area| barb| button| curve| discrete| label| lchain| mark} <replaceable>dname</replaceable></computeroutput></term><listitem><para>
+Introduces presentation information for the given member of the current field.
+All keywords which follow, up to the next field or member line, describe how this member is to be presented.
+The parameters are:
+<itemizedlist>
+<listitem><para>The field type of this member, for this example it is one of area, barb, button, curve, discrete, label, lchain or mark.</para></listitem>
+<listitem><para>Arbitrary (descriptive) name for this member.</para></listitem>
+</itemizedlist>
+<variablelist>
+<varlistentry><term><computeroutput>category <replaceable>value</replaceable></computeroutput></term><listitem><para>
+Introduces presentation information for objects in the current field member that match the given category.
+The parameter is:
+<itemizedlist>
+<listitem><para>The category name corresponds to a possible value of FPA_category for this field</para></listitem>
+</itemizedlist>
+Appropriate display options are: angle, btype, bvaloff, bcolour, colour, fill, font, hatch, hjust, vjust, length, marker, offset, pattern, scale, shadow, size, style, symbol and width.
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>attribute <replaceable>name value</replaceable></computeroutput></term><listitem><para>
+Introduces presentation information for objects in the current field member that match the given value of the given attribute.
+The parameters are:
+<itemizedlist>
+<listitem><para>attribute name </para></listitem>
+<listitem><para>attribute value (This is the value to match with the value from attribute name.)</para></listitem>
+</itemizedlist>
+Appropriate display options are:  angle, btype, bvaloff, bcolour, colour, fill, font, hatch, hjust, vjust, length, marker, offset, pattern, scale, shadow, size, style, symbol and width.
+</para></listitem></varlistentry>
+<varlistentry><term> <computeroutput>default</computeroutput></term><listitem><para>
+Introduces presentation information for objects in the current field member that do not match any of the category or attribute selections introduced for the same field member.
+No parameters.
+</para><para>
+Appropriate display options are:  angle, btype, bvaloff, bcolour, colour, fill, font, hatch, hjust, vjust, length, marker, offset, pattern, scale, shadow, size, style, symbol and width.
+</para></listitem></varlistentry></variablelist>
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>member plot <replaceable>dname</replaceable></computeroutput></term><listitem><para>
+Introduces presentation information for the given member of the current field.
+All keywords which follow, up to the next field or member line, describe how this member is to be presented.
+The parameters are:
+<itemizedlist>
+<listitem><para>The field type of this member, for this example it is plot.</para></listitem>
+<listitem><para>Arbitrary (descriptive) name for this member.</para></listitem>
+</itemizedlist>
+<variablelist>
+<varlistentry><term><computeroutput>subfield {barb | button | label | mark} <replaceable>sname</replaceable></computeroutput></term><listitem><para>
+Defines a new subfield for the current plot field member, and introduces presentation information for that subfield.
+The parameters are:
+<itemizedlist>
+<listitem><para>subfield type is one of:
+<itemizedlist>
+<listitem><para>barb - displays subfield as a wind barb or arrow,</para></listitem>
+<listitem><para>button - displays subfield as a button, </para></listitem>
+<listitem><para>label - displays subfield as a text label,</para></listitem>
+<listitem><para>mark - displays subfield as a marker or text symbol.</para></listitem>
+</itemizedlist></para></listitem>
+<listitem><para>subfield name</para></listitem>
+</itemizedlist>
+Appropriate display options are:  angle, btype, bvaloff, bcolour, colour, font, hjust, vjust, length, marker, offset, scale, shadow, size, symbol.
+</para></listitem></varlistentry></variablelist>
+</para></listitem></varlistentry></variablelist>
+</para></listitem></varlistentry>
+<varlistentry><term><computeroutput>include <replaceable>include_file</replaceable></computeroutput></term><listitem><para>
+The include lines allow several presentation files to be used at the same time.
+The presentation file reader adds the information from the "included" presentation files to the information in the current presentation file to determine the presentation of all fields encountered.
+Omitted attributes resort to default values established in the software which reads the presentation file.
+(for example: colour = Black, style = solid, font = simplex, etc).
+</para><note><para>
+Note: Unlike the configuration file reader the presentation file reader uses the first matching entry it encounters.
+That is, if a given member of a given field is already described in a Presentation Configuration File included at the end of the file, then the information in the file overrides the default appearance for that member only.
+The default appearance of other members is not affected.
+If the member is not already described, then this new information serves to add a new member to the given field, and defines its appearance.
+</para></note></listitem></varlistentry></variablelist>
+</para></sect1>
+
+<sect1><title>Display Options</title><para>
+<indexterm><primary>presentation</primary><secondary>display options</secondary></indexterm>
+The following keywords refer to the objects selected from the current field member, spot class member, or plot subfield, specified by one or more of the above keyword specifications, and describe specifically how those objects are to be displayed:
+<table frame='topbot'><title>Display option descriptions</title>
+<tgroup cols='2'>&colwidth;<thead><row><entry>Option</entry><entry>Explanation</entry></row></thead><tbody>
+<row valign='top'><entry>angle</entry><entry> Defines the orientation of a label or mark.The parameter is:
+<itemizedlist><listitem><para>floating point angle of rotation in degrees.</para></listitem></itemizedlist>
+</entry></row>
+<row valign='top'><entry>btype</entry><entry>
+Defines the type of wind or vector field display.
+The parameters are:
+<itemizedlist>
+<listitem><para>type: This can be one of wind (normal wind barb), arrow (draw as an arrow) or none (do not display).</para></listitem>
+<listitem><para>tofrom: This can be one of dirto (direction defines where flow is going), or dirfrom (direction define where the flow comes from).
+The parameters to, dir_to, from and dir_from are also valid.</para></listitem>
+<listitem><para>doval: This can be either showval (include the magnitude as a label).
+or noval (no label).
+The parameters showvalue or novalue are also valid.</para></listitem>
+<listitem><para>units for wind or vector field (as defined in Config)</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>bvaloff</entry><entry>
+Defines the offset of a wind/wave magnitude label from the given position (see also btype).
+The parameters are:
+<itemizedlist>
+<listitem><para>x offset: Horizontal offset in map or screen units.
+(see scale)</para></listitem>
+<listitem><para>y offset: Vertical offset in map or screen units.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>bcolour</entry><entry>
+Defines the colour for a wind/wave vector and its optional magnitude label (see also btype).
+The parameters are:
+<itemizedlist>
+<listitem><para>barb colour: See colour for supported values.</para></listitem>
+<listitem><para>label colour: See colour for supported values.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>colour</entry><entry>
+Defines text, mark or line colour.
+The parameter is:
+<itemizedlist>
+<listitem><para>colour - Colours may be identified by one of:
+<itemizedlist>
+<listitem><para> X colour name (e.g.
+SlateBlue),</para></listitem>
+<listitem><para>X hexadecimal RGB colour notation (#rrrgggbbb) or</para></listitem>
+<listitem><para>a direct pixel value (=0 through =255)</para></listitem>
+</itemizedlist></para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>fill</entry><entry>
+Defines the appearance of filled objects.
+The parameters are:
+<itemizedlist><listitem><para>fill colour: See colour for supported values.
+(Fill type defaults to solid_fill)</para></listitem></itemizedlist>
+or
+<itemizedlist>
+<listitem><para>fill type: Supported fill types are: hollow_fill, solid_fill, hatch_fill</para></listitem>
+<listitem><para>fill colour: See colour for supported values</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>font</entry><entry>
+Defines the font for text.
+The parameter is:
+<itemizedlist>
+<listitem><para>font name: Supported font names are: simplex, bold, helvetica, helvetica_bold, times or serif, times_bold or bold_serif, fpasymbol-24.
+The default is simplex.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>hatch</entry><entry>
+Defines hatch fill attributes when fill has been set to hatch_fill.
+The parameters are:
+<itemizedlist>
+<listitem><para>hatch type: Supported hatch types are: parallel_hatch and cross_hatch.
+The default is parallel_hatch.</para></listitem>
+<listitem><para>hatch space: See size for supported values</para></listitem>
+<listitem><para>hatch angle: This is a real angle between 0 and 360 degrees.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>hjust</entry><entry>
+Defines the horizontal justification for labels.
+The parameters are:
+<itemizedlist>
+<listitem><para>mode: This may be one of right(r), centre(c) or left(l).
+The default is centre(c)</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>vjust</entry><entry>
+Defines the vertical justification for labels.
+The parameters are:
+<itemizedlist>
+<listitem><para>mode: This may be one of Top (top of character cell), top(t), centre(c), bottom(b) or Bottom (bottom of character cell).The default is centre(c)</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>length</entry><entry>
+Defines the length of certain objects (e.g.
+wind barb) or a pattern repeat length.
+The parameter is:
+<itemizedlist>
+<listitem><para>item length: Length in map or screen units (see scale).</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>marker</entry><entry>
+Defines the marker type to be used for mark objects.
+The parameter is:
+<itemizedlist>
+<listitem><para>marker type: Supported marker types are: dot, plus, asterisk, circle, ellipse, cross, triangle, square, rectangle, diamond, circle_cross, square_cross, circle_fill, square_fill, rectangle_fill, triangle_fill, diamond_fill, circle_target.
+The default is dot.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>offset</entry><entry>
+Defines the offset of a plot sub-field or spot member from the plot centre.
+The parameters are:
+<itemizedlist>
+<listitem><para>x offset: Horizontal offset in map or screen units (see scale)</para></listitem>
+<listitem><para>y offset: Vertical offset in map or screen units.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>pattern </entry><entry>
+Defines patterned lines.
+The parameter is:
+<itemizedlist>
+<listitem><para>pattern file: This is the name of a pattern file which must exist in the patterns directory.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>scale</entry><entry>
+Defines the interpretation of various sizes and dimensions.
+The parameter is:
+<itemizedlist>
+<listitem><para>mode: Supported scale modes are: window or device or vdc (0) for units with respect to the screen or map or geog or geography (1) for units with respect to the FPA map.
+The default is map.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>shadow</entry><entry>
+Defines top and bottom shadow colours for text or marks.
+The parameters are:
+<itemizedlist>
+<listitem><para>top colour: See colour for supported values.</para></listitem>
+<listitem><para>bottom colour: See colour for supported values.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>size</entry><entry>
+Defines the size of text or marks.
+The parameter is:
+<itemizedlist>
+<listitem><para>item size: Height in map or screen units (see scale) or one of: tiny(5), small(10), label (usual label size is 20), legend (usual legend size is 25), medium(30), hilo(usual high/low symbol size is 40), large(50), huge(70), giant or gigantic or enormous or humongous(90).</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>style</entry><entry>
+Defines the line style for curves and area boundaries.
+The parameter is:
+<itemizedlist>
+<listitem><para>line style: Supported line styles are: solid, wide (default with width parameter set), dash, dashed, dot, dotted, dash_dot.
+The default is solid.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>symbol</entry><entry>
+Defines a text symbol to be used for marks rather than a marker type.
+The parameter is:
+<itemizedlist>
+<listitem><para>string: This can be any printable ASCII string including extended ASCII.</para></listitem>
+</itemizedlist></entry></row>
+<row valign='top'><entry>width</entry><entry>
+Defines line width or pattern amplitude.
+The parameter is:
+<itemizedlist>
+<listitem><para>line width: real dimension in map or screen units (see scale) or one of zero or normal or thin(0), medium(3), thick(6), fat(9).</para></listitem>
+</itemizedlist></entry></row>
+</tbody></tgroup></table>
+</para></sect1>
+
+<sect1><title>Examples</title><para>
+<indexterm><primary>presentation</primary><secondary>examples</secondary></indexterm>
+The following examples were drawn from $<filename>FPA/config/Presentation.master</filename>.
+<example><title>Vector &amp; Contour</title><para>
+Describes the presentation for the wave height vector field for all levels and all models.
+There are dashed yellow contours at 1 and 2 meters, solid yellow contours at 3 and 4 meters and solid red contours every 2m starting from 5m.
+A grid of thin yellow arrows will be displayed with one arrow per map element.
+Maxima will be denoted by yellow plus marks and minima will be denoted by yellow diamond marks 
+</para></example>
+<para><programlisting>
+field    uv_wave_hgt    ALL    ALL
+  member    vector
+    units     m
+    contour   list 1 2
+      colour  Yellow
+      style   dash
+    contour   list 3 4
+      colour  Yellow
+      style   solid
+      width   1
+    contour   range 5 * 5 2
+      colour  Red
+      style   solid
+      width   1
+    vector    1
+      colour  Yellow
+      btype   arrow    dirto    noval
+      width   thin
+      length  30.0
+    maxima    1 *
+      colour  Yellow
+      marker  plus
+    minima    1 *
+      colour  Yellow
+      marker  diamond  
+</programlisting></para>
+<example><title>Plot</title><para>
+Describes the presentation for the storm plot field with level msl and for all models.
+Each point will feature a circle with a cross surround by value 1 above, value 2 to the left and value 3 to the right.
+The values appear in Green Simplex font and the marks are DeepPink.
+</para></example>
+<para><programlisting>
+field    storms    msl    ALL 
+  member  plot
+    subfield  label value1  
+      offset  0 +10
+      colour  Green
+      font    simplex 
+      size    15.0    
+    subfield  label value2  
+      offset  -10 0
+      colour  Green
+      font    simplex 
+      size    15.0    
+    subfield  label value3  
+      offset  10 0
+      colour  Green
+      font    simplex 
+      size    15.0    
+    subfield  mark c1
+      colour  DeepPink
+      marker  circle  
+      size    10.0    
+    subfield  mark c2
+      colour  DeepPink
+      marker  cross
+      size    7.0
+</programlisting></para>
+<example><title>Discrete with Labels</title><para>
+Describes the presentation of the weather_system area field for all levels and all models.
+In this example presentation information has been grouped by FPA_category.
+The categories are freezing, frozen, precip, vis, and cloud.
+The outline colour, line style, and line width are set for each category.
+The presentation for weather labels is also set here.
+In addition to the previous categories we have a category none and a default presentation blocks.
+The label size, colour, shadow, and font are set.
+</para></example>
+<para><programlisting>
+field weather_system ALL ALL
+  member discrete weather
+    category   freezing
+      colour   Cyan
+      style    solid
+      width    5
+    category   frozen
+      colour   SkyBlue
+      style    solid
+      width    3
+    category   precip
+      colour   Green
+      style    solid
+      width    3
+    category   vis
+      colour   Yellow
+      style    solid
+      width    2
+    category   cloud
+      colour   Firebrick
+      style    solid
+      width    1
+  member spot labels
+    class area
+      class_member label value
+        category  none
+          size    label
+          colour  Cyan
+          shadow  CornflowerBlue CornflowerBlue
+          font    simplex
+        category  frozen
+          size    label
+          colour  Black
+          shadow   SkyBlue SkyBlue
+          font    simplex
+        category  freezing
+          size    label
+          colour  Black
+          shadow  Cyan Cyan
+          font    simplex
+        category  precip
+          size    label
+          colour  Green
+          shadow  Firebrick Firebrick
+          font    simplex
+        category  vis
+          size    label
+          colour  Yellow
+          shadow  Firebrick Firebrick
+          font    simplex
+        category  cloud
+          size    label
+          colour  Goldenrod
+          shadow  Firebrick Firebrick
+          font    simplex
+        default
+          size    label
+          colour  Green
+          font    simplex
+</programlisting></para>
+</para></sect1></appendix>

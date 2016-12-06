@@ -1,0 +1,100 @@
+! Set the default presentation for black text bordered with white ...
+@presentation
+	{
+	line_width    = 0.05;
+	outline       = X11 White;
+	fill          = X11 Black;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	text_size     = 0.15;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Set a named presentation to draw a surrounding box ...
+@label_display
+	{
+	display_name  = label1;
+	margin_left   =  0.05;
+	margin_right  =  0.05;
+	margin_top    =  0.00;
+	margin_bottom =  0.05;
+	line_width    =  0.02;
+	outline       = CMYK 0 0 0 100;
+	interior_fill = none;
+	}
+
+! Display cloud and icing labels for system weather directly ...
+! (Note that only cloud and icing above FL 100 are displayed!)
+@label
+	{
+	element            = weather_system;
+	level              = surface;
+	category_attribute = wx_label_type;
+	category           = LgtIcg  MdtIcg  SvrIcg;
+	category_attribute = cloud_top;
+	category           = 110 120 130 140 150 160 170 180 190 200 \
+	                     210 220 230 240 250 260 270 280 290 300 \
+	                     310 320 330 340 350 360 370 380 390 400;
+	format             = direct;
+	mark               = triangle_up;
+	mark_scale         = 100.0;
+	display_name       = label1;
+	display_type       = sized_box;
+	fit_to_map         = yes;
+	fit_to_map_ref     = upper;
+	x_off              =  0.00;
+	y_off              =  0.00;
+
+	attribute               = cloud_amount;
+	attribute_anchor        = none;
+	attribute_ref           = upper_centre;
+	attribute_x_off         =  0.00;
+	attribute_justification = centre;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_top;
+	attribute_anchor        = cloud_amount;
+	attribute_ref           = lower_centre;
+	attribute_x_off         =  0.05;
+	attribute_justification = left;
+	attribute_vertical_just = top;
+
+	attribute               = cloud_base;
+	attribute_anchor        = cloud_top;
+	attribute_ref           = lower_left;
+	attribute_look_up       = sig_cloud_base
+	attribute_format        = text
+	attribute_justification = left;
+	attribute_vertical_just = top;
+
+	attribute               = icing_intensity;
+	attribute_anchor        = cloud_amount;
+	attribute_ref           = lower_centre;
+	attribute_x_off         = -0.05;
+	attribute_y_off         = -0.05;
+	attribute_justification = right;
+	attribute_vertical_just = top;
+	attribute_format        = symbol;
+	attribute_look_up       = sig_icing;
+	attribute_symbol_scale  = 15;
+	attribute_line_width    =  0.08;
+	attribute_outline       = X11 White;
+	attribute_fill          = none;
+
+	attribute               = icing_intensity;
+	attribute_anchor        = cloud_amount;
+	attribute_ref           = lower_centre;
+	attribute_x_off         = -0.05;
+	attribute_y_off         = -0.05;
+	attribute_justification = right;
+	attribute_vertical_just = top;
+	attribute_format        = symbol;
+	attribute_look_up       = sig_icing;
+	attribute_symbol_scale  = 15;
+	attribute_line_width    =  0.03;
+	attribute_outline       = X11 Black;
+	attribute_fill          = none;
+	}

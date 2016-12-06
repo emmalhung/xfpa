@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+<row valign='top'> 
+<entry colname='key'><para><userinput>y_wrap</userinput></para></entry>
+<entry colname='type'><para>integer</para></entry> 
+<entry colname='desc'><para>Apply <userinput>y_shift</userinput> for this many values before resetting <userinput>y_shift</userinput> to 0 and applying <userinput>x_shift</userinput>. (Default is 1)</para>
+<para>Only one of <userinput>x_wrap</userinput> <userinput>y_wrap</userinput> may be set > 1.</para></entry></row>

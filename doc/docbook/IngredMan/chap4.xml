@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % ingred SYSTEM 'ingred.ent'>
+%ingred;
+]>
+<chapter><title>Attribute List (CAL) Functions</title><para>
+The Complete Attribute List (<acronym>CAL</acronym>) functions allow the user to input and output data from the opaque data type <acronym>CAL</acronym>.
+The <acronym>CAL</acronym> data structure contains all of those attrubutes defined in the configuration files for a particular field, plus some pre-defined attributes that are present by default and not normally specified in the configuration files.
+</para><para>
+All attributes and their values are specified as strings.
+It is up to the calling functions to intrepret the specific meaning of any value associated with an attribute.
+There are predefined attributes that are recogninzed by the functions and these are defined in <xref linkend='predef_attrib'/>.
+
+<table id='predef_attrib'><title>Predefined Attributes</title> 
+<tgroup cols='2'>
+<thead> <row><entry>Attribute</entry><entry>Definition</entry></row> </thead>
+<tbody>
+<row><entry>CALautolabel</entry>     <entry>Automatically generated label</entry></row>
+<row><entry>CALcategory</entry>      <entry>FPA category</entry></row>
+<row><entry>CALlabeltype</entry>     <entry>FPA label type</entry></row>
+<row><entry>CALlatitude</entry>      <entry>Latitude at point on feature</entry></row>
+<row><entry>CALlongitude</entry>     <entry>Longitude at point on feature</entry></row>
+<row><entry>CALlinetype</entry>      <entry>FPA line field type</entry></row>
+<row><entry>CALscatteredtype</entry> <entry>FPA scattered field type</entry></row>
+<row><entry>CALuserlabel</entry>     <entry>FPA user defined label</entry></row>
+</tbody></tgroup></table>	
+</para>
+
+<sect1><title>Function Descriptions</title><para>
+<variablelist>
+<varlistentry><term>void CAL_add_attribute (CAL, STRING name, STRING value)</term><listitem><para>
+Add an attribute identified by name with an associated value to the CAL structure.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>void CAL_add_location (CAL, MAP_PROJ *mproj, POINT point)</term><listitem><para>
+Adds a location point to the CAL structure by converting the location specified by point to a latitude and longitude using the map projection mproj and storing these in CAL using the predefined attributes CALlongitude and CALlatitude.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>void CAL_clean (CAL)</term><listitem><para>
+Remove all attributes from the CAL structure that do not have a value associated with them.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>CAL CAL_create_by_name (STRING element , STRING level)</term><listitem><para>
+Create a CAL structure from the element and level names of a field that is populated with the attributes specific to that field.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>CAL CAL_create_by_edef (FpaConfigElementStruct *cfg)</term><listitem><para>
+Create a CAL structure from the field element definition structure that is populated with the attributes specific to that field.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>CAL CAL_create_default (void)</term><listitem><para>
+Create a CAL structure that contains the predefined attributes CALautolabel, CALcategory and CALuserlabel.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>CAL CAL_create_empty (void)</term><listitem><para>
+Create a CAL structure with no attributes.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>CAL CAL_destroy (CAL)</term><listitem><para>
+Destroy the given CAL structure and return a value of NULL.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>CAL CAL_duplicate (const CAL)</term><listitem><para>
+Duplicate the given CAL structure.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>void CAL_empty (CAL)</term><listitem><para>
+Remove all attributes from the CAL structure.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>STRING CAL_get_attribute (CAL, STRING name)</term><listitem><para>
+Return the value associated with the given attribute.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>void CAL_get_attribute_names (CAL, STRING **name, int *number)</term><listitem><para>
+Return a list of all sttributes in the CAL structure. The name list is allocated and it is the responsibility of the calling function to free the returned list. Note that the elements the list points to are internal static and must not be freed. (That is, free name but not name[i]).
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>void CAL_get_defaults (CAL, STRING *category, STRING *auto_label, STRING *user_label)</term><listitem><para>
+Returns the values associated with the predefined attributes CALcategory, CALautolabel and CALuserlabel. The returned values point to internal static values and must not be freed.
+</para></listitem></varlistentry>
+
+<varlistentry><term>LOGICAL CAL_has_attribute (CAL, STRING name)</term><listitem><para>
+Returns true if the given CAL structure contains the given attribute name.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>LOGICAL CAL_is_preset (STRING name)</term><listitem><para>
+Returns True if the attribute name is one of the preset magic attributes.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>LOGICAL CAL_is_value ( STRING value )</term><listitem><para>
+Returns True if the attribute value has a value.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>void CAL_merge (CAL dest, CAL source, LOGICAL overwrite)</term><listitem><para>
+Merges the given source CAL into the destination CAL. If overwrite is True, then attributes in source will overwrite those in dest. If False, then source attributes will only be written into dest if the attribute does not exist in dest or if the attribute in dest does not have a value.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>LOGICAL  CAL_no_value ( STRING value )</term><listitem><para>
+Returns True if the attribute value does not have a value.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>LOGICAL CAL_same	(CAL a, CAL b)</term><listitem><para>
+Returns True if CAL a and CAL b are the same.
+</para></listitem></varlistentry>
+
+
+
+<varlistentry><term>void CAL_set_attribute (CAL, STRING name, STRING value)</term><listitem><para>
+Set the value of the attribute name to value. If the attribute does not exist in CAL then no action is taken.
+</para></listitem></varlistentry>
+
+
+<varlistentry><term>void CAL_set_defaults (CAL, STRING cval, STRING alval, STRING ulval)</term><listitem><para>
+Set the value of the predefined attributes CALcategory to cval, CALautolabel to alval and CALuserlabel to ulval.
+</para></listitem></varlistentry>
+</variablelist>
+</para></sect1></chapter>

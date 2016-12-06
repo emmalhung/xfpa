@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % ingred SYSTEM 'ingred.ent'>
+%ingred;
+]>
+<chapter><title>Term Definitions</title>
+<para>
+This section discusses the organization of data within Ingred and defines the terms 
+used to identify the data sections.
+<variablelist>
+<varlistentry><term>Element</term><listitem><para>
+The basic definition of data is the element. Elements are well known things such as 
+pressure, temperature and so on. 
+</para></listitem></varlistentry>
+<varlistentry><term>Field</term><listitem><para>
+Fields are defined as elements at a specific level, such as 
+msl pressure and 850mb heights. Fields can be surfaces, or collections of areas, lines, link chains or 
+points. Discrete areas can be fields such as weather, lines can be collections of fronts, link chains can be collections of storm tracks, and so on. 
+</para></listitem></varlistentry>
+<varlistentry><term>Group</term><listitem><para>
+Fields are arranged into Groups. The definition of the groups is entirely arbitrary 
+and is defined by the users. Most of the time the groups will have meaning so that there will 
+be a 850mb group, a surface group and so on. 
+</para></listitem></varlistentry>
+<varlistentry><term>Chart</term><listitem><para>
+A group at a specific time is called a Chart. Note that not every group needs to 
+exist at any particular time so that there may or may not be a chart at any particular time.
+</para></listitem></varlistentry>
+<varlistentry><term>Depiction</term><listitem><para>
+The collection of charts for any specific time is called a Depiction.
+</para></listitem></varlistentry>
+<varlistentry><term>Sequence</term><listitem><para>
+The collection of depictions for every time is called the depiction Sequence.
+</para></listitem></varlistentry>
+</variablelist>
+</para>
+</chapter>

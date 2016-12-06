@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_set_source'> <title>@set_source</title> <titleabbrev>@set_source</titleabbrev>
+<para>
+Set the data directory and valid time for fields to sample.
+</para><para>
+Note that all times are relative to the <command>T0</command> time from &FPA;.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<row valign='top'> 
+<entry namest='key'><para><userinput>source</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>&FPA; source name for data directory for field to sample
+</para><para>(Note: the format for this keyword would be <userinput><replaceable>source</replaceable></userinput> if the data directory has no sub sources, or <userinput><replaceable>source</replaceable>:<replaceable>subsource</replaceable></userinput> if the data directory has sub sources) </para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>valid_time</userinput></para></entry>
+<entry colname='type'><para>vtime</para></entry> 
+<entry colname='desc'><para> Valid time to match (see <xref linkend='timefmt'/>)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@set_source { source = depict; valid_time = 00; }</programlisting>
+Set the data directory for fields to sample to the &FPA; depict source at the current time.
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@set_source { source = GEM; valid_time = 18; }</programlisting>
+Set the data directory for fields to sample to the &FPA; GEM source at 18 hours after the current time.
+</para></example>
+</para></sect2>

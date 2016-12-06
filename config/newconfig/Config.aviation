@@ -1,0 +1,697 @@
+################################################################################
+#                                                                              #
+#   ##         ##   #      #####    ##   ##   ##   ##   ##    ####    ##       #
+#    ##   #   ##   # #     ##  ##   ###  ##   ##   ###  ##   ##       ##       #
+#     ## ### ##   #####    #####    ## # ##   ##   ## # ##   ## ###   ##       #
+#      ### ###   ##   ##   ## ##    ##  ###   ##   ##  ###   ##  ##            #
+#       #   #   ##     ##  ##  ##   ##   ##   ##   ##   ##    #####   ##       #
+#                                                                              #
+#                                                                              #
+#   NEVER MODIFY THIS FILE!                                                    #
+#                                                                              #
+#   All Config-type files in the $FPA/config directory can and will be updated #
+#   with any new release, update, or patch of the FPA software suite.          #
+#                                                                              #
+#   You should only introduce changes and additions to the information in this #
+#   file, by using a local Config file that refers to this file through an     #
+#   #include statement.  Refer to the file Config, or d.Config for further     #
+#   instructions.                                                              #
+#                                                                              #
+################################################################################
+
+################################################################################
+#
+# "Config.aviation" Configuration File (Graphical Aviation)
+#
+# This configuration file contains the necessary information for constructing,
+# storing and accessing meteorological and oceanographic fields.
+#
+# In particular, it contains the permanent physical description for each and
+# every field that can be processed by FPA applications.
+#
+# (This does not include the transient visual description, which is provided
+#  in the "Presentation" configuration file, though it soon may!)
+#
+# This file also contains the physical descriptions of all recognized elements,
+# levels and data sources.  It also contains a list of equations and commonly
+# used constants, for generating new fields from existing ones.  It also
+# contains a list of units definitions, to allow conversion of fields from the
+# standard MKS units to conventional units.
+#
+# Note: All data stored in metafiles, as well as all data in constants or
+#       equations, is converted to standard MKS units before being used.
+#       For example, a constant in this file with target units of degreesC
+#       would be converted to degreesK whenever it was used.
+#       Similarly, an equation in this file with target units of mb/12hr would
+#       return values converted to Pa/s, with a precision determined by the
+#       natural units of the element corresponding to the equation id.
+#
+################################################################################
+
+revision 6.0
+
+################################################################################
+#
+# "Fields" block - Descriptions of each field
+#
+# Each field in this block is identified by a unique <element> <level> pair.
+# Each element name must correspond to an element name defined in the
+# "Elements" block below.
+# Similarly, each level name must correspond to a level name defined in the
+# "Levels" block below.
+# (Note that all name comparisons are case insensitive!)
+#
+################################################################################
+
+Fields
+	{
+	turbulence		surface
+		{
+		label			= <*default*> "Turbulence"
+		short_label		= <*default*> "Turbc"
+		}
+	freezing_level	surface
+		{
+		label			= <*default*> "Freezing Level"
+		short_label		= <*default*> "Frzg Lvl"
+		}
+	feature_motion	surface
+		{
+		label			= <*default*> "Feature Motion"
+		short_label		= <*default*> "Ftr Motion"
+		}
+	}
+
+################################################################################
+#
+# "Elements" block - Descriptions of each element
+#
+# Each element in this block must be identified by a unique name.
+# (Note that all name comparisons are case insensitive!)
+#
+# Each element may optionally be identified by an alias name.
+# These aliases are used to match the element names used in decoding
+# information from other data sources or from other FPA users.  The list of
+# recognized aliases is provided for each element by the "alias" keyword.
+# Only the first usage of an alias is recognized.
+#
+# (Note that the "equation_string" in the "equation" block can use either
+# the name, the file_id, the file_ident, or any alias to refer to an element
+# or level in the equation!)
+#
+################################################################################
+
+Elements
+	{
+	pressure
+		{
+		labelling		=
+			{
+			label_types_reset           = True
+			label_types	=
+				{
+				FPA_continuous_labelling
+					{
+					type_rules			= FPA_mod100_spval
+					}
+				labelled_low
+					{
+					type_label			= <*default*> "Labelled Low"
+					type_short_label	= <*default*> "Labelled L"
+					type_entry_file     = low_label
+					type_attach			= attach_min
+					type_class          = hilo
+					attribute_defaults	=
+						{
+						hilo_type		low
+						EVAL_spval		yes
+						}
+					type_rules			= FPA_mod100_spval
+					}
+				labelled_high
+					{
+					type_label			= <*default*> "Labelled High"
+					type_short_label	= <*default*> "Labelled H"
+					type_entry_file     = high_label
+					type_attach			= attach_max
+					type_class          = hilo
+					attribute_defaults	=
+						{
+						hilo_type		high
+						EVAL_spval		yes
+						}
+					type_rules			= FPA_mod100_spval
+					}
+				detached_low
+					{
+					type_label			= <*default*> "Detached Low"
+					type_short_label	= <*default*> "Detached L"
+					type_entry_file     = low_label
+					type_attach			= no_attach
+					type_class          = hilo
+					attribute_defaults	=
+						{
+						hilo_type		low
+						EVAL_spval		yes
+						}
+					type_rules			= FPA_mod100_spval
+					}
+				cyclone_at_min
+					{
+					type_label			= <*default*> "Tropical Cyclone"
+					type_short_label	= <*default*> "Trop Cyc"
+					type_entry_file		= cyclone
+					type_attach			= attach_min
+					type_class			= cyclone
+					attribute_defaults	=
+						{
+						cyclone_type    depression
+						EVAL_spval		yes
+						}
+					type_rules			= FPA_mod100_spval
+					}
+				}
+			}
+
+		attributes_reset                = True
+		attributes	=
+			{
+			hilo_type
+				{
+				attribute_label			= <*default*> "High/Low Type"
+				attribute_short_label	= <*default*> "H/L Type"
+				}
+			hilo_name
+				{
+				attribute_label			= <*default*> "High/Low Name"
+				attribute_short_label	= <*default*> "H/L Name"
+				}
+			cyclone_type
+				{
+				attribute_label			= <*default*> "Tropical Cyclone Type"
+				attribute_short_label	= <*default*> "Cyclone Type"
+				}
+			cyclone_name
+				{
+				attribute_label			= <*default*> "Tropical Cyclone Name"
+				attribute_short_label	= <*default*> "Cyclone Name"
+				}
+			cyclone_cpres
+				{
+				attribute_label			= <*default*> "Tropical Cyclone Central Pressure"
+				attribute_short_label	= <*default*> "Central Pressure"
+				}
+			EVAL_mod100_spval
+				{
+				attribute_label			= <*default*> "High/Low Pressure"
+				attribute_short_label	= <*default*> "H/L Pres"
+				}
+			}
+		}
+
+	fronts
+		{
+
+		labelling		=
+			{
+			label_types_reset           = True
+			label_types	=
+				{
+				FPA_line_labelling
+					{
+					type_label			= <*default*> "Simple Label"
+					type_short_label	= <*default*> "Simple"
+					type_attach			= attach_line
+					type_entry_file		= fronts_aviation
+					type_class          = line
+					attribute_defaults	=
+						{
+						FPA_auto_label  "N/A"
+						FPA_user_label  "N/A"
+						front_name      "Name"
+						front_intensity "weak"
+						front_speed     "10"
+						}
+					}
+				}
+			}
+
+		attributes	=
+			{
+			front_name
+				{
+				attribute_label			= <*default*> "Name"
+				attribute_short_label	= <*default*> "Name"
+				}
+			front_intensity
+				{
+				attribute_label			= <*default*> "Intensity"
+				attribute_short_label	= <*default*> "Intensity"
+				}
+			front_speed
+				{
+				attribute_label			= <*default*> "Speed"
+				attribute_short_label	= <*default*> "Speed"
+				}
+			}
+		}
+
+	weather_system
+		{
+		attributes_reset                = True
+		attributes		=
+			{
+			FPA_category				none
+			FPA_auto_label				<*default*> "CLR"
+			FPA_user_label				<*default*> "Clear"
+			cloud_base
+				{
+				attribute_label			= <*default*> "Cloud Base"
+				attribute_short_label	= <*default*> "Base"
+				}
+			cloud_amount
+				{
+				attribute_label			= <*default*> "Cloud Amount"
+				attribute_short_label	= <*default*> "Amount"
+				}
+			cloud_top
+				{
+				attribute_label			= <*default*> "Cloud Top"
+				attribute_short_label	= <*default*> "Top"
+				}
+			cloud_base_2
+				{
+				attribute_label			= <*default*> "Cloud Base 2"
+				attribute_short_label	= <*default*> "Base 2"
+				}
+			cloud_amount_2
+				{
+				attribute_label			= <*default*> "Cloud Amount 2"
+				attribute_short_label	= <*default*> "Amount 2"
+				}
+			cloud_top_2
+				{
+				attribute_label			= <*default*> "Cloud Top 2"
+				attribute_short_label	= <*default*> "Top 2"
+				}
+			cloud_base_3
+				{
+				attribute_label			= <*default*> "Cloud Base 3"
+				attribute_short_label	= <*default*> "Base 3"
+				}
+			cloud_amount_3
+				{
+				attribute_label			= <*default*> "Cloud Amount 3"
+				attribute_short_label	= <*default*> "Amount 3"
+				}
+			cloud_top_3
+				{
+				attribute_label			= <*default*> "Cloud Top 3"
+				attribute_short_label	= <*default*> "Top 3"
+				}
+			cloud_remarks
+				{
+				attribute_label			= <*default*> "Cloud Remarks 1"
+				attribute_short_label	= <*default*> "Remarks 1"
+				}
+			cloud_remarks_2
+				{
+				attribute_label			= <*default*> "Cloud Remarks 2"
+				attribute_short_label	= <*default*> "Remarks 2"
+				}
+			cloud_remarks_3
+				{
+				attribute_label			= <*default*> "Cloud Remarks 3"
+				attribute_short_label	= <*default*> "Remarks 3"
+				}
+			visibility
+				{
+				attribute_label			= <*default*> "Visibility"
+				attribute_short_label	= <*default*> "Vis"
+				}
+			weather
+				{
+				attribute_label			= <*default*> "Weather"
+				attribute_short_label	= <*default*> "Wx"
+				}
+			weather_modifier
+				{
+				attribute_label			= <*default*> "Weather Modifier"
+				attribute_short_label	= <*default*> "Wx Mod"
+				}
+			visibility_secondary
+				{
+				attribute_label			= <*default*> "Visibility 2"
+				attribute_short_label	= <*default*> "Vis 2"
+				}
+			weather_secondary
+				{
+				attribute_label			= <*default*> "Weather 2"
+				attribute_short_label	= <*default*> "Wx 2"
+				}
+			wx_remarks
+				{
+				attribute_label			= <*default*> "Weather Remarks 1"
+				attribute_short_label	= <*default*> "Wx Remarks 1"
+				}
+			wx_remarks_2
+				{
+				attribute_label			= <*default*> "Weather Remarks 2"
+				attribute_short_label	= <*default*> "Wx Remarks 2"
+				}
+			icing_base
+				{
+				attribute_label			= <*default*> "Icing Base"
+				attribute_short_label	= <*default*> "Icing Base"
+				}
+			icing_intensity				NONE
+				{
+				attribute_label			= <*default*> "Icing Intensity"
+				attribute_short_label	= <*default*> "Icing Int"
+				}
+			icing_type
+				{
+				attribute_label			= <*default*> "Icing Type"
+				attribute_short_label	= <*default*> "Icing Type"
+				}
+			icing_top
+				{
+				attribute_label			= <*default*> "Icing Top"
+				attribute_short_label	= <*default*> "Icing Top"
+				}
+			clds_and_wx
+				{
+				attribute_label			= <*default*> "Clouds and Weather"
+				attribute_short_label	= <*default*> "Clds & Wx"
+				}
+			flight_rules
+				{
+				attribute_label			= <*default*> "Flight Rules"
+				attribute_short_label	= <*default*> "FR"
+				}
+			full_weather
+				{
+				attribute_label			= <*default*> "Full Weather"
+				attribute_short_label	= <*default*> "Full Wx"
+				}
+			wx_label_category
+				{
+				attribute_label			= <*default*> "Wx Label Category"
+				attribute_short_label	= <*default*> "Wx Category"
+				}
+			wx_label_type
+				{
+				attribute_label			= <*default*> "Wx Label Type"
+				attribute_short_label	= <*default*> "Wx Type"
+				}
+			}
+
+		editor			=
+			{
+			overlaying				= False
+			entry_file				= weather_aviation
+			entry_rules_reset		= True
+			entry_rules				= GFA_wx_label  GFA_wx_category \
+										GFA_clds_and_wx \
+										GFA_flight_rules  GFA_full_weather
+			}
+
+		labelling		=
+			{
+			label_types_reset           = True
+			label_types	=
+				{
+				FPA_discrete_labelling
+					{
+					type_label			= <*default*> "Public Weather"
+					type_short_label	= <*default*> "Public"
+					type_attach			= no_attach
+					type_class          = public
+					attribute_defaults	=
+						{
+						wx_label_type      "public"
+						}
+					}
+				wx_labelling
+					{
+					type_label			= <*default*> "Aviation Weather"
+					type_short_label	= <*default*> "AV Wx"
+					type_attach			= no_attach
+					type_class          = aviation
+					attribute_defaults	=
+						{
+						wx_label_category  "Wx"
+						}
+					type_rules			= GFA_wx_label_type
+					}
+				icg_labelling
+					{
+					type_label			= <*default*> "Aviation Icing"
+					type_short_label	= <*default*> "AV Icg"
+					type_attach			= no_attach
+					type_class          = aviation
+					attribute_defaults	=
+						{
+						wx_label_category  "Icg"
+						}
+					type_rules			= GFA_wx_label_type
+					}
+				}
+			}
+		}
+
+	turbulence
+		{
+		label			= <*default*> "Turbulence"
+		short_label		= <*default*> "Turbc"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= turbc
+
+		file_id			= tb
+		file_ident		= turbulence
+		precision		= 0.0  category
+
+		time_dependence	= Normal
+
+		field_type		= Discrete
+		wind_class		= None
+
+		attributes_reset                = True
+		attributes		=
+			{
+			FPA_category				none
+			FPA_auto_label				<*default*> "NoTurbc"
+			FPA_user_label				<*default*> "Nil Turbc"
+			turbulence_base
+				{
+				attribute_label			= <*default*> "Turbulence Base"
+				attribute_short_label	= <*default*> "Base"
+				}
+			turbulence_intensity		NONE
+				{
+				attribute_label			= <*default*> "Turbulence Intensity"
+				attribute_short_label	= <*default*> "Intensity"
+				}
+			turbulence_type
+				{
+				attribute_label			= <*default*> "Turbulence Type"
+				attribute_short_label	= <*default*> "Type"
+				}
+			turbulence_top
+				{
+				attribute_label			= <*default*> "Turbulence Top"
+				attribute_short_label	= <*default*> "Top"
+				}
+			turbulence_remarks
+				{
+				attribute_label			= <*default*> "Turbulence Remarks"
+				attribute_short_label	= <*default*> "Remarks"
+				}
+			}
+
+		editor			=
+			{
+			overlaying				= False
+			entry_file				= turbulence_aviation
+			}
+
+		sample			= Default
+		}
+
+	freezing_level
+		{
+		label			= <*default*> "Freezing Level"
+		short_label		= <*default*> "Frzg Lvl"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= frzg_lvl
+
+		file_id			= fl
+		file_ident		= freezing_level
+		precision		= 0.0  category
+
+		field_type		= Line
+		wind_class		= None
+
+		line_types		=
+			{
+			freezing_line
+				{
+				type_label	= <*default*> "Freezing Line"
+				pattern		= freezing_line
+				}
+			}
+
+		attributes_reset                = True
+		attributes		=
+			{
+			frzg_lvl_label
+				{
+				attribute_label			= <*default*> "Freezing Level"
+				attribute_short_label	= <*default*> "Frzg Lvl"
+				}
+			frzg_lvl_remarks
+				{
+				attribute_label			= <*default*> "Freezing Level Remarks"
+				attribute_short_label	= <*default*> "Frzg Lvl Remarks"
+				}
+			}
+
+		editor			=
+			{
+			}
+
+		labelling		=
+			{
+			label_types_reset           = True
+			label_types	=
+				{
+				FPA_line_labelling
+					{
+					type_label			= <*default*> "Freezing Level"
+					type_short_label	= <*default*> "Frzg Lvl"
+					type_attach			= attach_line
+					type_entry_file		= frzg_lvl_aviation
+					type_class          = line
+					attribute_defaults	=
+						{
+						FPA_auto_label  "N/A"
+						FPA_user_label  "N/A"
+						frzg_lvl_label  "SFC"
+						}
+					}
+				}
+			}
+
+		sample			= Default
+		}
+
+	feature_motion
+		{
+		label			= <*default*> "Feature Motion"
+		short_label		= <*default*> "Ftr Motion"
+		element_group	= Miscellaneous
+		level_type		= Surface
+		alias			= ftr_motion
+
+		file_id			= ym
+		file_ident		= feature_motion
+		precision		= 0.0  category
+
+		field_type		= LChain
+		wind_class		= None
+
+		editor			=
+			{
+			}
+
+		sample			= Default
+		}
+
+	old_feature_motion
+		{
+		label			= <*default*> "Old Feature Motion"
+		short_label		= <*default*> "Old Ftr Motion"
+		element_group	= Miscellaneous
+		level_type		= Surface
+
+		file_id			= xm
+		precision		= 0.0  category
+
+		field_type		= Line
+		wind_class		= None
+
+		line_types		=
+			{
+			motion_line
+				{
+				type_label	= <*default*> "Motion Line"
+				pattern		= motion_line
+				}
+			}
+
+		attributes_reset                = True
+		attributes		=
+			{
+			ftr_motion_speed
+				{
+				attribute_label			= <*default*> "Feature Speed"
+				attribute_short_label	= <*default*> "Ftr Spd"
+				}
+			}
+
+		editor			=
+			{
+			}
+
+		labelling		=
+			{
+			label_types_reset           = True
+			label_types	=
+				{
+				FPA_line_labelling
+					{
+					type_label			= <*default*> "Feature Speed"
+					type_short_label	= <*default*> "Ftr Spd"
+					type_attach			= attach_line
+					type_entry_file		= ftr_motion_aviation
+					type_class          = line
+					attribute_defaults	=
+						{
+						FPA_auto_label    "N/A"
+						FPA_user_label    "N/A"
+						ftr_motion_speed  "0"
+						}
+					}
+				}
+			}
+
+		sample			= Default
+		}
+
+	}
+
+################################################################################
+#
+# Changes/Additions to "CrossRefs" block - Descriptions of wind and value
+#                                           crossreferences
+#
+################################################################################
+
+CrossRefs
+	{
+	Winds
+		{
+		Vg_500
+			{
+			label			= <*default*> "500mb Geostrophic Wind"
+			short_label		= <*default*> "500 Geostr"
+			wind_function	= FPA_Geostrophic_Wind_Func
+			crossref_fields	=
+				{
+				height		500
+				}
+			}
+		}
+	}

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE row PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../../gpgen.ent'>
+%gpgent;
+]>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>display_at_feature</userinput></para></entry>
+<entry colname='type'><para>yes/no</para></entry> 
+<entry colname='desc'><para>Display the attributes at the closest feature, or at the sample location respectively </para></entry></row>

@@ -1,0 +1,126 @@
+
+MDIRS =	tools objects environ extract glib
+HDIRS =	$(MDIRS) supportlib
+
+
+# Make what?
+null:
+
+
+all lib libs:	fpalib usrlib suplib ftnlib
+
+
+header headers defs:
+	@	for dir in $(HDIRS); do \
+			if [ -d $${dir} ]; then \
+				cd $${dir}; \
+				$(MAKE) header; \
+				cd ..; \
+			fi; \
+		done
+	@	cd include; $(MAKE) header
+
+
+fpalib:		modules shlib
+	@	echo "FPA $${PLATFORM} library ready "
+	@	echo
+
+
+# Make each module:
+modules:
+	@	for dir in $(MDIRS); do \
+			if [ -d $${dir} ]; then \
+				cd $${dir}; \
+				$(MAKE) all; \
+				cd ..; \
+			fi; \
+		done
+	@	cd include; $(MAKE) all
+
+
+# Build the archive version of the library (libfpa.a):
+arlib:		checkarlib $(FPAARLIB)
+$(FPAARLIB):	
+	@	echo "Re-building FPA $${PLATFORM} library (archive)"
+	@	if [ ! -d $(LIBDIR)/$${PLATFORM} ]; \
+			then mkdir $(LIBDIR)/$${PLATFORM}; fi
+	@	if [ -f $${FPAARLIB} ]; then rm -f $${FPAARLIB}; fi
+	@	sleep 1
+	@	for dir in $(MDIRS); do \
+			if [ -d $${dir}/$${PLATFORM} ]; then \
+				$${LIB_ARCHIVE} $${FPAARLIB} \
+				`$${LIB_ORDER} $${dir}/$${PLATFORM}/*.o \
+				| $${LIB_SORT} 2>/dev/null`; \
+			fi; \
+		done
+
+
+checkarlib:
+	@	if [ -f $${FPAARLIB} ]; then \
+		for dir in $(MDIRS); do \
+			if [ -d $${dir}/$${PLATFORM} ]; then \
+				dnew=`find $${dir}/$${PLATFORM} -newer $${FPAARLIB} -print \
+					| wc -l`; \
+				if [ "$${dnew}" -gt 0 ]; then \
+					rm $(FPAARLIB); \
+					exit 0; \
+				fi; \
+			fi; \
+		done; \
+		fi
+
+
+# Build the shared version of the library (libfpa.so/sl):
+shlib:		checkshlib $(FPASHLIB)
+$(FPASHLIB):	
+	@	echo "Re-building FPA $${PLATFORM} library (shared)"
+	@	if [ ! -d $(LIBDIR)/$${PLATFORM} ]; \
+			then mkdir $(LIBDIR)/$${PLATFORM}; fi
+	@	if [ -f $${FPASHLIB} ]; then rm -f $${FPASHLIB}; fi
+	@	sleep 1
+	@	obs=""; \
+		for dir in $(MDIRS); do \
+			if [ -d $${dir}/$${PLATFORM} ]; then \
+				obs="$${obs} $${dir}/$${PLATFORM}/*.o"; \
+			fi; \
+		done; \
+		$${LIB_SHARED} -o $(FPASHLIB) $${obs}
+
+
+checkshlib:
+	@	if [ -f $${FPASHLIB} ]; then \
+		for dir in $(MDIRS); do \
+			if [ -d $${dir}/$${PLATFORM} ]; then \
+				dnew=`find $${dir}/$${PLATFORM} -newer $${FPASHLIB} -print \
+					| wc -l`; \
+				if [ "$${dnew}" -gt 0 ]; then \
+					rm $(FPASHLIB); \
+					exit 0; \
+				fi; \
+			fi; \
+		done; \
+		fi
+
+
+userlib usrlib ulib:
+	@	cd userlib; $(MAKE) all
+
+
+supportlib suplib:
+	@	cd supportlib; $(MAKE) all
+
+
+fortranlib ftnlib:
+	@	cd fortranlib; $(MAKE) all
+
+
+# Make the test modules:
+test tests:
+	@	for dir in $(MDIRS); do \
+			if [ -d $${dir} ]; then \
+				cd $${dir}; \
+				$(MAKE) test; \
+				cd ..; \
+			fi; \
+		done
+	@	cd userlib; $(MAKE) test

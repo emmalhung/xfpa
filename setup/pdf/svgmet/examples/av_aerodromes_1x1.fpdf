@@ -1,0 +1,64 @@
+! Set the default presentation for red text bordered with black ...
+@presentation
+	{
+	line_width    = 0.01;
+	outline       = CMYK 0   0   0 100;
+	fill          = CMYK 0 100 100  30;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	justification = left;
+	char_space    =  0;
+	word_space    = 75;
+	}
+
+! Display aerodromes at selected locations ...
+@group
+	{
+	group_name = aero_lctn;
+	symbol     = circle_mark;
+	scale      =   50;
+	x_off      =  0.00;
+	y_off      =  0.00;
+	}
+@add { <aero_lctn; lat = 45:52N; lon = 66:32W } !EDIT! Fredericton NB
+! @add { <aero_lctn; lat = 45:20N; lon = 65:53W } !EDIT! Saint John NB
+@add { <aero_lctn; lat = 46:17N; lon = 63:08W } !EDIT! Charlottetown PEI
+@add { <aero_lctn; lat = 44:53N; lon = 63:31W } !EDIT! Halifax NS
+@add { <aero_lctn; lat = 46:10N; lon = 60:03W } !EDIT! Sydney NS
+! @add { <aero_lctn; lat = 47:37N; lon = 52:44W } !EDIT! St John's NFLD
+@add { <aero_lctn; lat = 48:57N; lon = 54:34W } !EDIT! Gander NFLD
+@add { <aero_lctn; lat = 48:32N; lon = 58:33W } !EDIT! Stephenville NFLD
+! @add { <aero_lctn; lat = 53:19N; lon = 60:25W } !EDIT! Goose Bay NFLD
+@add { <aero_lctn; lat = 48:36N; lon = 68:13W } !EDIT! Mont/Joli QB
+@add { <aero_lctn; lat = 50:13N; lon = 66:16W } !EDIT! Sept Iles QB
+! @add { <aero_lctn; lat = 58:06N; lon = 68:25W } !EDIT! Kuujjuaq QB
+@add { <aero_lctn; lat = 46:48N; lon = 71:23W } !EDIT! Quebec QB
+@add { <aero_lctn; lat = 45:28N; lon = 73:45W } !EDIT! Montreal/Dorval QB
+@add { <aero_lctn; lat = 42:22N; lon = 71:02W } !EDIT! Boston/Logan USA
+@add { <aero_lctn; lat = 40:39N; lon = 73:47W } !EDIT! New York/JFK USA
+@group
+	{
+	group_name = aero;
+	rotate_to_latitude = yes;
+	text_size          =  0.15;
+	x_off              =  0.05;
+	y_off              = -0.04;
+	}
+@text { <aero; lat = 45:52N; lon = 66:32W; string = CYFC } !EDIT! Fredericton NB
+! @text { <aero; lat = 45:20N; lon = 65:53W; string = CYSJ } !EDIT! Saint John NB
+@text { <aero; lat = 46:17N; lon = 63:08W; string = CYYG } !EDIT! Charlottetown PEI
+@text { <aero; lat = 44:53N; lon = 63:31W; string = CYHZ } !EDIT! Halifax NS
+@text { <aero; lat = 46:10N; lon = 60:03W; string = CYQY } !EDIT! Sydney NS
+! @text { <aero; lat = 47:37N; lon = 52:44W; string = CYYT } !EDIT! St John's NFLD
+@text { <aero; lat = 48:57N; lon = 54:34W; string = CYQX } !EDIT! Gander NFLD
+@text { <aero; lat = 48:32N; lon = 58:33W; string = CYJT } !EDIT! Stephenville NFLD
+! @text { <aero; lat = 53:19N; lon = 60:25W; string = CYYR } !EDIT! Goose Bay NFLD
+@text { <aero; lat = 48:36N; lon = 68:13W; string = CYYY } !EDIT! Mont/Joli QB
+@text { <aero; lat = 50:13N; lon = 66:16W; string = CYZV } !EDIT! Sept Iles QB
+! @text { <aero; lat = 58:06N; lon = 68:25W; string = CYVP } !EDIT! Kuujjuaq QB
+@text { <aero; lat = 46:48N; lon = 71:23W; string = CYQB } !EDIT! Quebec QB
+@text { <aero; lat = 45:28N; lon = 73:45W; string = CYUL } !EDIT! Montreal/Dorval QB
+@text { <aero; lat = 42:22N; lon = 71:02W; string = KBOS } !EDIT! Boston/Logan USA
+@text { <aero; lat = 40:39N; lon = 73:47W; string = KJFK } !EDIT! New York/JFK USA

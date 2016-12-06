@@ -1,0 +1,598 @@
+################################################################################
+#
+#  FPA Image Config File
+#
+#  Information on the display of images is controlled through the use
+#  of a configuration file. Note that:
+#
+#  1. Any line starting with a '#' character in this file is taken as a comment.
+#
+#  2. Any tag or item that has embedded spaces MUST be enclosed in quotes
+#     for proper parsing. For example: "1.5 Km CAPPI"
+#
+#  The file contains two types of information blocks for products and
+#  images. The format of these blocks is:
+#
+#  >>>>> PRODUCT BLOCK <<<<<
+#
+#  A product is a group of images to which certain attributes apply. 
+#  The product is identified by a "product tag" which is then
+#  referred to in the image entry block.
+#
+#  product <product tag>
+#  {
+#     key_word = <item list>
+#     key_word = <item list>
+#     ...
+#  }
+#
+#  Key words are:
+#
+#      label  - The product label as seen by the end user
+#
+#      class  - The type of image the group is for. Either "radar", "satellite",
+#               "overlay", "underlay" or "geographic".
+#               
+#               The "overlay" is an image that will appear over the satellite and
+#               radar, while "underlay" will appear under satellite and radar.
+#
+#               Geographic images do not have a time component and are meant for
+#               static images such as geography or political boundaries and such.
+#
+#      ctable - Either the location of a colour look up table file to be applied to
+#               images in the product group or the special key 'DefinedByImage'.
+#
+#               The key 'DefinedByImage' means that the images associated with the 
+#               product must define their own colour tables. This means that they
+#               can not be changed as there will not be just one colour table for
+#               all of the images included in the product.
+#               (See the entry for ctable in the image block section).
+#
+#               There can be more than one colour table defined and they are expected
+#               to be selectable by the user. Each entry is in the form of:
+#
+#               ctable = label directory_key file_name <default>
+#
+#               where: label         - label to give to the look up table
+#                      directory_key - directory key from setup file
+#                      file_name     - name of file to read
+#                      default       - optional. If specified the given
+#                                      ctable is set as the default.
+#
+#
+#           Notes: 1. Look up tables come in two forms, those which assign a
+#                     particular pixel value to a colour and those which are
+#                     used with data files to assign a range of values
+#                     (reflectivity, cloud top temperature, etc) to a colour.
+#                     See image_lut.c for details.
+#
+#                  2. If there is no lut entry in the product block or the
+#                     directory_key and file_name are either missing or set to
+#                     a dash ("-") then the display will be the one embedded
+#                     in the image itself (like png).
+#
+#  >>>>> IMAGE BLOCK <<<<<
+#
+#  A particular image is identified by an "image tag" and a valid time.
+#  This file provides other necessary information for processing the image,
+#  such as its location and filename, as well as geo-referencing information.
+#
+#  Note that the order of the images in the configuration file will determine
+#  the display order. The first image will be displayed on top of the set of
+#  images. The second will be displayed "underneath" the first and on top of
+#  the third and so on.
+#
+#  Format:
+#
+#  image <image_tag>
+#  {
+#     key_word = <item list>
+#     key_word = <item list>
+#     ...
+#  }
+#
+#  Key words
+#
+#      site or label - site:  the name of the radar site (eg. "King")
+#                      label: the satellite or data type that the image comes
+#                      from (eg. "GOES West", "Lightning")
+#
+#      product_tag - the product group to which this image belongs. See
+#                    product_tag above.
+#
+#           ctable - If the product group ctable entry is 'DefinedByImage' then any
+#                    images that require a colour table must set it here. Note that
+#                    unlike the product entry only one ctable can be defined.
+#
+#                    ctable = directory_key file_name
+#
+#                    where: directory_key - directory key from setup file
+#                           file_name     - name of file to read
+#
+#
+#          encode  - how the image is encoded. This may be one of (case insensitive):
+#
+#                    "none"         - the image is not encoded but is a raw raster
+#                                     consisting of one byte per pixel (greyscale)
+#                    "rgb"          - the image is not encoded but is a raw raster
+#                                     consisting of three bytes per pixel (colour)
+#                                     in the form rgbrgbrgb...
+#                    "any"          - the library attempts to determine the image
+#                                     format from the file extension and the file
+#                                     contents.
+#                    "gif"          - stored as a GIF file
+#                    "tiff"         - Tagged Image Format File
+#                    "png"          - Portable Network Graphics file.
+#                    "xwd"          - X window dump format
+#                    "xgl"          - the format native to this library. See below.
+#                    "gridded_data" - data is a raw grid of scaled data values as
+#                                     value = pixel  scale + offset (see below)
+#                    "urp_gridded"  - stored as a universal radar processor data
+#                                     in gridded format.
+#                    "urp_polar"    - stored as URP format in range-theta format
+#                    "FpaMetafile"  - the image or raster of scaled values is
+#                                     in an FPA metafile. The actual determination
+#                                     as to which type is done from the meta data
+#                                     in the file.
+#
+#  force_grayscale - "true" or "false" (default). If set the image is forced to
+#                    grayscale. This is provided in case the image (especially
+#                    satellite) had a colour label added. This would cause the
+#                    entire image to be treated as a colour image, which is not
+#                    usually wanted.
+#
+#     aspect_ratio - "adjust" or "fixed" (default). The aspect ratio of the
+#                    image is allowed to change depending on the viewport setting
+#                    or must remained fixed.
+#
+#  For all images except geographic types                  
+#
+#      directory   - <dir_key> <dir> : The directory where the images are
+#                    to be found. Note that this does not apply to geographic
+#                    images (see geographic images below).
+#
+#                    dir_key - the base directory key name of the image
+#                              directories as found in the setup file, or
+#                              an absolute pathname of a directory (starts
+#                              with the character '/').
+#                    dir     - directory where the images are to be found
+#                              starting from dir_key (so this could be an entry
+#                              like radar/wkr).
+#
+#
+#      fname_mask  - The mask which is used to read the list of files from
+#                    the above directory. For example ............_WSO_CAPPI
+#                    will return all files starting with any characters in
+#                    the first 12 positions followed by the string _WSO_CAPPI.
+#                    Thus the file 200005132130_WKR_CAPPI_RAIN.GIF would be
+#                    a match. If not specified the default is all files ("").
+#
+#      fname_time  - The parsing format for the time contained in the file
+#                    name in the form of <format> <parse keys> <Format> is the
+#                    way to parse the string in standard c sscanf style notation
+#                    and <parse keys> give the meaning of each of the elements
+#                    parsed. In the above example the file starts with the
+#                    date, so the entry %4d%2d%2d%2d%2d YYYY MM DD hh mm
+#                    will parse it. If there was a string in front of the
+#                    date this would need to be included in the format string.
+#                    For example if we had RT............_WSO_CAPPI then the
+#                    format would be RT%4d%2d%2d%2d%2d YYYY MM DD hh mm
+#
+#                    The default is "%4d%2d%2d%2d%2d YYYY MM DD hh mm"
+#
+#                    The recognized parse keys are:
+#
+#                    YYYY - 4 digit year
+#                    YY   - 2 digit year (the last 2 digits of the year)
+#                    JJJ  - 3 digit julian day
+#                    MM   - 2 digit month
+#                    DD   - 2 digit day of month
+#                    hh   - 2 digit hour of the day
+#                    mm   - 2 digit minute of the hour
+#
+#                    Note that the above are case sensitive.
+#                    
+#
+#   time_frequency - The time between images. If no time information is required
+#                    enter "none" to avoid complains from the configuration reader.
+#
+#                    The time frequence information consists of four entries:
+#
+#                       1. the start time as an offset from 00 GMT
+#                       2. the cycle time
+#                       3. the time window before the expected time that
+#                          an image is considered to have arrived on time
+#                       4. the time window after the expected time that
+#                          an image is considered to have arrived on time
+#
+#                    All time entries can be specfied in minutes (m) or hours and
+#                    minutes in the format h:m (for example 15 or 1:10).
+#
+#                    The acceptance window is a time within which an image can
+#                    arrive and still be considered to be on time. Some satellite
+#                    images that nominally arrive on the half hour may actually
+#                    arrive at times like 10:32, thus an acceptance window of 2
+#                    minutes would consider this to be the 10:30 image. Typical
+#                    entries might be:
+#
+#                       radar     -> 0:0 10 0 0
+#                       satellite -> 0:0 15 2 5
+#
+#                    If a satellite repeated every half hour starting on the quarter
+#                    hour, plus or minus 2 minutes, the entry would be:
+#
+#                       15 30 2 2
+#
+#
+#  The following are required for radar, satellite and data images only (like GIF)
+#  and satellite raw raster data files. If projection and mapdef are specified for
+#  URP or TDF files, then the enties in this file will override the information
+#  in the data file header. If not used, mapdef should be specified as "none" or
+#  the configuration reader will complain.
+#
+#      projection  - the map projection the image is in. The entries in this
+#                    line will depend on the projection but two common ones:
+#
+#                    radar (URP projection)
+#                    polar_stereographic north 60N
+#
+#      mapdef      - the map definition of the image. The entries are:
+#
+#                    lat lon ref-lon llx lly urx ury units
+#
+#                    lat     - latitude
+#                    lon     - longitude
+#                    ref-lat - reference latitude
+#                    llx     - lower left corner x value wrt center of map (Km)
+#                    lly     - lower left corner y value wrt center of map (Km)
+#                    urx     - upper right corner x value wrt center of map (Km)
+#                    ury     - upper right corner y value wrt center of map (Km)
+#                    units   - factor to turn measurement into km
+#
+#                    Note that in radar numeric files the mapdef can be set to "none"
+#                    and the appropriate map definition information will be read from
+#                    the files.
+#
+#
+#  Keys for radar image files only (like GIF)
+#
+#      radar_overlay  - if the image has the geography in specific planes in the
+#                       image this can be used to remove them. Entries are
+#                       <flag> <mask>
+#
+#                       flag - either "on" or "off" 
+#                       mask - the 8-bit mask indicating which bits in the image are
+#                              to be used or rejected. For example: 00111111
+#
+#      radar_bgnd     - do we want the image background to be transparent or opaque.
+#                       values are "transparent" or "opaque"
+#
+#      radar_bg_color - the rgb (red, green, blue) values of the colour to be taken
+#                       as transparent if radar_bgnd is set to "transparent". The values
+#                       must range from 0 to 255 and the default is black
+#                       (radar_bg_color = 0 0 0).
+#
+#      radar_extent   - display the entire image or just the part where the radar
+#                       scan is? Entries are "data" or "full"
+#
+#      radar_centre   - where in the image the center of the radar scan can be found.
+#                       entries are <width> and <height> in pixels.
+#
+#      radar_diameter - the diameter of the radar scan part of the image in pixels.
+#
+#      range_rings    - Either "true" or "false". If true the library is allowed to
+#                       overlay range rings on the image. Many radar images have range
+#                       rings already in the image so normally this key word is either
+#                       left out or set to "false".
+#
+#  For satellite images only
+#
+#     mapdef_file  - Some images, such as those received from polar obiting satellites
+#                    have a map definition that changes from one image to another. This
+#                    entry defines the name of the file that contains the map definition
+#                    amd/or projection. There are two forms the files can take:
+#
+#                    1. The file contains the definitions for one image and the file name
+#                       identifies which image the information is for. The file name is
+#                       in the form of <format> <encode keys> <Format> is the way to
+#                       encode the file name in standard C sprintf style notation and
+#                       <encode keys> give the meaning of each of the elements. For example:
+#
+#                           %2.2d%2.2d%2.2d%2.2d%2.2d_WSO_CAPPI.mapdef  YY MM DD hh mm
+#
+#                       where the time is encoded according to the rules defined
+#                       above for fname_time. The file must contain the definitions
+#                       in the format given in the discussion of projection and mapdef
+#                       above although the equal ("-") sign is not required.
+#
+#                    2. The file contains the definitions and/or projections for more
+#                       than one image. In this case the item list contains only one entry
+#                       which is the name of the file. For example:
+#
+#                           mapdefs
+#
+#                       Each line in the given file must be in the form of:
+#
+#                           image_file_name key <paramters>
+#
+#                       where image_file_name is of course the name of the image file,
+#                       key is one of "mapdef" or "projection", and the parameters are
+#                       as described in the discussion above.
+#
+#                    The files are assumed to be in the same directory as the images.
+#
+#                    Note that the map definition and projection must still be specified
+#                    in this file for use as the default if the file is not found or if
+#                    only the map definition is specified in the file.
+#
+#
+#  For satellite or data with encode key "gridded_data" only.
+#
+#      element         - the name of the element encoded into the grid
+#                        (eg. Temperature, Lightning)
+#
+#      size            - <width> <height>
+#
+#      bytes_per_pixel - the number of bytes (8-bit chunks) per pixel (must be
+#                        either 1, 2 or 3)
+#
+#      byte_order      - The endian order of the image pixels. Either MSBFirst for
+#                        Most Significant Byte First or LSBFirst for Least
+#                        Significant Byte First. If not specified the default
+#                        is MSBFirst. Only required for bytes_per_pixel > 1.
+#
+#      scale           - both scale and offset are used to turn the pixels into the
+#      offset            values represented by the pixels and are applied as
+#
+#                           pixel  scale + offset.
+#
+#                        For example if could top temperature was encoded as degrees
+#                        kelvin  100 and we wanted degrees celsius out then the scale
+#                        and offset values would be:
+#
+#                         scale = .01 and offset = -273.15
+#
+#                         
+#
+#  For encode key "none" only
+#
+#      size       = <width> <height>
+#
+#  For geographic images only
+#
+#      file = <dir_key> <file> : The file which contains the geographic image.
+#
+#            dir_key - the base directory key name of the image directories
+#                      as found in the setup file, or an absolute pathname
+#                      of a directory (starts with the character '/').
+#            file    - the full path name of the file starting from
+#                      dir_key.
+#
+#
+#  XGL image file format.
+#
+#  This is the native format of this library. It is a very simple uncompressed raster
+#  format and consists of a 24 byte header block followed by the image data. The file
+#  starts with "xglraster". This is followed by a byte that is the type of image
+#  storage. The options are 'G','R','P' and mean:
+#
+#     'G' = 1 byte per pixel (grayscale)
+#     'R' = 3 bytes per pixel stored as RGB triplets: RGBRGBRGB...
+#     'P' = 3 bytes per pixel stored as RGB in plane order: RRRR...GGGG...BBBB
+#
+#  This is followed by a 14 byte block that holds the image size stored as width x height.
+#  Note that the number of bytes in the image will be width  height * bytes per pixel.
+#  Thus the file size (bytes) will be: 24 + width  height * bytes-per-pixel.
+#
+#  Header example: "xglrasterR1024x768      "
+#
+#
+################################################################################
+
+revision 8.0
+
+
+# RADAR
+
+product	cappi
+{
+	label = "1.5Km CAPPI"
+	class = radar
+	ctable = "Default" - - default
+	ctable = "King" ctables KingEnhancement.tab
+}
+
+product	cappi_numeric
+{
+	label  = "1.5Km Numeric CAPPI"
+	class  = radar
+	ctable = "MM/HR"	ctables RadarData_MMHR.tab default
+	ctable = "> 1MM/HR"	ctables RadarData_HRR.tab
+	ctable = "DBZ"		ctables RadarData_DBZ.tab
+}
+
+product	cappi_range_theta
+{
+	label  = "1.5Km Range Theta CAPPI"
+	class  = radar
+	ctable = "MM/HR"	ctables RadarData_MMHR.tab default
+	ctable = "> 1MM/HR"	ctables RadarData_HRR.tab
+	ctable = "DBZ"		ctables RadarData_DBZ.tab
+}
+
+product	doppler
+{
+	label  = "Doppler"
+	class  = radar
+	ctable = "M/S" ctables RadarData_VRPPI.tab
+}
+
+
+product	24_hr_precip
+{
+	label = "24 Hour Precipitation"
+	class = radar
+}
+
+
+image	WKR_CAPPI
+	{
+	label          = "King Radar 1.5 CAPPI"
+	directory      = May12images WKR_cappi_numeric
+	fname_mask     = ............:CAPPI,1.5,AGL,MPRATE:WKR_CAPPI_RAIN
+	fname_time     = %4d%2d%2d%2d%2d YYYY MM DD hh mm
+	site           = King
+	product_tag    = cappi
+	encode         = gif
+	radar_overlay  = on 00111111
+	radar_bgnd     = transparent
+	radar_extent   = data
+	radar_centre   = 240 240
+	radar_diameter = 480
+	projection     = radar
+	mapdef         = 43:57:50N 79:34:27W 79:34:27W -240 -240 240 240 1000
+	}
+
+image	WKR_CAPPI_NUMERIC
+	{
+	label          = "King 1.5 Km Numeric Data"
+	directory      = May12images WKR_TEST
+	fname_mask     = ............:CAPPI,1.5,AGL,MPRATE:WKR_BINARY
+	fname_time     = %4d%2d%2d%2d%2d YYYY MM DD hh mm
+	site           = King
+	product_tag    = cappi_numeric
+	encode         = urp
+	projection     = radar
+	mapdef         = none
+	}
+
+image	WKR_CAPPI_RANGE_THETA
+	{
+	label          = "King 1.5 Km Range-Theta Data"
+	directory      = May12images WKR_TEST
+	fname_mask     = ............:CAPPI,1.5,AGL,MPRATE.meta
+	fname_time     = %4d%2d%2d%2d%2d YYYY MM DD hh mm
+	site           = King
+	product_tag    = cappi_range_theta
+	encode         = urp
+	projection     = radar
+	mapdef         = none
+	}
+
+
+image	WKR_DOPPLER
+	{
+	label          = "King Doppler Data"
+	directory      = May12images WKR_TEST
+	fname_mask     = ............:VRPPI,DOPVOL1_A,18.meta
+	fname_time     = %4d%2d%2d%2d%2d YYYY MM DD hh mm
+	site           = King
+	product_tag    = doppler
+	encode         = urp
+	projection     = radar
+	mapdef         = none
+	}
+
+
+image	WKR_24hr
+	{
+	label          = "King 24hr Precip (1.5 CAPPI)"
+	directory      = May12images WKR_24hr
+	fname_mask     = 200005......_wkr_rfa_cappi
+	fname_time     = %4d%2d%2d%2d%2d YYYY MM DD hh mm
+	site           = King
+	product_tag    = 24_hr_precip
+	encode         = gif
+	radar_overlay  = on 00111111
+	radar_bgnd     = transparent
+	radar_extent   = data
+	radar_centre   = 240 240
+	radar_diameter = 480
+	projection     = radar
+	mapdef         = 43:57:50N 79:34:27W 79:34:27W -240 -240 240 240 1000
+	}
+
+
+# SATELLITE
+
+product	visible
+{
+	label = "Visible"
+	ctable = "Greyscale" ctables VISenhance.tab
+}
+
+product	ir
+{
+	label  = "IR"
+	ctable = "Greyscale" ctables IRenhance.tab
+	ctable = "Alternate VIS" ctables VISenhance.tab
+}
+
+product	cct
+{
+	label  = "Cloud Top Temperature"
+	ctable = "Greyscale" ctables SatelliteData_CCT.tab
+}
+
+
+image	east_canada_vis
+	{
+	label          = "GOES-8 Eastern Canada"
+	directory      = May12images GOES_faked/Orig
+	fname_mask     = EC.............ch1
+	fname_time     = EC.%2d%2d%2d.%2d%2d YY MM DD hh mm
+	product_tag    = visible
+	encode         = none
+	size           = 640 480
+	projection     = polar_stereographic north 60N
+	mapdef         = 45N 75W 75W -1280 -960 1280 960 1000
+	}
+
+
+image	east_canada_ir
+	{
+	label          = "GOES-8 Eastern Canada"
+	directory      = May12images GOES_faked
+	fname_mask     = EC.............ch4
+	fname_time     = EC.%2d%2d%2d.%2d%2d YY MM DD hh mm
+	product_tag    = ir
+	encode         = none
+	size           = 640 480
+	projection     = polar_stereographic north 60N
+	mapdef         = 45N 75W 75W -1280 -960 1280 960 1000
+	}
+
+image	cloud_top_temp
+	{
+	label           = "GOES-8 Eastern Canada"
+	directory       = May12images GOES_cloud_top_temp
+	fname_mask      = IR.............ch4
+	fname_time      = IR.%2d%2d%2d.%2d%2d YY MM DD hh mm
+	product_tag     = cct
+	encode          = none
+	size            = 640 480
+	bytes_per_pixel = 2
+	scale           = 0.01
+	offset          = -273.15
+	projection      = polar_stereographic north 60N
+	mapdef          = 45N 75W 75W -1280 -960 1280 960 1000
+	}
+
+# GEOGRAPHICAL IMAGES
+
+product	geographic
+{
+	label = "Geographic Backgrounds"
+	class = geographic
+}
+
+image	terrainHeight
+{
+	label       = "Terrain Height"
+	directory   = images geography/terrain_height.png
+	product_tag = geographic
+	encode      = png
+	projection  = polar_stereographic north 60N
+	mapdef      = 45N 75W 75W -1280 -960 1280 960 1000
+}
+

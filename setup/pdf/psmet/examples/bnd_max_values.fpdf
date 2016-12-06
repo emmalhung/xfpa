@@ -1,0 +1,75 @@
+! Set the default presentation for black text bordered with white ...
+@presentation
+	{
+	outline       = X11 White;
+	fill          = X11 Black;
+	outline_first = yes;
+	font          = "Times-Roman";
+	font_weight   = normal;
+	italics       = no;
+	char_space    =   0;
+	word_space    =  75;
+	line_space    = 100;
+	}
+
+! Define macros for sampling selected fields ...
+@group
+	{
+	group_name    = WxSample;
+	element       = weather_system;
+	level         = surface;
+	attribute     = clds_and_wx;
+	format        = symbol;
+	look_up       = weather_day;
+	case          = night;
+	case_look_up  = weather_ngt;
+	mark          = circle_mark;
+	mark_scale    = 80;
+	symbol_scale  = 50;
+	x_off         = -0.30;
+	y_off         =  0.00;
+	fill          = X11 Red;
+	justification = centre;
+	}
+@group
+	{
+	group_name    = MaxSample;
+	element       = max_temp;
+	level         = surface;
+	units         = degreesC;
+	format        = direct %.0f C;
+	mark          = circle_mark;
+	mark_scale    = 40;
+	text_size     =  0.30;
+	line_width    =  0.05;
+	x_off         =  0.15;
+	y_off         = -0.10;
+	justification = left;
+	}
+
+! Display sampled weather at selected sites ...
+@anchor { ref = map }
+@sample_field { <WxSample;  lat = 44:40N;  lon = 63:35W }	!EDIT! WHF (Halifax)
+@sample_field { <WxSample;  lat = 46:48N;  lon = 71:24W }	!EDIT! YQB (Quebec City)
+@sample_field { <WxSample;  lat = 45:28N;  lon = 73:45W }	!EDIT! YUL (Montreal)
+@sample_field { <WxSample;  lat = 50:13N;  lon = 66:15W }	!EDIT! YZV (Sept-Iles)
+@sample_field { <WxSample;  lat = 47:37N;  lon = 52:45W }	!EDIT! YYT (St John's)
+@sample_field { <WxSample;  lat = 51:17N;  lon = 80:36W }	!EDIT! WZC (Moosonee)
+@sample_field { <WxSample;  lat = 46:29N;  lon = 84:31W }	!EDIT! YAM (Sault Ste. Marie)
+@sample_field { <WxSample;  lat = 43:40N;  lon = 79:38W }	!EDIT! YYZ (Toronto)
+@sample_field { <WxSample;  lat = 42:25N;  lon = 83:01W }	!EDIT! DET (Detroit)
+@sample_field { <WxSample;  lat = 42:22N;  lon = 71:02W }	!EDIT! BOS (Boston)
+@sample_field { <WxSample;  lat = 40:39N;  lon = 73:47W }	!EDIT! JFK (New York)
+
+! Display sampled maximum temperature at selected sites ...
+@sample_field { <MaxSample;  lat = 44:40N;  lon = 63:35W }	!EDIT! WHF (Halifax)
+@sample_field { <MaxSample;  lat = 46:48N;  lon = 71:24W }	!EDIT! YQB (Quebec City)
+@sample_field { <MaxSample;  lat = 45:28N;  lon = 73:45W }	!EDIT! YUL (Montreal)
+@sample_field { <MaxSample;  lat = 50:13N;  lon = 66:15W }	!EDIT! YZV (Sept-Iles)
+@sample_field { <MaxSample;  lat = 47:37N;  lon = 52:45W }	!EDIT! YYT (St John's)
+@sample_field { <MaxSample;  lat = 51:17N;  lon = 80:36W }	!EDIT! WZC (Moosonee)
+@sample_field { <MaxSample;  lat = 46:29N;  lon = 84:31W }	!EDIT! YAM (Sault Ste. Marie)
+@sample_field { <MaxSample;  lat = 43:40N;  lon = 79:38W }	!EDIT! YYZ (Toronto)
+@sample_field { <MaxSample;  lat = 42:25N;  lon = 83:01W }	!EDIT! DET (Detroit)
+@sample_field { <MaxSample;  lat = 42:22N;  lon = 71:02W }	!EDIT! BOS (Boston)
+@sample_field { <MaxSample;  lat = 40:39N;  lon = 73:47W }	!EDIT! JFK (New York)

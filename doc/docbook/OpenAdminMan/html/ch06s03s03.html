@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.3.3. XGL image file format</title><link rel="stylesheet" href="fpa-style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /><link rel="start" href="index.html" title="Forecast Production Assistant Version 8" /><link rel="up" href="ch06s03.html" title="6.3. Image" /><link rel="prev" href="ch06s03s02.html" title="6.3.2. Image Block" /><link rel="next" href="ch06s04.html" title="6.4. Gribs" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.3.3. XGL image file format</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s03s02.html">Prev</a> </td><th width="60%" align="center">6.3. Image</th><td width="20%" align="right"> <a accesskey="n" href="ch06s04.html">Next</a></td></tr></table><hr /></div><div class="sect2" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id2034973"></a>6.3.3. XGL image file format</h3></div></div></div><p>
+<a id="id2034980" class="indexterm"></a>
+This is the native format of this library.
+It is a very simple uncompressed raster format and consists of 24byte header block followed by a byte that is the type of image storage.
+The options are G, R, P and mean:
+</p><div class="itemizedlist"><ul type="disc"><li><p>G = 1 byte per pixel (grey-scale)</p></li><li><p>R = 3 bytes per pixel stored as RGB triplets: RGBRGBRGB...</p></li><li><p>P = 3 bytes perp pixel stored as RGB in plane order: RRRR...GGGG...BBBB</p></li></ul></div><p>
+This is followed by a 14 byte block that holds the image size stored as width x height.
+Note that the number of bytes in the image will be width*height*bytes-per-pixel.
+Thus the file size (bytes) will be 24+ width*height*bytes-per-pixel.
+Header example: "xglrasterR1024x768      "
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s03s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06s03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.3.2. Image Block </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.4. Gribs</td></tr></table></div></body></html>

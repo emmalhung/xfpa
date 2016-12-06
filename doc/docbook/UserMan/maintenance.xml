@@ -1,0 +1,596 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='maintaining_fields_and_depictions'> <title>	Maintaining Fields and Depictions</title>
+<para>
+<indexterm><primary>depiction</primary><secondary>sequence</secondary></indexterm>
+The Fields menu allows you to load, save, check, delete and print fields in your <glossterm linkend='g_depiction_sequence'>depiction sequence</glossterm>.
+</para>
+<sect1 id='loading_fields'> <title>Loading fields</title>
+<sect2 id='loading_normal_fields'> <title>Loading Normal fields into a depiction</title>
+<para>
+<indexterm><primary>field</primary><secondary>normal</secondary></indexterm>
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Load...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/load-fields.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Load Fields</guilabel> dialog box appears.
+</para></listitem>
+
+<listitem><para>
+Click the <guilabel>Normal</guilabel> tab.
+</para> <para>
+The Load Normal Fields information appears.
+(see <xref linkend='load_fields_normal'/>)
+<figure id='load_fields_normal' pgwide='0' float='1'><title>Load Fields - Normal</title>
+<mediaobject><imageobject><imagedata fileref='png/load_fields_normal.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Source</guilabel> for the field.
+(Unavailable sources are greyed out.)
+When you select <guilabel>External Depictions</guilabel> you can import &FPA; databases from another location.
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Model</guilabel> and <guilabel>Issue Time</guilabel>, if required.
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Valid Time</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Select one or more <guilabel>Fields</guilabel> to load.
+</para> <para>
+The <guilabel>Automatically select all fields in list</guilabel> preference highlights all fields available for a valid time.
+</para> <para>
+Note: Some fields may not be available in every time.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Load</guibutton> to load the field(s).
+</para> <para>
+If a depiction does not exist at the given target time and if the <guilabel>Ask permission before creating depiction</guilabel> checkbox is selected, the &FPA; prompts for permission to create the depiction.
+</para> <para>
+If the field exists in the depiction sequence and if the <guilabel>Ask permission before overwriting fields</guilabel> checkbox is selected, the &FPA; prompts for permission to save the depiction before overwriting the field.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='loading_fields_at_a_different_time'> <title>Loading Normal fields into a depiction at a different time</title>
+<para>
+The target time is the valid time of the selected field.
+If you want to load fields into a depiction at a different time, use the <guilabel>Target Time</guilabel> area to select the target time.
+</para> <para>
+To load fields into a depiction at a different time:
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Load...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/load-fields.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Load Fields</guilabel> dialog box appears.
+</para></listitem>
+
+<listitem><para>
+Click the <guilabel>Normal</guilabel> tab.
+</para> <para>
+The Load Normal Fields information appears.
+</para></listitem>
+
+<listitem><para>
+In the Preferences area, select <guilabel>Show target time selection block</guilabel>.
+</para> <para>
+The <guilabel>Target Time</guilabel> area appears in the dialog box.
+(see <xref linkend='load_fields_normal2'/>)
+<figure id='load_fields_normal2' pgwide='0' float='1'><title>Load Fields - Target Time</title>
+<mediaobject><imageobject><imagedata fileref='png/load_fields_normal2.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Source</guilabel> for the field.
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Model</guilabel> and <guilabel>Issue Time</guilabel>, if required.
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Valid Time</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Select one or more <guilabel>Fields</guilabel> to load.
+</para> <para>
+The <guilabel>Automatically select all fields in list</guilabel> preference highlights all fields available for a valid time.
+</para> <para>
+Note: Some fields may not be available in every time.
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Target Time</guilabel> for the selected fields.
+</para> <para>
+You can select an <guilabel>Existing Depiction</guilabel> or specify a new <guilabel>Target Time</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Load</guibutton> to load the field(s).
+</para> <para>
+If a depiction does not exist at the given target time and if the <guilabel>Ask permission before creating depiction</guilabel> checkbox is selected, the &FPA; prompts for permission to create the depiction.
+</para> <para>
+If the field exists in the depiction sequence and if the <guilabel>Ask permission before overwriting fields</guilabel> checkbox is selected, the &FPA; prompts for permission to save the depiction before overwriting the field.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='loading_daily_fields'> <title>Loading Daily fields into a time sequence</title>
+<para>
+<indexterm><primary>field</primary><secondary>daily</secondary></indexterm>
+Daily fields may display in multiple depictions if those depictions are within the time window of the daily field.
+See <xref linkend='the_fpa_model'/>.
+</para> <para>
+<indexterm><primary>sequence</primary></indexterm>
+<orderedlist> <title>To load daily fields into your active time sequence:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Load...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/load-fields.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Load Fields</guilabel> dialog box appears.
+</para></listitem>
+
+<listitem><para>
+Click the <guilabel>Daily</guilabel> tab.
+</para> <para>
+The Load Daily Fields information appears.
+(see <xref linkend='load_fields_daily'/>)
+<figure id='load_fields_daily' pgwide='0' float='1'><title>Load Fields - Daily</title>
+<mediaobject><imageobject><imagedata fileref='png/load_fields_daily.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Source</guilabel> for the field.
+Unavailable sources are greyed out.
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Model</guilabel> and <guilabel>Issue Time</guilabel>, if required.
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Valid Time</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Select one or more <guilabel>Fields</guilabel> to load.
+</para> <para>
+The <guilabel>Automatically select all fields in list</guilabel> preference highlights all fields available for a valid time.
+</para> <para>
+Note: Some fields may not be available in every time.
+</para></listitem>
+
+<listitem><para>
+If you wish to load the field in a target time other than the current depiction, select a different day in <guilabel>Target Time</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Load</guibutton> to load the field(s).
+</para> <para>
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='loading_static_fields'> <title>Loading Static fields into a time sequence</title>
+<para>
+<indexterm><primary>field</primary><secondary>static</secondary></indexterm>
+Static fields may appear in multiple depictions if those depictions are within the time window of the static field.
+See <xref linkend='the_fpa_model'/>.
+</para> <para>
+<indexterm><primary>sequence</primary></indexterm>
+<orderedlist> <title>To load static fields into your active time sequence:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Load...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/load-fields.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Load Fields</guilabel> dialog box appears.
+</para></listitem>
+
+<listitem><para>
+Click the <guilabel>Static</guilabel> tab.
+</para> <para>
+The Load Static Fields information appears.
+(see <xref linkend='load_fields_static'/>)
+<figure id='load_fields_static' pgwide='0' float='1'><title>Load Fields - Static</title>
+<mediaobject><imageobject><imagedata fileref='png/load_fields_static.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Source</guilabel> for the field.
+Unavailable sources are greyed out.
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Model</guilabel> and <guilabel>Issue Time</guilabel>, if required.
+</para></listitem>
+
+<listitem><para>
+Select one or more <guilabel>Fields</guilabel> to load.
+</para></listitem>
+
+<listitem><para>
+Select <guilabel>Valid Time</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Set the <guilabel>Target Time</guilabel>.
+</para> <para>
+<indexterm><primary>sequence</primary></indexterm>
+The static field is valid from this time until infinity, or until the next field of the same type in the <glossterm linkend='g_sequence'>sequence</glossterm>.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Load</guibutton> to load the field(s).
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='creating_fields'><title>Creating fields</title>
+<para>
+<indexterm><primary>sequence</primary></indexterm>
+You can create empty discrete, wind, line or point fields in your active time sequence.
+</para> <para>
+Note: Daily and Static fields may display in multiple depictions if those depictions are within the time window of the daily field.
+See <xref linkend='the_depiction_sequence'/>.
+</para> <para>
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Create...</guimenuitem></menuchoice>.
+</para> <para>
+The <guilabel>Create Fields</guilabel> dialog box appears.
+(see <xref linkend='create_fields'/>)
+<figure id='create_fields' pgwide='0' float='1'><title>Create Fields</title>
+<mediaobject><imageobject><imagedata fileref='png/create_fields.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the type of field to create.
+</para> <para>
+A list of depiction fields appears.
+</para></listitem>
+
+<listitem><para>
+Select a field.
+</para></listitem>
+
+<listitem><para>
+Select the field valid time.
+</para> <para>
+The valid time will default to the current depiction time.
+This can be changed as desired.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Create</guibutton>.
+</para> <para>
+If the field already exists at this time, the &FPA; asks if you wish to replace it.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<sect1 id='updating_fields'><title>Updating fields</title>
+<para>
+You can update fields in your depictions.
+This has the same effect as the <guilabel>Load Field</guilabel> selection but is faster and more convenient if:
+<itemizedlist>
+<listitem><para>only the most recent issue time is required,</para></listitem>
+<listitem><para>the field is loaded into the same time (no target time selection),</para></listitem>
+<listitem><para>only a Normal field is required.</para></listitem>
+</itemizedlist>
+</para> <para>
+To update depiction fields:
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Update...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/update-fields.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Depiction Field Update</guilabel> dialog box appears.
+(see <xref linkend='depiction_field_update'/>)
+<figure id='depiction_field_update' pgwide='0' float='1'><title>Depiction Field Update dialog</title>
+<mediaobject><imageobject><imagedata fileref='png/depiction_field_update.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+From the drop-down menu, select a <guilabel>Field Source</guilabel>
+</para></listitem>
+
+<listitem><para>
+Select the fields to update.
+</para><para>
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+<thead><row><entry>To select...</entry><entry>Click...</entry></row></thead>
+<tbody>
+<row valign='top'><entry>a field </entry>
+<entry> the field box at the appropriate time</entry></row>
+<row valign='top'><entry>all fields in one depiction </entry>
+<entry> the time (00, 12, 24, etc.) of depiction (the column header)</entry></row>
+<row valign='top'><entry>a field in all depictions </entry>
+<entry> the field name (the row header)</entry></row>
+<row valign='top'><entry>the office standard </entry>
+<entry> <guibutton>Select Office Standard</guibutton></entry></row>
+<row valign='top'><entry>all fields </entry>
+<entry> <guibutton>Select All</guibutton></entry></row>
+</tbody></tgroup></informaltable>
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+<thead><row><entry>To deselect...</entry><entry>Click...</entry></row></thead>
+<tbody>
+<row valign='top'><entry>a field </entry>
+<entry> the field box at the appropriate time again</entry></row>
+<row valign='top'><entry>all fields in one depiction </entry>
+<entry> the time (00, 12, 24, etc.) of depiction (the column header) again</entry></row>
+<row valign='top'><entry>a field in all depictions </entry>
+<entry> the field name (the row header) again</entry></row>
+<row valign='top'><entry>all fields </entry>
+<entry><guibutton>Deselect All</guibutton></entry></row>
+</tbody></tgroup></informaltable>
+</para></listitem>
+
+<listitem><para> Click <guibutton>Update</guibutton>. </para></listitem>
+
+<listitem><para>
+To see an explanation of the different colours, click <guibutton>Show Legend</guibutton>.
+<figure pgwide='0' float='1' id='update_legend'><title>Field Update Legend</title>
+<mediaobject><imageobject><imagedata fileref='png/field_update_legend.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para> Click <guibutton>Close</guibutton>. </para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='importing_fields'> <title>Importing fields</title>
+<para>
+Your System Administrator, can arrange for a computer process to generate metafiles for the &FPA;.
+A pop-up window will alert you when the metafiles are ready.
+When it is convenient to do so, you may import the new files using 
+<menuchoice><guimenu>Fields</guimenu><guimenuitem>Import ...</guimenuitem></menuchoice>.
+<figure id='field_import'><mediaobject><imageobject><imagedata fileref='png/field_import.png'/></imageobject></mediaobject></figure>
+</para>
+</sect1>
+
+<sect1 id='saving_depictions_and_fields'> <title>Saving (and retrieving) depictions and fields</title>
+<para>
+You can choose to save the
+<glossterm linkend='g_active_depiction'>active depiction</glossterm>
+<indexterm><primary>depiction</primary><secondary>active</secondary></indexterm>
+<indexterm><primary>sequence</primary></indexterm>
+or time sequence or save all depictions and fields.
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Save Active</guimenuitem></menuchoice>
+or <menuchoice><guimenu>Fields</guimenu><guimenuitem>Save All</guimenuitem></menuchoice>.
+</para></listitem>
+</orderedlist>
+<orderedlist> <title>To retrieve saved fields:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Load...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/load-fields.png'/> </imageobject></inlinemediaobject> icon in the "Command Icon Bar".
+</para><para>
+The <guilabel>Load Fields</guilabel> dialog box appears.
+(see <xref linkend='load_fields_normal'/>)
+</para></listitem>
+
+<listitem><para>
+Click the tab for: <guilabel>Normal</guilabel>, <guilabel>Daily</guilabel> or <guilabel>Static</guilabel> fields.
+</para></listitem>
+
+<listitem><para>
+Choose <guilabel>Backup</guilabel> as the <guilabel>Source</guilabel>.
+</para></listitem>
+
+<listitem><para>
+Select a field.
+(see <xref linkend='loading_fields'/>)
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='deleting_fields_from_a_time_sequence'> <title>Deleting fields from a time sequence</title>
+<para>
+<indexterm><primary>sequence</primary></indexterm>
+To delete any fields in a sequence:
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Delete...</guimenuitem></menuchoice>
+or click the <inlinemediaobject><imageobject>
+<imagedata scale='75' fileref='png/delete-fields.png'/> </imageobject></inlinemediaobject>
+icon in the "Command Icon Bar".
+</para> <para>
+The <guilabel>Delete Selection</guilabel> dialog box appears.
+(see <xref linkend='delete_selection_normal'/>)
+<figure id='delete_selection_normal' pgwide='0' float='1'><title>Delete Depiction Fields - Normal</title>
+<mediaobject><imageobject><imagedata fileref='png/delete_selection_normal.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Normal Fields</guilabel> tab.
+</para></listitem>
+
+<listitem><para>
+Select the Normal field(s) to delete.
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+<thead><row><entry>To delete...</entry> <entry>Click...</entry></row></thead>
+<tbody>
+<row valign='top'><entry>a field</entry>
+<entry>the field box at the appropriate time</entry></row>
+<row valign='top'><entry>all fields in one depiction</entry>
+<entry> the time (00, 12, 24, etc.) of depiction (the column header)</entry></row>
+<row valign='top'><entry>a field in all depictions</entry>
+<entry> the field name (the row header)</entry></row>
+<row valign='top'><entry>all fields</entry>
+<entry> <guibutton>Select All</guibutton></entry></row>
+</tbody></tgroup></informaltable>
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+<thead><row><entry>To deselect...</entry> <entry>Click...</entry></row></thead>
+<tbody>
+<row valign='top'><entry>a field</entry>
+<entry>the field box at the appropriate time again</entry></row>
+<row valign='top'><entry>all fields in one depiction</entry>
+<entry> the time (00, 12, 24, etc.) of depiction (the column header) again</entry></row>
+<row valign='top'><entry>a field in all depictions</entry>
+<entry> the field name (the row header) again</entry></row>
+<row valign='top'><entry>all fields</entry>
+<entry><guibutton>Deselect All</guibutton></entry></row>
+</tbody></tgroup></informaltable>
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Daily/Static Fields</guilabel> tab.
+</para></listitem>
+
+<listitem><para>
+Select the Daily and/or Static field(s) to delete.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>OK</guibutton> to delete the selected Normal, Daily and Static fields.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='printing_a_depiction'> <title>Printing a depiction</title>
+<para>
+You can choose to print the map area (the active depiction
+<indexterm><primary>depiction</primary><secondary>active</secondary></indexterm>
+plus the static or daily fields with guidance showing) to an output destination such as a laser printer or file.
+<orderedlist>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Print Active</guimenuitem></menuchoice>.
+</para> <para>
+The Destination menu appears to the right.
+</para></listitem>
+
+<listitem><para>
+Select the destination.
+The cursor turns into an hourglass until the printing is complete.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+<beginpage/>
+<sect1 id='checking_the_depiction_status'> <title>Checking the depiction status</title>
+<para>
+You can display the status of your depictions' daily and static fields.
+A table indicates what Normal fields are contained in each depiction, as well as the Daily and Static fields at each time.
+<figure id='depiction_status' pgwide='0' float='1'><title>Status of Depiction Fields</title>
+<mediaobject><imageobject><imagedata fileref='png/status_of_depiction_fields.png'/></imageobject></mediaobject>
+</figure>
+</para> <para>
+<orderedlist> <title>To check the status:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Fields</guimenu><guimenuitem>Status...</guimenuitem></menuchoice>.
+</para> <para>
+<indexterm><primary>sequence</primary></indexterm>
+The <guilabel>Status of Depiction Fields</guilabel> dialog box appears.
+Coloured boxes indicate existence of a field within a sequence.
+(see <xref linkend='depiction_status'/>)
+</para> <para>
+The colour describes the field's time link status.
+See <xref linkend='interpolating_the_linked_depictions'/>.
+</para></listitem>
+
+<listitem><para>
+To see an explanation of the different colours, click <guibutton>Show Legend</guibutton>.
+(see <xref linkend='status_legend'/>)
+<figure pgwide='0' float='1' id='status_legend'><title>Depiction Status Legend</title>
+<mediaobject><imageobject><imagedata fileref='png/status_display_legend.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Close</guibutton>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='viewing_another_depiction_simultaneously'> <title>Viewing another depiction simultaneously</title>
+<para>
+You can bring up another &FPA; display to view the workspace of another weather sequence using the <glossterm linkend='g_coview'>CoView</glossterm>
+<indexterm><primary>coview</primary></indexterm>
+function of the &FPA;.
+All of the display options are available, but you cannot edit the depictions or fields in the other sequence.
+</para> <para>
+Use this option to share your work with other &FPA; users.
+</para> <para>
+<orderedlist> <title>To view another depiction:</title>
+<listitem><para>
+Choose <menuchoice><guimenu>Actions</guimenu><guimenuitem>CoView</guimenuitem></menuchoice>.
+</para> <para>
+A menu appears listing the available sequences to view.
+</para></listitem>
+
+<listitem><para>
+Select a sequence from the list.
+</para> <para>
+The &FPA; displays the other sequence.
+It may take some time to load the sequence.
+</para> <para>
+<indexterm><primary>coview</primary></indexterm>
+Note: The CoView sequence refreshes every few minutes, which allows viewing changes made to the other &FPA; database in real time.
+<figure pgwide='0' float='1'><title>Coview</title>
+<mediaobject><imageobject><imagedata fileref='png/coview.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+</chapter>

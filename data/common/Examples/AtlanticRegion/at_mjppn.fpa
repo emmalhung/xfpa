@@ -1,0 +1,94 @@
+* This file was created using the ArcToFPA tool in ArcGIS
+* Version 1.0.5
+* *******************************************************
+ rev 2.0
+
+ projection latitude_longitude
+ mapdef 0 0 0 -90 -180 90 180 1 
+ units latlon
+
+ field scattered cities geography
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Campbellton"
+	FPA_user_label "Campbellton"
+ spot 48.008N -66.673E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Edmundston"
+	FPA_user_label "Edmundston"
+ spot 47.363N -68.326E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Fredericton"
+	FPA_user_label "Fredericton"
+ spot 45.964N -66.643E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Saint John"
+	FPA_user_label "Saint John"
+ spot 45.273N -66.065E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Miramichi"
+	FPA_user_label "Miramichi"
+ spot 47.031N -65.468E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Moncton"
+	FPA_user_label "Moncton"
+ spot 46.088N -64.777E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Bathurst"
+	FPA_user_label "Bathurst"
+ spot 47.618N -65.651E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Corner Brook"
+	FPA_user_label "Corner Brook"
+ spot 48.951N -57.95E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Mount Pearl"
+	FPA_user_label "Mount Pearl"
+ spot 47.519N -52.806E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "St. John's"
+	FPA_user_label "St. John's"
+ spot 47.562N -52.713E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Carbonear"
+	FPA_user_label "Carbonear"
+ spot 47.738N -53.228E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Sydney"
+	FPA_user_label "Sydney"
+ spot 46.136N -60.196E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Dartmouth"
+	FPA_user_label "Dartmouth"
+ spot 44.664N -63.568E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Halifax"
+	FPA_user_label "Halifax"
+ spot 44.649N -63.575E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Summerside"
+	FPA_user_label "Summerside"
+ spot 46.393N -63.79E location none
+ value 3
+	FPA_category "pop_minor"
+	FPA_auto_label "Charlottetown"
+	FPA_user_label "Charlottetown"
+ spot 46.248N -63.12E location none
+
+* 
+* End
+

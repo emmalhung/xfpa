@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_write_time'> <title>@write_time</title> <titleabbrev>@write_time</titleabbrev>
+<para>
+Display current clock, issue or valid time as formatted text in the ASCII output file.
+</para><para>
+Note that the issue time is the <command>T0</command> time from the &FPA;, while the valid time is the
+current valid time from the <link linkend='tx_set_source'>@set_source</link> directive.
+</para><para>
+Note that <userinput>type</userinput>, <userinput>zone_type</userinput> and <userinput>format</userinput> are always required.
+</para><para>
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_off.xml'/>
+
+<row valign='top'><entry spanname='tblnote'> <para>Note that <userinput>type</userinput>, <userinput>zone_type</userinput>, <userinput>time_zone</userinput>, <userinput>language</userinput>
+and <userinput>format</userinput> can be specified more than once in this directive, and the resulting formatted strings are concatenated before display.</para></entry></row>
+
+<row valign='top'> 
+<entry colname='key'><para><userinput>type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry> 
+<entry colname='desc'><para>Type of time to display
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1.5*'/><colspec colwidth='1*'/><tbody>
+<row><entry><userinput>creation &tadj;</userinput></entry><entry>creation time</entry></row>
+<row><entry><userinput>issue &tadj;</userinput></entry><entry><command>T0</command> time</entry></row>
+<row><entry><userinput>valid &tadj;</userinput></entry><entry>valid time</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>(Note: &tadj; is an optional adjustment to the time to display, in <replaceable>hh</replaceable> (hours) or <replaceable>hh:mm</replaceable> (hours:minutes) format.)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>zone_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of time zone to display
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='2*'/><tbody>
+<row><entry><userinput>GMT</userinput> or <userinput>UTC</userinput></entry><entry>Coordinated Universal time</entry></row>
+<row><entry><userinput>LMT</userinput> or <userinput>LCL</userinput></entry><entry>Local time</entry></row>
+</tbody></tgroup></informaltable>
+</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>time_zone</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Display the equivalent time in another time zone. (Default is set by environment variable <command>$TZ</command>)
+</para><para>See the directory <filename type='dir'>/usr/share/zoneinfo</filename> for valid timezones.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>language</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Display time parameters in another language. (Default is set by environment variable <command>$LANG</command>)
+</para><para>See the file <filename>/usr/share/locale/locale.alias</filename> for language options.</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Format for time to display
+</para><para>Note that replacement characters from the system function <command>strftime</command> are allowed as part of the format. These include:
+
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='0.2*'/><colspec colwidth='2*'/><tbody>
+<row valign='top'><entry><userinput>%a</userinput></entry><entry>abbreviated weekday name</entry></row>
+<row valign='top'><entry><userinput>%A</userinput></entry><entry>full weekday name</entry></row>
+<row valign='top'><entry><userinput>%b</userinput></entry><entry>abbreviated month name</entry></row>
+<row valign='top'><entry><userinput>%B</userinput></entry><entry>full month name</entry></row>
+<row valign='top'><entry><userinput>%c</userinput></entry><entry>local date and time</entry></row>
+<row valign='top'><entry><userinput>%d</userinput></entry><entry>day of the month (01-31)</entry></row>
+<row valign='top'><entry><userinput>%H</userinput></entry><entry>hour (24 hour clock)(00-23)</entry></row>
+<row valign='top'><entry><userinput>%I</userinput></entry><entry>hour (12 hour clock)(1-12)</entry></row>
+<row valign='top'><entry><userinput>%j</userinput></entry><entry>day of the year (001-366)</entry></row>
+<row valign='top'><entry><userinput>%m</userinput></entry><entry>month (01-12)</entry></row>
+<row valign='top'><entry><userinput>%M</userinput></entry><entry>minute (00-59)</entry></row>
+<row valign='top'><entry><userinput>%n</userinput></entry><entry>for new line</entry></row>
+<row valign='top'><entry><userinput>%p</userinput></entry><entry>local equivalent of AM/PM</entry></row>
+<row valign='top'><entry></entry><entry>(Note: midnight is AM, noon is PM)</entry></row>
+<row valign='top'><entry><userinput>%P</userinput></entry><entry>local equivalent of am/pm</entry></row>
+<row valign='top'><entry><userinput>%t</userinput></entry><entry>for tab space</entry></row>
+<row valign='top'><entry><userinput>%u</userinput></entry><entry>weekday (1-7, Monday is 1)</entry></row>
+<row valign='top'><entry><userinput>%w</userinput></entry><entry>weekday (0-6, Sunday is 0)</entry></row>
+<row valign='top'><entry><userinput>%y</userinput></entry><entry>year without century (00-99)</entry></row>
+<row valign='top'><entry><userinput>%Y</userinput></entry><entry>year with century</entry></row>
+<row valign='top'><entry><userinput>%Z</userinput></entry><entry>time zone name, if any</entry></row>
+<row valign='top'><entry><userinput>%%</userinput></entry><entry>for "%"</entry></row>
+</tbody></tgroup></informaltable>
+</para><para>
+(Note: use \ before all control characters)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/justification.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@write_time
+{
+  type = valid;
+  zone_type = LMT;
+  time_zone = EST5EDT;
+  format = Data Valid %A, %B %d, %Y Time\=%H:%M %Z;
+  justification = left;
+  x_off = 0;
+  y_off = 1;
+}</programlisting>
+Display valid time for the current &TexMet; product in the Eastern time zone,
+offset 1 row (line) below the current "anchor position", and left justified.
+This particular <userinput>format</userinput> might produce, for example:
+</para><para>
+<screen>Map Valid Satruday, May 10, 2008 13:00 EDT</screen>
+</para><para>
+(Note that "anchor position" is set by <link linkend='tx_anchor'>@anchor</link>.)
+</para></example>
+
+<example><title> </title><para>
+<programlisting>@write_time
+{
+  type      = valid;
+  format    = "DATA VALID %b%d/%Y %H:%M";
+  type      = valid +12;
+  format    = " - %b%d/%Y %H:%M UTC;
+  zone_type = UTC;
+  justification = left;
+}</programlisting>
+Display valid time range (from current valid time to 12 hours from current valid time) for the current &TexMet; product
+in Coordinated Universal Time at the current "anchor position", and left justified.
+This particular <userinput>format</userinput> might produce, for example:
+</para><para>
+<screen>DATA VALID May10/2008 13:00 - May11/2008 01:00 UTC</screen>
+</para><para>
+(Note that "anchor position" is set by <link linkend='tx_anchor'>@anchor</link>.)
+</para></example>
+</para></sect2>

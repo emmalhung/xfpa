@@ -1,0 +1,223 @@
+#!/bin/bash
+#
+# Return the combined machine and operating system 'platform' code as:
+#
+#	<machine>v<revision>
+#
+# Where machine represents the hardware name and revision is the operating
+# system revision number
+#
+# Examples:
+#
+#	hp300v8  -> HP9000/300 or 400 running HP-UX 8.x
+#	hp700v8  -> HP9000/700 running HP-UX 8.x
+#	hp700v9  -> HP9000/700 running HP-UX 9.x
+#	hppa1v10 -> HP9000/700 or 800 32-bit (PA 1.1) running HP-UX 10.x
+#	hppa2v10 -> HP9000/700 or 800 64-bit (PA 2.0) running HP-UX 10.x
+#	sun4v2.5 -> Sun4x running SunOS 5.5 (Solaris 2.5)
+#	pcLinux  -> PC (Intel) running Linux
+#   Unknown  -> Not a known machine or a known operating system
+#
+# Note: If the shell variable FPA_DEBUG is defined, the intervening 'v' is
+#       replaced by a 'd'.  This variable is intended for triggering the
+#       generation of debuggable code (i.e. by setting CFLAGS = -g).
+#
+#------------------------------------------------------------------------------
+
+# Override everything with the $FPA_PLATFORM environment variable if it
+# exists.
+if [ "$FPA_PLATFORM" != "" ]
+then
+	echo $FPA_PLATFORM
+	exit 0
+fi
+
+# Otherwise carry on figuring out which platform this is.
+machine=`uname -m`
+opsys=`uname -s`
+revision=`uname -r`
+
+case "$machine" in
+
+	"9000/"[78]*)	archfile=/opt/langtools/lib/sched.models
+					if [ ${FPA_PORT:-""} != "" ]
+					then
+						machine=hp700
+					elif [ -r $archfile ]
+					then
+						model=`echo $machine | cut -c6-`
+						arch=`grep ^$model $archfile | cut -f2 -d'	'`
+						case "$arch" in
+							1.1*)	machine=hp700;;
+							2.0*)	machine=hppa2;;
+						esac
+					else
+						machine=hp700
+					fi
+					;;
+
+	sun4*)			machine=sun4;;
+
+	i[0-9]*)		machine=pcLinux;;
+
+	x[0-9]*_64)		machine=pcLinux64;;
+
+	x[0-9]*)		machine=pcLinux;; 
+
+	*)				echo 'Unknown'
+					exit 1;;
+
+esac
+
+case "$opsys" in
+
+	"HP-UX")	rev1=`echo $revision | cut -f2 -d'.' | tr -d "[a-z][A-Z]"`
+				revision=`expr $rev1 + 0`
+				;;
+
+	"SunOS")	rev1=`echo $revision | cut -f1 -d'.'`
+				rev2=`echo $revision | cut -f2 -d'.'`
+				if [ "$rev1" -gt 3 ]
+				then
+					# Get Solaris version which is 3 behind SunOS version
+					opsys=Solaris
+					revision=`expr $rev1 - 3`.$rev2
+				else
+					revision='s'`expr $rev1 + 0`.$rev2
+				fi
+				;;
+
+	"Solaris")	rev1=`echo $revision | cut -f1 -d'.'`
+				rev2=`echo $revision | cut -f2 -d'.'`
+				revision=`expr $rev1 + 0`.$rev2
+				;;
+
+	"Linux")	if [ -r /etc/redhat-release ]
+				then
+					# The following regular expression returns the first
+					# word found inside round brackets, for example,
+					# it returns "Taroon" for both "(Taroon)" and
+					# "(Taroon Update 3)".
+					codename=`cat /etc/redhat-release | \
+					          sed -e "s/.*(\(\w*\).*).*/\1/"`
+
+					# The following searches for available Motif libraries.
+					if [ -r /usr/X11R6/lib/libXm.so.3 ]
+					then
+						motif=Xm3
+					elif [ -r /usr/X11R6/lib/libXm.so.2 ]
+					then
+						motif=Xm2
+					else
+						motif=Xm2
+					fi
+
+					# Find the number of processors on the machine.
+					# Unfortunately, a hyperthreaded processor gets counted
+					# twice, and hyperthreading does little for FPA.  So far
+					# Linux doesn't provide an easy way of detecting if a CPU
+					# is hyperthreaded.  One option is /usr/sbin/dmidecode
+					# but it can't be run without being root.  We may need
+					# to rely on an environment variable to determine the
+					# number of usable processors.
+					if [ -r /proc/cpuinfo ]
+					then
+						nproc=`grep processor /proc/cpuinfo | \
+                               sed -n "$="`
+					else
+						nproc=1
+					fi
+
+					# Set a revision code based on the above.
+					if [ "$codename" == "Seawolf" ]     # Red Hat 7.1
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Enigma" ]    # Red Hat 7.2
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Valhalla" ]  # Red Hat 7.3
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Psyche" ]    # Red Hat 8.0
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Shrike" ]    # Red Hat 9.0
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Pensacola" ] # RHEL 2.1AS
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Panama" ]    # RHEL 2.1ES
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Tampa" ]     # RHEL 2.1WS
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Taroon" ]    # RHEL 3
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Nahant" ]    # RHEL 4
+					then
+						revision="RedHat"
+					elif [ "$codename" == "Tikanga" ]   # RHEL 5
+					then
+						# revision="RHEL5" ... not quite ready for this
+						revision="RedHat"
+					else
+						revision="RedHat"
+					fi
+
+				elif [ -r /etc/centos-version ]
+				then
+					release=`cat /etc/centos-version`
+					if [ "$release" == "3.0" ]
+					then
+						codename="RedHat"
+					elif [ "$release" == "3.1" ]
+					then
+						codename="RedHat"
+					elif [ "$release" == "4.0" ]
+					then
+						codename="RedHat"
+					elif [ "$release" == "5.0" ]
+					then
+						codename="RHEL5"
+					else
+						codename="RedHat"
+					fi
+					revision="RedHat"
+
+				elif [ -r /etc/debian_version ]
+				then
+					release=`cat /etc/debian_version`
+					if [ "$release" == "3.0" ]
+					then
+						codename="woody"
+					elif [ "$release" == "3.1" ]
+					then
+						codename="sarge"
+					elif [ "$release" == "4.0" ]
+					then
+						codename="etch"
+					else
+						codename="sid"
+					fi
+					revision="Debian"
+
+				elif [ -r /etc/SuSE-release ]
+				then
+					revision="SUSE"
+
+				else
+					revision="UnknownLinux"
+				fi
+				;;
+
+	*)			echo 'Unknown'
+				exit 1;;
+
+esac
+
+separator=${FPA_DEBUG:+d}
+echo ${machine}${separator:-v}${revision}
+exit 0

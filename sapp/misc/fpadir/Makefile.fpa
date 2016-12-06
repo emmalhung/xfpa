@@ -1,0 +1,80 @@
+# Define all the usual places to look for things:
+
+LIBPATH  = $(LIB_PATH) \
+			-L$(LIBDIR)/$(PLATFORM) \
+			-L$(ULIBDIR)/$(PLATFORM) \
+			-lfpa -lfpauser -lfpa -lfpauser \
+			$(EXTRA_LIBS)
+
+INCPATH  = $(INCLUDE_PATH) \
+			-I$(SAPPDIR)/include -I$(SAPPDIR) \
+			-I$(LIBDIR)/include -I$(LIBDIR)
+
+
+
+# First rule (do nothing):
+null:
+
+
+# Protect this stuff:
+LIBS =
+.PRECIOUS:	$(LIBS)
+
+
+# Rules for building everything:
+all ALL:	fpadir fpacfg
+
+Pobjects:
+		@	$(SBINDIR)/platform_get object "config/directory info"
+
+
+# Rules for building programs:
+FPADIR      = $(BINDIR)/$(PLATFORM)/fpadir
+FPADIR_OBJ  = fpadir.o
+fpadir:		Pobjects $(FPADIR)
+			@	echo "FPA $(PLATFORM) fpadir ready"
+			@	echo 
+			@	echo "FPA $(PLATFORM) fpaenv ready"
+			@	echo 
+$(FPADIR):		$(FPADIR_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) fpadir"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(FPADIR_OBJ) $(LIBPATH)
+# Note that fpaenv is copied the first time that fpadir is built!
+			@	cp fpaenv $(BINDIR)/$(PLATFORM)
+			@	if [ ! -x $(BINDIR)/fpadir ]; \
+					then cd $(BINDIR); ln -s fpa.exec fpadir; fi
+			@	if [ ! -x $(BINDIR)/fpaenv ]; \
+					then cd $(BINDIR); ln -s fpa.exec fpaenv; fi
+
+FPACFG      = $(BINDIR)/$(PLATFORM)/fpacfg
+FPACFG_OBJ  = fpacfg.o
+fpacfg:		Pobjects $(FPACFG)
+			@	echo "FPA $(PLATFORM) fpacfg ready"
+			@	echo 
+$(FPACFG):		$(FPACFG_OBJ) $(LIBS)
+			@	echo "Loading FPA $(PLATFORM) fpacfg"
+			@	if [ ! -d $(BINDIR)/$(PLATFORM) ]; \
+					then mkdir $(BINDIR)/$(PLATFORM); fi
+			@   $${C_COMPLOAD} -o $@ \
+					$(C_OPTIONS) $(INCPATH) $(FPACFG_OBJ) $(LIBPATH)
+			@	if [ ! -x $(BINDIR)/fpacfg ]; \
+					then cd $(BINDIR); ln -s fpa.exec fpacfg; fi
+
+
+# Rules for building object modules:
+fpadir.o:	$(FPAHDR)  fpaenv
+fpacfg.o:	$(FPAHDR)
+
+
+# Rules for keeping header files up to date:
+
+
+# Built-in rules:
+.c.o:
+	@	echo "Compiling (ANSI C) FPA $(PLATFORM) config/directory info module $<"
+	@	$${C_COMPILER} $(C_OPTIONS) $(INCPATH) -c $<
+	@	rm -f $(PLATFORM)/$@
+	@	ln $@ $(PLATFORM)

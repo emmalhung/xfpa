@@ -1,0 +1,57 @@
+##################################################################
+#
+# Depiction Field Visibility List definition file.
+#
+# This file contains the definitions of pre-defined lists of
+# depiction field visibility states.
+#
+# NOTE: There is only one file of this type per FPA setup.
+#
+#  The lists are separated by list keys in square backets as:
+#
+#     [list_1_key] list_label
+#        field_group_id
+#        element level <always on>
+#        element level <always on>
+#     [list_2_key] list_label
+#        element level <always on>
+#
+#  and so on. The list keys should be something that makes sense
+#  as xfpa, if run with the -v option will come up with that 
+#  visiblity list. ie. xfpfa -v list_2_key would come up with
+#  the second list selected already.
+#
+# The list_label is what the user will see as the selection in the
+# pulldown list of predefined visibility states.
+#
+# The remaining lines are either the identifiers, as recognized in
+# the configuration files, of the field groups or the fields themselves.
+# Any field not listed in the group will be set to off. The default
+# state is for the field to be visible when the associated group is
+# visible. If the field is to be visible always no matter what, then
+# the element and level are followed by the optional key words
+# "always on".
+#
+# NOTE:
+#
+# If the label is only required to be in one language then the
+# label is taken as presented. If multi-language labels are
+# required then the label line must be specified as:
+#
+#   <*default*> "a b c" <*language*> "a ä µ" <*language*> "...
+#
+# Where: <*default*>  specifies the label to use if none of the
+#                     other specifiers are valid.
+#        <*language*> is the required language as specified in 
+#                     the LANG environment variable.
+#
+#
+# EXAMPLE:
+#
+#      [marine] Marine Fields
+#        pressure        msl      always on
+#        weather_system  surface
+#        weather_local   surface
+#        actual_wind     surface
+#
+##################################################################

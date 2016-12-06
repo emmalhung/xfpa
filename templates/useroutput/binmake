@@ -1,0 +1,163 @@
+#!/bin/bash
+
+# Set up the FPA environment
+. .fpaenvrc
+
+# Determine the platform
+export PLATFORM;	PLATFORM=`$FPA/bin/platform`
+echo "FPA User Output Makefile Utility"			2>&1 | tee    log.$PLATFORM
+echo "  Working Directory: `pwd`"				2>&1 | tee -a log.$PLATFORM
+echo "  Target Platform:   $PLATFORM"			2>&1 | tee -a log.$PLATFORM
+echo "  Log File:          `pwd`/log.$PLATFORM"	2>&1 | tee -a log.$PLATFORM
+
+MAKEFILE=Makefile.bin
+if [ ! -r $MAKEFILE ]
+then
+	echo "Cannot access $MAKEFILE"				2>&1 | tee -a log.$PLATFORM
+	exit 1
+fi
+
+# Set up the platform-specific environment
+case $PLATFORM in
+
+
+	# LINUX on a 64 bit PC:
+	pcLinux64*)
+
+		FPA_32_BIT="ON"
+		echo ">>> options: FPA_32_BIT          = ${FPA_32_BIT:-off}"			2>&1 | tee -a log.$PLATFORM
+		echo " "
+
+		# Use 32 Bit Compile (if FPA_32_BIT is set)
+		if [ $FPA_32_BIT ]
+		then
+			echo ">>> 32 Bit Compile"	2>&1 | tee -a log.$PLATFORM
+			MAKE="/usr/bin/make -f $MAKEFILE"
+			SHLIB_EXT=so
+			COMPILE_OPT="-m32"
+			C_COMPILER="/usr/bin/gcc $COMPILE_OPT -ansi -DMACHINE_PCLINUX"
+			C_COMPLOAD="${C_COMPILER} -Wl,-Bdynamic"
+			C_COMP_SHARED="${C_COMPILER} -fPIC"
+			C_OPTIONS="-g"
+			F77_COMPILER="/usr/bin/gfortran $COMPILE_OPT -DMACHINE_PCLINUX"
+			F77_COMPLOAD="${F77_COMPILER} -Wl,-Bdynamic"
+			FTN_COMPILER="/usr/bin/gfortran $COMPILE_OPT -DMACHINE_PCLINUX"
+			FTN_COMPLOAD="${FTN_COMPILER} -Wl,-Bdynamic"
+			FTN_COMP_SHARED="${FTN_COMPILER} -fPIC"
+			LEX="/usr/bin/flex"
+			LIB_ARCHIVE="/usr/bin/ar cr"
+			LIB_ORDER="/bin/echo"
+			LIB_SORT="/usr/bin/sed 's///'"
+			LIB_SHARED="/usr/bin/gcc $COMPILE_OPT -shared"
+			LIB_NAMES="/usr/bin/nm"
+			LOADER="/usr/bin/gcc $COMPILE_OPT"
+			LIB_PATH=""
+			INCLUDE_PATH="-D_BSD_SOURCE -D_SVID_SOURCE -D__USE_POSIX -D__USE_BSD"
+			EXTRA_FTN_LIBS=
+			EXTRA_LIBS="-ltiff -lpng -lm"
+
+		# Default is 64 Bit Compile
+		else
+			echo ">>> 64 Bit Compile"	2>&1 | tee -a log.$PLATFORM
+			MAKE="/usr/bin/make -f Makefile.fpa"
+			SHLIB_EXT=so
+			COMPILE_OPT=""
+			C_COMPILER="/usr/bin/gcc $COMPILE_OPT -ansi -DMACHINE_PCLINUX"
+			C_COMPLOAD="${C_COMPILER} -Wl,-Bdynamic"
+			C_COMP_SHARED="${C_COMPILER} -fPIC"
+			C_OPTIONS="-g"
+			F77_COMPILER="/usr/bin/gfortran $COMPILE_OPT -DMACHINE_PCLINUX"
+			F77_COMPLOAD="${F77_COMPILER} -Wl,-Bdynamic"
+			FTN_COMPILER="/usr/bin/gfortran $COMPILE_OPT -DMACHINE_PCLINUX"
+			FTN_COMPLOAD="${FTN_COMPILER} -Wl,-Bdynamic"
+			FTN_COMP_SHARED="${FTN_COMPILER} -fPIC"
+			LEX="/usr/bin/flex"
+			LIB_ARCHIVE="/usr/bin/ar cr"
+			LIB_ORDER="/bin/echo"
+			LIB_SORT="/usr/bin/sed 's///'"
+			LIB_SHARED="/usr/bin/gcc $COMPILE_OPT -shared"
+			LIB_NAMES="/usr/bin/nm"
+			LOADER="/usr/bin/gcc $COMPILE_OPT"
+			LIB_PATH=""
+			INCLUDE_PATH="-D_BSD_SOURCE -D_SVID_SOURCE -D__USE_POSIX -D__USE_BSD"
+			EXTRA_FTN_LIBS=
+			EXTRA_LIBS="-ltiff -lpng -lm"
+		fi
+		;;
+
+
+	# LINUX on a PC:
+	pcLinux*)
+		echo ">>> 32 Bit Compile"	2>&1 | tee -a log.$PLATFORM
+		MAKE="/usr/bin/make -f Makefile.fpa"
+		SHLIB_EXT=so
+		COMPILE_OPT="-m32"
+		C_COMPILER="/usr/bin/gcc $COMPILE_OPT -ansi -DMACHINE_PCLINUX"
+		C_COMPLOAD="${C_COMPILER} -Wl,-Bdynamic"
+		C_COMP_SHARED="${C_COMPILER} -fPIC"
+		C_OPTIONS="-g"
+		F77_COMPILER="/usr/bin/gfortran -DMACHINE_PCLINUX"
+		F77_COMPLOAD="${F77_COMPILER} -Wl,-Bdynamic"
+		FTN_COMPILER="/usr/bin/gfortran -DMACHINE_PCLINUX"
+		FTN_COMPLOAD="${FTN_COMPILER} -Wl,-Bdynamic"
+		FTN_COMP_SHARED="${FTN_COMPILER} -fPIC"
+		LEX="/usr/bin/flex"
+		LIB_ARCHIVE="/usr/bin/ar cr"
+		LIB_ORDER="/bin/echo"
+		LIB_SORT="/usr/bin/sed 's///'"
+		LIB_SHARED="/usr/bin/gcc $COMPILE_OPT -shared"
+		LIB_NAMES="/usr/bin/nm"
+		LOADER="/usr/bin/gcc $COMPILE_OPT"
+		LIB_PATH=""
+		INCLUDE_PATH="-D_BSD_SOURCE -D_SVID_SOURCE -D__USE_POSIX -D__USE_BSD"
+		EXTRA_FTN_LIBS=
+		EXTRA_LIBS="-ltiff -lpng -lm"
+		;;
+
+
+	# Unknown:
+	*)		echo "Target Platform is Unknown"		2>&1 | tee -a log.$PLATFORM
+			exit 1
+			;;
+esac
+export MAKE
+export SHLIB_EXT
+export C_COMPILER C_COMPLOAD C_COMP_SHARED C_OPTIONS
+#export F77_COMPILER F77_COMPLOAD
+export FTN_COMPILER FTN_COMPLOAD FTN_COMP_SHARED
+export LEX
+export LIB_ARCHIVE LIB_ORDER LIB_SORT LIB_SHARED LIB_NAMES
+export LOADER
+export LIB_PATH INCLUDE_PATH EXTRA_FTN_LIBS EXTRA_LIBS
+
+# Set up non-platform-specific environment
+export BINDIR;		BINDIR=$FPA/bin
+export LIBDIR;		LIBDIR=$FPA/lib
+export ULIBDIR;		ULIBDIR=$FPA/lib
+export INCDIR;		INCDIR=$LIBDIR/include
+export FPAHDR;		FPAHDR=$INCDIR/fpa.h
+export TYPES;		TYPES=$INCDIR/fpa_types.h
+export MACROS;		MACROS=$INCDIR/fpa_macros.h
+export GETMEM;		GETMEM=$INCDIR/fpa_getmem.h
+export MATH;		MATH=$INCDIR/fpa_math.h
+export STRING;		STRING=$INCDIR/fpa_string.h
+export TOOLS;		TOOLS=$LIBDIR/tools/tools.h
+export OBJECTS;		OBJECTS=$LIBDIR/objects/objects.h
+export ENVIRON;		ENVIRON=$LIBDIR/environ/environ.h
+export EXTRACT;		EXTRACT=$LIBDIR/extract/extract.h
+export SUPPORT;		SUPPORT=$LIBDIR/supportlib/support.h
+export FPASHLIB;	FPASHLIB=$LIBDIR/$PLATFORM/libfpa.$SHLIB_EXT
+export FPALIB;		FPALIB=$FPASHLIB
+export FORTLIB;		FORTLIB=$LIBDIR/$PLATFORM/libfpafort.$SHLIB_EXT
+export SUPLIB;		SUPLIB=$LIBDIR/$PLATFORM/libfpasup.$SHLIB_EXT
+export USRLIB;		USRLIB=$ULIBDIR/$PLATFORM/libfpauser.$SHLIB_EXT
+export ZLIB;		ZLIB=$ULIBDIR/$PLATFORM/libzero.$SHLIB_EXT
+
+if [ "$1" = "env" ]
+then
+	echo "Environment settings:"
+	env
+else
+	target=${1:-"all"}
+	eval "$MAKE $target" 2>&1 | tee -a log.$PLATFORM
+fi

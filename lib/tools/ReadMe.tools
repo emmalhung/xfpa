@@ -1,0 +1,97 @@
+Tools Library:
+
+This directory contains all the modules that are used to build the tools
+component of the FPA user library:
+
+==============================================================================
+System/Kernel Related Modules:
+
+alias_F77.f ....... functions to convert a local FORTRAN model to access FPA
+					allied-model alias files
+
+cdrom.[ch] ........ functions to manage file and directory navigation on a CD.
+					This is an issue on HP-UX because filenames contain the
+					semicolon and revision number.  Future versions of HP-UX,
+					and CDs mounted using more clever mount commands may not
+					need this - however it will remain transparent because it
+					looks for conventional names first.
+
+clock.[ch] ........ functions to interpret and modify the system clock - used
+					strictly by the FoG text generator.
+
+getmem_ext.[ch] ... extensions to the macros provided in fpa_getmem.h.  These
+					functions provide the ability to report memory allocation
+					and de-allocation activity.
+
+ipc.[ch] .......... inter-process communication function suite, to handle
+					server initialization and client-server messaging.
+
+lock.[ch] ......... management of a lockable resource using a "lock" file.
+
+mmm.[ch] .......... functions to control the global memory management mode
+					used by various library modules.  Three modes are
+					available:  pre-allocate, allocate-when-needed, and
+					allocate-and-free.
+
+trap.[ch] ......... functions to trap certain common classes of errors.
+
+unix.[ch] ......... a variety of functions that provide functionality
+					normally available in common UNIX shells, e.g. timers,
+					process launching, filename parsing, file creation and
+					deletion.
+
+==============================================================================
+Mathematical Modules:
+
+horner.[ch] ....... efficient evaluation of polynomials.
+
+math_ext.[ch] ..... extensions to various standard math functions, e.g. sin
+					and cos functions that are well-behaved when their values
+					are near zero.
+
+matrix.[ch] ....... functions to solve various types of systems of equations,
+					including:  standard and quick for both 1D and 2D, as well
+					as "least squares" fitting for over-determined systems.
+
+tween.[ch] ........ functions to perform parametric (i.e. x=f(t), y=g(t))
+					non-uniform cubic interpolation.
+
+twixt.[ch] ........ functions to perform non-parametric (i.e. y=f(x)) non-
+					uniform cubic interpolation.
+
+under.[ch] ........ functions to solve an under-determined system of equations.
+
+==============================================================================
+Scientific Modules:
+
+solar.[ch] ........ compute the sun's position (declination, deviation from
+					mean-time and earth-sun distance, etc.) at the given
+					date-time, as well as solar flux at the given location.
+
+time.[ch] ......... compute, manipulate and convert dates and times.
+
+==============================================================================
+String Parsing and Formatting Modules:
+
+language.[ch] ..... parse strings with optional language-dependent portions.
+
+lat_lon.[ch] ...... parse and format latitude and longitude strings.
+
+message.[ch] ...... format and print module-specific error, warning and status
+					messages.
+
+parse.[ch] ........ low-level parsing of string buffers.
+
+string_ext.[ch] ... extensions to various standard string handling functions.
+
+tstamp.[ch] ....... parse, format and manipulate time-date-stamp strings.
+
+==============================================================================
+Miscellaneous Modules:
+
+info_file.[ch] .... functions to handle "info-files" used for storing state
+					information.
+
+license.[ch] ...... license management module - Keep Out!
+
+tools.h ........... "collective" header file.

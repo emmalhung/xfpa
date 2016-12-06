@@ -1,0 +1,40 @@
+ #
+#  Bourne script to test FpaCreate allied model
+
+if [ $# -eq 1 ]
+then
+	outfile=${1}
+else
+	outfile=diagcreate
+fi
+if [ -f ${outfile} ]
+then
+	echo "*** File ${outfile} already exists ***"
+	echo "     Type:  go    to overwrite it"
+	echo "     Type:  stop  to stop now"
+	read ans
+	if [ "$ans" != go ]
+	then
+		echo "***   ...fpacreate_area aborted ***"
+		exit 1
+	fi
+	rm -f ${outfile}
+fi
+echo "*** Output to file ${outfile} ***"
+
+# Define the development environment
+if [ -r $FPA/bin/.fpaenvrc ]
+then
+  . $FPA/bin/.fpaenvrc
+fi
+
+# Export the debug environment variable (if required)
+#export FPA_DEBUG_CREATE=ON;
+
+# Run the FpaCreate program ... current testing
+time fpacreate_area av_atlantic TestCreateStormGales "" 1997:326:12 1997:327:00 \
+		1000 0 24:30 - >${outfile} 2>&1
+#time fpacreate_area av_atlantic TestCreateLineArea "" 1997:326:12 1997:327:00 \
+#		1000 0 24:30 - >${outfile} 2>&1
+
+echo "*** ...fpacreate_area completed ***"

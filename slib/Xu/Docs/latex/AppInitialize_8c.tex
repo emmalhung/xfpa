@@ -1,0 +1,102 @@
+\hypertarget{AppInitialize_8c}{
+\subsection{App\-Initialize.c File Reference}
+\label{AppInitialize_8c}\index{AppInitialize.c@{AppInitialize.c}}
+}
+Xu application initialization functions. 
+
+{\tt \#include $<$stdarg.h$>$}\par
+{\tt \#include $<$X11/Intrinsic\-P.h$>$}\par
+{\tt \#include $<$X11/Xproto.h$>$}\par
+{\tt \#include \char`\"{}Xu\-P.h\char`\"{}}\par
+{\tt \#include $<$Xm/Label.h$>$}\par
+{\tt \#include $<$Xm/List.h$>$}\par
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+Widget \hyperlink{AppInitialize_8c_XuVaAppInitialize_28XtAppContext_20_2Aapp_5Fcontext_2C_20String_20app_5Fclass_2C_20XrmOptionDescRec_20_2Aoptions_2C_20Cardinal_20num_5Foptions_2C_20int_20_2Aargc_2C_20String_20_2Aargv_2C_20String_20_2Aspecification_5Flist_2C_2E_2E_2E_29}{Xu\-Va\-App\-Initialize} (Xt\-App\-Context $\ast$app\_\-context, String app\_\-class, Xrm\-Option\-Desc\-Rec $\ast$options, Cardinal num\_\-options, int $\ast$argc, String $\ast$argv, String $\ast$specification\_\-list,...)
+\begin{CompactList}\small\item\em Replaces Xt\-Va\-App\-Initialize when using the Xu library. \item\end{CompactList}\item 
+void \hyperlink{AppInitialize_8c_XuRealizeApplication_28Widget_20wid_29}{Xu\-Realize\-Application} (Widget wid)
+\begin{CompactList}\small\item\em Realize an application. \item\end{CompactList}\item 
+void \hyperlink{AppInitialize_8c_XuDestroyApplication_28Widget_20wid_29}{Xu\-Destroy\-Application} (Widget wid)
+\begin{CompactList}\small\item\em Called to destroy an application using the Xu library. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Detailed Description}
+Xu application initialization functions. 
+
+\begin{Desc}
+\item[Author:]R.D.Paterson\end{Desc}
+\begin{Desc}
+\item[Date:]2006/01/06 Creation \end{Desc}
+
+
+\subsubsection{Function Documentation}
+\hypertarget{AppInitialize_8c_XuDestroyApplication_28Widget_20wid_29}{
+\index{AppInitialize.c@{App\-Initialize.c}!XuDestroyApplication@{XuDestroyApplication}}
+\index{XuDestroyApplication@{XuDestroyApplication}!AppInitialize.c@{App\-Initialize.c}}
+\paragraph[XuDestroyApplication]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Destroy\-Application (Widget {\em wid})}\hfill}
+\label{AppInitialize_8c_XuDestroyApplication_28Widget_20wid_29}
+
+
+Called to destroy an application using the Xu library. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em wid}]The widget as returned by Xu\-Va\-App\-Initialize\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]On exit from the application the destroy callback on the top level shell does not get called. In order to save the application size and position we must thus call this function that saves these and then destroys the shell. \end{Desc}
+\hypertarget{AppInitialize_8c_XuRealizeApplication_28Widget_20wid_29}{
+\index{AppInitialize.c@{App\-Initialize.c}!XuRealizeApplication@{XuRealizeApplication}}
+\index{XuRealizeApplication@{XuRealizeApplication}!AppInitialize.c@{App\-Initialize.c}}
+\paragraph[XuRealizeApplication]{\setlength{\rightskip}{0pt plus 5cm}void Xu\-Realize\-Application (Widget {\em wid})}\hfill}
+\label{AppInitialize_8c_XuRealizeApplication_28Widget_20wid_29}
+
+
+Realize an application. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em wid}]The widget as returned by Xu\-Va\-App\-Initialize\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]This function exists so that the application realization can be done differently in future without requiring any modification of application code. \end{Desc}
+\hypertarget{AppInitialize_8c_XuVaAppInitialize_28XtAppContext_20_2Aapp_5Fcontext_2C_20String_20app_5Fclass_2C_20XrmOptionDescRec_20_2Aoptions_2C_20Cardinal_20num_5Foptions_2C_20int_20_2Aargc_2C_20String_20_2Aargv_2C_20String_20_2Aspecification_5Flist_2C_2E_2E_2E_29}{
+\index{AppInitialize.c@{App\-Initialize.c}!XuVaAppInitialize@{XuVaAppInitialize}}
+\index{XuVaAppInitialize@{XuVaAppInitialize}!AppInitialize.c@{App\-Initialize.c}}
+\paragraph[XuVaAppInitialize]{\setlength{\rightskip}{0pt plus 5cm}Widget Xu\-Va\-App\-Initialize (Xt\-App\-Context $\ast$ {\em app\_\-context}, String {\em app\_\-class}, Xrm\-Option\-Desc\-Rec $\ast$ {\em options}, Cardinal {\em num\_\-options}, int $\ast$ {\em argc}, String $\ast$ {\em argv}, String $\ast$ {\em specification\_\-list},  {\em ...})}\hfill}
+\label{AppInitialize_8c_XuVaAppInitialize_28XtAppContext_20_2Aapp_5Fcontext_2C_20String_20app_5Fclass_2C_20XrmOptionDescRec_20_2Aoptions_2C_20Cardinal_20num_5Foptions_2C_20int_20_2Aargc_2C_20String_20_2Aargv_2C_20String_20_2Aspecification_5Flist_2C_2E_2E_2E_29}
+
+
+Replaces Xt\-Va\-App\-Initialize when using the Xu library. 
+
+\begin{itemize}
+\item installs special colour and string handling converters (See Xu\-New\-Xm\-String).\item puts some pre-determined variables into the environment if they are not already defined.\item finds the location and size of the mainline and restores it to these values. This is stored in the standard state store location.\item ties in with the functions found in \hyperlink{Display_8c}{Display.c} to allow dialogs to be placed on a different screen from the main program.\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em app\_\-context}]Application context returned. \item[\mbox{$\leftarrow$} {\em app\_\-class}]Application class. \item[\mbox{$\leftarrow$} {\em options}]As per Xt\-Va\-App\-Initialize() \item[\mbox{$\leftarrow$} {\em num\_\-options}]Number of above options \item[\mbox{$\leftrightarrow$} {\em argc}]argc from main \item[\mbox{$\leftrightarrow$} {\em argv}]argv from main \item[\mbox{$\leftarrow$} {\em specification\_\-list}]as per Xt\-Va\-App\-Initialize() \item[\mbox{$\leftarrow$} {\em ...}]resource pairs terminated by a NULL\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The application shell widget\end{Desc}
+{\bf New Resources:} \begin{TabularC}{3}
+\hline
+Resource&Description&Default \\\hline
+Xu\-Nallow\-Profile\-Selection&If true then a dialog asking the user to select a profile will apear before program realizaton. &False \\\hline
+Xu\-Nfont\-Path&A list of comma separated directories where fonts for the application will be found.&None \\\hline
+Xu\-Nselect\-Profile\-Dialog\-Name&The name of the profile request dialog as it will be referenced in the resource database.&\char`\"{}select\-Profile\char`\"{} \\\hline
+Xu\-Nstate\-File&The file to use as the base file for the dialog information and profile system. All profiles are saved in the same directory as this file.&\char`\"{}$\sim$/.xurescache\char`\"{} \\\hline
+Xu\-Nstate\-File\-Editable&Can the state file be edited (modified)?&True \\\hline
+\end{TabularC}
+
+
+\begin{Desc}
+\item[Note:]Unlike widgets, values specified in the resource database will override any values hard coded into the application.\end{Desc}
+\begin{Desc}
+\item[]If Xu\-Nallow\-Profile\-Selection is true, and if there are existing profiles found listed in the state file as set by Xu\-Nstate\-File, then a dialog will be displayed asking the user to select the profile to apply to the application. This will happen before the application itself starts.\end{Desc}
+\begin{Desc}
+\item[Attention:]This function looks for a home environment variable. It is expected that the name will be the application name, the name appended with HOME or \_\-HOME, or if the name starts with an 'X' the name without the 'X' and with or without the appended bit as given above. Upper case is assumed. \end{Desc}

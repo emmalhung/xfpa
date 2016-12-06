@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_vector_presentation'> <title>@vector_presentation</title> <titleabbrev>@vector_presentation</titleabbrev>
+<para>
+Set the appearance of vector direction and speed displayed as text or symbols.
+</para><para>
+Note that each vector component requires a "<userinput>..._type</userinput>" keyword to indicate the appropriate section in the <userinput>vector_look_up</userinput> file to use in formatting the vector component to be displayed.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>vector_look_up</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>File name for the vector look up table
+</para><para>(Note: ".vtab" suffix is optional)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for "calm" vector speed
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+<row valign='top'><entry><userinput>symbol</userinput></entry><entry>display matching symbol</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_size</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Text height for "calm" vector speed (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Scale factor wrt original symbol for "calm" vector speed (in percent)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for "calm" vector speed
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>calm_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_calm</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset for "calm" vector speed (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_calm</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset for "calm" vector speed (in display units)</para></entry></row>
+
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for vector direction
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+<row valign='top'><entry><userinput>uniform</userinput></entry><entry>display uniform symbol</entry></row>
+<row valign='top'><entry><userinput>proportional</userinput></entry><entry>display scaled symbol</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_size</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Text height for vector direction (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Scale factor wrt original symbol for vector direction (in percent)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for vector direction
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>direction_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_dir</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset for vector direction (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_dir</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset for vector direction (in display units)</para></entry></row>
+
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_type</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Type of display for vector speed
+</para><para>One of: 
+<informaltable frame='none' rowsep='0' colsep='0'><tgroup cols='2'><colspec colwidth='1*'/><colspec colwidth='1.25*'/><tbody>
+<row valign='top'><entry><userinput>none</userinput></entry><entry>do not display</entry></row>
+<row valign='top'><entry><userinput>value</userinput></entry><entry>display as value</entry></row>
+<row valign='top'><entry><userinput>text</userinput></entry><entry>display matching text</entry></row>
+<row valign='top'><entry><userinput>symbol</userinput></entry><entry>display matching symbol</entry></row>
+</tbody></tgroup></informaltable></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_size</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Text height for vector speed (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_scale</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Scale factor wrt original symbol for vector speed (in percent)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Justification for vector speed
+</para><para>One of: <userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>speed_format</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>A <command>printf</command> conversion format enclosed in quotes and containing the string "%s"</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_spd</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset for vector speed (in display units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_spd</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset for vector speed (in display units)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@vector_presentation {
+  vector_look_up = waves;
+  calm_type = symbol; calm_justification = centre; calm_size = 0.20; 
+  calm_scale = 80; x_calm = 0; y_calm = 0;
+  direction_type = uniform; direction_justification = centre; 
+  direction_size = 0.20; direction_scale = 100; x_dir = 0; y_dir = 0;
+  speed_type = value; speed_justification = centre; speed_size = .2; 
+  speed_scale = 80; x_spd = 0; y_spd = -.1;
+}</programlisting>
+Display waves according to the formats in the vector look up table <filename>waves.vtab</filename>. Calm waves will be
+formatted according to the section "calm symbol", with symbols scaled to 80% or their original size
+and centre justified. Wave directions will be formatted according to the section "direction uniform",
+with symbols scaled to 100% of their original size and centre justified. Wave speeds will be
+formatted according to the section "speed value", with text characters 0.20 "units" high, offset 0.10
+"units" below the current location, and centre justified.
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>.)
+</para></example>
+</para></sect2>

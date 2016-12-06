@@ -1,0 +1,4 @@
+Look-up   | Symbol file          | Text String | Presentation
+*default* : none                 :             : clear1
+high      : high                 : H           : clear1
+low       : low                  : L           : clear1

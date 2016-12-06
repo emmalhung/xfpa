@@ -1,0 +1,26 @@
+#!/bin/bash
+cd $FPA/etc
+
+# XFpa resource override...
+cp d.XFpa d.XFpa.old
+
+echo '
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!                                                                         !!!
+!!!   Override resource settings for the Forecast Production Assistant V8.x !!!
+!!!                                                                         !!!
+!!!   This will override the initial settings in the default resource file: !!!
+!!!    $FPA/app-defaults/$LANG/XFpa                                         !!!
+!!!                                                                         !!!
+!!!   Copy this file to your home directory, rename to .XFpa and            !!!
+!!!   customize it.                                                         !!!
+!!!                                                                         !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+' > d.XFpa
+
+awk '/^! Begin User Section/,/^! End User Section/
+' $FPA/app-defaults/c-french/XFpa | grep -v "^aurora" >> d.XFpa
+
+echo '
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+' >> d.XFpa

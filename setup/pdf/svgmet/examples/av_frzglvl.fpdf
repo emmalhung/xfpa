@@ -1,0 +1,17 @@
+! Display freezing level line ...
+@lines
+	{
+	element            = freezing_level
+	level              = surface
+	category_attribute = FPA_category;
+	category           = freezing_line
+	attribute          = FPA_category;
+	pattern            = freezing_line
+	pattern_width      = .100
+	pattern_length     = .500
+	outline            = CMYK 0 100 100 30;
+	outline            = CMYK 0 100 100 30;
+	fill               = none;
+	line_width         = .030;
+	line_style         = solid;
+	}

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='tx_verbose'> <title>@verbose</title> <titleabbrev>@verbose</titleabbrev>
+<para>
+Set "verbose" mode for &TexMet; product deﬁnition ﬁle development.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&valuehead;
+<tbody>
+
+<row valign='top'>
+<entry colname='key'><para><userinput><replaceable>mode</replaceable></userinput></para></entry>
+<entry colname='desc'><para>One of: <userinput>yes</userinput> or <userinput>no</userinput></para></entry></row>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@verbose { yes } </programlisting>
+Set the verbose mode on for extra diagnostic output. This can be useful if problems are encountered in developing a new &TexMet; product.
+</para></example>
+<example><title> </title><para>
+<programlisting>@verbose { no } </programlisting>
+Set verbose mode off for minimal diagnostic output.
+</para></example>
+</para></sect2>

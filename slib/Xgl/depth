@@ -1,0 +1,4 @@
+glib_image.c:static STRING lut_change_msg  = "Look up color change is only valid for pseudo color images.\n";
+windowToFile.c:static int xcolor_cmp( const void *a, const void *b)
+windowToFile.c:			cp = (XColor *)bsearch((void *)&xc, (void *)xcl, nxcl, sizeof(XColor), xcolor_cmp);
+windowToFile.c:				qsort((void *)xcl, nxcl, sizeof(XColor), xcolor_cmp);

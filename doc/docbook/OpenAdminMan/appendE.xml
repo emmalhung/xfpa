@@ -1,0 +1,823 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE appendix PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % admin SYSTEM 'admin.ent'>
+%admin;
+]>
+
+<appendix id='appende'><title>Adding New Allied Models</title>
+<indexterm><primary>allied model</primary></indexterm>
+<para>
+Allied Models are applications or programs which can be run from the &FPA;, but are not actually part of the &FPA;.
+Allied Model processing is accomplished by a series of specialized modules;
+<itemizedlist>
+<listitem><para>an initialization module (if required) which creates constant files required by the application,</para></listitem>
+<listitem><para>a pre-processing module which translates &FPA; data into a form usable by the particular application,</para></listitem>
+<listitem><para>an execution module which runs the application,</para></listitem>
+<listitem><para>and a post-processing module which translates output from the application into &FPA; type data files which can be imported back into the &FPA; depiction sequence.</para></listitem>
+</itemizedlist>
+Note that only the specialized modules make extensive use of the &FPA; Standard Library Routines.
+The Allied Models themselves are meant to be treated much like a "black box"; only minimal changes are required to run an Allied Model in the &FPA; environment.
+</para> <para>
+<indexterm><primary>allied model</primary><secondary>adding</secondary></indexterm>
+Adding a new Allied Model requires knowledge of the Local Setup file (<xref linkend='local_setup'/>) and the Local Configuration file (<xref linkend='appenda'/>).
+</para><para>
+Developing the specialized modules will also require access to the &FPA; Standard Library routines.
+The &FPA; Standard Library is included with the latest &FPA; distribution.
+Sample code located in <filename class='directory'><envar>$FPA</envar>/templates/userinput</filename> and <filename class='directory'><envar>$FPA</envar>/templates/useroutput</filename> can be used as a starting point for writing your own pre-process and post-process applications.
+</para><para>
+The last three sections of this Appendix describe the "&FPA; <application>Warp</application>", "&FPA; <application>Create Area</application>" and "&FPA; <application>Create Contour</application>" Allied Models.
+The "&FPA; <application>Warp</application>" allied model can be used to merge point data with Continuous fields.
+The "&FPA; <application>Create Area</application>" allied model can be used to generate proximity envelopes around features in Line, Link Chain or Scattered type fields.
+The "&FPA; <application>Create Contour</application>" allied model can be used to generate Discrete areas from the contours of Continuous fields.
+These Allied Models are available to be used by any user without coding changes.
+</para>
+
+<sect1><title>Development Directories and &FPA; Integration</title><para>
+<indexterm><primary>allied model</primary><secondary>development directories</secondary></indexterm>
+We recommend that the user create a series of development directories for implementation of any new Allied Model.
+The following directories are required:
+<itemizedlist>
+<listitem><para>The user should create a Development Directory somewhere on the system, such as <filename class='directory'><replaceable>your_directory</replaceable>/AModels.TEST</filename>.
+The location of this Development Directory (identified by the keyword 'AModels.Test') must be added to the 'directories' block of the Local Setup file, as described below.
+Code and executables for the application itself, as well as constant input data files used by the application, will reside on specified subdirectories of <filename class='directory'><replaceable>your_directory</replaceable>/AModels.TEST</filename>.</para></listitem>
+<listitem><para>Variable input data files and all output files used by the application, as well as all &FPA; type data files from post-processing, will be located in the Data Directory <filename class='directory'>/home/data/AModels.DATA</filename>, whose location is identified by the keyword 'AModels.Data' in the 'directories' block of the Local Setup file.
+These files will reside on specified subdirectories that the user may have to create, though the base Data Directory and all subdirectories are usually created automatically when the Allied Model is run.</para></listitem>
+<listitem><para>The code for the specialized initialization, pre-processing, execution, and post-processing modules for new Allied Models can reside on a Processing Directory, such as <replaceable>your_processing_directory</replaceable>, which can be located anywhere on the system, as long as the path to the executable code is located in the users path.
+(The executables for Allied Models currently implemented in the &FPA; are located in the directory <filename class='directory'><envar>$FPA</envar>/bin</filename>.)</para></listitem>
+</itemizedlist>
+The directory structure used by a new Allied Model is outlined below.
+In this example, the new Allied Model is NewModel which can be run over two subareas (or subsources), Area1 or Area2.
+The Source Code and Executable Code refer to the actual Allied Model program or application.
+<example><title>Development Directory</title><para>
+<programlisting>ls <replaceable>your_directory</replaceable>/AModels.TEST/NewModel/
+bin src Area1 Area2
+</programlisting>
+where:
+<itemizedlist>
+<listitem><para><filename class='directory'>bin</filename> contains executable code</para></listitem>
+<listitem><para><filename class='directory'>src</filename> contains source code</para></listitem>
+<listitem><para><filename class='directory'>Area1</filename> contains constant files</para></listitem>
+<listitem><para><filename class='directory'>Area2</filename> contains constant files</para></listitem>
+</itemizedlist>
+</para></example>
+<example><title>Data Directory</title><para>
+<programlisting>ls /home/data/AModels.DATA/NewModel
+Area1 Area2
+</programlisting>
+where:
+<itemizedlist>
+<listitem><para><filename class='directory'>Area1</filename> contains variable files.</para></listitem>
+<listitem><para><filename class='directory'>Area2</filename> contains variable files.</para></listitem>
+</itemizedlist>
+</para></example>
+<example><title>Processing Directory</title><para>
+<programlisting>ls <replaceable>your_processing_directory</replaceable>/NewModel
+Makefile <replaceable>init.c</replaceable> <replaceable>preproc.c</replaceable> <replaceable>alliedm.c</replaceable> <replaceable>postproc.c</replaceable>
+</programlisting>
+where:
+<itemizedlist>
+<listitem><para><filename>Makefile</filename> is a makefile which accesses the &FPA; Standard Library Routines</para></listitem>
+<listitem><para><filename>init.c</filename> is your initialization code</para></listitem>
+<listitem><para><filename>preproc.c</filename> is your pre-processing code</para></listitem>
+<listitem><para><filename>alliedm.c</filename> is your allied model code</para></listitem>
+<listitem><para><filename>postproc.c</filename> is your post-processing code</para></listitem>
+</itemizedlist>
+</para></example>
+</para><para>
+The user should create a database for testing the new Allied Model using the command <application>mkfpadb</application>, and following the customization instructions.
+This procedure will also create the user's Local Setup file (<replaceable>local_setup</replaceable>).
+</para><para>
+The user will have to create all other directories required by the new Allied Model with the system <application>mkdir</application> command.
+The user would create the Development Directory by commands such as:
+<programlisting>mkdir -p <replaceable>your_directory</replaceable>/AModels.TEST/NewModel/bin
+mkdir -p <replaceable>your_directory</replaceable>/AModels.TEST/NewModel/Area1
+</programlisting>
+The Data Directory can contain data from several successive runs of the new Allied Model.
+The 'run time' for the Allied Model will be written to the directory in a file called 'Dstamp', with the format 'Year:JulianDay:Hour' (for example, 1995:305:12).
+All files from the Allied Model run at any earlier time are automatically shuffled down to a Prev subdirectory, if one exists.
+(Note, however, that the Data Directory will be created automatically, if required, when the new Allied Model is run.
+The number of Prev subdirectories is determined by the 'directory_layers' line in the Local Configuration file described below.)
+</para><para>
+The user could create a Data Directory with the ability to save three successive runs of the new Allied Model with the command:
+<programlisting>mkdir -p home/data/AModels.DATA/NewModel/Area1/Prev/Prev</programlisting>
+The user will also have to modify the following files to integrate the new Allied Model into the &FPA; environment:
+<itemizedlist>
+<listitem><para>The Local Setup file (<replaceable>local_setup</replaceable>)</para></listitem>
+<listitem><para>The Local Configuration file (<replaceable>local_config</replaceable>)</para></listitem>
+</itemizedlist>
+The Local Setup file and Local Configuration file are created when the user creates a new database.
+The user will have already customized the Local Setup file when creating the database.
+Further additions to the Local Setup file and Local Configuration file are described below.
+</para></sect1>
+
+<sect1><title>The Local Setup File</title><para>
+<indexterm><primary>allied model</primary><secondary>setup file</secondary></indexterm>
+The format of the Local Setup file is described in <xref linkend='local_setup'/>.
+The location of directories required by the new Allied Model is in the 'directories' block of the Local Setup file.
+<note><para>The locations of all directories used by the new Allied Model should be defined in the Local Setup file, and not in the Allied Model processing programs.</para></note>
+</para><para>
+The location of the Development Directory for the application itself and constant input data files must be added in 'directories' block, as in:
+<programlisting>amodels.test <replaceable>your_directory</replaceable>/AModels.TEST</programlisting>
+<note><para> The entry for 'amodels.exec' in the 'directories' block refers to the location of other Allied Model applications already integrated into the &FPA;.
+</para></note>
+<note><para>The entries for 'home' and 'Data' in the 'directories' block refer to the location of data files for the &FPA;, and that the entry for 'AModels.Data' in the 'directories' block refers to the usual location of the Data Directory for Allied Model input and output files.
+The path name of this directory is thus given by the path names of these three parameters, as <filename class='directory'>/home/Data/AModels.Data</filename>.
+The subdirectories and files for the new Allied Model are described in the Local Configuration file section below.</para></note>
+</para><para>
+The Allied Model to be run must also be added to the "[allied.model]" section of the 'interface' block.
+Each uncommented line in this section identifies an application which will appear in the Allied Model menus of the &FPA; as an application that can be run from within the &FPA;.
+</para><para>
+An Allied Model which can be run at several different locations can appear more than once, as in:
+<programlisting>NewModel Area1
+NewModel Area2
+</programlisting>
+</para></sect1>
+
+<sect1><title>The Local Configuration File</title><para>
+<indexterm><primary>allied model</primary><secondary>config file</secondary></indexterm>
+The format of the Local Configuration file is described in <xref linkend='appenda'/>.
+The location of this file is given in the 'directories' block of the Local Setup file by the keyword 'config'.
+The name of the Local Configuration file is given in the 'config_files' block of the Local Setup file by the keyword 'config'.
+(The usual name of the Local Configuration file is 'Config'.)
+</para><para>
+The user must add another 'Sources' block to the Local Configuration file to describe the new Allied Model directory and file locations, the data files required from the &FPA; to run the Allied Model, and the data files that the Allied Model can produce for the &FPA; to use.
+The format of the 'Sources' block is given in <xref linkend='appenda'/>.
+An example of a 'Sources' block for an Allied Model can be found in the file <filename><envar>$FPA</envar>/templates/useroutput/README</filename>
+</para><para>
+<programlisting>
+Sources
+  {
+  NewModel
+    {
+    label            = "New Allied Model"
+    short_label      = "New Model"
+    description      = "New Allied Model Example - &FPA; Version 6"
+    source_type      = Allied
+    directory_tag    = AModels.Data
+    directory_path   = NewModel
+    directory_layers = 3 # number of directory layers
+    subsources       =
+      {
+      Area1
+        {
+        label              = "New Model Area1"
+        short_label        = "Area1"
+        sub_directory_path = Area1
+        }
+      } # End of subsources Block
+</programlisting>
+Note that the 'directory_tag' line identifies the default data directory keyword from the 'directories' block of the Local Setup file, and the 'directory_path' line identifies the default subdirectory for the data files.
+Any 'directory_tag' or '..._path' lines in the following sections override these default values.
+Note that the pathname in the 'sub_directory_path' line is appended to each subdirectory for each 'subsource' of the Allied Model.
+</para><para>
+Note that the 'directory_layers' line identifies the number of directories available for saving data from successive runs of the Allied Model.
+For example, 'directory_layers = 3' would result in a base data directory and two Prev subdirectories.
+</para><para>
+The 'allied_model' section below is used to identify all Allied Model parameters.
+The 'source_info' line identifies the default location for all &FPA; input data fields.
+Run strings for the 'pre_process', 'process', and 'post_process' modules can include any of the following keywords, which automatically substitute the appropriate parameters into the run string when the Allied Model is run.
+<table frame='topbot'><title>Allied Model process keywords</title>
+<tgroup cols='2'>&colwidth;
+<thead>
+<row valign='top'><entry>Keyword</entry><entry>Meaning</entry></row>
+</thead>
+<tbody>
+<row valign='top'><entry>&lt;SETUP&gt;</entry><entry>the Local Setup file (local_setup)</entry></row>
+<row valign='top'><entry>&lt;SOURCE&gt;</entry><entry>the Allied Model name in the Sources Block (NewModel)</entry></row>
+<row valign='top'><entry>&lt;SUBSOURCE&gt;</entry><entry>the Allied Model subarea in the sub_sources Block (Area1, for example)</entry></row>
+<row valign='top'><entry>&lt;RTIME&gt;</entry><entry>'zero' hour in the Depiction sequence, that is, the time at which the application is run (rtime) (Note that this is the time that is written to the 'Dstamp' file in the Data Directory when the application is run)</entry></row>
+<row valign='top'><entry>&lt;ELEMENT&gt;</entry><entry>The active element in the depiction editor</entry></row>
+<row valign='top'><entry>&lt;LEVEL&gt;</entry><entry>The active level in the depiction editor</entry></row>
+<row valign='top'><entry>&lt;VTIME&gt;</entry><entry>The active depiction time</entry></row>
+</tbody></tgroup></table>
+</para><para>
+<programlisting>
+    allied_model    =
+      {
+      time_matching = False
+      source_info   = interp or depict
+      pre_process   = <replaceable>allied_prep arg ...</replaceable> # run string for pre-processing
+      process       = <replaceable>allied_exec arg ...</replaceable> # run string for execution
+      post_process  = <replaceable>allied_post arg ...</replaceable> # run string for post-processing
+</programlisting>
+The 'programs' section below is used to identify the actual Allied Model application that will be run when the specialized execution module is run.
+The <replaceable>program_alias</replaceable> will be used in the specialized execution module code to identify the Allied Model program.
+<programlisting>
+      programs          =
+        {
+        <replaceable>program_alias</replaceable>
+          {
+          directory_tag = AModels.Test
+          program_path  = bin/<replaceable>executable</replaceable>
+          }
+        } # End of programs Block
+</programlisting>
+The 'files' section below is used to identify all input or output files used by the actual Allied Model application.
+The location of the files will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data) unless the 'directory_tag' is reset for an individual file.
+Note that <replaceable>file_alias_name</replaceable> will be used in the specialized module code to identify a file.
+<programlisting>
+      files            =
+        {
+        <replaceable>file_alias_name</replaceable> # For Constant Files
+          {
+          directory_tag = AModels.Test
+          file_path     = <replaceable>file</replaceable>
+          }
+        <replaceable>file_alias_name</replaceable> # For Variable Files
+          {
+          file_path     = <replaceable>file</replaceable>
+          }
+        } # End of files Block
+</programlisting>
+The 'required_fields', 'required_wind_crossrefs', and 'required_value_crossrefs' sections below are used to identify the input &FPA; data used by the pre-processing module of the Allied Model.
+If not required, these can be set to None.
+The location of this input data will default to the 'source_info' declaration given at the start of the 'allied_model' section unless it is reset here.
+<note><para>The <replaceable>required_field_alias</replaceable> or the <replaceable>required_crossref_alias</replaceable> will be used in the pre-processing module code to identify all required data.</para>
+<para>The <replaceable>tag_label</replaceable> names will be used in the pre-processing module code to extract attribute information from the input data.</para></note>
+The <replaceable>element</replaceable> and <replaceable>level</replaceable> names in the 'field_info' declarations, the <replaceable>source</replaceable> names in the 'source_info' declarations, and the <replaceable>crossref</replaceable> names in the 'crossref_info' declarations must be declared in the 'Elements', 'Levels', 'Sources', or 'CrossRefs' blocks of a Configuration file! The user will have to include declarations in the Local Configuration file for any <replaceable>element</replaceable>, <replaceable>level</replaceable>, <replaceable>source</replaceable>, or <replaceable>crossref</replaceable> data which is required by a new Allied Model but is not already declared.
+The user can refer to <xref linkend='appenda'/>, as well as the examples given in the <filename>Config.<replaceable>name</replaceable></filename> files in <filename class='directory'><envar>$FPA</envar>/config</filename>.
+<programlisting>
+      required_fields          =
+        {
+        <replaceable>required_field_alias</replaceable>
+          {
+          # input data identified by element and level
+          field_info                = <replaceable>element  level</replaceable> 
+          # optional: member of a Plot Object
+          sub_field_info            = <replaceable>sub_field</replaceable> 
+          # optional: location of input field
+          source_info               = <replaceable>source</replaceable> 
+          # optional: reset list of attributes
+          attribute_info_reset      = <userinput>True | False</userinput>
+          # optional: attributes required by allied model 
+          # (may be specified more than once to generate a list)
+          attribute_info            = <replaceable>tag_label  attrib_name  attrib_units</replaceable>
+          # optional: reset list of link chain node attributes
+          node_attribute_info_reset = <userinput>True | False</userinput>
+          # optional: link chain node attributes required by allied model 
+          # (may be specified more than once to generate a list)
+          node_attribute_info       = <replaceable>tag_label  attrib_name  attrib_units</replaceable>
+          }
+        } # End of required_fields Block
+      required_wind_crossrefs  =
+      # OR
+      required_value_crossrefs =
+        {
+        <replaceable>required_crossref_alias</replaceable>
+          {
+          # input data identified by cross-reference
+          crossref_info        = <replaceable>crossref</replaceable>
+          # optional: location of input field
+          source_info          = <replaceable>source</replaceable>
+          }
+        } # End of required_..._crossrefs Block
+</programlisting>
+<beginpage/>
+The 'metafiles' section below is used to identify the output &FPA; data produced by the post-processing module of the Allied Model.
+The location of the files will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data).
+<note><para>The <replaceable>metafile_alias</replaceable> will be used in the post-processing module code to identify all metafiles.</para>
+<para>The <replaceable>tag_label</replaceable> names will be used in the post-processing module code to pass attribute information to the output data.</para></note>
+The 'file_alias' line identifies the Allied Model data file from which the data will be extracted, where the <replaceable>file_alias_name</replaceable> referes to a file identified in the 'files' section above. The 'field_info' line identifies the output &FPA; metafile.
+The <replaceable>element</replaceable> and <replaceable>level</replaceable> names in the 'field_info' declarations must be declared in the 'Elements' or 'Levels' blocks of a Configuration file! The user will have to include declarations in the Local Configuration file for any <replaceable>element</replaceable> or <replaceable>level</replaceable> data which is required by a new Allied Model but is not already declared.
+The user can refer to <xref linkend='appenda'/>, as well as the examples given in the <filename>Config.<replaceable>name</replaceable></filename> files in <filename class='directory'><envar>$FPA</envar>/config</filename>.
+<programlisting>
+      metafiles      =
+        {
+        <replaceable>metafile_alias</replaceable>
+          {
+          #from files declaration, above
+          file_alias           = <replaceable>file_alias_name</replaceable>
+          #output data identified by element and level
+          field_info           = <replaceable>element  level</replaceable>
+          # optional: reset list of attributes
+          attribute_info_reset = <userinput>True | False</userinput>
+          # optional: output attributes from allied model 
+          # (may be specified more than once to generate a list)
+          attribute_info       = <replaceable>tag_label  attrib_name  attrib_units</replaceable>
+          # optional: reset list of default attributes
+          default_attrib_info_reset = <userinput>True | False</userinput>
+          # optional: default attributes set in output data
+          # (may be specified more than once to generate a list)
+          default_attrib_info       = <replaceable>attrib_name  attrib_value</replaceable>
+          }
+        } # End of metafiles Block
+      } # End of allied_model Block
+    } # End of NewModel Block
+  } # End of Sources Block
+</programlisting>
+</para></sect1>
+
+<beginpage/>
+<sect1><title>Changes to Allied Model Source Code</title><para>
+<indexterm><primary>allied model</primary><secondary>source code</secondary></indexterm>
+The code for the Allied Model itself is treated as much like a 'black box' as possible.
+The requirements are that the application is run as an independent program with all input and output to named files, and executed by a run string such as:
+<programlisting><replaceable>model_executable full_pathname_of_aliasfile</replaceable></programlisting>
+File information is passed to the application through the use of an aliasfile (usually created by the specialized pre-processing module), identified by a <replaceable>file_alias_name</replaceable> of 'aliases' in the 'files' declaration in the 'Sources' block of the Local Configuration file.
+The aliasfile is a table of file aliases and full pathnames for all input and output files used by the application.
+Most file aliases and pathnames are constructed directly from each <replaceable>file_alias_name</replaceable> section in the 'files' declaration.
+</para><para>
+Some code must be added to the Allied Model itself to access the aliasfile.
+Code for accessing Fortran routines is found in FTN_alias.f in the &FPA; Source Code.
+Routine FTN_MODEL_SETUP() is called at the start of the application to read the aliasfile for the aliases and pathnames.
+All files within the application are then identified by alias, with files being opened by calls to the routine FTN_MODEL_FILE_OPEN(), and all Logical Unit numbers for Fortran reads are also cross-referenced to the aliases.
+</para><para>
+Files that must be created for running the application can be produced through the pre-processing module or through an initialization module, which are both described below.
+</para></sect1>
+
+<sect1><title>&FPA; Specialized Processing Modules</title><para>
+<indexterm><primary>allied model</primary><secondary>processing modules</secondary></indexterm>
+The following four sections describe the initialization (if required), pre-processing, execution, and post-processing modules required to integrate an Allied Model into the &FPA; processing environment.
+These modules are meant to be run as stand-alone programs.
+&FPA; routines common to most of these modules are described below.
+<itemizedlist>
+<listitem><para>&FPA; Standard Library routines setup_files() and define_setup() are used to read the Local Setup file (local_setup) and to initialize access to the Local Configuration file.</para></listitem>
+<listitem><para>&FPA; Standard Library routine get_target_map() is used to set a map projection for the application data.</para></listitem>
+<listitem><para>&FPA; Standard Library routine get_source_info() is used to access the file and directory information for the Allied Model from the Local Setup and Local Configuration files.</para></listitem>
+<listitem><para>&FPA; Standard Library routine get_directory() is used to set the base Data Directory for the Allied Model.</para></listitem>
+<listitem><para>Some routines do not need to return all arguments; NULL is used to identify arguments which are not returned.</para></listitem>
+</itemizedlist>
+&FPA; Objects common to most of these modules are described below.Extensive use is made of two Objects in particular, the FLD_DESCRIPT Object and the PLOT Object (both described below).
+<itemizedlist>
+<listitem><para>LOGICAL is a simple TRUE or FALSE as defined in types.h.</para></listitem>
+<listitem><para>STRING Objects are simple character strings as defined in types.h.</para></listitem>
+<listitem><para>POINT Objects are two element arrays for X, Y locations as defined in misc.h.</para></listitem>
+<listitem><para>FLD_DESCRIPT Objects contain all information required to identify individual fields in the &FPA; (including information about directory, field, and time) as defined in files_and_directories.h.
+Individual parameters in the FLD_DESCRIPT Object are set by calls to &FPA; Standard Library routine set_fld_descript().
+Parameters may be blanked out by using the FpaCblank macro.
+Parameters which are not set are not changed.</para></listitem>
+<listitem><para>PLOT Objects contain arrays of data at single locations as defined in plot.h.
+Locations of sites for extracting data, input data for the application, and output data from the application are stored as</para></listitem>
+<listitem><para>PLOT Objects within the processing module code.
+The choice of PLOT Objects was to allow any combination of point data to be used, to produce code that could be easily modified and make use of &FPA; PLOT Object manipulation, and to simplify future display of the PLOT Object data inside the &FPA;.
+(Three general routines that are used are build_..._plot() to identify parameters to be stored in the PLOT Object, add_to_..._plot() to add parameters at a given location, and get_from_..._plot() to return parameters at a given location.)</para></listitem>
+<listitem><para>SURFACE Objects contain field data for B-spline surfaces as defined in surface.h.</para></listitem>
+<listitem><para>METAFILE Objects contain data for one or more fields as defined in metafile.h.
+METAFILE Objects contain information conforming to the Graphics Metafile Standard provided by the &FPA; Developers.</para></listitem>
+</itemizedlist>
+Routines exist to read three basic categories of files: &FPA; Configuration Type Files, ASCII Type Files, and Binary Type Files.
+<itemizedlist>
+<listitem><para>Routines to read &FPA; Configuration Type files contain a loop with a call to &FPA; Standard Library routine getline() to read each line of the file.
+Blank lines or lines beginning with # are ignored.
+Lines in the file containing data are identified by a keyword which begins the line, and are read using &FPA; Standard Library routines string_arg(), int_arg(), long_arg(), float_arg(), or double_arg() depending on the type of word to be read.
+Each word is separated from the next by blanks or tabs.
+Each call to the &FPA; Standard Library routines reads one word and returns the remainder of the line; thus the line is read by successive calls.
+Since all data in the file is identified by keyword, the format of the file does not need to be known.</para></listitem>
+<listitem><para>Routines to read ASCII Type files contain successive calls to &FPA; Standard Library routine getline() for each line of the file to be read.
+Desired parameters are read using the same &FPA; Standard Library routines as with the &FPA; Configuration Type File (if the words are separated by white space), or using the &FPA; Standard Library routines fixed_string_arg(), fixed_int_arg(), fixed_long_arg(), fixed_float_arg(), or fixed_double_arg() (if the words are in a formatted file).
+However, the exact format of the file must be known, since all lines of the file must be read to extract the required data.</para></listitem>
+<listitem><para>Routines to read Binary Type files contain calls to system routine fread(), which will read blocks of data based on the given format.
+The format required by the application controls the parameters used.</para></listitem>
+</itemizedlist>
+Routines exist to write two basic categories of files; ASCII Type Files and Binary Type Files.
+<itemizedlist>
+<listitem><para>Routines to write ASCII Type files contain calls to system routine fprintf(), based on the required format of each line of the file.</para></listitem>
+<listitem><para>Routines to write Binary Type Files use calls to system routine fwrite(), which will write blocks of data based on the given format.</para></listitem>
+</itemizedlist>
+</para>
+
+<sect2><title>Initialization for Allied Models</title><para>
+<indexterm><primary>allied model</primary><secondary>initialization</secondary></indexterm>
+An initialization module should be used to create any constant files which are used by the application.
+This module is a stand-alone program, and is meant to be run only once, when the model is installed.
+It initializes input files for all subsources of the model.
+The program is run by:
+<programlisting><replaceable>allied_init</replaceable> &lt;SETUP&gt; &lt;SOURCE&gt;</programlisting>
+</para></sect2>
+
+<sect2><title>Pre-processing for Allied Models</title><para>
+<indexterm><primary>allied model</primary><secondary>pre-process</secondary></indexterm>
+The pre-processing module is used to initialize the Data Directory and extract the input files for the application.
+This module is a stand-alone program, and is run each time the application is executed.
+The program will be run for each subarea by:
+<programlisting><replaceable>allied_prep</replaceable> &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; <replaceable>source_type</replaceable> &lt;RTIME&gt;</programlisting>
+The &FPA; Standard Library routine prepare_source_directory() checks the 'Dstamp' files in the Data Directory structure to match the time at which the application is run (rtime).
+If the correct time is not found, the routine will automatically shuffle files down to a 'Prev' directory in the Data Directory structure to make room for the new data.
+(Note that an Allied Model cannot be run if the run time (rtime) is older than ALL the times in the Data Directory structure.)
+</para></sect2>
+
+<sect2><title>Executing Allied Models</title> <para>
+<indexterm><primary>allied model</primary><secondary>executing</secondary></indexterm>
+The execution module is used to run the actual Allied Model application.
+This module is a stand-alone program, and is run each time the application is executed.
+The program will be run for each subarea by:
+<programlisting><replaceable>allied_exec</replaceable> &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; &lt;RTIME&gt;</programlisting>
+The time at which the application is run (rtime) is used to test the Data Directory to ensure that the pre-processing module has been run.
+</para><para>
+The execution module identifies the pathname to the Allied model program (identified by the program_alias 'Program' in the 'programs' section of the Local Configuration file), and the aliasfile required by the program (identified by the <replaceable>file_alias_name</replaceable> 'aliases'), and copies them to a buffer.
+The program is then started by a call to the &FPA; Standard Library routine shrun(), with the runstring:
+<programlisting> <replaceable>"program_executable full_pathname_of_aliasfile"</replaceable></programlisting>
+</para></sect2>
+
+<sect2><title>Post-processing for Allied Models</title><para>
+<indexterm><primary>allied model</primary><secondary>post-process</secondary></indexterm>
+The post-processing module is used to re-format Allied Model input or output files into files which can be used within the &FPA;.
+This module is a stand-alone program, and is run each time the application is executed.
+The program can be run for each subarea by:
+<programlisting><replaceable>allied_post</replaceable> &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; &lt;RTIME&gt;</programlisting>
+The time at which the application is run (rtime) is used to find the appropriate Data Directory in which to write the &FPA; files.
+The data files to be produced are identified in the 'metafiles' section in the 'Sources' block of the Local Configuration file (described above).
+</para><para>
+The program loops through each time and each metafile, sets the identification field descriptor for the metafile, and extracts a METAFILE Object from the input or output files of the application.
+The routine, reads the files identified by the <replaceable>file_alias_name</replaceable> 'inputfile' or 'outputfile', extracts data for the required time as a PLOT Object, and copies the data into a METAFILE Object.
+The program then places a lock on the Data Directory using &FPA; Standard Library routine set_shuffle_lock(), builds a file name for the metafile using &FPA; Standard Library routine build_meta_filename(), and outputs the METAFILE Object to the file name using &FPA; Standard Library routine write_metafile().
+</para><para>
+Code also exists to extract SURFACE Object data from application files.
+The process is similar to producing a METAFILE containing a PLOT Object, except that the data for the required time must be converted to a SURFACE Object.
+This is done by converting the PLOT Object data to a grid, and identifying the location of each point on the &FPA; basemap with respect to this grid.
+For each point on the &FPA; basemap, a 4 by 4 subgrid of data around the point is extracted from the application data, the 4 by 4 subgrid data is converted into a SURFACE Object using &FPA; Standard Library routine grid_surface(), and the value at the point is evaluated using &FPA; Standard Library routine eval_surface().
+When values at all points on the &FPA; basemap have been evaluated, the grid of values are then converted into a SURFACE Object using &FPA; Standard Library routine grid_surface().
+Data at points within the area that the application covers are extracted from the application data, while data at points outside the area are extrapolated from values at the nearest edge of the application data (which gives the field a 'flattened' appearance beyond the data coverage).
+</para></sect2>
+</sect1>
+
+<sect1><title>Allowing User Access to Tested Allied Models</title><para>
+<indexterm><primary>product definition</primary><secondary>publishing</secondary></indexterm>
+Once a new Allied Model has been developed and tested, the user may wish to make the Model available to be used by others.
+This can be done by signing on as root, becoming user bin by the command 
+<programlisting>su bin</programlisting> and then making the following changes:
+<itemizedlist>
+<listitem><para>Edit the file <filename><envar>$FPA</envar>/setup/Template</filename> and add a line to the 'directories' block (as was done in the Local Setup File section above), as in: <programlisting>amodels.test      <replaceable>your_directory</replaceable>/AModels.TEST</programlisting></para></listitem>
+<listitem><para>Edit the file <filename><envar>$FPA</envar>/setup/Template</filename> and add lines to the "[allied.model]" section of the 'interface' block (as was done in the Local Setup File section above), as in:
+<programlisting>NewModel Area1
+NewModel Area2</programlisting>
+</para></listitem>
+</itemizedlist>
+These changes will allow any future users of the &FPA; to "turn on" this Allied model when they run <application>mkfpadb</application> and customize their Local Setup file.
+The new Allied Model will then appear in the Products pull-down in the &FPA;.
+</para>
+<note><para> Any changes you make to the template setup file may be lost after upgrading &FPA;.
+Be sure to keep a copy for comparison after an update.</para></note>
+<para>
+Current users of the &FPA; can also add the new Allied Model to their system by making the following changes while signed on to their users account:
+<itemizedlist>
+<listitem><para>Edit their Local Setup file and add a line to the 'directories' block (as was done in the Local Setup File section above), as in: <programlisting>amodels.test <replaceable>your_directory</replaceable>/AModels.TEST</programlisting></para></listitem>
+<listitem><para>Edit their Local Setup file and add lines to the "[allied.model]" section of the 'interface' block (as was done in the Local Setup File section above), as in:
+<programlisting>NewModel Area1
+NewModel Area2</programlisting></para></listitem>
+<listitem><para>Copy the 'Sources' block of the Local Configuration file (local_config) containing the new Allied Model to their Local Configuration file.</para></listitem>
+<listitem><para>Ensure that the user's path can access the actual Allied Model program and constant input data files in <replaceable>your_directory</replaceable>/AModels.TEST, as well as the pre-processing, execution and post-processing modules in <replaceable>your_processing_directory</replaceable>.</para></listitem>
+</itemizedlist>
+These changes will result in the new Allied Model appearing in the Products pull-down in the &FPA; for the current user.
+</para></sect1>
+
+<sect1><title>FPAWarp (Fitting Point Data to a Field)</title><para>
+<indexterm><primary>allied model</primary><secondary>FPAWarp</secondary></indexterm>
+The &FPA; <application>Warp</application> model is an internal Allied Model designed to allow users to merge point data (whether at locations on a grid or random locations) with continuous field data.
+The &FPA; <application>Warp</application> model accomplishes this merge by calculating the differences between the point data values and the values from a "guess" continuous field at the same locations, and then applying adjustments iteratively until the continuous field values become reasonably close to the point data values.
+The user can access the &FPA; <application>Warp</application> model without the need to develop special code, by simply adding lines in the Local Setup file and the Local Configuration file.
+<itemizedlist>
+<listitem><para>Edit the Local Setup file and add a line to the "[allied.model]" section of the 'interface' block as in: <programlisting>NewFPAWarp</programlisting></para></listitem>
+<listitem><para>Edit the Local Configuration file and add another 'Sources' block, as in:</para></listitem>
+</itemizedlist>
+<programlisting>
+Sources
+  {
+  NewFpaWarp
+    {
+    label            = "<replaceable>New FPA Warp</replaceable>"
+    short_label      = "<replaceable>New FpaWarp</replaceable>"
+    source_type      = Allied
+    directory_tag    = AModels.Data
+    directory_path   = FpaWarp
+    directory_layers = 1
+    subsources       = None
+    allied_model     =
+      {
+      time_matching  = True
+      source_info    = interp or depict
+      process        = fpawarp_exec &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; &lt;RTIME&gt; \
+                        <replaceable>tension influence file_creation</replaceable> \
+                        <optional><replaceable>( guess_time  plot_time  output_time  ... )</replaceable></optional>
+      programs       = None
+      files          = None
+ </programlisting>
+ <note><para>The <replaceable>tension</replaceable> and <replaceable>influence</replaceable> parameters are used by the &FPA; <application>Warp</application> model to control the fit of the point data to the continuous field.</para></note>
+ The <replaceable>tension</replaceable> parameter is used to control the accuracy of the fitting.
+ The &FPA; <application>Warp</application> model calculates the mean absolute error between the point data values and the guess field values for each iteration.
+ The iterations end when the mean absolute error no longer decreases, or when the change in the mean absolute error becomes less than the average error divided by the <replaceable>tension</replaceable>.
+ A larger value of <replaceable>tension</replaceable> will therefore result in more iterations, which should result in the point data being fitted more closely.
+ (Note that the minimum allowed <replaceable>tension</replaceable> is 10.)
+ </para><para>
+ The <replaceable>influence</replaceable> parameter is used to control the effect of the point data on the guess field in data sparse areas.
+ Each point data value will adjust the continuous field at nearby locations.
+ However, if no data points are found to be closer to a given location than the number of &FPA; grid spaces given by <replaceable>influence</replaceable>, then the continuous field will remain unchanged at that location.
+ A smaller value of <replaceable>influence</replaceable> will therefore restrict adjustments to the continuous field to the immediate vicinity of the point data.
+ (Note that the minimum allowed <replaceable>influence</replaceable> is 1 &FPA; grid space.)
+ </para><para>
+ The <replaceable>file_creation</replaceable> parameter controls whether an output file will be created if no acceptable plot data is found (YES or NO).
+ </para><para>
+ The times for which the &FPA; <application>Warp</application> model is run are normally the times available in the directory identified by the 'source_info' declaration.  However, the "<replaceable>..._time</replaceable>" parameters give optional control over exactly which times are used for the guess field, the plot data fields, and the output metafiles.
+ Each set of files required is identified by three times.
+ The format for the times is given by one of the following:
+ <itemizedlist>
+<listitem><para>xx - for hours from the 'zero' hour in the Depiction sequence, that is, the time at which the application is run (RTIME)</para></listitem>
+<listitem><para>rr/hh - for the day (rr where 0 is today, 1 is tomorrow) and GMT hour of the day (hh)</para></listitem>
+<listitem><para>rr/hhL - for the day (rr where 0 is today, 1 is tomorrow) and local hour of the day (hh)</para></listitem>
+</itemizedlist>
+ The 'required_fields' section below is used to identify the guess field for the continuous data (identified by the name 'guess_field'), and the file(s) containing the point data to merge with the guess field (identified by a name that begins with 'plot_field').
+ The location of these data files will default to the 'source_info' declaration given at the start of the 'allied_model' section unless it is reset here.
+The 'guess_field' and 'plot_field' information will be used in the &FPA; <application>Warp</application> model code to identify all required data.
+ Note that the <replaceable>element</replaceable>, <replaceable>level</replaceable> and <replaceable>source</replaceable> names in the 'field_info' declarations, must be declared in the 'Elements' or 'Levels' or 'Sources' blocks of a Configuration file!
+ The user will have to include declarations in the Local Configuration file for any <replaceable>element</replaceable>, <replaceable>level</replaceable> or <replaceable>source</replaceable> data which is required by a new &FPA; <application>Warp</application> model but is not already declared.
+ The user can refer to <xref linkend='appenda'/>, as well as the examples given in the <filename>Config.<replaceable>name</replaceable></filename> files in <filename class='directory'><envar>$FPA</envar>/config</filename>.
+<programlisting>
+      required_fields    =
+        {
+        guess_field
+          {
+          # input data identified by element and level
+          field_info     = <replaceable>element  level</replaceable>
+          # optional: location of input field
+          source_info    = <replaceable>source</replaceable> 
+          }
+        plot_field
+          {
+          # input data identified by element and level
+          field_info     = <replaceable>element  level</replaceable>
+          # optional: member of a Plot Object
+          sub_field_info = <replaceable>sub_field</replaceable> 
+          # optional: location of input field
+          source_info    = <replaceable>source</replaceable> 
+          }
+        } # End of required_fields Block
+      required_wind_crossrefs  = None
+      required_value_crossrefs = None
+</programlisting>
+ The 'metafiles' section below is used to identify the output &FPA; data produced by the new &FPA; <application>Warp</application> model.
+ The location of the file will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data).
+ The <replaceable>metafile_alias</replaceable> (which can be any name) will be used in the &FPA; <application>Warp</application> model code to identify the output data.
+ Note that the <replaceable>element</replaceable> and <replaceable>level</replaceable> names in the 'field_info' declarations must be declared in the 'Elements' or 'Levels' blocks of a Configuration file!
+ The user will have to include declarations in the Local Configuration file for any <replaceable>element</replaceable> or <replaceable>level</replaceable> data which is required by a new &FPA; <application>Warp</application> model but is not already declared.
+ The user can refer to <xref linkend='appenda'/>, as well as the examples given in the <filename>Config.<replaceable>name</replaceable></filename> files in <filename class='directory'><envar>$FPA</envar>/config</filename>.
+<programlisting>
+      metafiles      =
+        {
+        <replaceable>metafile_alias</replaceable>
+          {
+          # output data identified by element and level
+          field_info = <replaceable>element  level</replaceable>
+          }
+        } # End of metafiles Block
+      } # End of allied_model Block
+    } # End of NewFpaWarp Block
+  } # End of Sources Block
+</programlisting>
+</para></sect1>
+
+<sect1><title>FPA Create Area (Creating Discrete Areas From Objects)</title><para>
+<indexterm><primary>allied model</primary><secondary>FPA Create Area</secondary></indexterm>
+The &FPA; <application>Create Area</application> model is an internal Allied Model designed to allow users to generate Discrete type fields from features in Line, Link Chain or Scattered type fields.
+The &FPA; <application>Create Area</application> model accomplishes this by using attributes from each source object to calculate the boundary of a discrete object.
+The user can access the &FPA; <application>Create Area</application> model without the need to develop special code, by simply adding lines in the Local Setup file and the Local Configuration file.
+<itemizedlist>
+<listitem><para>Edit the Local Setup file and add a line to the "[allied.model]" section of the 'interface' block as in: <programlisting>NewFPACreateArea</programlisting></para></listitem>
+<listitem><para>Edit the Local Configuration file and add another 'Sources' block, as in:</para></listitem>
+</itemizedlist>
+<programlisting>
+Sources
+  {
+  NewFpaCreateArea
+    {
+    label             = "<replaceable>New FPA Create Area</replaceable>"
+    short_label       = "<replaceable>New FpaArea</replaceable>"
+    source_type       = Allied
+    directory_tag     = AModels.Data
+    directory_path    = FpaCreateArea
+    directory_layers  = 1
+    subsources        = None
+    allied_model      =
+      {
+      time_matching   = True
+      source_info     = interp or depict
+      process         = fpacreate_area &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; \
+	                     &lt;RTIME&gt; &lt;VTIME&gt;  <replaceable>smoothing</replaceable> \
+                         <optional><replaceable>( start_time  end_time  lchain_type  node_type )</replaceable></optional>
+      programs        = None
+      files           = None
+</programlisting>
+ <note><para>The <replaceable>smoothing</replaceable> parameter is used by the &FPA; <application>Create Area</application> model to control the amount of detail in the discrete areas being created.</para></note>
+ The <replaceable>smoothing</replaceable> parameter is used to control the detail in the discrete areas being created, with a larger values creating smoother discrete areas.  The default <replaceable>smoothing</replaceable> value is 500, and the minimum allowed is 10.
+ </para><para>
+ The &FPA; <application>Create Area</application> model is run with data from the current depiction time, as given by the &lt;VTIME&gt; parameter.
+ </para><para>
+ The optional <replaceable>start_time</replaceable> and <replaceable>end_time</replaceable> parameters can be used with Link Chain type fields to set a subset of the track or nodes to use. 
+ The format for the times is given by hh or hh:mm where hh is hours and mm is minutes from the current depiction time, as given by the &lt;VTIME&gt; parameter.
+ </para><para>
+ The optional <replaceable>lchain_type</replaceable> parameter can be used with Link Chain type fields. A value of 'track' (the default) will create one area based on all the nodes of the link chain, while a value of 'nodes' will create one area for each node of the link chain. 
+ </para><para>
+ The optional <replaceable>node_type</replaceable> parameter can be used with Link Chain type fields. A value of 'normal' (the default) will create areas based on the normal link chain nodes, while a value of 'interp' will create areas based on the interpolated link chain nodes.
+ </para><para>
+ The 'required_fields' section below is used to identify the field and attributes used to create the discrete areas.
+ The location of these data files will default to the 'source_info' declaration given at the start of the 'allied_model' section unless it is reset here.
+ </para><para>
+ The <replaceable>required_field_alias</replaceable> (which can be any name) will be used in the &FPA; <application>Create Area</application> model code to identify all required data.
+ </para><para>
+ Note that the <replaceable>element</replaceable>, <replaceable>level</replaceable> and <replaceable>source</replaceable> names in the 'field_info' declarations, must be declared in the 'Elements' or 'Levels' or 'Sources' blocks of a Configuration file!
+ The user will have to include declarations in the Local Configuration file for any <replaceable>element</replaceable>, <replaceable>level</replaceable> or <replaceable>source</replaceable> data which is required by a new &FPA; <application>Create Area</application> model but is not already declared.
+ The user can refer to <xref linkend='appenda'/>, as well as the examples given in the <filename>Config.<replaceable>name</replaceable></filename> files in <filename class='directory'><envar>$FPA</envar>/config</filename>.
+ </para><para>
+ The <replaceable>field_type</replaceable> can be set to <userinput>Scattered</userinput> for field labels or left blank to use the field itself.
+<programlisting>
+	  required_fields = 
+        {
+        <replaceable>required_field_alias</replaceable>
+          {
+          field_info                = <replaceable>element  level</replaceable> [ <replaceable>field_type</replaceable> ]
+          sub_field_info            = <replaceable>sub_field</replaceable>
+          source_info               = <replaceable>source</replaceable>
+          attribute_info            = <replaceable>tag_label  attrib_name  attrib_units</replaceable>
+          <replaceable>...</replaceable>
+          node_attribute_info       = <replaceable>tag_label  attrib_name  attrib_units</replaceable>
+          <replaceable>...</replaceable>
+          }
+        } # End of required_fields Block
+      required_wind_crossrefs  = None
+      required_value_crossrefs = None
+</programlisting>
+ </para><para>
+ The 'attribute_info' and 'node_attribute_info' keywords are used to specify attribute information for the &FPA; <application>Create Area</application> model identified by specific <replaceable>tag_label</replaceable> names.
+ You may also specify a <replaceable>tag_label</replaceable> name which can be referred to in the 'metafiles' section in order to pass attributes from the source field down to the output field.
+ <note><para>Unrecognized <replaceable>tag_label</replaceable> names in 'required_fields' that do not match <replaceable>tag_label</replaceable> names in 'metafiles' generate warnings.</para></note>
+ Recognized <replaceable>tag_label</replaceable> names are listed below.
+<note><para> The following listing shows recognized <replaceable>tag_label</replaceable> names for Scattered type fields, with areas created around each point location in the field</para></note>
+<programlisting>
+          # If area is to be calculated based on distances from the
+          # point location in various directions (as noted below),
+          # then the <replaceable>tag_label</replaceable> names must be in cw or ccw order
+            attribute_info          = point_n   <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_nne <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_ne  <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_ene <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_e   <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_ese <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_se  <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_sse <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_s   <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_ssw <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_sw  <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_wsw <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_w   <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_wnw <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_nw  <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_nnw <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = point_nnw <replaceable>attrib_name attrib_units</replaceable>
+        
+          # If area is circular, the radius or diameter <replaceable>tag_label</replaceable> names can be used
+            attribute_info          = radius    <replaceable>attrib_name attrib_units</replaceable>
+          # or
+            attribute_info          = diameter  <replaceable>attrib_name attrib_units</replaceable>
+</programlisting>
+<note><para> The following listing shows recognized <replaceable>tag_label</replaceable> names for Line type fields, with areas created around each line in the field</para></note>
+<programlisting>
+          # <replaceable>tag_label</replaceable> names are distances 90 degrees left or right
+          # wrt AttribLineDirection at each point
+            attribute_info          = radius   <replaceable>attrib_name attrib_units</replaceable>
+          # or
+            attribute_info          = diameter <replaceable>attrib_name attrib_units</replaceable>
+          # or
+            attribute_info          = left     <replaceable>attrib_name attrib_units</replaceable>
+            attribute_info          = right    <replaceable>attrib_name attrib_units</replaceable>
+</programlisting>
+<note><para> The following listing shows recognized <replaceable>tag_label</replaceable> names for Link Chain type fields, with areas created around each link chain in the field, or around each node of each link chain in the field</para></note>
+<programlisting>
+          # <replaceable>tag_label</replaceable> names are distances wrt an orientation (if given)
+          # or 90 degrees left or right wrt AttribLnodeDirection
+            node_attribute_info     = orientation <replaceable>attrib_name attrib_units</replaceable>
+          # or
+            node_attribute_info     = radius      <replaceable>attrib_name attrib_units</replaceable>
+          # or
+            node_attribute_info     = diameter    <replaceable>attrib_name attrib_units</replaceable>
+          # or
+            node_attribute_info     = left        <replaceable>attrib_name attrib_units</replaceable>
+            node_attribute_info     = right       <replaceable>attrib_name attrib_units</replaceable>
+ </programlisting>
+
+ The 'metafiles' section below is used to identify the output &FPA; data produced by the new &FPA; <application>Create Area</application> model.
+ The location of the file will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data).
+ The <replaceable>metafile_alias</replaceable> (which can be any name) will be used in the &FPA; <application>Create Area</application> model code to identify the output data.
+ Note that the <replaceable>element</replaceable> and <replaceable>level</replaceable> names in the 'field_info' declarations must be declared in the 'Elements' or 'Levels' blocks of a Configuration file!
+ The user will have to include declarations in the Local Configuration file for any <replaceable>element</replaceable> or <replaceable>level</replaceable> data which is required by a new &FPA; <application>Create Area</application> model but is not already declared.
+ The user can refer to <xref linkend='appenda'/>, as well as the examples given in the <filename>Config.<replaceable>name</replaceable></filename> files in <filename class='directory'><envar>$FPA</envar>/config</filename>.
+<programlisting>
+      metafiles      =
+        {
+        <replaceable>metafile_alias</replaceable>
+          {
+          # output field identified by element and level
+          field_info          = <replaceable>element  level</replaceable>
+          # list of attributes for output field
+          attribute_info      = <replaceable>tag_label  attrib_name  attrib_units</replaceable>
+          <replaceable>...</replaceable>
+          # list of default attributes for output field.
+          default_attrib_info = <replaceable>attrib_name  attrib_value</replaceable>
+          <replaceable>...</replaceable>
+          }
+        } # End of metafiles Block
+      } # End of allied_model Block
+    } # End of NewFPACreateArea Block
+  } # End of Sources Block
+</programlisting>
+ Each 'attribute_info' line specifies an attribute to include in each new discrete area.
+ The <replaceable>tag_label</replaceable> names listed here must also be listed in the 'required_fields' section.
+ </para><para>
+ Each 'default_attrib_info' line specifies an <replaceable>attrib_name</replaceable> and a default <replaceable>attrib_value</replaceable> to include in each new discrete area.
+</para></sect1>
+
+<sect1><title>FPA Create Contour (Creating Discrete Areas From Contours)</title><para>
+<indexterm><primary>allied model</primary><secondary>FPA Create Contour</secondary></indexterm>
+The &FPA; <application>Create Contour</application> model is an internal Allied Model designed to allow users to generate Discrete type fields from the contours of Continuous type fields.
+The &FPA; <application>Create Contour</application> model accomplishes this by using minimum and maximum contour values to create the boundary of a discrete object.
+The user can access the &FPA; <application>Create Contour</application> model without the need to develop special code, by simply adding lines in the Local Setup file and the Local Configuration file.
+<itemizedlist>
+<listitem><para>Edit the Local Setup file and add a line to the "[allied.model]" section of the 'interface' block as in: <programlisting>NewFPACreateContour</programlisting></para></listitem>
+<listitem><para>Edit the Local Configuration file and add another 'Sources' block, as in:</para></listitem>
+</itemizedlist>
+<programlisting>
+Sources
+  {
+  NewFpaCreateContour
+    {
+    label             = "<replaceable>New FPA Create Contour</replaceable>"
+    short_label       = "<replaceable>New FpaCont</replaceable>"
+    source_type       = Allied
+    directory_tag     = AModels.Data
+    directory_path    = FpaCreateCont
+    directory_layers  = 1
+    subsources        = None
+    allied_model      =
+      {
+      time_matching   = True
+      source_info     = interp or depict
+      process         = fpacreate_cont &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; &lt;RTIME&gt; 
+      process         = fpacreate_cont &lt;SETUP&gt; &lt;SOURCE&gt; &lt;SUBSOURCE&gt; \
+	                     &lt;RTIME&gt; <replaceable>smoothing  min_points</replaceable> \
+                         <replaceable>min_value  max_value  units</replaceable> <optional><replaceable>( valid_times )</replaceable></optional>
+      programs        = None
+      files           = None
+</programlisting>
+ <note><para>The <replaceable>smoothing</replaceable> and <replaceable>min_points</replaceable> parameters are used by the &FPA; <application>Create Contour</application> model to control the amount of detail in the discrete areas being created.</para></note>
+ The <replaceable>smoothing</replaceable> parameter is used to control the detail in the discrete areas being created, with a larger values creating smoother discrete areas.  The default <replaceable>smoothing</replaceable> value is 500, and the minimum allowed is 10.
+ </para><para>
+ The <replaceable>min_points</replaceable> parameter sets the minimum number of points allowed, to prevent very small discrete areas (and holes) being created.  The default <replaceable>min_points</replaceable> value is 10.
+ </para><para>
+ The <replaceable>min_value</replaceable>, <replaceable>max_value</replaceable>, and <replaceable>units</replaceable> parameters set the range of contour values for creating the discrete areas.
+ A value of '-' for the <replaceable>min_value</replaceable> parameter will create discrete areas within regions below the <replaceable>max_value</replaceable>.
+ A value of '-' for the <replaceable>max_value</replaceable> parameter will create discrete areas within regions above the <replaceable>min_value</replaceable>.
+ </para><para>
+ The times for which the &FPA; <application>Create Contour</application> model is run are normally the times available in the directory identified by the 'source_info' declaration.  However, the <replaceable>valid_times</replaceable> parameter gives optional control for specifying one or more times to be used for extracting discrete areas.
+ The format for the times is given by one of the following:
+ <itemizedlist>
+<listitem><para>xx - for hours from the 'zero' hour in the Depiction sequence, that is, the time at which the application is run (RTIME)</para></listitem>
+<listitem><para>rr/hh - for the day (rr where 0 is today, 1 is tomorrow) and GMT hour of the day (hh)</para></listitem>
+<listitem><para>rr/hhL - for the day (rr where 0 is today, 1 is tomorrow) and local hour of the day (hh)</para></listitem>
+</itemizedlist>
+ The 'required_fields' section below is used to identify the continuous field containing the contours to be extracted.
+ The location of these data files will default to the 'source_info' declaration given at the start of the 'allied_model' section unless it is reset here.
+ </para><para>
+ The <replaceable>required_field_alias</replaceable> (which can be any name) will be used in the &FPA; <application>Create Contour</application> model code to identify all required data.
+ </para><para>
+Note that the <replaceable>element</replaceable>, <replaceable>level</replaceable> and <replaceable>source</replaceable> names in the 'field_info' declarations, must be declared in the 'Elements' or 'Levels' or 'Sources' blocks of a Configuration file!
+The user will have to include declarations in the Local Configuration file for any <replaceable>element</replaceable>, <replaceable>level</replaceable> or <replaceable>source</replaceable> data which is required by a new &FPA; <application>Create Contour</application> model but is not already declared.
+The user can refer to <xref linkend='appenda'/>, as well as the examples given in the <filename>Config.<replaceable>name</replaceable></filename> files in <filename class='directory'><envar>$FPA</envar>/config</filename>.
+ </para><para>
+The <replaceable>field_type</replaceable> can be set to <userinput>Scattered</userinput> for field labels or left blank to use the field itself.
+<programlisting>
+	  required_fields = 
+        {
+        <replaceable>required_field_alias</replaceable>
+          {
+          field_info               = <replaceable>element  level</replaceable> [ <replaceable>field_type</replaceable> ]
+          sub_field_info           = <replaceable>sub_field</replaceable>
+          source_info              = <replaceable>source</replaceable>
+          }
+        } # End of required_fields Block
+      required_wind_crossrefs  = None
+      required_value_crossrefs = None
+</programlisting>
+
+The 'metafiles' section below is used to identify the output &FPA; data produced by the new &FPA; <application>Create Contour</application> model.
+The location of the file will default to the 'directory_tag' given at the start of the 'Sources' declaration (that is, AModels.Data).
+The <replaceable>metafile_alias</replaceable> (which can be any name) will be used in the &FPA; <application>Create Contour</application> model code to identify the output data.
+Note that the <replaceable>element</replaceable> and <replaceable>level</replaceable> names in the 'field_info' declarations must be declared in the 'Elements' or 'Levels' blocks of a Configuration file!
+The user will have to include declarations in the Local Configuration file for any <replaceable>element</replaceable> or <replaceable>level</replaceable> data which is required by a new &FPA; <application>Create Contour</application> model but is not already declared.
+The user can refer to <xref linkend='appenda'/>, as well as the examples given in the <filename>Config.<replaceable>name</replaceable></filename> files in <filename class='directory'><envar>$FPA</envar>/config</filename>.
+<programlisting>
+      metafiles      =
+        {
+        <replaceable>metafile_alias</replaceable>
+          {
+          # output field identified by element and level
+          field_info          = <replaceable>element  level</replaceable>
+          # list of default attributes for output field
+          default_attrib_info = <replaceable>tag attrib_name attrib_units</replaceable>
+          <replaceable>...</replaceable>
+          }
+        } # End of metafiles Block
+      } # End of allied_model Block
+    } # End of NewFPACreateArea Block
+  } # End of Sources Block
+</programlisting>
+ Each 'default_attrib_info' line specifies an <replaceable>attrib_name</replaceable> and a default <replaceable>attrib_value</replaceable> to include in each new discrete area.
+</para></sect1>
+</appendix>

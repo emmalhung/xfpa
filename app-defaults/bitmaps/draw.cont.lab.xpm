@@ -1,0 +1,28 @@
+/* XPM */
+static char * draw [] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"50 20 2 1 0 0",
+/* colors */
+" 	s iconColor4	m white	c green",
+".	s iconColor1	m black	c black",
+/* pixels */
+"                                                  ",
+"                                                  ",
+"               ....                          .    ",
+"             ...  ..                         .    ",
+"            ..     ..                       ..    ",
+"           ..       ...                     .     ",
+"          .           ..                   ..     ",
+"         ..            .                   .      ",
+"        ..             ..                 ..      ",
+"        .               .                ..       ",
+"       ..               ..               .        ",
+"       .                 .              ..        ",
+"      ..                 ..            ..         ",
+"      .                   .           ..          ",
+"     .                    ..         ..           ",
+"     .                     ...      ..            ",
+"    ..                       ... ....             ",
+"    .                          ...                ",
+"                                                  ",
+"                                                  "};

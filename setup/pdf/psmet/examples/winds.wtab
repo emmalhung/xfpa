@@ -1,0 +1,74 @@
+calm  value
+ 0  5  0  0  0
+ end
+
+calm  text
+ 0  5  "CALM"
+ end
+
+calm  symbol
+ 0  5  calm
+ end
+
+direction  value
+ 0  999  10  0  3
+ end
+
+direction  text
+  22.5   67.5  "NE"
+  67.5  112.5  "E"
+ 112.5  157.5  "SE"
+ 157.5  202.5  "S"
+ 202.5  247.5  "SW"
+ 247.5  295.5  "W"
+ 295.5  337.5  "NW"
+ 337.5   22.5  "N"
+ end
+
+direction  symbol  uniform
+  22.5   67.5  arrow_from  -1
+  67.5  112.5  arrow_from  -1
+ 112.5  157.5  arrow_from  -1
+ 157.5  202.5  arrow_from  -1
+ 202.5  247.5  arrow_from  -1
+ 247.5  295.5  arrow_from  -1
+ 295.5  337.5  arrow_from  -1
+ 337.5   22.5  arrow_from  -1
+ end
+
+direction symbol proportional
+  4   50  wnd_arrow   20  200
+ 50  100  wnd_arrow  200  500
+ end
+
+speed  value
+ 5  999  5  0  0
+ end
+
+speed  text
+  5   15  "LIGHT"
+ 15   30  "STRONG"
+ 30  999  "VERY STRONG"
+ end
+
+speed symbol
+  5   15  wnd_lgt
+ 15   30  wnd_str
+ 30  999  wnd_vst
+ end
+
+gust  value
+ 5  999  5  0  0
+ end
+
+gust  text
+  5   15  "LIGHT GUSTS"
+ 15   30  "STRONG GUSTS"
+ 30  999  "VERY STRONG GUSTS"
+ end
+
+gust symbol
+  5   15  wnd_lgt
+ 15   30  wnd_str
+ 30  999  wnd_vst
+ end

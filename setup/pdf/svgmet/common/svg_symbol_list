@@ -1,0 +1,230 @@
+
+Various Display Symbols ...
+
+-------------------------|-------------------------------|------------|--------|
+                         |                               | Modify     | Modify |
+SVG Symbol File          |  Description                  | outline &  |  fill  |
+                         |                               | line_width |        |
+-------------------------|-------------------------------|------------|--------|
+arrow_to.svg  ...........| Arrow to direction            |     no     |  yes   |
+arrow_to_justified.svg  .| Arrow to (start at location)  |     no     |  yes   |
+arrow_from.svg  .........| Arrow from direction          |     no     |  yes   |
+arrow_from_justified.svg | Arrow from (start at location)|     no     |  yes   |
+bkn.svg  ................| Broken cloud                  |    yes     |   no   |
+block_high_circle.svg  ..| Circled block High label      |     no     |  yes   |
+block_low_circle.svg  ...| Circled block Low label       |     no     |  yes   |
+calm.svg  ...............| Calm mark                     |    yes     |   no   |
+canada_flag.svg  ........| Canadian flag (colour)        |     no     |   no   |
+canada_flag_outline.svg  | Canadian flag (outline)       |     no     |  yes   |
+canada_logo.svg  ........| Canadian half-flag (colour)   |     no     |   no   |
+canada_logo_outline.svg  | Canadian half-flag (outline)  |     no     |  yes   |
+circle.svg  .............| Circle                        |    yes     |   no   |
+circle_mark.svg  ........| Circle mark (area)            |     no     |  yes   |
+circle_filled.svg  ......| Filled circle                 |     no     |  yes   |
+clr.svg  ................| No cloud                      |    yes     |   no   |
+cross.svg  ..............| Cross                         |    yes     |   no   |
+cross_mark.svg  .........| Cross mark (area)             |     no     |  yes   |
+dash.svg  ...............| Dash                          |    yes     |   no   |
+dash_mark.svg  ..........| Dash mark (area)              |     no     |  yes   |
+geostr_wind_scale.svg  ..| Geostrophic wind scale        |     no     |   no   |
+hi_lo.svg  ..............| Hi-Lo mark (area)             |     no     |  yes   |
+high.svg  ...............| High label                    |     no     |  yes   |
+high_circle.svg  ........| Circled High label            |     no     |  yes   |
+hilo.svg  ...............| Hi-Lo mark                    |    yes     |   no   |
+hurricane.svg  ..........| Hurricane mark                |    yes     |  yes   |
+hurricane_shem.svg  .....| Hurricane mark (Srn Hem)      |    yes     |  yes   |
+lgticg.svg  .............| Light icing                   |    yes     |   no   |
+lgtturbc.svg  ...........| Light turbulence              |    yes     |   no   |
+low.svg  ................| Low label                     |     no     |  yes   |
+low_circle.svg  .........| Circled Low label             |     no     |  yes   |
+mdticg.svg  .............| Moderate icing                |    yes     |   no   |
+mdtturbc.svg  ...........| Moderate turbulence           |    yes     |   no   |
+none.svg  ...............| Blank mark (for wireframe)    |     no     |   no   |
+ovc.svg  ................| Overcast cloud                |    yes     |   no   |
+plus.svg  ...............| Plus                          |    yes     |   no   |
+plus_mark.svg  ..........| Plus mark (area)              |     no     |  yes   |
+post_tropical.svg  ......| Post tropical cyclone mark    |    yes     |   no   |
+post_tropical_shem.svg  .| Post tropical mark (Srn Hem)  |    yes     |   no   |
+sct.svg  ................| Scattered cloud               |    yes     |   no   |
+square.svg  .............| Square                        |    yes     |   no   |
+square_mark.svg  ........| Square mark (area)            |     no     |  yes   |
+square_filled.svg  ......| Filled square                 |     no     |  yes   |
+star.svg  ...............| Star                          |    yes     |   no   |
+svricg.svg  .............| Severe icing                  |    yes     |   no   |
+svrturbc.svg  ...........| Severe turbulence             |    yes     |   no   |
+triangle.svg  ...........| Triangle                      |    yes     |   no   |
+triangle_mark.svg  ......| Triangle mark (area)          |     no     |  yes   |
+triangle_down.svg  ......| Solid triangle (peak down)    |     no     |  yes   |
+triangle_left.svg  ......| Solid triangle (peak left)    |     no     |  yes   |
+triangle_right.svg  .....| Solid triangle (peak right)   |     no     |  yes   |
+triangle_up.svg  ........| Solid triangle (peak up)      |     no     |  yes   |
+tropical_storm.svg  .....| Tropical storm mark           |    yes     |   no   |
+tropical_storm_shem.svg  | Tropical storm mark (Srn Hem) |    yes     |   no   |
+wnd_arrow.svg  ..........| Wind arrow mark               |     no     |  yes   |
+-------------------------|-------------------------------|------------|--------|
+
+
+
+
+
+Weather Icons (full colour) ...
+
+--------------------------------------|-------------------------------|--------|
+                                      |                               |   No   |
+SVG Symbol File                       |  Description                  | Modify |
+                                      |                               |        |
+--------------------------------------|-------------------------------|--------|
+blizz.svg  ...........................| Blizzard icon                 |   -    |
+blosno.svg  ..........................| Blowing snow icon             |   -    |
+cldy.svg  ............................| Cloudy icon                   |   -    |
+cldy_p_d.svg  ........................| Partly cloudy icon (day)      |   -    |
+cldy_p_n.svg  ........................| Partly cloudy icon (night)    |   -    |
+clear.svg  ...........................| Clear icon (night)            |   -    |
+clrng_d.svg  .........................| Clearing icon (day)           |   -    |
+clrng_n.svg  .........................| Clearing icon (night)         |   -    |
+flurr_d.svg  .........................| Snow flurry icon (day)        |   -    |
+flurr_n.svg  .........................| Snow flurry icon (night)      |   -    |
+fog.svg  .............................| Fog icon                      |   -    |
+incld_d.svg  .........................| Increasing cloud icon (day)   |   -    |
+incld_n.svg  .........................| Increasing cloud icon (night  |   -    |
+r_frz.svg  ...........................| Freezing rain icon            |   -    |
+r_show_d.svg  ........................| Rain shower icon (day)        |   -    |
+r_show_n.svg  ........................| Rain shower icon (night)      |   -    |
+rain.svg  ............................| Rain icon                     |   -    |
+rs_mix.svg  ..........................| Mixed rain/snow icon          |   -    |
+snow.svg  ............................| Snow icon                     |   -    |
+sunny.svg  ...........................| Sunny icon (day)              |   -    |
+sunny_bw~.svg  .......................| Sunny icon (black and white)  |   -    |
+thunder.svg  .........................| Thunderstorm icon             |   -    |
+vs_wind.svg  .........................| Very windy icon               |   -    |
+w_chill.svg  .........................| Wind chill icon               |   -    |
+windy.svg  ...........................| Windy icon                    |   -    |
+--------------------------------------|-------------------------------|--------|
+
+
+
+
+
+Synoptic Symbols (based on Canadian standard symbol set) ...
+
+--------------------------------------|-------------------------------|--------|
+                                      |                               | Modify |
+SVG Symbol File                       |  Description                  |  fill  |
+                                      |                               |        |
+--------------------------------------|-------------------------------|--------|
+syno_blowing_dust_spray.svg  .........| Blowing dust or spray         |  yes   |
+syno_blowing_snow.svg  ...............| Blowing snow                  |  yes   |
+syno_decreasing.svg  .................| Decreasing intensity          |  yes   |
+syno_derecho.svg  ....................| Derecho                       |  yes   |
+syno_dust.svg  .......................| Dust                          |  yes   |
+syno_dust_storm.svg  .................| Dust storm                    |  yes   |
+syno_dust_storm_nearby.svg  ..........| Dust storm nearby             |  yes   |
+syno_dust_whirl.svg  .................| Dust or sand whirl            |  yes   |
+syno_drifting_snow.svg  ..............| Drifting snow                 |  yes   |
+syno_drizzle.svg  ....................| Drizzle                       |  yes   |
+syno_drizzle_nobs.svg  ...............| Drizzle (not at obs time)     |  yes   |
+syno_fog.svg  ........................| Fog                           |  yes   |
+syno_fog_nearby.svg  .................| Fog nearby                    |  yes   |
+syno_fog_nobs.svg  ...................| Fog (not at obs time)         |  yes   |
+syno_fog_patches.svg  ................| Fog patches                   |  yes   |
+syno_freezing_precip.svg  ............| Freezing precipitation        |  yes   |
+syno_freezing_precip_nobs.svg  .......| Frzg precip (not at obs time) |  yes   |
+syno_hail_shower_nobs.svg  ...........| Hail shower (not at obs time) |  yes   |
+syno_hail_storm.svg  .................| Thunderstorm with hail        |  yes   |
+syno_hail_storm_nobs.svg  ............| TS w/hail (not at obs time)   |  yes   |
+syno_haze.svg  .......................| Haze                          |  yes   |
+syno_heavy_blowing_snow.svg  .........| Heavy blowing snow            |  yes   |
+syno_heavy_drifting_snow.svg  ........| Heavy drifting snow           |  yes   |
+syno_heavy_drizzle.svg  ..............| Heavy drizzle                 |  yes   |
+syno_heavy_hail_storm.svg  ...........| Thunderstorm with heavy hail  |  yes   |
+syno_heavy_hail_storm_nobs.svg  ......| TS w/heavy hail (not at obs)  |  yes   |
+syno_heavy_inter_drizzle.svg  ........| Heavy intermittent drizzle    |  yes   |
+syno_heavy_inter_rain.svg  ...........| Heavy intermittent rain       |  yes   |
+syno_heavy_inter_snow.svg  ...........| Heavy intermittent snow       |  yes   |
+syno_heavy_rain.svg  .................| Heavy rain                    |  yes   |
+syno_heavy_rain_storm.svg  ...........| Thunderstorm w/heavy rain/snow|  yes   |
+syno_heavy_rain_storm_nobs.svg  ......| TS w/heavy rain (not at obs)  |  yes   |
+syno_heavy_snow.svg  .................| Heavy snow                    |  yes   |
+syno_heavy_thunder_storm.svg  ........| Heavy thunderstorm            |  yes   |
+syno_ice_crystals.svg  ...............| Ice crystals                  |  yes   |
+syno_ice_pellets.svg  ................| Ice pellets                   |  yes   |
+syno_increasing.svg  .................| Increasing intensity          |  yes   |
+syno_light_drizzle.svg  ..............| Light drizzle                 |  yes   |
+syno_light_freezing_drizzle.svg  .....| Light freezing drizzle        |  yes   |
+syno_light_freezing_rain.svg  ........| Light freezing rain           |  yes   |
+syno_light_hail_shower.svg  ..........| Light hail shower             |  yes   |
+syno_light_ice_pellet_shower.svg  ....| Light ice pellet shower       |  yes   |
+syno_light_rain.svg  .................| Light rain                    |  yes   |
+syno_light_rain_drizzle.svg  .........| Light rain and drizzle        |  yes   |
+syno_light_rain_shower.svg  ..........| Light rain shower             |  yes   |
+syno_light_rain_snow.svg  ............| Light rain and snow           |  yes   |
+syno_light_rain_snow_shower.svg  .....| Light rain and snow shower    |  yes   |
+syno_light_snow.svg  .................| Light snow                    |  yes   |
+syno_light_snow_shower.svg  ..........| Light snow shower             |  yes   |
+syno_lightning.svg  ..................| Lightning                     |  yes   |
+syno_mist.svg  .......................| Mist                          |  yes   |
+syno_moderate_drizzle.svg  ...........| Moderate drizzle              |  yes   |
+syno_moderate_freezing_drizzle.svg  ..| Moderate freezing drizzle     |  yes   |
+syno_moderate_freezing_rain.svg  .....| Moderate freezing rain        |  yes   |
+syno_moderate_hail_shower.svg  .......| Moderate hail shower          |  yes   |
+syno_moderate_ice_pellet_shower.svg  .| Moderate ice pellet shower    |  yes   |
+syno_moderate_inter_drizzle.svg  .....| Moderate intermittent drizzle |  yes   |
+syno_moderate_inter_rain.svg  ........| Moderate intermittent rain    |  yes   |
+syno_moderate_inter_snow.svg  ........| Moderate intermittent snow    |  yes   |
+syno_moderate_rain.svg  ..............| Moderate rain                 |  yes   |
+syno_moderate_rain_drizzle.svg  ......| Moderate rain and drizzle     |  yes   |
+syno_moderate_rain_shower.svg  .......| Moderate rain shower          |  yes   |
+syno_moderate_rain_snow.svg  .........| Moderate rain and snow        |  yes   |
+syno_moderate_rain_snow_shower.svg  ..| Moderate rain and snow shower |  yes   |
+syno_moderate_snow.svg  ..............| Moderate snow                 |  yes   |
+syno_moderate_snow_shower.svg  .......| Moderate snow shower          |  yes   |
+syno_not_at_obs_time.svg  ............| Not at observation time       |  yes   |
+syno_precip_distant.svg  .............| Distant precipitation         |  yes   |
+syno_precip_nearby.svg  ..............| Precipitation nearby          |  yes   |
+syno_rain.svg  .......................| Rain                          |  yes   |
+syno_rain_nobs.svg  ..................| Rain (not at obs time)        |  yes   |
+syno_rain_shower_nobs.svg  ...........| Rain shower (not at obs time) |  yes   |
+syno_rain_snow_nobs.svg  .............| Rain+snow (not at obs time)   |  yes   |
+syno_rain_storm.svg  .................| Thunderstorm with rain/snow   |  yes   |
+syno_rain_storm_nobs.svg .............| TS w/rain (not at obs time)   |  yes   |
+syno_rime_fog.svg  ...................| Rime fog                      |  yes   |
+syno_severe_dust_storm.svg  ..........| Severe dust storm             |  yes   |
+syno_shallow_fog.svg  ................| Shallow fog                   |  yes   |
+syno_shallow_fog_patches.svg  ........| Shallow fog patches           |  yes   |
+syno_shower.svg  .....................| Shower                        |  yes   |
+syno_slash.svg  ......................| Slash mark (divider)          |  yes   |
+syno_smoke.svg  ......................| Smoke                         |  yes   |
+syno_snow.svg  .......................| Snow                          |  yes   |
+syno_snow_crystals.svg  ..............| Snow crystals                 |  yes   |
+syno_snow_grains.svg  ................| Snow grains                   |  yes   |
+syno_snow_nobs.svg  ..................| Snow (not at obs time)        |  yes   |
+syno_snow_shower_nobs.svg  ...........| Snow shower (not at obs time) |  yes   |
+syno_squall.svg  .....................| Squall                        |  yes   |
+syno_thin_fog.svg  ...................| Thin fog                      |  yes   |
+syno_thin_rime_fog.svg  ..............| Thin rime fog                 |  yes   |
+syno_thunder_dust_storm.svg  .........| Thunderstorm with dust        |  yes   |
+syno_thunder_storm.svg  ..............| Thunderstorm                  |  yes   |
+syno_thunder_storm_nobs.svg  .........| Thunderstorm (not at obs time)|  yes   |
+syno_tornado.svg  ....................| Tornado                       |  yes   |
+syno_violent_rain_shower.svg  ........| Violent rain shower           |  yes   |
+syno_virga.svg  ......................| Virga                         |  yes   |
+--------------------------------------|-------------------------------|--------|
+
+
+
+
+
+Provincial Forestry symbols ...
+
+--------------------------------------|-------------------------------|--------|
+                                      |                               | Modify |
+SVG Symbol File                       |  Description                  |  fill  |
+                                      |                               |        |
+--------------------------------------|-------------------------------|--------|
+fire_160.svg  ........................| Fire symbol (/160)            |  yes   |
+fire_161.svg  ........................| Fire symbol (/161)            |  yes   |
+fire_162.svg  ........................| Fire symbol (/162)            |  yes   |
+fire_163.svg  ........................| Fire symbol (/163)            |  yes   |
+fire_164.svg  ........................| Fire symbol (/164)            |  yes   |
+fire_165.svg  ........................| Fire symbol (/165)            |  yes   |
+--------------------------------------|-------------------------------|--------|

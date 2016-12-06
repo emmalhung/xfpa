@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_add'> <title>@add</title> <titleabbrev>@add</titleabbrev> 
+<para>
+Display a graphic symbol (or file) on the current map or in a table or at a given
+location.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/symbol.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/scale.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotation.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotate_to_latitude.xml'/>
+<row valign='top'><entry spanname='tbltitle'><para>or</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/rotate_to_longitude.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/x_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/y_off.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lat.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/lon.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_x.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_y.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/map_units.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_ident.xml'/>
+<row><entry spanname='tbltitle'>&extraline;<para>For table display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/table_name_obj.xml'/>
+
+<row><entry spanname='tbltitle'>&extraline;<para>For grid display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/grid_name.xml'/>
+
+<row><entry spanname='tbltitle'>&extraline;<para>For list display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/list_name.xml'/>
+
+<row><entry spanname='tbltitle'>&extraline;<para>For map, table or list display ...</para></entry></row>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/location_look_up.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/valid_time.xml'/>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_style.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>@add 
+{ 
+  symbol = lgticg;
+  scale  = 12;
+  x_off  = 0.25;
+  y_off  = 1.75;
+}</programlisting>
+Display the graphic from file "lgticg" at a location offset 0.25 "units" to the right and 1.75 "units"
+above the current "anchor position". The graphic will be 12% of its original size.
+</para><para>
+(Note that the default PSMet file would be <filename><envar>$FPA</envar>/setup/pdf/psmet/common/ps/lgticg.ps</filename>, and that the
+default SVGMet file would be <filename><envar>$FPA</envar>/setup/pdf/svgmet/common/svg/lgticg.svg</filename>.)
+</para><para>
+(Note that "units" is set by <link linkend='ps_display_units'>@display_units</link>, and "anchor position" is set by <link linkend='ps_anchor'>@anchor</link>.)
+</para></example>
+<example><title></title><para>
+<programlisting>@add 
+{
+  symbol = circle_mark;
+  scale  = 50;
+  lat    = 45:52N;
+  lon    = 66:32W;
+}</programlisting>
+Display the graphic from file "circle_mark" at a latitude of 45 degrees and 52 minutes North, and a
+longitude of 66 degrees and 32 minutes West on the current map.
+The graphic will be 50% of its original size, and not offset.
+</para><para>
+(Note that the default PSMet symbol would be <filename><envar>$FPA</envar>/setup/pdf/psmet/common/ps/circle_mark.ps</filename>,
+and the default SVGMet symbol would be <filename><envar>$FPA</envar>/setup/pdf/svgmet/common/svg/circle_mark.svg</filename>.)
+</para></example>
+</para>
+</sect2>

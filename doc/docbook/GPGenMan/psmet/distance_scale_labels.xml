@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE sect2 PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % gpgent SYSTEM '../gpgen.ent'>
+%gpgent;
+]>
+<sect2 id='ps_distance_scale_labels'> <title>@distance_scale_labels</title> <titleabbrev>@distance_scale_labels</titleabbrev>
+<para>
+Display labels on a named distance scale.
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&keyhead;
+<tbody>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/scale_name.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>label_units</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>&FPA; units (default is <userinput>scale_units</userinput> from <link linkend='ps_draw_distance_scale'>@draw_distance_scale</link>)</para></entry></row>
+
+<row valign='top'><entry spanname='tblnote'><para>Note that <userinput>label_location</userinput> and <userinput>label_string</userinput> may be specified more than once in this directive.</para></entry></row>
+<row valign='top'>
+<entry colname='key'><para><userinput>label_location</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>set the location of labels on distance scale in <userinput>label_units</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>label_string</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Text for label</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>label_justification</userinput></para></entry>
+<entry colname='type'><para>string</para></entry>
+<entry colname='desc'><para>Label justification
+</para><para>One of:<userinput>left</userinput> <userinput>centre</userinput> <userinput>right</userinput></para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>label_rotation</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Angle of rotation of label (in counter-clockwise decimal degrees)</para></entry></row>
+
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/text_size.xml'/>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>x_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Horizontal offset of label with respect to the distance scale (in label_units)</para></entry></row>
+
+<row valign='top'>
+<entry colname='key'><para><userinput>y_off</userinput></para></entry>
+<entry colname='type'><para>real</para></entry>
+<entry colname='desc'><para>Vertical offset of label with respect to the distance scale (in label_units)</para></entry></row>
+</tbody></tgroup></informaltable>
+
+<informaltable  frame='none' rowsep='0' colsep='0'>
+<tgroup cols='4'>
+&dircols;
+&pkeyhead;
+<tbody>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/line_width.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/fill.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/outline_first.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/font_weight.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/italics.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/char_space.xml'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='keyword/word_spacing.xml'/>
+
+</tbody></tgroup></informaltable>
+
+<example><title> </title><para>
+<programlisting>
+@distance_scale_labels
+{
+  scale_name          = distance_scale1;
+  label_location      = 250;
+  label_string        = 250km;
+  label_units         = km;
+  label_justification = centre;
+  text_size           =  0.15;
+  outline             = none;
+  fill                = X11 Black;
+  x_off               =  0.00;
+  y_off               = -0.20;
+}
+</programlisting>
+Display the label "250km" in black. It will be centred 250 units along the scale and offset 0.20 units below it.
+</para></example>
+</para></sect2>

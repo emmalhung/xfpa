@@ -1,0 +1,1381 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE chapter PUBLIC '-//OASIS/DTD DocBook XML V4.4//EN' 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' [
+<!ENTITY % user SYSTEM 'user.ent'>
+%user;
+]>
+<chapter id='editing_areas_and_wind_areas'> <title>Editing areas and wind areas</title>
+<para>
+<indexterm><primary>editor</primary><secondary>area</secondary></indexterm>
+The area editor allows you to draw and manipulate discrete areas on your depiction.
+These areas may overlap.
+<itemizedlist><title>This includes fields such as:</title>
+<listitem><para> system weather </para></listitem>
+<listitem><para> probability of precipitation </para></listitem>
+<listitem><para> ice cover </para></listitem>
+<listitem><para> wind (adjustment area)
+</para><para>
+Note: Wind areas are a special case.
+You can define how to calculate a wind rather than setting the wind itself.
+</para></listitem>
+</itemizedlist>
+The area editor controls appear when you choose to edit a discrete field.
+(see <xref linkend='area_edit_tools'/>)
+<figure id='area_edit_tools' pgwide='0' float='1'><title>Area edit tools</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_area.png'/></imageobject></mediaobject>
+</figure>
+</para>
+
+<sect1 id='defining_area_values'> <title>Defining area values</title>
+<para>
+<indexterm><primary>attribute</primary></indexterm>
+Each area in a discrete field contains values for a list of attributes.
+(The attributes have been determined by the System Administrator.) 
+You can set the values for attributes to use when drawing a new area, or when modifying or dividing an existing area.
+These values can also be saved as a template to use later, if desired.
+The currently active values for attributes are stored in the <guilabel>Area</guilabel> section.
+The discrete field also contains values for attributes that are used as default or background values, for regions where no areas have been drawn.
+These background values are stored in the <guilabel>Background</guilabel> section, and may also be changed.
+</para>
+
+<sect2 id='selecting_and_modifying_a_template'> <title>Selecting and modifying a template</title>
+<para>
+<indexterm><primary>attribute</primary><secondary>create template</secondary></indexterm>
+You can select a previously defined template of <glossterm linkend='g_attributes'>attribute</glossterm>
+<indexterm><primary>attribute</primary></indexterm>
+values from the <guilabel>Memory</guilabel> section, and modify the values as desired.
+</para>
+<para>
+<orderedlist><title>To select and modify a template:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Draw</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/draw.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Memory</guilabel> section, choose a template.
+</para><para>
+The values for this template move to the <guilabel>Area</guilabel> section.
+</para></listitem>
+
+<listitem><para>
+In the <guilabel>Area</guilabel> section, click <guibutton>Set</guibutton>.
+</para><para>
+The <guilabel>Area Attribute</guilabel> dialog box appears.
+(see <xref linkend='area_entry'/>)
+<figure id='area_entry' pgwide='0' float='1'><title>Area attribute entry menus</title>
+<mediaobject><imageobject><imagedata fileref='png/area_attributes_entry.png'/></imageobject></mediaobject>
+</figure>
+You can change the attribute values as desired.
+Some entries allow for free format typing, some entries have pop-up or scrolled lists of acceptable values, and some numeric entries have spin boxes.
+Attributes which cannot be modified have a greyed out background.
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Click...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><guibutton>Show Original Values</guibutton></entry>
+	<entry> Temporarily display the attribute values before changes were made.</entry></row>
+	<row valign='top'><entry><guibutton>Reset Menu</guibutton></entry>
+	<entry> Revert back to the original attribute values, before changes were made.</entry></row>
+	<row valign='top'><entry><guibutton>Add to Memory</guibutton></entry>
+	<entry> Save the attribute values as a new template in the <guilabel>Memory</guilabel> section.</entry></row>
+	<row valign='top'><entry><guibutton>Close</guibutton></entry>
+	<entry> Close the <guilabel>Area Attribute</guilabel> dialog box, without saving any changes.</entry></row>
+	</tbody></tgroup>
+</informaltable>
+</para></listitem>
+</orderedlist>
+</para><para>
+</para>
+</sect2>
+
+<sect2 id='deleting_a_template'> <title>Deleting a template</title>
+<para>
+<indexterm><primary>attribute</primary><secondary>delete template</secondary></indexterm>
+Templates created by the System Administrator cannot be deleted from within the &FPA;.
+If user templates have been added, <guibutton>Delete</guibutton> under the <guilabel>Area</guilabel> section will be active.
+</para>
+<para>
+<orderedlist><title>To delete a template:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis>, <emphasis>Modify</emphasis> or <emphasis>Divide</emphasis> tool.
+</para></listitem>
+
+<listitem><para>
+Under the <guilabel>Area</guilabel> section, click <guibutton>Delete</guibutton>.
+</para><para>
+A <guilabel>Delete Memory</guilabel> dialog box appears.
+</para></listitem>
+
+<listitem><para>
+Choose the templates to delete.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Delete</guibutton>, or click <guibutton>Cancel</guibutton> to close the dialog box without deleting.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='setting_area_values'> <title>Setting area values</title>
+<para>
+<indexterm><primary>attribute</primary><secondary>set</secondary></indexterm>
+If you are drawing a new area, then the currently active attribute values stored in the <guilabel>Area</guilabel> section are used as the values for the new area.
+</para><para>
+<orderedlist><title>To set area values:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Draw</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/draw.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+or
+</para><para>
+Select the <emphasis>Modify</emphasis> tool
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+, and pick inside an area.
+</para><para>
+or
+</para><para>
+Select the <emphasis>Divide</emphasis> tool
+<guiicon><inlinemediaobject>
+<textobject><phrase>Divide</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/divide.png'/></imageobject>
+</inlinemediaobject></guiicon>
+, pick an area and divide the area.
+</para></listitem>
+
+<listitem><para>
+Under the <guilabel>Area</guilabel> section, click <guibutton>Set</guibutton>.
+</para><para>
+The <guilabel>Area Attribute</guilabel> dialog box appears.
+(see <xref linkend='area_entry'/>)
+</para><para>
+You can change the attribute values as desired.
+Some entries allow for free format typing, some entries have pop-up or scrolled lists of acceptable values, and some numeric entries have spin boxes.
+Attributes which cannot be modified have a greyed out background.
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Click...</entry><entry> To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><guibutton>Show Original Values</guibutton></entry>
+	<entry> Temporarily display the attribute values before changes were made.</entry></row>
+	<row valign='top'><entry><guibutton>Reset Menu</guibutton></entry>
+	<entry> Revert back to the original attribute values, before changes were made.</entry></row>
+	<row valign='top'><entry><guibutton>Set Default Attributes</guibutton></entry>
+	<entry> Save the attribute values to the <guilabel>Area</guilabel> section.</entry></row>
+	<row valign='top'><entry><guibutton>Set Last Drawn Area</guibutton> or <guibutton>Set Selected Area</guibutton></entry>
+	<entry> Apply the attribute values to the last drawn area, if you did not set new values before drawing.</entry></row>
+	<row valign='top'><entry><guibutton>Add to Memory</guibutton></entry>
+	<entry> Save the attribute values as a new template in the <guilabel>Memory</guilabel> section.</entry></row>
+	<row valign='top'><entry><guibutton>Close</guibutton></entry>
+	<entry> Close the <guilabel>Area Attribute</guilabel> dialog box, without saving any changes.</entry></row>
+	</tbody></tgroup>
+</informaltable>
+</para></listitem>
+</orderedlist>
+</para><para>
+The new values are applied to the area when you click <guibutton>Set Selected Area</guibutton> or <guibutton>Set Last Drawn Area</guibutton>.
+</para><para>
+Note: You can display the currently active attribute values in the <guilabel>Area</guilabel> section by clicking <guilabel>Show</guilabel>.
+</para>
+</sect2>
+
+<sect2 id='setting_background_values'> <title>Setting background values</title>
+<para>
+<indexterm><primary>attribute</primary><secondary>background</secondary></indexterm>
+<indexterm><primary>sequence</primary></indexterm>
+You may be able to set default or background values for the attributes for a discrete field.
+The background attribute values are the same at every time in the time <glossterm linkend='g_sequence'>sequence</glossterm>.
+Modifying the background attribute values at any time changes the background values at all other times as well.
+</para>
+<para>
+<orderedlist><title>To set background values:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis>, <emphasis>Modify</emphasis> or <emphasis>Divide</emphasis> tool.
+</para></listitem>
+
+<listitem><para>
+Under the <guilabel>Background</guilabel> section, click <guibutton>Set</guibutton>.
+</para><para>
+The <guilabel>Background Area Attribute</guilabel> dialog box appears.
+</para><para>
+You can change the attribute values as desired.
+Some entries allow for free format typing, some entries have pop-up or scrolled lists of acceptable values, and some numeric entries have spin boxes.
+Attributes which cannot be modified have a greyed out background.
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Click...</entry><entry> To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><guibutton>Show Original Values</guibutton></entry>
+	<entry> Temporarily display the attribute values before changes were made.</entry></row>
+	<row valign='top'><entry><guibutton>Reset Menu</guibutton></entry>
+	<entry> Revert back to the original attribute values, before changes were made.</entry></row>
+	<row valign='top'><entry><guibutton>Set Default Attributes</guibutton></entry>
+	<entry> Save the attribute values to the <guilabel>Background</guilabel> section.</entry></row>
+	<row valign='top'><entry><guibutton>Cancel</guibutton></entry>
+	<entry> Close the <guilabel>Background Area Attribute</guilabel> dialog box, without saving any changes.</entry></row>
+	</tbody></tgroup>
+</informaltable>
+</para></listitem>
+</orderedlist>
+</para><para>
+<indexterm><primary>sequence</primary></indexterm>
+The new background values are applied to all times in the time sequence when you click <guibutton>Set Default Attributes</guibutton>.
+</para><para>
+Note: You can display the background attribute values in the <guilabel>Background</guilabel> section by clicking <guibutton>Show</guibutton>.
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='defining_wind_values'> <title>Defining wind values</title>
+<para>
+<indexterm><primary>wind values</primary><secondary>defining</secondary></indexterm>
+Each area in a wind field contains a model for calculating the wind, and optional adjustments to this model direction, wind speed, and gust speed.
+(The models for calculating wind have been determined by the System Administrator.)
+You can set the adjusted wind model to use when drawing a new area, or when modifying or dividing an existing area.
+The adjusted wind model can also be saved as a template to use later, if desired.
+The currently active adjusted wind model is stored in the <guilabel>Area Value</guilabel> section.
+The wind field also contains an adjusted wind model that is used as a default or background model, for regions where no wind areas have been drawn.
+This background adjusted wind model is stored in the <guilabel>Background Value</guilabel> section, and may also be changed.
+</para>
+
+<sect2 id='selecting_and_modifying_a_wind_template'> <title>Selecting and modifying a wind template</title>
+<para>
+<indexterm><primary>wind values</primary><secondary>modify a template</secondary></indexterm>
+You can select a previously defined wind template containing an adjusted wind model from the <guilabel>Memory</guilabel> section, and modify the values as desired.
+</para><para>
+<orderedlist><title>To select and modify a wind template:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Draw</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/draw.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Draw</emphasis> menus appear.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Memory</guilabel> section, choose a wind template.
+</para><para>
+The values for this wind template move to the <guilabel>Area Value</guilabel> section.
+</para></listitem>
+
+<listitem><para>
+Under the <guilabel>Area Value</guilabel> section, click <guibutton>Set</guibutton>.
+</para><para>
+The <guilabel>Wind Entry</guilabel> dialog box appears.
+(see <xref linkend='wind_entry'/>)
+<figure id='wind_entry' pgwide='0' float='1'><title>Wind  entry dialog</title>
+<mediaobject><imageobject><imagedata fileref='png/wind_entry.png'/></imageobject></mediaobject>
+</figure>
+You can choose a wind model from which to calculate winds from the <guilabel>Base Model</guilabel> list.
+(Models for calculating winds are determined by the System Administrator.)
+</para><para>
+You can use the wind direction calculated from the chosen model, with an additional adjustment in degrees (<guilabel>Model Direction</guilabel>), or you can set the wind direction to an absolute value in degrees (<guilabel>Absolute Direction</guilabel>).
+</para><para>
+You can use the wind speed and gust speed calculated from the chosen model, with an additional percentage adjustment (<guilabel>Model Speed</guilabel>), or you can set the wind speed and gust speed to an absolute value in knots (<guilabel>Absolute Speed</guilabel>).
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Click...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><guibutton>Add to List</guibutton></entry>
+	<entry> Save the adjusted wind model as a new wind template in the <guilabel>Memory</guilabel> section.</entry></row>
+	<row valign='top'><entry><guibutton>Close</guibutton></entry>
+	<entry> Close the <guilabel>Wind Entry</guilabel> dialog box, without saving any changes.</entry></row>
+	</tbody></tgroup>
+</informaltable>
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='deleting_a_wind_template'> <title>Deleting a wind template</title>
+<para>
+<indexterm><primary>wind values</primary><secondary>deleting a template</secondary></indexterm>
+Wind templates created by the System Administrator cannot be deleted from within the &FPA;.
+If user wind templates have been added, <guibutton>Delete</guibutton> under the <guilabel>Area Value </guilabel>section will be active.
+</para><para>
+<orderedlist><title>To delete a wind template:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis>, <emphasis>Modify</emphasis> or <emphasis>Divide</emphasis> tool.
+</para></listitem>
+
+<listitem><para>
+Under the <guilabel>Area Value</guilabel> section, click <guibutton>Delete</guibutton>.
+</para><para>
+A <guilabel>Delete Memory</guilabel> dialog box appears.
+</para></listitem>
+
+<listitem><para>
+Choose the wind templates to delete.
+</para></listitem>
+
+<listitem><para>
+Click <guibutton>Delete</guibutton>, or click <guibutton>Cancel</guibutton> to close the dialog box without deleting.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='setting_wind_area_values'> <title>Setting wind area values</title>
+<para>
+<indexterm><primary>wind values</primary><secondary>setting</secondary></indexterm>
+If you are drawing a new wind area, then the currently active adjusted wind model stored in the <guilabel>Area Value</guilabel> section is used as the adjusted wind model for the new wind area.
+</para><para>
+<orderedlist><title>To set wind area values:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Draw</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/draw.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+or
+</para><para>
+Select the <emphasis>Modify</emphasis> tool
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+, and pick inside a wind area.
+</para><para>
+or
+</para><para>
+Select the <emphasis>Divide</emphasis> tool
+<guiicon><inlinemediaobject>
+<textobject><phrase>Divide</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/divide.png'/></imageobject>
+</inlinemediaobject></guiicon>
+, pick a wind area and divide the area.
+</para></listitem>
+
+<listitem><para>
+Under the <guilabel>Area Value</guilabel> section, click <guibutton>Set</guibutton>.
+</para><para>
+The <guilabel>Wind Entry</guilabel> dialog box appears.
+(see <xref linkend='wind_entry'/>)
+</para><para>
+You can choose a wind model from which to calculate winds from the <guilabel>Base Model</guilabel> list.
+(Models for calculating winds are determined by the System Administrator.)
+</para><para>
+You can use the wind direction calculated from the chosen model, with an additional adjustment in degrees (<guilabel>Model Direction</guilabel>), or you can set the wind direction to an absolute value in degrees (<guilabel>Absolute Direction</guilabel>).
+</para><para>
+You can use the wind speed and gust speed calculated from the chosen model, with an additional percentage adjustment (<guilabel>Model Speed</guilabel>), or you can set the wind speed and gust speed to an absolute value in knots (<guilabel>Absolute Speed</guilabel>).
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Click...</entry><entry> To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><guibutton>Set</guibutton></entry>
+	<entry> Save the adjusted wind model to the <guilabel>Area Value</guilabel> section.</entry></row>
+	<row valign='top'><entry><guibutton>Add to List</guibutton></entry>
+	<entry> Save the adjusted wind model as a new wind template in the <guilabel>Memory</guilabel> section.</entry></row>
+	<row valign='top'><entry><guibutton>Close</guibutton></entry>
+	<entry> Close the <guilabel>Wind Entry</guilabel> dialog box, without saving any changes.</entry></row>
+	</tbody></tgroup>
+</informaltable>
+</para></listitem>
+</orderedlist>
+</para>
+
+<para>
+The new adjusted wind model is applied to the wind area when you click <guibutton>Set</guibutton>.
+</para>
+<para>
+Note: You can display the currently active adjusted wind model in the <guilabel>Area Value</guilabel> section by clicking <guibutton>Show</guibutton>.
+</para>
+</sect2>
+
+<sect2 id='setting_background_wind_values'> <title>Setting background wind values</title>
+<para>
+<indexterm><primary>wind values</primary><secondary>background</secondary></indexterm>
+<indexterm><primary>sequence</primary></indexterm>
+You may be able to set a default or background adjusted wind model for a wind field.
+The background adjusted wind model is the same at every time in the time sequence.
+Modifying the background adjusted wind model at any time changes the background adjusted wind model at all other times as well.
+</para>
+<para>
+<orderedlist><title>To set background wind values:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis>, <emphasis>Modify</emphasis> or <emphasis>Divide</emphasis> tool.
+</para></listitem>
+
+<listitem><para>
+Under the <guilabel>Background Value</guilabel> section, click <guibutton>Set</guibutton>.
+</para><para>
+The <guilabel>Background Wind</guilabel> dialog box appears.
+(see <xref linkend='background_wind_entry'/>)
+<figure id='background_wind_entry' pgwide='0' float='1'><title>Background wind entry dialog</title>
+<mediaobject><imageobject><imagedata fileref='png/background_wind_entry.png'/></imageobject></mediaobject>
+</figure>
+You can choose a wind model from which to calculate winds from the <guilabel>Base Model</guilabel> list.
+(Models for calculating winds are determined by the System Administrator.)
+</para><para>
+You can set an adjustment in degrees to be applied to the wind direction calculated from the chosen model, and set percentage adjustments to the wind speed and gust speed calculated from the chosen model.
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Click...</entry><entry> To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><guibutton>Set</guibutton></entry>
+	<entry> Save the adjusted wind model to the <guilabel>Background Value</guilabel> section.</entry></row>
+	<row valign='top'><entry><guibutton>Cancel</guibutton></entry>
+	<entry> Close the <guilabel>Background Wind</guilabel> dialog box, without saving any changes.</entry></row>
+	</tbody></tgroup>
+</informaltable>
+</para></listitem>
+</orderedlist>
+</para>
+
+<para>
+<indexterm><primary>sequence</primary></indexterm>
+The new background adjusted wind model is applied to all times in the time sequence when you click <guibutton>Set</guibutton>.
+</para>
+
+<para>
+Note: You can display the background adjusted wind model in the <guilabel>Background Value</guilabel> section by clicking <guibutton>Show</guibutton>.
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='drawing_an_area'> <title>Drawing an area </title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>draw</secondary></indexterm>
+<orderedlist><title>To draw an area:</title>
+<listitem><para>
+Select the <emphasis>Draw</emphasis> tool
+<guiicon><inlinemediaobject>
+<textobject><phrase>Draw</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/draw.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Draw</emphasis> menus appear.
+(see <xref linkend='area_draw_tools'/>)
+<figure id='area_draw_tools' pgwide='0' float='1'><title>Area draw menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_area_draw.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+The cursor appears as a pencil while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Select the stacking order.
+</para><para>
+If you draw overlapping areas, you can order them using the stacking order feature.
+Use the guiding arrows to allocate your area to the top
+<guiicon><inlinemediaobject>
+<textobject><phrase>Top</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/top_of_stack.png'/></imageobject>
+</inlinemediaobject></guiicon>
+or bottom
+<guiicon><inlinemediaobject>
+<textobject><phrase>Bottom</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/bottom_of_stack.png'/></imageobject>
+</inlinemediaobject></guiicon>
+of overlapping areas.
+</para></listitem>
+
+<listitem><para>
+From the <guilabel>Memory Display</guilabel> area, select a template or create a new one.
+</para></listitem>
+
+<listitem><para>
+Draw the area.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='d_deleting_an_area'> <title>Deleting an area</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>deleting</secondary></indexterm>
+<orderedlist><title>To delete an area:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the area to delete.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Delete Area</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+To restore the area, click the &right; mouse button and select <menuchoice><guimenu>Undo</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para><para>
+<orderedlist><title>To delete multiple areas:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the area(s) to delete.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cut</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+To restore the area(s), click the &right; mouse button and select <menuchoice><guimenu>Undo</guimenu></menuchoice> or <menuchoice><guimenu>Paste</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='moving_an_area'> <title>Moving an area</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>move</secondary></indexterm>
+<orderedlist><title>To move one or more areas.</title>
+<listitem><para>
+Select the <emphasis>Move Area</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>move</emphasis> menus appear.
+(see <xref linkend='move_tools2'/>)
+<figure id='move_tools2' pgwide='0' float='1'><title>Move menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_move2.png'/></imageobject></mediaobject>
+</figure>
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.</para></listitem>
+
+<listitem><para>
+Pick the area(s) to move.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Translate</guimenu></menuchoice>.
+</para><para>
+The picked areas turn blue.
+</para></listitem>
+
+<listitem><para>
+Pick a reference point on the map and hold the &left; mouse button down.
+</para><para>
+The reference point can be anywhere; however, if you are moving a portion of the area(s) off the depiction it is important to pick a point that will remain on the depiction after the move.
+The area boundaries shimmer indicating you can now move them.
+</para></listitem>
+
+<listitem><para>
+Drag the feature
+<indexterm><primary>feature</primary></indexterm>
+to the new location and release the button.
+</para><para>
+The &FPA; then recomputes the field and re-displays the new areas in white.
+</para></listitem>
+</orderedlist>
+Note: The areas remain selected until you deselect them, so you may continue to use the <emphasis>Move</emphasis> tools.
+(see <xref linkend='unpick_object'/>) 
+</para>
+</sect1>
+
+<sect1 id='rotating_an_area'> <title>Rotating an area</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>rotate</secondary></indexterm>
+<orderedlist><title>To rotate an area in the Area editor:</title>
+<listitem><para>
+Select the <emphasis>Move</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>move</emphasis> menus appear.
+(see <xref linkend='move_tools2'/>)
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.</para></listitem>
+
+<listitem><para>
+Pick the area(s) to rotate.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Rotate</guimenu></menuchoice>.
+</para><para>
+The picked areas turn blue.
+</para></listitem>
+
+<listitem><para>
+Press the &left; mouse button at the point you want to rotate around (the centre of rotation).
+</para></listitem>
+
+<listitem><para>
+Select a second point to form a <emphasis>handle</emphasis> to rotate the area(s) and hold the &left; mouse button down.
+This is your rotation handle (like the handle of a car window).
+</para><para>
+A line displays between the two chosen points.
+</para></listitem>
+
+<listitem><para>
+Turn the handle to a new location.
+</para></listitem>
+
+<listitem><para>
+When you have reached the point where the rotation should end, release the &left; mouse button.
+</para><para>
+The &FPA; displays the rotated area(s).
+</para><para>
+Note: You can still restore the field if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+Note: The areas remain selected until you deselect them, so you may continue to use the <emphasis>Move</emphasis> tools.
+(see <xref linkend='unpick_object'/>) 
+</para>
+</sect1>
+
+<sect1 id='copying_an_area'> <title>Copying an area</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>copy</secondary></indexterm>
+You can copy an area by using <guibutton>Copy</guibutton> and <guibutton>Paste</guibutton> with the <emphasis>Move Area</emphasis> tool.
+</para><para>
+<orderedlist><title>To copy an area:</title>
+<listitem><para>
+Select the<emphasis> Move Area</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Move</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/move.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Move</emphasis> menus appear.
+(see <xref linkend='move_tools2'/>)
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.</para></listitem>
+
+<listitem><para>
+Pick the area(s) to copy.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Copy</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to deselect all areas, or move to another depiction.
+</para><para>
+<guibutton>Paste</guibutton> is now available.
+</para><para>
+Note: if pasted to the same depiction the areas will be automatically offset to avoid inadvertent duplication.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Paste</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+The areas remain selected until you deselect them, thus
+<menuchoice><guimenu>Translate</guimenu></menuchoice> and
+<menuchoice><guimenu>Rotate</guimenu></menuchoice> are available in the &right; mouse button context menu.
+(see <xref linkend='moving_an_area'/> and <xref linkend='rotating_an_area'/>)
+</para><para>
+Note: You can still remove the copied field if you click <guibutton>Undo</guibutton> at this point.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='dividing_an_area'> <title>Dividing an area </title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>divide</secondary></indexterm>
+Divide allows you to divide an area.
+It is often easier to draw the large area and then subdivide it (for example, rain or snow boundary).
+Divide can also be used to rejoin divided areas.
+</para>
+
+<sect2 id='dividing_areas'> <title>Dividing areas</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>divide</secondary></indexterm>
+<orderedlist><title>To divide an area:</title>
+<listitem><para>
+Select the <emphasis>Divide</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Divide</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/divide.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Divide</emphasis> menus appear.
+(see <xref linkend='area_divide_tools'/>)
+<figure id='area_divide_tools' pgwide='0' float='1'><title>Area divide menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_area_divide.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+The cursor appears as a knife while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Pick the area to divide.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Select a drawing tool and draw the dividing line.
+</para><para>
+The start and end points extrapolate to fit in the boundary of the area.
+One of the new subareas turns blue.
+</para></listitem>
+
+<listitem><para>
+Select values for the first area from the <guilabel>Memory</guilabel> section, or by clicking the &right; mouse button and selecting <menuchoice><guimenu>Set</guimenu></menuchoice>.
+(see <xref linkend='setting_area_values'/>)
+</para><para>
+or
+</para><para>
+If the value is to remain the same, click the &right; mouse button and select <menuchoice><guimenu>Leave as is</guimenu></menuchoice>.
+</para><para>
+The other subarea turns blue.
+</para></listitem>
+
+<listitem><para>
+Select values for the second area from the <guilabel>Memory</guilabel> section, or by clicking the &right; mouse button and selecting <menuchoice><guimenu>Set</guimenu></menuchoice>.
+(see <xref linkend='setting_area_values'/>)
+</para><para>
+or
+</para><para>
+If the value is to remain the same, click the &right; mouse button and select <menuchoice><guimenu>Leave as is</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+If an area consists of a number of subareas, repeat the divide process until all the areas are defined.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='rejoining_divided_areas'> <title>Rejoining divided areas</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>rejoin</secondary></indexterm>
+You can use the Divide tool to rejoin the last divided subareas.
+</para><para>
+<orderedlist><title>To rejoin divided areas:</title>
+<listitem><para>
+Select the <emphasis>Divide</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Divide</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/divide.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the subarea to rejoin.
+(see <xref linkend='pick_object'/>)
+</para><para>
+If the selected subarea can be rejoined, the message indicates that the &right; button can be used to rejoin and the subarea that can be joined turns green.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Rejoin</guimenu></menuchoice>.
+</para><para>
+Note: The values for the rejoined subareas are taken from those of the first subarea chosen.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id='drawing_area_holes'> <title>Drawing area holes </title>
+<para>
+The extent of an area may be modified by drawing area holes. The holes can intersect the area boundary or be entirely enclosed by the area boundary. (Holes outside the area boundary are automatically deleted.)
+</para>
+<sect2 id='drawing_a_new_area_hole'> <title>Drawing area holes </title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>holes</secondary></indexterm>
+<orderedlist><title>To draw an area hole:</title>
+<listitem><para>
+Select the <emphasis>Holes</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Draw Hole</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/hole.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the area on which to draw holes. 
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Select a drawing tool and draw the hole.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='modifying_an_area'> <title>Modifying an area </title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>modify</secondary></indexterm>
+Modify allows you to change the shape of an area boundary or the position of dividing lines, or to change the value of the area or any divided subarea.
+</para><para>
+You can modify areas or dividing lines with two type of drawing tools.
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'> <entry>a drawing tool</entry>
+	<entry>draw a new line segment</entry> </row>
+	<row valign='top'> <entry>one of the <glossterm linkend='g_puck'>puck</glossterm> sizes </entry>
+	<entry>sculpt the existing area or dividing line</entry> </row>
+	</tbody></tgroup>
+</informaltable>
+</para>
+
+<sect2 id='drawing_a_new_boundary'> <title>Drawing a new boundary</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>redraw</secondary></indexterm>
+<orderedlist><title>To draw a new boundary:</title>
+<listitem><para>
+Select the <guibutton>Modify</guibutton> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the area to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The area boundary turns yellow and the area is covered with a white grid.
+</para><para>
+Note: You can pick inside or outside an area to modify the area boundary.
+If you pick outside the area boundary you will not be able to <guibutton>Set</guibutton> the area attributes.
+</para></listitem>
+
+<listitem><para>
+Select the "Freehand" or "Curve" drawing tool.
+</para></listitem>
+
+<listitem><para>
+Draw the new boundary segment.
+Start and end the line as close to the existing boundary as possible.
+</para><para>
+The new segment boundary becomes blue and the rest of the original boundary remains yellow.
+</para></listitem>
+
+<listitem><para>
+If the segment shown in yellow is the segment you want to delete, click the &right; mouse button and select <menuchoice><guimenu>Confirm</guimenu></menuchoice>.
+If you want to delete a different segment, select it and then click the &right; mouse button and select <menuchoice><guimenu>Confirm</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='sculpting_an_existing_boundary'> <title>Sculpting an existing boundary</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>sculpt</secondary></indexterm>
+<orderedlist><title>To sculpt an existing boundary:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the area to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The area boundary turns yellow and the area is covered with a white grid.
+</para></listitem>
+
+<listitem><para>
+Select a puck size.
+(see <xref linkend='modifying_with_the_sculpt_tool'/>)
+</para><para>
+The number indicates the proportional size of the puck.
+</para><para>
+The cursor appears as concentric circles while inside the map window.
+</para></listitem>
+
+<listitem><para>
+Choose a smoothing mode.
+(see <xref linkend='modifying_with_the_sculpt_tool'/>)
+</para></listitem>
+
+<listitem><para>
+Click and hold the &left; mouse button to activate the sculpting puck.
+</para><para>
+The boundary is modified when the puck comes in contact with it.
+</para></listitem>
+
+<listitem><para>
+Release the button when finished.
+</para><para>
+You can repeat the previous step as often as you wish.
+</para></listitem>
+
+<listitem><para>
+Click the &right; and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> button to complete the edit and deselect the area.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='redrawing_a_dividing_line'> <title>Redrawing a dividing line or area hole</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>redraw</secondary></indexterm>
+<orderedlist><title>To re-draw a dividing line or area hole:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the dividing line or area hole to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The line turns yellow.
+</para></listitem>
+
+<listitem><para>
+Select the "Freehand" or "Curve" drawing tool.
+</para></listitem>
+
+<listitem><para>
+Draw the new line.
+Start or end the line as close to the existing line as possible.
+</para><para>
+The new line turns blue and the original line remains yellow.
+</para><para>
+Note: If the start and end points of the new line are too far away from the existing line, the new line will replace the existing one.
+</para></listitem>
+
+<listitem><para>
+If the line is acceptable, click the &right; mouse button and select <menuchoice><guimenu>Confirm</guimenu></menuchoice>.
+If the line is not acceptable select <menuchoice><guimenu>Cancel</guimenu></menuchoice> and the line will remain selected you can attempt the edit again.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='sculpting_an_existing_dividing_line'> <title>Sculpting an existing dividing line or area hole</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>sculpt</secondary></indexterm>
+<orderedlist><title>To sculpt an existing dividing line or area hole:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the dividing line or area hole to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The line turns yellow.
+</para></listitem>
+
+<listitem><para>
+Select a puck size.
+(see <xref linkend='modifying_with_the_sculpt_tool'/>)
+</para><para>
+The number indicates the proportional size of the puck.
+</para><para>
+The cursor appears as concentric circles while inside the map area.
+</para></listitem>
+
+<listitem><para>
+Choose a smoothing mode.
+(see <xref linkend='modifying_with_the_sculpt_tool'/>)
+</para></listitem>
+
+<listitem><para>
+Click and hold the &left; mouse button to activate the sculpting puck.
+</para><para>
+The line is modified when the puck comes in contact with it.
+</para></listitem>
+
+<listitem><para>
+Release the button when finished.
+</para><para>
+You can repeat the previous step as often as you wish.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the edit and deselect the line.
+</para></listitem>
+</orderedlist>
+<note><para> Sculpting the entire dividing line to the edge of the area (or subarea) that the dividing line is within will delete the dividing line.</para></note>
+<note><para> Sculpting the boundary of an area hole so that it lies completely outside the area to which it belongs will delete the hole.</para></note>
+</para>
+</sect2>
+
+<sect2 id='deleting_an_area_hole'> <title>Deleting an area hole</title>
+<para>
+<orderedlist><title>To delete an area hole:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the area hole to delete.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The hole boundary turns yellow.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Delete Hole</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='Changing_the_template_for_an_area_or_subarea'> <title>Changing the template for an area or subarea</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>template</secondary></indexterm>
+<orderedlist>
+<title>To redefine the value of an area or the value of a subarea of a divided area:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick inside the area or subarea to modify.
+(see <xref linkend='pick_object'/>)
+</para><para>
+The boundary turns yellow and the area or subarea is covered with a white grid.
+</para></listitem>
+
+<listitem><para>
+Change the values by selecting a template from the <guilabel>Memory</guilabel> section, or modify the values by clicking the &right; mouse button and selecting <menuchoice><guimenu>Set</guimenu></menuchoice>.
+(see <xref linkend='setting_area_values'/>)
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the edit and deselect the area.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+
+<sect2 id='changing_the_stacking_order_of_an_area'> <title>Changing the stacking order of an area</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>stacking order</secondary></indexterm>
+<orderedlist><title>To change the stacking order of an area:</title>
+<listitem><para>
+Select the <emphasis>Modify</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Modify</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/modify.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Pick the area to restack.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Click the stacking tool
+<guiicon><inlinemediaobject>
+<textobject><phrase>Top</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/top_of_stack.png'/></imageobject>
+</inlinemediaobject></guiicon>
+(or
+<guiicon><inlinemediaobject>
+<textobject><phrase>bottom</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/bottom_of_stack.png'/></imageobject>
+</inlinemediaobject></guiicon>)
+</para><para>
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry> To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry>up arrow with line</entry>
+	<entry> move area to the top of the stack </entry></row>
+	<row valign='top'><entry>up arrow</entry>
+	<entry> move area up one level </entry></row>
+	<row valign='top'><entry>down arrow</entry>
+	<entry> move area down one level </entry></row>
+	<row valign='top'><entry>down arrow with line</entry>
+	<entry> move area to the bottom of the stack </entry></row>
+	</tbody></tgroup>
+</informaltable>
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the edit and deselect the area.
+</para></listitem>
+</orderedlist>
+</para>
+</sect2>
+</sect1>
+
+<sect1 id='merging_area_information'> <title>Merging information in an area field</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>merge</secondary></indexterm>
+You can bring a field from another source and time and merge it into the depiction using the <emphasis>Merge</emphasis> tool.
+</para><para>
+<orderedlist><title>To merge information:</title>
+<listitem><para>
+Select the <emphasis>Merge</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Merge</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/merge.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>merge</emphasis> menus appear.
+(see <xref linkend='merge_tools'/>)
+</para></listitem>
+
+<listitem><para>
+Select the <guilabel>Source</guilabel>, <guilabel>Issue Time</guilabel> and <guilabel>Valid Time</guilabel> of the other field you wish to merge with your current depiction.
+</para><para>
+Note: Your System Administrator may configure a field to accept merges from another "compatible" field.
+If this is the case, there will be a <guilabel>Field</guilabel> list in the <guilabel>Merge Fields</guilabel> area.
+</para></listitem>
+
+<listitem><para> Select <guilabel>Include Labels</guilabel> if you want to include labels.</para></listitem>
+
+<listitem><para>
+Click <guibutton>Fetch</guibutton>.
+</para><para>
+The field information from the other source is laid over top of your depiction.
+</para></listitem>
+
+<listitem><para>
+Pick the area(s) to merge.
+(see <xref linkend='pick_object'/>)
+</para></listitem>
+
+<listitem><para>
+Finish your selection by pressing the &right; mouse button and select
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry>To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><menuchoice><guimenu>Merge</guimenu></menuchoice></entry>
+	<entry>merge information in place </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Translate</guimenu></menuchoice></entry>
+	<entry>move and merge the information </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Rotate</guimenu></menuchoice></entry>
+	<entry>rotate and merge the information </entry></row>
+	</tbody></tgroup>
+</informaltable>
+Note: the picked information remains selected, so you may perform multiple translate and rotate operations.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Cancel</guimenu></menuchoice> to complete the merge.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='labelling_your_area_field'> <title>Labelling your depiction </title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>label</secondary></indexterm>
+<orderedlist><title>To label any point on the depiction:</title>
+<listitem><para>
+Select the <emphasis>Labelling</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Label</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/label.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select a <menuchoice><guimenu>Label Type</guimenu></menuchoice>.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select a <guilabel>Label Action</guilabel>:
+<informaltable frame='topbot'><tgroup cols='2'>&colwidth2;
+	<thead><row><entry>Select...</entry><entry> To...</entry></row></thead>
+	<tbody>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Add</guimenuitem></menuchoice></entry>
+	<entry> add a label at a specified point </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Move</guimenuitem></menuchoice></entry>
+	<entry> facilitates clicking and dragging a label from one location to another (if applicable) </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Show</guimenuitem></menuchoice></entry>
+	<entry> display a list of attributes of the particular label selected </entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Modify</guimenuitem></menuchoice></entry>
+	<entry> change label attributes</entry></row>
+	<row valign='top'><entry><menuchoice><guimenu>Label Action</guimenu><guimenuitem>Delete</guimenuitem></menuchoice></entry>
+	<entry> delete a label </entry></row>
+	</tbody></tgroup>
+</informaltable>
+Note: some labels have fixed attributes and cannot be modified.
+In these cases the <emphasis>Modify</emphasis> tool does not appear.
+</para></listitem>
+
+<listitem><para>
+Pick a point to label using the &left; mouse button.
+</para></listitem>
+
+<listitem><para>
+If you have picked <guibutton>Add</guibutton>...
+</para><para>
+Labels appear directly where you click.
+</para><para>
+Note: If your label type requires additional information, an entry menu may appear.
+You can modify the information as required.
+Clicking on <guibutton>Set Attributes</guibutton> will add the label.
+</para></listitem>
+
+<listitem><para>
+If you have picked <guibutton>Move</guibutton>, <guibutton>Show</guibutton>, <guibutton>Modify</guibutton> or <guibutton>Delete</guibutton> ...
+</para><para>
+The nearest label is chosen.
+</para></listitem>
+
+<listitem><para>
+To delete all the labels, click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice>.
+</para></listitem>
+</orderedlist>
+</para>
+</sect1>
+
+<sect1 id='sampling_area_field_values'> <title>Sampling values from an area fields</title>
+<para>
+<indexterm><primary>area field editor</primary><secondary>sample</secondary></indexterm>
+You can add temporary labels to the &FPA; window with the <emphasis>Sample</emphasis> tool.
+</para><para>
+<orderedlist><title>To sample a value:</title>
+<listitem><para>
+Select the <emphasis>Sample</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Sample</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/sample.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Sample</emphasis> menus appear.
+(see <xref linkend='sample_tools2'/>)
+<figure id='sample_tools2' pgwide='0' float='1'><title>Sample menus</title>
+<mediaobject><imageobject><imagedata fileref='png/field_edit_sample2.png'/></imageobject></mediaobject>
+</figure>
+</para><para>
+The cursor appears as cross-hairs while inside the map window.
+</para></listitem>
+
+<listitem><para>
+Select the type of sample you want from the <guilabel>Sample Item</guilabel> area.
+You can choose to sample <guilabel>All Attributes</guilabel> or a single attribute from the list.
+</para></listitem>
+
+<listitem><para>
+Select the display attributes: colour, size and font.
+</para></listitem>
+
+<listitem><para>
+Pick a point on the depiction.
+</para><para>
+A temporary label appears.
+</para><para>
+You can sample as many points as you want.
+</para><para>
+Note: If you select <guilabel>All Attributes</guilabel> from the <guilabel>Sample Item</guilabel> area, a dialog box appears displaying All Attributes for the point.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice> to clear the samples from the depiction.
+</para></listitem>
+</orderedlist>
+</para>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='preset_sample_list.xml'/>
+<para>
+Note: if you select <guilabel>All Attributes</guilabel> from the <guilabel>Sample Item</guilabel> area, the <guilabel>Preset Points</guilabel> option cannot be used. Only single attributes can be displayed with this option.
+</para>
+</sect1>
+
+<sect1 id='labelling_wind'> <title>Labelling wind </title>
+<para>
+<indexterm><primary>wind values</primary><secondary>label</secondary></indexterm>
+When you label wind, you can label individual points just as you would any other field (see <xref  linkend='labelling_your_area_field'/>).
+</para><para>
+Note: Wind labels appear as a wind barb or arrow.
+</para>
+</sect1>
+
+<sect1 id='sampling_wind'> <title>Sampling wind from a wind field</title>
+<para>
+<indexterm><primary>wind values</primary><secondary>sample</secondary></indexterm>
+Sampling wind is like sampling values but with a few more options (see <xref  linkend='sampling_area_field_values'/>).
+</para><para>
+You may sample All Attributes, which will display the parameters the &FPA; would use to calculate the wind at a given point.
+You may also sample the actual adjusted wind calculated from these parameters, or the wind calculated from a number of other models.
+The adjusted winds or model winds are usually displayed as wind barbs.
+</para><para>
+<orderedlist><title>To sample a wind:</title>
+<listitem><para>
+Select the <emphasis>Sample</emphasis> tool.
+<guiicon><inlinemediaobject>
+<textobject><phrase>Sample</phrase></textobject>
+<imageobject><imagedata scale='50' fileref='png/sample.png'/></imageobject>
+</inlinemediaobject></guiicon>
+</para><para>
+The <emphasis>Sample</emphasis> menus appear.
+(see <xref linkend='sample_tools1'/>)
+</para><para>
+The cursor appears as cross-hairs while inside the map window.
+</para></listitem>
+
+<listitem><para>
+Select the type of sample you want from the <guilabel>Sample Item</guilabel> area.
+</para><para>
+You can choose to sample <guilabel>All Attributes</guilabel>, an adjusted wind, or a model wind.
+</para></listitem>
+
+<listitem><para>
+Select the display attributes: colour, size and font.
+</para></listitem>
+
+<listitem><para>
+Pick a point on the depiction.
+</para><para>
+A temporary label appears.
+</para><para>
+You can sample as many points as you want.
+</para><para>
+Note: If you selected <guilabel>All Attributes</guilabel>, a dialog box appears displaying All Attributes for the point.
+</para></listitem>
+
+<listitem><para>
+Click the &right; mouse button and select <menuchoice><guimenu>Clear</guimenu></menuchoice> to clear the samples from the depiction.
+</para></listitem>
+</orderedlist>
+</para>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='grid_sample.xml'/>
+<para>
+Note: if you select <guilabel>All Attributes</guilabel> from the <guilabel>Sample Item</guilabel> area, the <guilabel>Sample Grid</guilabel> option cannot be used. Only single attributes can be displayed with this option.
+</para>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='preset_sample_list.xml'/>
+<para>
+Note: if you select <guilabel>All Attributes</guilabel> from the <guilabel>Sample Item</guilabel> area, the <guilabel>Preset Points</guilabel> option cannot be used. Only single attributes can be displayed with this option.
+</para>
+</sect1>
+</chapter>

@@ -1,0 +1,51 @@
+# Entry menu description file for freezing spray
+
+menu_title             = Freezing Spray Entry Menu
+geometry               =  -650 -300 700 600
+label_display_height   =  1
+value_display_height   =  3
+category_display_width =  25
+
+panel "Freezing Spray"
+{
+	# Freezing spray modifier
+	scrolled_list
+	{
+		attribute_id = frzg_spray_modifier
+		label        = Freezing Spray
+		position     = 20 30
+		default      = none
+		ncolumns     = 5
+		nvisible     = 3
+		none_sub     = ""
+		items        = none OCNL LCL
+	}
+
+	# Freezing spray intensity
+	scrolled_list
+	{
+		attribute_id = frzg_spray_intensity
+		label        = none
+		position     = 245 30
+		default      = LGT
+		ncolumns     = 4
+		nvisible     = 4
+		none_sub     = ""
+		items        = none LGT MDT SVR
+	}
+
+	# Freezing spray remarks
+	frame
+	{
+		label    = Frame
+		position = 20 180
+		size     = 600 80
+		text
+		{
+			attribute_id  = frzg_spray_remarks
+			position      = 10 10
+			ncolumns      = 40
+			nrows         = 1
+		}
+	}
+}

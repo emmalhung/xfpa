@@ -1,0 +1,124 @@
+#!/bin/bash
+
+# Set up the environment
+. .fpaenvrc
+
+# Assume we are in the setup directory.
+sdir=`pwd`
+
+# Assume the local config directory is parallel.
+if [ "`basename $sdir`" = "setup" ]
+then
+	cdir=`dirname $sdir`/config
+else
+	cdir=$sdir/config
+fi
+if [ ! -d $cdir ]
+then
+	mkdir -p $cdir
+fi
+if [ ! -f $cdir/Config ]
+then
+	cp $FPA/config/d.Config $cdir/Config
+fi
+if [ ! -f $cdir/Presentation ]
+then
+	cp $FPA/config/d.Presentation $cdir/Presentation
+fi
+
+# Get the data directory if we don't already have it
+data=$1
+if [ "$data" = "" ]
+then
+	pecho
+	pecho "Enter data directory name: \c"
+	read data
+	if [ "$data" = "" ]
+	then
+		pecho "No data directory name given!"
+		exit 1
+	fi
+
+	cd $data
+	if [ $? != 0 ]
+	then
+		pecho "Data directory $data not found!"
+		exit 1
+	fi
+	data=`pwd`
+	cd $sdir
+fi
+
+# Get the setup filename if we don't already have it
+sfile=$2
+if [ "$sfile" = "" ]
+then
+	pecho
+	pecho "Building setup file for $data FPA."
+	pecho "Enter setup file name: \c"
+	read sfile
+	if [ "$sfile" = "" ]
+	then
+		pecho "No setup file name given!"
+		exit 1
+	fi
+fi
+
+# Obtain the map projection
+proj=$3
+map=$4
+res=$5
+if [ "$proj" = "" -o "$map" = "" -o "$res" = "" ]
+then
+	pecho
+	pecho "Your target map projection is not defined."
+	pecho "Do you wish to define it? (y/n) \c"
+	read answer
+
+	smap=$sfile.map
+	rm -f $smap
+
+	if [ "$answer" = "y" -o "$answer" = "Y" ]
+	then
+		pecho
+		pecho "Define your target map projection."
+		getmap $smap
+	fi
+
+	if [ -f $smap ]
+	then
+		proj=`grep projection $smap`
+		map=`grep mapdef $smap`
+		res=`grep resolution $smap`
+		rm -f $smap
+	else
+		pecho
+		pecho "Your projection information in set to UNKNOWN."
+		pecho
+		pecho "Please remember to update projection information in setup file"
+		pecho "after generating map."
+		proj=UNKNOWN
+		map=UNKNOWN
+		res=UNKNOWN
+	fi
+fi
+
+# Substitute known values into template to build setup file
+pecho
+pecho Building setup file: $sfile
+dbmode=$6
+if [ "$dbmode" = guidance ]
+then
+	tfile=IngestTemplate
+else
+	tfile=Template
+fi
+cat $FPA/setup/$tfile \
+	| sed "s@<<data>>@$data@g"  \
+	| sed "s@<<setup>>@$sfile@g" \
+	| sed "s@<<sdir>>@$sdir@g" \
+	| sed "s@<<cdir>>@$cdir@g" \
+	| sed "s@<<projection>>@$proj@g" \
+	| sed "s@<<mapdef>>@$map@g" \
+	| sed "s@<<resolution>>@$res@g" \
+	> $sfile

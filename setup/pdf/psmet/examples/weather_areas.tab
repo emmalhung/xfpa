@@ -1,0 +1,7 @@
+Look-up   | Symbol file          | Text String   | Presentation
+precip    : rain                 : RAIN          : rain1
+frozen    : snow                 : SNOW          : snow1
+freezing  : rs_mix               : FREEZING RAIN : mix1
+vis       : fog                  : FOG           : fog1
+cloud     : cldy                 : CLOUDY        : cloud1
+none      : sunny                : CLEAR         : clear1

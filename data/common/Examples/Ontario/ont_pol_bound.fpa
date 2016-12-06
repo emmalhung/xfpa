@@ -1,0 +1,5167 @@
+* MSRB Metafile Standard
+ rev 2.0
+* 
+ projection polar_stereographic north 60   
+ mapdef 35 -98.55 -87 0 0 3500 3000 1000
+ units xy
+* 
+* boundaries
+ field line boundaries geography
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 136 1756 165 1749 193 1742 214 1736 239 1731
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 0 1793 23 1786 51 1779 80 1771 108 1763 136 1756
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 614 1708 626 1703
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 391 1699 423 1693
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 590 1665 607 1662 609 1674 614 1708
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 448 1688 449 1688
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 449 1688 451 1687
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 423 1693 448 1688
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 239 1731 265 1725 294 1718 323 1712 352 1706 391 1699
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 451 1687 475 1683 495 1680 521 1676 538 1673 568 1668 590 1665
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 449 1688 450 1673
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 11
+ 626 1703 638 1694 637 1693 637 1691 638 1673 640 1655 641 1654
+ 641 1652 641 1635 643 1629 647 1624
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 670 1619 647 1624
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 698 1607 670 1619
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 698 1607 702 1607
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 702 1607 705 1604
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 738 1600 741 1600
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 705 1604 711 1592 715 1591 731 1593 733 1598 738 1600
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 22
+ 741 1600 755 1600 771 1599 772 1596 773 1595 788 1586 791 1581
+ 790 1580 790 1579 789 1577 789 1577 790 1576 791 1574 792 1574
+ 808 1570 808 1568 807 1566 807 1565 807 1565 808 1558 811 1553
+ 813 1546
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 53
+ 999 1513 981 1518 965 1519 951 1521 938 1524 937 1525 938 1526
+ 938 1527 938 1528 937 1529 937 1529 936 1530 935 1530 935 1531
+ 935 1533 934 1535 934 1538 933 1538 918 1533 905 1524 904 1523
+ 902 1522 886 1519 884 1521 883 1522 874 1526 865 1535 864 1535
+ 864 1536 863 1537 864 1537 863 1538 862 1539 846 1543 842 1547
+ 842 1548 842 1552 842 1554 842 1555 840 1556 840 1557 840 1558
+ 839 1560 838 1560 823 1561 819 1554 820 1553 820 1553 821 1550
+ 822 1549 822 1548 822 1548 813 1546
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 999 1513 1000 1511
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1000 1511 1000 1510
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1000 1510 1002 1506
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1002 1506 1005 1505
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1028 1504 1013 1505 1013 1505
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1032 1504 1028 1504
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1041 1504 1037 1504
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1044 1503 1041 1504
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 1059 1503 1082 1517 1104 1529 1123 1535 1147 1525 1161 1516 1193 1499
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1032 1504 1034 1503
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1034 1503 1037 1504
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1011 1503 1013 1505
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1005 1505 1011 1503
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1044 1503 1059 1503
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1193 1499 1211 1489 1232 1476
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1232 1476 1257 1461 1283 1446 1309 1431 1335 1416 1352 1406
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1352 1406 1377 1391 1402 1377
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1402 1377 1416 1368 1416 1368 1421 1346
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1421 1346 1439 1322 1447 1318
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 1447 1318 1461 1324 1475 1328 1477 1322 1475 1315 1475 1314 1480 1296
+ 1480 1295
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 14
+ 1480 1295 1489 1280 1491 1278 1492 1275 1497 1273 1503 1280 1510 1280
+ 1530 1275 1535 1264 1527 1250 1534 1241 1548 1234 1574 1219 1591 1209
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1591 1209 1618 1195 1623 1181 1630 1154
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2270 1248 2273 1248
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2277 1249 2279 1251
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2623 1517 2618 1547
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 14
+ 2618 1475 2613 1492 2613 1497 2614 1499 2614 1500 2613 1502 2614 1505
+ 2614 1505 2615 1506 2616 1507 2618 1510 2619 1513 2622 1515 2623 1517
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 84
+ 2618 1475 2617 1463 2619 1462 2619 1462 2619 1461 2618 1460 2618 1460
+ 2618 1458 2619 1458 2625 1450 2624 1449 2624 1448 2623 1447 2622 1446
+ 2620 1444 2619 1442 2618 1442 2618 1441 2617 1437 2616 1436 2617 1434
+ 2619 1432 2620 1430 2620 1428 2620 1427 2618 1425 2615 1424 2615 1423
+ 2614 1422 2612 1420 2612 1419 2611 1418 2609 1418 2609 1417 2607 1411
+ 2604 1408 2604 1407 2604 1407 2603 1405 2603 1403 2603 1402 2603 1401
+ 2602 1400 2602 1398 2601 1397 2601 1395 2602 1393 2603 1392 2605 1391
+ 2606 1390 2607 1389 2612 1383 2612 1383 2612 1381 2611 1381 2597 1383
+ 2597 1382 2597 1381 2596 1380 2596 1379 2597 1379 2598 1378 2599 1376
+ 2599 1375 2599 1374 2599 1372 2600 1372 2600 1371 2601 1369 2600 1368
+ 2599 1368 2599 1368 2600 1366 2600 1366 2600 1366 2599 1362 2600 1362
+ 2600 1361 2599 1360 2598 1359 2592 1365 2591 1368 2589 1368 2578 1363
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 21
+ 2578 1363 2568 1354 2567 1355 2556 1348 2555 1345 2555 1345 2555 1344
+ 2555 1342 2555 1336 2556 1335 2556 1334 2555 1331 2554 1330 2554 1329
+ 2552 1327 2551 1326 2551 1325 2551 1324 2551 1324 2553 1322 2554 1319
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2290 1252 2289 1252
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2281 1250 2279 1251
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2289 1252 2285 1251
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2304 1255 2303 1255
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2346 1265 2367 1269 2400 1277
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 2400 1277 2422 1283 2443 1288 2464 1293 2485 1299 2505 1304 2526 1310
+ 2551 1317
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2667 1651 2651 1655
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2711 1655 2713 1656
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2670 1641 2667 1651
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2721 1666 2714 1656 2713 1656
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2711 1655 2704 1646
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2755 1659 2739 1665 2737 1667 2737 1668 2721 1666
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 2704 1646 2690 1636 2688 1634 2687 1633 2687 1632 2686 1632 2671 1637
+ 2671 1637 2671 1638 2671 1639 2670 1639 2670 1640 2670 1641
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2767 1650 2755 1659
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 2776 1648 2781 1632 2782 1631 2782 1630 2782 1629 2782 1629 2784 1625
+ 2784 1625
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 2618 1547 2624 1567 2631 1590 2636 1606 2644 1633 2651 1655
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 71
+ 2790 1608 2796 1591 2803 1572 2809 1553 2815 1537 2821 1520 2821 1520
+ 2824 1516 2823 1515 2822 1514 2821 1513 2822 1512 2823 1510 2825 1509
+ 2826 1506 2825 1505 2825 1503 2825 1502 2826 1500 2826 1499 2826 1498
+ 2828 1498 2829 1497 2829 1497 2828 1496 2828 1496 2827 1495 2828 1494
+ 2829 1491 2829 1491 2829 1490 2829 1490 2830 1490 2842 1488 2857 1488
+ 2858 1490 2859 1490 2865 1483 2865 1481 2865 1479 2864 1478 2863 1477
+ 2862 1476 2863 1475 2863 1474 2864 1474 2865 1472 2865 1471 2866 1470
+ 2867 1470 2872 1464 2872 1464 2872 1464 2873 1462 2873 1461 2872 1460
+ 2872 1459 2872 1458 2872 1456 2871 1455 2871 1454 2872 1453 2874 1450
+ 2875 1450 2889 1440 2890 1441 2891 1446 2893 1449 2894 1449 2909 1444
+ 2911 1441
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2911 1441 2918 1434
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1630 1154 1635 1137 1642 1107 1651 1069
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 1651 1069 1659 1039 1666 1009 1670 993 1669 979 1661 949 1651 908
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 1640 853 1647 867 1647 869 1648 886 1651 903 1652 905 1652 907
+ 1652 908 1651 908
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1632 849 1640 853
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1861 852 1877 860
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1632 849 1620 830 1611 826
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1832 843 1861 852
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1595 799 1596 816 1597 818 1600 821 1611 826
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1740 802 1764 822 1794 832 1832 843
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1594 787 1595 799
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1602 766 1594 787 1594 787
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 1740 802 1716 782 1690 764 1665 747 1640 745 1620 756 1602 766
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2198 1153 2191 1150
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2259 1238 2262 1243
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2238 1219 2259 1238
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 2198 1153 2206 1169 2217 1189 2227 1203 2237 1218 2238 1219
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2007 1031 2038 1035 2068 1040 2099 1045 2122 1049
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 17
+ 2122 1049 2139 1052 2141 1056 2144 1066 2153 1092 2160 1109 2167 1120
+ 2168 1122 2172 1129 2172 1129 2180 1139 2181 1141 2181 1141 2184 1143
+ 2188 1147 2188 1148 2191 1150
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1948 974 1938 989 1938 1000 1951 1009 1975 1026 2007 1031
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 15
+ 1948 974 1951 959 1950 958 1950 957 1951 956 1951 954 1951 952
+ 1954 952 1955 951 1956 949 1957 949 1956 947 1956 945 1956 944
+ 1968 933
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1898 875 1923 893 1945 909 1961 920 1968 933
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1877 860 1898 875
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2273 1248 2277 1249
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2285 1251 2281 1250
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2262 1243 2270 1248
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2295 1253 2303 1255
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2304 1255 2303 1255
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2304 1255 2325 1260 2346 1265
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2346 1265 2367 1269 2400 1277
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 2400 1277 2422 1283 2443 1288 2464 1293 2485 1299 2505 1304 2526 1310
+ 2551 1317
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2918 1434 2929 1422 2929 1421
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2929 1421 2930 1419
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2930 1419 2931 1418
+ value 3
+   FPA_category "border_major"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2931 1418 2937 1403 2935 1394
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 360 3000 361 3000 379 2995 397 2990 414 2985
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 414 2985 432 2980
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 432 2980 446 2977
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 500 2963 522 2958
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 500 2963 482 2968 459 2973
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 446 2977 459 2973
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 613 2938 608 2939
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 795 2907 806 2906
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 360 3000 361 3000 379 2995 397 2990 414 2985
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 414 2985 432 2980
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 432 2980 446 2977
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 500 2963 522 2958
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 500 2963 482 2968 459 2973
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 459 2973 446 2977
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 298 2551 308 2588 316 2618 323 2642 389 2892 414 2985
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 298 2551 292 2529 295 2528 295 2527 288 2500 288 2489 287 2488
+ 280 2460 280 2450 277 2439
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 613 2938 631 2935
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 631 2935 649 2931 667 2928 686 2925 704 2922 722 2919 740 2916
+ 759 2913 777 2910 795 2907
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 613 2938 608 2939
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 522 2958 540 2954 558 2950 576 2946 608 2939
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 608 2939 590 2943 539 2954 522 2958
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 396 2410 412 2406 428 2403 444 2399 460 2396 476 2392 492 2389
+ 508 2386 524 2383
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 524 2383 540 2380 556 2377 572 2374 588 2371 604 2368 620 2365
+ 636 2363 652 2360 668 2357 685 2355 701 2353 717 2350
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 795 2907 806 2906
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1026 2434 1050 2457
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 18
+ 1026 2434 1012 2419 1000 2407 1000 2407 993 2400 990 2397 980 2387
+ 980 2387 963 2370 962 2369 960 2367 958 2365 954 2361 953 2360
+ 950 2357 938 2345 936 2343 920 2327
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1050 2457 1116 2525
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2494 2531 2497 2541 2498 2540 2501 2537 2506 2535
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2533 2545 2538 2546
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 21
+ 2541 2547 2532 2555 2527 2560 2527 2561 2528 2561 2528 2562 2528 2563
+ 2527 2565 2526 2567 2526 2569 2529 2568 2528 2571 2526 2572 2517 2582
+ 2517 2582 2518 2583 2533 2578 2545 2567 2545 2569 2545 2569 2564 2556
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2532 3000 2531 3000 2527 2998 2526 3000
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2526 3000 2524 2999 2523 3000
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 152
+ 2692 2731 2676 2728 2665 2730 2664 2730 2662 2730 2661 2731 2661 2732
+ 2661 2732 2661 2733 2660 2734 2656 2727 2653 2723 2652 2724 2651 2728
+ 2649 2732 2650 2735 2650 2735 2651 2736 2652 2738 2655 2742 2654 2743
+ 2639 2743 2639 2743 2638 2744 2637 2747 2629 2756 2628 2757 2628 2757
+ 2628 2757 2643 2764 2644 2766 2644 2767 2643 2768 2637 2774 2632 2777
+ 2619 2785 2619 2786 2619 2789 2619 2791 2619 2794 2622 2796 2623 2797
+ 2623 2799 2622 2800 2622 2801 2620 2807 2621 2808 2625 2812 2625 2812
+ 2619 2820 2620 2821 2621 2822 2622 2822 2622 2823 2622 2823 2620 2825
+ 2618 2828 2618 2833 2619 2833 2620 2835 2620 2837 2620 2840 2619 2841
+ 2618 2842 2617 2845 2617 2846 2617 2846 2618 2848 2617 2851 2617 2852
+ 2613 2847 2613 2845 2613 2844 2612 2844 2611 2846 2608 2855 2609 2859
+ 2610 2860 2610 2862 2613 2865 2613 2866 2612 2868 2609 2872 2608 2871
+ 2606 2876 2604 2881 2604 2882 2601 2886 2601 2887 2602 2890 2604 2891
+ 2605 2894 2605 2895 2605 2896 2606 2897 2606 2898 2606 2901 2603 2907
+ 2603 2907 2602 2905 2601 2905 2601 2903 2602 2901 2602 2900 2601 2898
+ 2601 2897 2601 2897 2592 2898 2578 2904 2577 2903 2578 2900 2577 2900
+ 2576 2899 2566 2910 2563 2913 2559 2918 2558 2918 2555 2922 2552 2923
+ 2551 2922 2550 2922 2539 2931 2539 2931 2539 2935 2540 2936 2541 2937
+ 2542 2938 2547 2944 2547 2946 2545 2954 2545 2955 2545 2958 2547 2959
+ 2550 2964 2550 2966 2551 2968 2552 2970 2554 2970 2558 2977 2555 2980
+ 2553 2983 2551 2985 2548 2979 2546 2977 2536 2989 2537 2991 2538 2995
+ 2541 2995 2543 2999 2544 2999 2545 3000 2546 3000
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2687 2729 2692 2731
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 54
+ 2728 2622 2722 2637 2722 2638 2721 2641 2721 2642 2721 2642 2721 2643
+ 2721 2643 2722 2645 2723 2646 2726 2651 2726 2653 2726 2654 2726 2655
+ 2723 2652 2722 2650 2721 2649 2710 2650 2711 2651 2712 2652 2714 2655
+ 2715 2656 2716 2657 2715 2657 2716 2661 2718 2662 2725 2670 2725 2670
+ 2724 2671 2709 2667 2694 2667 2694 2667 2694 2668 2697 2676 2697 2678
+ 2697 2679 2696 2681 2694 2686 2693 2688 2692 2688 2687 2693 2687 2695
+ 2687 2699 2686 2702 2685 2702 2673 2706 2673 2707 2673 2709 2671 2710
+ 2671 2711 2671 2712 2672 2713 2674 2714 2684 2728
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 42
+ 277 2439 271 2420 272 2411 271 2406 263 2378 264 2372 262 2366
+ 254 2338 256 2333 254 2326 247 2298 249 2297 246 2286 239 2258
+ 240 2254 238 2245 231 2217 232 2214 229 2204 222 2176 222 2176
+ 221 2163 214 2136 215 2136 212 2122 206 2097 208 2096 207 2095
+ 200 2067 193 2038 189 2021 191 2021 188 2011 181 1982 183 1981
+ 180 1970 173 1942 175 1939 172 1928 164 1900 166 1899 160 1872
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 16
+ 684 2115 671 2104 671 2103 667 2079 663 2051 659 2022 655 1993
+ 651 1964 647 1938 644 1920 640 1891 636 1862 634 1844 631 1824
+ 628 1804 625 1779
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 26
+ 920 2327 899 2306 896 2303 879 2286 872 2279 869 2277 869 2276
+ 867 2275 862 2269 860 2267 860 2267 859 2266 856 2263 852 2259
+ 843 2250 838 2246 835 2242 828 2236 814 2222 798 2205 786 2194
+ 765 2177 751 2166 734 2153 719 2142 684 2115
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1802 1772 1779 1942
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2538 2546 2541 2547
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2543 2537 2533 2545
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 41
+ 2564 2556 2581 2553 2581 2554 2581 2555 2582 2555 2598 2552 2598 2551
+ 2597 2550 2597 2550 2597 2549 2600 2549 2613 2540 2613 2541 2614 2542
+ 2615 2544 2617 2545 2625 2553 2624 2554 2620 2559 2621 2559 2622 2560
+ 2632 2561 2632 2563 2633 2564 2633 2564 2636 2568 2635 2570 2636 2571
+ 2635 2573 2635 2574 2636 2575 2637 2576 2637 2577 2637 2578 2637 2580
+ 2638 2581 2639 2581 2640 2580 2640 2580 2641 2581 2645 2579
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 16
+ 2506 2535 2520 2527 2523 2524 2524 2523 2541 2520 2548 2520 2549 2522
+ 2550 2524 2551 2525 2551 2526 2551 2528 2551 2529 2547 2533 2545 2535
+ 2543 2536 2543 2537
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 162
+ 2630 2338 2624 2329 2624 2328 2624 2325 2626 2322 2625 2321 2625 2320
+ 2626 2318 2627 2314 2628 2312 2629 2310 2629 2309 2628 2310 2627 2309
+ 2627 2306 2626 2306 2624 2301 2625 2299 2625 2296 2626 2295 2625 2294
+ 2625 2295 2622 2298 2618 2301 2617 2300 2618 2299 2618 2298 2618 2297
+ 2618 2297 2617 2297 2619 2295 2619 2293 2619 2293 2618 2293 2605 2298
+ 2602 2302 2601 2305 2596 2311 2596 2310 2596 2310 2596 2309 2596 2309
+ 2596 2308 2594 2306 2594 2304 2592 2302 2591 2302 2578 2309 2577 2311
+ 2577 2312 2578 2312 2579 2313 2582 2317 2582 2317 2570 2323 2569 2324
+ 2568 2327 2569 2328 2568 2329 2568 2330 2569 2330 2573 2336 2574 2337
+ 2587 2336 2588 2337 2588 2337 2589 2337 2589 2333 2590 2332 2591 2331
+ 2594 2336 2594 2336 2594 2338 2594 2339 2592 2341 2591 2342 2591 2342
+ 2591 2343 2592 2343 2593 2344 2593 2345 2591 2349 2589 2358 2588 2359
+ 2588 2360 2584 2365 2584 2365 2585 2364 2587 2368 2588 2369 2589 2370
+ 2589 2371 2589 2373 2588 2373 2577 2379 2563 2377 2549 2382 2548 2383
+ 2545 2386 2545 2387 2546 2388 2546 2388 2545 2389 2542 2392 2540 2393
+ 2541 2391 2540 2391 2539 2390 2535 2394 2535 2394 2532 2397 2532 2397
+ 2531 2403 2531 2403 2530 2403 2519 2411 2517 2413 2516 2414 2507 2423
+ 2507 2424 2507 2425 2506 2426 2503 2428 2503 2430 2504 2430 2505 2432
+ 2512 2439 2512 2440 2512 2441 2506 2448 2503 2451 2498 2456 2495 2459
+ 2494 2462 2494 2462 2496 2464 2499 2470 2500 2470 2501 2469 2502 2469
+ 2503 2471 2504 2472 2512 2480 2513 2480 2524 2484 2518 2489 2520 2489
+ 2521 2491 2521 2493 2522 2493 2525 2499 2526 2500 2526 2501 2527 2506
+ 2526 2507 2523 2509 2509 2517 2496 2527 2495 2529 2495 2530 2495 2530
+ 2494 2531
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 69
+ 2720 2260 2708 2254 2708 2254 2707 2252 2707 2252 2704 2248 2704 2248
+ 2703 2248 2692 2257 2692 2257 2690 2259 2679 2264 2674 2261 2674 2259
+ 2675 2257 2677 2255 2679 2251 2679 2250 2679 2248 2678 2248 2667 2254
+ 2664 2258 2665 2258 2665 2259 2664 2259 2663 2260 2662 2261 2661 2262
+ 2659 2264 2659 2264 2659 2266 2660 2267 2660 2268 2660 2269 2660 2270
+ 2661 2271 2661 2272 2664 2276 2663 2276 2663 2280 2662 2281 2661 2281
+ 2660 2282 2661 2283 2661 2283 2660 2286 2659 2286 2658 2288 2658 2290
+ 2657 2291 2655 2293 2650 2298 2650 2302 2650 2303 2651 2303 2658 2303
+ 2655 2306 2653 2309 2653 2311 2652 2314 2650 2317 2649 2318 2644 2325
+ 2647 2325 2650 2330 2649 2331 2648 2332 2644 2336 2630 2338
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 40
+ 2782 2240 2769 2240 2768 2241 2766 2243 2756 2242 2756 2241 2756 2240
+ 2756 2239 2755 2240 2754 2241 2751 2243 2750 2244 2750 2245 2751 2248
+ 2751 2250 2750 2252 2746 2256 2746 2256 2746 2254 2745 2254 2742 2255
+ 2736 2261 2735 2264 2734 2265 2733 2265 2733 2265 2733 2263 2732 2262
+ 2732 2257 2731 2256 2730 2256 2728 2250 2728 2249 2728 2248 2727 2248
+ 2727 2249 2726 2255 2724 2260 2722 2262 2720 2260
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 15
+ 2645 2579 2658 2574 2666 2565 2666 2564 2667 2564 2681 2569 2682 2570
+ 2680 2571 2680 2572 2680 2573 2681 2573 2683 2575 2683 2577 2683 2578
+ 2688 2579
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 31
+ 2688 2579 2702 2577 2715 2569 2728 2576 2728 2577 2729 2580 2730 2580
+ 2732 2583 2731 2584 2731 2584 2731 2585 2729 2586 2717 2594 2721 2599
+ 2720 2600 2718 2601 2717 2603 2717 2605 2717 2610 2717 2610 2715 2610
+ 2715 2611 2716 2612 2717 2612 2729 2616 2727 2619 2727 2619 2728 2620
+ 2728 2621 2728 2622 2728 2622
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 56
+ 3096 2414 3067 2400 3042 2387 3026 2379 3005 2370 2981 2358 2929 2334
+ 2904 2323 2875 2310 2856 2302 2844 2306 2844 2308 2845 2308 2856 2310
+ 2855 2311 2854 2312 2851 2317 2847 2321 2842 2326 2842 2327 2842 2328
+ 2841 2329 2840 2329 2839 2331 2838 2331 2837 2333 2839 2333 2840 2334
+ 2840 2335 2839 2335 2824 2333 2810 2341 2810 2343 2809 2345 2810 2345
+ 2809 2346 2809 2347 2812 2357 2812 2357 2814 2360 2815 2360 2816 2362
+ 2817 2364 2819 2365 2833 2374 2847 2381 2846 2382 2845 2384 2844 2384
+ 2828 2387 2827 2390 2826 2391 2825 2394 2826 2395 2825 2396 2822 2399
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 95
+ 2822 2399 2818 2387 2818 2386 2818 2385 2818 2384 2817 2383 2816 2382
+ 2815 2381 2807 2373 2806 2373 2796 2365 2797 2364 2797 2364 2796 2363
+ 2796 2363 2795 2362 2796 2361 2797 2359 2797 2357 2797 2353 2797 2353
+ 2796 2352 2797 2351 2796 2351 2795 2350 2799 2349 2805 2342 2807 2338
+ 2810 2335 2811 2333 2811 2331 2811 2330 2810 2328 2811 2326 2810 2325
+ 2810 2325 2811 2323 2811 2322 2810 2321 2808 2316 2810 2315 2811 2314
+ 2811 2313 2812 2312 2814 2309 2816 2307 2818 2306 2819 2304 2819 2303
+ 2819 2302 2817 2303 2815 2300 2815 2298 2814 2295 2814 2294 2814 2294
+ 2815 2293 2815 2292 2818 2289 2820 2288 2821 2286 2822 2285 2821 2285
+ 2816 2279 2816 2278 2816 2277 2817 2276 2819 2270 2821 2268 2823 2265
+ 2826 2263 2827 2261 2827 2260 2829 2258 2829 2254 2827 2248 2827 2248
+ 2826 2248 2823 2243 2823 2242 2822 2240 2822 2240 2822 2239 2821 2239
+ 2821 2238 2818 2235 2805 2244 2803 2247 2800 2249 2785 2245 2785 2243
+ 2785 2243 2788 2239 2787 2239 2782 2240
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 12
+ 3311 2454 3295 2484 3284 2502 3275 2511 3250 2497 3228 2484 3211 2475
+ 3183 2460 3160 2447 3140 2437 3119 2426 3096 2414
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 160 1872 155 1846 148 1818 149 1818 146 1804 139 1777 141 1777
+ 136 1756
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 0 1415 12 1411 42 1404 71 1397 100 1389 130 1382 157 1375
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 625 1779 623 1766
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 621 1758 623 1766
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 614 1708 618 1737 621 1758
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 450 1673 451 1665
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 451 1665 451 1654
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 451 1654 453 1650
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 447 1642 453 1650
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 447 1630 446 1639 446 1639 447 1640 448 1641 448 1642 447 1642
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 447 1630 446 1628
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 444 1626 445 1626
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 446 1628 444 1626
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 445 1626 445 1626
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 445 1626 445 1621
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 445 1621 443 1615
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 443 1615 442 1612
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 16
+ 442 1612 443 1603 442 1603 442 1602 442 1602 442 1601 442 1601
+ 442 1600 442 1600 441 1599 440 1599 440 1599 441 1599 441 1598
+ 440 1598 440 1597
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 440 1597 440 1597
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 440 1597 439 1591
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 445 1569 439 1582 439 1586 438 1587 438 1588 439 1588 439 1589
+ 438 1589 438 1590 439 1591
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 441 1569 442 1561
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 443 1551 442 1561
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 14
+ 446 1531 445 1543 445 1543 444 1544 444 1544 442 1546 443 1546
+ 443 1547 444 1547 444 1547 444 1548 444 1549 443 1549 443 1551
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 448 1521 446 1531
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 448 1521 447 1510 448 1509 447 1509 447 1508 448 1508 446 1506
+ 446 1506 446 1504
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 445 1486 445 1497 444 1498 444 1498 444 1498 445 1498 445 1499
+ 446 1499 445 1500 446 1502 446 1503 446 1503 446 1504
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 445 1486 443 1480
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 12
+ 443 1480 442 1467 442 1467 441 1467 441 1466 442 1465 442 1465
+ 442 1464 441 1463 442 1460 441 1459 441 1459
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 441 1459 440 1451
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 25
+ 438 1420 441 1434 441 1435 442 1435 442 1436 442 1436 443 1437
+ 443 1439 443 1439 440 1442 441 1443 441 1443 442 1444 441 1444
+ 441 1444 440 1446 440 1447 440 1448 440 1448 440 1449 439 1449
+ 439 1449 439 1450 439 1451 440 1451
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 41
+ 438 1420 435 1406 434 1405 435 1403 435 1402 435 1402 435 1401
+ 435 1401 435 1400 436 1400 436 1399 436 1399 436 1398 437 1398
+ 436 1397 437 1396 436 1395 437 1394 436 1394 437 1393 436 1393
+ 436 1391 437 1391 436 1390 436 1390 436 1389 436 1389 436 1388
+ 436 1387 436 1387 436 1386 436 1385 437 1385 437 1384 437 1384
+ 437 1384 437 1384 437 1383 437 1382 437 1382 437 1381
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 437 1381 443 1368 443 1367 443 1366 444 1365 444 1364 443 1363
+ 443 1362 443 1362 443 1361 443 1360 443 1359 443 1359
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 443 1359 443 1343 442 1342 443 1340
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 157 1375 177 1370
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 439 1318 443 1340
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 177 1370 206 1364 236 1358 266 1351 292 1345 317 1341
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 317 1341 346 1335 376 1329 406 1324 439 1318
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 437 1310 439 1318
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 430 1300 437 1310
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 430 1300 412 1290 408 1285
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 412 1276 408 1285
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 436 1241 425 1256 422 1257 415 1265 415 1270 412 1276
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 430 1205 436 1241
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 884 1391 910 1406 936 1421 959 1424 995 1421
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 827 1362 855 1376 884 1391
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 804 1359 806 1357
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 806 1357 827 1362
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 804 1359 803 1351
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 995 1410 987 1394 973 1367 957 1335
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 803 1351 803 1347
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 957 1335 968 1329
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 803 1347 802 1339
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 802 1339 801 1332
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 968 1329 977 1319
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 977 1319 980 1308
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 980 1307 980 1308
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 980 1307 989 1303
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 798 1294 800 1314 801 1332
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 798 1294 791 1282
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 755 1262 766 1274 768 1275 783 1281 784 1282 791 1282
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 755 1261 755 1262
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 749 1252 755 1261
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 21
+ 748 1189 754 1203 754 1204 755 1206 757 1207 757 1208 758 1209
+ 760 1211 760 1212 760 1214 760 1215 758 1218 757 1219 756 1221
+ 749 1231 747 1231 742 1238 742 1240 743 1244 747 1252 749 1252
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 744 1163 748 1177 748 1178 747 1185 747 1188 748 1189
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 989 1303 1009 1297 1037 1288 1059 1281 1085 1265
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1098 1262 1085 1265
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 1118 1260 1105 1263 1104 1263 1104 1262 1104 1261 1104 1260 1098 1262
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1134 1256 1118 1260
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1137 1254 1134 1256
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1143 1252 1137 1254
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1147 1242 1143 1252
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 21
+ 1169 1195 1170 1207 1172 1207 1172 1209 1173 1212 1173 1213 1171 1214
+ 1171 1215 1170 1219 1171 1219 1172 1222 1171 1223 1171 1224 1170 1225
+ 1169 1225 1166 1228 1166 1230 1165 1230 1151 1234 1145 1240 1147 1242
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 22
+ 1187 1150 1176 1161 1175 1162 1175 1163 1176 1164 1177 1165 1183 1179
+ 1183 1181 1183 1183 1182 1184 1179 1186 1165 1182 1164 1184 1165 1185
+ 1166 1186 1166 1187 1166 1188 1166 1189 1166 1192 1166 1192 1167 1193
+ 1169 1195
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 1187 1150 1204 1161 1204 1162 1212 1166 1216 1170 1228 1187 1235 1192
+ 1252 1192 1278 1181 1294 1172 1300 1165 1297 1162 1284 1139
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1020 1461 1034 1488 1041 1504
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1000 1421 1020 1461
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 995 1421 1000 1421
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1000 1421 995 1410
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1833 1538 1802 1772
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1833 1538 1835 1521 1839 1491 1838 1479 1839 1464 1841 1463
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1841 1463 1848 1454
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1852 1439 1848 1454
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1852 1439 1853 1431
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1861 1424 1853 1431
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1861 1424 1870 1410 1872 1408
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1897 1376 1886 1390 1882 1398 1878 1402 1876 1403 1872 1408
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 1965 1348 1950 1348 1933 1349 1922 1355 1906 1364 1899 1372 1898 1373
+ 1897 1376
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1965 1348 1981 1347 2005 1345
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2005 1345 2021 1344 2049 1326
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2049 1326 2059 1314 2071 1311
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2071 1311 2076 1309
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2076 1309 2083 1315
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 19
+ 2111 1285 2109 1297 2110 1297 2110 1298 2110 1299 2110 1300 2110 1301
+ 2111 1302 2111 1303 2111 1306 2110 1308 2109 1310 2108 1311 2096 1314
+ 2095 1318 2095 1319 2094 1320 2091 1321 2083 1315
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 2188 1281 2201 1292 2215 1301 2228 1311 2246 1318 2246 1318
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 2111 1285 2130 1281 2146 1282 2147 1284 2146 1286 2147 1286 2148 1287
+ 2164 1287 2188 1281
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2246 1318 2262 1325 2278 1327 2299 1324
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2311 1282 2298 1292 2298 1294 2299 1324
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2300 1261 2314 1281 2311 1282
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2290 1256 2300 1261
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2288 1255 2290 1256
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2279 1251 2288 1255
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2295 1253 2290 1252
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2289 1252 2295 1253
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2295 1253 2303 1255
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2304 1255 2325 1260 2346 1265
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2554 1319 2551 1317
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2578 1363 2590 1328
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 2862 1801 2847 1798 2831 1792 2829 1790 2827 1788 2827 1788
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2715 1745 2723 1748
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2723 1748 2753 1758
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2805 1773 2815 1779
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2805 1773 2804 1765
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2764 1750 2753 1758
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2804 1765 2803 1763
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2777 1750 2786 1755 2796 1763 2796 1764 2803 1763
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 2764 1750 2778 1747 2777 1748 2777 1749 2777 1750 2777 1750
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 2715 1745 2711 1733 2698 1728 2699 1727 2707 1701 2710 1685 2710 1684
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2708 1681 2691 1657 2689 1655 2670 1641
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 3101 1613 3104 1634 3111 1636 3111 1637 3111 1639
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 0 1044 20 1039 51 1031 76 1025
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 425 1175 430 1205
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 400 1025 405 1056 409 1080 412 1101 417 1132 425 1175
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 400 1025 386 1027
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 482 1012 500 1010 528 1005
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 400 1025 430 1020 461 1015 482 1012
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 33
+ 386 1027 391 1013 391 1012 390 1010 386 1002 385 1002 385 1002
+ 384 1001 384 1001 384 1000 383 1000 383 999 383 999 384 999
+ 384 998 385 998 385 998 386 997 385 996 384 995 384 994
+ 385 993 385 993 391 986 391 983 392 981 393 980 393 979
+ 391 977 391 975 390 974 390 973 390 972
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 161 1006 207 997
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 76 1025 96 1021 126 1014 161 1006
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 263 969 284 965 302 963 317 958 318 957 318 954 318 954
+ 321 951 322 950
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 207 997 218 983 222 980 236 971 237 970 240 966 248 960
+ 263 969
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 29
+ 390 972 383 962 384 961 384 961 384 960 383 959 383 958
+ 382 958 382 957 382 957 379 953 379 953 380 952 380 952
+ 379 951 379 951 378 950 378 948 378 947 378 947 377 947
+ 377 946 377 946 376 946 376 945 375 945 375 946 375 946
+ 368 935
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 368 935 376 920
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 16
+ 322 950 337 943 339 941 339 940 338 938 339 938 352 931
+ 352 929 354 928 359 922 359 920 360 918 361 917 365 912
+ 365 911 365 908
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 376 920 377 907 376 907 376 906 376 906 377 905 377 905
+ 377 903 378 902
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 365 908 378 902
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 378 902 381 891 381 890 381 882 382 880 382 879 385 875
+ 385 874 384 870 383 868 382 867 381 867 384 857
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 21
+ 384 857 389 842 389 841 389 838 391 838 396 828 396 827
+ 394 826 394 823 394 822 394 821 396 820 396 819 396 815
+ 397 814 398 813 399 812 400 811 399 809 397 808 396 806
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 24
+ 396 806 393 791 392 790 392 789 392 788 393 786 394 785
+ 393 783 393 782 393 781 393 779 393 778 394 778 399 773
+ 399 772 403 769 406 765 406 763 404 761 405 758 405 757
+ 404 756 402 756 402 755
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 26
+ 402 755 404 745 403 743 404 741 403 739 402 737 402 736
+ 402 735 403 734 406 734 408 731 407 731 405 729 406 725
+ 406 724 404 719 404 716 405 715 405 714 403 711 403 711
+ 403 710 404 710 406 708 406 707 406 705
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 15
+ 406 705 402 690 402 689 402 688 402 686 402 684 402 682
+ 400 681 396 677 397 674 399 673 399 669 401 668 405 659
+ 406 657
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 406 657 407 656
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 407 656 438 651 477 645
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 406 657 409 648
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 409 648 410 646
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 11
+ 410 646 412 631 412 629 413 628 413 627 414 626 413 624
+ 412 624 410 621 411 621 426 610
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 12
+ 426 610 431 595 431 593 431 593 429 592 429 590 428 589
+ 428 588 428 586 428 584 429 583 437 579
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 437 579 437 578
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 24
+ 0 660 11 657 30 653 47 649 68 645 86 641 105 637
+ 124 633 142 629 162 625 181 621 200 618 219 614 237 611
+ 257 607 276 604 295 600 314 597 332 594 353 591 372 588
+ 391 585 410 582 437 578
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 740 1138 745 1154 745 1158 744 1161 744 1162 744 1163
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 749 1123 739 1136 740 1138
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 22
+ 830 1042 817 1054 815 1057 815 1059 810 1068 810 1073 809 1075
+ 805 1080 804 1080 787 1089 779 1099 778 1102 777 1105 775 1106
+ 759 1110 758 1112 757 1113 756 1114 752 1118 752 1120 750 1121
+ 749 1123
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 16
+ 863 969 862 991 863 1000 863 1004 862 1005 862 1007 862 1009
+ 860 1019 857 1022 855 1023 854 1026 852 1027 850 1029 846 1032
+ 831 1041 830 1042
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 750 979 776 977 796 975 814 973 831 972 863 969
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 528 1005 547 1003 563 1001 605 995
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 605 995 635 991 666 988 705 983
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 710 982 750 979
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 705 983 710 982
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 16
+ 864 903 863 921 864 924 865 926 872 935 875 940 875 943
+ 874 945 870 949 868 950 866 952 865 954 864 956 862 962
+ 863 966 863 969
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 907 843 903 859 901 861 885 866 871 875 870 877 869 881
+ 865 897 864 903
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 907 843 928 842 947 840
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 947 840 965 839
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 12
+ 949 780 945 794 941 799 940 800 926 810 926 813 923 824
+ 922 826 921 827 908 837 906 842 907 843
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 946 764 950 778 949 780
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 920 724 928 737 930 740 930 743 931 748 933 749 935 750
+ 945 760 946 764
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 17
+ 853 640 865 652 866 654 866 658 864 676 863 677 862 678
+ 861 679 856 684 855 686 854 691 855 694 860 710 862 711
+ 879 713 896 714 920 724
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 788 615 771 616 739 618 708 620 667 622
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 477 645 500 641 523 638 547 635 568 632 594 630 626 627
+ 667 622
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 788 615 798 603 798 602 798 600 799 599 801 597
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 15
+ 814 583 822 596 822 599 821 601 820 602 819 606 820 608
+ 823 610 839 614 849 624 850 626 851 632 851 634 851 636
+ 853 640
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 814 583 806 594 803 594 801 597
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 805 557 809 576 810 578 813 582 814 583
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 807 536 805 556 805 557
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1190 736 1220 740
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 1284 1139 1270 1119 1260 1105 1259 1101 1252 1078 1247 1061 1242 1042
+ 1235 1018 1231 997 1228 967
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1165 832 1166 832
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1138 833 1165 832
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1110 833 1119 833
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 965 839 983 838 1014 837 1053 835
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1119 833 1138 833
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 1228 967 1226 947 1226 924 1230 906 1238 888 1238 884 1240 865
+ 1240 848 1238 831
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1053 835 1083 834
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1083 834 1110 833
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1166 832 1183 831 1211 831 1238 831
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1238 831 1233 801 1227 770 1220 740
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1220 740 1256 740
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1317 740 1349 741 1380 742 1424 743
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1256 740 1280 740 1298 740 1317 740
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1190 714 1190 736
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1190 710 1190 714
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1190 697 1190 710
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1189 635 1189 666 1190 697
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1186 520 1188 551 1188 583 1189 614 1189 635
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1832 843 1836 801
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1566 747 1602 766
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1443 736 1474 738 1505 741 1525 742 1566 747
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1424 743 1442 744 1443 736
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1846 711 1843 743 1839 774 1836 801
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1443 736 1443 711 1445 689 1446 657 1447 639
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1846 711 1849 690 1852 659 1855 634
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1447 639 1448 607 1449 580 1450 549
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1450 549 1450 524
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 25
+ 1855 634 1842 625 1843 624 1844 623 1845 622 1848 617 1850 610
+ 1850 607 1848 602 1849 601 1850 600 1850 599 1850 597 1852 595
+ 1852 593 1851 591 1851 587 1850 585 1849 584 1847 583 1847 581
+ 1844 565 1842 562 1842 560 1842 552
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1855 634 1858 613 1861 582 1863 555
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2362 773 2352 760 2352 759
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2352 759 2352 759
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2352 759 2357 752
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2357 752 2358 752
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 2353 725 2360 737 2360 739 2361 740 2361 741 2359 742 2360 743
+ 2362 744 2363 746 2362 747 2361 748 2359 751 2358 752
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2353 725 2355 720
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2355 720 2356 714
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2361 708 2356 714
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2361 708 2371 696 2373 692 2374 691 2380 691
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2390 645 2385 639
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1898 875 1901 845
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1901 845 1905 815
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1905 815 1933 816 1964 820 1995 824 2025 829
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 2157 850 2174 854 2192 857 2208 860 2236 865 2253 868 2270 872
+ 2289 875 2305 879
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2025 829 2056 833 2087 838 2118 843 2157 850
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2308 876 2305 879
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2308 876 2309 875
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2309 875 2314 874
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2314 874 2316 870
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2316 870 2318 864
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2318 864 2322 864
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2322 864 2329 865
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2329 865 2335 861
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2335 861 2335 858
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2335 858 2336 856
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2336 856 2341 848
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2342 846 2341 848
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2342 846 2341 845
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2341 845 2343 840
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2343 840 2342 837
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2342 837 2342 836
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2351 827 2342 836
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2351 827 2351 826
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2703 912 2701 917
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2644 886 2640 904 2635 923 2626 957
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2644 886 2642 877
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2685 1110 2695 1102
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2682 1084 2683 1084
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 2626 957 2610 955 2593 950 2566 944 2547 939 2535 931 2534 936
+ 2531 935 2513 931 2473 923
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2626 957 2655 965 2664 960 2664 959 2665 956
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2671 952 2678 940
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2678 940 2679 939
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2679 939 2682 938
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2701 918 2696 928
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2701 917 2701 918
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2383 814 2372 801
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2372 801 2371 800
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2371 799 2371 800
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2371 799 2368 784 2367 781
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2367 781 2365 779
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2365 779 2364 774
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2364 774 2362 773
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2489 791 2505 793
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2462 747 2458 739
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 2458 739 2449 726 2447 725 2446 723 2446 721 2446 719 2446 718
+ 2446 717
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2469 725 2446 717
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 2380 691 2392 681 2398 675 2400 674 2412 664 2411 663 2410 663
+ 2395 651 2390 645
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2289 1252 2295 1253
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 18
+ 2551 1317 2555 1303 2555 1302 2554 1301 2554 1298 2554 1298 2554 1297
+ 2554 1296 2554 1295 2553 1295 2553 1294 2553 1294 2554 1293 2554 1292
+ 2554 1291 2553 1290 2552 1289 2552 1283
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 39
+ 2552 1241 2560 1253 2560 1254 2561 1254 2562 1255 2562 1255 2562 1256
+ 2562 1257 2563 1257 2563 1258 2561 1259 2561 1259 2562 1260 2562 1260
+ 2562 1261 2562 1261 2561 1262 2560 1264 2560 1264 2562 1267 2563 1267
+ 2564 1268 2563 1268 2563 1268 2562 1270 2561 1270 2561 1271 2561 1272
+ 2560 1273 2560 1273 2560 1274 2559 1274 2557 1277 2556 1277 2555 1279
+ 2555 1280 2554 1281 2553 1282 2552 1283
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 2536 1228 2547 1237 2548 1240 2549 1240 2550 1241 2552 1241
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 2536 1204 2529 1218 2529 1219 2530 1221 2531 1222 2531 1223 2531 1225
+ 2536 1228
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 14
+ 2536 1204 2535 1192 2535 1191 2536 1189 2535 1189 2535 1189 2535 1189
+ 2535 1187 2534 1187 2534 1186 2534 1185 2534 1185 2534 1184 2535 1183
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 2532 1156 2533 1172 2533 1172 2533 1174 2534 1175 2535 1176 2535 1177
+ 2535 1177 2535 1180 2535 1180 2536 1182 2536 1183 2535 1183
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2532 1156 2529 1151
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 48
+ 2400 1277 2402 1261 2403 1257 2406 1255 2407 1254 2407 1252 2407 1251
+ 2408 1231 2410 1227 2413 1225 2414 1224 2414 1223 2417 1220 2419 1217
+ 2421 1212 2421 1210 2422 1198 2424 1193 2424 1189 2422 1186 2421 1176
+ 2420 1175 2420 1174 2420 1173 2421 1171 2420 1166 2422 1161 2423 1160
+ 2423 1158 2423 1157 2424 1155 2427 1147 2429 1146 2429 1145 2430 1144
+ 2430 1142 2430 1141 2430 1141 2431 1140 2430 1139 2430 1137 2432 1135
+ 2433 1134 2435 1132 2435 1131 2434 1128 2434 1126 2434 1125
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2432 1114 2434 1125
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2432 1114 2433 1112
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2528 1134 2528 1150 2529 1151
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2433 1110 2433 1112
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2433 1110 2433 1109
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2434 1107 2433 1109
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 2590 1328 2597 1309 2603 1291 2608 1275 2617 1247 2623 1228 2629 1212
+ 2634 1196 2640 1179 2646 1162
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2646 1162 2647 1161
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 2437 1107 2444 1114 2445 1112 2445 1111 2445 1110 2445 1110 2446 1110
+ 2446 1111 2451 1104 2451 1103
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2650 1151 2647 1161
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2650 1144 2650 1151
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2650 1141 2650 1144
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2651 1139 2650 1141
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 2651 1139 2662 1130 2663 1129 2665 1129 2665 1128 2671 1125
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2671 1125 2678 1111 2683 1110
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2683 1110 2685 1110
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 47
+ 2528 1134 2527 1119 2529 1103 2530 1104 2531 1103 2531 1103 2530 1101
+ 2530 1100 2530 1099 2531 1099 2532 1098 2531 1096 2531 1095 2531 1093
+ 2530 1091 2530 1090 2530 1089 2531 1088 2531 1086 2531 1084 2531 1084
+ 2531 1083 2531 1082 2531 1082 2531 1080 2532 1078 2532 1077 2532 1076
+ 2533 1076 2533 1075 2534 1072 2535 1070 2535 1070 2535 1068 2533 1066
+ 2533 1065 2534 1064 2535 1063 2535 1062 2536 1061 2537 1060 2536 1060
+ 2535 1059 2535 1058 2535 1058 2535 1057 2535 1056
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2531 1053 2535 1056
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2532 1048 2531 1053
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2532 1046 2532 1048
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2535 1035 2532 1046
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2541 1031 2535 1035
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2472 1011 2466 1036 2462 1056 2455 1087 2451 1103
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2543 1028 2541 1031
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2543 1028 2544 1027
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2472 1011 2501 1017 2518 1021 2544 1027
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 2544 1027 2572 1033 2589 1037 2619 1044 2641 1049 2653 1059 2655 1061
+ 2654 1063 2654 1065 2655 1068 2657 1070 2668 1078 2682 1084
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 2472 1011 2472 988 2472 987 2472 980 2471 949 2470 928 2471 926
+ 2472 923 2473 923
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2351 826 2353 824
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2356 824 2353 824
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2356 824 2362 821
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2364 820 2366 821
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2364 820 2362 821
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2369 821 2371 821
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2369 821 2366 821
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2377 820 2371 821
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2377 820 2377 818
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2380 816 2377 818
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2380 816 2383 814
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2383 814 2413 803 2439 795 2465 786
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 2473 923 2479 892 2483 865 2487 846 2490 829 2498 821 2496 819
+ 2495 819 2479 803 2489 791
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2465 786 2465 767 2462 755 2462 747
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 24
+ 0 660 11 657 30 653 47 649 68 645 86 641 105 637
+ 124 633 142 629 162 625 181 621 200 618 219 614 237 611
+ 257 607 276 604 295 600 314 597 332 594 353 591 372 588
+ 391 585 410 582 437 578
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 437 578 446 564 450 563
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 450 563 466 561
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 462 532 454 522
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 454 522 453 521
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 449 521 453 521
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 449 521 448 517
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 448 517 449 515
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 449 515 455 506
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 455 506 458 504
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 25
+ 0 267 9 266 25 262 41 259 57 256 75 252 91 248
+ 109 245 132 240 148 237 172 233 190 230 206 227 224 224
+ 240 221 256 218 272 216 288 213 304 211 320 208 336 206
+ 363 202 379 199 395 197 414 194
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 807 536 808 520 809 516 810 514 811 513
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 466 561 475 550 475 549 476 547 474 545 474 545 474 544
+ 475 543
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 475 543 477 541
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 814 500 811 513
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 477 541 464 534 464 533 462 532
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 814 500 827 486 828 485 831 479 835 477 842 466
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 458 504 463 495
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 855 454 842 466
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 463 495 465 489
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 465 489 466 482
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 466 482 474 470 475 468 476 467
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 476 467 480 465
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 492 461 480 465
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 492 461 492 457
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 896 397 908 394
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 18
+ 855 454 868 442 872 435 872 433 872 429 873 425 875 420
+ 875 417 874 415 873 414 873 413 873 411 874 408 875 402
+ 879 390 880 388 882 387 896 397
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 11
+ 908 394 929 382 930 381 930 380 930 377 929 376 928 375
+ 925 373 922 370 920 365 921 359
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 921 359 920 350
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 16
+ 935 269 923 280 909 293 908 294 907 297 905 298 902 301
+ 901 303 900 309 902 323 904 325 906 326 909 330 910 336
+ 912 340 920 350
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 14
+ 453 189 455 206 458 224 460 240 463 265 465 282 469 303
+ 472 323 474 342 477 362 480 383 483 409 487 431 492 457
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 414 194 431 192 453 189
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 445 124 447 141 449 157 453 189
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 28
+ 445 124 461 122 477 120 493 119 510 116 526 114 542 112
+ 558 110 574 108 591 107 607 105 623 104 639 102 656 101
+ 672 99 688 97 704 95 721 94 737 93 753 91 776 90
+ 792 89 808 87 825 86 841 85 857 84 873 83 902 81
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 29
+ 895 31 905 43 906 43 916 53 917 54 916 56 916 56
+ 916 57 916 58 916 59 916 60 918 61 918 64 918 64
+ 917 66 916 66 911 72 910 75 910 76 910 77 909 77
+ 909 77 909 78 909 78 909 81 907 81 906 79 905 78
+ 902 81
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 895 31 889 26
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 889 26 883 17
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 922 15 905 16 883 17
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 444 0 445 16 445 32 445 49 444 66 444 85 444 101
+ 445 124
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1186 520 1186 495 1186 470 1186 440
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1186 440 1181 435
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1181 435 1179 432
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1179 432 1179 431
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 45
+ 1179 431 1182 420 1181 418 1179 417 1179 416 1178 415 1176 414
+ 1175 412 1174 412 1174 410 1174 410 1175 409 1175 409 1175 408
+ 1174 408 1174 407 1175 407 1176 406 1177 404 1178 404 1179 403
+ 1181 401 1182 400 1182 399 1182 399 1182 396 1182 394 1182 393
+ 1182 392 1183 392 1183 392 1182 391 1183 391 1186 389 1187 387
+ 1188 387 1188 386 1187 385 1187 384 1187 384 1187 383 1187 383
+ 1187 382 1187 381 1187 381
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1187 381 1186 379
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1185 378 1186 379
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 16
+ 1185 378 1189 365 1189 364 1189 364 1188 364 1187 363 1188 363
+ 1188 363 1188 360 1188 360 1189 360 1189 359 1188 358 1187 354
+ 1184 352 1177 347
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 20
+ 1164 318 1171 329 1171 330 1173 329 1173 331 1173 332 1172 334
+ 1171 334 1172 335 1173 336 1173 338 1174 338 1174 340 1174 341
+ 1175 341 1176 342 1176 344 1177 345 1177 346 1177 347
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1164 318 1163 315
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 15
+ 1139 299 1146 301 1146 300 1147 300 1150 303 1150 305 1151 305
+ 1152 305 1151 302 1151 301 1152 301 1156 308 1157 311 1159 312
+ 1163 315
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1140 296 1139 299
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1140 296 1144 284
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1134 270 1144 284
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1136 268 1134 270
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 940 269 935 269
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 951 259 937 263 937 264 938 265 939 266 940 268 940 269
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 960 253 951 259
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 960 253 963 248
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 17
+ 1134 238 1134 243 1135 244 1135 246 1134 246 1132 247 1131 248
+ 1128 254 1130 253 1134 259 1134 261 1135 261 1135 261 1136 264
+ 1135 268 1135 268 1136 268
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 963 248 967 241
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 967 241 972 236
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 972 236 977 233
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 977 233 982 229
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 982 226 982 229
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 982 226 983 208 985 202 988 199 989 197 990 192 990 190
+ 989 186 981 182
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 981 182 980 180
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 980 180 982 174
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 986 165 982 174
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 996 144 986 165
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 11
+ 996 144 1001 147 1001 147 1001 148 1001 149 1001 150 1002 151
+ 1008 145 1010 143 1011 143 1011 142
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1011 142 1018 138
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 952 14 922 15
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1426 360 1437 368
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 19
+ 1372 306 1376 322 1377 323 1378 323 1391 332 1396 339 1396 340
+ 1395 340 1395 341 1394 344 1393 345 1393 350 1392 354 1391 357
+ 1392 358 1393 360 1394 361 1411 363 1426 360
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1354 296 1372 306
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 1340 266 1348 279 1348 280 1349 291 1350 292 1351 292 1352 293
+ 1354 296
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1178 261 1180 260
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1340 266 1336 260
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1260 260 1248 257
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1248 257 1239 254
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1263 254 1260 260
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1202 255 1180 260
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1264 252 1263 254
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1166 251 1170 252
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1268 252 1266 251
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1266 251 1264 252
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1178 261 1180 250
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1148 255 1166 251
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 26
+ 1336 260 1323 267 1311 278 1311 279 1309 286 1305 289 1302 286
+ 1306 285 1307 283 1306 282 1306 282 1292 279 1293 278 1295 277
+ 1296 274 1295 273 1294 271 1287 265 1287 259 1288 257 1289 256
+ 1288 256 1288 256 1288 255 1287 254 1275 244
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1275 244 1268 252
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1180 250 1175 242
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1175 242 1170 252
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1239 254 1233 241
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1146 240 1147 256 1148 255
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1145 240 1146 240
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1145 240 1143 238
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1225 237 1213 247 1210 250 1202 255
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1225 237 1233 241
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1142 236 1143 238
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1134 238 1142 236
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1056 159 1062 156
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1069 153 1062 156
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1075 149 1069 153
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 27
+ 1075 149 1089 149 1090 150 1091 153 1092 158 1090 164 1087 167
+ 1084 175 1085 178 1085 178 1088 187 1089 189 1091 191 1105 194
+ 1122 197 1129 206 1128 207 1128 207 1123 215 1121 219 1121 221
+ 1122 225 1126 228 1129 230 1134 236 1135 238 1134 238
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 1056 159 1042 167 1027 164 1022 157 1020 154 1019 153 1014 147
+ 1014 144
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1018 138 1014 144
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1343 89 1364 89 1384 89 1401 89 1418 89 1447 90
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 12
+ 1018 138 1018 124 1018 123 1018 112 1019 110 1019 109 1018 108
+ 1012 94 1010 92 1008 87 1007 86 1005 83
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1005 83 992 88
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 992 88 986 77
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 25
+ 1343 89 1314 90 1298 91 1281 92 1262 91 1239 90 1222 90
+ 1200 90 1181 90 1157 89 1145 94 1129 96 1129 85 1129 85
+ 1130 81 1130 74 1128 72 1121 72 1105 73 1083 74 1067 74
+ 1050 75 1034 75 1018 76 986 77
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 18
+ 986 77 979 76 981 79 981 83 981 84 980 85 978 87
+ 977 87 972 82 973 79 975 73 975 72 975 72 972 70
+ 972 70 972 69 974 64 974 64
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 12
+ 974 64 965 56 965 56 964 55 964 54 965 52 966 51
+ 970 47 969 45 968 44 958 40 961 37
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 961 37 959 25 957 25 955 23 955 19 952 14
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 952 14 958 0 958 0 958 0
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1450 523 1450 524
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1843 550 1842 552
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1451 504 1450 523
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1451 500 1451 504
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1863 555 1865 539 1866 537 1867 530
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1451 500 1451 498
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1897 523 1893 522
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1893 522 1892 522
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1867 530 1868 519
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1901 523 1900 522
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1900 522 1897 523
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1918 525 1901 523
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1892 522 1868 519
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 29
+ 1835 511 1836 525 1837 526 1837 526 1837 527 1837 528 1837 529
+ 1836 531 1838 533 1839 534 1839 535 1839 535 1839 536 1839 537
+ 1838 537 1838 538 1837 539 1837 540 1837 540 1837 541 1838 541
+ 1841 545 1841 545 1842 548 1842 548 1842 548 1843 548 1843 549
+ 1843 550
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1452 468 1451 498
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1452 467 1452 468
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1452 452 1452 467
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1452 451 1452 452
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 1804 470 1814 484 1827 499 1829 501 1835 509 1834 509 1835 510
+ 1835 511
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1777 465 1787 463 1804 470
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1767 451 1773 463 1777 465
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1453 428 1452 451
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1759 445 1767 451
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1454 410 1456 411
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1454 410 1453 428
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1446 402 1454 410
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1456 411 1468 409 1483 409 1492 405 1493 404 1505 397
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1505 397 1507 392
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 19
+ 1750 408 1755 415 1755 416 1755 417 1755 418 1754 419 1752 420
+ 1749 424 1749 425 1749 425 1749 426 1756 432 1756 434 1755 435
+ 1755 440 1755 440 1756 441 1756 443 1759 445
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 1737 413 1741 399 1742 399 1748 405 1748 406 1749 408 1749 408
+ 1750 408
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 1452 370 1454 382 1454 382 1449 388 1449 389 1450 389 1451 391
+ 1452 393 1452 394 1446 402
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1437 368 1452 370
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1507 392 1513 376 1514 374 1515 374 1534 371
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 1714 382 1720 394 1720 395 1720 401 1722 404 1722 406 1726 412
+ 1726 412 1727 413 1730 417 1731 417 1732 416 1737 413
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1534 371 1550 369 1551 367
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 1551 367 1562 356 1562 356 1574 361 1589 362 1604 357 1605 356
+ 1605 355 1607 353 1612 357
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 1612 357 1625 362 1625 364 1626 364 1627 365 1641 374 1648 366
+ 1648 366 1650 364 1650 363 1650 360 1651 358 1653 354
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 1707 343 1709 359 1709 360 1710 360 1717 371 1717 372 1717 373
+ 1717 374 1716 377 1714 382
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1706 341 1707 343
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1653 354 1668 348 1671 344 1672 344 1678 338 1679 335
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1679 335 1681 333
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1681 333 1706 341
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1679 335 1679 329
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 16
+ 1679 329 1681 313 1679 312 1678 311 1679 309 1680 308 1680 307
+ 1679 305 1679 304 1677 303 1676 303 1676 302 1676 302 1677 299
+ 1680 296 1681 296
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1940 302 1945 308
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 9
+ 1923 272 1928 287 1928 287 1929 288 1930 289 1930 291 1930 291
+ 1932 292 1940 302
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 12
+ 1924 253 1917 263 1917 264 1918 264 1918 265 1919 266 1920 267
+ 1921 267 1922 268 1923 270 1922 272 1923 272
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 43
+ 1681 296 1690 283 1691 282 1694 278 1694 278 1695 277 1695 277
+ 1694 276 1693 274 1693 274 1693 274 1696 271 1696 270 1696 272
+ 1697 272 1702 266 1702 266 1701 265 1702 265 1705 260 1706 259
+ 1706 258 1708 257 1711 254 1712 253 1713 252 1712 251 1712 251
+ 1713 249 1716 243 1717 242 1717 242 1729 239 1729 238 1729 237
+ 1729 236 1732 234 1734 231 1734 230 1733 230 1733 230 1734 228
+ 1751 227
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1757 211 1753 222 1753 223 1753 225 1753 226 1751 227
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1734 208 1745 220 1746 221 1746 222 1751 227
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 18
+ 1868 222 1881 222 1895 233 1907 230 1920 240 1922 243 1923 244
+ 1922 245 1921 245 1920 244 1919 244 1919 245 1919 246 1919 247
+ 1918 248 1918 249 1919 249 1924 253
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1868 222 1866 217
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1720 194 1732 206 1732 206 1734 208
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1818 206 1822 202
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1822 202 1824 200
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1809 198 1818 206
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1824 200 1826 200
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1827 198 1826 200
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1829 196 1827 198
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 1829 196 1845 204 1861 208 1861 208 1863 210 1865 212 1867 213
+ 1867 214 1867 215 1866 217
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1809 198 1790 188
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1790 188 1777 195 1763 201 1757 209 1757 211 1757 211
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1694 178 1720 194
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1687 173 1694 178
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1687 173 1687 173
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1665 138 1669 153 1671 153 1679 167 1687 173
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1652 131 1665 138
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1649 132 1652 131
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1646 130 1649 132
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1639 116 1646 130
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1628 113 1639 116
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1624 112 1628 113
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1617 109 1624 112
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1601 104 1600 103
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1617 109 1601 104
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1600 103 1593 100
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1593 100 1585 94
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1592 94 1585 94
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 1447 90 1464 89 1485 89 1505 89
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1691 100 1704 102
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1525 90 1505 89
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1732 104 1704 102
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1691 100 1677 99
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 1677 99 1658 98 1639 97 1621 96 1592 94
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1537 90 1525 90
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1537 90 1543 90
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 1793 108 1782 111 1766 107 1765 106 1763 106 1732 104
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1545 90 1543 90
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1546 90 1545 90
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1799 109 1793 108
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1578 91 1546 90
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1585 94 1578 91
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1832 109 1799 109
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 1968 121 1950 119 1932 117 1913 116 1895 115 1877 113 1858 111
+ 1832 109
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 11
+ 1793 108 1792 90 1791 86 1789 83 1789 82 1790 80 1789 76
+ 1789 76 1775 72 1775 71 1771 65
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1771 65 1768 61
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 1722 34 1736 44 1751 45 1751 45 1751 43 1752 42 1753 42
+ 1765 52 1766 55 1768 61
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 1694 30 1702 23 1702 21 1702 20 1702 19 1703 19 1718 27
+ 1722 34
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 8
+ 1694 30 1683 18 1683 17 1683 17 1682 15 1682 13 1681 12
+ 1671 13
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 10
+ 1668 0 1670 3 1670 3 1671 4 1672 4 1672 5 1671 8
+ 1670 10 1670 11 1671 13
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2418 389 2417 389
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2416 388 2416 388
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2343 365 2342 365
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2341 365 2340 365
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2346 365 2344 365
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2383 188 2381 188
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2385 639 2381 625 2378 621 2376 620
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2342 609 2340 609
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2376 620 2361 612 2360 610 2360 610 2359 609
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2342 609 2359 609
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2340 609 2327 598 2326 596 2323 590
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2323 590 2300 585
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2282 582 2300 585
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1999 535 2004 536
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2038 541 2037 540
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2196 566 2038 541
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2024 539 2024 539
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2037 540 2024 539
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2024 539 2004 536
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1999 535 1969 531
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2222 570 2240 574 2258 577 2282 582
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1969 531 1945 528 1927 526
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1925 525 1925 525
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1925 525 1918 525
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2196 566 2222 570
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1927 526 1926 525
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1925 525 1926 525
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2323 590 2324 587
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2324 587 2324 586
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2359 609 2351 594 2349 589
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2324 586 2324 584
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2324 584 2325 582
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2325 582 2325 581
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2349 589 2345 582
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2103 545 2111 539
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2103 545 2091 541 2091 540 2087 535
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2039 531 2043 524 2043 524 2044 522 2059 519
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 13
+ 2087 535 2073 534 2072 532 2073 532 2074 530 2075 529 2075 529
+ 2074 525 2075 524 2074 524 2074 524 2070 520 2059 519
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 1969 531 1971 513 1973 495
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1973 495 1973 494
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2345 582 2351 568 2350 565 2351 562 2367 551
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 35
+ 2143 510 2137 521 2138 521 2137 521 2137 522 2136 522 2136 523
+ 2137 523 2137 524 2137 524 2136 525 2136 525 2137 526 2137 526
+ 2138 528 2138 528 2130 529 2128 531 2128 531 2127 532 2127 532
+ 2126 533 2126 534 2131 538 2130 539 2130 540 2130 540 2120 537
+ 2120 537 2120 536 2119 536 2119 536 2119 537 2118 538 2111 539
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2325 581 2329 565 2333 548 2334 546 2335 544
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2145 507 2143 510
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1973 494 1974 478
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2096 507 2113 497
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2121 493 2121 493
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2113 497 2121 493
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 23
+ 2039 531 2032 519 2023 504 2023 503 2009 506 2009 504 2008 503
+ 2007 500 2005 498 2004 496 2004 495 2003 494 1996 487 1996 487
+ 1995 486 1995 486 1992 482 1991 481 1989 479 1988 478 1987 477
+ 1982 472 1979 466
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1974 478 1979 466
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2121 493 2129 488
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 29
+ 2096 507 2083 513 2083 511 2082 508 2083 507 2084 505 2083 503
+ 2083 502 2083 501 2084 501 2085 500 2084 498 2084 497 2084 497
+ 2084 496 2083 496 2083 494 2083 493 2082 492 2080 487 2081 486
+ 2081 485 2081 484 2080 483 2080 482 2079 481 2080 480 2082 478
+ 2082 476
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2145 507 2142 490 2138 482 2129 488
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2335 544 2342 515
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 15
+ 2199 473 2186 480 2171 485 2169 487 2169 488 2169 491 2170 492
+ 2171 492 2173 495 2173 496 2173 497 2174 499 2174 499 2173 499
+ 2145 507
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2200 472 2199 473
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 7
+ 2082 476 2072 462 2070 457 2071 457 2071 456 2071 455 2068 450
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2211 469 2200 472
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2215 465 2211 469
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2223 456 2215 465
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 12
+ 2424 484 2414 498 2414 499 2408 506 2399 520 2388 534 2387 535
+ 2386 536 2385 537 2384 539 2383 540 2367 551
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 5
+ 2214 427 2222 440 2224 440 2225 443 2223 456
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2209 420 2214 427
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 6
+ 2342 515 2347 495 2352 478 2356 462 2356 460 2364 434
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2424 445 2422 445
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2427 446 2424 445
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2429 446 2427 446
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2410 442 2385 438 2364 434
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2422 445 2410 442
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2429 446 2432 447
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 72
+ 2068 450 2058 440 2058 439 2057 440 2057 441 2056 442 2056 442
+ 2052 438 2052 437 2051 436 2050 434 2050 432 2048 427 2041 422
+ 2029 423 2028 422 2028 422 2028 421 2027 420 2026 420 2026 419
+ 2025 416 2024 411 2024 409 2024 407 2024 403 2023 403 2023 402
+ 2019 398 2019 395 2019 395 2018 392 2014 377 2013 375 2012 374
+ 2009 370 2009 370 2008 369 1992 371 1984 380 1978 384 1970 378
+ 1970 377 1969 377 1968 376 1967 373 1967 372 1967 371 1968 368
+ 1968 366 1968 365 1967 363 1965 359 1965 358 1963 356 1962 355
+ 1961 352 1959 350 1959 349 1960 348 1960 344 1958 341 1950 327
+ 1949 326 1948 325 1948 325 1949 324 1950 322 1950 322 1949 321
+ 1949 320 1946 312
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2420 390 2418 389
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2417 389 2416 388
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2416 388 2405 385
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 18
+ 2299 363 2286 373 2281 379 2280 379 2263 379 2247 382 2243 387
+ 2237 397 2236 400 2235 402 2233 403 2220 394 2207 398 2206 400
+ 2205 409 2205 411 2206 413 2209 420
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1945 308 1946 312
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2405 385 2390 380
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2390 380 2383 378
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2383 378 2380 375
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2344 365 2343 365
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2342 365 2341 365
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2380 375 2369 366
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2364 363 2346 365
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2364 363 2369 366
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2340 365 2326 355 2299 363
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2306 174 2307 174
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2388 189 2383 188
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2391 190 2388 189
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2393 190 2391 190
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2381 188 2361 184
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2361 184 2343 181 2307 174
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2247 163 2257 164
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2257 164 2278 168 2306 174
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2245 162 2247 163
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2223 159 2245 162
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2100 139 2099 139
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2119 142 2100 139
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2099 139 2096 138
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2064 134 2065 134
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2096 138 2089 137
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2078 136 2089 137
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1976 122 1968 121
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2062 133 2064 134
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2052 132 2052 132
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 3
+ 2158 148 2140 145 2119 142
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2050 132 2049 132
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2158 148 2175 150 2192 153 2223 159
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2052 132 2062 133
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2065 134 2078 136
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2052 132 2050 132
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2049 132 2035 129
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 1976 122 2002 125
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2023 128 2035 129
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2022 128 2023 128
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2020 127 2022 128
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 2
+ 2002 125 2020 127
+ value 3
+   FPA_category "border"
+   FPA_auto_label "Political/Ocean Boundaries"
+   FPA_user_label "Political/Ocean Boundaries"
+ curve r 4
+ 2432 447 2432 472 2430 475 2424 484
+* 
+* End
