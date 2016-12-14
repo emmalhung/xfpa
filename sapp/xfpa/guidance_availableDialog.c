@@ -76,7 +76,7 @@ void ACTIVATE_guidanceAvailabilityDialog(Widget reference_widget )
 	FpaConfigLevelStruct **level_list = NULL;
 
 	static XuDialogActionsStruct action_items[] = {
-		{ "closeBtn", XuDestroyDialogCB, NULL },
+		{ "closeBtn", exit_cb, NULL },
 		{ "helpBtn",  HelpCB, HELP_GUIDANCE_AVAIL }
 	};
 
