@@ -1,0 +1,43 @@
+##################################################################
+#
+# Depiction Field Update Office Default List definition file.
+#
+# This file contains the pre-defined lists of fields and times
+# to be pre-selected in the Depiction Field Update Panel.
+# Depiction fields (identified by element and level) at chosen
+# times (identified with respect to the depiction T0 time) for
+# each source are automatically chosen for updating depictions
+# when the "Select Office Standard" button in the Depiction
+# Field Update Panel is chosen.
+#
+# NOTE: There is only one file of this type per FPA setup.
+#
+# The lists are separated by source names in square backets as:
+#
+#     [list_1_source_name]
+#        element level <times>
+#        element level <times>
+#     [list_2_source_name]
+#        element level <times>
+#
+# and so on. The source names for each list must be recognized
+# in the configuration files.
+#
+# The remaining lines are the element and level names (which must
+# also be recognized in the configuration files) for each field,
+# followed by a list of one or more depiction times (wrt the T0
+# time in the depiction time sequence) for each field.  The times
+# are given in hh or hh:mm format, where hh is the number of
+# hours and mm is the number of minutes.
+#
+# EXAMPLE:
+#
+#      [GEM]
+#        pressure        msl       00 06 12 18 24    36    48
+#        temperature     surface   00 06 12 18 24 30 36 42 48
+#
+#      [Spectral]
+#        pressure        msl       00    12    24    36    48
+#        temperature     surface   00    12    24    36    48
+#
+##################################################################
