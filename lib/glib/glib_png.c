@@ -263,10 +263,10 @@ LOGICAL _xgl_queryPNG(STRING fname, IMDEF *imdef, int *width, int *height, int *
 		if(color_type == PNG_COLOR_TYPE_PALETTE)
 			png_set_palette_to_rgb(png_ptr);
 		if(bit_depth < 8 && color_type == PNG_COLOR_TYPE_GRAY || color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
-#if defined(PNG_1_0_X) || defined (PNG_1_2_X)
-			png_set_gray_1_2_4_to_8(png_ptr);
-#else
+#ifndef PNG_1_0_X
 			png_set_expand_gray_1_2_4_to_8(png_ptr);
+#else
+			png_set_gray_1_2_4_to_8(png_ptr);
 #endif
 	}
 
@@ -359,10 +359,10 @@ LOGICAL _xgl_readPNG( ImagePtr im, UNCHAR **raster, UNCHAR **mask )
 		if(color_type == PNG_COLOR_TYPE_PALETTE)
 			png_set_palette_to_rgb(png_ptr);
 		if(bit_depth < 8 && color_type == PNG_COLOR_TYPE_GRAY || color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
-#if defined(PNG_1_0_X) || defined (PNG_1_2_X)
-			png_set_gray_1_2_4_to_8(png_ptr);
-#else
+#ifndef PNG_1_0_X
 			png_set_expand_gray_1_2_4_to_8(png_ptr);
+#else
+			png_set_gray_1_2_4_to_8(png_ptr);
 #endif
 	}
 
